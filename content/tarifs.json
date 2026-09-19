@@ -1,0 +1,37 @@
+{
+  "_lisezmoi": "À remplir par Arcel (question Q-TARIFS-1). Tant que prestations est vide, tous les blocs de prix du site sont masqués et la validation de production échoue. Chaque prestation indique son mode d'intervention, ses prix TTC et HT, son unité et ses frais annexes : c'est une obligation d'information du consommateur (docs/07 §1).",
+  "date_application": null,
+  "credit_impot_taux": 0.5,
+  "prestations": [],
+  "_exemple_de_structure": {
+    "id": "aide-a-l-autonomie-prestataire",
+    "libelle": "Aide à l'autonomie (lever, toilette, repas)",
+    "activite": "Assistance aux personnes âgées ou en situation de handicap",
+    "mode": "prestataire",
+    "unite": "heure",
+    "prix_ttc": null,
+    "prix_ht": null,
+    "tva": null,
+    "majorations": [
+      { "libelle": "Dimanches et jours fériés", "taux": null },
+      { "libelle": "Nuit", "taux": null },
+      { "libelle": "1er mai", "taux": null }
+    ],
+    "degressivite": [
+      { "jusqu_a_heures_par_semaine": null, "prix_ttc": null }
+    ],
+    "frais": [
+      { "libelle": "Frais de dossier", "montant_ttc": null },
+      { "libelle": "Frais de déplacement", "montant_ttc": null }
+    ]
+  },
+  "forfaits": [],
+  "_exemple_de_forfait": {
+    "id": "nuit-calme-prestataire",
+    "libelle": "Présence de nuit calme (21 h – 7 h)",
+    "mode": "prestataire",
+    "unite": "nuit",
+    "prix_ttc": null,
+    "prix_ht": null
+  }
+}

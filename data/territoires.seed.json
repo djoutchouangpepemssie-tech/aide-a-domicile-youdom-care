@@ -1,0 +1,703 @@
+{
+  "_lisezmoi": "Données d'amorçage. Le pipeline (docs/04 §5) les contrôle contre les sources officielles : API Découpage administratif et opendata.paris.fr. En cas d'écart, la source officielle gagne et l'écart est consigné au journal. Les noms d'usage des quartiers (Marais, Montmartre, Butte-aux-Cailles…) sont à établir par le pipeline avec une source par correspondance.",
+  "departements": [
+    {
+      "code": "75",
+      "nom": "Paris",
+      "slug": "paris",
+      "agences": [
+        "paris-12"
+      ]
+    },
+    {
+      "code": "77",
+      "nom": "Seine-et-Marne",
+      "slug": "seine-et-marne",
+      "agences": [
+        "serris"
+      ]
+    },
+    {
+      "code": "78",
+      "nom": "Yvelines",
+      "slug": "yvelines",
+      "agences": [
+        "versailles"
+      ]
+    },
+    {
+      "code": "91",
+      "nom": "Essonne",
+      "slug": "essonne",
+      "agences": []
+    },
+    {
+      "code": "92",
+      "nom": "Hauts-de-Seine",
+      "slug": "hauts-de-seine",
+      "agences": [
+        "puteaux"
+      ]
+    },
+    {
+      "code": "93",
+      "nom": "Seine-Saint-Denis",
+      "slug": "seine-saint-denis",
+      "agences": [
+        "saint-denis"
+      ]
+    },
+    {
+      "code": "94",
+      "nom": "Val-de-Marne",
+      "slug": "val-de-marne",
+      "agences": [
+        "vitry-sur-seine"
+      ]
+    },
+    {
+      "code": "95",
+      "nom": "Val-d'Oise",
+      "slug": "val-d-oise",
+      "agences": []
+    }
+  ],
+  "regle_vague_1": {
+    "communes_des_agences": [
+      "92062",
+      "93066",
+      "94081",
+      "77449",
+      "78646"
+    ],
+    "par_departement": "les 8 communes les plus peuplées (population de l'API Découpage administratif)",
+    "proximite": "toute commune dont le centre est à moins de 5 km d'une agence",
+    "departements_sans_agence": "Essonne et Val-d'Oise : rattacher chaque commune à l'agence la plus proche à vol d'oiseau"
+  },
+  "paris": {
+    "code_insee_commune": "75056",
+    "arrondissements": [
+      {
+        "numero": 1,
+        "nom": "1er arrondissement",
+        "slug": "1er-arrondissement",
+        "code_insee": "75101",
+        "codes_postaux": [
+          "75001"
+        ],
+        "quartiers": [
+          {
+            "numero": 1,
+            "nom": "Saint-Germain-l'Auxerrois",
+            "slug": "saint-germain-l-auxerrois"
+          },
+          {
+            "numero": 2,
+            "nom": "Les Halles",
+            "slug": "les-halles"
+          },
+          {
+            "numero": 3,
+            "nom": "Palais-Royal",
+            "slug": "palais-royal"
+          },
+          {
+            "numero": 4,
+            "nom": "Place-Vendôme",
+            "slug": "place-vendome"
+          }
+        ]
+      },
+      {
+        "numero": 2,
+        "nom": "2e arrondissement",
+        "slug": "2e-arrondissement",
+        "code_insee": "75102",
+        "codes_postaux": [
+          "75002"
+        ],
+        "quartiers": [
+          {
+            "numero": 5,
+            "nom": "Gaillon",
+            "slug": "gaillon"
+          },
+          {
+            "numero": 6,
+            "nom": "Vivienne",
+            "slug": "vivienne"
+          },
+          {
+            "numero": 7,
+            "nom": "Mail",
+            "slug": "mail"
+          },
+          {
+            "numero": 8,
+            "nom": "Bonne-Nouvelle",
+            "slug": "bonne-nouvelle"
+          }
+        ]
+      },
+      {
+        "numero": 3,
+        "nom": "3e arrondissement",
+        "slug": "3e-arrondissement",
+        "code_insee": "75103",
+        "codes_postaux": [
+          "75003"
+        ],
+        "quartiers": [
+          {
+            "numero": 9,
+            "nom": "Arts-et-Métiers",
+            "slug": "arts-et-metiers"
+          },
+          {
+            "numero": 10,
+            "nom": "Enfants-Rouges",
+            "slug": "enfants-rouges"
+          },
+          {
+            "numero": 11,
+            "nom": "Archives",
+            "slug": "archives"
+          },
+          {
+            "numero": 12,
+            "nom": "Sainte-Avoye",
+            "slug": "sainte-avoye"
+          }
+        ]
+      },
+      {
+        "numero": 4,
+        "nom": "4e arrondissement",
+        "slug": "4e-arrondissement",
+        "code_insee": "75104",
+        "codes_postaux": [
+          "75004"
+        ],
+        "quartiers": [
+          {
+            "numero": 13,
+            "nom": "Saint-Merri",
+            "slug": "saint-merri"
+          },
+          {
+            "numero": 14,
+            "nom": "Saint-Gervais",
+            "slug": "saint-gervais"
+          },
+          {
+            "numero": 15,
+            "nom": "Arsenal",
+            "slug": "arsenal"
+          },
+          {
+            "numero": 16,
+            "nom": "Notre-Dame",
+            "slug": "notre-dame"
+          }
+        ]
+      },
+      {
+        "numero": 5,
+        "nom": "5e arrondissement",
+        "slug": "5e-arrondissement",
+        "code_insee": "75105",
+        "codes_postaux": [
+          "75005"
+        ],
+        "quartiers": [
+          {
+            "numero": 17,
+            "nom": "Saint-Victor",
+            "slug": "saint-victor"
+          },
+          {
+            "numero": 18,
+            "nom": "Jardin-des-Plantes",
+            "slug": "jardin-des-plantes"
+          },
+          {
+            "numero": 19,
+            "nom": "Val-de-Grâce",
+            "slug": "val-de-grace"
+          },
+          {
+            "numero": 20,
+            "nom": "Sorbonne",
+            "slug": "sorbonne"
+          }
+        ]
+      },
+      {
+        "numero": 6,
+        "nom": "6e arrondissement",
+        "slug": "6e-arrondissement",
+        "code_insee": "75106",
+        "codes_postaux": [
+          "75006"
+        ],
+        "quartiers": [
+          {
+            "numero": 21,
+            "nom": "Monnaie",
+            "slug": "monnaie"
+          },
+          {
+            "numero": 22,
+            "nom": "Odéon",
+            "slug": "odeon"
+          },
+          {
+            "numero": 23,
+            "nom": "Notre-Dame-des-Champs",
+            "slug": "notre-dame-des-champs"
+          },
+          {
+            "numero": 24,
+            "nom": "Saint-Germain-des-Prés",
+            "slug": "saint-germain-des-pres"
+          }
+        ]
+      },
+      {
+        "numero": 7,
+        "nom": "7e arrondissement",
+        "slug": "7e-arrondissement",
+        "code_insee": "75107",
+        "codes_postaux": [
+          "75007"
+        ],
+        "quartiers": [
+          {
+            "numero": 25,
+            "nom": "Saint-Thomas-d'Aquin",
+            "slug": "saint-thomas-d-aquin"
+          },
+          {
+            "numero": 26,
+            "nom": "Invalides",
+            "slug": "invalides"
+          },
+          {
+            "numero": 27,
+            "nom": "École-Militaire",
+            "slug": "ecole-militaire"
+          },
+          {
+            "numero": 28,
+            "nom": "Gros-Caillou",
+            "slug": "gros-caillou"
+          }
+        ]
+      },
+      {
+        "numero": 8,
+        "nom": "8e arrondissement",
+        "slug": "8e-arrondissement",
+        "code_insee": "75108",
+        "codes_postaux": [
+          "75008"
+        ],
+        "quartiers": [
+          {
+            "numero": 29,
+            "nom": "Champs-Élysées",
+            "slug": "champs-elysees"
+          },
+          {
+            "numero": 30,
+            "nom": "Faubourg-du-Roule",
+            "slug": "faubourg-du-roule"
+          },
+          {
+            "numero": 31,
+            "nom": "Madeleine",
+            "slug": "madeleine"
+          },
+          {
+            "numero": 32,
+            "nom": "Europe",
+            "slug": "europe"
+          }
+        ]
+      },
+      {
+        "numero": 9,
+        "nom": "9e arrondissement",
+        "slug": "9e-arrondissement",
+        "code_insee": "75109",
+        "codes_postaux": [
+          "75009"
+        ],
+        "quartiers": [
+          {
+            "numero": 33,
+            "nom": "Saint-Georges",
+            "slug": "saint-georges"
+          },
+          {
+            "numero": 34,
+            "nom": "Chaussée-d'Antin",
+            "slug": "chaussee-d-antin"
+          },
+          {
+            "numero": 35,
+            "nom": "Faubourg-Montmartre",
+            "slug": "faubourg-montmartre"
+          },
+          {
+            "numero": 36,
+            "nom": "Rochechouart",
+            "slug": "rochechouart"
+          }
+        ]
+      },
+      {
+        "numero": 10,
+        "nom": "10e arrondissement",
+        "slug": "10e-arrondissement",
+        "code_insee": "75110",
+        "codes_postaux": [
+          "75010"
+        ],
+        "quartiers": [
+          {
+            "numero": 37,
+            "nom": "Saint-Vincent-de-Paul",
+            "slug": "saint-vincent-de-paul"
+          },
+          {
+            "numero": 38,
+            "nom": "Porte-Saint-Denis",
+            "slug": "porte-saint-denis"
+          },
+          {
+            "numero": 39,
+            "nom": "Porte-Saint-Martin",
+            "slug": "porte-saint-martin"
+          },
+          {
+            "numero": 40,
+            "nom": "Hôpital-Saint-Louis",
+            "slug": "hopital-saint-louis"
+          }
+        ]
+      },
+      {
+        "numero": 11,
+        "nom": "11e arrondissement",
+        "slug": "11e-arrondissement",
+        "code_insee": "75111",
+        "codes_postaux": [
+          "75011"
+        ],
+        "quartiers": [
+          {
+            "numero": 41,
+            "nom": "Folie-Méricourt",
+            "slug": "folie-mericourt"
+          },
+          {
+            "numero": 42,
+            "nom": "Saint-Ambroise",
+            "slug": "saint-ambroise"
+          },
+          {
+            "numero": 43,
+            "nom": "Roquette",
+            "slug": "roquette"
+          },
+          {
+            "numero": 44,
+            "nom": "Sainte-Marguerite",
+            "slug": "sainte-marguerite"
+          }
+        ]
+      },
+      {
+        "numero": 12,
+        "nom": "12e arrondissement",
+        "slug": "12e-arrondissement",
+        "code_insee": "75112",
+        "codes_postaux": [
+          "75012"
+        ],
+        "quartiers": [
+          {
+            "numero": 45,
+            "nom": "Bel-Air",
+            "slug": "bel-air"
+          },
+          {
+            "numero": 46,
+            "nom": "Picpus",
+            "slug": "picpus"
+          },
+          {
+            "numero": 47,
+            "nom": "Bercy",
+            "slug": "bercy"
+          },
+          {
+            "numero": 48,
+            "nom": "Quinze-Vingts",
+            "slug": "quinze-vingts"
+          }
+        ]
+      },
+      {
+        "numero": 13,
+        "nom": "13e arrondissement",
+        "slug": "13e-arrondissement",
+        "code_insee": "75113",
+        "codes_postaux": [
+          "75013"
+        ],
+        "quartiers": [
+          {
+            "numero": 49,
+            "nom": "Salpêtrière",
+            "slug": "salpetriere"
+          },
+          {
+            "numero": 50,
+            "nom": "Gare",
+            "slug": "gare"
+          },
+          {
+            "numero": 51,
+            "nom": "Maison-Blanche",
+            "slug": "maison-blanche"
+          },
+          {
+            "numero": 52,
+            "nom": "Croulebarbe",
+            "slug": "croulebarbe"
+          }
+        ]
+      },
+      {
+        "numero": 14,
+        "nom": "14e arrondissement",
+        "slug": "14e-arrondissement",
+        "code_insee": "75114",
+        "codes_postaux": [
+          "75014"
+        ],
+        "quartiers": [
+          {
+            "numero": 53,
+            "nom": "Montparnasse",
+            "slug": "montparnasse"
+          },
+          {
+            "numero": 54,
+            "nom": "Parc-de-Montsouris",
+            "slug": "parc-de-montsouris"
+          },
+          {
+            "numero": 55,
+            "nom": "Petit-Montrouge",
+            "slug": "petit-montrouge"
+          },
+          {
+            "numero": 56,
+            "nom": "Plaisance",
+            "slug": "plaisance"
+          }
+        ]
+      },
+      {
+        "numero": 15,
+        "nom": "15e arrondissement",
+        "slug": "15e-arrondissement",
+        "code_insee": "75115",
+        "codes_postaux": [
+          "75015"
+        ],
+        "quartiers": [
+          {
+            "numero": 57,
+            "nom": "Saint-Lambert",
+            "slug": "saint-lambert"
+          },
+          {
+            "numero": 58,
+            "nom": "Necker",
+            "slug": "necker"
+          },
+          {
+            "numero": 59,
+            "nom": "Grenelle",
+            "slug": "grenelle"
+          },
+          {
+            "numero": 60,
+            "nom": "Javel",
+            "slug": "javel"
+          }
+        ]
+      },
+      {
+        "numero": 16,
+        "nom": "16e arrondissement",
+        "slug": "16e-arrondissement",
+        "code_insee": "75116",
+        "codes_postaux": [
+          "75016",
+          "75116"
+        ],
+        "quartiers": [
+          {
+            "numero": 61,
+            "nom": "Auteuil",
+            "slug": "auteuil"
+          },
+          {
+            "numero": 62,
+            "nom": "Muette",
+            "slug": "muette"
+          },
+          {
+            "numero": 63,
+            "nom": "Porte-Dauphine",
+            "slug": "porte-dauphine"
+          },
+          {
+            "numero": 64,
+            "nom": "Chaillot",
+            "slug": "chaillot"
+          }
+        ]
+      },
+      {
+        "numero": 17,
+        "nom": "17e arrondissement",
+        "slug": "17e-arrondissement",
+        "code_insee": "75117",
+        "codes_postaux": [
+          "75017"
+        ],
+        "quartiers": [
+          {
+            "numero": 65,
+            "nom": "Ternes",
+            "slug": "ternes"
+          },
+          {
+            "numero": 66,
+            "nom": "Plaine-de-Monceaux",
+            "slug": "plaine-de-monceaux"
+          },
+          {
+            "numero": 67,
+            "nom": "Batignolles",
+            "slug": "batignolles"
+          },
+          {
+            "numero": 68,
+            "nom": "Épinettes",
+            "slug": "epinettes"
+          }
+        ]
+      },
+      {
+        "numero": 18,
+        "nom": "18e arrondissement",
+        "slug": "18e-arrondissement",
+        "code_insee": "75118",
+        "codes_postaux": [
+          "75018"
+        ],
+        "quartiers": [
+          {
+            "numero": 69,
+            "nom": "Grandes-Carrières",
+            "slug": "grandes-carrieres"
+          },
+          {
+            "numero": 70,
+            "nom": "Clignancourt",
+            "slug": "clignancourt"
+          },
+          {
+            "numero": 71,
+            "nom": "Goutte-d'Or",
+            "slug": "goutte-d-or"
+          },
+          {
+            "numero": 72,
+            "nom": "La Chapelle",
+            "slug": "la-chapelle"
+          }
+        ]
+      },
+      {
+        "numero": 19,
+        "nom": "19e arrondissement",
+        "slug": "19e-arrondissement",
+        "code_insee": "75119",
+        "codes_postaux": [
+          "75019"
+        ],
+        "quartiers": [
+          {
+            "numero": 73,
+            "nom": "La Villette",
+            "slug": "la-villette"
+          },
+          {
+            "numero": 74,
+            "nom": "Pont-de-Flandre",
+            "slug": "pont-de-flandre"
+          },
+          {
+            "numero": 75,
+            "nom": "Amérique",
+            "slug": "amerique"
+          },
+          {
+            "numero": 76,
+            "nom": "Combat",
+            "slug": "combat"
+          }
+        ]
+      },
+      {
+        "numero": 20,
+        "nom": "20e arrondissement",
+        "slug": "20e-arrondissement",
+        "code_insee": "75120",
+        "codes_postaux": [
+          "75020"
+        ],
+        "quartiers": [
+          {
+            "numero": 77,
+            "nom": "Belleville",
+            "slug": "belleville"
+          },
+          {
+            "numero": 78,
+            "nom": "Saint-Fargeau",
+            "slug": "saint-fargeau"
+          },
+          {
+            "numero": 79,
+            "nom": "Père-Lachaise",
+            "slug": "pere-lachaise"
+          },
+          {
+            "numero": 80,
+            "nom": "Charonne",
+            "slug": "charonne"
+          }
+        ]
+      }
+    ]
+  }
+}

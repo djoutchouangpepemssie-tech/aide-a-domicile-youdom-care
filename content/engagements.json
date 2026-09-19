@@ -1,0 +1,50 @@
+{
+  "_lisezmoi": "Engagements affichés par le site. La loop les affiche en prévisualisation. En production, un engagement dont valide vaut false n'est pas affiché et fait échouer pnpm validate --prod tant qu'il est référencé. Arcel ajuste le texte pour qu'il dise exactement ce que Youdom Care fait, puis passe valide à true.",
+  "engagements": [
+    {
+      "code": "E1",
+      "titre": "Des intervenants formés à la situation, pas seulement au métier",
+      "texte": "Nos auxiliaires de vie sont préparés à ce qu'ils vont réellement rencontrer chez vous : maladie d'Alzheimer, maladie de Parkinson, sclérose en plaques, autisme, polyhandicap.",
+      "preuve": null,
+      "valide": false
+    },
+    {
+      "code": "E2",
+      "titre": "Des visages connus, pas un défilé",
+      "texte": "Une petite équipe stable autour de chaque personne, présentée avant de commencer. Si le courant ne passe pas, nous changeons.",
+      "preuve": null,
+      "valide": false
+    },
+    {
+      "code": "E3",
+      "titre": "Un suivi que vous pouvez lire",
+      "texte": "Un référent unique, un cahier de liaison, des points réguliers avec la famille, une réévaluation quand les besoins changent.",
+      "preuve": null,
+      "valide": false
+    },
+    {
+      "code": "E4",
+      "titre": "Là quand ça se complique",
+      "texte": "Nuits, week-ends, jours fériés, présence 24h/24, retour d'hôpital à organiser en urgence.",
+      "preuve": null,
+      "valide": false
+    },
+    {
+      "code": "E5",
+      "titre": "Un rappel rapide",
+      "texte": null,
+      "preuve": null,
+      "valide": false
+    }
+  ],
+  "suivi": {
+    "_lisezmoi": "Jalons affichés par le composant FollowUpTimeline. Un jalon dont texte vaut null est masqué.",
+    "jalons": [
+      { "moment": "Avant de commencer", "texte": "Évaluation gratuite à domicile, avec la personne et ses proches. Devis détaillé et gratuit.", "valide": true, "source": "dépliant Youdom Care" },
+      { "moment": "Avant de commencer", "texte": "Sélection et présentation de l'intervenant ou de l'auxiliaire de vie.", "valide": true, "source": "dépliant Youdom Care" },
+      { "moment": "Première semaine", "texte": null, "valide": false },
+      { "moment": "Chaque mois", "texte": null, "valide": false },
+      { "moment": "Quand les besoins changent", "texte": "À tout moment, vous pouvez modifier ou arrêter l'accompagnement, dans le respect de la réglementation applicable.", "valide": true, "source": "dépliant Youdom Care" }
+    ]
+  }
+}

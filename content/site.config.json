@@ -1,0 +1,151 @@
+{
+  "_lisezmoi": "Seule source autorisée pour les faits d'entreprise. Les valeurs ci-dessous viennent du dépliant commercial Youdom Care. Tout champ null est inconnu : le site masque le bloc concerné. Videz le tableau a_confirmer quand tout est vérifié.",
+  "marque": {
+    "nom": "Youdom Care",
+    "signature": "Vous, chez vous. Nous, à vos côtés.",
+    "description_courte": "Aide et accompagnement à domicile à Paris et en Île-de-France : personnes âgées, adultes et enfants en situation de handicap, personnes atteintes de maladies neurodégénératives.",
+    "url": "https://www.youdom-care.com",
+    "annee_creation": null
+  },
+  "contact": {
+    "telephone_principal": "01 84 80 17 03",
+    "telephone_mobile": "06 67 22 45 07",
+    "email": "contact@youdom-care.com",
+    "horaires_accueil_telephonique": null,
+    "astreinte_24_7": null,
+    "delai_rappel": null
+  },
+  "legal": {
+    "raison_sociale": null,
+    "forme_juridique": null,
+    "capital": null,
+    "siege_social": null,
+    "rcs": null,
+    "siret": "918 366 600 00016",
+    "code_ape": "8810A",
+    "tva_intracommunautaire": null,
+    "numero_sap": "SAP918366600",
+    "autorisations": [],
+    "directeur_publication": null,
+    "mediateur_consommation": null,
+    "hebergeur": {
+      "nom": "Vercel Inc.",
+      "adresse": null,
+      "contact": null
+    }
+  },
+  "modes_intervention": ["prestataire", "mandataire"],
+  "disponibilite": {
+    "sept_jours_sur_sept": true,
+    "vingt_quatre_heures": true,
+    "duree_minimale_intervention": null
+  },
+  "zones": [
+    { "code": "75", "nom": "Paris", "slug": "paris" },
+    { "code": "77", "nom": "Seine-et-Marne", "slug": "seine-et-marne" },
+    { "code": "78", "nom": "Yvelines", "slug": "yvelines" },
+    { "code": "91", "nom": "Essonne", "slug": "essonne" },
+    { "code": "92", "nom": "Hauts-de-Seine", "slug": "hauts-de-seine" },
+    { "code": "93", "nom": "Seine-Saint-Denis", "slug": "seine-saint-denis" },
+    { "code": "94", "nom": "Val-de-Marne", "slug": "val-de-marne" },
+    { "code": "95", "nom": "Val-d'Oise", "slug": "val-d-oise" }
+  ],
+  "agences": [
+    {
+      "id": "paris-12",
+      "nom": "Youdom Care Paris",
+      "adresse": "61 rue de Lyon",
+      "code_postal": "75012",
+      "commune": "Paris",
+      "code_insee": "75112",
+      "departement": "75",
+      "telephone": null,
+      "horaires": null,
+      "coordonnees": null
+    },
+    {
+      "id": "puteaux",
+      "nom": "Youdom Care Hauts-de-Seine",
+      "adresse": "49-51 quai de Dion-Bouton",
+      "code_postal": "92800",
+      "commune": "Puteaux",
+      "code_insee": "92062",
+      "departement": "92",
+      "telephone": null,
+      "horaires": null,
+      "coordonnees": null
+    },
+    {
+      "id": "saint-denis",
+      "nom": "Youdom Care Seine-Saint-Denis",
+      "adresse": "5-7-9 rue Pleyel",
+      "code_postal": "93200",
+      "commune": "Saint-Denis",
+      "code_insee": "93066",
+      "departement": "93",
+      "telephone": null,
+      "horaires": null,
+      "coordonnees": null
+    },
+    {
+      "id": "vitry-sur-seine",
+      "nom": "Youdom Care Val-de-Marne",
+      "adresse": "86 avenue Paul-Vaillant-Couturier",
+      "code_postal": "94400",
+      "commune": "Vitry-sur-Seine",
+      "code_insee": "94081",
+      "departement": "94",
+      "telephone": null,
+      "horaires": null,
+      "coordonnees": null
+    },
+    {
+      "id": "serris",
+      "nom": "Youdom Care Seine-et-Marne",
+      "adresse": "1 boulevard Michael-Faraday",
+      "code_postal": "77700",
+      "commune": "Serris",
+      "code_insee": "77449",
+      "departement": "77",
+      "telephone": null,
+      "horaires": null,
+      "coordonnees": null
+    },
+    {
+      "id": "versailles",
+      "nom": "Youdom Care Yvelines",
+      "adresse": "35 rue des Chantiers",
+      "code_postal": "78000",
+      "commune": "Versailles",
+      "code_insee": "78646",
+      "departement": "78",
+      "telephone": null,
+      "horaires": null,
+      "coordonnees": null
+    }
+  ],
+  "labels": [
+    { "id": "services-a-la-personne", "nom": "Services à la personne", "detenu": null, "logo": null },
+    { "id": "credit-impot-50", "nom": "Crédit d'impôt de 50 %", "detenu": null, "logo": null },
+    { "id": "avance-immediate", "nom": "Avance immédiate de crédit d'impôt", "detenu": null, "logo": null },
+    { "id": "cesu", "nom": "CESU préfinancés acceptés", "detenu": null, "logo": null },
+    { "id": "fedesap", "nom": "Adhérent Fédésap", "detenu": null, "logo": null }
+  ],
+  "reseaux_sociaux": {
+    "facebook": null,
+    "instagram": null,
+    "linkedin": null,
+    "youtube": null
+  },
+  "a_confirmer": [
+    "contact.telephone_principal",
+    "contact.telephone_mobile",
+    "contact.email",
+    "legal.siret",
+    "legal.numero_sap",
+    "agences[*].adresse (orthographe exacte des voies, nom commercial de chaque agence)",
+    "agences[*].code_insee (contrôlé par le pipeline de données)",
+    "labels[*].detenu",
+    "disponibilite"
+  ]
+}
