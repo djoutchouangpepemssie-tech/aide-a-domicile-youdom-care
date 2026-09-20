@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { iconNames, type IconName } from "../components/ui/Icon/icons";
 
 /*
  * Schémas des fichiers de content/ : seule source autorisée pour les faits d'entreprise.
@@ -361,6 +362,51 @@ export const interfaceSchema = z.strictObject({
       aidant: text,
       transverse: text,
     }),
+    /** Nom de la rangée de liens-icônes vers les sous-pages d'un pilier (sous le hero). */
+    sous_pages_nom: text,
+    /**
+     * Gestes d'entrée des heros (docs/design/CONCEPT.md §4, src/components/blocks/HeroGestures/).
+     * Les clés des choix sont les valeurs des paramètres de requête transmis aux formulaires
+     * (`?planning=`, `?nuit=`, `?duree=`, `?sortie=`) : elles ne changent pas sans le formulaire.
+     */
+    gestes: z.strictObject({
+      stades: z.strictObject({ question: text, choix: z.array(text).length(3) }),
+      planning: z.strictObject({
+        question: text,
+        choix: z.strictObject({
+          "matin-soir": text,
+          semaine: text,
+          "week-end": text,
+          "24h": text,
+        }),
+      }),
+      fiche_de_vie: z.strictObject({
+        titre: text,
+        sous_titre: text,
+        voir: text,
+        recto: text,
+        lignes: z.strictObject({
+          aime: text,
+          apaise: text,
+          difficulte: text,
+          communique: text,
+          routines: text,
+          protocoles: text,
+        }),
+      }),
+      questionnaire: z.strictObject({ mention: text }),
+      nuit: z.strictObject({
+        question: text,
+        calme: z.strictObject({ titre: text, texte: text }),
+        active: z.strictObject({ titre: text, texte: text }),
+        duree_question: text,
+        durees: z.strictObject({ jours: text, semaines: text, durable: text }),
+      }),
+      sortie: z.strictObject({
+        question: text,
+        choix: z.strictObject({ demain: text, semaine: text, "a-confirmer": text }),
+      }),
+    }),
   }),
   barre_mobile: z.strictObject({
     nom: text,
@@ -575,6 +621,37 @@ export type WeekExample = z.infer<typeof weekExampleSchema>;
 /* ---------- content/pages/accueil.json ---------- */
 
 const illustrationName = z.enum(["maison", "mains", "tasse", "lune", "cartable", "carnet"]);
+
+/** Nom d'icône du registre `Icon` (docs/design/ICONES.md), validé contre le registre. */
+const homeIconName = z.enum(iconNames as [IconName, ...IconName[]]);
+
+/**
+ * Parcours « Pour qui cherchez-vous de l'aide ? » (docs/design/CONCEPT.md §3 et §8) : la
+ * question, six choix (icône 32 px, lien de repli sans JavaScript), le titre du panneau du
+ * bloc 2 avec son jeton {pour}, rempli par le `pour` de chaque choix. Un choix sans `pour` n'a
+ * pas de panneau : c'est un lien direct (« Je ne sais pas encore » → Être rappelé(e)).
+ */
+const homeJourneySchema = z.strictObject({
+  _lisezmoi: z.string().optional(),
+  question: text,
+  choix: z
+    .array(
+      z.strictObject({
+        id: slug,
+        libelle: text,
+        /** Complément du titre du panneau (« pour votre parent ») ; absent : lien direct. */
+        pour: text.optional(),
+        icone: homeIconName,
+        href: internalPath,
+        /** Phrase prévue au-dessus du formulaire de rappel (point ouvert : non affichée). */
+        message: text.optional(),
+      }),
+    )
+    .length(6),
+  titre_panneau: text.includes("{pour}"),
+  autre: text,
+  toutes: text,
+});
 const engagementCode = z.string().regex(/^E\d+$/);
 
 export const homePageSchema = z.strictObject({
@@ -590,6 +667,8 @@ export const homePageSchema = z.strictObject({
     illustration: illustrationName,
     /** Photo du hero (docs/design/CONCEPT.md §3 bloc 1) ; absente : illustration au fil. */
     photo: photoSchema.optional(),
+    /** Geste d'entrée « Pour qui cherchez-vous de l'aide ? » ; absent : pas de picker. */
+    parcours: homeJourneySchema.optional(),
   }),
   situations: z.strictObject({
     h2: text,
@@ -601,7 +680,8 @@ export const homePageSchema = z.strictObject({
           texte: text,
           lien: text,
           href: internalPath,
-          illustration: illustrationName,
+          /** Icône 48 px de la carte (docs/design/CONCEPT.md §3 bloc 2). */
+          icone: homeIconName,
         }),
       )
       .length(6),

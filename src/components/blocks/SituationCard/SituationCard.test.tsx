@@ -25,4 +25,23 @@ describe("SituationCard", () => {
     expect(links[0]?.className).toContain("after:absolute");
     expect(card.querySelector("svg.thread")).toHaveAttribute("data-illustration", "carnet");
   });
+
+  it("affiche une icône décorative de 48 px à la place de la pastille et s'incline de 3° au plus", () => {
+    render(
+      <SituationCard
+        quote="Mon parent ne peut plus rester seul"
+        text="Chutes, oublis, repas sautés : il est temps d'une présence régulière."
+        href="/personnes-agees/"
+        linkLabel="Voir l’aide aux personnes âgées"
+        icon="maison"
+      />,
+    );
+    const card = screen.getByRole("article");
+    expect(card).toHaveClass("m-tilt");
+    const icon = card.querySelector("svg[data-icon=maison]");
+    expect(icon).toHaveAttribute("aria-hidden", "true");
+    expect(icon).toHaveClass("size-12!");
+    expect(card.querySelector("svg.thread")).toBeNull();
+    expect(within(card).getAllByRole("link")).toHaveLength(1);
+  });
 });

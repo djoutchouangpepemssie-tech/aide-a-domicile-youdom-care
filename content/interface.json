@@ -171,6 +171,68 @@
       "enfant-handicap": "Enfants en situation de handicap",
       "aidant": "Aidants",
       "transverse": "Nos services"
+    },
+    "sous_pages_nom": "Aller à la page qui vous concerne",
+    "gestes": {
+      "stades": {
+        "question": "Où en est la maladie ?",
+        "choix": [
+          "Le diagnostic vient d'être posé",
+          "Elle avance, il faut sécuriser",
+          "Une présence continue devient nécessaire"
+        ]
+      },
+      "planning": {
+        "question": "Quand voulez-vous de l'aide ?",
+        "choix": {
+          "matin-soir": "Matin et soir, tous les jours",
+          "semaine": "En semaine",
+          "week-end": "Le week-end",
+          "24h": "24h/24"
+        }
+      },
+      "fiche_de_vie": {
+        "titre": "La fiche de vie de votre enfant",
+        "sous_titre": "Écrite avec vous, lue par chaque personne qui vient.",
+        "voir": "Voir ce qu'elle contient",
+        "recto": "Revenir au recto",
+        "lignes": {
+          "aime": "Ce qu'il aime",
+          "apaise": "Ce qui l'apaise",
+          "difficulte": "Ce qui le met en difficulté",
+          "communique": "Comment il communique",
+          "routines": "Ses routines",
+          "protocoles": "Ses protocoles"
+        }
+      },
+      "questionnaire": {
+        "mention": "Pas un test médical. Rien n'est conservé."
+      },
+      "nuit": {
+        "question": "Nuit calme ou nuit active ?",
+        "calme": {
+          "titre": "Nuit calme",
+          "texte": "L'intervenant dort sur place et se lève au besoin."
+        },
+        "active": {
+          "titre": "Nuit active",
+          "texte": "L'intervenant veille, éveillé."
+        },
+        "duree_question": "Combien de temps ?",
+        "durees": {
+          "jours": "Quelques jours",
+          "semaines": "Quelques semaines",
+          "durable": "Sans limite prévue"
+        }
+      },
+      "sortie": {
+        "question": "Quand est la sortie ?",
+        "choix": {
+          "demain": "Demain ou après-demain",
+          "semaine": "Cette semaine",
+          "a-confirmer": "Date à confirmer"
+        }
+      }
     }
   },
   "barre_mobile": {

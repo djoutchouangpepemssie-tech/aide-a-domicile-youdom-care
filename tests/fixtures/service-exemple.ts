@@ -18,6 +18,8 @@ export const serviceExemple: ServicePage = {
   pilier: "/exemple/",
   soeurs: ["/exemple/soeur-un/", "/exemple/soeur-deux/"],
   h1: "Exemple de page service",
+  libelle_court: "Exemple",
+  ordre: 1,
   icone: "maison",
   hero: {
     photo: {
@@ -30,6 +32,7 @@ export const serviceExemple: ServicePage = {
       alt: "Un balcon ensoleillé avec une chaise et une plante",
     },
     ton: "clair",
+    geste: "stades",
   },
   chapo: "Un chapô fictif pour les tests.",
   promesse: ["Première phrase de promesse.", "Seconde phrase de promesse."],

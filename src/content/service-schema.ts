@@ -56,14 +56,33 @@ const iconName = z
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "nom d'icône en minuscules et tirets");
 
 /**
+ * Gestes d'entrée du hero (docs/design/CONCEPT.md §4), un par page au plus :
+ * `lecteur` (sélecteur « pour un proche / pour moi »), `stades` (« Où en est la maladie ? »),
+ * `planning` (raccourcis du planning), `fiche-de-vie` (carte qui se retourne), `questionnaire`
+ * (première question de « Où en êtes-vous ? »), `nuit` (nuit calme ou active ; durée sur 24h/24),
+ * `sortie` (« Quand est la sortie ? »). Composants : src/components/blocks/HeroGestures/.
+ */
+export const heroGestures = [
+  "lecteur",
+  "stades",
+  "planning",
+  "fiche-de-vie",
+  "questionnaire",
+  "nuit",
+  "sortie",
+] as const;
+export type HeroGesture = (typeof heroGestures)[number];
+
+/**
  * Bannière personnalisée (docs/design/CONCEPT.md §4) : photo 4:5 (bande 16:9 sur mobile),
  * variante « pour vous-même » basculée par le sélecteur de lecteur (pilier personnes âgées),
- * ton sombre (teal-900) pour la garde de nuit et la présence 24h/24.
+ * ton sombre (teal-900) pour la garde de nuit et la présence 24h/24, geste d'entrée.
  */
 export const serviceHeroSchema = z.strictObject({
   photo: photoSchema,
   photo_pour_soi: photoSchema.optional(),
   ton: z.enum(["clair", "sombre"]).optional(),
+  geste: z.enum(heroGestures).optional(),
 });
 export type ServiceHero = z.infer<typeof serviceHeroSchema>;
 
@@ -79,6 +98,10 @@ export const servicePageSchema = z
     /** Deux pages sœurs (maillage de docs/03 §2). */
     soeurs: z.array(internalPath).min(2).max(3),
     h1: text,
+    /** Libellé court (liens-icônes sous le hero du pilier, cartes sœurs) ; à défaut, le H1. */
+    libelle_court: text.optional(),
+    /** Rang d'affichage parmi les sous-pages d'un pilier (liens-icônes) ; à défaut, l'ordre des fichiers. */
+    ordre: z.number().int().positive().optional(),
     /** Icône de la page (menus, cartes sœurs, formulaire), registre `Icon`. */
     icone: iconName.optional(),
     /** Section 1 : photo du hero ; absente, l'illustration au fil reste. */

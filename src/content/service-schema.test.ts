@@ -56,6 +56,12 @@ describe("en-tête d'une page service", () => {
       "hero.photo.focal",
     ]);
     expect(issues({ ...serviceExemple, hero: { photo, ton: "nuit" } })).toEqual(["hero.ton"]);
+    expect(issues({ ...serviceExemple, hero: { photo, geste: "carrousel" } })).toEqual([
+      "hero.geste",
+    ]);
+    expect(issues({ ...serviceExemple, hero: { photo, geste: "fiche-de-vie" } })).toEqual([]);
+    expect(issues({ ...serviceExemple, libelle_court: "" })).toEqual(["libelle_court"]);
+    expect(issues({ ...serviceExemple, ordre: 0 })).toEqual(["ordre"]);
     expect(issues({ ...serviceExemple, icone: "Maison Bleue" })).toEqual(["icone"]);
     expect(
       issues({ ...serviceExemple, photos: { ...serviceExemple.photos, autre: photo } }),
