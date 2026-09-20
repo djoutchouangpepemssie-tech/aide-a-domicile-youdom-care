@@ -34,12 +34,12 @@ const sections = [
 
 // Poids mesurés après `pnpm build` (voir docs/design/MOUVEMENT.md pour la méthode).
 const weights = [
-  { name: "Reveal (île)", size: "1,0 Ko" },
-  { name: "CountUp (île)", size: "1,0 Ko" },
-  { name: "Tilt (île)", size: "0,9 Ko" },
-  { name: "Parallax", size: "0 Ko (CSS seul)" },
-  { name: "HeroScene", size: "0 Ko (CSS seul)" },
-  { name: "lib/motion (partagée)", size: "0,4 Ko" },
+  { name: "Reveal (île, lib comprise)", size: "0,8 Ko gzip" },
+  { name: "CountUp (île, lib comprise)", size: "0,8 Ko gzip" },
+  { name: "Tilt (île, lib comprise)", size: "0,8 Ko gzip" },
+  { name: "Les trois îles ensemble", size: "1,7 Ko gzip" },
+  { name: "Parallax, HeroScene", size: "0 Ko (composants serveur, CSS seul)" },
+  { name: "Chunk propre à cette page (îles + simulateur)", size: "2,3 Ko gzip" },
 ] as const;
 
 const steps = [
