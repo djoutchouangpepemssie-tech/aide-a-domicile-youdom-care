@@ -5,12 +5,15 @@ import { Breadcrumb } from "@/components/blocks/Breadcrumb/Breadcrumb";
 import { FAQ } from "@/components/blocks/FAQ/FAQ";
 import { FollowUpTimeline } from "@/components/blocks/FollowUpTimeline/FollowUpTimeline";
 import { Hero } from "@/components/blocks/Hero/Hero";
+import { ReaderProvider } from "@/components/service/ReaderContext";
+import { ReaderPhoto } from "@/components/service/ReaderPhoto";
 import { ReaderSwitch } from "@/components/service/ReaderSwitch";
 import { MandataireNotice } from "@/components/blocks/MandataireNotice/MandataireNotice";
 import { isDisplayablePrice, PriceCard } from "@/components/blocks/PriceCard/PriceCard";
 import { SourcesList, formatFrenchDate } from "@/components/blocks/SourcesList/SourcesList";
 import { StageCards } from "@/components/blocks/StageCards/StageCards";
 import { WeekPlanner } from "@/components/blocks/WeekPlanner/WeekPlanner";
+import { WeekStory } from "@/components/blocks/WeekStory/WeekStory";
 import { DetailedForm } from "@/components/forms/DetailedForm/DetailedForm";
 import { RappelForm } from "@/components/forms/RappelForm/RappelForm";
 import { HospitalDischargeForm } from "@/components/forms/SpecialForms/HospitalDischargeForm";
@@ -18,6 +21,7 @@ import { Section } from "@/components/layout/Section/Section";
 import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
 import { Prose } from "@/components/ui/Prose/Prose";
 import type { ServicePage } from "@/content/service-schema";
 import type {
@@ -39,6 +43,9 @@ import { formPaths } from "@/lib/lead/forms";
  * Tout vient de l'en-tête MDX validé et des fichiers de contenu partagés (semaines types,
  * engagements, tarifs, aides) ; le corps MDX complète la section 3. Aucun fait n'est rédigé
  * ici. Les tons de section alternent, jamais deux teintés d'affilée (docs/02 §6).
+ * Bannière (docs/design/CONCEPT.md §4) : photo du hero en priorité (LCP), ton sombre pour la
+ * garde de nuit et la présence 24h/24 ; sur le pilier personnes âgées, le sélecteur de lecteur
+ * bascule le chapô et la photo.
  */
 
 export interface ServiceTemplateData {
@@ -108,6 +115,49 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
     },
   };
 
+  const hero = page.hero ?? null;
+  const heroTone = hero?.ton ?? "clair";
+  const withReader = page.chapo_pour_soi !== undefined;
+  const heroMedia = hero ? (
+    withReader && hero.photo_pour_soi ? (
+      <ReaderPhoto proche={hero.photo} soi={hero.photo_pour_soi} />
+    ) : (
+      <PhotoFigure
+        src={hero.photo.src}
+        alt={hero.photo.alt}
+        focal={hero.photo.focal}
+        ratio="4:5"
+        mobileRatio="16:9"
+        radius={28}
+        sizes={photoSizes.hero}
+        priority
+      />
+    )
+  ) : undefined;
+  const banner = (
+    <Hero
+      surtitle={t.publics[page.public]}
+      title={page.h1}
+      lead={
+        page.chapo_pour_soi ? (
+          <ReaderSwitch
+            proche={`${page.chapo} ${page.promesse.join(" ")}`}
+            soi={`${page.chapo_pour_soi} ${page.promesse.join(" ")}`}
+            texts={t.lecteur}
+          />
+        ) : (
+          `${page.chapo} ${page.promesse.join(" ")}`
+        )
+      }
+      primary={{ label: texts.boutons.demande_detaillee, href: formPaths[page.formulaire] }}
+      secondary={{ label: texts.boutons.rappel, href: navigation.rappel_href }}
+      phone={phone && telHref ? { label: formatFrenchPhone(phone), href: telHref } : null}
+      reassurance={page.reassurance}
+      media={heroMedia}
+      tone={heroTone}
+    />
+  );
+
   return (
     <main id="contenu" data-service={page.chemin} data-statut={page.statut}>
       {page.statut === "a_relire" ? (
@@ -120,25 +170,14 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       </div>
 
       {/* 1. Bannière */}
-      <Hero
-        surtitle={t.publics[page.public]}
-        title={page.h1}
-        lead={
-          page.chapo_pour_soi ? (
-            <ReaderSwitch
-              proche={`${page.chapo} ${page.promesse.join(" ")}`}
-              soi={`${page.chapo_pour_soi} ${page.promesse.join(" ")}`}
-              texts={t.lecteur}
-            />
-          ) : (
-            `${page.chapo} ${page.promesse.join(" ")}`
-          )
-        }
-        primary={{ label: texts.boutons.demande_detaillee, href: formPaths[page.formulaire] }}
-        secondary={{ label: texts.boutons.rappel, href: navigation.rappel_href }}
-        phone={phone && telHref ? { label: formatFrenchPhone(phone), href: telHref } : null}
-        reassurance={page.reassurance}
-      />
+      <Section
+        tone={heroTone === "sombre" ? "dark" : "paper"}
+        aria-label={t.publics[page.public]}
+        className="pt-8!"
+        data-hero-tone={heroTone}
+      >
+        {withReader ? <ReaderProvider>{banner}</ReaderProvider> : banner}
+      </Section>
 
       {/* 2. Vous vous reconnaissez ? */}
       <Section tone="white" aria-labelledby="situations">
@@ -209,9 +248,11 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
               texts={texts.semaine_type}
             />
           </div>
-          <Prose className="mt-6">
-            <p>{page.semaine_type.recit}</p>
-          </Prose>
+          <WeekStory
+            className="mt-8"
+            story={page.semaine_type.recit}
+            photo={page.semaine_type.photo ?? weekExample.photo ?? null}
+          />
         </Section>
       ) : null}
 

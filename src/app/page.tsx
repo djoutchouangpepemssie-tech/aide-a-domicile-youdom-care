@@ -1,4 +1,4 @@
-import { Commitments } from "@/components/blocks/Commitments/Commitments";
+import { Commitments, visibleCommitments } from "@/components/blocks/Commitments/Commitments";
 import { Hero } from "@/components/blocks/Hero/Hero";
 import { PriceCard, isDisplayablePrice } from "@/components/blocks/PriceCard/PriceCard";
 import { SituationCard } from "@/components/blocks/SituationCard/SituationCard";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
 import { Tabs } from "@/components/ui/Tabs/Tabs";
 import { Thread } from "@/components/ui/Thread/Thread";
 import {
@@ -29,6 +30,8 @@ import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 /*
  * Accueil : les douze blocs de docs/01 §4. Blocs 1 à 4 (P2.1), 5 à 8 (P2.2), 9 à 12 (P2.3).
  * Alternance des fonds : paper → white → teal → paper → sand → white → teal → paper (docs/02 §2).
+ * Bloc 3 : masqué en entier quand aucun engagement n'est affichable (docs/design/CONCEPT.md §3).
+ * Bloc 7 : carte « devis » de repli tant que content/tarifs.json est vide, sans aucun chiffre.
  */
 export default function Home() {
   const page = getHomePage();
@@ -54,6 +57,7 @@ export default function Home() {
         }
       : null;
 
+  const shownCommitments = visibleCommitments(page.engagements.items, engagements);
   const validated = new Set(engagements.filter((e) => e.valide).map((e) => e.code));
   const steps = page.etapes.items.map((step) => {
     const showCommitment =
@@ -85,6 +89,7 @@ export default function Home() {
   });
 
   const featuredService = pricing.prestations.find(isDisplayablePrice);
+  const bannerPhoto = page.banniere.photo;
 
   return (
     <main id="contenu">
@@ -99,6 +104,20 @@ export default function Home() {
           reassurance={page.banniere.reassurance}
           footnote={{ text: page.banniere.note_astérisque, href: page.banniere.note_href }}
           illustration={page.banniere.illustration}
+          media={
+            bannerPhoto ? (
+              <PhotoFigure
+                src={bannerPhoto.src}
+                alt={bannerPhoto.alt}
+                focal={bannerPhoto.focal}
+                ratio="4:5"
+                mobileRatio="16:9"
+                radius={28}
+                sizes={photoSizes.hero}
+                priority
+              />
+            ) : undefined
+          }
         />
       </Section>
 
@@ -123,17 +142,19 @@ export default function Home() {
         </ul>
       </Section>
 
-      <Section tone="teal" aria-labelledby="engagements">
-        <Heading level={2} id="engagements">
-          {page.engagements.h2}
-        </Heading>
-        <Commitments
-          aria-labelledby="engagements"
-          className="mt-8"
-          items={page.engagements.items}
-          commitments={engagements}
-        />
-      </Section>
+      {shownCommitments.length > 0 ? (
+        <Section tone="teal" aria-labelledby="engagements">
+          <Heading level={2} id="engagements">
+            {page.engagements.h2}
+          </Heading>
+          <Commitments
+            aria-labelledby="engagements"
+            className="mt-8"
+            items={page.engagements.items}
+            commitments={engagements}
+          />
+        </Section>
+      ) : null}
 
       <Section tone="paper" aria-labelledby="neuro">
         <Heading level={2} id="neuro">
@@ -200,7 +221,24 @@ export default function Home() {
                 </Button>
               </p>
             </div>
-          ) : null}
+          ) : (
+            <Card
+              as="article"
+              className="flex flex-col"
+              data-block="devis"
+              aria-labelledby="devis-titre"
+            >
+              <Heading level={3} visual={4} id="devis-titre">
+                {page.prix.carte_devis.titre}
+              </Heading>
+              <p className="m-0 mt-3">{page.prix.carte_devis.texte}</p>
+              <p className="m-0 mt-auto pt-6">
+                <Button href={navigation.rappel_href} variant="outline">
+                  {boutons.rappel}
+                </Button>
+              </p>
+            </Card>
+          )}
           <Card
             as="article"
             className="flex flex-col"

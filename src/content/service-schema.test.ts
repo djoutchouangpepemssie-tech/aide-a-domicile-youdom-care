@@ -33,6 +33,35 @@ describe("en-tête d'une page service", () => {
     );
   });
 
+  it("valide les photos et les icônes facultatives (docs/design/CONCEPT.md §8)", () => {
+    const { icone: _icone, hero: _hero, photos: _photos, ...sansPhotos } = serviceExemple;
+    expect(
+      issues({
+        ...sansPhotos,
+        semaine_type: { exemple: "madeleine", recit: serviceExemple.semaine_type.recit },
+        situations: serviceExemple.situations.map(({ titre, texte }) => ({ titre, texte })),
+      }),
+    ).toEqual([]);
+    const photo = serviceExemple.hero?.photo;
+    expect(
+      issues({
+        ...serviceExemple,
+        hero: { photo: { ...photo, src: "https://exemple.org/a.jpg" } },
+      }),
+    ).toEqual(["hero.photo.src"]);
+    expect(issues({ ...serviceExemple, hero: { photo: { ...photo, alt: " " } } })).toEqual([
+      "hero.photo.alt",
+    ]);
+    expect(issues({ ...serviceExemple, hero: { photo: { ...photo, focal: "centre" } } })).toEqual([
+      "hero.photo.focal",
+    ]);
+    expect(issues({ ...serviceExemple, hero: { photo, ton: "nuit" } })).toEqual(["hero.ton"]);
+    expect(issues({ ...serviceExemple, icone: "Maison Bleue" })).toEqual(["icone"]);
+    expect(
+      issues({ ...serviceExemple, photos: { ...serviceExemple.photos, autre: photo } }),
+    ).toEqual(["photos"]);
+  });
+
   it("refuse une page publiée sans relecture et une page rattachée sans pilier", () => {
     expect(issues({ ...serviceExemple, statut: "publie" })).toEqual(["statut"]);
     expect(

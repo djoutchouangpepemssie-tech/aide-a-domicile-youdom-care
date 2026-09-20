@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { seoFieldsSchema, sourceSchema } from "./schemas";
+import { photoSchema, seoFieldsSchema, sourceSchema } from "./schemas";
 
 /*
  * En-tête (frontmatter) d'une page service ou pathologie : content/services/*.mdx, gabarit de
@@ -50,6 +50,23 @@ export const serviceForms = [
 
 const personSchema = z.strictObject({ nom: text, fonction: text });
 
+/** Nom d'icône du registre `Icon` (docs/design/ICONES.md) : validé par le composant, pas ici. */
+const iconName = z
+  .string()
+  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "nom d'icône en minuscules et tirets");
+
+/**
+ * Bannière personnalisée (docs/design/CONCEPT.md §4) : photo 4:5 (bande 16:9 sur mobile),
+ * variante « pour vous-même » basculée par le sélecteur de lecteur (pilier personnes âgées),
+ * ton sombre (teal-900) pour la garde de nuit et la présence 24h/24.
+ */
+export const serviceHeroSchema = z.strictObject({
+  photo: photoSchema,
+  photo_pour_soi: photoSchema.optional(),
+  ton: z.enum(["clair", "sombre"]).optional(),
+});
+export type ServiceHero = z.infer<typeof serviceHeroSchema>;
+
 export const servicePageSchema = z
   .strictObject({
     titre: seoFieldsSchema.shape.titre,
@@ -62,6 +79,10 @@ export const servicePageSchema = z
     /** Deux pages sœurs (maillage de docs/03 §2). */
     soeurs: z.array(internalPath).min(2).max(3),
     h1: text,
+    /** Icône de la page (menus, cartes sœurs, formulaire), registre `Icon`. */
+    icone: iconName.optional(),
+    /** Section 1 : photo du hero ; absente, l'illustration au fil reste. */
+    hero: serviceHeroSchema.optional(),
     chapo: text,
     /** docs/03 §4 : version « Pour vous-même » du chapô, affichée par un sélecteur (pilier personnes âgées). */
     chapo_pour_soi: text.optional(),
@@ -70,7 +91,7 @@ export const servicePageSchema = z
     reassurance: z.array(text).min(2).max(4),
     /** Section 2 : situations vécues, du point de vue du proche ou de la personne. */
     situations: z
-      .array(z.strictObject({ titre: text, texte: text }))
+      .array(z.strictObject({ titre: text, texte: text, icone: iconName.optional() }))
       .min(3)
       .max(5),
     /** Section 3 : quatre rubriques, verbes d'action, exemples précis. */
@@ -88,7 +109,16 @@ export const servicePageSchema = z
       .min(2)
       .max(5),
     /** Section 5 : exemple de content/semaines-types.json et récit de 80 à 120 mots. */
-    semaine_type: z.strictObject({ exemple: z.string().min(1), recit: words(80, 120) }),
+    semaine_type: z.strictObject({
+      exemple: z.string().min(1),
+      /** Photo d'ambiance de l'exemple (3:2), jamais la personne de l'exemple. */
+      photo: photoSchema.optional(),
+      recit: words(80, 120),
+    }),
+    /** Photos de section (docs/design/CONCEPT.md §5) : section 3 et section 7, deux au plus. */
+    photos: z
+      .strictObject({ actions: photoSchema.optional(), proches: photoSchema.optional() })
+      .optional(),
     /** Section 7. */
     proches: z.strictObject({ texte: text }),
     /** Section 8. */

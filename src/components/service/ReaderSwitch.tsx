@@ -1,12 +1,15 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId } from "react";
+import { useReader } from "./ReaderContext";
 
 /*
  * docs/03 §4 : sur le pilier « Personnes âgées », le lecteur est l'enfant adulte (70 %) ou la
  * personne elle-même (30 %). Un sélecteur en haut de page affiche la version « Pour vous-même »
  * du chapô. Deux boutons à bascule (aria-pressed), clavier natif, aucune donnée conservée.
  * Le chapô « pour un proche » est rendu côté serveur : sans JavaScript, la page reste lisible.
+ * Sous un `ReaderProvider`, l'état est partagé avec la photo du hero (`ReaderPhoto`), qui
+ * bascule en même temps que le chapô (docs/design/CONCEPT.md §4).
  */
 
 export interface ReaderSwitchProps {
@@ -15,8 +18,6 @@ export interface ReaderSwitchProps {
   texts: { legende: string; proche: string; soi: string };
 }
 
-type Reader = "proche" | "soi";
-
 const pill =
   "inline-flex min-h-10 items-center rounded-full border-2 border-teal-700 bg-transparent px-4 " +
   "text-small font-bold text-teal-700 transition-colors [transition-duration:var(--duration-base)] " +
@@ -24,7 +25,7 @@ const pill =
   "aria-pressed:text-white aria-pressed:hover:bg-teal-800";
 
 export function ReaderSwitch({ proche, soi, texts }: ReaderSwitchProps) {
-  const [reader, setReader] = useState<Reader>("proche");
+  const { reader, setReader } = useReader();
   const legendId = useId();
 
   return (

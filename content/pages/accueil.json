@@ -8,7 +8,12 @@
     "reassurance": ["Évaluation à domicile gratuite", "Sans engagement", "Crédit d'impôt de 50 %*"],
     "note_astérisque": "* Crédit d'impôt de 50 % des sommes versées, dans les limites et conditions de l'article 199 sexdecies du Code général des impôts. L'avance immédiate est un service de l'Urssaf, soumis à conditions d'éligibilité.",
     "note_href": "/tarifs-et-aides/credit-d-impot-et-avance-immediate/",
-    "illustration": "maison"
+    "illustration": "maison",
+    "photo": {
+      "src": "/images/heros/accueil-hero-fenetre.jpg",
+      "alt": "Un homme âgé et une jeune femme discutent près d'une grande fenêtre dans un salon clair",
+      "focal": "50% 40%"
+    }
   },
   "situations": {
     "h2": "Que vivez-vous en ce moment ?",
@@ -134,6 +139,10 @@
       "titre": "Nos tarifs",
       "bouton": "Je consulte les tarifs",
       "href": "/tarifs-et-aides/"
+    },
+    "carte_devis": {
+      "titre": "Un devis gratuit et détaillé",
+      "texte": "Après l'évaluation à domicile, vous recevez un devis gratuit, détaillé et sans engagement. Nos prix seront affichés ici dès que la grille tarifaire sera publiée."
     },
     "carte_aides": {
       "titre": "Les aides possibles",

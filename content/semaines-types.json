@@ -6,6 +6,11 @@
       "titre": "Madeleine, 82 ans, maladie d’Alzheimer",
       "contexte": "Vit avec son mari.",
       "source": "docs/03 §3 (Alzheimer et maladies apparentées)",
+      "photo": {
+        "src": "/images/exemples/madeleine-couple-cuisine.jpg",
+        "alt": "Un couple âgé assis à une table de cuisine se tient la main",
+        "focal": "50% 40%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -88,6 +93,11 @@
       "id": "jacques",
       "titre": "Jacques, 71 ans, maladie de Parkinson",
       "source": "docs/03 §3 (Maladie de Parkinson)",
+      "photo": {
+        "src": "/images/exemples/jacques-parc-automne.jpg",
+        "alt": "Un homme âgé, vu de dos, marche avec une canne dans une allée de parc en automne",
+        "focal": "50% 50%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -163,6 +173,11 @@
       "titre": "Claire, 38 ans, sclérose en plaques",
       "contexte": "Deux enfants.",
       "source": "docs/03 §3 (Sclérose en plaques)",
+      "photo": {
+        "src": "/images/exemples/claire-promenade-famille.jpg",
+        "alt": "Un couple et un jeune enfant, vus de dos, marchent sur un chemin bordé d'arbres",
+        "focal": "50% 50%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -206,6 +221,11 @@
       "titre": "Suzanne, 88 ans",
       "contexte": "Vit seule.",
       "source": "docs/03 §4 (Personnes âgées)",
+      "photo": {
+        "src": "/images/exemples/suzanne-fenetre-immeuble.jpg",
+        "alt": "Une femme âgée regarde depuis la fenêtre ouverte de son appartement, dans un immeuble",
+        "focal": "40% 45%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -277,6 +297,11 @@
       "titre": "Karim, 34 ans, tétraplégique",
       "contexte": "Salarié.",
       "source": "docs/03 §5 (Adultes en situation de handicap)",
+      "photo": {
+        "src": "/images/exemples/karim-ordinateur-fenetre.jpg",
+        "alt": "Un homme en fauteuil roulant travaille sur un ordinateur portable près d'une grande fenêtre",
+        "focal": "45% 50%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -388,6 +413,11 @@
       "id": "noe",
       "titre": "Noé, 8 ans, autisme",
       "source": "docs/03 §6 (Autisme)",
+      "photo": {
+        "src": "/images/exemples/noe-cubes-sol.jpg",
+        "alt": "Les mains d'un enfant, vu de haut, alignent des cubes de bois colorés sur un plancher",
+        "focal": "50% 60%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -438,6 +468,11 @@
       "titre": "Bernard, 74 ans, retour d’hospitalisation",
       "contexte": "Première semaine à la maison après l’hôpital.",
       "source": "docs/03 §8 (Sortie d’hospitalisation) : présence dès le premier jour, courses, repas, aide aux gestes, vigilance ; répartition des jours et nuits choisie pour l’illustration",
+      "photo": {
+        "src": "/images/exemples/bernard-fauteuil-salon.jpg",
+        "alt": "Un homme âgé, assis dans un fauteuil rouge de son salon, regarde vers la fenêtre",
+        "focal": "60% 50%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -583,6 +618,11 @@
       "titre": "Henri, 79 ans, maladie à corps de Lewy",
       "contexte": "Vit avec sa femme.",
       "source": "docs/03 §3.4 (Maladie à corps de Lewy)",
+      "photo": {
+        "src": "/images/exemples/henri-couple-fenetre-dos.jpg",
+        "alt": "Un couple âgé, vu de dos, assis côte à côte, regarde par une grande fenêtre",
+        "focal": "35% 50%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -672,6 +712,11 @@
       "titre": "Véronique, 58 ans, dégénérescence fronto-temporale",
       "contexte": "Vit avec son mari et leur fils lycéen.",
       "source": "docs/03 §3.5 (Dégénérescence fronto-temporale)",
+      "photo": {
+        "src": "/images/exemples/veronique-couple-canape.jpg",
+        "alt": "Un homme et une femme d'une soixantaine d'années, assis sur un canapé, dans une pièce ensoleillée",
+        "focal": "50% 40%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -743,6 +788,11 @@
       "titre": "Paul, 63 ans, maladie de Charcot (SLA)",
       "contexte": "Vit avec sa femme, en hospitalisation à domicile.",
       "source": "docs/03 §3.6 (Maladie de Charcot)",
+      "photo": {
+        "src": "/images/exemples/paul-couple-balcon.jpg",
+        "alt": "Un couple d'une soixantaine d'années enlacé sur un balcon, devant des immeubles",
+        "focal": "35% 40%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -916,6 +966,11 @@
       "titre": "Sophie, 44 ans, maladie de Huntington",
       "contexte": "Vit seule, sa sœur habite à côté.",
       "source": "docs/03 §3.7 (Maladie de Huntington)",
+      "photo": {
+        "src": "/images/exemples/sophie-cuisine-veranda.jpg",
+        "alt": "Une femme assise seule à une table de cuisine, dans une véranda baignée de soleil",
+        "focal": "50% 55%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -1043,6 +1098,11 @@
       "titre": "Lina, 6 ans, polyhandicap",
       "contexte": "Vit avec ses parents et son grand frère.",
       "source": "docs/03 §6 (Enfants en situation de handicap, polyhandicap)",
+      "photo": {
+        "src": "/images/exemples/lina-mains-sable.jpg",
+        "alt": "Les mains d'un enfant laissent couler du sable au-dessus d'un seau bleu",
+        "focal": "50% 50%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -1098,6 +1158,11 @@
       "titre": "Tom, 10 ans, handicap moteur",
       "contexte": "Paralysie cérébrale, en fauteuil, scolarisé en classe ordinaire.",
       "source": "docs/03 §6 (Enfants en situation de handicap, handicap moteur)",
+      "photo": {
+        "src": "/images/exemples/tom-couloir-ecole.jpg",
+        "alt": "Un enfant avec un cartable, vu de dos, dans le couloir d'une école",
+        "focal": "50% 45%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -1148,6 +1213,11 @@
       "titre": "Inès, 12 ans, déficience intellectuelle",
       "contexte": "Scolarisée en ULIS, deux petites sœurs.",
       "source": "docs/03 §6 (Enfants en situation de handicap, déficience intellectuelle)",
+      "photo": {
+        "src": "/images/exemples/ines-soeurs-rue.jpg",
+        "alt": "Deux petites filles, vues de dos, marchent main dans la main dans une ruelle pavée",
+        "focal": "50% 55%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -1198,6 +1268,11 @@
       "titre": "Louise, 91 ans, présence 24h/24",
       "contexte": "Vit seule, trois intervenants se relaient.",
       "source": "docs/03 §8 (Présence 24h/24)",
+      "photo": {
+        "src": "/images/exemples/louise-canape-fenetre.jpg",
+        "alt": "Une femme âgée assise sur un canapé vert près d'une fenêtre donnant sur la rue",
+        "focal": "60% 45%"
+      },
       "entrees": [
         {
           "jour": "lun",
@@ -1346,6 +1421,11 @@
       "titre": "Gisèle, 79 ans, une semaine de vacances",
       "contexte": "Part une semaine à la mer avec son auxiliaire de vie habituelle.",
       "source": "docs/03 §8 (Accompagnement en vacances)",
+      "photo": {
+        "src": "/images/exemples/gisele-plage-bras.jpg",
+        "alt": "Une femme âgée et une femme plus jeune marchent main dans la main au bord de l'eau, sur une plage",
+        "focal": "40% 45%"
+      },
       "entrees": [
         {
           "jour": "lun",
