@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "tsx scripts/indexnow.ts --write-key",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -16,6 +17,7 @@
     "test:e2e": "pnpm build && playwright test",
     "validate": "tsx scripts/validate/index.ts",
     "lhci": "tsx scripts/lhci.ts",
+    "indexnow": "tsx scripts/indexnow.ts",
     "data:agences": "tsx scripts/data/geocode-agencies.ts",
     "data:communes": "tsx scripts/data/fetch-communes.ts",
     "data:phone": "libphonenumber-metadata-generator data/phone-metadata.fr.json --countries FR"
