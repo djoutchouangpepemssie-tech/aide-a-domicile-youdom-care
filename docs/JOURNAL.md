@@ -629,3 +629,8 @@ Une entrée par itération, la plus récente en bas. Format imposé :
 - Contrôles : format:check ✔ · lint ✔ · typecheck ✔ · test ✔ (451/451) · build ✔ · validate ✔ (5/5) · test:e2e ✔ (241 puis les 3 derniers rejoués verts : deux textes attendus mis à jour, un contraste axe non reproduit sur l'accueil mobile, à surveiller) · lhci ✔ (quatre pages).
 - Incidents : deux commits de snapshot ont emporté des fichiers d'agents en cours (`38c9f50` contient les blocs au fil sous un message « docs », un titre de commit a dépassé 100 caractères) ; l'historique reste correct par squash en fin de phase.
 - Suite : fin de phase 4b (audit, fusion squash dans main, étiquette phase-04b), puis phase 5.
+
+## 2026-09-20 — Fin de phase 4b
+
+- `pnpm audit` : toujours 5 vulnérabilités transitives de l'outillage `@lhci/cli` (dette DC.2). Lighthouse CI vert sur quatre pages (D-026). Fusion locale squash dans `main`, étiquette `phase-04b`, `main` et l'étiquette poussés sur `origin` (D-025).
+- Bilan de la phase 4b : concept UX, 44 icônes au fil, 59 photos libres de droit créditées, infrastructure de mouvement (révélations, compteurs, inclinaison, parallaxe, scène 3D CSS, profondeur et fil du hero, fil conducteur), heros personnalisés avec photo et geste d'entrée par public, parcours « Pour qui cherchez-vous de l'aide ? », rail de conversation, en-tête et barre mobile revus, gabarit service enrichi (icônes, photos de section, encart frontière, sources), relecture croisée appliquée. Points pour Arcel dans Q-CONTENU-7 et les journaux des lots (textes des gestes et du parcours à valider, engagements E2/E4/E5).
