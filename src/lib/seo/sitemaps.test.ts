@@ -3,10 +3,13 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { listFormDefinitions } from "@/content/form-definitions";
 import { getAidPage } from "@/content/aid-pages";
+import { getSiteConfig } from "@/content/loader";
+import { departementCodeOf, listIndexableLocalPages } from "@/content/local";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
 import { neverIndexedPaths } from "./indexable";
 import {
   absoluteUrl,
+  agencesLastmod,
   buildSitemapIndex,
   declaredLastmod,
   ISO_DATE,
@@ -56,10 +59,11 @@ describe("plans de site segmentés", () => {
     const ids = populated.map((s) => s.id);
     expect(ids[0]).toBe("pages");
     for (const segment of populated) expect(segment.entries.length).toBeGreaterThan(0);
-    // Sans contenu local ni éditorial, ces segments restent absents.
-    for (const id of ["local-paris", "magazine", "lexique", "agences"]) {
+    // Sans contenu éditorial, ces segments restent absents ; les agences sont là depuis la phase 6.
+    for (const id of ["magazine", "lexique"]) {
       expect(ids).not.toContain(id);
     }
+    expect(ids).toContain("agences");
   });
 
   it("n'émet que des chemins internes avec barre finale, hors zones jamais indexées, datés", async () => {
@@ -103,6 +107,35 @@ describe("plans de site segmentés", () => {
     }
     const entries = (await segmentEntries("services")) ?? [];
     expect(Object.fromEntries(entries.map((e) => [e.path, e.lastmod]))).toEqual(expected);
+  });
+
+  it("liste une page par agence réelle dans le segment agences, à la date déclarée", async () => {
+    const entries = (await segmentEntries("agences")) ?? [];
+    expect(entries.map((e) => e.path)).toEqual(
+      getSiteConfig()
+        .agences.map((agency) => `/agences/${agency.id}/`)
+        .sort(),
+    );
+    for (const entry of entries) expect(entry.lastmod).toBe(agencesLastmod);
+  });
+
+  it("date les pages locales publiées par leur maj, dans le segment de leur département", async () => {
+    const pages = await listIndexableLocalPages();
+    const byDepartement = new Map<string, Record<string, string>>();
+    for (const page of pages) {
+      const code = departementCodeOf(page) ?? "";
+      const zone = getSiteConfig().zones.find((z) => z.code === code);
+      if (!zone) continue;
+      const bucket = byDepartement.get(`local-${zone.slug}`) ?? {};
+      bucket[page.chemin] = page.editorial.maj;
+      byDepartement.set(`local-${zone.slug}`, bucket);
+    }
+    for (const id of sitemapSegmentIds.filter((s) => s.startsWith("local-"))) {
+      const entries = (await segmentEntries(id)) ?? [];
+      expect(Object.fromEntries(entries.map((e) => [e.path, e.lastmod]))).toEqual(
+        byDepartement.get(id) ?? {},
+      );
+    }
   });
 
   it("renvoie null pour un segment inconnu", async () => {

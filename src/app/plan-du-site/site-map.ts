@@ -2,16 +2,20 @@ import { getAidPage, listAidPageIds } from "@/content/aid-pages";
 import { listFormDefinitions } from "@/content/form-definitions";
 import {
   getAbout,
+  getAgenciesPage,
   getCallbackPage,
   getCaregiverCheckPage,
   getInterfaceTexts,
   getModesPage,
   getNavigation,
   getPricingPage,
+  getRegionPage,
   getRequestIndexPage,
+  getSiteConfig,
   getSiteMapPage,
   getSpecialForms,
 } from "@/content/loader";
+import { departementCodeOf, listBuildableLocalPages } from "@/content/local";
 import type { SiteMapPage } from "@/content/schemas";
 import type { ServicePage } from "@/content/service-schema";
 import { listBuildableServicePages } from "@/content/services";
@@ -23,7 +27,9 @@ import { listBuildableServicePages } from "@/content/services";
  * avec le libellé de leur fil d'Ariane ou de la navigation, et le test de la page vérifie
  * qu'elles existent toutes dans `src/app` et qu'aucune page statique indexable n'y manque.
  * Jamais listées : /merci/, /styleguide/, /api/ (`neverIndexedPaths`) et le plan lui-même.
- * Les pages légales (phase 8) s'ajoutent dans `legalRoutes` quand elles existent.
+ * Les pages légales (phase 8) s'ajoutent dans `legalRoutes` quand elles existent. Territoires
+ * (phase 6) : la carte régionale, les pages de département construites avec leurs communes et
+ * arrondissements en retrait, l'index des agences et chaque agence réelle.
  */
 
 export interface SiteMapEntry {
@@ -176,12 +182,52 @@ export async function buildSiteMap(): Promise<SiteMapGroup[]> {
     },
   ];
 
+  // Territoires et agences : seulement les pages locales construites, par département.
+  const localPages = await listBuildableLocalPages();
+  const zones = getSiteConfig().zones;
+  const departementEntries: SiteMapEntry[] = [];
+  for (const zone of zones) {
+    const departement = localPages.find(
+      (p) => p.data.kind === "departement" && departementCodeOf(p) === zone.code,
+    );
+    const communes = localPages
+      .filter((p) => p.data.kind !== "departement" && departementCodeOf(p) === zone.code)
+      .sort((a, b) => a.chemin.localeCompare(b.chemin, "fr"))
+      .map((p) => ({ href: p.chemin, label: p.data.nom }));
+    if (departement) {
+      departementEntries.push({
+        href: departement.chemin,
+        label: zone.nom,
+        ...(communes.length > 0 ? { children: communes } : {}),
+      });
+    } else {
+      departementEntries.push(...communes);
+    }
+  }
+  const agenciesPage = getAgenciesPage();
+  const territoires: SiteMapEntry[] = [
+    {
+      href: "/aide-a-domicile/",
+      label: getRegionPage().ariane,
+      ...(departementEntries.length > 0 ? { children: departementEntries } : {}),
+    },
+    {
+      href: "/agences/",
+      label: agenciesPage.index.ariane,
+      children: getSiteConfig().agences.map((agency) => ({
+        href: `/agences/${agency.id}/`,
+        label: agency.nom,
+      })),
+    },
+  ];
+
   const groups: SiteMapGroup[] = [
     { id: "fonctionnement", title: page.groupes.fonctionnement, entries: fonctionnement },
     { id: "pour_qui", title: page.groupes.pour_qui, entries: pourQui },
     { id: "services", title: page.groupes.services, entries: servicesEntries },
     { id: "aidants", title: page.groupes.aidants, entries: aidants },
     { id: "formulaires", title: page.groupes.formulaires, entries: formulaires },
+    { id: "territoires", title: page.groupes.territoires, entries: territoires },
     { id: "entreprise", title: page.groupes.entreprise, entries: entreprise },
     { id: "legal", title: page.groupes.legal, entries: [...legalRoutes] },
   ];

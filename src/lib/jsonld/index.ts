@@ -1,5 +1,12 @@
 export { breadcrumbList, type BreadcrumbListItem } from "./breadcrumb-list";
 export { faqPage, type FaqItem } from "./faq-page";
+export {
+  agencyPath,
+  localBusiness,
+  parseOpeningHours,
+  type LocalBusinessOptions,
+} from "./local-business";
+export { localPageJsonLd, localWebPage } from "./local-page";
 export { JsonLd } from "./JsonLd";
 export { serializeJsonLd } from "./serialize";
 export { areaServed, internationalPhone, organization } from "./organization";

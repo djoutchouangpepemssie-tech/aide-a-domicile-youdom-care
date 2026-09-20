@@ -102,7 +102,9 @@ describe("Plan du site", () => {
         appRoutes.includes(href) ||
         services.has(href) ||
         /^\/tarifs-et-aides\/[a-z0-9-]+\/$/.test(href) ||
-        /^\/demande\/[a-z0-9-]+\/$/.test(href);
+        /^\/demande\/[a-z0-9-]+\/$/.test(href) ||
+        /^\/agences\/[a-z0-9-]+\/$/.test(href) ||
+        /^\/aide-a-domicile\/(?:[a-z0-9-]+\/)+$/.test(href);
       expect(known, `${href} n'existe pas dans src/app`).toBe(true);
     }
     // Chaque page statique indexable de src/app est dans le plan.
