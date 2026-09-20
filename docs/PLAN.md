@@ -118,10 +118,10 @@ Fin de phase 4b : `pnpm audit`, fusion locale squash dans `main`, étiquette `ph
 
 ## Phase 6 — Référencement local, vague 1 · `phase/06-local`
 
-- [ ] **P6.1 Données : territoires.** Communes, arrondissements, quartiers ; contrôle croisé avec `data/territoires.seed.json`. Réf. `docs/04 §5`.
-- [ ] **P6.2 Données : ressources.** Points d'information locaux, accueils de jour, annuaire de l'administration (CCAS, MDPH, départements), hôpitaux. Chaque fait avec source et date.
-- [ ] **P6.3 Données : démographie, agences géocodées, distances, communes voisines, sélection de la vague 1** (règle de `docs/04 §4`).
-- [ ] **P6.4 Schéma `LocalData` et contrôles locaux** (`check-local-facts`, `check-local-uniqueness`, `check-local-nap`), avec tests sur des pages factices trop proches.
+- [x] (a1c7d23, e1439bb, 1a72ebe) **P6.1 Données : territoires.** Communes, arrondissements, quartiers ; contrôle croisé avec `data/territoires.seed.json`. Réf. `docs/04 §5`.
+- [x] (a1c7d23, e1439bb, 1a72ebe) **P6.2 Données : ressources.** Points d'information locaux, accueils de jour, annuaire de l'administration (CCAS, MDPH, départements), hôpitaux. Chaque fait avec source et date.
+- [x] (a1c7d23, e1439bb, 1a72ebe) **P6.3 Données : démographie, agences géocodées, distances, communes voisines, sélection de la vague 1** (règle de `docs/04 §4`).
+- [x] (64420c4, a1b8687) **P6.4 Schéma `LocalData` et contrôles locaux** (`check-local-facts`, `check-local-uniqueness`, `check-local-nap`), avec tests sur des pages factices trop proches.
 - [ ] **P6.5 Gabarit de page locale**, `LocalFactsGrid`, page `/aide-a-domicile/` avec carte d'Île-de-France accessible (liste équivalente).
 - [ ] **P6.6 Pages des six agences.**
 - [ ] **P6.7 Paris : pilier.**
