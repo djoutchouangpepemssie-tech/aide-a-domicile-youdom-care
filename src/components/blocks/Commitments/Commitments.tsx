@@ -73,7 +73,7 @@ export function Commitments({ items, commitments, className, ...rest }: Commitme
                 breakpoint="lg"
                 delay={index * RAIL_STEP_MS + 60}
                 fraction={0.2}
-                className="absolute top-full left-[43px] h-6 w-0.5 sm:hidden lg:top-[43px] lg:left-full lg:block lg:h-0.5 lg:w-8"
+                className="absolute top-full left-[calc(2.75rem+1px)] h-6 w-0.5 -translate-x-1/2 sm:hidden lg:top-[calc(2.75rem+1px)] lg:left-full lg:block lg:h-0.5 lg:w-8 lg:translate-x-0 lg:-translate-y-1/2"
               />
             ) : null}
             <article className="t-rail__card flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1">

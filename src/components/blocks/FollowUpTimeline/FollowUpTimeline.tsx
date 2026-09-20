@@ -65,13 +65,14 @@ export function FollowUpTimeline({ milestones, icons, className, ...rest }: Foll
                 orientation="responsive"
                 delay={index * RAIL_STEP_MS + 60}
                 fraction={0.2}
-                className="absolute top-6 bottom-[-1.5rem] left-[11px] w-0.5 md:top-[11px] md:right-[-1rem] md:bottom-auto md:left-6 md:h-0.5 md:w-auto"
+                className="absolute top-6 bottom-[-1.5rem] left-3 w-0.5 -translate-x-1/2 md:top-3 md:right-[-1rem] md:bottom-auto md:left-6 md:h-0.5 md:w-auto md:translate-x-0 md:-translate-y-1/2"
               />
             ) : null}
             <ThreadKnot
               size={24}
               tone={last ? "raspberry" : "teal"}
-              className="absolute top-0 left-0"
+              placement="absolute"
+              className="top-0 left-0"
             >
               {icon ? <Icon name={icon} size="sm" tone="ink" className="size-3.5" /> : null}
             </ThreadKnot>

@@ -48,13 +48,14 @@ export function StepsTimeline({ steps, className, ...rest }: StepsTimelineProps)
                 orientation="vertical"
                 delay={index * RAIL_STEP_MS + 60}
                 fraction={0.2}
-                className="absolute top-12 bottom-0 left-[23px] w-0.5"
+                className="absolute top-12 bottom-0 left-6 w-0.5 -translate-x-1/2"
               />
             ) : null}
             <ThreadKnot
               size={48}
               tone={last ? "raspberry" : "teal"}
-              className="absolute top-0 left-0 text-h4"
+              placement="absolute"
+              className="top-0 left-0 text-h4"
             >
               {step.icone ? <Icon name={step.icone} size="md" tone="ink" /> : index + 1}
             </ThreadKnot>

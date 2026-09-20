@@ -32,10 +32,7 @@ const orientationClasses: Record<ThreadBreakpoint, { vertical: string; horizonta
   lg: { vertical: "lg:hidden", horizontal: "hidden lg:block" },
 };
 
-export interface ThreadConnectorProps extends Omit<
-  ComponentPropsWithoutRef<"svg">,
-  "children" | "orientation"
-> {
+export interface ThreadConnectorProps extends Omit<ComponentPropsWithoutRef<"span">, "children"> {
   /** `vertical` (jalons empilés), `horizontal` (côte à côte) ou `responsive` : vertical sous le point de rupture, horizontal au-delà. */
   orientation?: ThreadOrientation;
   /** Point de rupture de `responsive` (`md`, 48 rem, par défaut). */
@@ -67,40 +64,48 @@ export function ThreadConnector({
     vectorEffect: "non-scaling-stroke" as const,
     style: vars as CSSProperties,
   };
+  // Le SVG est un élément remplacé : posé en absolu avec `top` et `bottom` (ou `left` et
+  // `right`), il garderait sa taille intrinsèque. Un `span` porte la position, le SVG le remplit.
   return (
-    <svg
+    <span
       aria-hidden="true"
-      focusable="false"
-      viewBox="0 0 2 2"
-      preserveAspectRatio="none"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
       data-orientation={orientation}
       className={cn(
-        "t-connector pointer-events-none block overflow-visible",
+        "t-connector pointer-events-none block",
         tone === "dark" ? "text-white" : "text-teal-700",
         className,
       )}
-      style={{ strokeWidth: "var(--thread-width, 2px)", ...style }}
+      style={style}
       {...rest}
     >
-      {orientation !== "horizontal" ? (
-        <path
-          d="M1 0V2"
-          className={orientation === "responsive" ? paths.vertical : undefined}
-          {...shape}
-        />
-      ) : null}
-      {orientation !== "vertical" ? (
-        <path
-          d="M0 1H2"
-          className={orientation === "responsive" ? paths.horizontal : undefined}
-          {...shape}
-        />
-      ) : null}
-    </svg>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 2 2"
+        preserveAspectRatio="none"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="block size-full overflow-visible"
+        style={{ strokeWidth: "var(--thread-width, 2px)" }}
+      >
+        {orientation !== "horizontal" ? (
+          <path
+            d="M1 0V2"
+            className={orientation === "responsive" ? paths.vertical : undefined}
+            {...shape}
+          />
+        ) : null}
+        {orientation !== "vertical" ? (
+          <path
+            d="M0 1H2"
+            className={orientation === "responsive" ? paths.horizontal : undefined}
+            {...shape}
+          />
+        ) : null}
+      </svg>
+    </span>
   );
 }
 
@@ -113,6 +118,8 @@ export interface ThreadKnotProps extends Omit<ComponentPropsWithoutRef<"span">, 
   tone?: ThreadKnotTone;
   /** Délai du tracé de l'anneau en millisecondes (`--m-delay`). */
   delay?: number;
+  /** `inline` (dans le flux, `position: relative`) ou `absolute` (posé par `className`, `top-0 left-0`…). */
+  placement?: "inline" | "absolute";
   /** Numéro ou icône posé au centre ; décoratif, le texte voisin dit toujours la même chose. */
   children?: ReactNode;
 }
@@ -137,6 +144,7 @@ export function ThreadKnot({
   size = 40,
   tone = "teal",
   delay = 0,
+  placement = "inline",
   className,
   style,
   children,
@@ -148,7 +156,8 @@ export function ThreadKnot({
     <span
       aria-hidden="true"
       className={cn(
-        "t-knot relative inline-flex shrink-0 items-center justify-center rounded-full bg-white",
+        "t-knot shrink-0 items-center justify-center rounded-full bg-white",
+        placement === "absolute" ? "absolute flex" : "relative inline-flex",
         knotSizes[size],
         knotTones[tone],
         className,

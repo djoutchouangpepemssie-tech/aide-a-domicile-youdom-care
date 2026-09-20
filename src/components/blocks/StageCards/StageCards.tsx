@@ -69,7 +69,7 @@ export function StageCards({ stages, ids, active, className, ...rest }: StageCar
                 orientation="responsive"
                 delay={index * RAIL_STEP_MS + 60}
                 fraction={0.2}
-                className="absolute top-full left-[43px] h-6 w-0.5 md:top-[43px] md:left-full md:h-0.5 md:w-8"
+                className="absolute top-full left-[calc(2.75rem+1px)] h-6 w-0.5 -translate-x-1/2 md:top-[calc(2.75rem+1px)] md:left-full md:h-0.5 md:w-8 md:translate-x-0 md:-translate-y-1/2"
               />
             ) : null}
             <article className="t-rail__card flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1">
