@@ -32,7 +32,6 @@ export const plannedRoutes: Readonly<Record<string, string>> = {
   "/cookies/": "phase 8 (pages légales)",
   "/conditions-generales/": "phase 8 (pages légales)",
   "/accessibilite/": "phase 8 (pages légales)",
-  "/plan-du-site/": "phase 8 (pages légales)",
   "/agences/": "phase 6 (agences, docs/00 §5)",
 };
 
