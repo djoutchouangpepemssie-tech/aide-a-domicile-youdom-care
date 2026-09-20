@@ -90,6 +90,21 @@ Critères communs : 13 sections présentes ; sources ouvertes avec succès et da
 
 **Point de validation 4** : `check-copy`, `check-links` verts ; relecture croisée par un sous-agent de trois pages tirées au hasard contre `docs/01 §2` et `docs/03 §1` ; liste des relectures professionnelles attendues ajoutée à `docs/QUESTIONS_ARCEL.md`. — Fait le 2026-09-20 : `check-links` créé (ef41925, D-023) et vert avec deux avertissements Urssaf (sites qui bloquent les robots, vérifiés dans un navigateur) ; relecture croisée de polyhandicap, sortie d'hospitalisation et handicap moteur, corrections appliquées (4568dc7) ; Q-CONTENU-7 (relectures attendues) et Q-CONTENU-8 (phrases longues) ajoutées (47ecf65).
 
+## Phase 4b — Expérience visuelle « waouh » (D-024) · `phase/04b-experience`
+
+Demande d'Arcel du 2026-09-20 : heros personnalisés, images libres de droit partout, animations et 3D légère, icônes représentatives, pages piliers vivantes, conversion. Brief : `docs/design/BRIEF_EXPERIENCE.md`. Non négociables inchangés (vérité, santé, accessibilité, budgets D-019, le Fil).
+
+- [ ] **P4b.1 Concept et spécification** (`docs/design/CONCEPT.md`) : diagnostic, concept, accueil bloc par bloc, heros par public, gabarit service, mouvement, conversion, lots de mise en œuvre.
+- [ ] **P4b.2 Jeu d'icônes au fil** (`src/components/ui/Icon/`, styleguide, tests, `docs/design/ICONES.md`).
+- [ ] **P4b.3 Photothèque libre de droit** (`public/images/`, `CREDITS.md`, `docs/design/PHOTOS.md`) : sources, licences, textes alternatifs, interdits de docs/02 §6 respectés.
+- [ ] **P4b.4 Infrastructure de mouvement et 3D** (`src/components/motion/`, `src/lib/motion/`, `motion.css`, styleguide, tests, `docs/design/MOUVEMENT.md`) : reduced-motion et mode confort, budget mesuré.
+- [ ] **P4b.5 Heros personnalisés** : accueil et cinq piliers (photo, titre, geste d'entrée, profondeur), variantes mobile, `priority` sur l'image, LCP mesuré.
+- [ ] **P4b.6 Accueil réinventé** : parcours « Pour qui cherchez-vous de l'aide ? », blocs illustrés et animés, appels à l'action, barre mobile.
+- [ ] **P4b.7 Piliers et gabarit service enrichis** : photos par section, icônes par service et rubrique, semaine type illustrée, cartes inclinables, révélations au défilement, sous-pages en cartes visuelles.
+- [ ] **P4b.8 Point de validation 4b** : axe et clavier sur chaque page enrichie, `pnpm validate` (check-copy, check-links, placeholders), Lighthouse CI étendu à un pilier et une page service (budgets D-019), reduced-motion vérifié en e2e, crédits photos complets, relecture croisée d'un sous-agent sur le rendu (voix docs/01, vérité).
+
+Fin de phase 4b : `pnpm audit`, fusion locale squash dans `main`, étiquette `phase-04b`.
+
 ## Phase 5 — SEO technique · `phase/05-seo`
 
 - [ ] **P5.1 Métadonnées.** Assistants de titres, descriptions, canoniques ; `check-seo.ts`. Réf. `docs/04 §2`.
