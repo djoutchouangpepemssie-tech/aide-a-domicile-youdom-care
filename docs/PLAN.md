@@ -8,14 +8,14 @@ Les contrôles de `pnpm validate` s'activent au fil des phases : chaque script e
 
 ## Phase 0 — Amorçage · branche `phase/00-amorcage`
 
-- [ ] **P0.1 Initialiser le projet.** `create-next-app` (dernière version stable, TypeScript, App Router, dossier `src`, pnpm). Réf. `CLAUDE.md`, `docs/00 §6`. Critères : `pnpm dev` et `pnpm build` fonctionnent ; versions consignées dans `docs/DECISIONS.md` ; fichiers du kit conservés intacts. Commit : `build: initialisation Next.js`.
-- [ ] **P0.2 Outillage qualité.** ESLint strict, Prettier, Husky, lint-staged, commitlint (types de `.claude/loop.md`), scripts `lint`, `typecheck`. Critères : un commit mal formé est refusé.
-- [ ] **P0.3 Styles et polices.** Tailwind CSS v4, `src/styles/tokens.css` avec tous les jetons de `docs/02 §2–4`, polices Fraunces et Atkinson Hyperlegible Next via `next/font` (repli documenté si indisponible). Critères : une page de test affiche les deux polices et les couleurs.
-- [ ] **P0.4 Tests.** Vitest + Testing Library, Playwright + axe, un test de fumée de chaque type. Scripts `test`, `test:e2e`.
-- [ ] **P0.5 Contenu et schémas.** `src/content/schemas.ts` (Zod) pour `site.config.json`, `tarifs.json`, `engagements.json`, `interface.json` ; chargeur typé ; `content/interface.json` créé depuis `docs/01 §6–7`. Critères : un champ invalide fait échouer le build.
-- [ ] **P0.6 Contrôles.** `scripts/validate/` avec `config.ts`, `check-content.ts`, `check-placeholders.ts`, commande `pnpm validate` (+ option `--prod` selon `docs/07 §7`). Tests unitaires des contrôles.
-- [ ] **P0.7 Intégration continue.** GitHub Actions : lint, typecheck, test, build, validate sur chaque PR. `.env.example` selon `docs/00 §6`.
-- [ ] **P0.8 Configuration Next.** `trailingSlash`, en-têtes de sécurité de `docs/07 §6`, `robots` en noindex global tant que la phase 9 n'est pas finie (variable `SITE_INDEXABLE=false`).
+- [x] (456c81a) **P0.1 Initialiser le projet.** `create-next-app` (dernière version stable, TypeScript, App Router, dossier `src`, pnpm). Réf. `CLAUDE.md`, `docs/00 §6`. Critères : `pnpm dev` et `pnpm build` fonctionnent ; versions consignées dans `docs/DECISIONS.md` ; fichiers du kit conservés intacts. Commit : `build: initialisation Next.js`.
+- [x] (ebf37b6) **P0.2 Outillage qualité.** ESLint strict, Prettier, Husky, lint-staged, commitlint (types de `.claude/loop.md`), scripts `lint`, `typecheck`. Critères : un commit mal formé est refusé.
+- [x] (595ef18) **P0.3 Styles et polices.** Tailwind CSS v4, `src/styles/tokens.css` avec tous les jetons de `docs/02 §2–4`, polices Fraunces et Atkinson Hyperlegible Next via `next/font` (repli documenté si indisponible). Critères : une page de test affiche les deux polices et les couleurs.
+- [x] (77410a9) **P0.4 Tests.** Vitest + Testing Library, Playwright + axe, un test de fumée de chaque type. Scripts `test`, `test:e2e`.
+- [x] (382e922) **P0.5 Contenu et schémas.** `src/content/schemas.ts` (Zod) pour `site.config.json`, `tarifs.json`, `engagements.json`, `interface.json` ; chargeur typé ; `content/interface.json` créé depuis `docs/01 §6–7`. Critères : un champ invalide fait échouer le build.
+- [x] (12abeba) **P0.6 Contrôles.** `scripts/validate/` avec `config.ts`, `check-content.ts`, `check-placeholders.ts`, commande `pnpm validate` (+ option `--prod` selon `docs/07 §7`). Tests unitaires des contrôles.
+- [x] (d452478) **P0.7 Intégration continue.** GitHub Actions : lint, typecheck, test, build, validate sur chaque PR. `.env.example` selon `docs/00 §6`.
+- [x] (c792334) **P0.8 Configuration Next.** `trailingSlash`, en-têtes de sécurité de `docs/07 §6`, `robots` en noindex global tant que la phase 9 n'est pas finie (variable `SITE_INDEXABLE=false`).
 
 **Point de validation 0** : CI verte sur la PR ; `pnpm build` sans avertissement ; `docs/DECISIONS.md` liste la pile et les versions.
 
@@ -165,3 +165,5 @@ Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la
 ## Dette et corrections
 
 (La loop ajoute ici les anomalies découvertes en cours de route, avec la phase concernée.)
+
+- [~] (Q-TECH-3) **DC.1 Publier le dépôt.** Créer le dépôt GitHub, ajouter le remote, pousser `main`, les tags `phase-NN` et les branches `phase/*`, ouvrir a posteriori les PR de phase, vérifier que la CI de `.github/workflows/ci.yml` est verte, relier Vercel (prévisualisations). Réf. D-014.

@@ -1,0 +1,45 @@
+{
+  "_lisezmoi": "Microtextes d'interface, repris mot pour mot de docs/01 §6 (boutons) et §7 (formulaires). Seul endroit où un texte d'interface peut vivre hors d'un fichier de contenu. Les accolades {h}, {champ}, {téléphone}, {délai} sont remplacées par les composants.",
+  "boutons": {
+    "rappel": "Être rappelé(e)",
+    "appel": "J'appelle un conseiller",
+    "demande_detaillee": "Je décris ma situation",
+    "planning": "Je compose ma semaine",
+    "evaluation": "Je demande une évaluation gratuite",
+    "budget": "J'estime mon budget",
+    "sortie_hopital": "Je prépare un retour à domicile",
+    "aidant": "J'ai besoin de relais",
+    "enfant": "Je décris les besoins de mon enfant",
+    "prescripteur": "J'adresse une situation",
+    "candidat": "Je postule",
+    "lecture_article": "Lire l'article",
+    "lecture_accompagnement": "Voir l'accompagnement",
+    "lecture_aides": "Je découvre les aides"
+  },
+  "formulaires": {
+    "accroche": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées.",
+    "etape_pour_qui": "Pour qui cherchez-vous de l'aide ?",
+    "etape_situation": "Dites-nous l'essentiel. Vous pourrez tout préciser au téléphone.",
+    "etape_besoins": "De quoi avez-vous besoin ? Plusieurs choix possibles.",
+    "choix_ouvert": "À définir ensemble",
+    "etape_planning": "Quand souhaitez-vous de l'aide ? Touchez les créneaux, ou choisissez un raccourci.",
+    "raccourcis": [
+      "Tous les jours",
+      "Du lundi au vendredi",
+      "Le week-end",
+      "Toutes les nuits",
+      "24h/24, 7j/7"
+    ],
+    "estimation": "Environ {h} heures par semaine. Ce n'est qu'une base : nous l'ajusterons ensemble.",
+    "etape_coordonnees": "Où pouvons-nous vous joindre ?",
+    "creneau_rappel": "Quand préférez-vous être rappelé(e) ?",
+    "consentement": "J'accepte que Youdom Care utilise ces informations, y compris celles qui concernent la santé de la personne à accompagner, pour me recontacter et préparer une proposition.",
+    "erreur_champ": "Il manque {champ}. Nous en avons besoin pour vous rappeler.",
+    "telephone_invalide": "Ce numéro semble incomplet. Pouvez-vous le vérifier ?",
+    "hors_idf": "Nous intervenons à Paris et en Île-de-France. Pour cette commune, nous ne pourrons pas vous aider, mais les sites pour-les-personnes-agees.gouv.fr et monparcourshandicap.gouv.fr recensent les services près de chez vous.",
+    "envoi_impossible": "L'envoi n'a pas abouti. Vos réponses sont conservées sur cet écran. Réessayez, ou appelez-nous au {téléphone}.",
+    "succes": "Merci. Votre demande est arrivée. Un conseiller vous rappelle {délai}.",
+    "succes_delai_inconnu": "Merci. Votre demande est arrivée. Un conseiller vous rappelle dès que possible.",
+    "succes_urgence": "En cas d'urgence, appelez le {téléphone}."
+  }
+}

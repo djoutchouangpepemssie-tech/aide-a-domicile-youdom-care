@@ -1,0 +1,18 @@
+# Sorties
+.next/
+out/
+build/
+coverage/
+node_modules/
+pnpm-lock.yaml
+next-env.d.ts
+
+# Cahiers, plan, journal, questions : édités à la main, jamais reformatés par l'outillage
+docs/
+README_DEMARRAGE.md
+CLAUDE.md
+AGENTS.md
+.claude/
+
+# Données brutes et transformées (formatées par leurs propres scripts)
+data/

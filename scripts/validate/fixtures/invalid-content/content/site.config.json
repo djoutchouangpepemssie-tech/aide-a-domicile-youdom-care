@@ -4,11 +4,11 @@
     "nom": "Youdom Care",
     "signature": "Vous, chez vous. Nous, à vos côtés.",
     "description_courte": "Aide et accompagnement à domicile à Paris et en Île-de-France : personnes âgées, adultes et enfants en situation de handicap, personnes atteintes de maladies neurodégénératives.",
-    "url": "https://www.youdom-care.com",
+    "url": "pas-une-url",
     "annee_creation": null
   },
   "contact": {
-    "telephone_principal": "01 84 80 17 03",
+    "telephone_principal": 184801703,
     "telephone_mobile": "06 67 22 45 07",
     "email": "contact@youdom-care.com",
     "horaires_accueil_telephonique": null,
@@ -41,14 +41,46 @@
     "duree_minimale_intervention": null
   },
   "zones": [
-    { "code": "75", "nom": "Paris", "slug": "paris" },
-    { "code": "77", "nom": "Seine-et-Marne", "slug": "seine-et-marne" },
-    { "code": "78", "nom": "Yvelines", "slug": "yvelines" },
-    { "code": "91", "nom": "Essonne", "slug": "essonne" },
-    { "code": "92", "nom": "Hauts-de-Seine", "slug": "hauts-de-seine" },
-    { "code": "93", "nom": "Seine-Saint-Denis", "slug": "seine-saint-denis" },
-    { "code": "94", "nom": "Val-de-Marne", "slug": "val-de-marne" },
-    { "code": "95", "nom": "Val-d'Oise", "slug": "val-d-oise" }
+    {
+      "code": "75",
+      "nom": "Paris",
+      "slug": "paris"
+    },
+    {
+      "code": "77",
+      "nom": "Seine-et-Marne",
+      "slug": "seine-et-marne"
+    },
+    {
+      "code": "78",
+      "nom": "Yvelines",
+      "slug": "yvelines"
+    },
+    {
+      "code": "91",
+      "nom": "Essonne",
+      "slug": "essonne"
+    },
+    {
+      "code": "92",
+      "nom": "Hauts-de-Seine",
+      "slug": "hauts-de-seine"
+    },
+    {
+      "code": "93",
+      "nom": "Seine-Saint-Denis",
+      "slug": "seine-saint-denis"
+    },
+    {
+      "code": "94",
+      "nom": "Val-de-Marne",
+      "slug": "val-de-marne"
+    },
+    {
+      "code": "95",
+      "nom": "Val-d'Oise",
+      "slug": "val-d-oise"
+    }
   ],
   "agences": [
     {
@@ -131,15 +163,30 @@
       "detenu": null,
       "logo": null
     },
-    { "id": "credit-impot-50", "nom": "Crédit d'impôt de 50 %", "detenu": null, "logo": null },
+    {
+      "id": "credit-impot-50",
+      "nom": "Crédit d'impôt de 50 %",
+      "detenu": null,
+      "logo": null
+    },
     {
       "id": "avance-immediate",
       "nom": "Avance immédiate de crédit d'impôt",
       "detenu": null,
       "logo": null
     },
-    { "id": "cesu", "nom": "CESU préfinancés acceptés", "detenu": null, "logo": null },
-    { "id": "fedesap", "nom": "Adhérent Fédésap", "detenu": null, "logo": null }
+    {
+      "id": "cesu",
+      "nom": "CESU préfinancés acceptés",
+      "detenu": null,
+      "logo": null
+    },
+    {
+      "id": "fedesap",
+      "nom": "Adhérent Fédésap",
+      "detenu": null,
+      "logo": null
+    }
   ],
   "reseaux_sociaux": {
     "facebook": null,
@@ -157,5 +204,6 @@
     "agences[*].code_insee (contrôlé par le pipeline de données)",
     "labels[*].detenu",
     "disponibilite"
-  ]
+  ],
+  "marqe": {}
 }

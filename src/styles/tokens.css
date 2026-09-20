@@ -1,0 +1,177 @@
+/*
+ * Jetons du design system « Le Fil » — source : docs/02_DESIGN_SYSTEM.md §2 à §5.
+ * Toute couleur, taille, espace, rayon, ombre ou durée utilisée par le site vient d'ici.
+ * Les contrastes indiqués dans le cahier sont revérifiés par scripts/validate/check-contrast.ts (P1.1).
+ */
+
+:root {
+  /* ---- §2 Couleurs : palette ---- */
+  --color-ink: #0f2f38;
+  --color-ink-soft: #47626b;
+
+  --color-teal-50: #e6f5f8;
+  --color-teal-500: #0699b0;
+  --color-teal-600: #008aa2;
+  --color-teal-700: #00788d;
+  --color-teal-800: #00606f;
+  --color-teal-900: #0b4753;
+
+  --color-green-50: #eaf7ef;
+  --color-green-500: #58be81;
+  --color-green-700: #23804a;
+
+  --color-raspberry-50: #fdecee;
+  --color-raspberry-500: #ef3f6b;
+  --color-raspberry-600: #d42a5b;
+  --color-raspberry-700: #b81f4c;
+
+  --color-azure-50: #e8f2fa;
+  --color-azure-600: #177db2;
+  --color-azure-700: #14699a;
+
+  --color-paper: #fbf8f3;
+  --color-sand: #f4eee4;
+  --color-white: #ffffff;
+  --color-line: #d9e3e6;
+  --color-field-border: #6f8a92;
+
+  --color-danger: #b42318;
+  --color-danger-bg: #fef3f2;
+  --color-warning: #7a4f00;
+  --color-warning-bg: #fff4d6;
+
+  /* ---- §2 Couleurs : rôles ---- */
+  --color-bg: var(--color-paper);
+  --color-surface: var(--color-white);
+  --color-text: var(--color-ink);
+  --color-text-soft: var(--color-ink-soft);
+  --color-link: var(--color-teal-700);
+  --color-link-on-sand: var(--color-teal-800);
+  --color-action: var(--color-raspberry-600);
+  --color-action-hover: var(--color-raspberry-700);
+  --color-secondary: var(--color-teal-700);
+  --color-focus: var(--color-teal-800);
+  --color-footer-bg: var(--color-teal-900);
+  --color-footer-text: var(--color-white);
+  --color-success: var(--color-green-700);
+  /* Fonds teintés de section : remplacés par du blanc en mode confort */
+  --color-tint-teal: var(--color-teal-50);
+  --color-tint-green: var(--color-green-50);
+  --color-tint-raspberry: var(--color-raspberry-50);
+  --color-tint-azure: var(--color-azure-50);
+  --color-tint-sand: var(--color-sand);
+
+  /* ---- §3 Typographie ---- */
+  /* --font-fraunces et --font-atkinson sont injectées par next/font (src/app/layout.tsx), replis compris ;
+     la seconde valeur ne sert que si le layout racine n'est pas monté (tests isolés). */
+  --font-heading: var(--font-fraunces, Georgia, "Times New Roman", serif);
+  --font-body: var(--font-atkinson, "Atkinson Hyperlegible", system-ui, sans-serif);
+
+  --text-h1: clamp(2.125rem, 5.2vw, 3.75rem);
+  --text-h2: clamp(1.75rem, 3.6vw, 2.625rem);
+  --text-h3: clamp(1.375rem, 2.2vw, 1.75rem);
+  --text-h4: 1.25rem;
+  --text-lead: clamp(1.1875rem, 1.6vw, 1.375rem);
+  --text-body: 1.0625rem; /* 17 px mobile, 18 px à partir de 64 rem (voir media query) */
+  --text-small: 0.9375rem; /* 15 px : jamais moins */
+  --text-button: 1.0625rem;
+
+  --leading-h1: 1.08;
+  --leading-h2: 1.15;
+  --leading-h3: 1.25;
+  --leading-h4: 1.3;
+  --leading-lead: 1.55;
+  --leading-body: 1.65;
+  --leading-small: 1.5;
+  --leading-button: 1;
+
+  --weight-h1: 560;
+  --weight-h2: 560;
+  --weight-h3: 600;
+  --weight-h4: 700;
+  --weight-body: 400;
+  --weight-button: 700;
+  --weight-figure: 560; /* chiffres importants en Fraunces 560 */
+
+  --font-soft-h1: "SOFT" 50;
+  --measure: 66ch; /* longueur de ligne cible : 60 à 72 caractères */
+
+  /* ---- §4 Espaces, formes, profondeur ---- */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-24: 6rem; /* 96 */
+  --space-32: 8rem; /* 128 */
+
+  --container-max: 75rem; /* 1 200 px */
+  --gutter: 1.25rem; /* 20 px mobile, 24 px au-delà (voir media query) */
+  --section-padding: clamp(3.5rem, 8vw, 7rem);
+
+  --radius-field: 10px;
+  --radius-button: 14px;
+  --radius-card: 20px;
+  --radius-block: 28px;
+  --radius-full: 9999px;
+
+  --shadow-1: 0 1px 2px rgba(15, 47, 56, 0.06), 0 4px 12px rgba(15, 47, 56, 0.06);
+  --shadow-2: 0 2px 4px rgba(15, 47, 56, 0.06), 0 12px 32px rgba(15, 47, 56, 0.1);
+
+  --touch-min: 3rem; /* 48 px */
+  --touch-primary: 3.5rem; /* 56 px : boutons principaux */
+
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* ---- §5 Mouvement ---- */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --motion-rise: 12px; /* fondu-montée des blocs au défilement */
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --text-body: 1.125rem; /* 18 px ordinateur */
+    --gutter: 1.5rem; /* 24 px */
+  }
+}
+
+/* ---- §2 Mode confort de lecture (activé par ComfortToggle, P1.7) ---- */
+:root[data-comfort="on"] {
+  --text-body: 1.1953125rem; /* 17 px × 112,5 % */
+  --leading-body: 1.75;
+  --color-text: #06222a; /* 16,54 sur blanc */
+  --color-link: #004a57; /* 9,92 sur blanc */
+  --color-link-on-sand: #004a57;
+  --color-tint-teal: var(--color-white);
+  --color-tint-green: var(--color-white);
+  --color-tint-raspberry: var(--color-white);
+  --color-tint-azure: var(--color-white);
+  --color-tint-sand: var(--color-white);
+  --duration-fast: 0ms;
+  --duration-base: 0ms;
+  --duration-slow: 0ms;
+  --motion-rise: 0px;
+}
+
+@media (min-width: 64rem) {
+  :root[data-comfort="on"] {
+    --text-body: 1.265625rem; /* 18 px × 112,5 % */
+  }
+}
+
+/* Tout s'éteint avec prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --motion-rise: 0px;
+  }
+}
