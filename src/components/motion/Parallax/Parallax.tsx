@@ -28,7 +28,8 @@ export function Parallax({
   children,
   ...rest
 }: ParallaxProps) {
-  const Tag: ElementType = as;
+  // Assertion plutôt qu'annotation : une annotation serait rétrécie au type union de `as`.
+  const Tag = as as ElementType;
   const clamped = Math.max(-PARALLAX_MAX_PX, Math.min(PARALLAX_MAX_PX, amount));
   return (
     <Tag

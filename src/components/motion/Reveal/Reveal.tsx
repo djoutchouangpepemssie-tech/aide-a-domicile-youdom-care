@@ -97,7 +97,8 @@ export function Reveal({
     };
   }, [variant, threshold]);
 
-  const Tag: ElementType = as;
+  // Assertion plutôt qu'annotation : une annotation serait rétrécie au type union de `as`.
+  const Tag = as as ElementType;
   const vars: Record<string, string> = {};
   if (delay > 0) vars["--m-delay"] = `${delay}ms`;
   if (variant === "stagger" && stagger !== 60) vars["--m-stagger"] = `${stagger}ms`;

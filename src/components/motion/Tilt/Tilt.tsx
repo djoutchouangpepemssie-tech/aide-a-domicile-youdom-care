@@ -72,7 +72,8 @@ export function Tilt({
     element.style.transform = "";
   }
 
-  const Tag: ElementType = as;
+  // Assertion plutôt qu'annotation : une annotation serait rétrécie au type union de `as`.
+  const Tag = as as ElementType;
   return (
     <Tag
       className={cn("m-tilt", className)}
