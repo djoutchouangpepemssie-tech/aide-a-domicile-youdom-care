@@ -1,0 +1,29 @@
+{
+  "_lisezmoi": "Jeu de test fautif : Nanterre reprend la majorité des phrases de Puteaux (similarité au-dessus du seuil), cite un nombre absent des faits (12 000), et réutilise le sous-titre et une question de Puteaux.",
+  "code": "92050",
+  "seo": {
+    "titre": "Aide à domicile à Nanterre (92000) : Youdom Care intervient",
+    "description": "Aide à domicile à Nanterre : auxiliaires de vie pour personnes âgées et en situation de handicap, ressources du Petit-Nanterre au Parc et contacts utiles."
+  },
+  "sous_titre": "Une agence sur les quais, des auxiliaires qui connaissent les pentes des Bergères et du centre.",
+  "zone_editoriale": "## Vivre à domicile à Nanterre\n\nNanterre compte près de 97 000 habitants sur la rive gauche de la Seine, entre le quartier d'affaires et les coteaux du Mont-Valérien. Les personnes de 75 ans et plus représentent 6 % de la population, une part plus faible que dans le reste du département, mais qui progresse dans les quartiers anciens du centre-ville et des Bergères, là où les immeubles d'avant-guerre n'ont pas toujours d'ascenseur. Environ 12 000 personnes vivent seules.\n\nLa ville est en pente. Entre les quais et le plateau du vieux Puteaux, le dénivelé se ressent dès qu'on porte un cabas. Pour une personne qui marche avec une canne, ce relief change tout : la sortie au marché des Bergères le mercredi ou le samedi matin se prépare, et l'auxiliaire adapte l'itinéraire pour éviter les escaliers de la rue Roque de Fillol. Le métro et le Transilien desservent surtout le nord de la commune, tandis que les bus relient le centre aux quais.\n\nL'habitat mêle petites copropriétés anciennes, résidences des années soixante et tours récentes en bordure du quartier d'affaires. Dans les copropriétés anciennes, l'aide à domicile commence souvent par des courses portées et par un accompagnement dans l'escalier. Dans les résidences plus récentes, le besoin porte davantage sur la toilette, la préparation des repas et la présence de nuit.\n\nLes lieux de promenade accessibles sont l'île de Puteaux et ses allées plates, ainsi que les berges aménagées. Le point d'information seniors et le CCAS, installés à l'hôtel de ville, orientent les familles vers l'allocation personnalisée d'autonomie et vers les accueils de jour de la commune, utiles quand un proche atteint de la maladie d'Alzheimer a besoin d'une journée encadrée.\n\nPour l'aide à domicile, cela signifie des tournées organisées par quartier plutôt que par horaire, des interventions plus longues chez les personnes isolées des pavillons, et un lien étroit avec la consultation mémoire de l'hôpital Max Fourestier quand des troubles cognitifs apparaissent. Les familles nous demandent souvent de coordonner les passages avec le service de soins infirmiers pour que la toilette, le lever et le petit-déjeuner s'enchaînent sans attente.",
+  "questions": [
+    {
+      "question": "Intervenez-vous dans les immeubles sans ascenseur du vieux Puteaux ?",
+      "reponse": "Oui. Beaucoup de logements du centre et des Bergères sont dans des immeubles anciens sans ascenseur. L'auxiliaire porte les courses, accompagne dans l'escalier et adapte le rythme de la personne. Lors de la première visite, nous repérons ensemble les marches difficiles, l'éclairage et les points d'appui, puis nous proposons si besoin un aménagement simple, comme une seconde rampe."
+    },
+    {
+      "question": "Comment organisez-vous les interventions dans les pavillons du Mont-Valérien ?",
+      "reponse": "Ces maisons ont souvent des marches à l'entrée et une salle de bains à l'étage. Nous prévoyons des interventions plus longues, regroupées le matin pour la toilette et le lever, et nous conseillons des aménagements simples : barre d'appui, siège de douche, rampe. La coordination avec le service de soins infirmiers évite les attentes entre deux passages."
+    },
+    {
+      "question": "Où se promener à Nanterre avec une personne en fauteuil ?",
+      "reponse": "Le parc du Chemin de l'Île, le long de la Seine, a des allées planes et des bancs à intervalles réguliers ; le parc André-Malraux propose un tour du lac accessible. L'auxiliaire choisit l'heure selon la météo et la fatigue de la personne, et prévoit un retour en transport en commun si la distance devient trop longue."
+    }
+  ],
+  "semaine_type": "personne-agee-seule",
+  "faits_utilises": [0, 1, 4, 5, 12],
+  "auteur": { "nom": "Équipe Youdom Care", "fonction": "Responsable d'agence" },
+  "statut": "a_relire",
+  "maj": "2026-09-10"
+}

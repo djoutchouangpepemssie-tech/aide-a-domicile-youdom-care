@@ -1,0 +1,29 @@
+{
+  "_lisezmoi": "Jeu de test : page locale conforme (Puteaux). Chaque nombre du texte vient des faits ou de la démographie de data/local/92062.json.",
+  "code": "92062",
+  "seo": {
+    "titre": "Aide à domicile à Puteaux (92800) : agence Youdom Care",
+    "description": "Aide à domicile à Puteaux : auxiliaires de vie de jour et de nuit, agence du quai de Dion-Bouton, ressources locales sourcées et exemple de semaine type."
+  },
+  "sous_titre": "Une agence sur les quais, des auxiliaires qui connaissent les pentes des Bergères et du centre.",
+  "zone_editoriale": "## Vivre à domicile à Puteaux\n\nPuteaux compte près de 45 000 habitants sur la rive gauche de la Seine, entre le quartier d'affaires et les coteaux du Mont-Valérien. Les personnes de 75 ans et plus représentent 8 % de la population, une part plus faible que dans le reste du département, mais qui progresse dans les quartiers anciens du centre-ville et des Bergères, là où les immeubles d'avant-guerre n'ont pas toujours d'ascenseur.\n\nLa ville est en pente. Entre les quais et le plateau du vieux Puteaux, le dénivelé se ressent dès qu'on porte un cabas. Pour une personne qui marche avec une canne, ce relief change tout : la sortie au [marché des Bergères](https://www.puteaux.fr/) le mercredi ou le samedi matin se prépare, et l'auxiliaire adapte l'itinéraire pour éviter les escaliers de la rue Roque de Fillol. Le métro et le Transilien desservent surtout le nord de la commune, tandis que les bus relient le centre aux quais.\n\nL'habitat mêle petites copropriétés anciennes, résidences des années soixante et tours récentes en bordure du quartier d'affaires. Dans les copropriétés anciennes, l'aide à domicile commence souvent par des courses portées et par un accompagnement dans l'escalier. Dans les résidences plus récentes, le besoin porte davantage sur la toilette, la préparation des repas et la présence de nuit.\n\nLes lieux de promenade accessibles sont l'île de Puteaux et ses allées plates, ainsi que les berges aménagées. Le point d'information seniors et le CCAS, installés à l'hôtel de ville, orientent les familles vers l'allocation personnalisée d'autonomie et vers les 2 accueils de jour de la commune, utiles quand un proche atteint de la maladie d'Alzheimer a besoin d'une journée encadrée.\n\nCe que cela implique pour l'aide à domicile : des interventions courtes mais fréquentes pour les personnes qui vivent seules dans le centre, une attention particulière aux déplacements à pied, et une coordination régulière avec l'hôpital de Puteaux pour les retours à domicile après une hospitalisation. Notre agence est installée sur les quais, ce qui permet à l'auxiliaire d'arriver vite en cas de besoin et de revenir dans la journée si l'organisation prévue ne convient pas. Les familles qui travaillent dans le quartier d'affaires apprécient de pouvoir passer à l'agence entre midi et deux pour faire le point.",
+  "questions": [
+    {
+      "question": "Intervenez-vous dans les immeubles sans ascenseur du vieux Puteaux ?",
+      "reponse": "Oui. Beaucoup de logements du centre et des Bergères sont dans des immeubles anciens sans ascenseur. L'auxiliaire porte les courses, accompagne dans l'escalier et adapte le rythme de la personne. Lors de la première visite, nous repérons ensemble les marches difficiles, l'éclairage et les points d'appui, puis nous proposons si besoin un aménagement simple, comme une seconde rampe."
+    },
+    {
+      "question": "Comment se passe la sortie au marché des Bergères avec une auxiliaire ?",
+      "reponse": "L'auxiliaire vient chercher la personne à domicile, choisit un trajet sans escalier et porte le cabas. Le marché se tient le mercredi et le samedi matin. Au retour, elle range les courses, prépare un repas si c'est prévu, et note dans le carnet de liaison ce qui a été acheté pour que la famille suive le budget."
+    },
+    {
+      "question": "Qui contacter à Puteaux pour l'allocation personnalisée d'autonomie ?",
+      "reponse": "Le point d'information seniors et le CCAS, tous deux à l'hôtel de ville, reçoivent les familles et transmettent le dossier au service APA du département. Nous pouvons vous accompagner dans la constitution du dossier et fournir les attestations d'intervention demandées, puis ajuster le plan d'aide quand la décision arrive."
+    }
+  ],
+  "semaine_type": "personne-agee-seule",
+  "faits_utilises": [0, 1, 4, 5, 6, 7, 8],
+  "auteur": { "nom": "Équipe Youdom Care", "fonction": "Responsable d'agence" },
+  "statut": "publie",
+  "maj": "2026-09-10"
+}

@@ -1,0 +1,38 @@
+{
+  "_lisezmoi": "Jeu de test fautif : le deuxième fait n'a ni source_url ni collected_at.",
+  "code": "92",
+  "kind": "departement",
+  "nom": "Hauts-de-Seine",
+  "chemin": "/aide-a-domicile/hauts-de-seine/",
+  "slug": "hauts-de-seine",
+  "departement": "92",
+  "departement_nom": "Hauts-de-Seine",
+  "parent": "idf",
+  "population": 1640000,
+  "agence_proche": { "id": "puteaux", "distance_km": 0 },
+  "facts": [
+    {
+      "type": "mdph",
+      "label": "MDPH des Hauts-de-Seine",
+      "address": "2 rue Rigault, 92000 Nanterre",
+      "source_url": "https://lannuaire.service-public.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "service-apa",
+      "label": "Pôles autonomie territoriaux",
+      "value": "Instruction de l'APA et de la PCH"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Allocation personnalisée d'autonomie",
+      "value": "Instruite par le conseil départemental",
+      "source_url": "https://www.hauts-de-seine.fr/",
+      "collected_at": "2026-09-01"
+    }
+  ],
+  "generated_at": "2026-09-01",
+  "sources": [
+    { "label": "Conseil départemental", "url": "https://www.hauts-de-seine.fr/", "collected_at": "2026-09-01" }
+  ]
+}

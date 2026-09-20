@@ -1,0 +1,105 @@
+{
+  "_lisezmoi": "Jeu de test : faits fictifs mais complets (source et date) pour les contrôles locaux.",
+  "code": "92062",
+  "kind": "commune",
+  "nom": "Puteaux",
+  "chemin": "/aide-a-domicile/hauts-de-seine/puteaux/",
+  "slug": "puteaux",
+  "departement": "92",
+  "departement_nom": "Hauts-de-Seine",
+  "codes_postaux": ["92800"],
+  "parent": "92",
+  "centre": { "lat": 48.884, "lng": 2.238 },
+  "superficie_ha": 319,
+  "population": 44902,
+  "demographie": {
+    "millesime": "2021",
+    "population": 44902,
+    "part_60_74": 12.4,
+    "part_75_plus": 8.1,
+    "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-92062",
+    "collected_at": "2026-09-01"
+  },
+  "agence_proche": { "id": "puteaux", "distance_km": 0.9 },
+  "communes_voisines": [
+    { "code": "92050", "nom": "Nanterre", "slug": "nanterre", "distance_km": 2.6, "page": true },
+    { "code": "92026", "nom": "Courbevoie", "slug": "courbevoie", "distance_km": 1.9, "page": false }
+  ],
+  "vague": 1,
+  "motif_vague": "commune-agence",
+  "facts": [
+    {
+      "type": "point-information",
+      "label": "Point d'information seniors de Puteaux",
+      "address": "131 rue de la République, 92800 Puteaux",
+      "commune_insee": "92062",
+      "telephone": "01 46 92 92 92",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-informations-locaux-personnes-agees/",
+      "source_label": "CNSA, points d'information locaux",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "ccas",
+      "label": "CCAS de Puteaux",
+      "address": "131 rue de la République, 92800 Puteaux",
+      "commune_insee": "92062",
+      "url": "https://www.puteaux.fr/",
+      "source_url": "https://lannuaire.service-public.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "mdph",
+      "label": "MDPH des Hauts-de-Seine",
+      "address": "2 rue Rigault, 92000 Nanterre",
+      "source_url": "https://lannuaire.service-public.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "service-apa",
+      "label": "Service APA du département",
+      "value": "Pôle autonomie territorial",
+      "source_url": "https://www.hauts-de-seine.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueil de jour Les Tilleuls",
+      "address": "10 rue Roque de Fillol, 92800 Puteaux",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueil de jour de la Seine",
+      "address": "4 rue Marcelin Berthelot, 92800 Puteaux",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "hopital",
+      "label": "Hôpital de Puteaux",
+      "address": "1 boulevard Richard Wallace, 92800 Puteaux",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "marche",
+      "label": "Marché des Bergères",
+      "value": "Mercredi et samedi matin",
+      "source_url": "https://www.puteaux.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "relief-deplacements",
+      "label": "Transports en commun",
+      "value": "Métro ligne 1, Transilien L, bus 144 et 158 ; forte pente entre les quais et le plateau",
+      "source_url": "https://www.iledefrance-mobilites.fr/",
+      "collected_at": "2026-09-01"
+    }
+  ],
+  "generated_at": "2026-09-01",
+  "sources": [
+    { "label": "Insee", "url": "https://www.insee.fr/", "collected_at": "2026-09-01" },
+    { "label": "data.gouv.fr", "url": "https://www.data.gouv.fr/", "collected_at": "2026-09-01" }
+  ]
+}
