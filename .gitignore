@@ -37,8 +37,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# données brutes des pipelines locaux (seules les données transformées et sourcées entrent dans data/local/)
-/data/raw/
+# données brutes des pipelines locaux (seules les données transformées et sourcées entrent dans data/local/) ;
+# data/raw/README.md (sources, dates, licences) reste versionné
+/data/raw/*
+!/data/raw/README.md
 /.lighthouseci/
 /.next-dev-*.log
 /tests/e2e/.mails/

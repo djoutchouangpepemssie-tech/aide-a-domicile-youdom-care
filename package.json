@@ -20,6 +20,7 @@
     "indexnow": "tsx scripts/indexnow.ts",
     "data:agences": "tsx scripts/data/geocode-agencies.ts",
     "data:communes": "tsx scripts/data/fetch-communes.ts",
+    "data:local": "tsx scripts/data/local/index.ts",
     "data:phone": "libphonenumber-metadata-generator data/phone-metadata.fr.json --countries FR"
   },
   "dependencies": {
