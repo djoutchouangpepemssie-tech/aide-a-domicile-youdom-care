@@ -1,0 +1,18 @@
+{
+  "_lisezmoi": "Page introuvable (statut 404, docs/04 §2 « Erreurs ») : jamais indexée, jamais de redirection. Elle propose la recherche de commune, le téléphone (site.config.json), les cinq piliers avec leurs icônes (en-têtes des pages services construites), le plan du site et le rappel. Les jetons {téléphone} sont remplacés par la page.",
+  "seo": {
+    "titre": "Page introuvable : reprenez le fil sur le site Youdom Care",
+    "description": "Cette adresse ne mène nulle part. Vérifiez votre commune, choisissez la page qui vous concerne ou appelez un conseiller Youdom Care pour reprendre le fil."
+  },
+  "ariane": "Page introuvable",
+  "h1": "Cette page n'existe pas, ou plus",
+  "texte": "L'adresse contient peut-être une faute de frappe, ou la page a changé de place. Rien de grave : voici de quoi reprendre le fil.",
+  "commune_h2": "Intervenons-nous près de chez vous ?",
+  "commune_texte": "Tapez votre commune ou votre code postal : nous vous disons tout de suite si nous venons chez vous.",
+  "piliers_h2": "Pour qui cherchez-vous de l'aide ?",
+  "appel_h2": "Vous préférez nous parler ?",
+  "appel_texte": "Appelez le {téléphone} : un conseiller vous répond et vous oriente.",
+  "liens_h2": "Ou reprenez depuis le début",
+  "plan_du_site": "Voir le plan du site",
+  "retour_accueil": "Retour à l'accueil"
+}

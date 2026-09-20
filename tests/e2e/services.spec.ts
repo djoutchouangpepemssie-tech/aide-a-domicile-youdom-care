@@ -438,6 +438,66 @@ test.describe("Pages services (P4)", () => {
     if (atEnd) expect(atEnd.y + atEnd.height).toBeLessThanOrEqual(0);
   });
 
+  test("/maladies-neurodegeneratives/alzheimer/ : JSON-LD Organization, BreadcrumbList, Service, WebPage et FAQPage (P5.2)", async ({
+    page,
+  }) => {
+    await page.goto("/maladies-neurodegeneratives/alzheimer/");
+    const blocks = await page
+      .locator('script[type="application/ld+json"]')
+      .evaluateAll((scripts) => scripts.map((s) => s.textContent ?? ""));
+    const nodes = blocks.map((block) => JSON.parse(block) as Record<string, unknown>);
+    const types = nodes.map((node) => node["@type"]);
+    expect(types.filter((t) => t === "Organization")).toHaveLength(1);
+    expect(types).toEqual(
+      expect.arrayContaining(["BreadcrumbList", "Service", "WebPage", "FAQPage"]),
+    );
+    // Page non relue : jamais de MedicalWebPage ; aucun type interdit, aucune valeur vide.
+    expect(types).not.toContain("MedicalWebPage");
+    expect(blocks.join("\n")).not.toMatch(/"(Review|AggregateRating)"|null|""|\[\]|\{\}/);
+    const breadcrumb = nodes.find((node) => node["@type"] === "BreadcrumbList");
+    const items = breadcrumb?.itemListElement as { position: number; item?: string }[];
+    expect(items.map((item) => item.position)).toEqual([1, 2, 3]);
+    expect(items[0]?.item).toMatch(/^https:\/\//);
+    expect(items[1]?.item).toMatch(/^https:\/\/.+\/maladies-neurodegeneratives\/$/);
+  });
+
+  test("/personnes-agees/ : « À lire aussi » entre la FAQ et le formulaire, sœurs et services conseillés (P5.5)", async ({
+    page,
+  }) => {
+    await page.goto("/personnes-agees/");
+    const nav = page.getByRole("navigation", { name: "À lire aussi" });
+    await expect(nav).toBeVisible();
+    const hrefs = await nav
+      .getByRole("link")
+      .evaluateAll((elements) => elements.map((element) => element.getAttribute("href") ?? ""));
+    expect(hrefs.length).toBeGreaterThanOrEqual(3);
+    expect(hrefs.length).toBeLessThanOrEqual(6);
+    // Sous-pages d'abord, puis les sœurs déclarées (neuro, aidants), puis un service conseillé.
+    expect(hrefs.slice(0, 3)).toEqual([
+      "/personnes-agees/aide-a-l-autonomie/",
+      "/personnes-agees/vie-quotidienne/",
+      "/personnes-agees/compagnie-et-stimulation/",
+    ]);
+    expect(hrefs).toContain("/maladies-neurodegeneratives/");
+    expect(hrefs).toContain("/aidants/");
+    expect(hrefs).toContain("/services/garde-de-nuit/");
+    await expect(nav.locator('a[href="/services/garde-de-nuit/"]')).toContainText("Nos services");
+    await expect(nav.locator("a [data-icon]")).toHaveCount(hrefs.length);
+    const order = await page.evaluate(() => {
+      const ids = ["faq", "a-lire-aussi", "formulaire"].map((id) => document.getElementById(id));
+      return ids.every((element, index) => {
+        const previous = ids[index - 1];
+        if (element === null) return false;
+        if (index === 0 || !previous) return index === 0;
+        return Boolean(
+          previous.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING,
+        );
+      });
+    });
+    expect(order).toBe(true);
+    await expectNoSeriousAxeViolations(page);
+  });
+
   test("un chemin inconnu renvoie 404", async ({ page }) => {
     const response = await page.goto("/maladies-neurodegeneratives/inconnue/");
     expect(response?.status()).toBe(404);
