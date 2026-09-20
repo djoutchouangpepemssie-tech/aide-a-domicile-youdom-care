@@ -1,0 +1,65 @@
+{
+  "_lisezmoi": "Aides financières présentées sur la page Tarifs et aides (docs/03 §9) et dans les cartes des pages services. Ici : le public concerné, la démarche et la source officielle, en termes généraux. Les montants, plafonds et conditions chiffrés vivent sur les pages détaillées (P2.7, P2.8), repris des sources officielles avec leur année : aucun montant n'est écrit ici.",
+  "aides": [
+    {
+      "id": "credit-d-impot-et-avance-immediate",
+      "nom": "Crédit d'impôt et avance immédiate",
+      "pour_qui": "Toute personne qui règle des services à la personne à domicile, qu'elle soit imposable ou non.",
+      "comment": "Lors de la déclaration de revenus, ou chaque mois par l'avance immédiate proposée par l'Urssaf.",
+      "page": "/tarifs-et-aides/credit-d-impot-et-avance-immediate/",
+      "source": { "libelle": "impots.gouv.fr", "href": "https://www.impots.gouv.fr/" }
+    },
+    {
+      "id": "apa",
+      "nom": "APA, l'allocation personnalisée d'autonomie",
+      "pour_qui": "Les personnes de 60 ans et plus en perte d'autonomie, qui vivent à domicile.",
+      "comment": "Demande auprès du conseil départemental, avec une évaluation à domicile.",
+      "page": "/tarifs-et-aides/apa/",
+      "source": {
+        "libelle": "pour-les-personnes-agees.gouv.fr",
+        "href": "https://www.pour-les-personnes-agees.gouv.fr/"
+      }
+    },
+    {
+      "id": "pch",
+      "nom": "PCH, la prestation de compensation du handicap",
+      "pour_qui": "Les personnes en situation de handicap, selon des conditions d'âge et de handicap évaluées par la MDPH.",
+      "comment": "Dossier déposé auprès de la MDPH de votre département.",
+      "page": "/tarifs-et-aides/pch/",
+      "source": {
+        "libelle": "monparcourshandicap.gouv.fr",
+        "href": "https://www.monparcourshandicap.gouv.fr/"
+      }
+    },
+    {
+      "id": "aeeh",
+      "nom": "AEEH, l'allocation d'éducation de l'enfant handicapé",
+      "pour_qui": "Les parents d'un enfant de moins de 20 ans en situation de handicap.",
+      "comment": "Dossier déposé auprès de la MDPH ; l'allocation est versée par la CAF ou la MSA.",
+      "page": "/tarifs-et-aides/aeeh/",
+      "source": {
+        "libelle": "monparcourshandicap.gouv.fr",
+        "href": "https://www.monparcourshandicap.gouv.fr/"
+      }
+    },
+    {
+      "id": "cesu",
+      "nom": "CESU préfinancés",
+      "pour_qui": "Les salariés, agents et retraités dont l'employeur, le comité social ou la caisse propose des CESU préfinancés.",
+      "comment": "Auprès de l'organisme qui les distribue ; ils règlent tout ou partie des prestations.",
+      "page": "/tarifs-et-aides/cesu/",
+      "source": { "libelle": "cesu.urssaf.fr", "href": "https://www.cesu.urssaf.fr/" }
+    },
+    {
+      "id": "aides-apres-hospitalisation",
+      "nom": "Aides après une hospitalisation",
+      "pour_qui": "Les retraités, via leur caisse de retraite, et parfois les adhérents d'une mutuelle, pour le retour à domicile.",
+      "comment": "Demande à préparer avant la sortie, avec le service social de l'hôpital.",
+      "page": "/tarifs-et-aides/aides-apres-hospitalisation/",
+      "source": {
+        "libelle": "pour-les-personnes-agees.gouv.fr",
+        "href": "https://www.pour-les-personnes-agees.gouv.fr/"
+      }
+    }
+  ]
+}

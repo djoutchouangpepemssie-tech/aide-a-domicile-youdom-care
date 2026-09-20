@@ -1,0 +1,73 @@
+{
+  "_lisezmoi": "Page « Comment ça marche » (docs/03 §9). Les quatre étapes viennent de content/pages/accueil.json (bloc 6, seule source). Les faits cités viennent du dépliant (évaluation et devis gratuits, modification ou arrêt à tout moment, disponibilité 7j/7 et 24h/24) et des engagements de content/engagements.json : une phrase reliée à un engagement non validé est masquée en production. Les jetons {téléphone} sont remplacés par la page.",
+  "seo": {
+    "titre": "Comment ça marche : l'aide à domicile en quatre étapes",
+    "description": "Un appel, une évaluation gratuite chez vous, une équipe présentée avant de commencer, un suivi lisible : comment un accompagnement Youdom Care démarre."
+  },
+  "h1": "Comment ça marche : de votre appel au premier jour",
+  "chapo": "Quatre étapes, un référent, un suivi que vous pouvez lire. Voici comment un accompagnement commence, et comment il s'ajuste quand la vie change.",
+  "etapes_h2": "Comment ça commence",
+  "suivi": {
+    "h2": "Le suivi, concrètement",
+    "texte": "Après le démarrage, vous n'êtes pas seul. Voici les rendez-vous que nous prenons avec vous."
+  },
+  "si_ca_ne_va_pas": {
+    "h2": "Et si ça ne va pas ?",
+    "items": [
+      {
+        "titre": "L'intervenant ne vous convient pas",
+        "texte": "Dites-le à votre référent, sans détour.",
+        "texte_engagement": "Si le courant ne passe pas, nous changeons.",
+        "engagement": "E2"
+      },
+      {
+        "titre": "Vos besoins changent",
+        "texte": "À tout moment, vous pouvez modifier ou arrêter l'accompagnement, dans le respect de la réglementation applicable."
+      },
+      {
+        "titre": "Vous avez une question, un doute",
+        "texte": "Appelez-nous au {téléphone}. Un conseiller vous répond, et vous dit franchement ce qu'il est possible de faire."
+      }
+    ]
+  },
+  "faq": {
+    "h2": "Questions fréquentes",
+    "items": [
+      {
+        "id": "evaluation",
+        "question": "L'évaluation à domicile est-elle payante ?",
+        "reponse": "Non. L'évaluation à domicile est gratuite, comme le devis détaillé qui la suit."
+      },
+      {
+        "id": "engagement",
+        "question": "Devons-nous nous engager sur une durée ?",
+        "reponse": "Non. À tout moment, vous pouvez modifier ou arrêter l'accompagnement, dans le respect de la réglementation applicable."
+      },
+      {
+        "id": "nuit-week-end",
+        "question": "Intervenez-vous la nuit et le week-end ?",
+        "reponse": "Oui : sept jours sur sept et 24h/24, selon l'organisation définie avec vous.",
+        "condition": "disponibilite_24_7"
+      },
+      {
+        "id": "modes",
+        "question": "Prestataire ou mandataire : quelle différence ?",
+        "reponse": "En mode prestataire, Youdom Care est l'employeur de l'intervenant. En mode mandataire, c'est vous. Nous vous expliquons les deux, sans parti pris.",
+        "lien": {
+          "libelle": "Comparer les deux modes",
+          "href": "/comment-ca-marche/prestataire-ou-mandataire/"
+        }
+      },
+      {
+        "id": "territoire",
+        "question": "Où intervenez-vous ?",
+        "reponse": "À Paris et dans les sept autres départements d'Île-de-France, depuis nos agences.",
+        "lien": { "libelle": "Vérifier votre commune", "href": "/aide-a-domicile/" }
+      }
+    ]
+  },
+  "appel": {
+    "h2": "Prêt à en parler ?",
+    "texte": "Un appel, sans engagement. Nous vous écoutons et vous disons ce que nous pouvons faire."
+  }
+}

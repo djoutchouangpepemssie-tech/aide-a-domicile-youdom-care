@@ -3,19 +3,37 @@ import commitmentsJson from "../../content/engagements.json";
 import interfaceJson from "../../content/interface.json";
 import navigationJson from "../../content/navigation.json";
 import siteConfigJson from "../../content/site.config.json";
+import aboutJson from "../../content/pages/a-propos.json";
+import homePageJson from "../../content/pages/accueil.json";
+import howItWorksJson from "../../content/pages/comment-ca-marche.json";
+import modesJson from "../../content/pages/prestataire-ou-mandataire.json";
+import pricingPageJson from "../../content/pages/tarifs-et-aides.json";
+import aidsJson from "../../content/aides.json";
 import weekExamplesJson from "../../content/semaines-types.json";
 import pricingJson from "../../content/tarifs.json";
 import {
+  aboutSchema,
+  aidsSchema,
   commitmentsSchema,
+  homePageSchema,
+  howItWorksSchema,
   interfaceSchema,
+  modesPageSchema,
   navigationSchema,
+  pricingPageSchema,
   pricingSchema,
   siteConfigSchema,
   weekExamplesSchema,
+  type AboutContent,
+  type Aids,
   type Commitments,
+  type HomePage,
+  type HowItWorksPage,
   type InterfaceTexts,
+  type ModesPage,
   type Navigation,
   type Pricing,
+  type PricingPage,
   type SiteConfig,
   type WeekExamples,
 } from "./schemas";
@@ -50,6 +68,47 @@ export function getWeekExamples(): WeekExamples {
   return weekExamples;
 }
 
+let homePage: HomePage | undefined;
+
+export function getHomePage(): HomePage {
+  homePage ??= parseContent(homePageSchema, homePageJson, "pages/accueil.json");
+  return homePage;
+}
+
+let howItWorks: HowItWorksPage | undefined;
+
+export function getHowItWorksPage(): HowItWorksPage {
+  howItWorks ??= parseContent(howItWorksSchema, howItWorksJson, "pages/comment-ca-marche.json");
+  return howItWorks;
+}
+
+let modesPage: ModesPage | undefined;
+
+export function getModesPage(): ModesPage {
+  modesPage ??= parseContent(modesPageSchema, modesJson, "pages/prestataire-ou-mandataire.json");
+  return modesPage;
+}
+
+let pricingPage: PricingPage | undefined;
+let aids: Aids | undefined;
+
+export function getPricingPage(): PricingPage {
+  pricingPage ??= parseContent(pricingPageSchema, pricingPageJson, "pages/tarifs-et-aides.json");
+  return pricingPage;
+}
+
+export function getAids(): Aids {
+  aids ??= parseContent(aidsSchema, aidsJson, "aides.json");
+  return aids;
+}
+
+let about: AboutContent | undefined;
+
+export function getAbout(): AboutContent {
+  about ??= parseContent(aboutSchema, aboutJson, "pages/a-propos.json");
+  return about;
+}
+
 export function getSiteConfig(): SiteConfig {
   siteConfig ??= parseContent(siteConfigSchema, siteConfigJson, "site.config.json");
   return siteConfig;
@@ -79,5 +138,11 @@ export function loadAllContent() {
     interfaceTexts: getInterfaceTexts(),
     navigation: getNavigation(),
     weekExamples: getWeekExamples(),
+    homePage: getHomePage(),
+    howItWorks: getHowItWorksPage(),
+    modesPage: getModesPage(),
+    pricingPage: getPricingPage(),
+    aids: getAids(),
+    about: getAbout(),
   };
 }

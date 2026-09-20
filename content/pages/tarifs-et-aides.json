@@ -1,0 +1,55 @@
+{
+  "_lisezmoi": "Page « Tarifs et aides » (docs/03 §9, docs/07 §1). Les prix viennent exclusivement de content/tarifs.json : tant qu'il est vide, le tableau, les exemples et les frais sont masqués et la page ne montre que le devis gratuit et les aides. Les exemples mensuels sont calculés (src/lib/pricing) sur 52/12 semaines par mois.",
+  "seo": {
+    "titre": "Tarifs de l'aide à domicile et toutes les aides financières",
+    "description": "Prix TTC par prestation et par mode, exemples mensuels, devis gratuit, et les aides APA, PCH, AEEH, CESU, crédit d'impôt qui réduisent le reste à charge."
+  },
+  "ariane": "Tarifs et aides",
+  "h1": "Tarifs et aides : ce que vous paierez vraiment",
+  "chapo": "Un prix clair, un devis gratuit, et toutes les aides auxquelles vous avez droit.",
+  "tarifs": {
+    "h2": "Nos prix, par prestation et par mode",
+    "texte": "Le prix TTC avant avantage fiscal est l'information principale. Le prix HT, l'unité et le mode d'intervention sont indiqués pour chaque prestation.",
+    "colonnes": {
+      "prestation": "Prestation",
+      "activite": "Activité",
+      "mode": "Mode",
+      "prix_ttc": "Prix TTC",
+      "prix_ht": "Prix HT",
+      "apres_credit": "Après crédit d'impôt"
+    },
+    "date_application": "Tarifs applicables au {date}",
+    "majorations_h3": "Majorations",
+    "degressivite_h3": "Tarifs dégressifs",
+    "degressivite_ligne": "Jusqu'à {heures} h par semaine : {prix} TTC de l'heure"
+  },
+  "sans_tarifs": {
+    "titre": "Un devis gratuit et détaillé",
+    "texte": "Le prix dépend du nombre d'heures et du type d'accompagnement. Vous recevez un devis gratuit et détaillé après l'évaluation à domicile, elle aussi gratuite."
+  },
+  "exemples": {
+    "h2": "Ce que ça représente par mois",
+    "texte": "Trois exemples calculés sur {semaines} semaines par mois, avant et après crédit d'impôt. Ce ne sont que des repères : votre devis tient compte de votre situation.",
+    "heures": [5, 10, 20],
+    "colonne_heures": "{heures} h par semaine",
+    "avant": "Avant crédit d'impôt",
+    "apres": "Après crédit d'impôt"
+  },
+  "frais": {
+    "h2": "Frais annexes",
+    "texte": "Ils sont indiqués sur le devis, jamais ajoutés après coup."
+  },
+  "devis": {
+    "titre": "Devis personnalisé gratuit",
+    "texte": "Pour toute prestation, sur simple demande, après une évaluation gratuite à domicile."
+  },
+  "aides": {
+    "h2": "Les aides qui réduisent votre reste à charge",
+    "texte": "Plusieurs aides se cumulent souvent. Chaque carte renvoie à la page détaillée et à la source officielle.",
+    "lien_page": "Tout savoir sur cette aide"
+  },
+  "appel": {
+    "h2": "Estimons ensemble votre budget",
+    "texte": "Un conseiller vous aide à évaluer le nombre d'heures, les aides possibles et le reste à charge. Sans engagement."
+  }
+}

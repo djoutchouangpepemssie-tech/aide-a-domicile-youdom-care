@@ -279,8 +279,29 @@ export const interfaceSchema = z.strictObject({
     comment: text,
     lien_externe: text,
   }),
+  page_aide: z.strictObject({
+    mis_a_jour: text.includes("{date}"),
+    sources_h2: text,
+    source_verifiee: text.includes("{date}"),
+    source_consultee: text.includes("{date}"),
+    avertissement: text,
+    a_retenir: text,
+    retour: text,
+  }),
   situations: z.strictObject({
     lire: text,
+  }),
+  mandataire_notice: z.strictObject({
+    titre: text,
+    texte: text,
+  }),
+  recherche_commune: z.strictObject({
+    champ: text,
+    bouton: text,
+    oui: text.includes("{commune}").includes("{agence}"),
+    oui_sans_agence: text.includes("{commune}"),
+    aucun_resultat: text,
+    suggestions: text.includes("{n}"),
   }),
   fil_ariane: z.strictObject({
     nom: text,
@@ -385,5 +406,326 @@ export const weekExamplesSchema = z.strictObject({
 });
 export type WeekExamples = z.infer<typeof weekExamplesSchema>;
 export type WeekExample = z.infer<typeof weekExampleSchema>;
+
+/* ---------- content/pages/accueil.json ---------- */
+
+const illustrationName = z.enum(["maison", "mains", "tasse", "lune", "cartable", "carnet"]);
+const engagementCode = z.string().regex(/^E\d+$/);
+
+export const homePageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  banniere: z.strictObject({
+    sur_titre: text,
+    h1: text,
+    chapo: text,
+    lien_telephone: text.includes("{téléphone}"),
+    reassurance: z.array(text).min(1),
+    note_astérisque: text,
+    note_href: internalPath,
+    illustration: illustrationName,
+  }),
+  situations: z.strictObject({
+    h2: text,
+    texte: text,
+    cartes: z
+      .array(
+        z.strictObject({
+          citation: text,
+          texte: text,
+          lien: text,
+          href: internalPath,
+          illustration: illustrationName,
+        }),
+      )
+      .length(6),
+  }),
+  engagements: z.strictObject({
+    h2: text,
+    items: z.array(z.strictObject({ engagement: engagementCode, titre: text, texte: text })).min(1),
+  }),
+  neuro: z.strictObject({
+    h2: text,
+    texte: text,
+    stades: z.array(z.strictObject({ titre: text, texte: text.optional() })).length(3),
+    bouton: text,
+    href: internalPath,
+  }),
+  semaine: z.strictObject({
+    h2: text,
+    texte: text,
+    onglets_nom: text,
+    onglets: z.array(z.strictObject({ exemple: slug, libelle: text })).length(3),
+  }),
+  etapes: z.strictObject({
+    h2: text,
+    items: z
+      .array(
+        z
+          .strictObject({
+            titre: text,
+            texte: text,
+            texte_engagement: text.optional(),
+            engagement: engagementCode.optional(),
+          })
+          .refine(
+            (step) => (step.texte_engagement === undefined) === (step.engagement === undefined),
+            {
+              message: "texte_engagement et engagement vont ensemble",
+            },
+          ),
+      )
+      .min(1),
+  }),
+  prix: z.strictObject({
+    h2: text,
+    texte: text,
+    carte_tarifs: z.strictObject({ titre: text, bouton: text, href: internalPath }),
+    carte_aides: z.strictObject({ titre: text, aides: z.array(text).min(1), href: internalPath }),
+  }),
+  proches: z.strictObject({
+    h2: text,
+    texte: text,
+    href: internalPath,
+    illustration: illustrationName,
+  }),
+  territoire: z.strictObject({
+    h2: text,
+    texte: text.includes("{agences}"),
+  }),
+  magazine: z.strictObject({
+    h2: text,
+    bouton: text,
+    href: internalPath,
+  }),
+  appel_final: z.strictObject({
+    h2: text,
+    texte: text,
+    bouton_telephone: text.includes("{téléphone}"),
+  }),
+  recrutement: z.strictObject({
+    accroche: text,
+    texte: text,
+    lien: text,
+    href: internalPath,
+  }),
+});
+export type HomePage = z.infer<typeof homePageSchema>;
+
+/* ---------- Pages de fonctionnement (docs/03 §9) ---------- */
+
+/** Balises titre (50 à 60 caractères) et description (140 à 155) de docs/01 §8. */
+export const seoFieldsSchema = z.strictObject({
+  titre: z.string().min(50).max(60),
+  description: z.string().min(140).max(155),
+});
+export type SeoFields = z.infer<typeof seoFieldsSchema>;
+
+const gatedItemSchema = z
+  .strictObject({
+    titre: text,
+    texte: text,
+    texte_engagement: text.optional(),
+    engagement: engagementCode.optional(),
+  })
+  .refine((item) => (item.texte_engagement === undefined) === (item.engagement === undefined), {
+    message: "texte_engagement et engagement vont ensemble",
+  });
+
+const faqItemSchema = z.strictObject({
+  id: slug,
+  question: text,
+  reponse: text,
+  /** Affiché seulement si la condition est vraie dans site.config.json. */
+  condition: z.enum(["disponibilite_24_7"]).optional(),
+  lien: z.strictObject({ libelle: text, href: internalPath }).optional(),
+});
+export type FaqItem = z.infer<typeof faqItemSchema>;
+
+export const howItWorksSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  h1: text,
+  chapo: text,
+  etapes_h2: text,
+  suivi: z.strictObject({ h2: text, texte: text }),
+  si_ca_ne_va_pas: z.strictObject({ h2: text, items: z.array(gatedItemSchema).min(1) }),
+  faq: z.strictObject({ h2: text, items: z.array(faqItemSchema).min(1) }),
+  appel: z.strictObject({ h2: text, texte: text }),
+});
+export type HowItWorksPage = z.infer<typeof howItWorksSchema>;
+
+const modeChoiceSchema = z.strictObject({ titre: text, texte: text, mode: interventionModeSchema });
+
+export const modesPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  tableau: z.strictObject({
+    h2: text,
+    legende: text,
+    colonnes: z.strictObject({ critere: text, prestataire: text, mandataire: text }),
+    lignes: z.array(z.strictObject({ critere: text, prestataire: text, mandataire: text })).min(3),
+    note: text,
+  }),
+  question: z.strictObject({ h2: text, texte: text, oui: modeChoiceSchema, non: modeChoiceSchema }),
+  appel: z.strictObject({ h2: text, texte: text }),
+  liens: z.strictObject({ tarifs: z.strictObject({ libelle: text, href: internalPath }) }),
+});
+export type ModesPage = z.infer<typeof modesPageSchema>;
+
+/* ---------- content/aides.json ---------- */
+
+const externalSource = z.strictObject({ libelle: text, href: z.url() });
+
+const aidSchema = z.strictObject({
+  id: slug,
+  nom: text,
+  pour_qui: text,
+  comment: text,
+  page: internalPath,
+  source: externalSource,
+});
+export type Aid = z.infer<typeof aidSchema>;
+
+export const aidsSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  aides: z.array(aidSchema).min(1),
+});
+export type Aids = z.infer<typeof aidsSchema>;
+
+/* ---------- content/pages/tarifs-et-aides.json ---------- */
+
+export const pricingPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  tarifs: z.strictObject({
+    h2: text,
+    texte: text,
+    colonnes: z.strictObject({
+      prestation: text,
+      activite: text,
+      mode: text,
+      prix_ttc: text,
+      prix_ht: text,
+      apres_credit: text,
+    }),
+    date_application: text.includes("{date}"),
+    majorations_h3: text,
+    degressivite_h3: text,
+    degressivite_ligne: text.includes("{heures}").includes("{prix}"),
+  }),
+  sans_tarifs: z.strictObject({ titre: text, texte: text }),
+  exemples: z.strictObject({
+    h2: text,
+    texte: text.includes("{semaines}"),
+    heures: z.array(z.number().int().positive()).min(1).max(4),
+    colonne_heures: text.includes("{heures}"),
+    avant: text,
+    apres: text,
+  }),
+  frais: z.strictObject({ h2: text, texte: text }),
+  devis: z.strictObject({ titre: text, texte: text }),
+  aides: z.strictObject({ h2: text, texte: text, lien_page: text }),
+  appel: z.strictObject({ h2: text, texte: text }),
+});
+export type PricingPage = z.infer<typeof pricingPageSchema>;
+
+/* ---------- content/aides/{id}.json : pages détaillées par aide ---------- */
+
+const sourceSchema = z.strictObject({
+  libelle: text,
+  href: z.url(),
+  /** Date « Vérifié le » affichée par la source, si elle en publie une. */
+  verifie_le: isoDate.optional(),
+  /** Date à laquelle la loop a lu la source. */
+  consulte_le: isoDate,
+});
+export type Source = z.infer<typeof sourceSchema>;
+
+const amountSchema = z.strictObject({
+  libelle: text,
+  valeur: text,
+  precision: text.optional(),
+});
+
+const aidSectionSchema = z
+  .strictObject({
+    h2: text,
+    paragraphes: z.array(text).optional(),
+    montants: z.array(amountSchema).min(1).optional(),
+    liste: z.array(text).optional(),
+  })
+  .refine((s) => s.paragraphes !== undefined || s.montants !== undefined || s.liste !== undefined, {
+    message: "une section a au moins un paragraphe, un montant ou une liste",
+  });
+
+export const aidPageSchema = z.strictObject({
+  id: slug,
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  maj: isoDate,
+  sources: z.array(sourceSchema).min(1),
+  sections: z.array(aidSectionSchema).min(1),
+  a_retenir: z.array(text).min(1),
+  demarche: z.strictObject({
+    h2: text,
+    etapes: z.array(z.strictObject({ titre: text, texte: text })).min(1),
+  }),
+  appel: z.strictObject({ h2: text, texte: text }),
+});
+export type AidPage = z.infer<typeof aidPageSchema>;
+
+/* ---------- content/pages/a-propos.json ---------- */
+
+const teamMemberSchema = z.strictObject({
+  nom: text,
+  fonction: text,
+  photo: text.optional(),
+});
+
+export const aboutSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  a_propos: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    manifeste: z.strictObject({ h2: text, paragraphes: z.array(text).min(1) }),
+    engagements: z.strictObject({ h2: text, texte: text, lien: text }),
+    histoire: z.strictObject({ h2: text, paragraphes: z.array(text).min(1) }).nullable(),
+    equipe: z.strictObject({ h2: text, membres: z.array(teamMemberSchema).min(1) }).nullable(),
+    territoire: z.strictObject({
+      h2: text,
+      texte: text.includes("{agences}"),
+      lien: text,
+      href: internalPath,
+    }),
+    charte: z.strictObject({ h2: text, texte: text, lien: text }),
+  }),
+  engagements_page: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    suivi_h2: text,
+    preuve_libelle: text,
+  }),
+  charte_page: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    principes: z.array(z.strictObject({ titre: text, texte: text })).min(3),
+    contact: z.strictObject({ h2: text, texte: text }),
+  }),
+});
+export type AboutContent = z.infer<typeof aboutSchema>;
 export type NavigationItem = z.infer<typeof navigationItemSchema>;
 export type NavigationChild = z.infer<typeof navigationChildSchema>;

@@ -1,0 +1,109 @@
+{
+  "id": "credit-d-impot-et-avance-immediate",
+  "seo": {
+    "titre": "Crédit d'impôt aide à domicile : 50 %, plafonds, avance",
+    "description": "Crédit d'impôt pour l'emploi d'un salarié à domicile : 50 % des dépenses, plafonds annuels, personnes concernées, déclaration et avance immédiate Urssaf."
+  },
+  "ariane": "Crédit d'impôt et avance immédiate",
+  "h1": "Crédit d'impôt et avance immédiate : la moitié des sommes versées",
+  "chapo": "Les services à la personne ouvrent droit à un crédit d'impôt de 50 % des dépenses, que vous soyez imposable ou non. Voici les plafonds, les conditions et la démarche, tels que les publie service-public.gouv.fr.",
+  "maj": "2026-09-20",
+  "sources": [
+    {
+      "libelle": "service-public.gouv.fr — Crédit d'impôt pour l'emploi d'un salarié à domicile",
+      "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12",
+      "verifie_le": "2026-04-15",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "urssaf.fr — Avance immédiate de crédit d'impôt",
+      "href": "https://www.urssaf.fr/accueil/services/services-particuliers/avance-immediate.html",
+      "consulte_le": "2026-09-20"
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qui y a droit ?",
+      "paragraphes": [
+        "Toute personne dont le domicile fiscal est en France et qui règle des services à la personne effectués à son domicile, ou au domicile d'un ascendant qui perçoit l'APA.",
+        "Le crédit d'impôt est versé même si vous ne payez pas d'impôt sur le revenu : dans ce cas, l'administration vous rembourse la somme."
+      ]
+    },
+    {
+      "h2": "Combien ?",
+      "paragraphes": [
+        "Le crédit d'impôt s'élève à 50 % des dépenses supportées dans l'année, dans la limite d'un plafond annuel de dépenses."
+      ],
+      "montants": [
+        {
+          "libelle": "Taux du crédit d'impôt",
+          "valeur": "50 %",
+          "precision": "des dépenses de l'année"
+        },
+        {
+          "libelle": "Plafond annuel de dépenses, cas général",
+          "valeur": "12 000 €",
+          "precision": "soit un avantage maximal de 6 000 €"
+        },
+        {
+          "libelle": "Majoration par enfant à charge, membre du foyer ou ascendant de plus de 65 ans",
+          "valeur": "+ 1 500 €",
+          "precision": "sans dépasser 15 000 € au total ; 750 € en cas de garde alternée"
+        },
+        {
+          "libelle": "Première année d'emploi direct d'un salarié",
+          "valeur": "15 000 €",
+          "precision": "soit un avantage maximal de 7 500 € ; majoré jusqu'à 18 000 €"
+        },
+        {
+          "libelle": "Personne invalide ou dépendante",
+          "valeur": "20 000 €",
+          "precision": "soit un avantage maximal de 10 000 €"
+        }
+      ],
+      "liste": [
+        "Certaines prestations ont leur propre sous-plafond, compris dans le plafond global : petit bricolage 500 €, assistance informatique 3 000 €, jardinage 5 000 €."
+      ]
+    },
+    {
+      "h2": "Comment le déclarer ?",
+      "paragraphes": [
+        "Les dépenses payées par le Cesu ou Pajemploi sont pré-remplies dans votre déclaration de revenus. Pour un organisme prestataire ou mandataire, reportez les sommes indiquées sur l'attestation fiscale annuelle.",
+        "Conservez les attestations de l'Urssaf ou les factures de l'organisme : elles peuvent vous être demandées."
+      ]
+    },
+    {
+      "h2": "L'avance immédiate : ne payer que le reste à charge",
+      "paragraphes": [
+        "L'avance immédiate est un service de l'Urssaf, soumis à conditions d'éligibilité. Une fois activée, elle déduit le crédit d'impôt au moment du paiement : vous ne réglez que la part qui reste à votre charge, sans attendre l'année suivante.",
+        "L'activation se fait depuis votre espace particulier, sur proposition de l'organisme qui intervient chez vous. Nous vous accompagnons dans cette démarche si vous le souhaitez."
+      ]
+    }
+  ],
+  "a_retenir": [
+    "50 % des sommes versées, imposable ou non.",
+    "Plafond de 12 000 € de dépenses par an dans le cas général, porté à 20 000 € en cas d'invalidité ou de dépendance.",
+    "Avec l'avance immédiate, le crédit d'impôt est déduit dès le paiement."
+  ],
+  "demarche": {
+    "h2": "La démarche, pas à pas",
+    "etapes": [
+      {
+        "titre": "Faites intervenir un organisme déclaré ou un salarié déclaré.",
+        "texte": "Les factures et attestations serviront de justificatifs."
+      },
+      {
+        "titre": "Déclarez les sommes au printemps suivant.",
+        "texte": "Elles sont souvent pré-remplies ; vérifiez-les et corrigez si besoin."
+      },
+      {
+        "titre": "Ou activez l'avance immédiate.",
+        "texte": "Sur proposition de l'organisme, depuis votre espace Urssaf, pour ne payer que le reste à charge."
+      }
+    ]
+  },
+  "appel": {
+    "h2": "Un devis avec le montant après crédit d'impôt",
+    "texte": "Votre devis indique le prix TTC et, à part, ce qu'il vous reste après crédit d'impôt. Sans engagement."
+  }
+}

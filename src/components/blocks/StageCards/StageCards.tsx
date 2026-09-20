@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 
 export interface Stage {
   title: string;
-  text: ReactNode;
+  text?: ReactNode;
 }
 
 export interface StageCardsProps {
@@ -46,7 +46,7 @@ export function StageCards({ stages, className, ...rest }: StageCardsProps) {
                 </span>
                 <span className="heading-4">{stage.title}</span>
               </p>
-              <div className="mt-3 [&_p]:m-0 [&_p+p]:mt-2">{stage.text}</div>
+              {stage.text ? <div className="mt-3 [&_p]:m-0 [&_p+p]:mt-2">{stage.text}</div> : null}
             </article>
           </li>
         );

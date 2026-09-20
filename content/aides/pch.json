@@ -1,0 +1,102 @@
+{
+  "id": "pch",
+  "seo": {
+    "titre": "PCH : conditions, tarifs de l'aide humaine, démarche MDPH",
+    "description": "La PCH : conditions d'âge et de handicap, cinq formes d'aide, tarifs horaires de l'aide humaine selon le mode d'intervention, démarche auprès de la MDPH."
+  },
+  "ariane": "PCH",
+  "h1": "PCH : la prestation de compensation du handicap, pour l'aide humaine",
+  "chapo": "La PCH finance les dépenses liées au handicap, dont l'aide humaine à domicile. Conditions, tarifs et démarche, tels que les publie service-public.gouv.fr.",
+  "maj": "2026-09-20",
+  "sources": [
+    {
+      "libelle": "service-public.gouv.fr — Prestation de compensation du handicap (PCH)",
+      "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14202",
+      "verifie_le": "2026-07-01",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "monparcourshandicap.gouv.fr — Portail national d'information",
+      "href": "https://www.monparcourshandicap.gouv.fr/",
+      "consulte_le": "2026-09-20"
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qui y a droit ?",
+      "paragraphes": [
+        "Les personnes qui vivent en France et dont le handicap entraîne une difficulté absolue pour une activité importante du quotidien, ou une difficulté grave pour au moins deux activités, pour une durée prévisible d'au moins un an.",
+        "La demande se fait avant 60 ans, sauf si les conditions étaient remplies avant cet âge ou si la personne poursuit une activité professionnelle."
+      ]
+    },
+    {
+      "h2": "Les cinq formes d'aide",
+      "liste": [
+        "L'aide humaine : une tierce personne pour les gestes essentiels, la surveillance, la participation à la vie sociale.",
+        "Les aides techniques : le matériel qui compense le handicap.",
+        "L'aménagement du logement ou du véhicule.",
+        "Les charges spécifiques ou exceptionnelles.",
+        "L'aide animalière."
+      ]
+    },
+    {
+      "h2": "Combien pour l'aide humaine ?",
+      "paragraphes": [
+        "Le nombre d'heures est fixé par la MDPH selon les besoins. Chaque heure est prise en charge sur la base d'un tarif qui dépend du mode d'intervention."
+      ],
+      "montants": [
+        { "libelle": "Service prestataire", "valeur": "25,00 € l'heure" },
+        {
+          "libelle": "Service mandataire",
+          "valeur": "21,91 € l'heure",
+          "precision": "22,77 € en cas de gestes liés à des soins"
+        },
+        {
+          "libelle": "Emploi direct",
+          "valeur": "19,92 € l'heure",
+          "precision": "20,70 € en cas de gestes liés à des soins"
+        },
+        {
+          "libelle": "Aidant familial",
+          "valeur": "4,93 € l'heure",
+          "precision": "7,40 € si l'aidant a réduit ou abandonné son activité professionnelle"
+        }
+      ],
+      "liste": [
+        "Taux de prise en charge : 100 % si les ressources annuelles ne dépassent pas 31 162,62 €, 80 % au-delà. La PCH n'est pas soumise à condition de ressources pour y avoir droit."
+      ]
+    },
+    {
+      "h2": "PCH et mode d'intervention",
+      "paragraphes": [
+        "Le tarif prestataire s'applique quand un service comme Youdom Care est l'employeur de l'intervenant ; le tarif mandataire quand vous êtes l'employeur et que le service gère l'administratif pour votre compte. Nous vous expliquons les deux modes sans parti pris."
+      ]
+    }
+  ],
+  "a_retenir": [
+    "Une demande auprès de la MDPH, en principe avant 60 ans.",
+    "Un tarif horaire par mode : 25,00 € en prestataire, 21,91 € en mandataire, 19,92 € en emploi direct.",
+    "Prise en charge à 100 % ou 80 % selon les ressources, jamais soumise à condition de ressources pour l'ouverture du droit."
+  ],
+  "demarche": {
+    "h2": "La démarche, pas à pas",
+    "etapes": [
+      {
+        "titre": "Déposez le dossier auprès de la MDPH de votre département.",
+        "texte": "En ligne ou par courrier, avec le formulaire de demande et le certificat médical."
+      },
+      {
+        "titre": "L'équipe pluridisciplinaire évalue les besoins.",
+        "texte": "Elle propose un plan personnalisé de compensation, dont le nombre d'heures d'aide humaine."
+      },
+      {
+        "titre": "La réponse arrive dans un délai de 4 mois.",
+        "texte": "Sans réponse dans ce délai, la demande est considérée comme rejetée ; vous pouvez alors contester."
+      }
+    ]
+  },
+  "appel": {
+    "h2": "Vos heures PCH, organisées à votre rythme",
+    "texte": "Un conseiller vous aide à préparer le dossier MDPH et à composer la semaine avec les heures accordées. Sans engagement."
+  }
+}

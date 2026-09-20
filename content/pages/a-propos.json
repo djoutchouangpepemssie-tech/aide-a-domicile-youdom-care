@@ -1,0 +1,98 @@
+{
+  "_lisezmoi": "Pages À propos (docs/03 §9) : manifeste de docs/01 §10 repris tel quel, engagements de content/engagements.json (un engagement non validé est masqué en production), charte éditoriale fondée sur docs/03 §1 et docs/06 §4. Histoire et équipe restent null tant qu'Arcel ne les fournit pas (Q-CONTENU-1) : les blocs sont masqués.",
+  "a_propos": {
+    "seo": {
+      "titre": "À propos de Youdom Care : notre manifeste et nos choix",
+      "description": "Qui nous sommes : une société d'aide à domicile à Paris et en Île-de-France, ce que nous croyons, nos engagements et notre façon d'écrire ce site."
+    },
+    "ariane": "À propos",
+    "h1": "Ce que nous croyons, et ce que nous faisons",
+    "chapo": "Youdom Care accompagne à domicile les personnes âgées, les adultes et les enfants en situation de handicap, les personnes atteintes de maladies neurodégénératives, et leurs proches. Voici pourquoi, et comment.",
+    "manifeste": {
+      "h2": "Notre manifeste",
+      "paragraphes": [
+        "Nous croyons que personne ne devrait avoir à choisir entre rester chez soi et être bien accompagné.",
+        "Nous croyons qu'une maladie ne résume pas une personne. Qu'un enfant n'est pas son diagnostic. Qu'un grand âge n'est pas une fin de choix.",
+        "Nous croyons qu'aider quelqu'un chez lui est un métier, qui s'apprend, qui se prépare, et qui mérite d'être respecté.",
+        "Nous croyons que les proches ont le droit de rester des proches. D'être une fille, un mari, une mère. Pas un planning.",
+        "Alors nous faisons une chose, et nous la faisons avec soin : nous venons chez vous, et nous restons à vos côtés."
+      ]
+    },
+    "engagements": {
+      "h2": "Nos engagements",
+      "texte": "Des engagements que vous pouvez vérifier, pas des promesses en l'air.",
+      "lien": "Lire nos engagements en détail"
+    },
+    "histoire": null,
+    "equipe": null,
+    "territoire": {
+      "h2": "Où nous intervenons",
+      "texte": "Paris et les sept autres départements d'Île-de-France, depuis {agences} agences.",
+      "lien": "Voir nos agences",
+      "href": "/agences/"
+    },
+    "charte": {
+      "h2": "Notre façon d'écrire",
+      "texte": "Chaque page de ce site informe, elle ne soigne pas. Nos textes sont sourcés, datés, relus, et disent aussi ce que nous ne faisons pas.",
+      "lien": "Lire notre charte éditoriale"
+    }
+  },
+  "engagements_page": {
+    "seo": {
+      "titre": "Nos engagements : formation, stabilité, suivi, réactivité",
+      "description": "Ce que Youdom Care s'engage à faire pour chaque personne accompagnée : intervenants formés, équipe stable, suivi lisible, présence quand ça se complique."
+    },
+    "ariane": "Nos engagements",
+    "h1": "Nos engagements, noir sur blanc",
+    "chapo": "Un engagement n'a de valeur que s'il se vérifie. Voici les nôtres, et ce que vous recevez concrètement après le démarrage.",
+    "suivi_h2": "Le suivi que vous pouvez lire",
+    "preuve_libelle": "Ce qui le prouve"
+  },
+  "charte_page": {
+    "seo": {
+      "titre": "Charte éditoriale : comment nous écrivons et vérifions",
+      "description": "Comment les pages de Youdom Care sont écrites, sourcées, relues par des professionnels et mises à jour, et la place des outils d'aide à la rédaction."
+    },
+    "ariane": "Charte éditoriale",
+    "h1": "Charte éditoriale : informer, jamais soigner",
+    "chapo": "Nos pages parlent de maladies, de handicap, d'argent et de fatigue. Elles méritent des règles strictes. Les voici.",
+    "principes": [
+      {
+        "titre": "Informer, jamais soigner",
+        "texte": "Aucun conseil médical, aucune posologie, aucune promesse que la maladie ira mieux ou moins vite. Nous décrivons ce que la maladie change au quotidien et ce que l'accompagnement apporte. Les décisions médicales relèvent des professionnels de santé."
+      },
+      {
+        "titre": "Des sources reconnues, citées et datées",
+        "texte": "Haute Autorité de santé, Inserm, Assurance Maladie, Santé publique France, CNSA, service-public.gouv.fr, portails nationaux, associations de chaque pathologie. Une adresse n'est citée que si elle a été ouverte pendant la rédaction. Les chiffres et les montants d'aides portent leur année et la date de vérification de la source."
+      },
+      {
+        "titre": "Une relecture professionnelle",
+        "texte": "Toute page sur une maladie ou un handicap est relue par un professionnel nommé avant publication. Tant que cette relecture n'a pas eu lieu, la page n'est pas mise en ligne."
+      },
+      {
+        "titre": "Des auteurs et des relecteurs nommés",
+        "texte": "Chaque article du magazine porte le nom de son auteur et de son relecteur. Des outils d'aide à la rédaction peuvent être utilisés, sous la responsabilité de l'auteur et du relecteur nommés, qui répondent de chaque phrase."
+      },
+      {
+        "titre": "Des mises à jour prévues",
+        "texte": "Chaque article a une date de révision : douze mois au plus, six mois pour les aides financières. Une page dont la révision est échue est signalée et revue."
+      },
+      {
+        "titre": "Rien d'inventé",
+        "texte": "Aucun avis, aucun témoignage, aucun chiffre décoratif. Les semaines types et les cas pratiques sont des illustrations, signalées comme telles, avec des prénoms fictifs. Les récits réels ne paraissent qu'avec l'accord écrit des personnes."
+      },
+      {
+        "titre": "La personne avant la maladie",
+        "texte": "Nous écrivons « personne atteinte de la maladie d'Alzheimer », « enfant autiste », « personne en situation de handicap ». Jamais « patient » : nous accompagnons, nous ne soignons pas. Pas de photo ni de phrase qui réduit quelqu'un à ses incapacités."
+      },
+      {
+        "titre": "Dire ce que nous ne faisons pas",
+        "texte": "Chaque page de service précise ce qui relève des professionnels de santé, avec lesquels nous nous coordonnons : soins infirmiers, actes médicaux, décisions médicales."
+      }
+    ],
+    "contact": {
+      "h2": "Une erreur, une question ?",
+      "texte": "Écrivez-nous : nous corrigeons et nous vous répondons."
+    }
+  }
+}

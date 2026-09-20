@@ -1,0 +1,83 @@
+{
+  "id": "aides-apres-hospitalisation",
+  "seo": {
+    "titre": "Aides après une hospitalisation : retour à domicile aidé",
+    "description": "Les aides des caisses de retraite pour rentrer chez soi après l'hôpital : aide temporaire de 3 mois au plus, services financés, démarche avant la sortie."
+  },
+  "ariane": "Aides après hospitalisation",
+  "h1": "Aides après une hospitalisation : rentrer chez soi, bien accompagné",
+  "chapo": "Après un séjour à l'hôpital, les caisses de retraite peuvent financer temporairement de l'aide à domicile. Ce que prévoient ces aides, tel que le publie le portail national des personnes âgées.",
+  "maj": "2026-09-20",
+  "sources": [
+    {
+      "libelle": "pour-les-personnes-agees.gouv.fr — Quelles sont les aides des caisses de retraite ?",
+      "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/aides-financieres/quelles-sont-les-aides-des-caisses-de-retraite",
+      "verifie_le": "2026-04-09",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "pour-les-personnes-agees.gouv.fr — Comment organiser sa sortie d'hospitalisation ?",
+      "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/etre-hospitalise/comment-organiser-sa-sortie-d-hospitalisation",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "lassuranceretraite.fr — Aide au retour après hospitalisation",
+      "href": "https://www.lassuranceretraite.fr/portail-info/home/retraite/bien-vieillir-aides-conseils/aide-quotidien-retraite/aide-retraite-hospitalisation.html",
+      "consulte_le": "2026-09-20"
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qui y a droit ?",
+      "paragraphes": [
+        "Les retraités autonomes ou relativement autonomes, selon leur caisse de retraite et leurs ressources. Si vous bénéficiez de l'APA, vous ne pouvez pas cumuler les aides des caisses de retraite qui portent sur la même aide."
+      ]
+    },
+    {
+      "h2": "Ce que ces aides financent",
+      "liste": [
+        "Une aide temporaire au retour à domicile après une hospitalisation, d'une durée maximale de 3 mois : aide à domicile, livraison de repas, aides techniques.",
+        "Au quotidien : courses, aide au ménage, livraison de repas, téléassistance, conseils pour adapter le logement, transport.",
+        "Des forfaits de prévention pris en charge à 100 % dans la limite d'un plafond annuel, pour l'adaptation du logement et les aides techniques (plan OSCAR de l'Assurance retraite)."
+      ]
+    },
+    {
+      "h2": "Les 48 heures qui précèdent la sortie",
+      "paragraphes": [
+        "La sortie s'organise avec le service social de l'hôpital, qui prépare le plan d'aide avec l'équipe médicale et le transmet à votre caisse de retraite. Prévenez-nous dès que la date de sortie est connue : nous organisons la présence dès le premier jour, les courses, les repas, l'aide aux gestes et la vigilance des premiers jours."
+      ]
+    },
+    {
+      "h2": "Et les mutuelles ?",
+      "paragraphes": [
+        "Certaines mutuelles et assurances proposent une aide à domicile après hospitalisation. Vérifiez votre contrat ou appelez votre assureur avant la sortie : les délais de demande sont souvent courts."
+      ]
+    }
+  ],
+  "a_retenir": [
+    "Une aide temporaire, 3 mois au plus, pour rentrer chez soi après l'hôpital.",
+    "Réservée aux retraités autonomes ou relativement autonomes ; pas de cumul avec l'APA sur la même aide.",
+    "La demande se prépare avant la sortie, avec le service social de l'hôpital."
+  ],
+  "demarche": {
+    "h2": "La démarche, pas à pas",
+    "etapes": [
+      {
+        "titre": "Dès l'annonce de la sortie, contactez le service social de l'hôpital.",
+        "texte": "Il évalue vos besoins avec l'équipe médicale et prépare le plan d'aide."
+      },
+      {
+        "titre": "Le plan est transmis à votre caisse de retraite.",
+        "texte": "Un formulaire de demande d'aides à l'autonomie à domicile ou un service en ligne existent aussi pour les aides au quotidien."
+      },
+      {
+        "titre": "L'aide démarre au retour, pour 3 mois au plus.",
+        "texte": "Ensuite, une aide durable (APA, caisse de retraite) peut prendre le relais."
+      }
+    ]
+  },
+  "appel": {
+    "h2": "Il sort de l'hôpital dans quelques jours ?",
+    "texte": "Un conseiller organise avec vous le retour à la maison, vite et bien, et vous oriente vers les aides possibles."
+  }
+}

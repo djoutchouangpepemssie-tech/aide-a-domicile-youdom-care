@@ -14,7 +14,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "pnpm build && playwright test",
-    "validate": "tsx scripts/validate/index.ts"
+    "validate": "tsx scripts/validate/index.ts",
+    "lhci": "tsx scripts/lhci.ts",
+    "data:agences": "tsx scripts/data/geocode-agencies.ts",
+    "data:communes": "tsx scripts/data/fetch-communes.ts"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -26,6 +29,7 @@
     "@axe-core/playwright": "^4.13.0",
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
+    "@lhci/cli": "0.15.1",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/dom": "^10.4.2",

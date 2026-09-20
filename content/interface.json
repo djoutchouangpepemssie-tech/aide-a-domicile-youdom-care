@@ -101,8 +101,29 @@
     "comment": "Comment la demander ?",
     "lien_externe": "site officiel, lien externe"
   },
+  "page_aide": {
+    "mis_a_jour": "Page mise à jour le {date}",
+    "sources_h2": "Sources officielles",
+    "source_verifiee": "vérifiée le {date}",
+    "source_consultee": "consultée le {date}",
+    "avertissement": "Les montants et conditions ci-dessous sont ceux publiés par les sources officielles citées, à la date indiquée. Ils évoluent : vérifiez-les avant toute décision, et parlez-en à votre conseiller.",
+    "a_retenir": "À retenir",
+    "retour": "Toutes les aides"
+  },
   "situations": {
     "lire": "Voir"
+  },
+  "mandataire_notice": {
+    "titre": "Mode mandataire",
+    "texte": "Attention, dans le cadre d'un contrat de placement de travailleurs, le consommateur est l'employeur."
+  },
+  "recherche_commune": {
+    "champ": "Votre commune ou votre code postal",
+    "bouton": "Vérifier",
+    "oui": "Oui, nous intervenons à {commune}. Votre agence la plus proche : {agence}.",
+    "oui_sans_agence": "Oui, nous intervenons à {commune}.",
+    "aucun_resultat": "Aucune commune d’Île-de-France ne correspond à votre saisie.",
+    "suggestions": "{n} suggestion(s), utilisez les flèches pour choisir."
   },
   "fil_ariane": {
     "nom": "Fil d’Ariane",

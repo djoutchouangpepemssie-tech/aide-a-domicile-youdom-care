@@ -145,7 +145,7 @@ export function Footer({
                   <Link
                     href={`/agences/${agency.id}/`}
                     className={`block ${linkClass}`}
-                    aria-label={texts.voir_agence.replace("{nom}", agency.nom)}
+                    aria-label={`${texts.voir_agence.replace("{nom}", agency.nom)}, ${agency.adresse}, ${agency.code_postal} ${agency.commune}`}
                   >
                     <span className="block font-bold">{agency.nom}</span>
                     <span className="block text-small text-white/85">

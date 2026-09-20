@@ -5,7 +5,7 @@ test.describe("Fumée", () => {
   test("l'accueil répond, est en français et passe axe", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("html")).toHaveAttribute("lang", "fr");
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Youdom Care");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Vivre chez soi");
     await expectNoSeriousAxeViolations(page);
   });
 

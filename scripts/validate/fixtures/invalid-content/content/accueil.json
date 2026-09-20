@@ -1,0 +1,150 @@
+{
+  "_lisezmoi": "Textes de l'accueil, repris tels quels de docs/01 §4 (blocs 1 à 12, ajoutés phase par phase). Les codes engagement renvoient à content/engagements.json : en production, un bloc dont l'engagement n'est pas validé est masqué. Les jetons {téléphone} sont remplacés par les composants.",
+  "banniere": {
+    "sur_titre": "Aide et accompagnement à domicile · Paris et Île-de-France",
+    "h1": "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",
+    "chapo": "Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : chaque situation est unique. Youdom Care construit un accompagnement sur mesure, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.",
+    "lien_telephone": "Ou appelez le {téléphone}",
+    "reassurance": ["Évaluation à domicile gratuite", "Sans engagement", "Crédit d'impôt de 50 %*"],
+    "note_astérisque": "* Selon les conditions en vigueur, détaillées sur la page Tarifs et aides.",
+    "note_href": "/tarifs-et-aides/credit-d-impot-et-avance-immediate/",
+    "illustration": "maison"
+  },
+  "situations": {
+    "h2": "Que vivez-vous en ce moment ?",
+    "texte": "Choisissez ce qui vous ressemble le plus. Nous vous emmenons au bon endroit.",
+    "cartes": [
+      {
+        "citation": "Un diagnostic vient de tomber",
+        "texte": "Alzheimer, Parkinson, sclérose en plaques… Vous cherchez comment organiser la suite.",
+        "lien": "Voir l'accompagnement par maladie",
+        "href": "/maladies-neurodegeneratives/",
+        "illustration": "carnet"
+      },
+      {
+        "citation": "Mon parent ne peut plus rester seul",
+        "texte": "Chutes, oublis, repas sautés : il est temps d'une présence régulière.",
+        "lien": "Voir l'aide aux personnes âgées",
+        "href": "/personnes-agees/",
+        "illustration": "maison"
+      },
+      {
+        "citation": "Mon enfant a besoin de quelqu'un de formé",
+        "texte": "Autisme, polyhandicap, handicap moteur : un relais qui comprend votre enfant.",
+        "lien": "Voir l'accompagnement des enfants",
+        "href": "/enfants-en-situation-de-handicap/",
+        "illustration": "cartable"
+      },
+      {
+        "citation": "Je veux garder la main sur mon quotidien",
+        "texte": "Vous vivez avec un handicap et vous décidez de votre vie. Nous suivons.",
+        "lien": "Voir l'aide aux adultes",
+        "href": "/adultes-en-situation-de-handicap/",
+        "illustration": "mains"
+      },
+      {
+        "citation": "Il sort de l'hôpital dans quelques jours",
+        "texte": "Nous organisons le retour à la maison, vite et bien.",
+        "lien": "Préparer une sortie d'hospitalisation",
+        "href": "/services/sortie-d-hospitalisation/",
+        "illustration": "lune"
+      },
+      {
+        "citation": "Je n'en peux plus, j'ai besoin de relais",
+        "texte": "Quelques heures, une nuit, un week-end : vous avez le droit de vous reposer.",
+        "lien": "Voir les solutions pour les aidants",
+        "href": "/aidants/",
+        "illustration": "tasse"
+      }
+    ]
+  },
+  "engagements": {
+    "h2": "Ce qui change avec Youdom Care",
+    "items": [
+      {
+        "engagement": "E1",
+        "titre": "Des intervenants formés à la situation, pas seulement au métier.",
+        "texte": "Accompagner une personne atteinte de la maladie de Parkinson ne s'improvise pas. Accompagner un enfant autiste non plus. Nos auxiliaires de vie sont préparés à ce qu'ils vont réellement rencontrer chez vous."
+      },
+      {
+        "engagement": "E2",
+        "titre": "Des visages connus, pas un défilé.",
+        "texte": "Une petite équipe stable autour de chaque personne, présentée avant de commencer."
+      },
+      {
+        "engagement": "E3",
+        "titre": "Un suivi que vous pouvez lire.",
+        "texte": "Un référent unique, un cahier de liaison, des points réguliers : vous savez ce qui se passe, même à distance."
+      },
+      {
+        "engagement": "E4",
+        "titre": "Là quand ça se complique.",
+        "texte": "Nuits, week-ends, jours fériés, présence 24h/24, retour d'hôpital à organiser en urgence."
+      }
+    ]
+  },
+  "neuro": {
+    "h2": "Alzheimer, Parkinson, sclérose en plaques : un accompagnement qui évolue avec la maladie",
+    "texte": "Une maladie neurodégénérative ne se vit pas de la même façon à l'annonce du diagnostic, trois ans plus tard, ou quand une présence devient nécessaire jour et nuit. Notre accompagnement change avec elle. Et chaque personne reste unique : son histoire, ses goûts et ses habitudes guident tout ce que nous faisons.",
+    "stades": [
+      { "titre": "Au début : préserver les habitudes" },
+      { "titre": "Quand la maladie avance : sécuriser et stimuler" },
+      { "titre": "Quand tout devient difficile : une présence continue" }
+    ],
+    "bouton": "Voir l'accompagnement par maladie",
+    "href": "/maladies-neurodegeneratives/"
+  },
+  "semaine": {
+    "h2": "À quoi ressemble une semaine avec nous ?",
+    "texte": "Trois exemples, parmi des centaines de possibles. Votre semaine, nous la construisons avec vous.",
+    "onglets_nom": "Exemples de semaines",
+    "onglets": [
+      { "exemple": "madeleine", "libelle": "Madeleine, 82 ans, maladie d'Alzheimer" },
+      { "exemple": "noe", "libelle": "Noé, 8 ans, autisme" },
+      { "exemple": "bernard", "libelle": "Bernard, 74 ans, retour d'hospitalisation" }
+    ]
+  },
+  "etapes": {
+    "h2": "Comment ça commence",
+    "items": [
+      {
+        "titre": "Nous vous écoutons.",
+        "texte": "Un appel d'un quart d'heure pour comprendre la situation. Sans jargon, sans engagement."
+      },
+      {
+        "titre": "Nous venons vous voir.",
+        "texte": "Une évaluation gratuite à domicile, avec la personne et ses proches. Vous recevez un devis détaillé et gratuit."
+      },
+      {
+        "titre": "Nous vous présentons la bonne personne.",
+        "texte": "Vous rencontrez l'intervenant avant de commencer.",
+        "texte_engagement": "Si le courant ne passe pas, nous changeons.",
+        "engagement": "E2"
+      },
+      {
+        "titre": "Nous ajustons, ensemble.",
+        "texte": "Votre référent suit la situation et adapte le planning quand les besoins évoluent. À tout moment, vous pouvez modifier ou arrêter l'accompagnement, dans le respect de la réglementation applicable."
+      }
+    ]
+  },
+  "prix": {
+    "h2": "Combien ça coûte, vraiment ?",
+    "texte": "Le prix dépend du nombre d'heures et du type d'accompagnement. Vous recevez un devis gratuit et détaillé après l'évaluation. Plusieurs aides peuvent réduire fortement votre reste à charge.",
+    "carte_tarifs": {
+      "titre": "Nos tarifs",
+      "bouton": "Je consulte les tarifs",
+      "href": "/tarifs-et-aides/"
+    },
+    "carte_aides": {
+      "titre": "Les aides possibles",
+      "aides": ["APA", "PCH", "AEEH", "caisses de retraite", "CESU", "crédit d'impôt de 50 %"],
+      "href": "/tarifs-et-aides/"
+    }
+  },
+  "proches": {
+    "h2": "Et vous, qui prend soin de vous ?",
+    "texte": "Aider un proche, c'est souvent s'oublier. S'organiser pour tenir, ce n'est pas abandonner : c'est durer. Nous prenons le relais quelques heures, une nuit, un week-end. Pour que vous redeveniez sa fille, son fils, son conjoint, son parent. Pas seulement son aidant.",
+    "href": "/aidants/",
+    "illustration": "tasse"
+  }
+}

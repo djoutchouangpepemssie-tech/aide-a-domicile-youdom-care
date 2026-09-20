@@ -61,7 +61,7 @@ describe("Footer", () => {
       expect.stringMatching(/^\/aide-a-domicile\/paris\/?$/),
     );
     expect(
-      within(footer).getByRole("link", { name: "Voir l’agence Youdom Care Hauts-de-Seine" }),
+      within(footer).getByRole("link", { name: /^Voir l’agence Youdom Care Hauts-de-Seine, / }),
     ).toHaveAttribute("href", expect.stringMatching(/^\/agences\/puteaux\/?$/));
     expect(
       within(footer).getByText(/49-51 quai de Dion-Bouton, 92800 Puteaux/),

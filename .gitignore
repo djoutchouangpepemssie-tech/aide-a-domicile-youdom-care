@@ -38,3 +38,4 @@ next-env.d.ts
 
 # données brutes des pipelines locaux (seules les données transformées et sourcées entrent dans data/local/)
 /data/raw/
+/.lighthouseci/

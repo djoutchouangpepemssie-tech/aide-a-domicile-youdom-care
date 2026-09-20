@@ -1,0 +1,68 @@
+import { render, screen, within } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import EditorialCharterPage, {
+  generateMetadata as charterMetadata,
+} from "./charte-editoriale/page";
+import CommitmentsPage, { generateMetadata as commitmentsMetadata } from "./nos-engagements/page";
+import AboutPage, { generateMetadata as aboutMetadata } from "./page";
+
+function expectSeo(metadata: { title?: unknown; description?: unknown }) {
+  expect(String(metadata.title).length).toBeGreaterThanOrEqual(50);
+  expect(String(metadata.title).length).toBeLessThanOrEqual(60);
+  expect(String(metadata.description).length).toBeGreaterThanOrEqual(140);
+  expect(String(metadata.description).length).toBeLessThanOrEqual(155);
+}
+
+describe("À propos", () => {
+  afterEach(() => vi.unstubAllEnvs());
+
+  it("les trois pages ont des balises SEO aux longueurs de docs/01 §8", () => {
+    expectSeo(aboutMetadata());
+    expectSeo(commitmentsMetadata());
+    expectSeo(charterMetadata());
+  });
+
+  it("rend le manifeste, les engagements, le territoire et masque histoire et équipe", () => {
+    render(<AboutPage />);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Ce que nous croyons");
+    const manifeste = screen.getByRole("region", { name: "Notre manifeste" });
+    expect(manifeste).toHaveTextContent("Nous croyons que personne ne devrait avoir à choisir");
+    expect(manifeste).toHaveTextContent("Vous, chez vous. Nous, à vos côtés.");
+    expect(
+      within(screen.getByRole("region", { name: "Nos engagements" })).getAllByRole("listitem"),
+    ).toHaveLength(4);
+    expect(screen.queryByRole("region", { name: /histoire/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: /équipe/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "Où nous intervenons" })).toHaveTextContent(
+      "6 agences",
+    );
+    expect(screen.queryByText("Labels et adhésions")).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Lire notre charte éditoriale" })).toHaveAttribute(
+      "href",
+      expect.stringMatching(/^\/a-propos\/charte-editoriale\/?$/),
+    );
+  });
+
+  it("nos engagements : quatre engagements avec texte en prévisualisation, aucun en production", () => {
+    const { unmount } = render(<CommitmentsPage />);
+    expect(document.querySelectorAll("[data-engagement]")).toHaveLength(4);
+    expect(
+      screen.getByRole("region", { name: "Le suivi que vous pouvez lire" }),
+    ).toBeInTheDocument();
+    unmount();
+
+    vi.stubEnv("VERCEL_ENV", "production");
+    render(<CommitmentsPage />);
+    expect(document.querySelectorAll("[data-engagement]")).toHaveLength(0);
+  });
+
+  it("charte éditoriale : huit principes et un moyen de contact", () => {
+    render(<EditorialCharterPage />);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("informer, jamais soigner");
+    expect(document.querySelectorAll("[data-principes] > li")).toHaveLength(8);
+    expect(screen.getByRole("link", { name: "contact@youdom-care.com" })).toHaveAttribute(
+      "href",
+      "mailto:contact@youdom-care.com",
+    );
+  });
+});

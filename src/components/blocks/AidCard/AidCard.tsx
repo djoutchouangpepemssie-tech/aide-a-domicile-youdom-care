@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { Card } from "@/components/ui/Card/Card";
 import { Heading, type HeadingLevel } from "@/components/ui/Heading/Heading";
@@ -19,9 +20,12 @@ export interface AidCardTexts {
 export interface AidCardProps {
   name: string;
   forWho: ReactNode;
-  howMuch: ReactNode;
+  /** Absent tant que le montant n'a pas été repris d'une source officielle datée (P2.7). */
+  howMuch?: ReactNode;
   howTo: ReactNode;
   official: { label: string; href: string };
+  /** Lien interne vers la page détaillée de l'aide. */
+  detail?: { label: string; href: string };
   /** Niveau du titre selon la page (3 par défaut). */
   headingLevel?: HeadingLevel;
   texts: AidCardTexts;
@@ -34,6 +38,7 @@ export function AidCard({
   howMuch,
   howTo,
   official,
+  detail,
   headingLevel = 3,
   texts,
   className,
@@ -48,15 +53,24 @@ export function AidCard({
           <dt className="text-small font-bold text-teal-900">{texts.pour_qui}</dt>
           <dd className="m-0">{forWho}</dd>
         </div>
-        <div>
-          <dt className="text-small font-bold text-teal-900">{texts.combien}</dt>
-          <dd className="m-0">{howMuch}</dd>
-        </div>
+        {howMuch !== undefined ? (
+          <div>
+            <dt className="text-small font-bold text-teal-900">{texts.combien}</dt>
+            <dd className="m-0">{howMuch}</dd>
+          </div>
+        ) : null}
         <div>
           <dt className="text-small font-bold text-teal-900">{texts.comment}</dt>
           <dd className="m-0">{howTo}</dd>
         </div>
       </dl>
+      {detail ? (
+        <p className="m-0 mt-4">
+          <Link href={detail.href} className="inline-flex min-h-12 items-center font-bold">
+            {detail.label}
+          </Link>
+        </p>
+      ) : null}
       <p className="m-0 mt-auto pt-4">
         <a
           href={official.href}

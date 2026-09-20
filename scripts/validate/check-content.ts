@@ -2,9 +2,16 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 import {
+  aboutSchema,
+  aidPageSchema,
+  aidsSchema,
   commitmentsSchema,
+  homePageSchema,
+  howItWorksSchema,
   interfaceSchema,
+  modesPageSchema,
   navigationSchema,
+  pricingPageSchema,
   pricingSchema,
   siteConfigSchema,
   weekExamplesSchema,
@@ -21,6 +28,18 @@ const files = {
   "interface.json": interfaceSchema,
   "navigation.json": navigationSchema,
   "semaines-types.json": weekExamplesSchema,
+  "pages/accueil.json": homePageSchema,
+  "pages/comment-ca-marche.json": howItWorksSchema,
+  "pages/prestataire-ou-mandataire.json": modesPageSchema,
+  "pages/tarifs-et-aides.json": pricingPageSchema,
+  "pages/a-propos.json": aboutSchema,
+  "aides.json": aidsSchema,
+  "aides/credit-d-impot-et-avance-immediate.json": aidPageSchema,
+  "aides/apa.json": aidPageSchema,
+  "aides/pch.json": aidPageSchema,
+  "aides/aeeh.json": aidPageSchema,
+  "aides/cesu.json": aidPageSchema,
+  "aides/aides-apres-hospitalisation.json": aidPageSchema,
 } as const;
 
 export interface LoadedContent {

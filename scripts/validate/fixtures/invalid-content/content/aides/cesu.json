@@ -1,0 +1,91 @@
+{
+  "id": "cesu",
+  "seo": {
+    "titre": "CESU préfinancé : payer l'aide à domicile avec ses titres",
+    "description": "Le Cesu préfinancé : ce que c'est, qui le distribue (employeur, CSE, caisse de retraite, mutuelle, département), ce qu'il paie, plafond de l'aide."
+  },
+  "ariane": "CESU préfinancé",
+  "h1": "CESU préfinancé : régler l'aide à domicile avec vos titres",
+  "chapo": "Le Cesu préfinancé est un titre de paiement d'un montant défini, remis par un employeur ou un organisme. Ce qu'il est et ce qu'il paie, tels que le publie service-public.gouv.fr.",
+  "maj": "2026-09-20",
+  "sources": [
+    {
+      "libelle": "service-public.gouv.fr — Cesu déclaratif ou Cesu préfinancé : quelles différences ?",
+      "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13607",
+      "verifie_le": "2026-02-06",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "service-public.gouv.fr — Aide de l'employeur pour payer un service à la personne",
+      "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1252",
+      "verifie_le": "2026-07-30",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "cesu.urssaf.fr — Le Cesu préfinancé",
+      "href": "https://www.cesu.urssaf.fr/",
+      "consulte_le": "2026-09-20"
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Ce que c'est",
+      "paragraphes": [
+        "Un titre de paiement comportant un montant défini, sous la forme d'un carnet de chèques ou d'un Cesu dématérialisé (e-Cesu). Il ne faut pas le confondre avec le Cesu déclaratif, qui sert à déclarer un salarié à domicile."
+      ]
+    },
+    {
+      "h2": "Qui peut vous en remettre ?",
+      "liste": [
+        "Votre employeur, public ou privé, s'il en propose à son personnel.",
+        "Le comité social et économique (CSE).",
+        "Les organismes qui attribuent des prestations sociales : services du département, centres communaux d'action sociale, caisses de sécurité sociale, caisses de retraite, mutuelles."
+      ]
+    },
+    {
+      "h2": "Ce qu'il paie",
+      "paragraphes": [
+        "Le Cesu préfinancé permet de rémunérer un salarié employé directement, ou de régler la facture d'un organisme déclaré ou agréé de services à la personne, prestataire ou mandataire. Youdom Care accepte les Cesu préfinancés."
+      ],
+      "montants": [
+        {
+          "libelle": "Aide de l'employeur ou du CSE",
+          "valeur": "2 591 € par an",
+          "precision": "montant maximal non imposable, par bénéficiaire ; l'employeur n'a aucune obligation de la proposer"
+        }
+      ]
+    },
+    {
+      "h2": "Cesu et crédit d'impôt",
+      "paragraphes": [
+        "Les sommes que vous réglez avec vos titres sont des dépenses de services à la personne : pour leur prise en compte dans le crédit d'impôt, reportez-vous à votre attestation fiscale annuelle et à la fiche officielle du crédit d'impôt."
+      ]
+    }
+  ],
+  "a_retenir": [
+    "Un titre de paiement à montant défini, papier ou dématérialisé.",
+    "Remis par l'employeur, le CSE, une caisse de retraite, une mutuelle ou le département.",
+    "Il règle une facture d'organisme de services à la personne ou un salarié à domicile."
+  ],
+  "demarche": {
+    "h2": "La démarche, pas à pas",
+    "etapes": [
+      {
+        "titre": "Renseignez-vous auprès de l'organisme qui peut vous en remettre.",
+        "texte": "Employeur, CSE, caisse de retraite, mutuelle ou services du département."
+      },
+      {
+        "titre": "Réglez tout ou partie de votre facture avec vos titres.",
+        "texte": "Sur papier ou en ligne, selon le format des titres."
+      },
+      {
+        "titre": "Conservez l'attestation annuelle.",
+        "texte": "Elle sert pour votre déclaration de revenus."
+      }
+    ]
+  },
+  "appel": {
+    "h2": "Vos titres, notre facture",
+    "texte": "Un conseiller vous dit comment régler avec vos Cesu préfinancés et ce qu'il reste à votre charge. Sans engagement."
+  }
+}

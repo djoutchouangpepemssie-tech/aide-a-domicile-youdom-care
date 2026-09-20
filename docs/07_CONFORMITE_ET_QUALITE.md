@@ -61,8 +61,8 @@ Seuil bloquant : 0 violation axe « critique » ou « sérieuse » sur les pages
 | CLS | < 0,05 |
 | INP | < 200 ms |
 | Temps de blocage total | < 150 ms |
-| JavaScript initial, page de contenu | < 90 Ko compressés |
-| JavaScript initial, page avec formulaire | < 160 Ko compressés |
+| JavaScript initial, page de contenu | < 160 Ko compressés (D-019 : socle Next + React mesuré à 132 Ko) |
+| JavaScript initial, page avec formulaire | < 220 Ko compressés (D-019) |
 | Poids total d'une page de contenu | < 900 Ko |
 | Polices | 2 fichiers variables, < 180 Ko au total |
 | Scores Lighthouse | Performance ≥ 95 · Accessibilité 100 · Bonnes pratiques 100 · SEO 100 |

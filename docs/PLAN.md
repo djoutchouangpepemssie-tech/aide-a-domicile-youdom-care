@@ -38,17 +38,17 @@ Les contrôles de `pnpm validate` s'activent au fil des phases : chaque script e
 
 ## Phase 2 — Accueil et pages de fonctionnement · `phase/02-accueil`
 
-- [ ] **P2.1 Accueil, blocs 1 à 4.** Textes exacts de `docs/01 §4`. Engagements lus dans `engagements.json`.
-- [ ] **P2.2 Accueil, blocs 5 à 8.** Trois semaines types en onglets accessibles ; bloc prix masqué si tarifs vides.
-- [ ] **P2.3 Accueil, blocs 9 à 12 et recherche de commune.** Script `scripts/data/fetch-communes.ts` (API Découpage administratif) → `data/idf-communes.json` ; `TerritorySearch` avec agence la plus proche. Réf. `docs/04 §5`.
-- [ ] **P2.4 « Comment ça marche ».** Réf. `docs/03 §9`, `docs/01 §4 bloc 6`.
-- [ ] **P2.5 « Prestataire ou mandataire ».** Tableau comparatif, composant `MandataireNotice`. Réf. `docs/07 §1`.
-- [ ] **P2.6 « Tarifs et aides ».** Tableau des prestations depuis `tarifs.json`, exemples mensuels calculés (`src/lib/pricing`), cartes d'aides. Tests unitaires des calculs.
-- [ ] **P2.7 Pages par aide (1/2).** Crédit d'impôt et avance immédiate, APA, PCH. Montants et conditions repris de sources officielles ouvertes pendant la tâche, avec année.
-- [ ] **P2.8 Pages par aide (2/2).** AEEH, CESU, aides après hospitalisation.
-- [ ] **P2.9 « À propos ».** Manifeste, engagements, charte éditoriale ; blocs équipe et histoire masqués sans contenu fourni.
+- [x] (87078d1) **P2.1 Accueil, blocs 1 à 4.** Textes exacts de `docs/01 §4`. Engagements lus dans `engagements.json`.
+- [x] (cb5ceb6) **P2.2 Accueil, blocs 5 à 8.** Trois semaines types en onglets accessibles ; bloc prix masqué si tarifs vides.
+- [x] (e84a52c) **P2.3 Accueil, blocs 9 à 12 et recherche de commune.** Script `scripts/data/fetch-communes.ts` (API Découpage administratif) → `data/idf-communes.json` ; `TerritorySearch` avec agence la plus proche. Réf. `docs/04 §5`.
+- [x] (59aa0ae) **P2.4 « Comment ça marche ».** Réf. `docs/03 §9`, `docs/01 §4 bloc 6`.
+- [x] (1f334e4) **P2.5 « Prestataire ou mandataire ».** Tableau comparatif, composant `MandataireNotice`. Réf. `docs/07 §1`.
+- [x] (f737dee) **P2.6 « Tarifs et aides ».** Tableau des prestations depuis `tarifs.json`, exemples mensuels calculés (`src/lib/pricing`), cartes d'aides. Tests unitaires des calculs.
+- [x] (554f350) **P2.7 Pages par aide (1/2).** Crédit d'impôt et avance immédiate, APA, PCH. Montants et conditions repris de sources officielles ouvertes pendant la tâche, avec année.
+- [x] (6a6ab0a) **P2.8 Pages par aide (2/2).** AEEH, CESU, aides après hospitalisation.
+- [x] (963f8b2) **P2.9 « À propos ».** Manifeste, engagements, charte éditoriale ; blocs équipe et histoire masqués sans contenu fourni.
 
-**Point de validation 2** : `pnpm lhci` sur l'accueil dans les budgets de `docs/07 §5` ; aucun texte hors voix (`check-copy.ts` ajouté ici).
+**Point de validation 2** : `pnpm lhci` sur l'accueil dans les budgets de `docs/07 §5` ; aucun texte hors voix (`check-copy.ts` ajouté ici). — Fait le 2026-09-20 : `check-copy` vert, `pnpm lhci` vert sur 10 budgets sur 11 (bonnes pratiques 0,96 : 404 des routes de la phase 3, à revérifier au point 3), voir JOURNAL et D-019.
 
 ## Phase 3 — Formulaires · `phase/03-formulaires`
 
@@ -169,3 +169,4 @@ Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la
 (La loop ajoute ici les anomalies découvertes en cours de route, avec la phase concernée.)
 
 - [~] (Q-TECH-3) **DC.1 Publier le dépôt.** Créer le dépôt GitHub, ajouter le remote, pousser `main`, les tags `phase-NN` et les branches `phase/*`, ouvrir a posteriori les PR de phase, vérifier que la CI de `.github/workflows/ci.yml` est verte, relier Vercel (prévisualisations). Réf. D-014.
+- [ ] **DC.2 Dépendances transitives de `@lhci/cli`.** `pnpm audit` (2026-09-20) signale cinq vulnérabilités, toutes dans l’outillage de développement (`tmp` via inquirer, `extract-zip` via puppeteer-core, `uuid`) : aucune n’est exécutée par le site. Les `overrides` posés par `pnpm audit --fix=override` dans `pnpm-workspace.yaml` sont restés sans effet (pnpm 11.0.8 répond « Already up to date », deux tentatives). À reprendre à la prochaine version de `@lhci/cli` ou avec des `overrides` vérifiés.

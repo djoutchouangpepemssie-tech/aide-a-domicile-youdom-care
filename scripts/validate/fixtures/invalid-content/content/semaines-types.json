@@ -376,7 +376,12 @@
           "heures": "20h30–22h30",
           "libelle": "Coucher"
         },
-        { "jour": "sam", "creneau": "afternoon", "activite": "sorties", "libelle": "Sortie" }
+        {
+          "jour": "sam",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "libelle": "Sortie"
+        }
       ]
     },
     {
@@ -425,6 +430,151 @@
           "activite": "presence",
           "heures": "10h–17h",
           "libelle": "Un samedi sur deux : relais des parents"
+        }
+      ]
+    },
+    {
+      "id": "bernard",
+      "titre": "Bernard, 74 ans, retour d’hospitalisation",
+      "contexte": "Première semaine à la maison après l’hôpital.",
+      "source": "docs/03 §8 (Sortie d’hospitalisation) : présence dès le premier jour, courses, repas, aide aux gestes, vigilance ; répartition des jours et nuits choisie pour l’illustration",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–12h",
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–12h",
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–12h",
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–12h",
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–12h",
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–12h",
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+        },
+        {
+          "jour": "dim",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–12h",
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+        },
+        {
+          "jour": "lun",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Courses, repas"
+        },
+        {
+          "jour": "mer",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Courses, repas"
+        },
+        {
+          "jour": "ven",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Courses, repas"
+        },
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Vigilance, dîner, coucher"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Vigilance, dîner, coucher"
+        },
+        {
+          "jour": "mer",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Vigilance, dîner, coucher"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Vigilance, dîner, coucher"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Vigilance, dîner, coucher"
+        },
+        {
+          "jour": "sam",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Vigilance, dîner, coucher"
+        },
+        {
+          "jour": "dim",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Vigilance, dîner, coucher"
+        },
+        {
+          "jour": "lun",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit des premiers jours"
+        },
+        {
+          "jour": "mar",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit des premiers jours"
+        },
+        {
+          "jour": "mer",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit des premiers jours"
         }
       ]
     }

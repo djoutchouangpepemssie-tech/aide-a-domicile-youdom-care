@@ -1,0 +1,82 @@
+{
+  "id": "apa",
+  "seo": {
+    "titre": "APA à domicile : conditions, montants par GIR, démarche",
+    "description": "L'APA à domicile : pour qui (60 ans et plus, GIR 1 à 4), montants maximaux par GIR, participation selon les ressources et démarche auprès du département."
+  },
+  "ariane": "APA",
+  "h1": "APA à domicile : l'allocation pour rester chez soi après 60 ans",
+  "chapo": "L'allocation personnalisée d'autonomie finance une partie de l'aide dont une personne âgée a besoin pour continuer à vivre chez elle. Conditions, montants et démarche, tels que les publie service-public.gouv.fr.",
+  "maj": "2026-09-20",
+  "sources": [
+    {
+      "libelle": "service-public.gouv.fr — Allocation personnalisée d'autonomie (APA) à domicile",
+      "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10009",
+      "verifie_le": "2026-06-01",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "pour-les-personnes-agees.gouv.fr — Portail national d'information",
+      "href": "https://www.pour-les-personnes-agees.gouv.fr/",
+      "consulte_le": "2026-09-20"
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qui y a droit ?",
+      "paragraphes": [
+        "Les personnes âgées d'au moins 60 ans, en perte d'autonomie, qui vivent à leur domicile, chez un proche, chez un accueillant familial ou en résidence autonomie, en France.",
+        "La perte d'autonomie est évaluée avec la grille AGGIR : l'APA concerne les GIR 1 à 4 (le GIR 1 correspond à la perte d'autonomie la plus forte)."
+      ]
+    },
+    {
+      "h2": "Combien ?",
+      "paragraphes": [
+        "Le département établit un plan d'aide, dans la limite d'un montant maximal mensuel qui dépend du GIR. Une participation reste à votre charge selon vos ressources."
+      ],
+      "montants": [
+        { "libelle": "GIR 1", "valeur": "2 080,33 € par mois", "precision": "au maximum" },
+        { "libelle": "GIR 2", "valeur": "1 682,30 € par mois", "precision": "au maximum" },
+        { "libelle": "GIR 3", "valeur": "1 215,99 € par mois", "precision": "au maximum" },
+        { "libelle": "GIR 4", "valeur": "811,52 € par mois", "precision": "au maximum" }
+      ],
+      "liste": [
+        "Ressources mensuelles jusqu'à 933,89 € : aucune participation.",
+        "De 933,89 € à 3 439,31 € : participation progressive, de 0 à 90 % du plan d'aide.",
+        "Au-delà de 3 439,31 € : participation de 90 % du plan d'aide."
+      ]
+    },
+    {
+      "h2": "Ce que l'APA peut financer",
+      "paragraphes": [
+        "Le plan d'aide peut couvrir des heures d'aide à domicile, prestataire ou mandataire, pour les gestes du quotidien, les repas, la présence et la sécurité. Nous vous aidons à le traduire en semaine concrète."
+      ]
+    }
+  ],
+  "a_retenir": [
+    "60 ans et plus, GIR 1 à 4, à domicile.",
+    "Un montant maximal mensuel par GIR, de 811,52 € (GIR 4) à 2 080,33 € (GIR 1).",
+    "Aucune participation jusqu'à 933,89 € de ressources mensuelles."
+  ],
+  "demarche": {
+    "h2": "La démarche, pas à pas",
+    "etapes": [
+      {
+        "titre": "Déposez la demande auprès des services de votre département.",
+        "texte": "En ligne ou par dossier, avec les justificatifs demandés."
+      },
+      {
+        "titre": "Le département accuse réception sous 10 jours.",
+        "texte": "Une équipe évalue ensuite la perte d'autonomie à domicile."
+      },
+      {
+        "titre": "La décision arrive dans les 2 mois suivant le dossier complet.",
+        "texte": "Elle fixe le GIR, le plan d'aide et votre participation."
+      }
+    ]
+  },
+  "appel": {
+    "h2": "Transformer un plan d'aide en semaine qui tient",
+    "texte": "Un conseiller vous aide à préparer le dossier et à organiser les heures accordées. Sans engagement."
+  }
+}

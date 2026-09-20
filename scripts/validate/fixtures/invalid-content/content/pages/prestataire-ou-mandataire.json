@@ -1,0 +1,74 @@
+{
+  "_lisezmoi": "Page « Prestataire ou mandataire » (docs/03 §9, docs/07 §1). Le tableau décrit les deux modes en termes généraux (qui est l'employeur, qui recrute, qui remplace, qui gère la paie, prix, pour qui) sans chiffre : les prix viennent de content/tarifs.json sur la page Tarifs et aides. La mention légale du mode mandataire vit dans content/interface.json (mandataire_notice) : formulation provisoire de docs/07, à remplacer par le texte validé par le conseil d'Arcel (Q-LEGAL-3).",
+  "seo": {
+    "titre": "Prestataire ou mandataire : quel mode d'aide à domicile ?",
+    "description": "Deux façons d'être accompagné à domicile. Qui est l'employeur, qui recrute, qui remplace, qui gère la paie : le comparatif clair pour choisir votre mode."
+  },
+  "ariane": "Prestataire ou mandataire",
+  "h1": "Prestataire ou mandataire : quel mode choisir ?",
+  "chapo": "Deux façons d'être accompagné. Une seule question : voulez-vous être l'employeur ?",
+  "tableau": {
+    "h2": "Les deux modes, point par point",
+    "legende": "Comparatif des modes prestataire et mandataire",
+    "colonnes": { "critere": "Critère", "prestataire": "Prestataire", "mandataire": "Mandataire" },
+    "lignes": [
+      {
+        "critere": "Qui est l'employeur de l'intervenant ?",
+        "prestataire": "Youdom Care.",
+        "mandataire": "Vous. Youdom Care agit pour votre compte, en votre nom."
+      },
+      {
+        "critere": "Qui recrute et propose la personne ?",
+        "prestataire": "Youdom Care sélectionne, forme et affecte l'intervenant.",
+        "mandataire": "Youdom Care sélectionne et vous présente des candidats ; vous choisissez et vous embauchez."
+      },
+      {
+        "critere": "Qui organise le remplacement ?",
+        "prestataire": "Le service prestataire.",
+        "mandataire": "Le service mandataire vous aide à trouver un remplaçant ; le contrat reste le vôtre."
+      },
+      {
+        "critere": "Qui gère la paie et les démarches ?",
+        "prestataire": "Tout est inclus dans la prestation.",
+        "mandataire": "Youdom Care établit les bulletins de paie et les déclarations pour votre compte ; vous réglez le salaire et les cotisations."
+      },
+      {
+        "critere": "Comment se compose le prix ?",
+        "prestataire": "Un prix horaire TTC tout compris, avec devis gratuit.",
+        "mandataire": "Le salaire et les cotisations de l'intervenant, plus des frais de gestion."
+      },
+      {
+        "critere": "Que se passe-t-il à l'arrêt ?",
+        "prestataire": "Vous arrêtez la prestation dans le respect de la réglementation applicable.",
+        "mandataire": "Les obligations de l'employeur (préavis, fin de contrat) vous incombent ; nous vous accompagnons dans les démarches."
+      },
+      {
+        "critere": "Pour qui est-ce adapté ?",
+        "prestataire": "Vous voulez une solution simple, sans rôle d'employeur.",
+        "mandataire": "Vous acceptez le rôle d'employeur pour garder la main sur le choix de la personne et le budget."
+      }
+    ],
+    "note": "Dans les deux modes, les sommes versées ouvrent droit au crédit d'impôt pour l'emploi d'un salarié à domicile, selon les conditions en vigueur."
+  },
+  "question": {
+    "h2": "La question qui tranche",
+    "texte": "Voulez-vous être l'employeur ?",
+    "oui": {
+      "titre": "Oui, je veux être l'employeur",
+      "texte": "Le mode mandataire est fait pour vous : vous choisissez la personne, vous signez le contrat, nous gérons l'administratif pour votre compte.",
+      "mode": "mandataire"
+    },
+    "non": {
+      "titre": "Non, je veux une solution clé en main",
+      "texte": "Le mode prestataire est fait pour vous : Youdom Care est l'employeur, organise, remplace et gère tout.",
+      "mode": "prestataire"
+    }
+  },
+  "appel": {
+    "h2": "Encore un doute ?",
+    "texte": "Un conseiller vous explique les deux modes, sans parti pris, et vous aide à choisir celui qui vous ressemble."
+  },
+  "liens": {
+    "tarifs": { "libelle": "Voir les tarifs des deux modes", "href": "/tarifs-et-aides/" }
+  }
+}

@@ -21,6 +21,7 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
   Réponse :
 - **Q-LEGAL-3.** Conditions générales (prestataire et mandataire) en PDF, et texte exact de la mention légale du mode mandataire validé par votre conseil.
   Réponse :
+  Note de la loop (2026-09-20) : en attendant, le site affiche la formulation de docs/07 §1 (« Attention, dans le cadre d’un contrat de placement de travailleurs, le consommateur est l’employeur ») via content/interface.json > mandataire_notice ; remplacez ce texte par celui validé par votre conseil.
 - **Q-LEGAL-4.** Avis de votre juriste ou délégué à la protection des données sur la réception par e-mail de demandes contenant des données de santé (durée de conservation, accès à la boîte, question de l'hébergement certifié HDS pour la messagerie et le futur CRM).
   Réponse :
 
@@ -64,6 +65,8 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 - **Q-TECH-2.** Outil de mesure d'audience souhaité (Plausible, Matomo, aucun).
 - **Q-TECH-3.** Dépôt GitHub et projet Vercel reliés ? (pour les prévisualisations par branche)
   Note de la loop (2026-09-20) : le dépôt est pour l'instant local (aucun remote) et `gh auth status` échoue sur cette machine (jeton `GH_TOKEN` invalide). Tant que ce n'est pas réglé, la loop fusionnera les fins de phase en local (squash sur `main` + tag) et ouvrira les PR a posteriori.
+  Réponse :
+- **Q-TECH-4.** Budget JavaScript initial : `docs/07 §5` demandait moins de 90 Ko compressés par page de contenu, mais le socle Next 16 + React 19 pèse à lui seul 132 Ko (mesure Lighthouse du 2026-09-20, accueil à 150 Ko au total, LCP 1,9 s, performance 98). La loop a rebasé le budget à 160 Ko (contenu) et 220 Ko (formulaires), voir D-019. Confirmez-vous ce budget, ou souhaitez-vous une pile plus légère pour les pages de contenu (ce qui remettrait en cause D-006) ?
   Réponse :
 
 ## Lancement

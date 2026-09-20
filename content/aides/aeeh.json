@@ -1,0 +1,84 @@
+{
+  "id": "aeeh",
+  "seo": {
+    "titre": "AEEH : allocation d'éducation de l'enfant handicapé",
+    "description": "L'AEEH : conditions (enfant de moins de 20 ans, taux d'incapacité), montant de base et compléments mensuels, majoration parent isolé, démarche MDPH."
+  },
+  "ariane": "AEEH",
+  "h1": "AEEH : l'allocation d'éducation de l'enfant handicapé",
+  "chapo": "L'AEEH aide les parents à faire face aux frais liés au handicap de leur enfant. Conditions, montants et démarche, tels que les publie service-public.gouv.fr.",
+  "maj": "2026-09-20",
+  "sources": [
+    {
+      "libelle": "service-public.gouv.fr — Allocation d'éducation de l'enfant handicapé (AEEH)",
+      "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14809",
+      "verifie_le": "2026-06-01",
+      "consulte_le": "2026-09-20"
+    },
+    {
+      "libelle": "monparcourshandicap.gouv.fr — Portail national d'information",
+      "href": "https://www.monparcourshandicap.gouv.fr/",
+      "consulte_le": "2026-09-20"
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qui y a droit ?",
+      "paragraphes": [
+        "Les parents d'un enfant de moins de 20 ans, en situation de handicap, qui réside de façon permanente en France.",
+        "Le taux d'incapacité de l'enfant doit être d'au moins 80 %, ou compris entre 50 % et 80 % sous certaines conditions d'accompagnement (scolarisation adaptée, soins). L'enfant ne doit pas percevoir un salaire supérieur à 55 % du Smic mensuel brut, soit 1 026,86 €."
+      ]
+    },
+    {
+      "h2": "Combien ?",
+      "paragraphes": [
+        "L'AEEH comprend un montant de base, auquel peut s'ajouter un complément selon les dépenses et le temps consacré par les parents. Une majoration existe pour le parent isolé."
+      ],
+      "montants": [
+        { "libelle": "AEEH de base", "valeur": "153,01 € par mois" },
+        { "libelle": "Complément de 1re catégorie", "valeur": "267,77 € par mois" },
+        { "libelle": "Complément de 2e catégorie", "valeur": "463,82 € par mois" },
+        { "libelle": "Complément de 3e catégorie", "valeur": "592,92 € par mois" },
+        { "libelle": "Complément de 4e catégorie", "valeur": "834,72 € par mois" },
+        { "libelle": "Complément de 5e catégorie", "valeur": "1 024,27 € par mois" },
+        { "libelle": "Complément de 6e catégorie", "valeur": "1 451,45 € par mois" }
+      ],
+      "liste": [
+        "Le complément est fixé par la commission de la MDPH selon les frais engagés, le recours à une tierce personne et la réduction d'activité d'un parent.",
+        "L'allocation est attribuée pour une durée de 2 à 5 ans selon le taux d'incapacité, et peut l'être sans limitation jusqu'aux 20 ans de l'enfant."
+      ]
+    },
+    {
+      "h2": "AEEH et aide à domicile",
+      "paragraphes": [
+        "Le complément peut financer une aide humaine auprès de votre enfant : sortie d'école, mercredis, vacances, relais pour souffler. Il existe aussi un droit d'option entre le complément d'AEEH et la PCH ; nous vous orientons vers la MDPH pour comparer."
+      ]
+    }
+  ],
+  "a_retenir": [
+    "Enfant de moins de 20 ans, taux d'incapacité d'au moins 80 % (ou 50 à 80 % sous conditions).",
+    "153,01 € par mois de base, plus un complément de 267,77 € à 1 451,45 € selon la catégorie.",
+    "Décision de la MDPH, versement par la CAF ou la MSA."
+  ],
+  "demarche": {
+    "h2": "La démarche, pas à pas",
+    "etapes": [
+      {
+        "titre": "Déposez le dossier auprès de la MDPH de votre département.",
+        "texte": "Formulaire de demande, certificat médical et pièces justificatives."
+      },
+      {
+        "titre": "La commission (CDAPH) décide du droit et du complément.",
+        "texte": "Elle fixe aussi la durée d'attribution."
+      },
+      {
+        "titre": "La CAF ou la MSA verse l'allocation.",
+        "texte": "Chaque mois, à partir de la décision."
+      }
+    ]
+  },
+  "appel": {
+    "h2": "Un relais qui connaît votre enfant",
+    "texte": "Un conseiller vous aide à préparer le dossier et à organiser les heures avec le complément accordé. Sans engagement."
+  }
+}
