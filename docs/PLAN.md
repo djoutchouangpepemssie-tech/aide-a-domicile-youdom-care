@@ -69,26 +69,26 @@ Les contrôles de `pnpm validate` s'activent au fil des phases : chaque script e
 
 ## Phase 4 — Pages services, cas par cas · `phase/04-services`
 
-- [ ] **P4.1 Gabarit 13 sections** et schéma MDX. Réf. `docs/03 §2`.
-- [ ] **P4.2 Pilier « Maladies neurodégénératives ».**
-- [ ] **P4.3 Alzheimer et maladies apparentées.**
-- [ ] **P4.4 Maladie de Parkinson.**
-- [ ] **P4.5 Sclérose en plaques.**
-- [ ] **P4.6 Maladie à corps de Lewy · dégénérescence fronto-temporale.**
-- [ ] **P4.7 Maladie de Charcot (SLA) · maladie de Huntington.**
-- [ ] **P4.8 Pilier « Personnes âgées ».**
-- [ ] **P4.9 Sous-pages personnes âgées** (autonomie, vie quotidienne, compagnie et stimulation).
-- [ ] **P4.10 Pilier « Adultes en situation de handicap ».**
-- [ ] **P4.11 Pilier « Enfants en situation de handicap ».**
-- [ ] **P4.12 Autisme (TSA) · polyhandicap.**
-- [ ] **P4.13 Handicap moteur · déficience intellectuelle.**
-- [ ] **P4.14 Espace Aidants**, solutions de répit, « Où en êtes-vous ? » (aucune donnée conservée).
-- [ ] **P4.15 Garde de nuit · présence 24h/24 · sortie d'hospitalisation.**
-- [ ] **P4.16 Garde-malade · accompagnement en vacances · remplacement d'auxiliaire de vie.**
+- [x] (f840290) **P4.1 Gabarit 13 sections** et schéma MDX. Réf. `docs/03 §2`.
+- [x] (aa61790) **P4.2 Pilier « Maladies neurodégénératives ».**
+- [x] (37a3941) **P4.3 Alzheimer et maladies apparentées.**
+- [x] (a151199) **P4.4 Maladie de Parkinson.**
+- [x] (bea1629) **P4.5 Sclérose en plaques.**
+- [x] (1a18d23) **P4.6 Maladie à corps de Lewy · dégénérescence fronto-temporale.**
+- [x] (837b4b2) **P4.7 Maladie de Charcot (SLA) · maladie de Huntington.**
+- [x] (3165b2a) **P4.8 Pilier « Personnes âgées ».**
+- [x] (440b527) **P4.9 Sous-pages personnes âgées** (autonomie, vie quotidienne, compagnie et stimulation).
+- [x] (506511f) **P4.10 Pilier « Adultes en situation de handicap ».**
+- [x] (652d4cc) **P4.11 Pilier « Enfants en situation de handicap ».**
+- [x] (0bf2ecc) **P4.12 Autisme (TSA) · polyhandicap.**
+- [x] (5dd5f38) **P4.13 Handicap moteur · déficience intellectuelle.**
+- [x] (f70e7b2) **P4.14 Espace Aidants**, solutions de répit, « Où en êtes-vous ? » (aucune donnée conservée).
+- [x] (a3ce539) **P4.15 Garde de nuit · présence 24h/24 · sortie d'hospitalisation.**
+- [x] (363e609) **P4.16 Garde-malade · accompagnement en vacances · remplacement d'auxiliaire de vie.**
 
 Critères communs : 13 sections présentes ; sources ouvertes avec succès et datées ; semaine type illustrée ; encart « Ce que nous ne faisons pas » ; formulaire du cas intégré ; pages pathologie en `statut: a_relire` ; maillage de `docs/03 §2` respecté.
 
-**Point de validation 4** : `check-copy`, `check-links` verts ; relecture croisée par un sous-agent de trois pages tirées au hasard contre `docs/01 §2` et `docs/03 §1` ; liste des relectures professionnelles attendues ajoutée à `docs/QUESTIONS_ARCEL.md`.
+**Point de validation 4** : `check-copy`, `check-links` verts ; relecture croisée par un sous-agent de trois pages tirées au hasard contre `docs/01 §2` et `docs/03 §1` ; liste des relectures professionnelles attendues ajoutée à `docs/QUESTIONS_ARCEL.md`. — Fait le 2026-09-20 : `check-links` créé (ef41925, D-023) et vert avec deux avertissements Urssaf (sites qui bloquent les robots, vérifiés dans un navigateur) ; relecture croisée de polyhandicap, sortie d'hospitalisation et handicap moteur, corrections appliquées (4568dc7) ; Q-CONTENU-7 (relectures attendues) et Q-CONTENU-8 (phrases longues) ajoutées (47ecf65).
 
 ## Phase 5 — SEO technique · `phase/05-seo`
 

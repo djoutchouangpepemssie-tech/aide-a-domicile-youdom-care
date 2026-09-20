@@ -307,6 +307,42 @@ export const interfaceSchema = z.strictObject({
     nom: text,
     accueil: text,
   }),
+  service: z.strictObject({
+    /** docs/03 §4 : sélecteur « pour un proche / pour vous-même » du chapô. */
+    lecteur: z.strictObject({ legende: text, proche: text, soi: text }),
+    situations_h2: text,
+    actions_h2: text,
+    rubriques: z.strictObject({ gestes: text, presence: text, lien: text, coordination: text }),
+    stades_h2: text,
+    semaine_h2: text,
+    suivi_h2: text,
+    proches_h2: text,
+    proches_lien: text,
+    repit_lien: text,
+    intervenants_h2: text,
+    ne_faisons_pas_h2: text,
+    cout_h2: text,
+    cout_lien: text,
+    faq_h2: text,
+    formulaire_h2: text,
+    formulaire_texte: text,
+    sources_h2: text,
+    auteur: text.includes("{nom}").includes("{fonction}"),
+    relu_par: text.includes("{nom}").includes("{fonction}").includes("{date}"),
+    non_relu: text,
+    maj: text.includes("{date}"),
+    pilier_lien: text.includes("{titre}"),
+    soeurs_h2: text,
+    commune_lien: text,
+    publics: z.strictObject({
+      neuro: text,
+      "personne-agee": text,
+      "adulte-handicap": text,
+      "enfant-handicap": text,
+      aidant: text,
+      transverse: text,
+    }),
+  }),
   barre_mobile: z.strictObject({
     nom: text,
     appeler: text,
@@ -648,6 +684,66 @@ export const howItWorksSchema = z.strictObject({
 });
 export type HowItWorksPage = z.infer<typeof howItWorksSchema>;
 
+/* ---------- content/pages/ou-en-etes-vous.json (docs/03 §7) ---------- */
+
+const adviceSchema = z.strictObject({
+  texte: text,
+  lien: z.strictObject({ libelle: text, href: z.string().min(1) }).optional(),
+});
+
+/** Questionnaire « Où en êtes-vous ? » : huit questions, trois niveaux, aucune donnée conservée. */
+export const caregiverCheckSchema = z
+  .strictObject({
+    _lisezmoi: z.string(),
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    avertissement: z.strictObject({ titre: text, texte: text }),
+    reponses: z
+      .array(z.strictObject({ valeur: z.number().int().min(0), libelle: text }))
+      .min(2)
+      .max(4),
+    questions: z.array(z.strictObject({ id: slug, texte: text })).length(8),
+    bouton_resultat: text,
+    bouton_recommencer: text,
+    incomplet: text.includes("{n}"),
+    resultat_h2: text,
+    niveaux: z
+      .array(
+        z.strictObject({
+          id: slug,
+          min: z.number().int().min(0),
+          max: z.number().int().min(0),
+          titre: text,
+          texte: text,
+          conseils: z.array(adviceSchema).min(2).max(5),
+        }),
+      )
+      .length(3),
+    appel: z.strictObject({ titre: text, texte: text, bouton: text, href: internalPath }),
+    retour: z.strictObject({ libelle: text, href: internalPath }),
+  })
+  .refine(
+    (page) => {
+      const max = page.questions.length * Math.max(...page.reponses.map((r) => r.valeur));
+      const sorted = [...page.niveaux].sort((a, b) => a.min - b.min);
+      const first = sorted[0];
+      const last = sorted[sorted.length - 1];
+      if (!first || !last) return false;
+      return (
+        first.min === 0 &&
+        last.max === max &&
+        sorted.every((n, i) => {
+          const previous = sorted[i - 1];
+          return n.max >= n.min && (previous === undefined || n.min === previous.max + 1);
+        })
+      );
+    },
+    { message: "les trois niveaux doivent couvrir toute l’échelle, sans trou ni chevauchement" },
+  );
+export type CaregiverCheckPage = z.infer<typeof caregiverCheckSchema>;
+
 const modeChoiceSchema = z.strictObject({ titre: text, texte: text, mode: interventionModeSchema });
 
 export const modesPageSchema = z.strictObject({
@@ -731,7 +827,7 @@ export type PricingPage = z.infer<typeof pricingPageSchema>;
 
 /* ---------- content/aides/{id}.json : pages détaillées par aide ---------- */
 
-const sourceSchema = z.strictObject({
+export const sourceSchema = z.strictObject({
   libelle: text,
   href: z.url(),
   /** Date « Vérifié le » affichée par la source, si elle en publie une. */

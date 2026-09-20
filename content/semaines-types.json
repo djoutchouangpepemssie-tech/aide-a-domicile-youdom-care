@@ -577,6 +577,924 @@
           "libelle": "Nuit des premiers jours"
         }
       ]
+    },
+    {
+      "id": "henri",
+      "titre": "Henri, 79 ans, maladie à corps de Lewy",
+      "contexte": "Vit avec sa femme.",
+      "source": "docs/03 §3.4 (Maladie à corps de Lewy)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h30",
+          "libelle": "Lever, toilette, petit-déjeuner, selon la forme du jour"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h30",
+          "libelle": "Lever, toilette, petit-déjeuner, selon la forme du jour"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h30",
+          "libelle": "Lever, toilette, petit-déjeuner, selon la forme du jour"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h30",
+          "libelle": "Lever, toilette, petit-déjeuner, selon la forme du jour"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h30",
+          "libelle": "Lever, toilette, petit-déjeuner, selon la forme du jour"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h30",
+          "libelle": "Lever, toilette, petit-déjeuner, selon la forme du jour"
+        },
+        {
+          "jour": "dim",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h30",
+          "libelle": "Lever, toilette, petit-déjeuner, selon la forme du jour"
+        },
+        {
+          "jour": "mar",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "14h–17h",
+          "libelle": "Présence, marche sécurisée, relais pour sa femme"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "14h–17h",
+          "libelle": "Présence, marche sécurisée, relais pour sa femme"
+        },
+        {
+          "jour": "mar",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : réveils agités, levers sécurisés"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : réveils agités, levers sécurisés"
+        },
+        {
+          "jour": "dim",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : réveils agités, levers sécurisés"
+        }
+      ]
+    },
+    {
+      "id": "veronique",
+      "titre": "Véronique, 58 ans, dégénérescence fronto-temporale",
+      "contexte": "Vit avec son mari et leur fils lycéen.",
+      "source": "docs/03 §3.5 (Dégénérescence fronto-temporale)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "11h30–14h",
+          "libelle": "Repas accompagné, cadre stable, pas de sortie seule"
+        },
+        {
+          "jour": "mar",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "11h30–14h",
+          "libelle": "Repas accompagné, cadre stable, pas de sortie seule"
+        },
+        {
+          "jour": "mer",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "11h30–14h",
+          "libelle": "Repas accompagné, cadre stable, pas de sortie seule"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "11h30–14h",
+          "libelle": "Repas accompagné, cadre stable, pas de sortie seule"
+        },
+        {
+          "jour": "ven",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "11h30–14h",
+          "libelle": "Repas accompagné, cadre stable, pas de sortie seule"
+        },
+        {
+          "jour": "mar",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–17h",
+          "libelle": "Marche, piscine, activité physique"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–17h",
+          "libelle": "Marche, piscine, activité physique"
+        },
+        {
+          "jour": "sam",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–17h",
+          "libelle": "Marche, piscine, activité physique"
+        },
+        {
+          "jour": "mer",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "18h–21h",
+          "libelle": "Relais du soir pour son mari et leur fils"
+        }
+      ]
+    },
+    {
+      "id": "paul",
+      "titre": "Paul, 63 ans, maladie de Charcot (SLA)",
+      "contexte": "Vit avec sa femme, en hospitalisation à domicile.",
+      "source": "docs/03 §3.6 (Maladie de Charcot)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever au lève-personne, toilette, installation au fauteuil"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever au lève-personne, toilette, installation au fauteuil"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever au lève-personne, toilette, installation au fauteuil"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever au lève-personne, toilette, installation au fauteuil"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever au lève-personne, toilette, installation au fauteuil"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever au lève-personne, toilette, installation au fauteuil"
+        },
+        {
+          "jour": "dim",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever au lève-personne, toilette, installation au fauteuil"
+        },
+        {
+          "jour": "lun",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–13h30",
+          "libelle": "Repas adapté, textures selon l’orthophoniste"
+        },
+        {
+          "jour": "mar",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–13h30",
+          "libelle": "Repas adapté, textures selon l’orthophoniste"
+        },
+        {
+          "jour": "mer",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–13h30",
+          "libelle": "Repas adapté, textures selon l’orthophoniste"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–13h30",
+          "libelle": "Repas adapté, textures selon l’orthophoniste"
+        },
+        {
+          "jour": "ven",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–13h30",
+          "libelle": "Repas adapté, textures selon l’orthophoniste"
+        },
+        {
+          "jour": "sam",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–13h30",
+          "libelle": "Repas adapté, textures selon l’orthophoniste"
+        },
+        {
+          "jour": "dim",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–13h30",
+          "libelle": "Repas adapté, textures selon l’orthophoniste"
+        },
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–22h",
+          "libelle": "Coucher, changements de position, tablette de communication"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–22h",
+          "libelle": "Coucher, changements de position, tablette de communication"
+        },
+        {
+          "jour": "mer",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–22h",
+          "libelle": "Coucher, changements de position, tablette de communication"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–22h",
+          "libelle": "Coucher, changements de position, tablette de communication"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–22h",
+          "libelle": "Coucher, changements de position, tablette de communication"
+        },
+        {
+          "jour": "sam",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–22h",
+          "libelle": "Coucher, changements de position, tablette de communication"
+        },
+        {
+          "jour": "dim",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–22h",
+          "libelle": "Coucher, changements de position, tablette de communication"
+        },
+        {
+          "jour": "mar",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : positions, appel, relais de sa femme"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : positions, appel, relais de sa femme"
+        },
+        {
+          "jour": "sam",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : positions, appel, relais de sa femme"
+        }
+      ]
+    },
+    {
+      "id": "sophie",
+      "titre": "Sophie, 44 ans, maladie de Huntington",
+      "contexte": "Vit seule, sa sœur habite à côté.",
+      "source": "docs/03 §3.7 (Maladie de Huntington)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Repas enrichi, dans le calme, sans se presser"
+        },
+        {
+          "jour": "mar",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Repas enrichi, dans le calme, sans se presser"
+        },
+        {
+          "jour": "mer",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Repas enrichi, dans le calme, sans se presser"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Repas enrichi, dans le calme, sans se presser"
+        },
+        {
+          "jour": "ven",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Repas enrichi, dans le calme, sans se presser"
+        },
+        {
+          "jour": "sam",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Repas enrichi, dans le calme, sans se presser"
+        },
+        {
+          "jour": "dim",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "12h–14h",
+          "libelle": "Repas enrichi, dans le calme, sans se presser"
+        },
+        {
+          "jour": "lun",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "15h–17h",
+          "libelle": "Marche, courses, rendez-vous"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "15h–17h",
+          "libelle": "Marche, courses, rendez-vous"
+        },
+        {
+          "jour": "ven",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "15h–17h",
+          "libelle": "Marche, courses, rendez-vous"
+        },
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "18h30–20h30",
+          "libelle": "Dîner enrichi, routine du soir, logement sécurisé"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "18h30–20h30",
+          "libelle": "Dîner enrichi, routine du soir, logement sécurisé"
+        },
+        {
+          "jour": "mer",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "18h30–20h30",
+          "libelle": "Dîner enrichi, routine du soir, logement sécurisé"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "18h30–20h30",
+          "libelle": "Dîner enrichi, routine du soir, logement sécurisé"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "18h30–20h30",
+          "libelle": "Dîner enrichi, routine du soir, logement sécurisé"
+        },
+        {
+          "jour": "sam",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "18h30–20h30",
+          "libelle": "Dîner enrichi, routine du soir, logement sécurisé"
+        },
+        {
+          "jour": "dim",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "18h30–20h30",
+          "libelle": "Dîner enrichi, routine du soir, logement sécurisé"
+        }
+      ]
+    },
+    {
+      "id": "lina",
+      "titre": "Lina, 6 ans, polyhandicap",
+      "contexte": "Vit avec ses parents et son grand frère.",
+      "source": "docs/03 §6 (Enfants en situation de handicap, polyhandicap)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "17h–20h",
+          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "17h–20h",
+          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "17h–20h",
+          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "17h–20h",
+          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h30–18h30",
+          "libelle": "Après-midi avec Lina : kinésithérapie, temps calme, jeux sensoriels"
+        },
+        {
+          "jour": "ven",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : positions, surveillance selon le protocole, relais des parents"
+        },
+        {
+          "jour": "sam",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit : positions, surveillance selon le protocole, relais des parents"
+        }
+      ]
+    },
+    {
+      "id": "tom",
+      "titre": "Tom, 10 ans, handicap moteur",
+      "contexte": "Paralysie cérébrale, en fauteuil, scolarisé en classe ordinaire.",
+      "source": "docs/03 §6 (Enfants en situation de handicap, handicap moteur)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "16h30–19h30",
+          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "16h30–19h30",
+          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "16h30–19h30",
+          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "16h30–19h30",
+          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "13h30–16h30",
+          "libelle": "Kinésithérapie puis ergothérapie"
+        },
+        {
+          "jour": "sam",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Loisirs accessibles : piscine, cinéma, copains"
+        }
+      ]
+    },
+    {
+      "id": "ines",
+      "titre": "Inès, 12 ans, déficience intellectuelle",
+      "contexte": "Scolarisée en ULIS, deux petites sœurs.",
+      "source": "docs/03 §6 (Enfants en situation de handicap, déficience intellectuelle)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "16h30–19h",
+          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "16h30–19h",
+          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "16h30–19h",
+          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "16h30–19h",
+          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Activité inclusive : club de sport, bibliothèque, trajet en bus appris"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "presence",
+          "heures": "9h30–13h",
+          "libelle": "Un samedi sur deux : relais des parents pour les petites sœurs"
+        }
+      ]
+    },
+    {
+      "id": "louise",
+      "titre": "Louise, 91 ans, présence 24h/24",
+      "contexte": "Vit seule, trois intervenants se relaient.",
+      "source": "docs/03 §8 (Présence 24h/24)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h–13h",
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h–13h",
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h–13h",
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h–13h",
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h–13h",
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h–13h",
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+        },
+        {
+          "jour": "dim",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h–13h",
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+        },
+        {
+          "jour": "lun",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h–21h",
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+        },
+        {
+          "jour": "mar",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h–21h",
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h–21h",
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h–21h",
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+        },
+        {
+          "jour": "ven",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h–21h",
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+        },
+        {
+          "jour": "sam",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h–21h",
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+        },
+        {
+          "jour": "dim",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "13h–21h",
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+        },
+        {
+          "jour": "lun",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+        },
+        {
+          "jour": "mar",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+        },
+        {
+          "jour": "mer",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+        },
+        {
+          "jour": "ven",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+        },
+        {
+          "jour": "sam",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+        },
+        {
+          "jour": "dim",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+        }
+      ]
+    },
+    {
+      "id": "gisele",
+      "titre": "Gisèle, 79 ans, une semaine de vacances",
+      "contexte": "Part une semaine à la mer avec son auxiliaire de vie habituelle.",
+      "source": "docs/03 §8 (Accompagnement en vacances)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h",
+          "libelle": "Lever, toilette, petit-déjeuner, comme à la maison"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h",
+          "libelle": "Lever, toilette, petit-déjeuner, comme à la maison"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h",
+          "libelle": "Lever, toilette, petit-déjeuner, comme à la maison"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h",
+          "libelle": "Lever, toilette, petit-déjeuner, comme à la maison"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h",
+          "libelle": "Lever, toilette, petit-déjeuner, comme à la maison"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h",
+          "libelle": "Lever, toilette, petit-déjeuner, comme à la maison"
+        },
+        {
+          "jour": "dim",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–10h",
+          "libelle": "Lever, toilette, petit-déjeuner, comme à la maison"
+        },
+        {
+          "jour": "lun",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Plage, promenade, visite, à son rythme"
+        },
+        {
+          "jour": "mar",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Plage, promenade, visite, à son rythme"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Plage, promenade, visite, à son rythme"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Plage, promenade, visite, à son rythme"
+        },
+        {
+          "jour": "ven",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Plage, promenade, visite, à son rythme"
+        },
+        {
+          "jour": "sam",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Plage, promenade, visite, à son rythme"
+        },
+        {
+          "jour": "dim",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–18h",
+          "libelle": "Plage, promenade, visite, à son rythme"
+        },
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–21h",
+          "libelle": "Dîner, coucher, présence dans le logement de vacances"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–21h",
+          "libelle": "Dîner, coucher, présence dans le logement de vacances"
+        },
+        {
+          "jour": "mer",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–21h",
+          "libelle": "Dîner, coucher, présence dans le logement de vacances"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–21h",
+          "libelle": "Dîner, coucher, présence dans le logement de vacances"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–21h",
+          "libelle": "Dîner, coucher, présence dans le logement de vacances"
+        },
+        {
+          "jour": "sam",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–21h",
+          "libelle": "Dîner, coucher, présence dans le logement de vacances"
+        },
+        {
+          "jour": "dim",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "19h–21h",
+          "libelle": "Dîner, coucher, présence dans le logement de vacances"
+        }
+      ]
     }
   ]
 }

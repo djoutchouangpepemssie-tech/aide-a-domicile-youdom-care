@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button/Button";
 import { Heading } from "@/components/ui/Heading/Heading";
@@ -14,7 +15,8 @@ import type { ThreadIllustrationName } from "@/components/ui/Thread/illustration
 export interface HeroProps {
   surtitle: string;
   title: string;
-  lead: string;
+  /** Chapô : texte, ou nœud (sélecteur de lecteur des pages services, docs/03 §4). */
+  lead: ReactNode;
   primary: { label: string; href: string };
   secondary: { label: string; href: string };
   /** Lien téléphone ; null si le numéro est inconnu (le lien se masque). */

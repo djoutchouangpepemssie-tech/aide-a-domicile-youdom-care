@@ -129,6 +129,50 @@
     "nom": "Fil d’Ariane",
     "accueil": "Accueil"
   },
+  "service": {
+    "lecteur": {
+      "legende": "Vous cherchez de l’aide",
+      "proche": "pour un proche",
+      "soi": "pour vous-même"
+    },
+    "situations_h2": "Vous vous reconnaissez ?",
+    "actions_h2": "Ce que nous faisons, concrètement",
+    "rubriques": {
+      "gestes": "Les gestes du quotidien",
+      "presence": "Présence et sécurité",
+      "lien": "Lien social et stimulation",
+      "coordination": "Coordination avec les soignants"
+    },
+    "stades_h2": "Un accompagnement qui évolue",
+    "semaine_h2": "Exemple de semaine",
+    "suivi_h2": "Le suivi",
+    "proches_h2": "Et pour vous, les proches",
+    "proches_lien": "L’espace Aidants",
+    "repit_lien": "Les solutions de répit",
+    "intervenants_h2": "Qui intervient ?",
+    "ne_faisons_pas_h2": "Ce que nous ne faisons pas",
+    "cout_h2": "Combien ça coûte, quelles aides ?",
+    "cout_lien": "Tarifs et aides en détail",
+    "faq_h2": "Questions fréquentes",
+    "formulaire_h2": "Décrire votre situation",
+    "formulaire_texte": "Deux à trois minutes. Aucune question n’est obligatoire, sauf vos coordonnées.",
+    "sources_h2": "Sources et relecture",
+    "auteur": "Écrit par {nom}, {fonction}",
+    "relu_par": "Relu par {nom}, {fonction}, le {date}",
+    "non_relu": "Cette page attend sa relecture par un professionnel : elle n’est pas encore publiée.",
+    "maj": "Mise à jour le {date}",
+    "pilier_lien": "Retour à la page principale : {titre}",
+    "soeurs_h2": "Pages proches",
+    "commune_lien": "Intervenons-nous près de chez vous ?",
+    "publics": {
+      "neuro": "Maladies neurodégénératives",
+      "personne-agee": "Personnes âgées",
+      "adulte-handicap": "Adultes en situation de handicap",
+      "enfant-handicap": "Enfants en situation de handicap",
+      "aidant": "Aidants",
+      "transverse": "Nos services"
+    }
+  },
   "barre_mobile": {
     "nom": "Actions rapides",
     "appeler": "Appeler",

@@ -11,6 +11,7 @@ import requestIndexJson from "../../content/pages/demande.json";
 import specialFormsJson from "../../content/pages/formulaires-speciaux.json";
 import emailsJson from "../../content/emails.json";
 import howItWorksJson from "../../content/pages/comment-ca-marche.json";
+import caregiverCheckJson from "../../content/pages/ou-en-etes-vous.json";
 import modesJson from "../../content/pages/prestataire-ou-mandataire.json";
 import pricingPageJson from "../../content/pages/tarifs-et-aides.json";
 import aidsJson from "../../content/aides.json";
@@ -27,6 +28,8 @@ import {
   commitmentsSchema,
   homePageSchema,
   howItWorksSchema,
+  caregiverCheckSchema,
+  type CaregiverCheckPage,
   interfaceSchema,
   modesPageSchema,
   navigationSchema,
@@ -95,6 +98,17 @@ let howItWorks: HowItWorksPage | undefined;
 export function getHowItWorksPage(): HowItWorksPage {
   howItWorks ??= parseContent(howItWorksSchema, howItWorksJson, "pages/comment-ca-marche.json");
   return howItWorks;
+}
+
+let caregiverCheck: CaregiverCheckPage | undefined;
+
+export function getCaregiverCheckPage(): CaregiverCheckPage {
+  caregiverCheck ??= parseContent(
+    caregiverCheckSchema,
+    caregiverCheckJson,
+    "pages/ou-en-etes-vous.json",
+  );
+  return caregiverCheck;
 }
 
 let modesPage: ModesPage | undefined;
@@ -194,6 +208,7 @@ export function loadAllContent() {
     weekExamples: getWeekExamples(),
     homePage: getHomePage(),
     howItWorks: getHowItWorksPage(),
+    caregiverCheck: getCaregiverCheckPage(),
     modesPage: getModesPage(),
     pricingPage: getPricingPage(),
     aids: getAids(),

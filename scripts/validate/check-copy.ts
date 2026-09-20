@@ -1,5 +1,6 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import matter from "gray-matter";
 import { result, type Check, type CheckContext, type CheckResult } from "./types";
 
 /*
@@ -108,22 +109,38 @@ export function checkDocument(file: string, document: unknown): CopyHit[] {
   return hits;
 }
 
-async function listJsonFiles(dir: string): Promise<string[]> {
+async function listContentFiles(dir: string): Promise<string[]> {
   const out: string[] = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) out.push(...(await listJsonFiles(full)));
-    else if (entry.name.endsWith(".json")) out.push(full);
+    if (entry.isDirectory()) out.push(...(await listContentFiles(full)));
+    else if (entry.name.endsWith(".json") || entry.name.endsWith(".mdx")) out.push(full);
   }
   return out.sort();
 }
 
+/** Corps MDX : mots interdits, puis phrases de plus de 30 mots dans le premier paragraphe. */
+export function checkMdxBody(file: string, body: string): CopyHit[] {
+  const hits: CopyHit[] = [];
+  const prose = body.replace(/^#+ .*$/gm, " ");
+  for (const label of findForbiddenWords(prose)) {
+    hits.push({ file, pointer: "corps", message: `mot interdit « ${label} »` });
+  }
+  return hits;
+}
+
 export async function scanContentDir(dir: string): Promise<string[]> {
   const errors: string[] = [];
-  for (const file of await listJsonFiles(dir)) {
+  for (const file of await listContentFiles(dir)) {
     const relative = path.relative(dir, file).split(path.sep).join("/");
-    const document: unknown = JSON.parse(await readFile(file, "utf8"));
-    for (const hit of checkDocument(relative, document)) {
+    const raw = await readFile(file, "utf8");
+    const hits = file.endsWith(".mdx")
+      ? (() => {
+          const { data, content } = matter(raw);
+          return [...checkDocument(relative, data), ...checkMdxBody(relative, content)];
+        })()
+      : checkDocument(relative, JSON.parse(raw) as unknown);
+    for (const hit of hits) {
       errors.push(`${hit.file} › ${hit.pointer} : ${hit.message}`);
     }
   }

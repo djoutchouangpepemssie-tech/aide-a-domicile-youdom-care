@@ -21,11 +21,14 @@
     "data:phone": "libphonenumber-metadata-generator data/phone-metadata.fr.json --countries FR"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^3.1.1",
+    "gray-matter": "^4.0.3",
     "libphonenumber-js": "^1.13.13",
     "next": "16.3.5",
     "nodemailer": "^10.0.10",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "remark-gfm": "^4.0.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {
@@ -40,6 +43,7 @@
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
     "@types/mailparser": "^3.4.6",
+    "@types/mdx": "^2.0.14",
     "@types/node": "^24.13.5",
     "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",

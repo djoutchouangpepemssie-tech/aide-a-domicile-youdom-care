@@ -1,0 +1,144 @@
+{
+  "_lisezmoi": "Questionnaire « Où en êtes-vous ? » de l'espace Aidants (docs/03 §7). Huit questions originales à réponse simple, trois niveaux de conseils pratiques. Ce n'est pas un test médical : pas de score clinique, aucune reprise d'une échelle publiée, aucune donnée conservée ni transmise (le calcul se fait dans le navigateur, rien n'est envoyé). Se termine par « J'ai besoin de relais ».",
+  "seo": {
+    "titre": "Où en êtes-vous ? Huit questions pour les aidants fatigués",
+    "description": "Sommeil, temps pour soi, isolement, santé, irritabilité, avenir : huit questions pour mettre des mots sur votre fatigue d'aidant. Rien n'est conservé."
+  },
+  "ariane": "Où en êtes-vous ?",
+  "h1": "Où en êtes-vous ?",
+  "chapo": "Huit questions, une minute, pour mettre des mots sur ce que vous portez. Répondez comme vous le sentez aujourd'hui : il n'y a pas de bonne réponse.",
+  "avertissement": {
+    "titre": "Ce n'est pas un test médical",
+    "texte": "Ce questionnaire ne donne aucun score clinique et ne reprend aucune échelle publiée. Vos réponses restent dans votre navigateur : rien n'est conservé ni transmis, à nous ou à qui que ce soit. Pour votre santé, l'interlocuteur reste votre médecin."
+  },
+  "reponses": [
+    { "valeur": 0, "libelle": "Rarement ou jamais" },
+    { "valeur": 1, "libelle": "Parfois" },
+    { "valeur": 2, "libelle": "Souvent" }
+  ],
+  "questions": [
+    {
+      "id": "sommeil",
+      "texte": "Vous réveillez-vous fatigué, ou vous levez-vous la nuit pour votre proche ?"
+    },
+    {
+      "id": "temps",
+      "texte": "Manquez-vous de temps rien qu'à vous, ne serait-ce qu'une heure dans la semaine ?"
+    },
+    {
+      "id": "isolement",
+      "texte": "Renoncez-vous à voir des amis ou de la famille à cause de votre rôle ?"
+    },
+    { "id": "sante", "texte": "Reportez-vous vos propres rendez-vous médicaux ou vos soins ?" },
+    {
+      "id": "irritabilite",
+      "texte": "Vous arrive-t-il de vous emporter contre votre proche, puis de vous en vouloir ?"
+    },
+    {
+      "id": "avenir",
+      "texte": "Pensez-vous à l'avenir avec inquiétude, sans savoir à qui en parler ?"
+    },
+    {
+      "id": "charge",
+      "texte": "Avez-vous l'impression que tout repose sur vous, sans relais possible ?"
+    },
+    {
+      "id": "travail",
+      "texte": "Votre rôle pèse-t-il sur votre travail, votre budget ou votre couple ?"
+    }
+  ],
+  "bouton_resultat": "Voir où j'en suis",
+  "bouton_recommencer": "Recommencer",
+  "incomplet": "Il reste {n} question(s) sans réponse.",
+  "resultat_h2": "Où vous en êtes",
+  "niveaux": [
+    {
+      "id": "tenir",
+      "min": 0,
+      "max": 4,
+      "titre": "Vous tenez, et il faut que ça dure",
+      "texte": "Vous avez trouvé un équilibre. Il est fragile, comme tous les équilibres d'aidant : la situation de votre proche peut changer vite, et la vôtre aussi. Le bon moment pour préparer la suite, c'est maintenant, quand ça va.",
+      "conseils": [
+        {
+          "texte": "Écrivez dès maintenant les repères de votre proche : ses habitudes, ses horaires, ses médicaments préparés, qui appeler. Si vous tombez malade, quelqu'un pourra prendre le relais."
+        },
+        {
+          "texte": "Repérez la plateforme d'accompagnement et de répit de votre secteur : information et conseils gratuits, avant d'en avoir besoin.",
+          "lien": {
+            "libelle": "Les plateformes d'accompagnement et de répit",
+            "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/a-qui-s-adresser/les-plateformes-d-accompagnement-et-de-repit"
+          }
+        },
+        {
+          "texte": "Gardez un temps fixe rien qu'à vous chaque semaine, et défendez-le comme un rendez-vous médical."
+        }
+      ]
+    },
+    {
+      "id": "fatigue",
+      "min": 5,
+      "max": 10,
+      "titre": "La fatigue s'installe",
+      "texte": "Vous portez beaucoup, depuis longtemps, et cela commence à se voir : sur votre sommeil, votre temps, vos relations, votre humeur. Ce n'est pas un défaut de votre part. C'est le moment de mettre du relais en place, avant que le corps ne décide pour vous.",
+      "conseils": [
+        {
+          "texte": "Prenez un rendez-vous pour vous : médecin traitant, dentiste, ce que vous avez reporté. Parlez-lui de votre fatigue, c'est un sujet médical."
+        },
+        {
+          "texte": "Demandez le droit au répit prévu par l'APA si votre proche en bénéficie, ou renseignez-vous sur l'aide humaine PCH.",
+          "lien": {
+            "libelle": "L'aide au répit dans le cadre de l'APA",
+            "href": "https://www.pour-les-personnes-agees.gouv.fr/solutions-pour-les-aidants/soutien-financier/l-aide-au-repit-dans-le-cadre-de-l-apa"
+          }
+        },
+        {
+          "texte": "Rejoignez un café des aidants ou une formation gratuite : parler avec d'autres aidants change le regard sur ce que vous vivez.",
+          "lien": {
+            "libelle": "Association française des aidants",
+            "href": "https://www.aidants.fr/"
+          }
+        },
+        {
+          "texte": "Mettez en place un relais régulier, même court : une après-midi par semaine, une nuit, à jour fixe.",
+          "lien": { "libelle": "Les solutions de répit", "href": "/aidants/solutions-de-repit/" }
+        }
+      ]
+    },
+    {
+      "id": "relais",
+      "min": 11,
+      "max": 16,
+      "titre": "Vous avez besoin de relais, maintenant",
+      "texte": "Ce que vous décrivez ressemble à un épuisement. Vous n'êtes pas en cause : personne ne peut porter cela seul, aussi longtemps. Le relais n'est plus une option de confort, c'est ce qui vous permettra de rester présent pour votre proche.",
+      "conseils": [
+        {
+          "texte": "Parlez à votre médecin cette semaine, pour vous. L'épuisement de l'aidant se soigne, et il faut le dire à quelqu'un qui peut agir."
+        },
+        {
+          "texte": "Contactez la plateforme d'accompagnement et de répit de votre secteur : elle vous aidera à trouver vite une solution et son financement.",
+          "lien": {
+            "libelle": "Les plateformes d'accompagnement et de répit",
+            "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/a-qui-s-adresser/les-plateformes-d-accompagnement-et-de-repit"
+          }
+        },
+        {
+          "texte": "Si vous travaillez, renseignez-vous sur le congé de proche aidant et l'allocation qui l'accompagne.",
+          "lien": {
+            "libelle": "Le congé de proche aidant",
+            "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16920"
+          }
+        },
+        {
+          "texte": "Déléguez au moins les nuits ou une journée entière par semaine, dès maintenant, et dites à votre entourage que vous avez besoin d'aide."
+        }
+      ]
+    }
+  ],
+  "appel": {
+    "titre": "J'ai besoin de relais",
+    "texte": "Décrivez votre situation en deux minutes : qui vous aidez, depuis combien de temps, ce dont vous avez besoin. Nous vous rappelons pour organiser un relais, régulier ou ponctuel.",
+    "bouton": "J'ai besoin de relais",
+    "href": "/demande/relais-aidant/"
+  },
+  "retour": { "libelle": "Retour à l'espace Aidants", "href": "/aidants/" }
+}

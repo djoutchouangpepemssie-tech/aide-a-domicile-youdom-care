@@ -79,6 +79,15 @@ describe("check-copy", () => {
       await rm(dir, { recursive: true, force: true });
     });
 
+    it("contrôle aussi l'en-tête et le corps des fichiers MDX", async () => {
+      await writeFile(
+        path.join(dir, "page.mdx"),
+        `---\nh1: "Titre"\nchapo: "Un chapô."\n---\n\n## Section\n\nNos patients sont bien.\n`,
+      );
+      const errors = await scanContentDir(dir);
+      expect(errors).toEqual(["page.mdx › corps : mot interdit « patient »"]);
+    });
+
     it("liste les fichiers fautifs avec le chemin JSON", async () => {
       await mkdir(path.join(dir, "pages"), { recursive: true });
       await writeFile(path.join(dir, "ok.json"), JSON.stringify({ h1: "Vous, chez vous." }));

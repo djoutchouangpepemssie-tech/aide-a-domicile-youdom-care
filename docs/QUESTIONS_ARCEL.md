@@ -34,6 +34,10 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 - **Q-OFFRE-3.** Accompagnez-vous le handicap psychique ? Les enfants de moins de 3 ans ? Des limites à connaître (poids des transferts, matériel requis, soins techniques) ?
   Réponse :
 - **Q-OFFRE-4.** Présence 24h/24 : organisation réelle (nombre d'intervenants en relais, mode prestataire ou mandataire, nuits calmes et nuits actives).
+
+- **Q-OFFRE-5.** Intervenez-vous en résidence autonomie et en résidence services seniors ? La FAQ du pilier « Personnes âgées » (docs/03 §4) répond « nous vous le confirmons dès le premier appel » tant que la règle n’est pas connue.
+
+- **Q-OFFRE-6.** Nuits : cadre du temps de travail d’une nuit calme (présence responsable) et d’une nuit active selon le mode (prestataire, mandataire), conditions matérielles demandées (chambre, lit), tarif de chaque type de nuit. Les pages « Garde de nuit » et « Présence 24h/24 » (docs/03 §8) renvoient à « précisé avant tout engagement » tant que la règle n’est pas connue.
   Réponse :
 
 ## Tarifs — bloquant production
@@ -58,6 +62,24 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 - **Q-CONTENU-4.** Photos réelles (équipe, interventions, agences) et autorisations de droit à l'image.
 - **Q-CONTENU-5.** Offres d'emploi en cours : `content/offres/`.
 - **Q-CONTENU-6.** Fichiers du logo (SVG) et déclinaisons.
+
+- **Q-CONTENU-7.** Relectures professionnelles attendues (point de validation 4, phase 4). Chaque page ci-dessous reste `statut: a_relire` (non construite en production, `noindex` en prévisualisation) tant que `relu_par` n'est pas renseigné avec le nom, la fonction et la date du relecteur. Profil suggéré :
+
+  | Pages | Relecteur attendu |
+  | --- | --- |
+  | `/maladies-neurodegeneratives/` et `/alzheimer/`, `/corps-de-lewy/`, `/degenerescence-fronto-temporale/` | Médecin de consultation mémoire, neurologue ou gériatre ; à défaut, infirmier(ère) coordinateur(rice) d'un service spécialisé |
+  | `/maladies-neurodegeneratives/parkinson/`, `/sclerose-en-plaques/` | Neurologue ou infirmier(ère) d'un centre expert Parkinson / d'un réseau SEP |
+  | `/maladies-neurodegeneratives/maladie-de-charcot/`, `/maladie-de-huntington/` | Médecin ou infirmier(ère) coordinateur(rice) d'un centre SLA / du centre de référence Huntington |
+  | `/personnes-agees/` et ses trois sous-pages | Gériatre, infirmier(ère) coordinateur(rice) de SSIAD ou ergothérapeute |
+  | `/adultes-en-situation-de-handicap/` | Ergothérapeute et travailleur social (MDPH, SAVS/SAMSAH) ; relecture par une personne concernée souhaitable |
+  | `/enfants-en-situation-de-handicap/` et ses quatre sous-pages | Pédiatre ou médecin de rééducation, éducateur spécialisé, ergothérapeute ; relecture par une association de parents (CRAIF, GPF, APF, Unapei) souhaitable |
+  | `/aidants/`, `/aidants/solutions-de-repit/`, questionnaire « Où en êtes-vous ? » | Psychologue ou professionnel d'une plateforme d'accompagnement et de répit |
+  | `/services/garde-de-nuit/`, `/presence-24h-24/`, `/garde-malade/`, `/sortie-d-hospitalisation/` | Infirmier(ère) coordinateur(rice) (HAD ou SSIAD) ; pour les nuits et le 24h/24, relecture juridique du cadre du temps de travail (Q-OFFRE-4, Q-OFFRE-6) |
+  | `/services/accompagnement-en-vacances/`, `/services/remplacement-d-auxiliaire-de-vie/` | Responsable de secteur Youdom Care et relecture juridique (droit du travail, mode mandataire) |
+
+  Toutes les pages : relecture finale par Arcel pour les faits Youdom Care (Q-OFFRE-1 à Q-OFFRE-6, Q-LEGAL-1, Q-TARIFS-1).
+
+- **Q-CONTENU-8.** Règle des phrases courtes (`docs/01 §2`, moins de 20 mots) : la relecture croisée du point de validation 4 compte des dizaines de phrases plus longues dans les pages services, presque toutes des énumérations après deux-points (« Ce qui aide : … »). Faut-il scinder systématiquement, ou préciser dans `docs/01` que les énumérations font exception ? Le contrôle `check-copy` n'impose aujourd'hui que 30 mots, dans les chapôs.
 
 ## Technique
 

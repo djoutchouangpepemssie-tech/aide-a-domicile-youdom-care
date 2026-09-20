@@ -1,6 +1,8 @@
-import { readFile } from "node:fs/promises";
+import type { Dirent } from "node:fs";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
+import { readServiceMeta } from "../../src/content/service-meta";
 import {
   aboutSchema,
   thanksSchema,
@@ -133,6 +135,22 @@ export function collectProdErrors({ siteConfig, pricing, commitments }: LoadedCo
   return errors;
 }
 
+async function listMdx(dir: string): Promise<string[]> {
+  let entries: Dirent[];
+  try {
+    entries = await readdir(dir, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+  const out: string[] = [];
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...(await listMdx(full)));
+    else if (entry.name.endsWith(".mdx")) out.push(full);
+  }
+  return out.sort();
+}
+
 async function readJson(rootDir: string, file: string): Promise<unknown> {
   const raw = await readFile(path.join(rootDir, "content", file), "utf8");
   return JSON.parse(raw) as unknown;
@@ -160,8 +178,24 @@ export async function runContentCheck(ctx: CheckContext): Promise<CheckResult> {
     parsed[file] = outcome.data;
   }
 
+  // Pages services et pathologies (content/services/**/*.mdx) : en-tête validé, page non relue
+  // signalée (masquée en production, docs/03 §1).
+  const warnings: string[] = [];
+  const servicesDir = path.join(ctx.rootDir, "content", "services");
+  for (const file of await listMdx(servicesDir)) {
+    const relative = path.relative(ctx.rootDir, file).split(path.sep).join("/");
+    try {
+      const { meta } = await readServiceMeta(file);
+      if (meta.statut === "a_relire") {
+        warnings.push(`${relative} : statut a_relire, page non construite en production.`);
+      }
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : `${relative} : ${String(error)}`);
+    }
+  }
+
   if (errors.length > 0 || !ctx.prod) {
-    return result(errors);
+    return result(errors, warnings);
   }
 
   return result(
