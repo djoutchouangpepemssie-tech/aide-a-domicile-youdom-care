@@ -609,3 +609,7 @@ Une entrée par itération, la plus récente en bas. Format imposé :
 - Incident : 148 parcours Playwright en échec au premier passage, tous dus à un serveur `pnpm start` résiduel d'un agent sur le port 3100 (build périmé réutilisé par Playwright) ; processus arrêté, suite relancée.
 - Contrôles : format:check ✔ · lint ✔ · typecheck ✔ · test ✔ (371/371) · build ✔ · validate ✔ (5/5, deux avertissements Urssaf) · test:e2e ✔ (195/195, 9 ignorés).
 - Suite : Lighthouse sur l'accueil et un pilier après photos ; lot 2 (parcours « Pour qui cherchez-vous de l'aide ? », gestes d'entrée, rail inséré, icônes rendues).
+
+## 2026-09-20 — Lighthouse après les photos de hero (lot 1)
+
+- Accueil : performance 0,96–0,98, accessibilité 1, bonnes pratiques 1, SEO 1, LCP 1,9–2,1 s (l'élément LCP est désormais la photo de bannière, servie en WebP par `next/image` avec `priority`), CLS 0. Page de rappel inchangée (0,99, LCP 1,7 s). Aucune assertion en échec : budgets D-019 tenus. À surveiller : la marge sous 2,5 s se réduit ; les photos de section (lot 2) ne doivent jamais être prioritaires et rester sous le pli.
