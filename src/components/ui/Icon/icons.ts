@@ -28,8 +28,8 @@ export const icons = {
 
   /* Lever : un lit vu de côté (tête de lit, oreiller, matelas), une flèche qui monte. */
   lever: {
-    main: "M2 21v-8h5v4h15v4M15 11V3M11.5 6.5L15 3l3.5 3.5",
-    knot: "M11.5 6.5L15 3l3.5 3.5",
+    main: "M2 21V11M2 16h20v5M5 16v-4h5v4M15 11V4M11.5 7.5L15 4l3.5 3.5",
+    knot: "M11.5 7.5L15 4l3.5 3.5",
     groupe: "quotidien",
   },
   /* Toilette : une baignoire, un robinet qui se penche. */
@@ -50,9 +50,9 @@ export const icons = {
     knot: "M8 10V6a4 4 0 0 1 8 0v4",
     groupe: "quotidien",
   },
-  /* Ménage : un balai, les brins laissés libres en bas. */
+  /* Ménage : un balai, les brins laissés libres en bas, le manche en nœud. */
   menage: {
-    main: "M4 21l2-9h12l2 9M12 12V3",
+    main: "M6 21l1.5-9h9L18 21M12 12V3M12 21v-4",
     knot: "M12 12V3",
     groupe: "quotidien",
   },
@@ -62,10 +62,10 @@ export const icons = {
     knot: "M9 4a3 3 0 0 0 6 0",
     groupe: "quotidien",
   },
-  /* Promenade : un chemin qui serpente jusqu'à un arbre. */
+  /* Promenade : un arbre sur un chemin qui ondule, le tronc en nœud. */
   promenade: {
-    main: "M2 21c6 0 3-7 8-7s2 7 7 7M18 21v-7M20.8 12.8a4 4 0 1 1-5.6 0",
-    knot: "M18 21v-7",
+    main: "M2 21c4-3 16-3 20 0M12 21v-8M15.5 11.5a5 5 0 1 1-7 0",
+    knot: "M12 21v-8",
     groupe: "quotidien",
   },
   /* Compagnie : deux tasses côte à côte, une vapeur partagée. */
@@ -98,10 +98,10 @@ export const icons = {
     knot: "M11 16l-4 4v-4",
     groupe: "quotidien",
   },
-  /* Transferts : un lève-personne, la sangle en nœud, une silhouette assise. */
+  /* Transferts : un lève-personne au bras arrondi, une personne assise dans la sangle (le nœud). */
   transferts: {
-    main: "M3 21h4M5 21V4h9l3 4v3M15 14a2 2 0 1 1 4 0M17 16v3l3 2",
-    knot: "M17 8v3",
+    main: "M2 21h8M5 21V6a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v1M16 11a2 2 0 1 1 4 0M18 13v4M14 13v2a4 4 0 0 0 8 0v-2",
+    knot: "M14 13v2a4 4 0 0 0 8 0v-2",
     groupe: "quotidien",
   },
 
@@ -208,8 +208,8 @@ export const icons = {
   },
   /* Mains : deux bras qui se rejoignent, une boucle pour l'étreinte des doigts. */
   mains: {
-    main: "M2 19c2-6 5-10 9-9 2 .5 2.5 2 1.5 3.5-1 1.5-3 .5-2.5-1 .5-2 2.5-3 4.5-2.5 4 1 6 4.5 8 8",
-    knot: "M12.5 13.5c-1 1.5-3 .5-2.5-1",
+    main: "M2 20c2-7 5-11 9-10 2 .5 2.5 2.5 1.5 4-1 1.5-3.5.5-3-1 .5-2 2.5-3.5 4.5-3 4 1 6 5 8 10",
+    knot: "M12.5 14c-1 1.5-3.5.5-3-1",
     groupe: "objet",
   },
   /* Cahier de liaison : un carnet à spirale, une ligne écrite en nœud. */
