@@ -12,8 +12,15 @@ module.exports = {
     collect: {
       startServerCommand: "pnpm start -p 3102",
       startServerReadyPattern: "Ready",
-      // Pages témoins : l'accueil (page de contenu) et le rappel (page avec formulaire).
-      url: ["http://localhost:3102/", "http://localhost:3102/etre-rappele/"],
+      // Pages témoins : l'accueil (page de contenu), le rappel (page avec formulaire), puis,
+      // depuis la phase 4b (D-024), un pilier et une page service enrichis de photos, d'icônes
+      // et de mouvement ; ces pages portent le formulaire détaillé en section 12.
+      url: [
+        "http://localhost:3102/",
+        "http://localhost:3102/etre-rappele/",
+        "http://localhost:3102/personnes-agees/",
+        "http://localhost:3102/services/garde-de-nuit/",
+      ],
       numberOfRuns: 3,
       settings: {
         // Chromium ouvert par scripts/lhci.ts.
@@ -51,7 +58,7 @@ module.exports = {
           },
         },
         {
-          matchingUrlPattern: "/etre-rappele/",
+          matchingUrlPattern: "/etre-rappele/|/personnes-agees/|/services/garde-de-nuit/",
           aggregationMethod: "median",
           assertions: {
             "resource-summary:script:size": ["error", { maxNumericValue: 220 * KO }],
