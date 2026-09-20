@@ -141,7 +141,7 @@ describe("ServiceTemplate", () => {
 
   it("rend « Ce que nous ne faisons pas » en encart frontière, deux colonnes dès qu'un relais existe", () => {
     const { unmount } = render(<ServiceTemplate data={data()} />);
-    const encart = screen.getByRole("note", { name: "Ce que nous ne faisons pas" });
+    const encart = screen.getByRole("note", { name: "Et avec qui nous travaillons pour cela." });
     expect(encart).toHaveAttribute("data-variant", "frontiere");
     expect(encart).toHaveTextContent("Et avec qui nous travaillons pour cela.");
     expect(encart).toHaveTextContent("Qui le fait");
@@ -156,7 +156,7 @@ describe("ServiceTemplate", () => {
         data={data({ page: { ...serviceExemple, ne_faisons_pas: ["Une.", "Deux."] } })}
       />,
     );
-    const simple = screen.getByRole("note", { name: "Ce que nous ne faisons pas" });
+    const simple = screen.getByRole("note", { name: "Et avec qui nous travaillons pour cela." });
     expect(simple).not.toHaveTextContent("Qui le fait");
     expect(simple).toHaveTextContent("Deux.");
   });

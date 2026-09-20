@@ -679,6 +679,8 @@ export const homePageSchema = z.strictObject({
     illustration: illustrationName,
     /** Photo du hero (docs/design/CONCEPT.md §3 bloc 1) ; absente : illustration au fil. */
     photo: photoSchema.optional(),
+    /** Point où le fil du hero pose son nœud (« 49% 82% ») : un objet, une main, jamais un visage. */
+    noeud: photoSchema.shape.focal,
     /** Geste d'entrée « Pour qui cherchez-vous de l'aide ? » ; absent : pas de picker. */
     parcours: homeJourneySchema.optional(),
   }),

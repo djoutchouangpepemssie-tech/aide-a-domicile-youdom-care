@@ -84,6 +84,8 @@ export const serviceHeroSchema = z.strictObject({
   photo: photoSchema,
   photo_pour_soi: photoSchema.optional(),
   ton: z.enum(["clair", "sombre"]).optional(),
+  /** Point où le fil pose son nœud (« 50% 78% ») : un objet, une main, jamais un visage. */
+  noeud: photoSchema.shape.focal,
   geste: z.enum(heroGestures).optional(),
 });
 export type ServiceHero = z.infer<typeof serviceHeroSchema>;

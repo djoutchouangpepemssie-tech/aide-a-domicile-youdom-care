@@ -282,9 +282,9 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       : page.public === "neuro"
         ? "album"
         : page.public === "aidant"
-          ? "tasse"
+          ? "generique"
           : "generique";
-  const heroThread = heroMedia ? { fil: heroFil, knot: page.hero?.photo.focal } : null;
+  const heroThread = heroMedia ? { fil: heroFil, knot: page.hero?.noeud ?? "50% 78%" } : null;
 
   const banner = (
     <Hero
@@ -528,12 +528,20 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
               <Lead className="mt-3">{page.proches.texte}</Lead>
               <ul className="m-0 mt-6 flex list-none flex-wrap gap-4 p-0">
                 <li className="max-w-none">
-                  <Link href="/aidants/" prefetch={false} className="font-bold">
+                  <Link
+                    href="/aidants/"
+                    prefetch={false}
+                    className="inline-flex min-h-12 items-center font-bold"
+                  >
                     {t.proches_lien}
                   </Link>
                 </li>
                 <li className="max-w-none">
-                  <Link href="/aidants/solutions-de-repit/" prefetch={false} className="font-bold">
+                  <Link
+                    href="/aidants/solutions-de-repit/"
+                    prefetch={false}
+                    className="inline-flex min-h-12 items-center font-bold"
+                  >
                     {t.repit_lien}
                   </Link>
                 </li>
@@ -572,7 +580,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
             variant="frontiere"
             className="mt-6"
             data-section="ne-faisons-pas"
-            subtitle={t.frontiere.sous_titre}
+            title={t.frontiere.sous_titre}
             columns={{ faits: t.frontiere.colonne_faits, relais: t.frontiere.colonne_relais }}
             items={frontiereItems(page.ne_faisons_pas)}
             footer={t.frontiere.ligne_fin}
@@ -619,7 +627,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
             ))}
           </Reveal>
           <p className="m-0 mt-8">
-            <Link href={tarifsHref} className="font-bold">
+            <Link href={tarifsHref} className="inline-flex min-h-12 items-center font-bold">
               {t.cout_lien}
             </Link>
           </p>

@@ -14,6 +14,7 @@
       "alt": "Un homme âgé et une jeune femme discutent près d'une grande fenêtre dans un salon clair",
       "focal": "50% 40%"
     },
+    "noeud": "49% 82%",
     "parcours": {
       "_lisezmoi": "Geste d'entrée (docs/design/CONCEPT.md §3). Le jeton {pour} du titre du panneau est remplacé par le champ « pour » du choix. Le choix « Je ne sais pas encore » (sans « pour ») mène à la page de rappel avec ?motif=inconnu : le message affiché est motifs.inconnu de content/pages/etre-rappele.json.",
       "question": "Pour qui cherchez-vous de l'aide ?",
@@ -236,7 +237,7 @@
     },
     "carte_devis": {
       "titre": "Un devis gratuit et détaillé",
-      "texte": "Après l'évaluation à domicile, vous recevez un devis gratuit, détaillé et sans engagement. Nos prix seront affichés ici dès que la grille tarifaire sera publiée."
+      "texte": "Le prix dépend du nombre d'heures, du type d'aide et du mode d'intervention. Après l'évaluation à domicile, vous recevez un devis gratuit, détaillé et sans engagement."
     },
     "carte_aides": {
       "titre": "Les aides possibles",

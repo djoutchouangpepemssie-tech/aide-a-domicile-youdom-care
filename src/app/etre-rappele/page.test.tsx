@@ -30,7 +30,9 @@ describe("Page être rappelé(e)", () => {
   it("affiche le message du motif « inconnu » au-dessus du formulaire, et rien pour un motif inconnu", () => {
     window.history.replaceState({}, "", "/etre-rappele/?motif=inconnu");
     const { unmount } = render(<CallbackPage />);
-    const notice = screen.getByText("C'est normal. L'évaluation à domicile sert à cela.");
+    const notice = screen.getByText(
+      "Vous ne savez pas encore de quoi vous avez besoin ? C'est normal : l'évaluation à domicile, gratuite, sert à cela.",
+    );
     expect(notice).toHaveAttribute("data-motif", "inconnu");
     // Le message précède le formulaire dans l'ordre de lecture.
     const form = screen.getByRole("form");

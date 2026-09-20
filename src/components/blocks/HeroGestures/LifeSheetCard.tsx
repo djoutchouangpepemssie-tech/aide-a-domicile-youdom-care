@@ -155,7 +155,8 @@ export function LifeSheetCard({ texts, buttonLabel, formHref }: LifeSheetCardPro
           </section>
         </div>
       </div>
-      <p className="m-0 mt-5">
+      {/* Sous 64 rem seulement : au-dessus, le bouton principal du hero porte le même appel. */}
+      <p className="m-0 mt-5 lg:hidden">
         <Button href={formHref} variant="secondary">
           {buttonLabel}
         </Button>
