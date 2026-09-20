@@ -56,7 +56,7 @@ const lineIcons: Record<LifeSheetLine, IconName> = {
 };
 
 const face =
-  "flex min-h-50 w-full flex-col rounded-card border border-line bg-white p-5 shadow-1 outline-none";
+  "flex min-h-[200px] w-full flex-col rounded-card border border-line bg-white p-5 shadow-1 outline-none";
 const flipFace = "[grid-area:1/1] [backface-visibility:hidden]";
 
 export function LifeSheetCard({ texts, buttonLabel, formHref }: LifeSheetCardProps) {
@@ -91,7 +91,7 @@ export function LifeSheetCard({ texts, buttonLabel, formHref }: LifeSheetCardPro
       data-stacked={stacked ? "true" : undefined}
       data-flipped={flipped ? "true" : undefined}
     >
-      <div className={cn("w-full max-w-80", !stacked && "[perspective:1200px]")}>
+      <div className={cn("w-full max-w-[320px]", !stacked && "[perspective:1200px]")}>
         <div
           className={cn(
             stacked

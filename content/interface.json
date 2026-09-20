@@ -49,6 +49,8 @@
     "resume": "Environ {h} heures par semaine",
     "nuit_singulier": "dont une nuit",
     "nuits_pluriel": "dont {n} nuits",
+    "choisir_exemple": "Choisir un exemple",
+    "prenom_fictif": "Exemple illustratif, prénom fictif",
     "activites": {
       "gestes": "Gestes du quotidien",
       "repas": "Repas",
@@ -161,6 +163,13 @@
     "relu_par": "Relu par {nom}, {fonction}, le {date}",
     "non_relu": "Cette page attend sa relecture par un professionnel : elle n’est pas encore publiée.",
     "maj": "Mise à jour le {date}",
+    "relecture_attendue": "En attente de relecture par un professionnel.",
+    "frontiere": {
+      "sous_titre": "Et avec qui nous travaillons pour cela.",
+      "colonne_faits": "Nous ne faisons pas",
+      "colonne_relais": "Qui le fait",
+      "ligne_fin": "Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas."
+    },
     "pilier_lien": "Retour à la page principale : {titre}",
     "soeurs_h2": "Pages proches",
     "commune_lien": "Intervenons-nous près de chez vous ?",

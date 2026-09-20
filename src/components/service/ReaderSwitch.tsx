@@ -18,9 +18,10 @@ export interface ReaderSwitchProps {
   texts: { legende: string; proche: string; soi: string };
 }
 
+/* Boutons de 56 px (docs/design/CONCEPT.md §4 : « le sélecteur de lecteur existant, agrandi »). */
 const pill =
-  "inline-flex min-h-10 items-center rounded-full border-2 border-teal-700 bg-transparent px-4 " +
-  "text-small font-bold text-teal-700 transition-colors [transition-duration:var(--duration-base)] " +
+  "inline-flex min-h-14 items-center rounded-button border-2 border-teal-700 bg-transparent px-5 " +
+  "font-bold text-teal-700 transition-colors [transition-duration:var(--duration-base)] " +
   "motion-reduce:transition-none hover:bg-teal-50 aria-pressed:border-teal-800 aria-pressed:bg-teal-800 " +
   "aria-pressed:text-white aria-pressed:hover:bg-teal-800";
 
@@ -33,7 +34,7 @@ export function ReaderSwitch({ proche, soi, texts }: ReaderSwitchProps) {
       <span
         role="group"
         aria-labelledby={legendId}
-        className="mb-4 flex flex-wrap items-center gap-2"
+        className="mb-4 flex flex-wrap items-center gap-3"
       >
         <span id={legendId} className="text-small text-text-soft">
           {texts.legende}
