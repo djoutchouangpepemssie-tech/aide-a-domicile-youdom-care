@@ -645,3 +645,8 @@ Une entrée par itération, la plus récente en bas. Format imposé :
 - Contrôles : format:check ✔ · lint ✔ · typecheck ✔ · test ✔ (556/556) · build ✔ · validate ✔ (7/7 : check-seo et check-schema ajoutés) · test:e2e ✔ (278 puis 14/14 sur le parcours corrigé, 18 ignorés).
 - Points ouverts : logo (Q-CONTENU-6) pour `Organization.logo` ; `raison_sociale` et réseaux sociaux pour `legalName` et `sameAs` ; clé IndexNow et crochet de déploiement (Q-TECH-6) ; `og:image` sans barre finale redirigé en 308 par `trailingSlash` (réécriture possible en `next.config`) ; champ `maj` à ajouter aux pages JSON pour remplacer les dates déclarées ; police Fraunces à déposer dans `public/fonts` pour un build hors ligne.
 - Suite : point de validation 5 (Lighthouse SEO sur les pages témoins), fin de phase 5.
+
+## 2026-09-20 — Point de validation 5 et fin de phase 5
+
+- `pnpm validate` 7/7 (check-seo, check-schema, check-links verts sur tout le site). Lighthouse (quatre pages, trois passes) : accueil performance 0,96, SEO 1, LCP 1,99 s ; rappel 0,98, SEO 1, LCP 1,78 s ; personnes âgées 0,96, SEO 0,69 (noindex voulu), LCP 2,01 s ; garde de nuit 0,98, SEO 0,69, LCP 2,03 s ; accessibilité et bonnes pratiques 1 partout ; aucune assertion en échec.
+- `pnpm audit` : dette DC.2 inchangée. Fusion locale squash dans `main`, étiquette `phase-05`, poussées sur `origin`. Suite : phase 6 (référencement local, vague 1) sur `phase/06-local`.

@@ -114,7 +114,7 @@ Fin de phase 4b : `pnpm audit`, fusion locale squash dans `main`, étiquette `ph
 - [x] (cbffe6e) **P5.5 Maillage.** Blocs « À lire aussi », plan du site, page 404 utile, détection des pages orphelines.
 - [x] (a45a08e) **P5.6 `llms.txt`, balises de vérification, configuration Lighthouse CI des pages témoins.**
 
-**Point de validation 5** : `check-seo`, `check-schema`, `check-links` verts sur tout le site ; Lighthouse SEO à 100 sur les pages témoins.
+**Point de validation 5** : `check-seo`, `check-schema`, `check-links` verts sur tout le site ; Lighthouse SEO à 100 sur les pages témoins. — Fait le 2026-09-20 : `pnpm validate` 7/7 ; Lighthouse SEO 1 sur l'accueil et la page de rappel (les deux pages services témoins restent à 0,69 par leur `noindex` voulu tant qu'elles sont `a_relire`, D-026).
 
 ## Phase 6 — Référencement local, vague 1 · `phase/06-local`
 
