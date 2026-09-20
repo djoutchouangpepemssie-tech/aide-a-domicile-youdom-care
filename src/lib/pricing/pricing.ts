@@ -97,3 +97,48 @@ export function monthlyEstimates(
     };
   });
 }
+
+export interface BudgetBasis {
+  /** Prix horaire TTC de base de la prestation retenue. */
+  hourlyPrice: number;
+  creditRate: number;
+  tiers: readonly DegressiveTier[];
+  /** Libellé de la prestation, pour la mention « à partir de ». */
+  label: string;
+}
+
+interface PricedService {
+  libelle: string;
+  unite: string;
+  prix_ttc: number | null;
+  degressivite: readonly DegressiveTier[];
+}
+
+/**
+ * Base de l'estimation de budget d'un planning (docs/05 §4) : la première prestation à
+ * l'heure dont le prix TTC est renseigné. null tant que content/tarifs.json est vide.
+ */
+export function budgetBasis(
+  services: readonly PricedService[],
+  creditRate: number,
+): BudgetBasis | null {
+  const service = services.find((s) => s.unite === "heure" && s.prix_ttc !== null);
+  if (!service || service.prix_ttc === null) return null;
+  return {
+    hourlyPrice: service.prix_ttc,
+    creditRate,
+    tiers: service.degressivite,
+    label: service.libelle,
+  };
+}
+
+/** Budget mensuel TTC avant et après crédit d'impôt pour un volume hebdomadaire. */
+export function monthlyBudget(basis: BudgetBasis, hoursPerWeek: number): MonthlyEstimate {
+  const [estimate] = monthlyEstimates(
+    basis.hourlyPrice,
+    basis.creditRate,
+    [hoursPerWeek],
+    basis.tiers,
+  );
+  return estimate as MonthlyEstimate;
+}

@@ -1,0 +1,24 @@
+{
+  "_lisezmoi": "Page /demande/ (docs/00 §5) : l'aiguillage vers le formulaire adapté à chaque cas. Un formulaire n'apparaît que lorsqu'il existe dans content/formulaires/. Le lien « Être rappelé(e) » reste proposé pour les personnes pressées.",
+  "seo": {
+    "titre": "Décrire votre situation à Youdom Care en quelques minutes",
+    "description": "Choisissez le formulaire qui correspond à votre situation : maladie neurodégénérative, personne âgée, handicap, aidant. Un conseiller vous rappelle."
+  },
+  "ariane": "Décrire ma situation",
+  "h1": "Décrire votre situation",
+  "chapo": "Choisissez le cas qui vous ressemble : les questions changent d'une situation à l'autre. Deux à trois minutes, puis un conseiller vous rappelle.",
+  "presse_h2": "Pressé(e) ?",
+  "presse_texte": "Laissez seulement vos coordonnées, nous vous rappelons.",
+  "autres": [
+    {
+      "id": "sortie-hospitalisation",
+      "libelle": "Sortie d'hospitalisation",
+      "texte": "Quatre questions pour organiser un retour à domicile."
+    },
+    {
+      "id": "professionnel",
+      "libelle": "Vous êtes un professionnel",
+      "texte": "Adressez une situation sans aucune donnée permettant d'identifier la personne."
+    }
+  ]
+}

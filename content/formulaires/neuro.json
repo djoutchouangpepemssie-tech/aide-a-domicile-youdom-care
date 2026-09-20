@@ -1,0 +1,88 @@
+{
+  "_lisezmoi": "Formulaire « maladie neurodégénérative » (docs/05 §2 et §5). Les questions et les choix sont ceux du cahier ; toutes les questions de situation sont facultatives et reçoivent d'office le choix « Je préfère en parler ». Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
+  "id": "neuro",
+  "slug": "maladie-neurodegenerative",
+  "seo": {
+    "titre": "Décrire votre situation : maladie neurodégénérative",
+    "description": "Alzheimer, Parkinson, sclérose en plaques, corps de Lewy… Dites-nous l'essentiel en deux à trois minutes, un conseiller Youdom Care vous rappelle."
+  },
+  "ariane": "Maladie neurodégénérative",
+  "h1": "Décrire votre situation : maladie neurodégénérative",
+  "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. Vous pourrez tout préciser au téléphone.",
+  "situation": [
+    {
+      "id": "maladie",
+      "question": "De quelle maladie s'agit-il ?",
+      "type": "choix",
+      "options": [
+        "Alzheimer ou apparentée",
+        "Parkinson",
+        "Sclérose en plaques",
+        "Corps de Lewy",
+        "Dégénérescence fronto-temporale",
+        "Charcot (SLA)",
+        "Huntington",
+        "Diagnostic en cours",
+        "Autre"
+      ]
+    },
+    {
+      "id": "autonomie",
+      "question": "Où en est la personne, en mots simples ?",
+      "type": "choix",
+      "options": [
+        "Autonome avec quelques rappels",
+        "A besoin d'aide pour plusieurs gestes",
+        "A besoin d'une présence presque continue"
+      ]
+    },
+    {
+      "id": "ce_qui_pese",
+      "question": "Qu'est-ce qui pèse le plus aujourd'hui ?",
+      "type": "choix_multiple",
+      "options": [
+        "La désorientation",
+        "Les sorties sans prévenir",
+        "Les chutes",
+        "Les nuits difficiles",
+        "Le refus d'aide",
+        "Les repas",
+        "La fatigue du proche"
+      ]
+    },
+    {
+      "id": "vit",
+      "question": "La personne vit…",
+      "type": "choix",
+      "options": ["Seule", "En couple", "Avec un enfant"]
+    },
+    {
+      "id": "professionnels",
+      "question": "Des professionnels sont déjà présents ?",
+      "type": "choix_multiple",
+      "options": [
+        "Infirmier",
+        "Kinésithérapeute",
+        "Orthophoniste",
+        "Accueil de jour",
+        "Équipe Alzheimer"
+      ]
+    },
+    {
+      "id": "aide_financiere",
+      "question": "APA ou PCH ?",
+      "type": "choix",
+      "options": ["Obtenue", "En cours", "Pas encore", "Je ne sais pas"]
+    }
+  ],
+  "besoins": [
+    "Aide au lever et au coucher",
+    "Toilette et habillage",
+    "Repas",
+    "Présence et sécurité",
+    "Stimulation et sorties",
+    "Entretien du logement",
+    "Nuits",
+    "Relais du proche"
+  ]
+}

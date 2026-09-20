@@ -1,0 +1,54 @@
+{
+  "_lisezmoi": "Formulaire « personne âgée » (docs/05 §2 et §5). Questions et choix du cahier ; toutes les questions de situation sont facultatives et reçoivent d'office le choix « Je préfère en parler ». Réponses = données de santé : consentement explicite à la dernière étape (docs/05 §8).",
+  "id": "personne-agee",
+  "slug": "personne-agee",
+  "seo": {
+    "titre": "Décrire votre situation : aide à domicile d'un parent âgé",
+    "description": "Votre parent ou vous-même avez besoin d'aide au quotidien ? Dites-nous l'essentiel en deux à trois minutes, un conseiller Youdom Care vous rappelle."
+  },
+  "ariane": "Personne âgée",
+  "h1": "Décrire votre situation : aide à domicile d'une personne âgée",
+  "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. Vous pourrez tout préciser au téléphone.",
+  "situation": [
+    {
+      "id": "age",
+      "question": "Quel âge a la personne ?",
+      "type": "choix",
+      "options": ["Moins de 70 ans", "70 à 79 ans", "80 à 89 ans", "90 ans et plus"]
+    },
+    {
+      "id": "vit",
+      "question": "La personne vit…",
+      "type": "choix",
+      "options": ["Seule", "En couple ou en famille"]
+    },
+    {
+      "id": "evenement",
+      "question": "Un événement récent ?",
+      "type": "choix",
+      "options": ["Une chute", "Une hospitalisation", "Un veuvage", "Aucun"]
+    },
+    {
+      "id": "aide_en_place",
+      "question": "Une aide est-elle déjà en place ?",
+      "type": "choix_multiple",
+      "options": [
+        "Une aide à domicile",
+        "Un infirmier",
+        "Un portage de repas",
+        "La famille ou des voisins",
+        "Aucune"
+      ]
+    }
+  ],
+  "besoins": [
+    "Lever et coucher",
+    "Toilette",
+    "Repas",
+    "Courses",
+    "Linge et logement",
+    "Compagnie et sorties",
+    "Accompagnement aux rendez-vous",
+    "Nuits"
+  ]
+}

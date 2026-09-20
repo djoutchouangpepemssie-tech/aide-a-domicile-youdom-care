@@ -151,6 +151,8 @@
     line-height: var(--leading-body);
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    /* Les ancres et le focus ne passent pas sous l’en-tête collant (4 rem compact). */
+    scroll-padding-top: 5rem;
   }
 
   body {

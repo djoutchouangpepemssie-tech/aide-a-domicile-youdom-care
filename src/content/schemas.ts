@@ -332,6 +332,100 @@ export const interfaceSchema = z.strictObject({
     succes: text.includes("{délai}"),
     succes_delai_inconnu: text,
     succes_urgence: text.includes("{téléphone}"),
+    etape_sur: text.includes("{n}").includes("{total}"),
+    retour: text,
+    suivant: text,
+    envoyer: text,
+    envoi_en_cours: text,
+    erreurs_titre: text,
+    conservation: text,
+    champs: z.strictObject({
+      prenom: text,
+      nom: text,
+      telephone: text,
+      commune: text,
+      pour_qui: text,
+      rythme: text,
+      debut: text,
+      consentement: text,
+    }),
+    pour_qui_options: z.array(text).length(6),
+    choix_parler: text,
+    email: text,
+    email_aide: text,
+    message: text,
+    message_aide: text,
+    consentement_requis: text,
+    etape_titres: z.strictObject({
+      pour_qui: text,
+      situation: text,
+      besoins: text,
+      planning: text,
+      coordonnees: text,
+    }),
+    rappel: z.strictObject({
+      titre_etape: text,
+      prenom: text,
+      nom: text,
+      telephone: text,
+      commune: text,
+      creneau_rappel: text,
+      creneau_choisir: text,
+      creneaux_rappel: z.array(text).min(2).max(6),
+      usage_coordonnees: text,
+      confidentialite: text,
+    }),
+  }),
+  planning: z.strictObject({
+    rythme_question: text,
+    rythmes: z.strictObject({ regulier: text, ponctuel: text, "24h": text, inconnu: text }),
+    grille_legende: text,
+    raccourcis_legende: text,
+    raccourci_matins: text,
+    tout_effacer: text,
+    cellule: text.includes("{jour}").includes("{creneau}").includes("{debut}").includes("{fin}"),
+    creneaux_jour_zero: text,
+    creneaux_jour_singulier: text,
+    creneaux_jour_pluriel: text.includes("{n}"),
+    resume_vide: text,
+    estimation_suite: text,
+    horaires_precis: text,
+    horaires_legende: text,
+    plage_nom: text.includes("{jour}").includes("{n}"),
+    plage_de: text,
+    plage_a: text,
+    ajouter_plage: text,
+    retirer_plage: text,
+    copier_jour: text,
+    copier_choisir: text,
+    copier_tous: text,
+    copier: text,
+    nuit_question: text,
+    nuits: z.strictObject({ calme: text, active: text, inconnu: text }),
+    debut_question: text,
+    debuts: z.strictObject({ "48h": text, semaine: text, mois: text, information: text }),
+    budget: text.includes("{avant}").includes("{apres}"),
+    budget_mention: text,
+    dates_legende: text,
+    date_unique: text,
+    ajouter_date: text,
+    periode_du: text,
+    periode_au: text,
+    ajouter_periode: text,
+    retirer_date: text,
+    dates_choisies: text.includes("{n}"),
+    aucune_date: text,
+    dates_maximum: text.includes("{max}"),
+    creneaux_dates: text,
+    resume_dates: text.includes("{h}").includes("{n}"),
+    tous_les_jours_question: text,
+    tous_les_jours: text,
+    jours_choisis: text,
+    jours_legende: text,
+    grille_24h: text,
+    debut_date: text,
+    duree_question: text,
+    durees: z.strictObject({ jours: text, semaines: text, durable: text }),
   }),
 });
 export type InterfaceTexts = z.infer<typeof interfaceSchema>;
@@ -727,5 +821,196 @@ export const aboutSchema = z.strictObject({
   }),
 });
 export type AboutContent = z.infer<typeof aboutSchema>;
+
+/* ---------- content/pages/merci.json ---------- */
+
+export const thanksSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  h1: text,
+  suite_h2: text,
+  lectures_h2: text,
+  lectures: z.array(z.strictObject({ libelle: text, href: internalPath })).length(2),
+  retour_accueil: text,
+  variantes: z.record(slug, z.strictObject({ h1: text, texte: text })),
+});
+export type ThanksContent = z.infer<typeof thanksSchema>;
+
+/* ---------- content/pages/etre-rappele.json ---------- */
+
+export const callbackPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  appel_h2: text,
+  appel_texte: text.includes("{téléphone}"),
+});
+export type CallbackPage = z.infer<typeof callbackPageSchema>;
+
+/* ---------- content/formulaires/*.json (docs/05 §5) ---------- */
+
+const situationQuestionSchema = z.strictObject({
+  id: z.string().regex(/^[a-z][a-z0-9_]{0,39}$/, "identifiant simple (clé de situation)"),
+  question: text,
+  type: z.enum(["choix", "choix_multiple"]),
+  options: z.array(text).min(2).max(12),
+});
+
+export const formDefinitionSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  id: z.enum([
+    "neuro",
+    "personne-agee",
+    "adulte-handicap",
+    "enfant-handicap",
+    "aidant",
+    "nuit-24h",
+  ]),
+  slug,
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  /** Grille de planning préremplie à l'ouverture (docs/05 §5 : nuit-24h). */
+  planning_initial: z.enum(["nuits"]).optional(),
+  situation: z.array(situationQuestionSchema).min(1).max(8),
+  besoins: z.array(text).min(3).max(12),
+});
+export type FormDefinition = z.infer<typeof formDefinitionSchema>;
+
+/* ---------- content/pages/demande.json ---------- */
+
+export const requestIndexSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  presse_h2: text,
+  presse_texte: text,
+  /** Formulaires hors fabrique, listés après les cas (docs/05 §2). */
+  autres: z.array(
+    z.strictObject({
+      id: z.enum(["sortie-hospitalisation", "professionnel"]),
+      libelle: text,
+      texte: text,
+    }),
+  ),
+});
+export type RequestIndexPage = z.infer<typeof requestIndexSchema>;
+
+/* ---------- content/pages/formulaires-speciaux.json ---------- */
+
+export const specialFormsSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  sortie_hospitalisation: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    bandeau_titre: text,
+    bandeau_texte: text.includes("{téléphone}"),
+    etape_date: text,
+    date: text,
+    date_aide: text,
+    etape_lieu: text,
+    hopital: text,
+    hopital_aide: text,
+    commune: text,
+    etape_besoins: text,
+    besoins: z.array(text).min(3).max(12),
+    etape_coordonnees: text,
+    vous_etes: text,
+    roles: z.array(text).min(2).max(4),
+  }),
+  professionnel: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    etape_vous: text,
+    structure: text,
+    fonction: text,
+    telephone: text,
+    etape_situation: text,
+    commune: text,
+    type_besoin: text,
+    types: z.array(text).min(2).max(8),
+    echeance: text,
+    message: text,
+    anonymat: text,
+  }),
+  contact: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    sujet: text,
+    sujets: z.array(text).min(2).max(8),
+    message: text,
+    message_aide: text,
+    demande_h2: text,
+    demande_texte: text,
+    demande_lien: text,
+  }),
+});
+export type SpecialForms = z.infer<typeof specialFormsSchema>;
+
+/* ---------- content/emails.json (docs/01 §9) ---------- */
+
+export const emailsSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  accuse: z.strictObject({
+    objet: text,
+    corps: text.includes("{prénom}").includes("{délai}").includes("{téléphone}"),
+    delai_inconnu: text,
+    signature: text,
+  }),
+  equipe: z.strictObject({
+    objet: text.includes("{formulaire}").includes("{commune}").includes("{urgence}"),
+    objet_sans_commune: text.includes("{formulaire}").includes("{urgence}"),
+    coordonnees: text,
+    appeler: text,
+    rappel_prefere: text,
+    urgence: text,
+    pour_qui: text,
+    situation: text,
+    besoins: text,
+    planning: text,
+    heures: text.includes("{h}"),
+    nuit: text,
+    dates: text,
+    creneaux_dates: text,
+    duree: text,
+    message: text,
+    origine: text,
+    agence: text,
+    consentement: text,
+    oui: text,
+    non: text,
+    version_consentement: text.includes("{version}"),
+    json: text,
+    recu_le: text.includes("{date}"),
+    formulaires: z.strictObject({
+      rappel: text,
+      neuro: text,
+      "personne-agee": text,
+      "adulte-handicap": text,
+      "enfant-handicap": text,
+      aidant: text,
+      "sortie-hospitalisation": text,
+      "nuit-24h": text,
+      professionnel: text,
+      candidature: text,
+      contact: text,
+    }),
+    rythmes: z.strictObject({ regulier: text, ponctuel: text, "24h": text, inconnu: text }),
+    nuits: z.strictObject({ calme: text, active: text, inconnu: text }),
+    durees: z.strictObject({ jours: text, semaines: text, durable: text }),
+  }),
+});
+export type EmailTexts = z.infer<typeof emailsSchema>;
 export type NavigationItem = z.infer<typeof navigationItemSchema>;
 export type NavigationChild = z.infer<typeof navigationChildSchema>;

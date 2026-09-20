@@ -1,0 +1,67 @@
+{
+  "_lisezmoi": "Formulaire « adulte en situation de handicap » (docs/05 §2 et §5). Questions et choix du cahier ; la question sur les heures de PCH, facultative, est posée par tranches. Toutes les questions de situation reçoivent d'office « Je préfère en parler ». Réponses = données de santé : consentement explicite à la dernière étape.",
+  "id": "adulte-handicap",
+  "slug": "adulte-handicap",
+  "seo": {
+    "titre": "Décrire votre situation : adulte en situation de handicap",
+    "description": "Aide humaine, PCH, mode prestataire ou mandataire : dites-nous l'essentiel en deux à trois minutes, un conseiller Youdom Care vous rappelle."
+  },
+  "ariane": "Adulte en situation de handicap",
+  "h1": "Décrire votre situation : adulte en situation de handicap",
+  "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. Vous pourrez tout préciser au téléphone.",
+  "situation": [
+    {
+      "id": "nature",
+      "question": "De quel handicap s'agit-il ?",
+      "type": "choix",
+      "options": [
+        "Moteur",
+        "Sensoriel",
+        "Cognitif",
+        "Psychique",
+        "Maladie invalidante",
+        "Polyhandicap"
+      ]
+    },
+    {
+      "id": "aides_techniques",
+      "question": "Des aides techniques sont utilisées ?",
+      "type": "choix_multiple",
+      "options": [
+        "Fauteuil roulant",
+        "Lève-personne",
+        "Lit médicalisé",
+        "Aide à la communication",
+        "Aucune"
+      ]
+    },
+    {
+      "id": "pch_heures",
+      "question": "La PCH aide humaine : combien d'heures accordées par mois ?",
+      "type": "choix",
+      "options": [
+        "Moins de 30 heures",
+        "30 à 100 heures",
+        "Plus de 100 heures",
+        "Pas de PCH",
+        "Je ne sais pas"
+      ]
+    },
+    {
+      "id": "mode",
+      "question": "Quel mode souhaitez-vous ?",
+      "type": "choix",
+      "options": ["Prestataire", "Mandataire", "À comparer ensemble"]
+    }
+  ],
+  "besoins": [
+    "Gestes essentiels",
+    "Transferts",
+    "Repas",
+    "Logement",
+    "Sorties, travail, loisirs",
+    "Démarches",
+    "Aide à la parentalité",
+    "Nuits"
+  ]
+}

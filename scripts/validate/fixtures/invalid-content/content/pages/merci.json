@@ -1,0 +1,35 @@
+{
+  "_lisezmoi": "Page de confirmation /merci/{formulaire}/ (docs/05 §3), non indexée. Le délai de rappel vient de content/site.config.json (contact.delai_rappel) et n'est affiché que si l'engagement E5 est validé : sinon la phrase sans délai (interface.json › formulaires.succes_delai_inconnu) est utilisée. Les étapes « ce qui va se passer » viennent de content/pages/accueil.json (bloc 6). Aucun détail de la demande n'est repris sur cette page.",
+  "seo": {
+    "titre": "Merci, votre demande est bien arrivée chez Youdom Care",
+    "description": "Votre demande est arrivée. Un conseiller Youdom Care vous rappelle pour en parler de vive voix. Voici ce qui va se passer, et deux lectures utiles."
+  },
+  "h1": "Merci. Votre demande est arrivée.",
+  "suite_h2": "Ce qui va se passer",
+  "lectures_h2": "En attendant notre appel",
+  "lectures": [
+    {
+      "libelle": "Comment ça marche, de votre appel au premier jour",
+      "href": "/comment-ca-marche/"
+    },
+    {
+      "libelle": "Les aides qui réduisent le coût",
+      "href": "/tarifs-et-aides/"
+    }
+  ],
+  "retour_accueil": "Retour à l'accueil",
+  "variantes": {
+    "candidature": {
+      "h1": "Merci. Votre candidature est arrivée.",
+      "texte": "Nous la lisons avec attention et nous vous répondons."
+    },
+    "contact": {
+      "h1": "Merci. Votre message est arrivé.",
+      "texte": "Nous vous répondons dès que possible."
+    },
+    "professionnel": {
+      "h1": "Merci. Votre demande est arrivée.",
+      "texte": "Un conseiller vous rappelle pour organiser la suite avec vous."
+    }
+  }
+}

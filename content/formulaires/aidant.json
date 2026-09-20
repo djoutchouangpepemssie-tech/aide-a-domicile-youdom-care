@@ -1,0 +1,47 @@
+{
+  "_lisezmoi": "Formulaire « relais d'un aidant » (docs/05 §2 et §5) : qui aidez-vous, depuis combien de temps, ce dont vous avez besoin ; besoins de la personne aidée, simplifiés. Toutes les questions de situation reçoivent d'office « Je préfère en parler ». Réponses = données de santé : consentement explicite à la dernière étape.",
+  "id": "aidant",
+  "slug": "relais-aidant",
+  "seo": {
+    "titre": "Un relais pour souffler : décrivez votre situation d'aidant",
+    "description": "Vous aidez un proche et vous avez besoin de souffler ? Quelques heures, une journée, des nuits, un week-end : dites-nous l'essentiel, nous vous rappelons."
+  },
+  "ariane": "Relais d'un aidant",
+  "h1": "Un relais pour souffler : décrivez votre situation",
+  "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. Vous pourrez tout préciser au téléphone.",
+  "situation": [
+    {
+      "id": "qui",
+      "question": "Qui aidez-vous ?",
+      "type": "choix",
+      "options": ["Mon père ou ma mère", "Mon conjoint", "Mon enfant", "Un autre proche"]
+    },
+    {
+      "id": "depuis",
+      "question": "Depuis combien de temps ?",
+      "type": "choix",
+      "options": ["Quelques semaines", "Quelques mois", "Un à trois ans", "Plus de trois ans"]
+    },
+    {
+      "id": "besoin_relais",
+      "question": "De quel relais avez-vous besoin ?",
+      "type": "choix_multiple",
+      "options": [
+        "Quelques heures par semaine",
+        "Une journée",
+        "Des nuits",
+        "Un week-end",
+        "Des vacances"
+      ]
+    }
+  ],
+  "besoins": [
+    "Aide au lever et au coucher",
+    "Toilette",
+    "Repas",
+    "Présence et sécurité",
+    "Sorties",
+    "Nuits",
+    "Relais pour souffler"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "_lisezmoi": "Page /etre-rappele/ (docs/05 §2) : le formulaire de rappel en trente secondes. Les libellés des champs et les messages viennent de content/interface.json (formulaires). Le téléphone vient de content/site.config.json.",
+  "seo": {
+    "titre": "Être rappelé(e) gratuitement par un conseiller Youdom Care",
+    "description": "Laissez votre prénom, votre téléphone et votre commune : un conseiller Youdom Care vous rappelle pour parler de votre situation, sans engagement."
+  },
+  "ariane": "Être rappelé(e)",
+  "h1": "Être rappelé(e), en trente secondes",
+  "chapo": "Laissez-nous vos coordonnées : un conseiller vous rappelle pour parler de votre situation, sans engagement.",
+  "appel_h2": "Vous préférez appeler ?",
+  "appel_texte": "Nous répondons au {téléphone}."
+}

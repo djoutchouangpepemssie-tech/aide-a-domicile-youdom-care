@@ -1,0 +1,64 @@
+{
+  "_lisezmoi": "Textes des e-mails de la route api/lead (docs/01 §9, docs/05 §7). L'accusé de réception ne contient aucune donnée de santé ni détail de la demande. L'objet de l'alerte à l'équipe ne contient que le type de formulaire, la commune et l'urgence. Le jeton {délai} est remplacé par contact.delai_rappel de site.config.json seulement si l'engagement E5 est validé ; sinon la phrase « dès que possible » est utilisée.",
+  "accuse": {
+    "objet": "Nous avons bien reçu votre demande — Youdom Care",
+    "corps": "Bonjour {prénom}, votre demande est bien arrivée. Un conseiller vous rappelle {délai} au numéro que vous nous avez indiqué. D'ici là, vous pouvez nous joindre au {téléphone}. À très vite.",
+    "delai_inconnu": "dès que possible",
+    "signature": "L'équipe Youdom Care — Vous, chez vous. Nous, à vos côtés."
+  },
+  "equipe": {
+    "objet": "Nouvelle demande — {formulaire} — {commune} — {urgence}",
+    "objet_sans_commune": "Nouvelle demande — {formulaire} — {urgence}",
+    "coordonnees": "Coordonnées",
+    "appeler": "Appeler",
+    "rappel_prefere": "Créneau de rappel préféré",
+    "urgence": "Date de début souhaitée",
+    "pour_qui": "Pour qui",
+    "situation": "Situation",
+    "besoins": "Besoins",
+    "planning": "Planning",
+    "heures": "Estimation : environ {h} heures par semaine",
+    "nuit": "Nuits",
+    "dates": "Dates demandées",
+    "creneaux_dates": "Créneaux ces jours-là",
+    "duree": "Durée envisagée",
+    "message": "Message",
+    "origine": "Page d'origine",
+    "agence": "Agence la plus proche",
+    "consentement": "Consentement aux données de santé",
+    "oui": "oui",
+    "non": "non",
+    "version_consentement": "version du texte : {version}",
+    "json": "Demande complète (JSON, pour reprise automatique)",
+    "recu_le": "Reçue le {date}",
+    "formulaires": {
+      "rappel": "Rappel",
+      "neuro": "Maladie neurodégénérative",
+      "personne-agee": "Personne âgée",
+      "adulte-handicap": "Adulte en situation de handicap",
+      "enfant-handicap": "Enfant en situation de handicap",
+      "aidant": "Relais d'un aidant",
+      "sortie-hospitalisation": "Sortie d'hospitalisation",
+      "nuit-24h": "Nuit et 24h/24",
+      "professionnel": "Professionnel",
+      "candidature": "Candidature",
+      "contact": "Contact"
+    },
+    "rythmes": {
+      "regulier": "Régulier, chaque semaine",
+      "ponctuel": "Ponctuel, à des dates précises",
+      "24h": "Présence continue 24h/24",
+      "inconnu": "Rythme à définir"
+    },
+    "nuits": {
+      "calme": "Nuit calme",
+      "active": "Nuit active",
+      "inconnu": "Nuit : à préciser"
+    },
+    "durees": {
+      "jours": "Quelques jours",
+      "semaines": "Quelques semaines",
+      "durable": "Durablement"
+    }
+  }
+}

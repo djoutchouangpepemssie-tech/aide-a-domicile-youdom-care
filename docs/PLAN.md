@@ -52,18 +52,20 @@ Les contrôles de `pnpm validate` s'activent au fil des phases : chaque script e
 
 ## Phase 3 — Formulaires · `phase/03-formulaires`
 
-- [ ] **P3.1 Schéma de demande.** `LeadPayload` en Zod, types, tests. Réf. `docs/05 §7`.
-- [ ] **P3.2 Grille de planning (saisie).** Rythme, grille 7 × 6, raccourcis, résumé `aria-live`, estimation d'heures. Réf. `docs/05 §4`.
-- [ ] **P3.3 Planning avancé.** Horaires précis (plages passant minuit, copie de jour), dates ponctuelles, 24h/24, question sur la nuit, estimation de budget si tarifs.
-- [ ] **P3.4 Coque multi-étapes.** Progression, retour, conservation locale, résumé d'erreurs, page `/merci/…`.
-- [ ] **P3.5 Formulaire de rappel** et branchement de l'en-tête et de la barre mobile.
-- [ ] **P3.6 Formulaires `neuro` et `personne-agee`.** Réf. `docs/05 §5`.
-- [ ] **P3.7 Formulaires `adulte-handicap` et `enfant-handicap`.**
-- [ ] **P3.8 Formulaires `aidant`, `sortie-hospitalisation`, `nuit-24h`, `professionnel`, `contact`.**
-- [ ] **P3.9 Route `api/lead`.** Validation serveur, anti-robots, e-mail à l'équipe (planning en tableau, JSON repliable), accusé de réception sans donnée de santé, webhook optionnel signé, aucune journalisation de contenu. Tests avec un serveur SMTP simulé.
-- [ ] **P3.10 Parcours de bout en bout.** Playwright : chaque formulaire au clavier, axe à chaque étape, cas hors Île-de-France, panne d'envoi.
+- [x] (6d52392) **P3.1 Schéma de demande.** `LeadPayload` en Zod, types, tests. Réf. `docs/05 §7`.
+- [x] (3fa3a63) **P3.2 Grille de planning (saisie).** Rythme, grille 7 × 6, raccourcis, résumé `aria-live`, estimation d'heures. Réf. `docs/05 §4`.
+- [x] (5c20a13) **P3.3a Planning avancé (1/2).** Horaires précis (plages passant minuit, copie de jour), question sur la nuit, date de début, estimation de budget si tarifs. Découpage de P3.3 le 2026-09-20.
+- [x] (eb0f091) **P3.3b Planning avancé (2/2).** Dates ponctuelles (dates ou période, créneaux communs), présence 24h/24 (tous les jours ou jours choisis, date de début, durée envisagée), grille remplie d’office et modifiable.
+- [x] (b7c7c33) **P3.4 Coque multi-étapes.** Progression, retour, conservation locale, résumé d'erreurs, page `/merci/…`.
+- [x] (816c6f8) **P3.5 Formulaire de rappel** et branchement de l'en-tête et de la barre mobile.
+- [x] (dd5e18a) **P3.6 Formulaires `neuro` et `personne-agee`.** Réf. `docs/05 §5`.
+- [x] (e52a4ca) **P3.7 Formulaires `adulte-handicap` et `enfant-handicap`.**
+- [x] (75270b0) **P3.8a Formulaires `aidant` et `nuit-24h`** sur la fabrique des formulaires détaillés (grille préréglée sur les nuits). Découpage de P3.8 le 2026-09-20.
+- [x] (61628a5) **P3.8b Formulaires `sortie-hospitalisation` (quatre écrans, bandeau moins de 48 h), `professionnel` (aucune donnée nominative de la personne) et `contact`.**
+- [x] (e4964e0) **P3.9 Route `api/lead`.** Validation serveur, anti-robots, e-mail à l'équipe (planning en tableau, JSON repliable), accusé de réception sans donnée de santé, webhook optionnel signé, aucune journalisation de contenu. Tests avec un serveur SMTP simulé.
+- [x] (d93809c) **P3.10 Parcours de bout en bout.** Playwright : chaque formulaire au clavier, axe à chaque étape, cas hors Île-de-France, panne d'envoi.
 
-**Point de validation 3** : tous les parcours verts ; vérification manuelle qu'aucune donnée de santé n'apparaît dans les URL, l'objet des e-mails, l'accusé de réception et les journaux.
+**Point de validation 3** : tous les parcours verts ; vérification manuelle qu'aucune donnée de santé n'apparaît dans les URL, l'objet des e-mails, l'accusé de réception et les journaux. — Fait le 2026-09-20 : parcours verts (134), vérification manuelle consignée au JOURNAL (URL, objets, accusé, journaux), `pnpm lhci` vert sur l’accueil et le rappel (D-022), audit : dette DC.2.
 
 ## Phase 4 — Pages services, cas par cas · `phase/04-services`
 

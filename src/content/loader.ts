@@ -5,6 +5,11 @@ import navigationJson from "../../content/navigation.json";
 import siteConfigJson from "../../content/site.config.json";
 import aboutJson from "../../content/pages/a-propos.json";
 import homePageJson from "../../content/pages/accueil.json";
+import thanksJson from "../../content/pages/merci.json";
+import callbackJson from "../../content/pages/etre-rappele.json";
+import requestIndexJson from "../../content/pages/demande.json";
+import specialFormsJson from "../../content/pages/formulaires-speciaux.json";
+import emailsJson from "../../content/emails.json";
 import howItWorksJson from "../../content/pages/comment-ca-marche.json";
 import modesJson from "../../content/pages/prestataire-ou-mandataire.json";
 import pricingPageJson from "../../content/pages/tarifs-et-aides.json";
@@ -13,6 +18,11 @@ import weekExamplesJson from "../../content/semaines-types.json";
 import pricingJson from "../../content/tarifs.json";
 import {
   aboutSchema,
+  thanksSchema,
+  callbackPageSchema,
+  requestIndexSchema,
+  specialFormsSchema,
+  emailsSchema,
   aidsSchema,
   commitmentsSchema,
   homePageSchema,
@@ -25,6 +35,11 @@ import {
   siteConfigSchema,
   weekExamplesSchema,
   type AboutContent,
+  type ThanksContent,
+  type CallbackPage,
+  type RequestIndexPage,
+  type SpecialForms,
+  type EmailTexts,
   type Aids,
   type Commitments,
   type HomePage,
@@ -109,6 +124,45 @@ export function getAbout(): AboutContent {
   return about;
 }
 
+let callbackPage: CallbackPage | undefined;
+
+export function getCallbackPage(): CallbackPage {
+  callbackPage ??= parseContent(callbackPageSchema, callbackJson, "pages/etre-rappele.json");
+  return callbackPage;
+}
+
+let requestIndex: RequestIndexPage | undefined;
+
+export function getRequestIndexPage(): RequestIndexPage {
+  requestIndex ??= parseContent(requestIndexSchema, requestIndexJson, "pages/demande.json");
+  return requestIndex;
+}
+
+let specialForms: SpecialForms | undefined;
+
+export function getSpecialForms(): SpecialForms {
+  specialForms ??= parseContent(
+    specialFormsSchema,
+    specialFormsJson,
+    "pages/formulaires-speciaux.json",
+  );
+  return specialForms;
+}
+
+let emails: EmailTexts | undefined;
+
+export function getEmailTexts(): EmailTexts {
+  emails ??= parseContent(emailsSchema, emailsJson, "emails.json");
+  return emails;
+}
+
+let thanks: ThanksContent | undefined;
+
+export function getThanksPage(): ThanksContent {
+  thanks ??= parseContent(thanksSchema, thanksJson, "pages/merci.json");
+  return thanks;
+}
+
 export function getSiteConfig(): SiteConfig {
   siteConfig ??= parseContent(siteConfigSchema, siteConfigJson, "site.config.json");
   return siteConfig;
@@ -144,5 +198,10 @@ export function loadAllContent() {
     pricingPage: getPricingPage(),
     aids: getAids(),
     about: getAbout(),
+    thanks: getThanksPage(),
+    callbackPage: getCallbackPage(),
+    requestIndex: getRequestIndexPage(),
+    specialForms: getSpecialForms(),
+    emails: getEmailTexts(),
   };
 }

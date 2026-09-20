@@ -22,7 +22,9 @@ import { SituationCard } from "@/components/blocks/SituationCard/SituationCard";
 import { StageCards } from "@/components/blocks/StageCards/StageCards";
 import { StepsTimeline } from "@/components/blocks/StepsTimeline/StepsTimeline";
 import { WeekPlanner } from "@/components/blocks/WeekPlanner/WeekPlanner";
+import { WeekPlannerInput } from "@/components/forms/WeekPlannerInput/WeekPlannerInput";
 import { getCommitments, getInterfaceTexts, getPricing, getWeekExamples } from "@/content/loader";
+import { budgetBasis } from "@/lib/pricing/pricing";
 
 export const metadata: Metadata = {
   title: "Guide de styles — Youdom Care",
@@ -57,6 +59,7 @@ const sections = [
   { id: "parcours", label: "Parcours et navigation" },
   { id: "prix-aides", label: "Prix, aides et situations" },
   { id: "semaine", label: "Semaine type" },
+  { id: "planning", label: "Grille de planning (saisie)" },
   { id: "fil", label: "Le fil" },
   { id: "champs", label: "Champs de formulaire" },
 ] as const;
@@ -455,6 +458,26 @@ export default function StyleguidePage() {
             context={madeleine.contexte}
             entries={madeleine.entrees}
             texts={interfaceTexts.semaine_type}
+          />
+        </div>
+      </section>
+
+      <section aria-labelledby="planning" className="mt-12">
+        <Heading level={2} id="planning">
+          Grille de planning (saisie)
+        </Heading>
+        <p className="mt-2 text-small text-text-soft">
+          Rythme, puis sept jours × six créneaux : tableau au clavier à partir de 48 rem, accordéon
+          par jour en dessous, raccourcis, résumé annoncé.
+        </p>
+        <div className="mt-6 rounded-block bg-white p-4 shadow-1 sm:p-6">
+          <WeekPlannerInput
+            texts={{
+              semaine_type: interfaceTexts.semaine_type,
+              formulaires: interfaceTexts.formulaires,
+              planning: interfaceTexts.planning,
+            }}
+            budget={budgetBasis(pricing.prestations, pricing.credit_impot_taux)}
           />
         </div>
       </section>

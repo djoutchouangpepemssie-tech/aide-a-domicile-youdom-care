@@ -1,0 +1,48 @@
+{
+  "_lisezmoi": "Formulaire « nuit et 24h/24 » (docs/05 §2 et §5) : pour qui, nuits calmes ou actives, combien de nuits, 24h/24 temporaire ou durable, grille préréglée sur les nuits (planning_initial). Les besoins reprennent les services du dépliant (garde de nuit, présence 24h/24, garde-malade). Réponses = données de santé : consentement explicite à la dernière étape.",
+  "id": "nuit-24h",
+  "slug": "nuit-et-24h",
+  "seo": {
+    "titre": "Garde de nuit ou présence 24h/24 : décrivez votre besoin",
+    "description": "Nuits calmes ou actives, quelques nuits ou une présence continue, pour quelques jours ou durablement : dites-nous l'essentiel, un conseiller vous rappelle."
+  },
+  "ariane": "Nuit et 24h/24",
+  "h1": "Garde de nuit ou présence 24h/24 : décrivez votre besoin",
+  "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. La semaine est préremplie sur les nuits : ajustez-la.",
+  "planning_initial": "nuits",
+  "situation": [
+    {
+      "id": "nuits",
+      "question": "Comment se passent les nuits ?",
+      "type": "choix",
+      "options": [
+        "Nuits calmes : la personne dort le plus souvent",
+        "Nuits actives : besoin d'une présence éveillée",
+        "Je ne sais pas"
+      ]
+    },
+    {
+      "id": "combien",
+      "question": "Combien de nuits par semaine ?",
+      "type": "choix",
+      "options": ["Une ou deux", "Trois ou quatre", "Toutes les nuits"]
+    },
+    {
+      "id": "continu",
+      "question": "Une présence 24h/24 ?",
+      "type": "choix",
+      "options": [
+        "Non, seulement des nuits",
+        "Oui, pour quelques jours ou semaines",
+        "Oui, durablement"
+      ]
+    }
+  ],
+  "besoins": [
+    "Garde de nuit",
+    "Présence 24h/24",
+    "Garde-malade",
+    "Relais du proche",
+    "Aide au coucher et au lever"
+  ]
+}

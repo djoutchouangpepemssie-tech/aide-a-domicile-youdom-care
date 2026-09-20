@@ -82,7 +82,11 @@ export function MobileActionBar({ phone, callbackHref, requestHref, texts }: Mob
           </li>
         ) : null}
         <li className="max-w-none flex-1">
-          <Link href={callbackHref} className={cn(itemClass, "bg-action text-white")}>
+          <Link
+            href={callbackHref}
+            prefetch={false}
+            className={cn(itemClass, "bg-action text-white")}
+          >
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
@@ -100,7 +104,7 @@ export function MobileActionBar({ phone, callbackHref, requestHref, texts }: Mob
           </Link>
         </li>
         <li className="max-w-none flex-1">
-          <Link href={requestHref} className={cn(itemClass, "text-teal-800")}>
+          <Link href={requestHref} prefetch={false} className={cn(itemClass, "text-teal-800")}>
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"

@@ -58,8 +58,10 @@ export function Button(props: ButtonProps) {
 
   if (props.href !== undefined) {
     const { href, variant: _v, block: _b, icon: _i, className: _c, children: _ch, ...rest } = props;
+    // Les appels à l'action mènent surtout aux formulaires (JavaScript lourd) : pas de
+    // préchargement, la page se charge au clic.
     return (
-      <Link href={href} className={classes} {...rest}>
+      <Link href={href} prefetch={false} className={classes} {...rest}>
         {iconNode}
         {children}
       </Link>
