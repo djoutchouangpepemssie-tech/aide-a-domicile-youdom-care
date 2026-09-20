@@ -26,20 +26,23 @@ function installMatchMedia(reduced: boolean) {
   );
 }
 
-/** jsdom place tout à (0, 0) : on simule un élément sous le pli. */
-function placeBelowFold() {
+/** jsdom place tout à (0, 0) avec une taille nulle : on simule une position réelle. */
+function placeAt(top: number) {
   vi.spyOn(Element.prototype, "getBoundingClientRect").mockReturnValue({
-    top: 2000,
-    bottom: 2200,
+    top,
+    bottom: top + 200,
     left: 0,
     right: 100,
     width: 100,
     height: 200,
     x: 0,
-    y: 2000,
+    y: top,
     toJSON: () => ({}),
   });
 }
+
+const placeBelowFold = () => placeAt(2000);
+const placeOnScreen = () => placeAt(100);
 
 describe("Reveal", () => {
   beforeEach(() => {
@@ -87,6 +90,7 @@ describe("Reveal", () => {
   it("ne cache pas un élément déjà dans l'écran au montage (pas de clignotement)", () => {
     installMatchMedia(false);
     const observers = installIntersectionObserver();
+    placeOnScreen();
     const { container } = render(
       <Reveal>
         <p>Au-dessus du pli</p>
