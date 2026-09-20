@@ -86,14 +86,17 @@ describe("HeroPicker", () => {
     const group = container.querySelector("[role=group]");
     expect(group).toHaveAccessibleName("Pour qui cherchez-vous de l'aide ?");
     expect(container.querySelectorAll("button")).toHaveLength(0);
-    const links = Array.from(container.querySelectorAll("a")).map((a) => a.getAttribute("href"));
+    // next/link normalise la barre finale hors du site construit : on la tolère.
+    const links = Array.from(container.querySelectorAll("a")).map((a) =>
+      a.getAttribute("href")?.replace(/\/$/, ""),
+    );
     expect(links).toEqual([
-      "/personnes-agees/",
-      "/maladies-neurodegeneratives/",
-      "/enfants-en-situation-de-handicap/",
-      "/adultes-en-situation-de-handicap/",
-      "/aidants/",
-      "/etre-rappele/",
+      "/personnes-agees",
+      "/maladies-neurodegeneratives",
+      "/enfants-en-situation-de-handicap",
+      "/adultes-en-situation-de-handicap",
+      "/aidants",
+      "/etre-rappele",
     ]);
     expect(container.querySelectorAll("svg[data-icon]")).toHaveLength(6);
     expect(container.querySelector("svg[data-icon=public-personnes-agees]")).toHaveAttribute(

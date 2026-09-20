@@ -77,7 +77,7 @@ describe("Accueil (blocs 1 à 8)", () => {
     );
     expect(links[links.length - 1]).toHaveTextContent("Autre chose : je décris ma situation");
     expect(within(region).getByText("Toutes les situations").tagName).toBe("SUMMARY");
-    expect(within(region).getAllByRole("article")).toHaveLength(6);
+    expect(region.querySelectorAll("details .situation-card")).toHaveLength(6);
   });
 
   it("rend les semaines types en onglets avec photo, les étapes, le prix sans tarif et les proches", () => {
