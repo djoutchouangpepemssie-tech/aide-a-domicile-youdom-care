@@ -2,7 +2,9 @@ import { act, render } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { PhotoFigure } from "@/components/ui/PhotoFigure/PhotoFigure";
-import { HeroThread, measureReach } from "./HeroThread";
+import { HeroThread } from "./HeroThread";
+import { measureReach } from "./HeroThreadArm";
+import { contourStart, withEntry } from "./hero-thread-entry";
 import { heroThreadNames, heroThreads, parseKnot } from "./hero-threads";
 
 function installMatchMedia(reduced: boolean) {
@@ -77,7 +79,7 @@ describe("HeroThread", () => {
     for (const name of heroThreadNames) {
       const d = heroThreads[name].main(60, 40);
       expect(d, name).not.toMatch(/z/i);
-      expect(d, name).toMatch(/^M-3 16/);
+      expect(d, name).toMatch(/^M-3 16C-6 38\.2 -6 67\.8 -3 90/);
     }
     expect(parseKnot("62% 48%")).toEqual([62, 48]);
     expect(parseKnot(undefined)).toEqual([50, 50]);
@@ -85,7 +87,7 @@ describe("HeroThread", () => {
     expect(parseKnot("1% 120%")).toEqual([8, 92]);
   });
 
-  it("rend côté serveur un fil complet, décoratif, en trois couches, avec la photo", () => {
+  it("rend côté serveur un fil complet, décoratif, en trois couches, avec la photo et son île", () => {
     const html = renderToString(
       <HeroThread fil="tasse" knot="40% 30%" tone="dark">
         <PhotoFigure
@@ -103,11 +105,12 @@ describe("HeroThread", () => {
     expect(html).toContain("hero-thread__knot text-raspberry-500");
     expect(html).toContain("left:40%;top:30%");
     expect(html).toContain('class="hero-thread__reach"');
+    expect(html).toContain("data-hero-thread-arm");
     expect(html).toContain('alt="Une lampe allumée dans un couloir"');
     expect(html).not.toContain("<title");
   });
 
-  it("mesure le dernier mot du H1 et le relie à l'entrée du contour", () => {
+  it("mesure le dernier mot du H1, le relie à l'entrée du contour et recale ce dernier", () => {
     const { container } = mountHero();
     const root = container.querySelector<HTMLElement>(".hero-thread");
     if (!root) throw new Error("fil absent");
@@ -120,8 +123,11 @@ describe("HeroThread", () => {
       d: "M-50 12.8H-30C-16.5 12.8 -3 12.8 -3 16.8",
       entryY: 16.8,
     });
-    // Le contour repart de cette hauteur.
-    expect(heroThreads.generique.main(60, 40, 16.8)).toMatch(/^M-3 16\.8C-6 38\.8 -6 68 -3 90/);
+    // Le contour rendu par le serveur repart de cette hauteur, sans embarquer les géométries.
+    expect(contourStart(16.8)).toBe("M-3 16.8C-6 38.8 -6 68 -3 90");
+    const served = heroThreads.generique.main(60, 40);
+    expect(withEntry(served, 16.8)).toBe(heroThreads.generique.main(60, 40, 16.8));
+    expect(withEntry(served, 16)).toBe(served);
 
     // Mobile : le mot est au-dessus de la bande, la courbe descend en S vers l'entrée par défaut.
     vi.spyOn(root, "getBoundingClientRect").mockReturnValue(rect(20, 300, 335, 188));

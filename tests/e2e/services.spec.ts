@@ -118,10 +118,15 @@ test.describe("Pages services (P4)", () => {
     await expect(
       page.getByText("Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas."),
     ).toHaveCount(1);
-    // Section 2 : la situation de l'aidant épuisé mène à l'espace Aidants, les autres restent des cartes.
+    // Section 2 : l'aidant épuisé mène à l'espace Aidants, la sortie d'hôpital au formulaire
+    // express (relecture 4b) ; les autres situations restent des cartes.
     const situationLinks = page.locator("[data-situation] a");
-    await expect(situationLinks).toHaveCount(1);
+    await expect(situationLinks).toHaveCount(2);
     await expect(situationLinks.first()).toHaveAttribute("href", "/aidants/");
+    await expect(situationLinks.last()).toHaveAttribute(
+      "href",
+      "/demande/sortie-d-hospitalisation/",
+    );
     // Section 4 : les stades portent leurs icônes selon le public.
     await expect(page.locator('#stade-1 [data-icon="lever"]')).toHaveCount(1);
     await expect(page.locator('#stade-3 [data-icon="nuit"]')).toHaveCount(1);
@@ -218,6 +223,7 @@ test.describe("Pages services (P4)", () => {
 
   test("/enfants-en-situation-de-handicap/ : la fiche de vie se retourne, quatre liens-icônes", async ({
     page,
+    isMobile,
   }) => {
     await page.goto("/enfants-en-situation-de-handicap/");
     const card = page.locator('[data-gesture="fiche-de-vie"]');
@@ -242,9 +248,13 @@ test.describe("Pages services (P4)", () => {
     await expect(card).not.toHaveAttribute("data-flipped", /.*/);
     await expect(front).toBeFocused();
 
-    await expect(
-      card.getByRole("link", { name: "Je décris les besoins de mon enfant" }),
-    ).toHaveAttribute("href", "/demande/enfant-handicap/");
+    // Le lien sous la carte n'existe que sous 64 rem : au-dessus, le bouton principal du hero
+    // porte le même appel (relecture 4b).
+    const sheetLink = card.locator("a", { hasText: "Je décris les besoins de mon enfant" });
+    await expect(sheetLink).toHaveCount(1);
+    await expect(sheetLink).toHaveAttribute("href", "/demande/enfant-handicap/");
+    if (isMobile) await expect(sheetLink).toBeVisible();
+    else await expect(sheetLink).toBeHidden();
     const nav = page.getByRole("navigation", { name: "Aller à la page qui vous concerne" });
     await expect(nav.getByRole("link")).toHaveCount(4);
     await expect(nav.getByRole("link", { name: "Autisme" })).toHaveAttribute(

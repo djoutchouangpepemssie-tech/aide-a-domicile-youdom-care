@@ -19,21 +19,17 @@ export interface HeroThreadGeometry {
   main: (kx: number, ky: number, entryY?: number) => string;
 }
 
+import { contourStart, ENTRY_X, ENTRY_Y } from "./hero-thread-entry";
+
+export { ENTRY_X, ENTRY_Y };
+
 const r = (value: number) => Math.round(value * 10) / 10;
 
-/** Abscisse de l'entrée : juste à l'extérieur du bord gauche. */
-export const ENTRY_X = -3;
-/** Hauteur d'entrée par défaut (rendu serveur, mobile). */
-export const ENTRY_Y = 16;
 const ENTRY: readonly [number, number] = [ENTRY_X, ENTRY_Y];
 
 /** Demi-contour commun : bord gauche légèrement à l'extérieur, angle arrondi, bord bas. */
-const contour = (toX: number, entryY = ENTRY_Y) => {
-  const y = Math.min(Math.max(entryY, 4), 76);
-  const c1 = r(y + (90 - y) * 0.3);
-  const c2 = r(y + (90 - y) * 0.7);
-  return `M${ENTRY_X} ${r(y)}C-6 ${c1} -6 ${c2} -3 90Q-2 103 8 103L${r(toX)} 103`;
-};
+const contour = (toX: number, entryY = ENTRY_Y) =>
+  `${contourStart(entryY)}Q-2 103 8 103L${r(toX)} 103`;
 
 export const heroThreads: Record<HeroThreadFil, HeroThreadGeometry> = {
   /* Générique : le bas de la photo, puis une montée souple vers le nœud. */

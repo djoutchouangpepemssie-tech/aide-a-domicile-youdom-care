@@ -1,7 +1,9 @@
-import { act, render } from "@testing-library/react";
+import { act, fireEvent, render, waitFor } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { PAGE_THREAD_EXCLUDED, PageThread, measurePage } from "./PageThread";
+import { isPageThreadExcluded, PAGE_THREAD_EXCLUDED } from "@/lib/motion/page-thread";
+import { PageThread } from "./PageThread";
+import { measurePage, PageThreadEngine } from "./PageThreadEngine";
 
 let pathname = "/personnes-agees/";
 vi.mock("next/navigation", () => ({ usePathname: () => pathname }));
@@ -58,9 +60,8 @@ function mountPage() {
     </main>`;
 }
 
-describe("PageThread", () => {
+describe("PageThreadEngine", () => {
   beforeEach(() => {
-    pathname = "/personnes-agees/";
     installFrames();
     installRects();
     vi.stubGlobal("ResizeObserver", undefined);
@@ -70,18 +71,19 @@ describe("PageThread", () => {
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
     document.body.innerHTML = "";
-  });
-
-  it("ne rend rien côté serveur ni avant la mesure", () => {
-    expect(renderToString(<PageThread />)).toBe("");
+    delete document.documentElement.dataset.pthread;
   });
 
   it("mesure `main` et pose un nœud par H2 visible, au milieu de sa première ligne", () => {
     installMatchMedia(true);
     mountPage();
-    const layout = measurePage("main", "h2");
-    expect(layout).toEqual({ top: 80, height: 2000, below: 0, knots: [244, 844] });
-    const { container } = render(<PageThread />);
+    expect(measurePage("main", "h2")).toEqual({
+      top: 80,
+      height: 2000,
+      below: 0,
+      knots: [244, 844],
+    });
+    const { container } = render(<PageThreadEngine root="main" headings="h2" />);
     expect(container.querySelector(".m-pthread")).toBeNull();
     flush();
     const thread = container.querySelector<HTMLElement>(".m-pthread");
@@ -95,19 +97,62 @@ describe("PageThread", () => {
     expect(knots).toHaveLength(2);
     expect(knots[0]?.style.top).toBe("244px");
     expect(knots[1]?.style.top).toBe("844px");
-    // Nœud ouvert, jamais fermé.
+    // Nœud ouvert, jamais fermé ; le trait statique de la coquille est retiré.
     expect(knots[0]?.querySelector("path")?.getAttribute("d")).not.toMatch(/z/i);
+    expect(document.documentElement.dataset.pthread).toBe("on");
   });
 
   it("ne mesure rien sous 64 rem", () => {
     installMatchMedia(false);
     mountPage();
-    const { container } = render(<PageThread />);
+    const { container } = render(<PageThreadEngine root="main" headings="h2" />);
     flush();
     expect(container.querySelector(".m-pthread")).toBeNull();
+    expect(document.documentElement.dataset.pthread).toBeUndefined();
+  });
+});
+
+describe("PageThread (coquille)", () => {
+  beforeEach(() => {
+    pathname = "/personnes-agees/";
+    installRects();
+    vi.stubGlobal("ResizeObserver", undefined);
   });
 
-  it("se retire sur le styleguide et les pages de formulaire, sauf exclusion vide", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+    document.body.innerHTML = "";
+    delete document.documentElement.dataset.pthread;
+  });
+
+  it("ne rend rien côté serveur ni avant un signe d'usage", () => {
+    expect(renderToString(<PageThread />)).toBe("");
+    installMatchMedia(true);
+    mountPage();
+    const { container } = render(<PageThread />);
+    expect(container.innerHTML).toBe("");
+  });
+
+  it("charge le moteur au premier défilement, sur un écran large seulement", async () => {
+    installMatchMedia(true);
+    mountPage();
+    const { container } = render(<PageThread />);
+    fireEvent.scroll(window);
+    await waitFor(() => expect(container.querySelector(".m-pthread")).not.toBeNull());
+    expect(container.querySelector(".m-pthread")).toHaveAttribute("data-knots", "2");
+
+    installMatchMedia(false);
+    const narrow = render(<PageThread />);
+    fireEvent.scroll(window);
+    fireEvent.pointerMove(window);
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(narrow.container.innerHTML).toBe("");
+  });
+
+  it("se retire sur le styleguide et les pages de formulaire (data-pthread=off), sauf exclusion vide", async () => {
     installMatchMedia(true);
     mountPage();
     expect(PAGE_THREAD_EXCLUDED).toEqual([
@@ -116,16 +161,19 @@ describe("PageThread", () => {
       "/etre-rappele/",
       "/contact/",
     ]);
+    expect(isPageThreadExcluded("/demande/sortie-d-hospitalisation/")).toBe(true);
+    expect(isPageThreadExcluded("/aidants/")).toBe(false);
     for (const path of ["/styleguide/mouvement/", "/demande/", "/etre-rappele/", "/contact/"]) {
       pathname = path;
       const { container, unmount } = render(<PageThread />);
-      flush();
-      expect(container.querySelector(".m-pthread"), path).toBeNull();
+      fireEvent.scroll(window);
+      expect(container.innerHTML, path).toBe("");
+      expect(document.documentElement.dataset.pthread, path).toBe("off");
       unmount();
+      expect(document.documentElement.dataset.pthread).toBeUndefined();
     }
     pathname = "/styleguide/mouvement/";
-    const { container } = render(<PageThread exclude={[]} headings="h2" />);
-    flush();
-    expect(container.querySelector(".m-pthread")).not.toBeNull();
+    const { container } = render(<PageThread exclude={[]} headings="h2" eager />);
+    await waitFor(() => expect(container.querySelector(".m-pthread")).not.toBeNull());
   });
 });

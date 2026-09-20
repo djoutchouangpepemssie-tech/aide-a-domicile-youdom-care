@@ -1,12 +1,19 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { FINE_POINTER_QUERY } from "@/lib/motion/pointer-tilt";
+import { REDUCED_MOTION_QUERY } from "@/lib/motion/reduced-motion";
 import { DEPTH_MAX_DEGREES, HeroDepth } from "./HeroDepth";
 
-function installMatchMedia(reduced: boolean) {
+function installMatchMedia({ fine = true, reduced = false } = {}) {
   vi.stubGlobal(
     "matchMedia",
-    vi.fn().mockReturnValue({ matches: reduced, addEventListener: vi.fn() }),
+    vi.fn((query: string) => ({
+      matches:
+        query === FINE_POINTER_QUERY ? fine : query === REDUCED_MOTION_QUERY ? reduced : false,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    })),
   );
 }
 
@@ -33,6 +40,15 @@ function placeBox(element: Element) {
     x: 100,
     y: 100,
     toJSON: () => ({}),
+  });
+}
+
+/** Premier survol : l'île charge le moteur (import dynamique), on attend qu'il soit posé. */
+async function enter(element: Element, pointerType = "mouse") {
+  fireEvent.pointerEnter(element, { pointerType });
+  await act(async () => {
+    await Promise.resolve();
+    await Promise.resolve();
   });
 }
 
@@ -68,8 +84,8 @@ describe("HeroDepth", () => {
     expect(html).toContain('<span class="photo-figure">Photo</span>');
   });
 
-  it("pivote vers la souris, 4° au plus, et revient quand le pointeur sort", () => {
-    installMatchMedia(false);
+  it("charge le moteur au premier survol, pivote vers la souris (4° au plus) et revient", async () => {
+    installMatchMedia();
     render(
       <HeroDepth data-testid="scene">
         <a href="#contenu">Lien</a>
@@ -80,6 +96,10 @@ describe("HeroDepth", () => {
     placeBox(box);
     expect(DEPTH_MAX_DEGREES).toBe(4);
 
+    move(box, 500, 100); // sans survol préalable : rien n'écoute
+    expect(stage?.style.getPropertyValue("--ry")).toBe("");
+
+    await enter(box);
     fireEvent.pointerMove(box, { clientX: 100, clientY: 100, pointerType: "mouse" });
     fireEvent.pointerMove(box, { clientX: 500, clientY: 100, pointerType: "mouse" });
     expect(queue).toHaveLength(1); // deux mouvements, une seule image demandée
@@ -101,29 +121,35 @@ describe("HeroDepth", () => {
     expect(screen.getByRole("link", { name: "Lien" })).toBeVisible();
   });
 
-  it("respecte une limite plus basse (aidants, 2°) et 0 désactive tout", () => {
-    installMatchMedia(false);
-    const { rerender } = render(<HeroDepth data-testid="scene" maxDeg={2} />);
-    const box = screen.getByTestId("scene");
-    placeBox(box);
-    move(box, 500, 100);
-    expect(stageOf(box)?.style.getPropertyValue("--ry")).toBe("2.00deg");
-    expect(box).toHaveAttribute("data-max-deg", "2");
+  it("respecte une limite plus basse (aidants, 2°) et 0 désactive tout", async () => {
+    installMatchMedia();
+    render(<HeroDepth data-testid="deux" maxDeg={2} />);
+    const two = screen.getByTestId("deux");
+    placeBox(two);
+    await enter(two);
+    move(two, 500, 100);
+    expect(stageOf(two)?.style.getPropertyValue("--ry")).toBe("2.00deg");
+    expect(two).toHaveAttribute("data-max-deg", "2");
 
-    fireEvent.pointerLeave(box);
-    rerender(<HeroDepth data-testid="scene" maxDeg={0} />);
-    expect(box).toHaveAttribute("data-max-deg", "0");
-    move(box, 500, 100);
-    expect(stageOf(box)?.style.getPropertyValue("--ry")).toBe("");
-    expect(stageOf(box)?.dataset.depth).toBeUndefined();
+    render(<HeroDepth data-testid="zero" maxDeg={0} />);
+    const zero = screen.getByTestId("zero");
+    placeBox(zero);
+    expect(zero).toHaveAttribute("data-max-deg", "0");
+    await enter(zero);
+    move(zero, 500, 100);
+    expect(stageOf(zero)?.style.getPropertyValue("--ry")).toBe("");
+    expect(stageOf(zero)?.dataset.depth).toBeUndefined();
 
-    rerender(<HeroDepth data-testid="scene" maxDeg={40} />);
-    move(box, 500, 100);
-    expect(stageOf(box)?.style.getPropertyValue("--ry")).toBe("4.00deg");
+    render(<HeroDepth data-testid="trop" maxDeg={40} />);
+    const capped = screen.getByTestId("trop");
+    placeBox(capped);
+    await enter(capped);
+    move(capped, 500, 100);
+    expect(stageOf(capped)?.style.getPropertyValue("--ry")).toBe("4.00deg");
   });
 
-  it("ne réagit ni au toucher, ni au stylet, ni en mouvement réduit, ni au clavier", () => {
-    installMatchMedia(false);
+  it("ne réagit ni au toucher, ni au stylet, ni sans pointeur fin, ni en mouvement réduit, ni au clavier", async () => {
+    installMatchMedia();
     render(
       <HeroDepth data-testid="scene">
         <a href="#contenu">Lien</a>
@@ -132,7 +158,9 @@ describe("HeroDepth", () => {
     const box = screen.getByTestId("scene");
     const stage = stageOf(box);
     placeBox(box);
+    await enter(box, "touch");
     move(box, 500, 100, "touch");
+    await enter(box, "pen");
     move(box, 500, 100, "pen");
     expect(stage?.style.getPropertyValue("--ry")).toBe("");
 
@@ -140,11 +168,18 @@ describe("HeroDepth", () => {
     expect(stage?.style.getPropertyValue("--ry")).toBe("");
 
     document.documentElement.dataset.comfort = "on";
+    await enter(box);
     move(box, 500, 100);
     expect(stage?.style.getPropertyValue("--ry")).toBe("");
     delete document.documentElement.dataset.comfort;
 
-    installMatchMedia(true);
+    installMatchMedia({ reduced: true });
+    await enter(box);
+    move(box, 500, 100);
+    expect(stage?.style.getPropertyValue("--ry")).toBe("");
+
+    installMatchMedia({ fine: false });
+    await enter(box);
     move(box, 500, 100);
     expect(stage?.style.getPropertyValue("--ry")).toBe("");
   });

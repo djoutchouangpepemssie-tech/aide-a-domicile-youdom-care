@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef, CSSProperties } from "react";
 import { cn } from "@/lib/cn";
+import "./hero-scene.css";
 
 /*
  * Objet 3D léger pour un hero (docs/design/BRIEF_EXPERIENCE.md §3) en CSS 3D pur : aucune

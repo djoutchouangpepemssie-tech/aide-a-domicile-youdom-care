@@ -53,7 +53,9 @@ test.describe("Formulaire de rappel (P3.5)", () => {
   }) => {
     await page.goto("/etre-rappele/?motif=inconnu");
     const notice = page.locator("[data-motif=inconnu]");
-    await expect(notice).toHaveText("C'est normal. L'évaluation à domicile sert à cela.");
+    await expect(notice).toHaveText(
+      "Vous ne savez pas encore de quoi vous avez besoin ? C'est normal : l'évaluation à domicile, gratuite, sert à cela.",
+    );
     await expect(notice).toBeVisible();
     const form = page.getByRole("form");
     const noticeBox = await notice.boundingBox();

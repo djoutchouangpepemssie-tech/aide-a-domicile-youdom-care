@@ -36,6 +36,9 @@ const robotsHeaders = indexable ? [] : [{ key: "X-Robots-Tag", value: "noindex, 
 const nextConfig: NextConfig = {
   trailingSlash: true,
   poweredByHeader: false,
+  // Photos (docs/design/PHOTOS.md, D-024) : AVIF d'abord, WebP en repli ; qualités 60 (hero) et 75
+  // (sections) par PhotoFigure. Le hero est l'élément du LCP : chaque kilo-octet compte.
+  images: { formats: ["image/avif", "image/webp"], qualities: [60, 75] },
   async headers() {
     return [{ source: "/(.*)", headers: [...securityHeaders, ...robotsHeaders] }];
   },

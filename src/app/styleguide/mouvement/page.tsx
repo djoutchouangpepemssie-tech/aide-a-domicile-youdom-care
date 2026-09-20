@@ -400,11 +400,13 @@ export default function MouvementPage() {
           px qui grandit avec le défilement (<code>animation-timeline: scroll()</code>, CSS seul) et
           un nœud framboise à la hauteur de chaque H2 de <code>main</code>, noué quand le titre
           entre à l’écran. Une île mesure les positions ; rien ne bouge en mouvement réduit (trait
-          complet, nœuds noués). Monté une fois dans le layout ; retiré sur le styleguide et les
-          pages de formulaire. Ici, une instance de démonstration limitée à cette section, un nœud
-          par H3.
+          complet, nœuds noués). Monté une fois dans le layout ; son moteur de mesure (1 Ko) ne se
+          charge qu’au premier signe d’usage (défilement, pointeur, clavier), un trait statique CSS
+          tenant la place en haut de page ; retiré sur le styleguide et les pages de formulaire.
+          Ici, une instance de démonstration limitée à cette section, chargée d’emblée, un nœud par
+          H3.
         </p>
-        <PageThread root="#pagethread-demo" headings="h3" exclude={[]} />
+        <PageThread root="#pagethread-demo" headings="h3" exclude={[]} eager />
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {["Premier jalon", "Deuxième jalon", "Troisième jalon", "Dernier jalon"].map((label) => (
             <Card key={label}>

@@ -1,0 +1,229 @@
+/*
+ * HeroScene (objet 3D en CSS pur, motion.css pour les règles communes) : chargée avec le
+ * composant seulement (styleguide aujourd'hui), pas dans le CSS global de chaque page.
+ * Tout est neutralisé sous `prefers-reduced-motion: reduce`, en mode confort et sous la
+ * simulation du styleguide : pose fixe `rotateY(-32deg)`, aucune animation.
+ */
+
+@layer components {
+  /* ---- HeroScene : objet 3D en CSS pur, lent, immobile en mouvement réduit ---- */
+  .m-scene {
+    --s: var(--m-scene-size, 12.5rem);
+    --w: calc(var(--s) * 0.5);
+    --d: calc(var(--s) * 0.4);
+    --h: calc(var(--s) * 0.34);
+    --r: calc(var(--s) * 0.22);
+    --l: calc(var(--s) * 0.2973);
+    position: relative;
+    inline-size: var(--s);
+    block-size: var(--s);
+    perspective: calc(var(--s) * 4.5);
+    contain: layout style;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .m-scene__tilt,
+  .m-scene__stage {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+
+  .m-scene__tilt {
+    transform: rotateX(-20deg);
+  }
+
+  .m-scene__stage {
+    animation: m-turn var(--m-scene-duration, 12s) linear infinite;
+  }
+
+  .m-scene__face {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    backface-visibility: hidden;
+  }
+
+  /* Maison en volumes : quatre murs, deux pans de toit, deux pignons, une porte, une ombre. */
+  .m-scene__wall {
+    inline-size: var(--w);
+    block-size: var(--h);
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+  }
+
+  .m-scene__wall--front {
+    transform: translateZ(calc(var(--d) / 2));
+  }
+
+  .m-scene__wall--back {
+    transform: rotateY(180deg) translateZ(calc(var(--d) / 2));
+  }
+
+  .m-scene__wall--left,
+  .m-scene__wall--right {
+    inline-size: var(--d);
+    background: var(--color-sand);
+  }
+
+  .m-scene__wall--left {
+    transform: rotateY(-90deg) translateZ(calc(var(--w) / 2));
+  }
+
+  .m-scene__wall--right {
+    transform: rotateY(90deg) translateZ(calc(var(--w) / 2));
+  }
+
+  .m-scene__gable {
+    inline-size: var(--d);
+    block-size: var(--r);
+    background: var(--color-sand);
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  }
+
+  .m-scene__gable--left {
+    transform: rotateY(-90deg) translateZ(calc(var(--w) / 2))
+      translateY(calc(-1 * (var(--h) / 2 + var(--r) / 2)));
+  }
+
+  .m-scene__gable--right {
+    transform: rotateY(90deg) translateZ(calc(var(--w) / 2))
+      translateY(calc(-1 * (var(--h) / 2 + var(--r) / 2)));
+  }
+
+  .m-scene__roof {
+    inline-size: calc(var(--w) * 1.12);
+    block-size: var(--l);
+    background: var(--color-teal-700);
+    transform-origin: 50% 100%;
+  }
+
+  .m-scene__roof--front {
+    transform: translateY(calc(-1 * (var(--h) / 2 + var(--l) / 2))) translateZ(calc(var(--d) / 2))
+      rotateX(42.3deg);
+  }
+
+  .m-scene__roof--back {
+    background: var(--color-teal-800);
+    transform: rotateY(180deg) translateY(calc(-1 * (var(--h) / 2 + var(--l) / 2)))
+      translateZ(calc(var(--d) / 2)) rotateX(42.3deg);
+  }
+
+  .m-scene__door {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    inline-size: calc(var(--w) * 0.2);
+    block-size: calc(var(--h) * 0.55);
+    translate: -50% 0;
+    background: var(--color-raspberry-500);
+    border-radius: calc(var(--w) * 0.1) calc(var(--w) * 0.1) 0 0;
+  }
+
+  .m-scene__window {
+    position: absolute;
+    inset-block-start: 22%;
+    inline-size: calc(var(--w) * 0.16);
+    block-size: calc(var(--w) * 0.16);
+    background: var(--color-teal-50);
+    border: 1px solid var(--color-line);
+  }
+
+  .m-scene__window--left {
+    inset-inline-start: 14%;
+  }
+
+  .m-scene__window--right {
+    inset-inline-end: 14%;
+  }
+
+  .m-scene__shadow {
+    inline-size: calc(var(--s) * 0.8);
+    block-size: calc(var(--s) * 0.6);
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgb(15 47 56 / 0.18), transparent 68%);
+    transform: translateY(calc(var(--h) / 2 + 1px)) rotateX(90deg);
+    backface-visibility: visible;
+  }
+
+  /* Le fil en trois couches : trois arcs ouverts (jamais fermés), un nœud framboise. */
+  .m-scene__ring {
+    inline-size: calc(var(--s) * 0.78);
+    block-size: calc(var(--s) * 0.78);
+    border: 2px solid var(--color-teal-700);
+    border-inline-end-color: transparent;
+    border-radius: 50%;
+    backface-visibility: visible;
+  }
+
+  .m-scene__ring--1 {
+    transform: rotateX(70deg);
+  }
+
+  .m-scene__ring--2 {
+    transform: rotateY(60deg) rotateX(20deg);
+  }
+
+  .m-scene__ring--3 {
+    transform: rotateY(-60deg) rotateX(-20deg);
+  }
+
+  .m-scene__knot {
+    position: absolute;
+    inset-block-start: -5px;
+    inset-inline-start: 50%;
+    inline-size: 10px;
+    block-size: 10px;
+    translate: -50% 0;
+    border-radius: 50%;
+    background: var(--color-raspberry-500);
+  }
+
+  .m-scene--fil .m-scene__tilt {
+    animation: m-breathe var(--m-scene-breath, 8s) var(--ease-out) infinite alternate;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .m-scene__stage,
+    .m-scene--fil .m-scene__tilt {
+      animation: none;
+    }
+
+    .m-scene__stage {
+      transform: rotateY(-32deg);
+    }
+  }
+
+  :root[data-comfort="on"] .m-scene__stage,
+  :root[data-motion="reduce"] .m-scene__stage,
+  :root[data-comfort="on"] .m-scene--fil .m-scene__tilt,
+  :root[data-motion="reduce"] .m-scene--fil .m-scene__tilt {
+    animation: none;
+  }
+
+  :root[data-comfort="on"] .m-scene__stage,
+  :root[data-motion="reduce"] .m-scene__stage {
+    transform: rotateY(-32deg);
+  }
+}
+
+@keyframes m-turn {
+  from {
+    transform: rotateY(-32deg);
+  }
+
+  to {
+    transform: rotateY(328deg);
+  }
+}
+
+@keyframes m-breathe {
+  from {
+    transform: rotateX(-20deg) scale(0.97);
+  }
+
+  to {
+    transform: rotateX(-20deg) scale(1.03);
+  }
+}

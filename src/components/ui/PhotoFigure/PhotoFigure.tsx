@@ -7,8 +7,13 @@ import { cn } from "@/lib/cn";
  * recadrage par `object-fit: cover` et le point d'intérêt `focal` (valeur `object-position`),
  * rayon 20 px (28 px sur le hero). Le texte alternatif est obligatoire : descriptif et neutre,
  * jamais de prénom ni de légende (les photos sont des illustrations, brief D-024 §2).
- * `priority` est réservé à l'image du hero (LCP) ; tout le reste se charge à la demande.
- * Composant serveur : aucun JavaScript côté client au-delà de celui de `next/image`.
+ * `priority` est réservé à l'image du hero (LCP) ; tout le reste se charge à la demande. Avec
+ * `priority`, next/image précharge l'image (`<link rel="preload">`) et la charge sans attendre ;
+ * `fetchPriority="high"` est posé ici, sur l'image et sur son préchargement (next/image 16 ne le
+ * fait pas seul) : le navigateur la fait passer avant les scripts et les polices.
+ * Qualité : 60 pour le hero (`priority`, l'image du LCP : docs/07 §5, mesure Lighthouse du
+ * 2026-09-20), 75 ailleurs ; `quality` permet de forcer une valeur. Formats AVIF puis WebP
+ * (next.config.ts). Composant serveur : aucun JavaScript côté client au-delà de `next/image`.
  */
 
 export type PhotoRatio = "4:5" | "3:2" | "16:9";
@@ -30,8 +35,15 @@ export interface PhotoFigureProps {
   sizes?: string;
   /** Image du hero seulement : chargement prioritaire (LCP). */
   priority?: boolean;
+  /** Qualité de compression (1 à 100) : 60 quand `priority` (hero), 75 sinon. */
+  quality?: number;
   className?: string;
 }
+
+/** Qualité de l'image du hero : plus légère, elle est l'élément du LCP. */
+export const HERO_QUALITY = 60;
+/** Qualité des photos de section (valeur par défaut de next/image). */
+export const DEFAULT_QUALITY = 75;
 
 const ratioClasses: Record<PhotoRatio, string> = {
   "4:5": "aspect-[4/5]",
@@ -64,6 +76,7 @@ export function PhotoFigure({
   radius = 20,
   sizes = photoSizes.full,
   priority = false,
+  quality = priority ? HERO_QUALITY : DEFAULT_QUALITY,
   className,
 }: PhotoFigureProps) {
   const ratios =
@@ -86,6 +99,8 @@ export function PhotoFigure({
         fill
         sizes={sizes}
         priority={priority}
+        fetchPriority={priority ? "high" : undefined}
+        quality={quality}
         style={{ objectFit: "cover", objectPosition: focal }}
       />
     </div>

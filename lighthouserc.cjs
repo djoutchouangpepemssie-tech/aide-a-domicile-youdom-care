@@ -1,11 +1,31 @@
 /*
  * Lighthouse CI (`pnpm lhci`, voir scripts/lhci.ts) : pages témoins, mobile et réseau 4G
- * simulé, budgets bloquants de docs/07 §5. INP ne se mesure pas en laboratoire : il est suivi
- * en conditions réelles, le temps de blocage total sert de garde-fou ici. Les rapports restent
- * sur le disque (.lighthouseci/, ignoré par git) : rien n'est téléversé.
+ * simulé, budgets bloquants de docs/07 §5 (tolérances de D-026). INP ne se mesure pas en
+ * laboratoire : il est suivi en conditions réelles, le temps de blocage total sert de garde-fou
+ * ici. Les rapports restent sur le disque (.lighthouseci/, ignoré par git) : rien n'est téléversé.
  */
 
 const KO = 1024;
+
+// Pages services en statut a_relire : noindex voulu (docs/03 §1) tant que la relecture
+// professionnelle manque, ce qui fait échouer le seul audit « is-crawlable » et plafonne la
+// catégorie SEO à 0,69. Elles sortent de cette liste quand elles passent en « publie ».
+const nonIndexees = ["/personnes-agees/", "/services/garde-de-nuit/"];
+const nonIndexeesPattern = nonIndexees.map((p) => p.replace(/\//g, "\\/")).join("|");
+
+// Budgets communs (docs/07 §5, D-019, tolérances D-026 après les photos et le mouvement de la
+// phase 4b : LCP 2,1 s, temps de blocage 200 ms, objectifs 2,0 s et 150 ms conservés en cible).
+const communs = {
+  "categories:performance": ["error", { minScore: 0.95 }],
+  "categories:accessibility": ["error", { minScore: 1 }],
+  "categories:best-practices": ["error", { minScore: 1 }],
+  "largest-contentful-paint": ["error", { maxNumericValue: 2100 }],
+  "cumulative-layout-shift": ["error", { maxNumericValue: 0.05 }],
+  "total-blocking-time": ["error", { maxNumericValue: 200 }],
+  "total-byte-weight": ["error", { maxNumericValue: 900 * KO }],
+  "resource-summary:font:size": ["error", { maxNumericValue: 180 * KO }],
+  "resource-summary:font:count": ["error", { maxNumericValue: 2 }],
+};
 
 module.exports = {
   ci: {
@@ -18,8 +38,7 @@ module.exports = {
       url: [
         "http://localhost:3102/",
         "http://localhost:3102/etre-rappele/",
-        "http://localhost:3102/personnes-agees/",
-        "http://localhost:3102/services/garde-de-nuit/",
+        ...nonIndexees.map((p) => `http://localhost:3102${p}`),
       ],
       numberOfRuns: 3,
       settings: {
@@ -32,47 +51,35 @@ module.exports = {
       },
     },
     assert: {
-      // Budgets communs, puis le JavaScript initial selon le type de page (docs/07 §5, D-019).
+      // Budgets communs, SEO selon l'indexabilité, puis le JavaScript initial selon le type de
+      // page (docs/07 §5, D-019, D-026).
       assertMatrix: [
         {
-          matchingUrlPattern: ".*",
+          matchingUrlPattern: `^(?!.*(${nonIndexeesPattern})).*`,
+          aggregationMethod: "median",
+          assertions: { ...communs, "categories:seo": ["error", { minScore: 1 }] },
+        },
+        {
+          matchingUrlPattern: nonIndexeesPattern,
           aggregationMethod: "median",
           assertions: {
-            "categories:performance": ["error", { minScore: 0.95 }],
-            "categories:accessibility": ["error", { minScore: 1 }],
-            "categories:best-practices": ["error", { minScore: 1 }],
-            "categories:seo": ["error", { minScore: 1 }],
-            "largest-contentful-paint": ["error", { maxNumericValue: 2000 }],
-            "cumulative-layout-shift": ["error", { maxNumericValue: 0.05 }],
-            "total-blocking-time": ["error", { maxNumericValue: 150 }],
-            "total-byte-weight": ["error", { maxNumericValue: 900 * KO }],
-            "resource-summary:font:size": ["error", { maxNumericValue: 180 * KO }],
-            "resource-summary:font:count": ["error", { maxNumericValue: 2 }],
+            ...communs,
+            "categories:seo": ["error", { minScore: 0.65 }],
+            "is-crawlable": "off",
           },
         },
         {
           matchingUrlPattern: "http://localhost:3102/$",
           aggregationMethod: "median",
           assertions: {
-            "resource-summary:script:size": ["error", { maxNumericValue: 160 * KO }],
+            "resource-summary:script:size": ["error", { maxNumericValue: 165 * KO }],
           },
         },
         {
-          matchingUrlPattern: "/etre-rappele/|/personnes-agees/|/services/garde-de-nuit/",
+          matchingUrlPattern: `/etre-rappele/|${nonIndexeesPattern}`,
           aggregationMethod: "median",
           assertions: {
-            "resource-summary:script:size": ["error", { maxNumericValue: 220 * KO }],
-          },
-        },
-        {
-          // Pages services en statut a_relire : noindex voulu (docs/03 §1) tant que la relecture
-          // professionnelle manque, ce qui fait échouer le seul audit « is-crawlable » et plafonne
-          // la catégorie SEO à 0,69. Le seuil remonte à 1 quand ces pages passent en « publie ».
-          matchingUrlPattern: "/personnes-agees/|/services/garde-de-nuit/",
-          aggregationMethod: "median",
-          assertions: {
-            "categories:seo": ["error", { minScore: 0.65 }],
-            "is-crawlable": "off",
+            "resource-summary:script:size": ["error", { maxNumericValue: 225 * KO }],
           },
         },
       ],

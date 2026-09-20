@@ -2,16 +2,20 @@
 
 import { useEffect, useRef, type ComponentPropsWithoutRef, type PointerEvent } from "react";
 import { cn } from "@/lib/cn";
+import { FINE_POINTER_QUERY } from "@/lib/motion/pointer-tilt";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
 
 /*
  * Profondeur du hero (docs/design/CONCEPT.md §2 « Le rôle de la 3D légère », §6 `hero-depth`) :
  * la scène (photo, fil, nœud, chacun à sa profondeur `translateZ`) pivote de 4° au plus vers le
- * pointeur, perspective 1 200 px, retour en 300 ms (`--duration-slow`). L'île ne fait que poser
- * deux variables CSS (`--rx`, `--ry`) au rythme de `requestAnimationFrame` : la CSS (motion.css)
- * ne fait tourner la scène que sur ordinateur, avec un pointeur fin. Souris seulement : rien au
- * toucher, au stylet, au clavier, ni en mouvement réduit, en mode confort ou sous la simulation.
- * Aucun état React, aucun gestionnaire posé sur les enfants (liens et boutons intacts).
+ * pointeur, perspective 1 200 px, retour en 300 ms (`--duration-slow`). Île minuscule : elle ne
+ * porte qu'un gestionnaire `pointerenter` ; au premier survol d'une souris, avec un pointeur fin
+ * (`(hover: hover) and (pointer: fine)`) et le mouvement permis, elle charge le moteur commun
+ * (`lib/motion/pointer-tilt`, partagé avec `Tilt`) qui pose `--rx`, `--ry` et `data-depth` sur
+ * la scène au rythme de `requestAnimationFrame`. La CSS (motion.css) ne fait tourner la scène
+ * que sur ordinateur avec un pointeur fin. Rien au toucher, au stylet, au clavier, ni en
+ * mouvement réduit, en mode confort ou sous la simulation. Aucun état React, aucun gestionnaire
+ * posé sur les enfants (liens et boutons intacts). Rendu serveur : la scène à plat.
  */
 
 export interface HeroDepthProps extends ComponentPropsWithoutRef<"div"> {
@@ -24,6 +28,15 @@ export const DEPTH_MAX_DEGREES = 4;
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
+/** Vrai si ce survol mérite de charger le moteur : souris, pointeur fin, mouvement permis. */
+export function shouldEngage(pointerType: string): boolean {
+  return (
+    pointerType === "mouse" &&
+    !prefersReducedMotion() &&
+    (window.matchMedia?.(FINE_POINTER_QUERY).matches ?? false)
+  );
+}
+
 export function HeroDepth({
   maxDeg = DEPTH_MAX_DEGREES,
   className,
@@ -31,52 +44,47 @@ export function HeroDepth({
   ...rest
 }: HeroDepthProps) {
   const stage = useRef<HTMLDivElement>(null);
-  const frame = useRef(0);
-  const point = useRef({ x: 0, y: 0 });
+  const detach = useRef<(() => void) | null>(null);
+  const loading = useRef(false);
   const limit = clamp(maxDeg, 0, DEPTH_MAX_DEGREES);
 
   useEffect(() => {
-    const pending = frame;
-    return () => cancelAnimationFrame(pending.current);
+    return () => {
+      detach.current?.();
+      detach.current = null;
+    };
   }, []);
 
-  function handleMove(event: PointerEvent<HTMLDivElement>) {
-    if (event.pointerType !== "mouse" || limit === 0 || prefersReducedMotion()) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    if (rect.width === 0 || rect.height === 0) return;
-    point.current = {
-      x: clamp((event.clientX - rect.left) / rect.width - 0.5, -0.5, 0.5),
-      y: clamp((event.clientY - rect.top) / rect.height - 0.5, -0.5, 0.5),
-    };
-    if (frame.current) return;
-    frame.current = requestAnimationFrame(() => {
-      frame.current = 0;
+  function handleEnter(event: PointerEvent<HTMLDivElement>) {
+    if (limit === 0 || loading.current || detach.current || !shouldEngage(event.pointerType)) {
+      return;
+    }
+    loading.current = true;
+    const target = event.currentTarget;
+    void import("@/lib/motion/pointer-tilt").then(({ attachPointerTilt }) => {
       const element = stage.current;
-      if (!element) return;
-      const { x, y } = point.current;
-      element.dataset.depth = "active";
-      element.style.setProperty("--rx", `${(-y * 2 * limit).toFixed(2)}deg`);
-      element.style.setProperty("--ry", `${(x * 2 * limit).toFixed(2)}deg`);
+      if (!element || !target.isConnected) return;
+      detach.current = attachPointerTilt(target, {
+        limit,
+        apply: (rotateX, rotateY) => {
+          element.dataset.depth = "active";
+          element.style.setProperty("--rx", `${rotateX}deg`);
+          element.style.setProperty("--ry", `${rotateY}deg`);
+        },
+        reset: () => {
+          delete element.dataset.depth;
+          element.style.removeProperty("--rx");
+          element.style.removeProperty("--ry");
+        },
+      });
     });
-  }
-
-  function handleLeave() {
-    cancelAnimationFrame(frame.current);
-    frame.current = 0;
-    const element = stage.current;
-    if (!element) return;
-    delete element.dataset.depth;
-    element.style.removeProperty("--rx");
-    element.style.removeProperty("--ry");
   }
 
   return (
     <div
       className={cn("m-depth", className)}
       data-max-deg={limit}
-      onPointerMove={limit > 0 ? handleMove : undefined}
-      onPointerLeave={limit > 0 ? handleLeave : undefined}
-      onPointerCancel={limit > 0 ? handleLeave : undefined}
+      onPointerEnter={limit > 0 ? handleEnter : undefined}
       {...rest}
     >
       <div ref={stage} className="m-depth__stage">

@@ -1,12 +1,20 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { FINE_POINTER_QUERY } from "@/lib/motion/pointer-tilt";
+import { REDUCED_MOTION_QUERY } from "@/lib/motion/reduced-motion";
 import { Tilt } from "./Tilt";
 
-function installMatchMedia(reduced: boolean) {
+/** `matchMedia` de test : pointeur fin ou non, mouvement réduit ou non. */
+function installMatchMedia({ fine = true, reduced = false } = {}) {
   vi.stubGlobal(
     "matchMedia",
-    vi.fn().mockReturnValue({ matches: reduced, addEventListener: vi.fn() }),
+    vi.fn((query: string) => ({
+      matches:
+        query === FINE_POINTER_QUERY ? fine : query === REDUCED_MOTION_QUERY ? reduced : false,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    })),
   );
 }
 
@@ -33,6 +41,15 @@ function placeCard(element: Element) {
     x: 100,
     y: 100,
     toJSON: () => ({}),
+  });
+}
+
+/** Premier survol : l'île charge le moteur (import dynamique), on attend qu'il soit posé. */
+async function enter(element: Element, pointerType = "mouse") {
+  fireEvent.pointerEnter(element, { pointerType });
+  await act(async () => {
+    await Promise.resolve();
+    await Promise.resolve();
   });
 }
 
@@ -64,8 +81,8 @@ describe("Tilt", () => {
     expect(html).toContain("Lien");
   });
 
-  it("s'incline vers la souris, 6° au plus, et revient quand le pointeur sort", () => {
-    installMatchMedia(false);
+  it("charge le moteur au premier survol, s'incline vers la souris, 6° au plus, et revient", async () => {
+    installMatchMedia();
     render(
       <Tilt data-testid="carte">
         <button type="button">Action</button>
@@ -74,6 +91,11 @@ describe("Tilt", () => {
     const card = screen.getByTestId("carte");
     placeCard(card);
 
+    // Sans survol préalable, rien n'écoute : un mouvement seul ne fait rien.
+    move(card, 300, 100);
+    expect(card.style.transform).toBe("");
+
+    await enter(card);
     fireEvent.pointerMove(card, { clientX: 100, clientY: 100, pointerType: "mouse" });
     fireEvent.pointerMove(card, { clientX: 300, clientY: 100, pointerType: "mouse" });
     expect(queue).toHaveLength(1); // deux mouvements, une seule image demandée
@@ -93,20 +115,26 @@ describe("Tilt", () => {
     expect(screen.getByRole("button", { name: "Action" })).toBeVisible();
   });
 
-  it("respecte une limite plus basse et l'ignore au-delà de 6°", () => {
-    installMatchMedia(false);
+  it("respecte une limite plus basse et l'ignore au-delà de 6°", async () => {
+    installMatchMedia();
     const { rerender } = render(<Tilt data-testid="carte" max={3} />);
     const card = screen.getByTestId("carte");
     placeCard(card);
+    await enter(card);
     move(card, 300, 100);
     expect(card.style.transform).toBe("perspective(800px) rotateX(3.00deg) rotateY(3.00deg)");
     rerender(<Tilt data-testid="carte" max={45} />);
-    move(card, 300, 100);
-    expect(card.style.transform).toBe("perspective(800px) rotateX(6.00deg) rotateY(6.00deg)");
+    // Le moteur posé au premier survol garde sa limite ; une nouvelle carte plafonne à 6°.
+    const { getByTestId } = render(<Tilt data-testid="autre" max={45} />);
+    const other = getByTestId("autre");
+    placeCard(other);
+    await enter(other);
+    move(other, 300, 100);
+    expect(other.style.transform).toBe("perspective(800px) rotateX(6.00deg) rotateY(6.00deg)");
   });
 
-  it("ne réagit ni au toucher, ni au stylet, ni en mouvement réduit, ni au clavier", () => {
-    installMatchMedia(false);
+  it("ne réagit ni au toucher, ni au stylet, ni sans pointeur fin, ni en mouvement réduit, ni au clavier", async () => {
+    installMatchMedia();
     render(
       <Tilt data-testid="carte">
         <a href="#contenu">Lien</a>
@@ -114,7 +142,9 @@ describe("Tilt", () => {
     );
     const card = screen.getByTestId("carte");
     placeCard(card);
+    await enter(card, "touch");
     move(card, 300, 100, "touch");
+    await enter(card, "pen");
     move(card, 300, 100, "pen");
     expect(card.style.transform).toBe("");
 
@@ -122,11 +152,32 @@ describe("Tilt", () => {
     expect(card.style.transform).toBe("");
 
     document.documentElement.dataset.comfort = "on";
+    await enter(card);
     move(card, 300, 100);
     expect(card.style.transform).toBe("");
     delete document.documentElement.dataset.comfort;
 
-    installMatchMedia(true);
+    installMatchMedia({ reduced: true });
+    await enter(card);
+    move(card, 300, 100);
+    expect(card.style.transform).toBe("");
+
+    installMatchMedia({ fine: false });
+    await enter(card);
+    move(card, 300, 100);
+    expect(card.style.transform).toBe("");
+  });
+
+  it("un changement de réglage coupe un moteur déjà chargé", async () => {
+    installMatchMedia();
+    render(<Tilt data-testid="carte" />);
+    const card = screen.getByTestId("carte");
+    placeCard(card);
+    await enter(card);
+    move(card, 300, 100);
+    expect(card.style.transform).not.toBe("");
+    fireEvent.pointerLeave(card);
+    document.documentElement.dataset.motion = "reduce";
     move(card, 300, 100);
     expect(card.style.transform).toBe("");
   });

@@ -59,9 +59,17 @@ for (const path of pages) {
       await expect(page.locator(".m-depth__stage[data-depth]")).toHaveCount(0);
 
       if (!isMobile) {
-        // Fil conducteur : trait complet (aucune animation), un nœud par H2 visible.
+        // Fil conducteur : trait statique CSS avant tout signe d'usage, puis, au premier
+        // défilement, le moteur : trait complet (aucune animation), un nœud par H2 visible.
+        await expect(page.locator(".m-pthread")).toHaveCount(0);
+        const staticLine = () =>
+          page.locator("main").evaluate((main) => getComputedStyle(main, "::before").display);
+        expect(await staticLine()).toBe("block");
+        await page.mouse.wheel(0, 40);
         const conductor = page.locator(".m-pthread");
         await expect(conductor).toHaveCount(1);
+        await expect(page.locator("html")).toHaveAttribute("data-pthread", "on");
+        expect(await staticLine()).toBe("none");
         await expect(conductor).toHaveAttribute("aria-hidden", "true");
         const line = conductor.locator(".m-pthread__line");
         await expect(line).toHaveCSS("animation-name", "none");
@@ -116,7 +124,7 @@ for (const path of pages) {
         await page.mouse.move(0, 0);
         await expect(stage).not.toHaveAttribute("data-depth", /.*/);
 
-        // Fil conducteur présent, un nœud par H2 visible.
+        // Fil conducteur : chargé par le mouvement du pointeur ci-dessus, un nœud par H2 visible.
         const conductor = page.locator(".m-pthread");
         await expect(conductor).toHaveCount(1);
         expect(Number(await conductor.getAttribute("data-knots"))).toBeGreaterThan(2);
@@ -160,6 +168,13 @@ test.describe("Fil conducteur : exclusions", () => {
       test.skip(isMobile, "le fil conducteur n'existe qu'à partir de 64 rem");
       await page.goto(path);
       await expect(page.locator("main")).toBeVisible();
+      // Exclu avant le premier rendu (MotionScript) : ni trait statique, ni moteur après usage.
+      await expect(page.locator("html")).toHaveAttribute("data-pthread", "off");
+      expect(
+        await page.locator("main").evaluate((main) => getComputedStyle(main, "::before").display),
+      ).toBe("none");
+      await page.mouse.wheel(0, 40);
+      await page.mouse.move(20, 20);
       await expect(page.locator(".m-pthread")).toHaveCount(0);
     });
   }
