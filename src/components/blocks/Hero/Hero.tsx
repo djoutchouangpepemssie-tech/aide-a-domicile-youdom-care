@@ -3,7 +3,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button/Button";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { HeroDepth } from "@/components/motion/HeroDepth/HeroDepth";
+import { HeroThread } from "@/components/ui/Thread/HeroThread";
 import { Thread } from "@/components/ui/Thread/Thread";
+import type { HeroThreadFil } from "@/components/ui/Thread/hero-threads";
 import type { ThreadIllustrationName } from "@/components/ui/Thread/illustrations";
 import { cn } from "@/lib/cn";
 
@@ -11,7 +14,15 @@ import { cn } from "@/lib/cn";
  * Bannière (docs/02 §7 Hero, docs/01 §4 bloc 1, docs/design/CONCEPT.md §3 et §4) : sur-titre,
  * H1 (quatre lignes au plus sur mobile), chapô, geste d'entrée facultatif, deux boutons, lien
  * téléphone, ligne de réassurance, et un média : photo 4:5 (`media`) ou illustration au fil.
- * Un seul bouton framboise : le principal.
+ * Un seul bouton framboise : le principal. Sur mobile (< 64 rem), il est masqué (`hidden
+ * lg:contents` sur son enveloppe) : la barre mobile porte déjà « Rappel » et « Ma demande »
+ * (docs/design/CONCEPT.md §3 bloc 1, §4) ; le bouton de contour et le téléphone restent visibles.
+ *
+ * Profondeur et fil (docs/design/CONCEPT.md §2, §4, §6) : autour du média, `HeroDepth` fait
+ * pivoter la photo, le fil et le nœud vers le pointeur (`depth`, 4° par défaut, 2 pour les
+ * aidants, 0 pour les adultes en situation de handicap) ; `HeroThread` trace le fil qui part du
+ * dernier mot du H1 et pose son nœud sur la photo (`thread`, géométrie `generique` par défaut,
+ * `null` pour s'en passer). Les deux ne s'activent qu'avec `media`.
  *
  * Ordre mobile : sur-titre, H1, photo en bande 16:9 juste sous le H1, chapô, geste, boutons,
  * téléphone, réassurance, note. Ordinateur : grille 3fr / 2fr, la photo occupe la colonne de
@@ -23,6 +34,13 @@ import { cn } from "@/lib/cn";
  */
 
 export type HeroTone = "clair" | "sombre";
+
+export interface HeroThreadSpec {
+  /** Géométrie du fil (`generique`, `bras-lies`, `main-qui-fait`, `album`, `tasse`). */
+  fil: HeroThreadFil;
+  /** Position du nœud sur la photo, « x% y% » (le `focal` de la photo en général) ; centre par défaut. */
+  knot?: string;
+}
 
 export interface HeroProps {
   surtitle: string;
@@ -41,6 +59,16 @@ export interface HeroProps {
   /** Geste d'entrée (choisir sa situation, bascule de lecteur…), sous le chapô. */
   gesture?: ReactNode;
   tone?: HeroTone;
+  /**
+   * Rotation maximale de la scène vers le pointeur, en degrés (HeroDepth) : 4 par défaut,
+   * 2 pour les aidants, 0 = aucune inclinaison (adultes en situation de handicap). Avec `media` seulement.
+   */
+  depth?: number;
+  /**
+   * Fil du hero (HeroThread) par-dessus la photo : `{ fil, knot? }` ; sans valeur, la géométrie
+   * `generique` avec le nœud au centre ; `null` pour ne pas tracer de fil. Avec `media` seulement.
+   */
+  thread?: HeroThreadSpec | null;
 }
 
 /* Colonne de gauche sur ordinateur ; le média occupe la colonne de droite sur toutes les lignes. */
@@ -60,6 +88,8 @@ export function Hero({
   media,
   gesture,
   tone = "clair",
+  depth = 4,
+  thread,
 }: HeroProps) {
   const dark = tone === "sombre";
   const soft = dark ? "text-teal-50" : "text-text-soft";
@@ -86,7 +116,20 @@ export function Hero({
         {title}
       </Heading>
       {media ? (
-        <div className={cn(mediaCell, "hero-media mt-6 lg:mt-0")}>{media}</div>
+        <div className={cn(mediaCell, "hero-media relative mt-6 lg:mt-0")}>
+          {thread === null ? (
+            <HeroDepth maxDeg={depth}>{media}</HeroDepth>
+          ) : (
+            <HeroThread
+              fil={thread?.fil ?? "generique"}
+              knot={thread?.knot}
+              tone={dark ? "dark" : "light"}
+              depth={depth}
+            >
+              {media}
+            </HeroThread>
+          )}
+        </div>
       ) : (
         <Thread
           illustration={illustration}
@@ -100,7 +143,10 @@ export function Hero({
       <Lead className={cn(column, "mt-5")}>{lead}</Lead>
       {gesture ? <div className={cn(column, "hero-gesture mt-6")}>{gesture}</div> : null}
       <div className={cn(column, "mt-8 flex flex-wrap items-center gap-4")}>
-        <Button href={primary.href}>{primary.label}</Button>
+        {/* Mobile : la barre basse porte déjà le rappel et la demande ; le principal attend 64 rem. */}
+        <span className="hidden lg:contents" data-hero-primary="">
+          <Button href={primary.href}>{primary.label}</Button>
+        </span>
         <Button
           href={secondary.href}
           variant="outline"

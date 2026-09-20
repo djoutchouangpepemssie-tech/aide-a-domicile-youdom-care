@@ -274,6 +274,7 @@ test.describe("Pages services (P4)", () => {
 
   test("/aidants/ : la première question du questionnaire mène à la page avec ?q1=", async ({
     page,
+    isMobile,
   }) => {
     await page.goto("/aidants/");
     const group = page.locator('[data-gesture="questionnaire"]');
@@ -283,7 +284,13 @@ test.describe("Pages services (P4)", () => {
     await expect(links).toHaveCount(3);
     await expect(links.nth(0)).toHaveAttribute("href", "/aidants/ou-en-etes-vous/?q1=0");
     await expect(links.nth(2)).toHaveAttribute("href", "/aidants/ou-en-etes-vous/?q1=2");
-    await expect(page.getByRole("link", { name: "J'ai besoin de relais" }).first()).toBeVisible();
+    // Le bouton principal du hero est masqué sur mobile (la barre basse porte le rappel, lot 3).
+    const primary = page.locator(".hero [data-hero-primary] a", {
+      hasText: "J'ai besoin de relais",
+    });
+    await expect(primary).toHaveCount(1);
+    if (isMobile) await expect(primary).toBeHidden();
+    else await expect(primary).toBeVisible();
     await expectNoSeriousAxeViolations(page);
     await links.nth(1).focus();
     await page.keyboard.press("Enter");
@@ -328,6 +335,7 @@ test.describe("Pages services (P4)", () => {
 
   test("/services/sortie-d-hospitalisation/ : « Quand est la sortie ? » sans délai promis", async ({
     page,
+    isMobile,
   }) => {
     await page.goto("/services/sortie-d-hospitalisation/");
     const group = page.getByRole("group", { name: "Quand est la sortie ?" });
@@ -342,9 +350,13 @@ test.describe("Pages services (P4)", () => {
       "/demande/sortie-d-hospitalisation/?sortie=a-confirmer",
     );
     await expect(group).not.toContainText(/48 ?h|délai/i);
-    await expect(
-      page.getByRole("link", { name: "Je prépare un retour à domicile" }).first(),
-    ).toBeVisible();
+    // Idem : bouton principal du hero masqué sur mobile, visible sur ordinateur.
+    const primary = page.locator(".hero [data-hero-primary] a", {
+      hasText: "Je prépare un retour à domicile",
+    });
+    await expect(primary).toHaveCount(1);
+    if (isMobile) await expect(primary).toBeHidden();
+    else await expect(primary).toBeVisible();
     await expectNoSeriousAxeViolations(page);
     await links.nth(2).focus();
     await page.keyboard.press("Enter");

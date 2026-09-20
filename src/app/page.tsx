@@ -169,6 +169,7 @@ export default async function Home() {
             reassurance={page.banniere.reassurance}
             footnote={{ text: page.banniere.note_astérisque, href: page.banniere.note_href }}
             illustration={page.banniere.illustration}
+            thread={bannerPhoto ? { fil: "bras-lies", knot: bannerPhoto.focal } : null}
             media={
               bannerPhoto ? (
                 <PhotoFigure

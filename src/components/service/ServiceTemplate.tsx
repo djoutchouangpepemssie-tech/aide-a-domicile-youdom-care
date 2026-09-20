@@ -7,6 +7,7 @@ import { SiteConversionRail } from "@/components/blocks/ConversionRail/SiteConve
 import { FAQ } from "@/components/blocks/FAQ/FAQ";
 import { FollowUpTimeline } from "@/components/blocks/FollowUpTimeline/FollowUpTimeline";
 import { Hero, type HeroTone } from "@/components/blocks/Hero/Hero";
+import type { HeroThreadFil } from "@/components/ui/Thread/hero-threads";
 import { CaregiverFirstQuestion } from "@/components/blocks/HeroGestures/CaregiverFirstQuestion";
 import { DischargeChooser } from "@/components/blocks/HeroGestures/DischargeChooser";
 import { LifeSheetCard } from "@/components/blocks/HeroGestures/LifeSheetCard";
@@ -271,6 +272,20 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       gesture = null;
   }
 
+  // Profondeur et fil du hero (docs/design/CONCEPT.md §4) : aucune inclinaison pour les adultes
+  // en situation de handicap (photo posée, stable), 2° pour les aidants, 4° ailleurs ; le nœud du
+  // fil se pose sur le point d’intérêt de la photo (`focal`).
+  const heroDepth = page.public === "adulte-handicap" ? 0 : page.public === "aidant" ? 2 : 4;
+  const heroFil: HeroThreadFil =
+    page.public === "personne-agee"
+      ? "main-qui-fait"
+      : page.public === "neuro"
+        ? "album"
+        : page.public === "aidant"
+          ? "tasse"
+          : "generique";
+  const heroThread = heroMedia ? { fil: heroFil, knot: page.hero?.photo.focal } : null;
+
   const banner = (
     <Hero
       surtitle={t.publics[page.public]}
@@ -293,6 +308,8 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       media={heroMedia}
       gesture={gesture}
       tone={heroTone}
+      depth={heroDepth}
+      thread={heroThread}
     />
   );
   const pageIcon = toIconName(page.icone);
