@@ -19,6 +19,8 @@ import pricingPageJson from "../../content/pages/tarifs-et-aides.json";
 import aidsJson from "../../content/aides.json";
 import weekExamplesJson from "../../content/semaines-types.json";
 import pricingJson from "../../content/tarifs.json";
+import regionPageJson from "../../content/pages/aide-a-domicile.json";
+import agenciesPageJson from "../../content/pages/agences.json";
 import {
   aboutSchema,
   thanksSchema,
@@ -60,6 +62,10 @@ import {
   type PricingPage,
   type SiteConfig,
   type WeekExamples,
+  regionPageSchema,
+  type RegionPage,
+  agenciesPageSchema,
+  type AgenciesPage,
 } from "./schemas";
 
 /*
@@ -197,6 +203,36 @@ export function getThanksPage(): ThanksContent {
   return thanks;
 }
 
+let regionPage: RegionPage | undefined;
+
+/** Carte régionale /aide-a-domicile/ (docs/04 §4, P6.5). */
+export function getRegionPage(): RegionPage {
+  regionPage ??= parseContent(regionPageSchema, regionPageJson, "pages/aide-a-domicile.json");
+  return regionPage;
+}
+
+let agenciesPage: AgenciesPage | undefined;
+
+/**
+ * Pages des agences (P6.6). Chaque agence de site.config.json doit avoir ses balises titre et
+ * description dans `agences` : une entrée manquante interrompt le build.
+ */
+export function getAgenciesPage(): AgenciesPage {
+  if (!agenciesPage) {
+    const parsed = parseContent(agenciesPageSchema, agenciesPageJson, "pages/agences.json");
+    const missing = getSiteConfig()
+      .agences.map((agency) => agency.id)
+      .filter((id) => !(id in parsed.agences));
+    if (missing.length > 0) {
+      throw new Error(
+        `content/pages/agences.json : aucune balise titre pour l'agence ${missing.join(", ")}`,
+      );
+    }
+    agenciesPage = parsed;
+  }
+  return agenciesPage;
+}
+
 export function getSiteConfig(): SiteConfig {
   siteConfig ??= parseContent(siteConfigSchema, siteConfigJson, "site.config.json");
   return siteConfig;
@@ -240,5 +276,7 @@ export function loadAllContent() {
     requestIndex: getRequestIndexPage(),
     specialForms: getSpecialForms(),
     emails: getEmailTexts(),
+    regionPage: getRegionPage(),
+    agenciesPage: getAgenciesPage(),
   };
 }

@@ -554,6 +554,122 @@ export const interfaceSchema = z.strictObject({
     duree_question: text,
     durees: z.strictObject({ jours: text, semaines: text, durable: text }),
   }),
+  /**
+   * Pages locales et agences (docs/04 §4, P6.5 et P6.6) : gabarit `LocalTemplate`, carte
+   * régionale, `LocalFactsGrid`, `AgencyCard`. Le jeton {lieu} reçoit « à Puteaux », « dans les
+   * Hauts-de-Seine » ou « à Paris 15e » (`lieu.*`) ; {cp}, {agence}, {distance}, {source} et
+   * {date} sont remplis par les composants.
+   */
+  local: z.strictObject({
+    sur_titre: text,
+    lieu: z.strictObject({
+      commune: text.includes("{nom}"),
+      arrondissement: text.includes("{numero}"),
+      quartier: text.includes("{nom}"),
+      /** Préposition et nom par département : « dans les Hauts-de-Seine ». */
+      departements: z.strictObject({
+        "75": text,
+        "77": text,
+        "78": text,
+        "91": text,
+        "92": text,
+        "93": text,
+        "94": text,
+        "95": text,
+      }),
+    }),
+    h1: text.includes("{lieu}"),
+    h1_code_postal: text.includes("{lieu}").includes("{cp}"),
+    reassurance_7j7: text,
+    reassurance_24h: text,
+    reponse: z.strictObject({
+      oui: text.includes("{lieu}"),
+      agence: text.includes("{agence}").includes("{distance}"),
+      agence_proche: text.includes("{agence}"),
+      voir_agence: text.includes("{nom}"),
+      appeler: text.includes("{téléphone}"),
+    }),
+    vivre_h2: text.includes("{lieu}"),
+    reperes_h3: text,
+    demographie: z.strictObject({
+      population: text.includes("{millesime}"),
+      habitants: text.includes("{n}"),
+      part_60_74: text,
+      part_75_89: text,
+      part_90_plus: text,
+      part_75_plus: text,
+      source: text,
+    }),
+    ressources_h2: text,
+    ressources_texte: text,
+    faits: z.strictObject({
+      source: text.includes("{source}").includes("{date}"),
+      site_officiel: text,
+      lien_externe: text,
+      telephone: text,
+      adresse: text,
+      types: z.strictObject({
+        "point-information": text,
+        ccas: text,
+        mdph: text,
+        "service-apa": text,
+        "accueil-jour": text,
+        "residence-autonomie": text,
+        ehpad: text,
+        hopital: text,
+        "consultation-memoire": text,
+        "plateforme-repit": text,
+        "transport-adapte": text,
+        association: text,
+        marche: text,
+        "espace-vert": text,
+        "equipement-seniors": text,
+        habitat: text,
+        "relief-deplacements": text,
+        demographie: text,
+        "aide-departementale": text,
+        autre: text,
+      }),
+    }),
+    accompagnements_h2: text.includes("{lieu}"),
+    accompagnements_texte: text,
+    exemple_h2: text,
+    exemple_texte: text,
+    aides_h2: text,
+    aides_texte: text,
+    aides_lien: text,
+    voisines_h2: text,
+    voisines_texte: text,
+    voisines_distance: text.includes("{distance}"),
+    autres_pages_h3: text,
+    questions_h2: text,
+    formulaire_h2: text,
+    formulaire_texte: text,
+    non_relu: text,
+    auteur: text.includes("{nom}").includes("{fonction}"),
+    maj: text.includes("{date}"),
+    donnees: text.includes("{date}"),
+    territoires: text,
+    carte: z.strictObject({
+      titre: text,
+      description: text,
+      liste: text,
+      lien: text.includes("{lieu}"),
+    }),
+    agence: z.strictObject({
+      adresse: text,
+      telephone: text,
+      standard: text,
+      horaires: text,
+      itineraire: text,
+      itineraire_externe: text,
+      communes_h2: text,
+      communes_texte: text,
+      communes_aucune: text,
+      departement_lien: text.includes("{lieu}"),
+      voir: text.includes("{nom}"),
+    }),
+  }),
 });
 export type InterfaceTexts = z.infer<typeof interfaceSchema>;
 
@@ -1136,6 +1252,7 @@ export const siteMapPageSchema = z.strictObject({
     services: text,
     aidants: text,
     formulaires: text,
+    territoires: text,
     entreprise: text,
     legal: text,
   }),
@@ -1326,3 +1443,49 @@ export const emailsSchema = z.strictObject({
 export type EmailTexts = z.infer<typeof emailsSchema>;
 export type NavigationItem = z.infer<typeof navigationItemSchema>;
 export type NavigationChild = z.infer<typeof navigationChildSchema>;
+
+/* ---------- content/pages/aide-a-domicile.json (docs/04 §4, carte régionale, P6.5) ---------- */
+
+export const regionPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  carte_h2: text,
+  carte_texte: text,
+  recherche_h2: text,
+  recherche_texte: text,
+  agences_h2: text,
+  /** Contient {agences} (nombre d'agences de site.config.json). */
+  agences_texte: text.includes("{agences}"),
+  agences_lien: text,
+  appel_h2: text,
+  appel_texte: text,
+});
+export type RegionPage = z.infer<typeof regionPageSchema>;
+
+/* ---------- content/pages/agences.json (docs/00 §5, docs/04 §2 LocalBusiness, P6.6) ---------- */
+
+export const agenciesPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  index: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    /** Contient {agences}. */
+    chapo: text.includes("{agences}"),
+    territoires_texte: text,
+    territoires_lien: text,
+  }),
+  page: z.strictObject({
+    sur_titre: text,
+    /** Contient {adresse} (adresse postale complète) et {lieu} (« dans les Hauts-de-Seine »). */
+    chapo: text.includes("{adresse}").includes("{lieu}"),
+    rappel_h2: text,
+    rappel_texte: text,
+  }),
+  /** Balises titre et description de chaque agence, par `id` de site.config.json : uniques. */
+  agences: z.record(slug, z.strictObject({ seo: seoFieldsSchema })),
+});
+export type AgenciesPage = z.infer<typeof agenciesPageSchema>;
