@@ -27,9 +27,11 @@ import { HospitalDischargeForm } from "@/components/forms/SpecialForms/HospitalD
 import { Section } from "@/components/layout/Section/Section";
 import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Tilt } from "@/components/motion/Tilt/Tilt";
+import { RelatedLinks } from "@/components/blocks/RelatedLinks/RelatedLinks";
 import { ReaderProvider } from "@/components/service/ReaderContext";
 import { ReaderPhoto } from "@/components/service/ReaderPhoto";
 import { ReaderSwitch } from "@/components/service/ReaderSwitch";
+import { RELATED_HEADING_ID, ServiceRelated } from "@/components/service/ServiceRelated";
 import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon } from "@/components/ui/Icon/Icon";
@@ -52,6 +54,7 @@ import type { BudgetBasis } from "@/lib/pricing/pricing";
 import { cn } from "@/lib/cn";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { formPaths } from "@/lib/lead/forms";
+import type { RelatedLink } from "@/lib/seo/related";
 import { followUpIcons, rubricIcons, stageIcons, toIconName } from "./service-icons";
 
 /*
@@ -67,9 +70,15 @@ import { followUpIcons, rubricIcons, stageIcons, toIconName } from "./service-ic
  * - sous le hero d'un pilier : une rangée de liens-icônes vers ses sous-pages ;
  * - icônes : de la page (retour au pilier, cartes sœurs), des situations (48 px), des rubriques
  *   d'action (32 px) ; photos de section `photos.actions` (3:2) et `photos.proches` (4:5) ;
- * - rail de conversion (`SiteConversionRail`) à droite des sections 2 à 11 à partir de 64 rem,
- *   dans une colonne superposée qui laisse les fonds de section bord à bord ; masqué devant le
- *   formulaire (section 12) ;
+ * - rail de conversion (`SiteConversionRail`) à droite des sections 2 à 11 et du bloc « À lire
+ *   aussi » à partir de 64 rem, dans une colonne superposée qui laisse les fonds de section bord
+ *   à bord ; masqué devant le formulaire (section 12) ;
+ * - maillage (docs/04 §2, P5.5) : bloc « À lire aussi » (`RelatedLinks`) juste avant le
+ *   formulaire, trois à six cartes-liens calculées par thème (`lib/seo/related`) : famille du
+ *   pilier, sœurs déclarées (toujours présentes), même public, services conseillés ; les liens
+ *   viennent de `related` quand ils sont fournis, sinon `ServiceRelated` les calcule à partir
+ *   des pages construites. « Pages proches » (section 13) ne garde que le retour au pilier et
+ *   la recherche par commune : les sœurs ne sont plus répétées ;
  * - révélations `Reveal` sur les grilles des sections 2, 3 et 10 (visibles sans JavaScript) ;
  *   les stades (4) et le suivi (6) sont posés sur le fil (`ThreadRail`, qui porte sa propre
  *   révélation) avec une icône par nœud ; `Tilt` 3° sur les cartes de situations et de pages
@@ -107,6 +116,11 @@ export interface ServiceTemplateData {
   } | null;
   confidentialiteHref: string;
   tarifsHref: string;
+  /**
+   * Liens « À lire aussi » déjà calculés (`relatedLinks`). Absents, `ServiceRelated` les calcule
+   * au rendu à partir des pages construites.
+   */
+  related?: readonly RelatedLink[];
 }
 
 function fill(template: string, values: Record<string, string>): string {
@@ -165,6 +179,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
     caregiverQuestion,
     confidentialiteHref,
     tarifsHref,
+    related,
   } = data;
   const t = texts.service;
   const telHref = phone ? toTelHref(phone) : null;
@@ -644,7 +659,27 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           />
         </Section>
 
-        {/* Rail de conversion : colonne de droite superposée aux sections 2 à 11, à partir de 64 rem. */}
+        {/* À lire aussi (maillage, docs/04 §2) : trois à six cartes-liens par thème, avant le formulaire. */}
+        <Section
+          tone="paper"
+          aria-labelledby={RELATED_HEADING_ID}
+          className={withRail}
+          data-section="a-lire-aussi"
+        >
+          {related ? (
+            <RelatedLinks
+              id={RELATED_HEADING_ID}
+              title={t.a_lire_aussi_h2}
+              links={related}
+              publics={t.publics}
+              current={page.public}
+            />
+          ) : (
+            <ServiceRelated page={page} texts={t} />
+          )}
+        </Section>
+
+        {/* Rail de conversion : colonne de droite superposée aux sections 2 à 11 et au bloc « À lire aussi ». */}
         <div
           className="container-site pointer-events-none absolute inset-0 hidden lg:block"
           data-rail-column
@@ -703,7 +738,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         </div>
       </Section>
 
-      {/* 13. Sources et relecture + maillage */}
+      {/* 13. Sources et relecture + retour au pilier et recherche par commune (les sœurs sont dans « À lire aussi ») */}
       <Section tone="paper" aria-labelledby="sources">
         <Heading level={2} id="sources">
           {t.sources_h2}
@@ -729,7 +764,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           <Heading level={3} id="soeurs" visual={4}>
             {t.soeurs_h2}
           </Heading>
-          <ul className="m-0 mt-4 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="m-0 mt-4 grid list-none gap-4 p-0 sm:grid-cols-2">
             {page.pilier ? (
               <li className="max-w-none">
                 <SisterLink
@@ -741,16 +776,6 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                 />
               </li>
             ) : null}
-            {page.soeurs.map((soeur) => (
-              <li key={soeur} className="max-w-none">
-                <SisterLink
-                  href={soeur}
-                  label={linkedTitles[soeur] ?? soeur}
-                  icon={toIconName(linkedIcons[soeur])}
-                  prefetch={false}
-                />
-              </li>
-            ))}
             <li className="max-w-none">
               <SisterLink
                 href="/aide-a-domicile/"
