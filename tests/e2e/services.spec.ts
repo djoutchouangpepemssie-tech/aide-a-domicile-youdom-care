@@ -80,9 +80,53 @@ test.describe("Pages services (P4)", () => {
         await expect(page.locator(`[data-rubrique] [data-icon="${icon}"]`)).toHaveCount(1);
       }
       await expect(page.locator('[data-reveal="pending"]:not(:visible)')).toHaveCount(0);
+      // Section 9 en encart frontière (une décision, pas une alerte) ; section 13 avec la carte
+      // de relecture qui dit que la page attend son relecteur.
+      const frontiere = page.locator('[data-section="ne-faisons-pas"][data-variant="frontiere"]');
+      await expect(frontiere).toHaveCount(1);
+      await expect(frontiere).toContainText("Et avec qui nous travaillons pour cela.");
+      await expect(frontiere).toContainText(
+        "Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas.",
+      );
+      const review = page.locator(".sources-review");
+      await expect(review).toContainText("Écrit par");
+      await expect(review).toContainText("En attente de relecture par un professionnel.");
+      await expect(review).toContainText("Mise à jour le");
       await expectNoSeriousAxeViolations(page);
     });
   }
+
+  test("/personnes-agees/ : l'encart frontière a deux colonnes quand un relais est nommé, et une situation-lien", async ({
+    page,
+    isMobile,
+  }) => {
+    await page.goto("/personnes-agees/");
+    const frontiere = page.locator('[data-section="ne-faisons-pas"][data-variant="frontiere"]');
+    await frontiere.scrollIntoViewIfNeeded();
+    // Le relais reste lisible (« → les professionnels de santé… ») ; l'en-tête des colonnes
+    // n'apparaît qu'à partir de 48 rem.
+    await expect(
+      frontiere.getByText(/les professionnels de santé et le service de soins/),
+    ).toBeVisible();
+    if (isMobile) {
+      await expect(frontiere.getByText("Qui le fait", { exact: true })).toBeHidden();
+    } else {
+      await expect(frontiere.getByText("Qui le fait", { exact: true })).toBeVisible();
+      await expect(frontiere.getByText("Nous ne faisons pas", { exact: true })).toBeVisible();
+    }
+    // La ligne de fin n'est portée que par l'encart : le corps MDX ne la répète pas.
+    await expect(
+      page.getByText("Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas."),
+    ).toHaveCount(1);
+    // Section 2 : la situation de l'aidant épuisé mène à l'espace Aidants, les autres restent des cartes.
+    const situationLinks = page.locator("[data-situation] a");
+    await expect(situationLinks).toHaveCount(1);
+    await expect(situationLinks.first()).toHaveAttribute("href", "/aidants/");
+    // Section 4 : les stades portent leurs icônes selon le public.
+    await expect(page.locator('#stade-1 [data-icon="lever"]')).toHaveCount(1);
+    await expect(page.locator('#stade-3 [data-icon="nuit"]')).toHaveCount(1);
+    await expectNoSeriousAxeViolations(page);
+  });
 
   test("/personnes-agees/ : le sélecteur de lecteur (56 px) bascule le chapô et la photo", async ({
     page,

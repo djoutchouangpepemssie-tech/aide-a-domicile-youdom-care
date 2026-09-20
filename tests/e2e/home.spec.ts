@@ -39,20 +39,32 @@ test.describe("Accueil (P2.1)", () => {
 });
 
 test.describe("Accueil (P2.2)", () => {
-  test("blocs 5 à 8 : onglets au clavier, étapes, prix masqué, proches, axe", async ({ page }) => {
+  test("blocs 5 à 8 : sélecteur d'exemples au clavier, étapes, prix masqué, proches, axe", async ({
+    page,
+  }) => {
     await page.goto("/#semaine");
-    const tablist = page.getByRole("tablist", { name: "Exemples de semaines" });
-    const tabs = tablist.getByRole("tab");
-    await expect(tabs).toHaveCount(3);
-    await tabs.first().focus();
-    await page.keyboard.press("ArrowRight");
-    await expect(tabs.nth(1)).toBeFocused();
-    await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
-    const panel = page.getByRole("tabpanel");
-    await expect(panel).toHaveAccessibleName("Noé, 8 ans, autisme");
+    const selector = page.getByRole("group", { name: "Choisir un exemple" });
+    const buttons = selector.getByRole("button");
+    await expect(buttons).toHaveCount(3);
+    await expect(buttons.first()).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator("[data-example=madeleine]")).toBeVisible();
+    await buttons.first().focus();
+    await page.keyboard.press("Tab");
+    await expect(buttons.nth(1)).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(buttons.nth(1)).toHaveAttribute("aria-pressed", "true");
+    await expect(buttons.first()).toHaveAttribute("aria-pressed", "false");
+    const panel = page.locator("[data-example=noe]");
+    await expect(panel).toBeVisible();
     await expect(panel.getByText("Exemple illustratif").filter({ visible: true })).toHaveCount(1);
+    await expect(
+      panel.getByAltText(
+        "Les mains d'un enfant, vu de haut, alignent des cubes de bois colorés sur un plancher",
+      ),
+    ).toBeVisible();
 
     await expect(page.locator(".steps-timeline li")).toHaveCount(4);
+    await expect(page.locator('.steps-timeline [data-icon="telephone"]')).toHaveCount(1);
     await expect(page.locator("[data-block=tarifs]")).toHaveCount(0);
     await expect(page.getByRole("article", { name: "Les aides possibles" })).toBeVisible();
     await expect(page.getByRole("link", { name: "J'ai besoin de relais" })).toBeVisible();
@@ -95,7 +107,7 @@ test.describe("Accueil (P4b.3 parcours « Pour qui cherchez-vous de l'aide ? »)
     const picker = page.getByRole("group", { name: "Pour qui cherchez-vous de l'aide ?" });
     await expect(picker.getByRole("button")).toHaveCount(5);
     const undecided = picker.getByRole("link", { name: "Je ne sais pas encore" });
-    await expect(undecided).toHaveAttribute("href", /^\/etre-rappele\/?$/);
+    await expect(undecided).toHaveAttribute("href", /^\/etre-rappele\/\?motif=inconnu$/);
 
     const parent = picker.getByRole("button", { name: "Pour un parent âgé" });
     await parent.focus();
@@ -121,6 +133,11 @@ test.describe("Accueil (P4b.3 parcours « Pour qui cherchez-vous de l'aide ? »)
     expect(count).toBeLessThanOrEqual(6);
     await expect(links.first()).toHaveText("« Elle est tombée deux fois ce mois-ci. »");
     await expect(links.first()).toHaveAttribute("href", /^\/personnes-agees\/?#situations$/);
+    // Une situation avec sa destination propre (`href` de l'en-tête) y mène directement.
+    await expect(panel.getByRole("link", { name: /je n'y arrive plus/ })).toHaveAttribute(
+      "href",
+      /^\/aidants\/?$/,
+    );
     await expect(links.last()).toHaveText("Autre chose : je décris ma situation");
     await expect(links.last()).toHaveAttribute("href", /^\/demande\/?$/);
     await expect(region.locator("[data-panel=aidant]")).toBeHidden();
@@ -178,7 +195,7 @@ test.describe("Accueil (P4b.3 sans JavaScript)", () => {
     const links = picker.getByRole("link");
     await expect(links).toHaveCount(6);
     await expect(links.first()).toHaveAttribute("href", /^\/personnes-agees\/?$/);
-    await expect(links.last()).toHaveAttribute("href", /^\/etre-rappele\/?$/);
+    await expect(links.last()).toHaveAttribute("href", /^\/etre-rappele\/\?motif=inconnu$/);
     const situations = page.getByRole("region", { name: "Que vivez-vous en ce moment ?" });
     await expect(situations.locator(".situation-card")).toHaveCount(6);
     await expect(situations.locator(".situation-card").first()).toBeVisible();

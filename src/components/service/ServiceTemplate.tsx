@@ -36,7 +36,7 @@ import type { IconName } from "@/components/ui/Icon/icons";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
 import { Prose } from "@/components/ui/Prose/Prose";
-import type { ServicePage } from "@/content/service-schema";
+import { frontiereItems, type ServicePage } from "@/content/service-schema";
 import type {
   Aids,
   Commitments,
@@ -51,7 +51,7 @@ import type { BudgetBasis } from "@/lib/pricing/pricing";
 import { cn } from "@/lib/cn";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { formPaths } from "@/lib/lead/forms";
-import { rubricIcons, toIconName } from "./service-icons";
+import { followUpIcons, rubricIcons, stageIcons, toIconName } from "./service-icons";
 
 /*
  * Gabarit des pages services et pathologies : les 13 sections de docs/03 §2, dans l'ordre.
@@ -69,8 +69,14 @@ import { rubricIcons, toIconName } from "./service-icons";
  * - rail de conversion (`SiteConversionRail`) à droite des sections 2 à 11 à partir de 64 rem,
  *   dans une colonne superposée qui laisse les fonds de section bord à bord ; masqué devant le
  *   formulaire (section 12) ;
- * - révélations `Reveal` sur les grilles des sections 2, 3, 4, 6 et 10 (visibles sans
- *   JavaScript), `Tilt` 3° sur les cartes de situations et de pages sœurs.
+ * - révélations `Reveal` sur les grilles des sections 2, 3 et 10 (visibles sans JavaScript) ;
+ *   les stades (4) et le suivi (6) sont posés sur le fil (`ThreadRail`, qui porte sa propre
+ *   révélation) avec une icône par nœud ; `Tilt` 3° sur les cartes de situations et de pages
+ *   sœurs ; une situation avec `href` est une carte-lien (formulaire ou page précise) ;
+ * - section 9 : `Callout` variante `frontiere`, deux colonnes dès qu'un item a un `relais`, ligne
+ *   de fin `service.frontiere.ligne_fin` (les corps MDX ne la répètent plus) ;
+ * - section 13 : `SourcesList` avec la carte de relecture (auteur, relecteur ou attente, mise à
+ *   jour).
  */
 
 export interface ServiceTemplateData {
@@ -241,11 +247,12 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       ) : null;
       break;
     case "nuit":
+    case "duree":
       gesture = (
         <NightChooser
           texts={t.gestes.nuit}
           formHref={formPaths["nuit-24h"]}
-          variant={page.chemin.includes("24h") ? "duree" : "nuit"}
+          variant={hero.geste}
           tone={heroTone}
         />
       );
@@ -360,14 +367,29 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                   <Tilt
                     as="article"
                     max={3}
-                    className="flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1"
+                    className={cn(
+                      "relative flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1",
+                      situation.href &&
+                        "transition-[box-shadow,border-color] [transition-duration:var(--duration-base)] hover:border-teal-700 hover:shadow-2 motion-reduce:transition-none",
+                    )}
                     data-situation
+                    data-href={situation.href}
                   >
                     {icon ? (
                       <Icon name={icon} style={{ width: "3rem", height: "3rem" }} data-size="48" />
                     ) : null}
                     <p className={cn("heading-4 m-0 text-teal-900", icon && "mt-4")}>
-                      {situation.titre}
+                      {situation.href ? (
+                        <Link
+                          href={situation.href}
+                          prefetch={false}
+                          className="text-teal-900 no-underline after:absolute after:inset-0 after:rounded-card after:content-['']"
+                        >
+                          {situation.titre}
+                        </Link>
+                      ) : (
+                        situation.titre
+                      )}
                     </p>
                     <p className="m-0 mt-3">{situation.texte}</p>
                   </Tilt>
@@ -428,12 +450,15 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           <Heading level={2} id="stades">
             {t.stades_h2}
           </Heading>
-          <Reveal className="mt-8">
-            <StageCards
-              ids={page.stades.map((_, index) => stageAnchorId(index))}
-              stages={page.stades.map((stade) => ({ title: stade.titre, text: stade.texte }))}
-            />
-          </Reveal>
+          <StageCards
+            className="mt-8"
+            ids={page.stades.map((_, index) => stageAnchorId(index))}
+            stages={page.stades.map((stade, index) => ({
+              title: stade.titre,
+              text: stade.texte,
+              icone: stageIcons[page.public][index],
+            }))}
+          />
         </Section>
 
         {/* 5. Exemple de semaine */}
@@ -463,9 +488,12 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           <Heading level={2} id="suivi">
             {t.suivi_h2}
           </Heading>
-          <Reveal className="mt-8">
-            <FollowUpTimeline aria-labelledby="suivi" milestones={commitments.suivi.jalons} />
-          </Reveal>
+          <FollowUpTimeline
+            aria-labelledby="suivi"
+            className="mt-8"
+            milestones={commitments.suivi.jalons}
+            icons={followUpIcons}
+          />
         </Section>
 
         {/* 7. Et pour vous, les proches */}
@@ -523,13 +551,15 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           <Heading level={2} id="ne-faisons-pas">
             {t.ne_faisons_pas_h2}
           </Heading>
-          <Callout variant="ne-faisons-pas" className="mt-6" data-section="ne-faisons-pas">
-            <ul className="m-0 list-disc pl-5">
-              {page.ne_faisons_pas.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </Callout>
+          <Callout
+            variant="frontiere"
+            className="mt-6"
+            data-section="ne-faisons-pas"
+            subtitle={t.frontiere.sous_titre}
+            columns={{ faits: t.frontiere.colonne_faits, relais: t.frontiere.colonne_relais }}
+            items={frontiereItems(page.ne_faisons_pas)}
+            footer={t.frontiere.ligne_fin}
+          />
         </Section>
 
         {/* 10. Combien ça coûte, quelles aides ? */}
@@ -657,22 +687,19 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           className="mt-6"
           sources={page.sources}
           texts={{ ...texts.page_aide, lien_externe: texts.aides.lien_externe }}
+          review={{
+            author: fill(t.auteur, { nom: page.auteur.nom, fonction: page.auteur.fonction }),
+            reviewer: page.relu_par
+              ? fill(t.relu_par, {
+                  nom: page.relu_par.nom,
+                  fonction: page.relu_par.fonction,
+                  date: formatFrenchDate(page.relu_par.date),
+                })
+              : null,
+            pending: page.statut === "a_relire" ? t.relecture_attendue : undefined,
+            updated: fill(t.maj, { date: formatFrenchDate(page.maj) }),
+          }}
         />
-        <p className="mt-6 text-small text-text-soft">
-          {fill(t.auteur, { nom: page.auteur.nom, fonction: page.auteur.fonction })}
-          {page.relu_par ? (
-            <>
-              <br />
-              {fill(t.relu_par, {
-                nom: page.relu_par.nom,
-                fonction: page.relu_par.fonction,
-                date: formatFrenchDate(page.relu_par.date),
-              })}
-            </>
-          ) : null}
-          <br />
-          {fill(t.maj, { date: formatFrenchDate(page.maj) })}
-        </p>
         <nav aria-labelledby="soeurs" className="mt-10">
           <Heading level={3} id="soeurs" visual={4}>
             {t.soeurs_h2}

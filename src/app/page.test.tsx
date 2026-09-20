@@ -46,14 +46,15 @@ describe("Accueil (blocs 1 à 8)", () => {
     const buttons = within(picker).getAllByRole("button");
     expect(buttons.map((b) => b.textContent)).toEqual([
       "Pour un parent âgé",
-      "Pour une personne qui a Alzheimer, Parkinson…",
+      "Pour un proche : Alzheimer, Parkinson…",
       "Pour mon enfant",
       "Pour moi : je vis avec un handicap",
       "Pour moi : j'aide un proche",
     ]);
+    // Le choix sans panneau mène au rappel avec le motif : la page y affiche son message.
     expect(within(picker).getByRole("link", { name: "Je ne sais pas encore" })).toHaveAttribute(
       "href",
-      expect.stringMatching(/^\/etre-rappele\/?$/),
+      expect.stringMatching(/^\/etre-rappele\/?\?motif=inconnu$/),
     );
 
     await user.click(within(picker).getByRole("button", { name: "Pour un parent âgé" }));
@@ -75,28 +76,44 @@ describe("Accueil (blocs 1 à 8)", () => {
       "href",
       expect.stringMatching(/^\/personnes-agees\/?#situations$/),
     );
+    // Une situation qui a sa destination propre (`href` de l'en-tête) y mène directement.
+    const aidant = links.find((link) => /je n'y arrive plus/.test(link.textContent ?? ""));
+    expect(aidant).toHaveAttribute("href", expect.stringMatching(/^\/aidants\/?$/));
     expect(links[links.length - 1]).toHaveTextContent("Autre chose : je décris ma situation");
     expect(within(region).getByText("Toutes les situations").tagName).toBe("SUMMARY");
     expect(region.querySelectorAll("details .situation-card")).toHaveLength(6);
   });
 
-  it("rend les semaines types en onglets avec photo, les étapes, le prix sans tarif et les proches", () => {
+  it("rend les semaines types avec le sélecteur segmenté et la photo, les étapes, le prix sans tarif et les proches", async () => {
+    const user = userEvent.setup();
     render(home);
     const semaine = screen.getByRole("region", {
       name: "À quoi ressemble une semaine avec nous ?",
     });
-    const tabs = within(semaine).getAllByRole("tab");
-    expect(tabs.map((t) => t.textContent)).toEqual([
+    const selector = within(semaine).getByRole("group", { name: "Choisir un exemple" });
+    const buttons = within(selector).getAllByRole("button");
+    expect(buttons.map((b) => b.textContent)).toEqual([
       "Madeleine, 82 ans, maladie d'Alzheimer",
       "Noé, 8 ans, autisme",
       "Bernard, 74 ans, retour d'hospitalisation",
     ]);
-    const panel = within(semaine).getByRole("tabpanel");
+    expect(buttons[0]).toHaveAttribute("aria-pressed", "true");
+    expect(buttons[0]?.querySelector('[data-icon="memoire"]')).not.toBeNull();
+    const panel = semaine.querySelector("[data-example=madeleine]");
     expect(panel).toHaveTextContent("Exemple illustratif");
-    expect(within(panel).getByRole("img")).toHaveAttribute(
+    expect(within(panel as HTMLElement).getByRole("img")).toHaveAttribute(
       "alt",
       "Un couple âgé assis à une table de cuisine se tient la main",
     );
+    await user.click(buttons[1] as HTMLElement);
+    expect(buttons[1]).toHaveAttribute("aria-pressed", "true");
+    expect(
+      within(semaine.querySelector("[data-example=noe]") as HTMLElement).getByRole("img"),
+    ).toHaveAttribute(
+      "alt",
+      "Les mains d'un enfant, vu de haut, alignent des cubes de bois colorés sur un plancher",
+    );
+    await user.click(buttons[0] as HTMLElement);
     expect(
       within(semaine).getByRole("link", { name: "Je compose ma semaine" }),
     ).toBeInTheDocument();
@@ -105,6 +122,13 @@ describe("Accueil (blocs 1 à 8)", () => {
     const steps = within(etapes).getAllByRole("listitem");
     expect(steps).toHaveLength(4);
     expect(steps[2]).toHaveTextContent("Si le courant ne passe pas, nous changeons.");
+    // Icônes des nœuds du fil (accueil.json) : étapes, engagements, stades.
+    expect(steps[0]?.querySelector('[data-icon="telephone"]')).not.toBeNull();
+    expect(steps[2]?.querySelector('[data-icon="deux-personnes"]')).not.toBeNull();
+    expect(
+      document.querySelector('[data-engagement="E1"] [data-icon="fiche-de-vie"]'),
+    ).not.toBeNull();
+    expect(document.querySelector('.stage-cards [data-icon="24h"]')).not.toBeNull();
     expect(within(etapes).getByRole("img")).toHaveAttribute(
       "alt",
       "Une femme âgée ouvre la porte de son appartement sur un palier d'immeuble",
@@ -124,11 +148,11 @@ describe("Accueil (blocs 1 à 8)", () => {
       "alt",
       "Une femme d'une soixantaine d'années, assise sur un rebord de fenêtre, regarde dehors",
     );
-    // Aucune photo de section n'est prioritaire : seule celle du hero l'est, les six autres
-    // (neuro, trois semaines, étapes, proches) se chargent à la demande.
+    // Aucune photo de section n'est prioritaire : seule celle du hero l'est, les quatre autres
+    // (neuro, la semaine affichée, étapes, proches) se chargent à la demande.
     const images = Array.from(document.querySelectorAll("main img"));
-    expect(images).toHaveLength(7);
-    expect(images.filter((img) => img.getAttribute("loading") === "lazy")).toHaveLength(6);
+    expect(images).toHaveLength(5);
+    expect(images.filter((img) => img.getAttribute("loading") === "lazy")).toHaveLength(4);
     expect(images[0]).not.toHaveAttribute("loading", "lazy");
   });
 });

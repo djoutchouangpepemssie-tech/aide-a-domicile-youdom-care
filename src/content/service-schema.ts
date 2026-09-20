@@ -59,8 +59,9 @@ const iconName = z
  * Gestes d'entrée du hero (docs/design/CONCEPT.md §4), un par page au plus :
  * `lecteur` (sélecteur « pour un proche / pour moi »), `stades` (« Où en est la maladie ? »),
  * `planning` (raccourcis du planning), `fiche-de-vie` (carte qui se retourne), `questionnaire`
- * (première question de « Où en êtes-vous ? »), `nuit` (nuit calme ou active ; durée sur 24h/24),
- * `sortie` (« Quand est la sortie ? »). Composants : src/components/blocks/HeroGestures/.
+ * (première question de « Où en êtes-vous ? »), `nuit` (nuit calme ou active), `duree`
+ * (« Combien de temps ? », présence 24h/24), `sortie` (« Quand est la sortie ? »).
+ * Composants : src/components/blocks/HeroGestures/.
  */
 export const heroGestures = [
   "lecteur",
@@ -69,6 +70,7 @@ export const heroGestures = [
   "fiche-de-vie",
   "questionnaire",
   "nuit",
+  "duree",
   "sortie",
 ] as const;
 export type HeroGesture = (typeof heroGestures)[number];
@@ -85,6 +87,17 @@ export const serviceHeroSchema = z.strictObject({
   geste: z.enum(heroGestures).optional(),
 });
 export type ServiceHero = z.infer<typeof serviceHeroSchema>;
+
+/** Item de « Ce que nous ne faisons pas » avec, en option, qui le fait à notre place. */
+export const frontiereItemSchema = z.strictObject({ texte: text, relais: text.optional() });
+export type FrontiereItem = z.infer<typeof frontiereItemSchema>;
+
+/** Les items de la section 9 sous une forme unique (chaîne → `{ texte }`). */
+export function frontiereItems(
+  items: readonly (string | FrontiereItem)[],
+): { texte: string; relais?: string }[] {
+  return items.map((item) => (typeof item === "string" ? { texte: item } : item));
+}
 
 export const servicePageSchema = z
   .strictObject({
@@ -112,9 +125,20 @@ export const servicePageSchema = z
     /** Deux phrases de promesse sous le H1 (section 1). */
     promesse: z.array(text).length(2),
     reassurance: z.array(text).min(2).max(4),
-    /** Section 2 : situations vécues, du point de vue du proche ou de la personne. */
+    /**
+     * Section 2 : situations vécues, du point de vue du proche ou de la personne. `href` :
+     * destination propre (formulaire ou page précise) ; la carte devient alors un lien, et le
+     * panneau du parcours d'accueil y mène au lieu de l'ancre `#situations` du pilier.
+     */
     situations: z
-      .array(z.strictObject({ titre: text, texte: text, icone: iconName.optional() }))
+      .array(
+        z.strictObject({
+          titre: text,
+          texte: text,
+          icone: iconName.optional(),
+          href: internalPath.optional(),
+        }),
+      )
       .min(3)
       .max(5),
     /** Section 3 : quatre rubriques, verbes d'action, exemples précis. */
@@ -146,8 +170,15 @@ export const servicePageSchema = z
     proches: z.strictObject({ texte: text }),
     /** Section 8. */
     intervenants: z.strictObject({ texte: text }),
-    /** Section 9 : encart de franchise (docs/03 §1, règle 4). */
-    ne_faisons_pas: z.array(text).min(2).max(6),
+    /**
+     * Section 9 : encart de franchise (docs/03 §1, règle 4). Une chaîne, ou `{ texte, relais }`
+     * quand la phrase nomme qui le fait (« les soignants », « l'orthophoniste ») : le relais
+     * s'affiche en seconde colonne de l'encart `frontiere` (docs/design/CONCEPT.md §5).
+     */
+    ne_faisons_pas: z
+      .array(z.union([text, frontiereItemSchema]))
+      .min(2)
+      .max(6),
     /** Section 10 : identifiants de content/aides.json. */
     aides: z.array(z.string().min(1)).min(1).max(6),
     /** Section 11 : 6 à 8 questions réelles, réponses de 40 à 90 mots. */

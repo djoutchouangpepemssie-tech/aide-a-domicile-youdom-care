@@ -1,5 +1,6 @@
 import { Commitments, visibleCommitments } from "@/components/blocks/Commitments/Commitments";
 import { Hero } from "@/components/blocks/Hero/Hero";
+import { withParam } from "@/components/blocks/HeroGestures/params";
 import { HeroPicker } from "@/components/blocks/Parcours/HeroPicker";
 import { ParcoursProvider } from "@/components/blocks/Parcours/ParcoursProvider";
 import { SituationPanel } from "@/components/blocks/Parcours/SituationPanel";
@@ -11,14 +12,15 @@ import { StepsTimeline } from "@/components/blocks/StepsTimeline/StepsTimeline";
 import { TerritorySearch } from "@/components/blocks/TerritorySearch/TerritorySearch";
 import Link from "next/link";
 import { WeekPlanner } from "@/components/blocks/WeekPlanner/WeekPlanner";
+import { WeekStorySwitcher } from "@/components/blocks/WeekStory/WeekStorySwitcher";
 import { Section } from "@/components/layout/Section/Section";
 import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Button } from "@/components/ui/Button/Button";
 import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
+import { Icon } from "@/components/ui/Icon/Icon";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
-import { Tabs } from "@/components/ui/Tabs/Tabs";
 import { Thread } from "@/components/ui/Thread/Thread";
 import {
   getCommitments,
@@ -35,9 +37,14 @@ import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 /*
  * Accueil : les douze blocs de docs/01 §4, enrichis par docs/design/CONCEPT.md §3.
  * Alternance des fonds : paper → white → teal → paper → sand → white → teal → paper (docs/02 §2).
- * Bloc 1 : `HeroPicker` (« Pour qui cherchez-vous de l'aide ? ») entre le chapô et les boutons.
+ * Bloc 1 : `HeroPicker` (« Pour qui cherchez-vous de l'aide ? ») entre le chapô et les boutons ;
+ *   le choix sans panneau (« Je ne sais pas encore ») mène au rappel avec `?motif=<id>`.
  * Bloc 2 : `SituationPanel`, dont les situations par public viennent des MDX des piliers.
  * Bloc 3 : masqué en entier quand aucun engagement n'est affichable.
+ * Blocs 3, 4, 6 : engagements, stades et étapes sur le fil (`ThreadRail`, révélation incluse),
+ *   icônes des nœuds données par accueil.json.
+ * Bloc 5 : sélecteur segmenté des trois semaines types (`WeekStorySwitcher`), grille et photo
+ *   de l'exemple ; le premier exemple est rendu par le serveur.
  * Bloc 7 : carte « devis » de repli tant que content/tarifs.json est vide, sans aucun chiffre.
  * Photos de section (blocs 4, 5, 6, 8) : docs/design/PHOTOS.md §2, jamais en `priority`.
  * Révélations : `Reveal` sur les grilles et cartes, jamais autour du hero, d'un formulaire ni
@@ -46,6 +53,9 @@ import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 
 /** Identifiant du titre du bloc 2 : cible du défilement et du focus après un choix. */
 const SITUATIONS_ID = "situations";
+
+/** Paramètre ajouté au lien du choix sans panneau : la page de rappel affiche `motifs[id]`. */
+const MOTIF_PARAM = "motif";
 
 export default async function Home() {
   const page = getHomePage();
@@ -84,10 +94,11 @@ export default async function Home() {
     return {
       title: step.titre,
       text: showCommitment ? `${step.texte} ${step.texte_engagement}` : step.texte,
+      icone: step.icone,
     };
   });
 
-  const weekTabs = page.semaine.onglets.flatMap((tab) => {
+  const weekPanels = page.semaine.onglets.flatMap((tab) => {
     const example = weekExamples.exemples.find((e) => e.id === tab.exemple);
     if (!example) return [];
     const photo = tab.photo ?? example.photo;
@@ -95,6 +106,7 @@ export default async function Home() {
       {
         id: example.id,
         label: tab.libelle,
+        icon: tab.icone ? <Icon name={tab.icone} size="md" tone="ink" /> : undefined,
         content: (
           <div
             className={
@@ -179,7 +191,9 @@ export default async function Home() {
                     id: choice.id,
                     libelle: choice.libelle,
                     icone: choice.icone,
-                    href: choice.href,
+                    href: choice.pour
+                      ? choice.href
+                      : withParam(choice.href, MOTIF_PARAM, choice.id),
                     panel: withPanel.has(choice.id),
                   }))}
                   panelTitleId={SITUATIONS_ID}
@@ -224,14 +238,12 @@ export default async function Home() {
           <Heading level={2} id="engagements">
             {page.engagements.h2}
           </Heading>
-          <Reveal>
-            <Commitments
-              aria-labelledby="engagements"
-              className="mt-8"
-              items={page.engagements.items}
-              commitments={engagements}
-            />
-          </Reveal>
+          <Commitments
+            aria-labelledby="engagements"
+            className="mt-8"
+            items={page.engagements.items}
+            commitments={engagements}
+          />
         </Section>
       ) : null}
 
@@ -265,15 +277,14 @@ export default async function Home() {
             </Reveal>
           ) : null}
           <div className="lg:col-start-2">
-            <Reveal>
-              <StageCards
-                aria-labelledby="neuro"
-                stages={page.neuro.stades.map((stade) => ({
-                  title: stade.titre,
-                  text: stade.texte ? <p>{stade.texte}</p> : undefined,
-                }))}
-              />
-            </Reveal>
+            <StageCards
+              aria-labelledby="neuro"
+              stages={page.neuro.stades.map((stade) => ({
+                title: stade.titre,
+                text: stade.texte ? <p>{stade.texte}</p> : undefined,
+                icone: stade.icone,
+              }))}
+            />
             <p className="m-0 mt-8">
               <Button href={page.neuro.href} variant="secondary">
                 {page.neuro.bouton}
@@ -289,7 +300,7 @@ export default async function Home() {
         </Heading>
         <Lead className="mt-3">{page.semaine.texte}</Lead>
         <Reveal className="mt-8 rounded-block bg-white p-4 shadow-1 sm:p-6">
-          <Tabs items={weekTabs} label={page.semaine.onglets_nom} />
+          <WeekStorySwitcher panels={weekPanels} label={semaine_type.choisir_exemple} />
         </Reveal>
         <p className="m-0 mt-8">
           <Button href={navigation.demande_href} variant="secondary">
@@ -321,9 +332,11 @@ export default async function Home() {
               />
             </Reveal>
           ) : null}
-          <Reveal className="max-w-2xl lg:col-start-1 lg:row-start-1">
-            <StepsTimeline aria-labelledby="etapes" steps={steps} />
-          </Reveal>
+          <StepsTimeline
+            aria-labelledby="etapes"
+            className="max-w-2xl lg:col-start-1 lg:row-start-1"
+            steps={steps}
+          />
         </div>
       </Section>
 

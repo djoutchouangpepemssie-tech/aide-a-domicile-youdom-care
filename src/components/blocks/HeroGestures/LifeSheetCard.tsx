@@ -16,6 +16,9 @@ import { useReducedMotion } from "@/lib/motion/reduced-motion";
  * (rendu serveur), les deux faces sont affichées l'une sous l'autre : rien n'est jamais caché,
  * et le bouton fait alors défiler jusqu'au verso. Sous la carte : « Je décris les besoins de
  * mon enfant » vers le formulaire enfant. Aucune donnée conservée.
+ * Durée du retournement : jeton `--duration-flip` (CONCEPT §6, déclaré dans src/styles/tokens.css,
+ * à 0 dans les blocs d'extinction) ; le repli `500ms` écrit dans la classe couvre un hôte sans
+ * les jetons (styleguide isolé, test).
  */
 
 export type LifeSheetLine =

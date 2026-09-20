@@ -15,7 +15,7 @@
       "focal": "50% 40%"
     },
     "parcours": {
-      "_lisezmoi": "Geste d'entrée (docs/design/CONCEPT.md §3). Le jeton {pour} du titre du panneau est remplacé par le champ « pour » du choix. Le « message » du choix « inconnu » est prévu au-dessus du formulaire de rappel : il n'est pas encore affiché (point ouvert).",
+      "_lisezmoi": "Geste d'entrée (docs/design/CONCEPT.md §3). Le jeton {pour} du titre du panneau est remplacé par le champ « pour » du choix. Le choix « Je ne sais pas encore » (sans « pour ») mène à la page de rappel avec ?motif=inconnu : le message affiché est motifs.inconnu de content/pages/etre-rappele.json.",
       "question": "Pour qui cherchez-vous de l'aide ?",
       "choix": [
         {
@@ -27,7 +27,7 @@
         },
         {
           "id": "neuro",
-          "libelle": "Pour une personne qui a Alzheimer, Parkinson…",
+          "libelle": "Pour un proche : Alzheimer, Parkinson…",
           "pour": "pour une personne touchée par la maladie",
           "icone": "public-neuro",
           "href": "/maladies-neurodegeneratives/"
@@ -57,8 +57,7 @@
           "id": "inconnu",
           "libelle": "Je ne sais pas encore",
           "icone": "rappel",
-          "href": "/etre-rappele/",
-          "message": "C'est normal. L'évaluation à domicile sert à cela."
+          "href": "/etre-rappele/"
         }
       ],
       "titre_panneau": "Vous cherchez de l'aide {pour}. Que vivez-vous ?",
@@ -119,21 +118,25 @@
     "items": [
       {
         "engagement": "E1",
+        "icone": "fiche-de-vie",
         "titre": "Des intervenants formés à la situation, pas seulement au métier.",
         "texte": "Accompagner une personne atteinte de la maladie de Parkinson ne s'improvise pas. Accompagner un enfant autiste non plus. Nos auxiliaires de vie sont préparés à ce qu'ils vont réellement rencontrer chez vous."
       },
       {
         "engagement": "E2",
+        "icone": "compagnie",
         "titre": "Des visages connus, pas un défilé.",
         "texte": "Une petite équipe stable autour de chaque personne, présentée avant de commencer."
       },
       {
         "engagement": "E3",
+        "icone": "cahier-de-liaison",
         "titre": "Un suivi que vous pouvez lire.",
         "texte": "Un référent unique, un cahier de liaison, des points réguliers : vous savez ce qui se passe, même à distance."
       },
       {
         "engagement": "E4",
+        "icone": "nuit",
         "titre": "Là quand ça se complique.",
         "texte": "Nuits, week-ends, jours fériés, présence 24h/24, retour d'hôpital à organiser en urgence."
       }
@@ -143,9 +146,9 @@
     "h2": "Alzheimer, Parkinson, sclérose en plaques : un accompagnement qui évolue avec la maladie",
     "texte": "Une maladie neurodégénérative ne se vit pas de la même façon à l'annonce du diagnostic, trois ans plus tard, ou quand une présence devient nécessaire jour et nuit. Notre accompagnement change avec elle. Et chaque personne reste unique : son histoire, ses goûts et ses habitudes guident tout ce que nous faisons.",
     "stades": [
-      { "titre": "Au début : préserver les habitudes" },
-      { "titre": "Quand la maladie avance : sécuriser et stimuler" },
-      { "titre": "Quand tout devient difficile : une présence continue" }
+      { "titre": "Au début : préserver les habitudes", "icone": "memoire" },
+      { "titre": "Quand la maladie avance : sécuriser et stimuler", "icone": "compagnie" },
+      { "titre": "Quand tout devient difficile : une présence continue", "icone": "24h" }
     ],
     "bouton": "Voir l'accompagnement par maladie",
     "href": "/maladies-neurodegeneratives/",
@@ -158,10 +161,10 @@
   "semaine": {
     "h2": "À quoi ressemble une semaine avec nous ?",
     "texte": "Trois exemples, parmi des centaines de possibles. Votre semaine, nous la construisons avec vous.",
-    "onglets_nom": "Exemples de semaines",
     "onglets": [
       {
         "exemple": "madeleine",
+        "icone": "memoire",
         "libelle": "Madeleine, 82 ans, maladie d'Alzheimer",
         "photo": {
           "src": "/images/exemples/madeleine-couple-cuisine.jpg",
@@ -171,6 +174,7 @@
       },
       {
         "exemple": "noe",
+        "icone": "jeux",
         "libelle": "Noé, 8 ans, autisme",
         "photo": {
           "src": "/images/exemples/noe-cubes-sol.jpg",
@@ -180,6 +184,7 @@
       },
       {
         "exemple": "bernard",
+        "icone": "retour-hopital",
         "libelle": "Bernard, 74 ans, retour d'hospitalisation",
         "photo": {
           "src": "/images/exemples/bernard-fauteuil-salon.jpg",
@@ -199,20 +204,24 @@
     "items": [
       {
         "titre": "Nous vous écoutons.",
+        "icone": "telephone",
         "texte": "Un appel d'un quart d'heure pour comprendre la situation. Sans jargon, sans engagement."
       },
       {
         "titre": "Nous venons vous voir.",
+        "icone": "maison",
         "texte": "Une évaluation gratuite à domicile, avec la personne et ses proches. Vous recevez un devis détaillé et gratuit."
       },
       {
         "titre": "Nous vous présentons la bonne personne.",
+        "icone": "deux-personnes",
         "texte": "Vous rencontrez l'intervenant avant de commencer.",
         "texte_engagement": "Si le courant ne passe pas, nous changeons.",
         "engagement": "E2"
       },
       {
         "titre": "Nous ajustons, ensemble.",
+        "icone": "cahier-de-liaison",
         "texte": "Votre référent suit la situation et adapte le planning quand les besoins évoluent. À tout moment, vous pouvez modifier ou arrêter l'accompagnement, dans le respect de la réglementation applicable."
       }
     ]

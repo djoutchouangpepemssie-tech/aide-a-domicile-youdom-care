@@ -11,8 +11,11 @@ import { useParcours } from "./ParcoursProvider";
 
 /*
  * Geste d'entrée de l'accueil (docs/design/CONCEPT.md §3, bloc 1) : la question et six choix,
- * icône 32 px et libellé court, rangées de 56 px, deux rangées de trois sur ordinateur, une
- * colonne sur mobile (icône à gauche, chevron à droite).
+ * icône 32 px et libellé court, rangées de 56 px, une colonne sur mobile (icône à gauche,
+ * chevron à droite), deux colonnes à partir de 48 rem. Le concept prévoyait deux rangées de
+ * trois sur ordinateur : la colonne du hero (700 px à côté de la photo) ne laisse alors qu'une
+ * centaine de pixels au libellé et les choix « Pour moi : … » passent sur trois lignes ; en
+ * deux colonnes, chaque libellé tient sur deux lignes au plus et le bloc est moins haut.
  * - Sans JavaScript (et au rendu serveur) : six liens vers les cinq piliers et vers la page
  *   « Être rappelé(e) ». Le choix « Je ne sais pas encore » reste toujours un lien.
  * - Avec JavaScript : les choix qui ont un panneau deviennent des boutons `aria-pressed` ; le
@@ -106,7 +109,7 @@ export function HeroPicker({ question, choices, panelTitleId, className }: HeroP
       <p id={questionId} className="m-0 font-bold text-teal-900">
         {question}
       </p>
-      <ul className="m-0 mt-3 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-3">
+      <ul className="m-0 mt-3 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-2">
         {choices.map((choice) => {
           const content = (
             <>

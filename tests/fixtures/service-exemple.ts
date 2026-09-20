@@ -39,7 +39,7 @@ export const serviceExemple: ServicePage = {
   reassurance: ["Réassurance une", "Réassurance deux"],
   situations: [
     { titre: "Situation une", texte: "Texte une.", icone: "tasse" },
-    { titre: "Situation deux", texte: "Texte deux." },
+    { titre: "Situation deux", texte: "Texte deux.", href: "/demande/maladie-neurodegenerative/" },
     { titre: "Situation trois", texte: "Texte trois." },
   ],
   actions: [
@@ -69,7 +69,10 @@ export const serviceExemple: ServicePage = {
   },
   proches: { texte: "Texte pour les proches." },
   intervenants: { texte: "Texte sur les intervenants." },
-  ne_faisons_pas: ["Les soins infirmiers", "Les décisions médicales"],
+  ne_faisons_pas: [
+    "Les soins infirmiers",
+    { texte: "Les décisions médicales", relais: "le médecin traitant" },
+  ],
   aides: ["apa", "credit-d-impot-et-avance-immediate"],
   faq: Array.from({ length: 6 }, (_, i) => ({
     question: `Question fictive numéro ${i + 1} ?`,

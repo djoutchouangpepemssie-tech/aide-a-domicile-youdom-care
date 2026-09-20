@@ -48,6 +48,41 @@ test.describe("Formulaire de rappel (P3.5)", () => {
     await expect(page).toHaveURL(/\/etre-rappele\//);
   });
 
+  test("« Je ne sais pas encore » : le message du motif s'affiche au-dessus du formulaire, et seulement là", async ({
+    page,
+  }) => {
+    await page.goto("/etre-rappele/?motif=inconnu");
+    const notice = page.locator("[data-motif=inconnu]");
+    await expect(notice).toHaveText("C'est normal. L'évaluation à domicile sert à cela.");
+    await expect(notice).toBeVisible();
+    const form = page.getByRole("form");
+    const noticeBox = await notice.boundingBox();
+    const formBox = await form.boundingBox();
+    expect(noticeBox).not.toBeNull();
+    expect(formBox).not.toBeNull();
+    if (noticeBox && formBox) expect(noticeBox.y + noticeBox.height).toBeLessThanOrEqual(formBox.y);
+    await expectNoSeriousAxeViolations(page);
+
+    await page.goto("/etre-rappele/");
+    await expect(page.locator("[data-motif]")).toHaveCount(0);
+    await page.goto("/etre-rappele/?motif=autre");
+    await expect(page.locator("[data-motif]")).toHaveCount(0);
+  });
+
+  test("sans JavaScript, aucun message de motif et la page reste complète", async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    const page = await context.newPage();
+    try {
+      await page.goto("/etre-rappele/?motif=inconnu");
+      await expect(page.getByRole("heading", { level: 1 })).toContainText("trente secondes");
+      await expect(page.getByRole("form")).toBeVisible();
+      await expect(page.locator("[data-motif]")).toHaveCount(0);
+      await expect(page.getByText(/C'est normal/)).toHaveCount(0);
+    } finally {
+      await context.close();
+    }
+  });
+
   test("une commune hors Île-de-France bloque l'envoi", async ({ page }) => {
     await page.goto("/etre-rappele/");
     const form = page.getByRole("form");

@@ -12,7 +12,7 @@
  * Les icônes sont décoratives : elles ne portent jamais une information absente du texte voisin.
  */
 
-export type IconGroup = "quotidien" | "service" | "objet" | "public" | "action";
+export type IconGroup = "quotidien" | "service" | "objet" | "public" | "action" | "interface";
 
 export interface IconDefinition {
   /** Tracé principal, une ou deux lignes continues quand c'est possible. */
@@ -236,6 +236,12 @@ export const icons = {
     knot: "M11 13.5c1.5 0 2.5.5 3 1.5",
     groupe: "objet",
   },
+  /* Deux personnes : celle qui écrit devant, celle qui relit derrière (son épaule en nœud). */
+  "deux-personnes": {
+    main: "M7.2 7.5a2.5 2.5 0 1 1 3.6 0M3 20v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3M16.5 9a2 2 0 1 1 3 0M16 13h1.5a4 4 0 0 1 4 4v3",
+    knot: "M16 13h1.5a4 4 0 0 1 4 4v3",
+    groupe: "objet",
+  },
 
   /* ---- Publics ---- */
 
@@ -302,6 +308,27 @@ export const icons = {
     knot: "M8.5 13l2 2 4-4",
     groupe: "action",
   },
+
+  /* ---- Interface ---- */
+
+  /* Lien externe : un cadre ouvert en haut à droite, la flèche qui en sort en nœud. */
+  "lien-externe": {
+    main: "M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5M14 4h6v6M20 4l-9 9",
+    knot: "M14 4h6v6",
+    groupe: "interface",
+  },
+  /* Croix ouverte : deux traits qui ne se touchent pas ; sans nœud, ce n'est pas une alerte. */
+  "croix-ouverte": {
+    main: "M6 6l4.5 4.5M13.5 13.5 18 18M18 6l-4.5 4.5M10.5 13.5 6 18",
+    knot: undefined,
+    groupe: "interface",
+  },
+  /* Source : un carnet dont le signet dépasse (le signet en nœud), ouvert sous le signet. */
+  source: {
+    main: "M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17h-6M5 21h4M9 3v8l2-1.5 2 1.5V3",
+    knot: "M9 3v8l2-1.5 2 1.5V3",
+    groupe: "interface",
+  },
 } as const satisfies Record<string, IconDefinition>;
 
 export type IconName = keyof typeof icons;
@@ -315,4 +342,5 @@ export const iconGroups: { id: IconGroup; label: string }[] = [
   { id: "objet", label: "Objets et repères" },
   { id: "public", label: "Publics" },
   { id: "action", label: "Rubriques d'action" },
+  { id: "interface", label: "Interface" },
 ];

@@ -80,6 +80,13 @@ describe("ServiceTemplate", () => {
     expect(document.querySelector('[data-section="ne-faisons-pas"]')).toHaveTextContent(
       "Les soins infirmiers",
     );
+    // Section 4 : une icône par stade selon le public (neuro), sur les jalons `#stade-n`.
+    expect(document.querySelector('#stade-1 [data-icon="memoire"]')).not.toBeNull();
+    expect(document.querySelector('#stade-2 [data-icon="compagnie"]')).not.toBeNull();
+    // Section 6 : les jalons du suivi portent leur icône par moment.
+    expect(
+      document.querySelectorAll('.follow-up-timeline [data-icon="maison"]').length,
+    ).toBeGreaterThan(0);
     expect(screen.getByRole("form")).toBeInTheDocument();
     expect(screen.queryByText(/par mois TTC|TTC/)).toBeNull();
     expect(
@@ -92,8 +99,12 @@ describe("ServiceTemplate", () => {
   it("signale une page non relue, cite auteur et sources, maille pilier et sœurs", () => {
     render(<ServiceTemplate data={data()} />);
     expect(screen.getByText(/attend sa relecture/)).toBeInTheDocument();
-    expect(screen.getByText(/Écrit par Auteur fictif, rédaction/)).toBeInTheDocument();
-    expect(screen.getByText(/Mise à jour le 20 septembre 2026/)).toBeInTheDocument();
+    // Carte de relecture (section 13) : auteur, attente de relecture, mise à jour.
+    const review = document.querySelector(".sources-review");
+    expect(review).not.toBeNull();
+    expect(review).toHaveTextContent("Écrit par Auteur fictif, rédaction");
+    expect(review).toHaveTextContent("En attente de relecture par un professionnel.");
+    expect(review).toHaveTextContent("Mise à jour le 20 septembre 2026");
     const nav = screen.getByRole("navigation", { name: "Pages proches" });
     const pilier = within(nav).getByRole("link", { name: /Pilier fictif/ });
     expect(pilier).toHaveAttribute("href", expect.stringMatching(/^\/exemple\/?$/));
@@ -125,6 +136,38 @@ describe("ServiceTemplate", () => {
     expect(
       screen.getByText(/Relu par Relectrice fictive, infirmière, le 19 septembre 2026/),
     ).toBeInTheDocument();
+    expect(screen.queryByText(/En attente de relecture/)).toBeNull();
+  });
+
+  it("rend « Ce que nous ne faisons pas » en encart frontière, deux colonnes dès qu'un relais existe", () => {
+    const { unmount } = render(<ServiceTemplate data={data()} />);
+    const encart = screen.getByRole("note", { name: "Ce que nous ne faisons pas" });
+    expect(encart).toHaveAttribute("data-variant", "frontiere");
+    expect(encart).toHaveTextContent("Et avec qui nous travaillons pour cela.");
+    expect(encart).toHaveTextContent("Qui le fait");
+    expect(encart).toHaveTextContent("le médecin traitant");
+    expect(encart).toHaveTextContent(
+      "Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas.",
+    );
+    unmount();
+
+    render(
+      <ServiceTemplate
+        data={data({ page: { ...serviceExemple, ne_faisons_pas: ["Une.", "Deux."] } })}
+      />,
+    );
+    const simple = screen.getByRole("note", { name: "Ce que nous ne faisons pas" });
+    expect(simple).not.toHaveTextContent("Qui le fait");
+    expect(simple).toHaveTextContent("Deux.");
+  });
+
+  it("fait de la situation qui a une destination une carte-lien, les autres restent des cartes", () => {
+    render(<ServiceTemplate data={data()} />);
+    const links = document.querySelectorAll("[data-situation] a");
+    expect(links).toHaveLength(1);
+    expectHref(links[0] as HTMLElement, "/demande/maladie-neurodegenerative/");
+    expect(links[0]).toHaveTextContent("Situation deux");
+    expect(document.querySelectorAll("[data-situation][data-href]")).toHaveLength(1);
   });
 
   it("pose les icônes des situations, des rubriques d'action et du formulaire", () => {
@@ -285,17 +328,15 @@ describe("ServiceTemplate", () => {
     expect(document.querySelector('[data-hero-tone="sombre"]')).not.toBeNull();
     unmountNuit();
 
+    // `duree` (présence 24h/24) : « Combien de temps ? », choisi par le geste, pas par le chemin.
     const { unmount: unmount24 } = render(
-      <ServiceTemplate
-        data={data({
-          page: { ...withHero({ geste: "nuit" }), chemin: "/services/presence-24h-24/" },
-        })}
-      />,
+      <ServiceTemplate data={data({ page: withHero({ geste: "duree" }) })} />,
     );
     expectHref(
       screen.getByRole("link", { name: "Quelques semaines" }),
       "/demande/nuit-et-24h/?duree=semaines",
     );
+    expect(screen.queryByRole("group", { name: "Nuit calme ou nuit active ?" })).toBeNull();
     unmount24();
 
     render(

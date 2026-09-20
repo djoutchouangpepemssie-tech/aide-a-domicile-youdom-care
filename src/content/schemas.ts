@@ -641,7 +641,9 @@ const homeIconName = z.enum(iconNames as [IconName, ...IconName[]]);
  * Parcours « Pour qui cherchez-vous de l'aide ? » (docs/design/CONCEPT.md §3 et §8) : la
  * question, six choix (icône 32 px, lien de repli sans JavaScript), le titre du panneau du
  * bloc 2 avec son jeton {pour}, rempli par le `pour` de chaque choix. Un choix sans `pour` n'a
- * pas de panneau : c'est un lien direct (« Je ne sais pas encore » → Être rappelé(e)).
+ * pas de panneau : c'est un lien direct (« Je ne sais pas encore » → Être rappelé(e)), auquel la
+ * page ajoute `?motif=<id>` ; la page de rappel affiche alors le message de `motifs[id]`
+ * (content/pages/etre-rappele.json).
  */
 const homeJourneySchema = z.strictObject({
   _lisezmoi: z.string().optional(),
@@ -655,8 +657,6 @@ const homeJourneySchema = z.strictObject({
         pour: text.optional(),
         icone: homeIconName,
         href: internalPath,
-        /** Phrase prévue au-dessus du formulaire de rappel (point ouvert : non affichée). */
-        message: text.optional(),
       }),
     )
     .length(6),
@@ -700,12 +700,31 @@ export const homePageSchema = z.strictObject({
   }),
   engagements: z.strictObject({
     h2: text,
-    items: z.array(z.strictObject({ engagement: engagementCode, titre: text, texte: text })).min(1),
+    items: z
+      .array(
+        z.strictObject({
+          engagement: engagementCode,
+          titre: text,
+          texte: text,
+          /** Icône 32 px dans le nœud du fil (docs/design/CONCEPT.md §3 bloc 3) ; décorative. */
+          icone: homeIconName.optional(),
+        }),
+      )
+      .min(1),
   }),
   neuro: z.strictObject({
     h2: text,
     texte: text,
-    stades: z.array(z.strictObject({ titre: text, texte: text.optional() })).length(3),
+    stades: z
+      .array(
+        z.strictObject({
+          titre: text,
+          texte: text.optional(),
+          /** Icône 32 px dans le nœud du stade ; décorative. */
+          icone: homeIconName.optional(),
+        }),
+      )
+      .length(3),
     bouton: text,
     href: internalPath,
     photo: photoSchema.optional(),
@@ -713,9 +732,17 @@ export const homePageSchema = z.strictObject({
   semaine: z.strictObject({
     h2: text,
     texte: text,
-    onglets_nom: text,
+    /** Exemples du sélecteur segmenté (nom accessible : interface.json > semaine_type.choisir_exemple). */
     onglets: z
-      .array(z.strictObject({ exemple: slug, libelle: text, photo: photoSchema.optional() }))
+      .array(
+        z.strictObject({
+          exemple: slug,
+          libelle: text,
+          photo: photoSchema.optional(),
+          /** Icône 24 px dans le bouton du sélecteur ; décorative. */
+          icone: homeIconName.optional(),
+        }),
+      )
       .length(3),
   }),
   etapes: z.strictObject({
@@ -729,6 +756,8 @@ export const homePageSchema = z.strictObject({
             texte: text,
             texte_engagement: text.optional(),
             engagement: engagementCode.optional(),
+            /** Icône 24 px dans le nœud de l'étape ; décorative. */
+            icone: homeIconName.optional(),
           })
           .refine(
             (step) => (step.texte_engagement === undefined) === (step.engagement === undefined),
@@ -1076,6 +1105,11 @@ export const callbackPageSchema = z.strictObject({
   ariane: text,
   h1: text,
   chapo: text,
+  /**
+   * Message affiché au-dessus du formulaire selon `?motif=<clé>` dans l'adresse (lu côté client,
+   * rien n'est conservé) : `inconnu` vient du choix « Je ne sais pas encore » de l'accueil.
+   */
+  motifs: z.record(slug, text),
   appel_h2: text,
   appel_texte: text.includes("{téléphone}"),
 });
