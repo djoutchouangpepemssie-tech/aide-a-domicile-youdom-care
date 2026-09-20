@@ -364,6 +364,8 @@ export const interfaceSchema = z.strictObject({
       ligne_fin: text,
     }),
     pilier_lien: text.includes("{titre}"),
+    /** Bloc « À lire aussi » (RelatedLinks, docs/04 §2 « Maillage »), avant le formulaire. */
+    a_lire_aussi_h2: text,
     soeurs_h2: text,
     commune_lien: text,
     publics: z.strictObject({
@@ -666,8 +668,17 @@ const homeJourneySchema = z.strictObject({
 });
 const engagementCode = z.string().regex(/^E\d+$/);
 
+/** Balises titre (50 à 60 caractères) et description (140 à 155) de docs/01 §8. */
+export const seoFieldsSchema = z.strictObject({
+  titre: z.string().min(50).max(60),
+  description: z.string().min(140).max(155),
+});
+export type SeoFields = z.infer<typeof seoFieldsSchema>;
+
 export const homePageSchema = z.strictObject({
   _lisezmoi: z.string(),
+  /** Balise titre et description de l'accueil (modèle de docs/01 §8). */
+  seo: seoFieldsSchema,
   banniere: z.strictObject({
     sur_titre: text,
     h1: text,
@@ -809,13 +820,6 @@ export const homePageSchema = z.strictObject({
 export type HomePage = z.infer<typeof homePageSchema>;
 
 /* ---------- Pages de fonctionnement (docs/03 §9) ---------- */
-
-/** Balises titre (50 à 60 caractères) et description (140 à 155) de docs/01 §8. */
-export const seoFieldsSchema = z.strictObject({
-  titre: z.string().min(50).max(60),
-  description: z.string().min(140).max(155),
-});
-export type SeoFields = z.infer<typeof seoFieldsSchema>;
 
 const gatedItemSchema = z
   .strictObject({
@@ -1116,6 +1120,46 @@ export const callbackPageSchema = z.strictObject({
   appel_texte: text.includes("{téléphone}"),
 });
 export type CallbackPage = z.infer<typeof callbackPageSchema>;
+
+/* ---------- content/pages/plan-du-site.json (docs/04 §2 « Maillage », P5.5) ---------- */
+
+export const siteMapPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  /** Titres des groupes ; un groupe sans page construite n'est pas affiché. */
+  groupes: z.strictObject({
+    fonctionnement: text,
+    pour_qui: text,
+    services: text,
+    aidants: text,
+    formulaires: text,
+    entreprise: text,
+    legal: text,
+  }),
+});
+export type SiteMapPage = z.infer<typeof siteMapPageSchema>;
+
+/* ---------- content/pages/404.json (docs/04 §2 « Erreurs ») ---------- */
+
+export const notFoundPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  texte: text,
+  commune_h2: text,
+  commune_texte: text,
+  piliers_h2: text,
+  appel_h2: text,
+  appel_texte: text.includes("{téléphone}"),
+  liens_h2: text,
+  plan_du_site: text,
+  retour_accueil: text,
+});
+export type NotFoundPage = z.infer<typeof notFoundPageSchema>;
 
 /* ---------- content/formulaires/*.json (docs/05 §5) ---------- */
 

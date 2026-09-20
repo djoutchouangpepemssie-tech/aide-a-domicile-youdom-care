@@ -11,7 +11,11 @@ describe("Page être rappelé(e)", () => {
     expect(String(metadata.title).length).toBeLessThanOrEqual(60);
     expect(String(metadata.description).length).toBeGreaterThanOrEqual(140);
     expect(String(metadata.description).length).toBeLessThanOrEqual(155);
-    expect(metadata.alternates?.canonical).toBe("/etre-rappele/");
+    expect(metadata.alternates?.canonical).toBe("https://www.youdom-care.com/etre-rappele/");
+    expect(metadata.openGraph).toMatchObject({
+      locale: "fr_FR",
+      url: "https://www.youdom-care.com/etre-rappele/",
+    });
   });
 
   it("rend le titre, le formulaire et le téléphone, sans message de motif", async () => {

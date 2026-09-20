@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+  <body>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Exemple",
+        "url": "https://www.example.org/",
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5" },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1 rue Inventée",
+          "postalCode": "75001",
+          "addressLocality": "Paris"
+        },
+        "sameAs": [],
+        "logo": ""
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Doublon",
+        "url": "https://www.example.org/"
+      }
+    </script>
+    <script type="application/ld+json">
+      { "@type": "WebPage", "name": "Sans contexte", "review": { "@type": "Review", "name": null } }
+    </script>
+    <script type="application/ld+json">
+      { "@context": "https://schema.org", "name": "Sans type" }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Accueil", "item": "/" }]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "name": "Page non relue",
+        "reviewedBy": { "@type": "Person", "name": "Personne Absente" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {ceci n'est pas du JSON}
+    </script>
+    <main>
+      <h1>Page</h1>
+      <p>En attente de relecture par un professionnel.</p>
+    </main>
+  </body>
+</html>

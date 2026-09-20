@@ -1,5 +1,9 @@
 {
-  "_lisezmoi": "Textes de l'accueil, repris tels quels de docs/01 §4 (blocs 1 à 12, ajoutés phase par phase). Les codes engagement renvoient à content/engagements.json : en production, un bloc dont l'engagement n'est pas validé est masqué. Les jetons {téléphone} sont remplacés par les composants.",
+  "_lisezmoi": "Textes de l'accueil, repris tels quels de docs/01 §4 (blocs 1 à 12, ajoutés phase par phase). Les codes engagement renvoient à content/engagements.json : en production, un bloc dont l'engagement n'est pas validé est masqué. Les jetons {téléphone} sont remplacés par les composants. Le bloc seo reprend le modèle de docs/01 §8.",
+  "seo": {
+    "titre": "Aide à domicile spécialisée à Paris et en Île-de-France",
+    "description": "Alzheimer, Parkinson, handicap, grand âge : un accompagnement à domicile sur mesure, jusqu'à 24h/24, à Paris et en Île-de-France. Évaluation gratuite."
+  },
   "banniere": {
     "sur_titre": "Aide et accompagnement à domicile · Paris et Île-de-France",
     "h1": "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",

@@ -3,6 +3,8 @@ import { checkContrast } from "./check-contrast";
 import { checkCopy } from "./check-copy";
 import { checkLinks } from "./check-links";
 import { checkPlaceholders } from "./check-placeholders";
+import { checkSchema } from "./check-schema";
+import { checkSeo } from "./check-seo";
 import type { Check } from "./types";
 
 /*
@@ -15,4 +17,6 @@ export const checks: readonly Check[] = [
   checkCopy,
   checkContrast,
   checkLinks,
+  checkSeo,
+  checkSchema,
 ];

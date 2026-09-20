@@ -5,8 +5,8 @@ import { CaregiverCheck } from "@/components/blocks/CaregiverCheck/CaregiverChec
 import { Section } from "@/components/layout/Section/Section";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
-import { getCaregiverCheckPage, getInterfaceTexts, getSiteConfig } from "@/content/loader";
-import { pageTitle } from "@/lib/seo/title";
+import { getCaregiverCheckPage, getInterfaceTexts } from "@/content/loader";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * « Où en êtes-vous ? » (docs/03 §7) : huit questions originales, trois niveaux de conseils,
@@ -16,12 +16,11 @@ import { pageTitle } from "@/lib/seo/title";
 
 export function generateMetadata(): Metadata {
   const { seo } = getCaregiverCheckPage();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(seo.titre, marque.nom),
+  return pageMetadata({
+    titre: seo.titre,
     description: seo.description,
-    alternates: { canonical: "/aidants/ou-en-etes-vous/" },
-  };
+    chemin: "/aidants/ou-en-etes-vous/",
+  });
 }
 
 export default function CaregiverCheckPage() {

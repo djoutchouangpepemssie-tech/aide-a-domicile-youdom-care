@@ -15,7 +15,6 @@ import {
   getNavigation,
   getPricing,
   getPricingPage,
-  getSiteConfig,
 } from "@/content/loader";
 import {
   afterTaxCredit,
@@ -24,7 +23,7 @@ import {
   monthlyEstimates,
   WEEKS_PER_MONTH,
 } from "@/lib/pricing/pricing";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * « Tarifs et aides » (docs/03 §9, docs/07 §1) : prix par prestation et par mode depuis
@@ -35,12 +34,11 @@ import { pageTitle } from "@/lib/seo/title";
 
 export function generateMetadata(): Metadata {
   const { seo } = getPricingPage();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(seo.titre, marque.nom),
+  return pageMetadata({
+    titre: seo.titre,
     description: seo.description,
-    alternates: { canonical: "/tarifs-et-aides/" },
-  };
+    chemin: "/tarifs-et-aides/",
+  });
 }
 
 const frenchDate = new Intl.DateTimeFormat("fr-FR", { dateStyle: "long" });

@@ -9,7 +9,7 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Thread } from "@/components/ui/Thread/Thread";
 import { getInterfaceTexts, getModesPage, getNavigation, getSiteConfig } from "@/content/loader";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * « Prestataire ou mandataire » (docs/03 §9, docs/07 §1) : tableau comparatif réel, la question
@@ -19,12 +19,11 @@ import { pageTitle } from "@/lib/seo/title";
 
 export function generateMetadata(): Metadata {
   const { seo } = getModesPage();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(seo.titre, marque.nom),
+  return pageMetadata({
+    titre: seo.titre,
     description: seo.description,
-    alternates: { canonical: "/comment-ca-marche/prestataire-ou-mandataire/" },
-  };
+    chemin: "/comment-ca-marche/prestataire-ou-mandataire/",
+  });
 }
 
 export default function ModesPage() {

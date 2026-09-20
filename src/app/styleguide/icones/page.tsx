@@ -3,11 +3,14 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon, type IconSize, type IconTone } from "@/components/ui/Icon/Icon";
 import { iconGroups, iconNames, icons } from "@/components/ui/Icon/icons";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Icônes au fil — Guide de styles — Youdom Care",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata({
+  titre: "Icônes au fil — Guide de styles",
+  description: "Page de travail : le jeu d'icônes au fil, par groupe, taille et ton.",
+  chemin: "/styleguide/icones/",
+  noindex: true,
+});
 
 const sizes: { id: IconSize; label: string }[] = [
   { id: "sm", label: "20 px" },

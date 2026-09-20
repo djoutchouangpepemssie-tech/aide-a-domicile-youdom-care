@@ -8,6 +8,7 @@ import { MotionScript } from "@/components/motion/MotionScript/MotionScript";
 import { PageThread } from "@/components/motion/PageThread/PageThread";
 import { getSiteConfig } from "@/content/loader";
 import { isIndexable } from "@/lib/seo/indexable";
+import { siteVerification } from "@/lib/seo/verification";
 import "@/styles/globals.css";
 
 // Deux fichiers variables au plus, sous-ensemble latin, display swap (docs/02 §3).
@@ -33,18 +34,21 @@ const atkinson = Atkinson_Hyperlegible_Next({
 });
 
 const { marque } = getSiteConfig();
+const verification = siteVerification();
 
+// Valeurs de repli : chaque page fournit les siennes par `pageMetadata` (src/lib/seo/metadata.ts).
 export const metadata: Metadata = {
   metadataBase: new URL(marque.url),
   title: marque.nom,
   description: marque.description_courte,
   robots: isIndexable() ? undefined : { index: false, follow: false },
+  ...(verification ? { verification } : {}),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="fr"
+      lang="fr-FR"
       className={`${fraunces.variable} ${atkinson.variable}`}
       suppressHydrationWarning
     >

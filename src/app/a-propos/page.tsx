@@ -8,7 +8,7 @@ import { Lead } from "@/components/ui/Lead/Lead";
 import { Prose } from "@/components/ui/Prose/Prose";
 import { Thread } from "@/components/ui/Thread/Thread";
 import { getAbout, getCommitments, getInterfaceTexts, getSiteConfig } from "@/content/loader";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * « À propos » (docs/03 §9) : manifeste de docs/01 §10, engagements (validés seulement en
@@ -18,12 +18,11 @@ import { pageTitle } from "@/lib/seo/title";
 
 export function generateMetadata(): Metadata {
   const { a_propos } = getAbout();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(a_propos.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: a_propos.seo.titre,
     description: a_propos.seo.description,
-    alternates: { canonical: "/a-propos/" },
-  };
+    chemin: "/a-propos/",
+  });
 }
 
 export default function AboutPage() {

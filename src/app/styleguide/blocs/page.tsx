@@ -12,12 +12,15 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import type { IconName } from "@/components/ui/Icon/icons";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { getCommitments, getInterfaceTexts, getWeekExamples } from "@/content/loader";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { MotionSimulator } from "../mouvement/MotionSimulator";
 
-export const metadata: Metadata = {
-  title: "Guide de styles — Blocs reliés par le fil — Youdom Care",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata({
+  titre: "Guide de styles — Blocs reliés par le fil",
+  description: "Page de travail : les blocs que le fil relie, avec leurs révélations.",
+  chemin: "/styleguide/blocs/",
+  noindex: true,
+});
 
 /*
  * Page de travail (noindex, exclue du plan de site comme /styleguide/) : les blocs que le fil

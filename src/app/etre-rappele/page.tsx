@@ -6,7 +6,7 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { getCallbackPage, getInterfaceTexts, getNavigation, getSiteConfig } from "@/content/loader";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { MotiveNotice } from "./MotiveNotice";
 
 /*
@@ -18,12 +18,11 @@ import { MotiveNotice } from "./MotiveNotice";
 
 export function generateMetadata(): Metadata {
   const page = getCallbackPage();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: page.seo.titre,
     description: page.seo.description,
-    alternates: { canonical: "/etre-rappele/" },
-  };
+    chemin: "/etre-rappele/",
+  });
 }
 
 export default function CallbackPage() {

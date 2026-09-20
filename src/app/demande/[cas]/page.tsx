@@ -14,7 +14,7 @@ import {
   getSiteConfig,
 } from "@/content/loader";
 import { budgetBasis } from "@/lib/pricing/pricing";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * /demande/{cas}/ (docs/05 §2) : un formulaire détaillé par cas, défini dans
@@ -34,12 +34,11 @@ export async function generateMetadata({ params }: RequestPageProps): Promise<Me
   const { cas } = await params;
   const definition = getFormDefinitionBySlug(cas);
   if (!definition) return {};
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(definition.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: definition.seo.titre,
     description: definition.seo.description,
-    alternates: { canonical: `/demande/${cas}/` },
-  };
+    chemin: `/demande/${cas}/`,
+  });
 }
 
 export default async function RequestPage({ params }: RequestPageProps) {

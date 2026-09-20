@@ -5,18 +5,17 @@ import { Section } from "@/components/layout/Section/Section";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { getAbout, getInterfaceTexts, getNavigation, getSiteConfig } from "@/content/loader";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /* Charte éditoriale (docs/06 §4, docs/03 §1) : comment les pages sont écrites, sourcées, relues, mises à jour. */
 
 export function generateMetadata(): Metadata {
   const { charte_page } = getAbout();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(charte_page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: charte_page.seo.titre,
     description: charte_page.seo.description,
-    alternates: { canonical: "/a-propos/charte-editoriale/" },
-  };
+    chemin: "/a-propos/charte-editoriale/",
+  });
 }
 
 export default function EditorialCharterPage() {

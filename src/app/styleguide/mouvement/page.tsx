@@ -16,12 +16,15 @@ import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure
 import { HeroThread } from "@/components/ui/Thread/HeroThread";
 import { Thread } from "@/components/ui/Thread/Thread";
 import { heroThreadNames } from "@/components/ui/Thread/hero-threads";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { MotionSimulator } from "./MotionSimulator";
 
-export const metadata: Metadata = {
-  title: "Guide de styles — Mouvement — Youdom Care",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata({
+  titre: "Guide de styles — Mouvement",
+  description: "Page de travail : révélations, parallaxe, inclinaison et budget du mouvement.",
+  chemin: "/styleguide/mouvement/",
+  noindex: true,
+});
 
 /*
  * Page de travail (noindex, exclue du plan de site comme /styleguide/) : chaque composant de

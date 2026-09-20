@@ -11,18 +11,17 @@ import {
   getSiteConfig,
   getSpecialForms,
 } from "@/content/loader";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /* /demande/sortie-d-hospitalisation/ (docs/05 §2) : le parcours express en quatre écrans. Page statique. */
 
 export function generateMetadata(): Metadata {
   const page = getSpecialForms().sortie_hospitalisation;
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: page.seo.titre,
     description: page.seo.description,
-    alternates: { canonical: "/demande/sortie-d-hospitalisation/" },
-  };
+    chemin: "/demande/sortie-d-hospitalisation/",
+  });
 }
 
 export default function HospitalDischargePage() {
