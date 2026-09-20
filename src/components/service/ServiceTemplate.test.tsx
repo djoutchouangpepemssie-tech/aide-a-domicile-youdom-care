@@ -12,6 +12,7 @@ import {
   getWeekExamples,
 } from "@/content/loader";
 import type { ServicePage } from "@/content/service-schema";
+import type { RelatedLink } from "@/lib/seo/related";
 import { ServiceTemplate, type ServiceTemplateData } from "./ServiceTemplate";
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
@@ -22,8 +23,36 @@ function expectHref(element: HTMLElement, expected: string) {
   expect(bare(element.getAttribute("href"))).toBe(bare(expected));
 }
 
+/** Liens « À lire aussi » fournis au gabarit (sinon `ServiceRelated` les calcule au rendu). */
+const related: RelatedLink[] = [
+  {
+    href: "/exemple/soeur-un/",
+    label: "Sœur une",
+    icone: "memoire",
+    public: "neuro",
+    type: "pathologie",
+    tier: "soeurs",
+  },
+  {
+    href: "/exemple/soeur-deux/",
+    label: "Sœur deux",
+    public: "neuro",
+    type: "pathologie",
+    tier: "soeurs",
+  },
+  {
+    href: "/services/garde-de-nuit/",
+    label: "Garde de nuit",
+    icone: "nuit",
+    public: "transverse",
+    type: "service",
+    tier: "transverse",
+  },
+];
+
 function data(overrides: Partial<ServiceTemplateData> = {}): ServiceTemplateData {
   return {
+    related,
     page: serviceExemple,
     Body: () => <p>Corps MDX de test.</p>,
     texts: getInterfaceTexts(),
@@ -71,6 +100,7 @@ describe("ServiceTemplate", () => {
       "Ce que nous ne faisons pas",
       "Combien ça coûte, quelles aides ?",
       "Questions fréquentes",
+      "À lire aussi",
       "Décrire votre situation",
       "Sources et relecture",
     ]);
@@ -96,7 +126,7 @@ describe("ServiceTemplate", () => {
     expect(document.getElementById("formulaire")?.tagName).toBe("SECTION");
   });
 
-  it("signale une page non relue, cite auteur et sources, maille pilier et sœurs", () => {
+  it("signale une page non relue, cite auteur et sources, maille pilier, sœurs et commune", () => {
     render(<ServiceTemplate data={data()} />);
     expect(screen.getByText(/attend sa relecture/)).toBeInTheDocument();
     // Carte de relecture (section 13) : auteur, attente de relecture, mise à jour.
@@ -105,15 +135,36 @@ describe("ServiceTemplate", () => {
     expect(review).toHaveTextContent("Écrit par Auteur fictif, rédaction");
     expect(review).toHaveTextContent("En attente de relecture par un professionnel.");
     expect(review).toHaveTextContent("Mise à jour le 20 septembre 2026");
+    // « Pages proches » (section 13) : le retour au pilier et la recherche par commune seulement.
     const nav = screen.getByRole("navigation", { name: "Pages proches" });
+    expect(within(nav).getAllByRole("link")).toHaveLength(2);
     const pilier = within(nav).getByRole("link", { name: /Pilier fictif/ });
     expect(pilier).toHaveAttribute("href", expect.stringMatching(/^\/exemple\/?$/));
-    // Icônes des pages liées (docs/design/CONCEPT.md §5) : celle du pilier et celle de la sœur.
+    // Icône du pilier (docs/design/CONCEPT.md §5).
     expect(pilier.querySelector('[data-icon="public-neuro"]')).not.toBeNull();
+    expectHref(
+      within(nav).getByRole("link", { name: "Intervenons-nous près de chez vous ?" }),
+      "/aide-a-domicile/",
+    );
+    // « À lire aussi », avant le formulaire : les sœurs et un service, avec leurs icônes.
+    const related = screen.getByRole("navigation", { name: "À lire aussi" });
+    const links = within(related).getAllByRole("link");
+    expect(links).toHaveLength(3);
     expect(
-      within(nav).getByRole("link", { name: "Sœur une" }).querySelector('[data-icon="memoire"]'),
+      within(related)
+        .getByRole("link", { name: "Sœur une" })
+        .querySelector('[data-icon="memoire"]'),
     ).not.toBeNull();
-    expect(within(nav).getByRole("link", { name: "/exemple/soeur-deux/" })).toBeInTheDocument();
+    expectHref(within(related).getByRole("link", { name: "Sœur deux" }), "/exemple/soeur-deux/");
+    expect(within(related).getByRole("link", { name: /Garde de nuit/ })).toHaveTextContent(
+      "Nos services",
+    );
+    const section = related.closest("section");
+    expect(section).toHaveAttribute("aria-labelledby", "a-lire-aussi");
+    // Juste avant la section 12 : dans l'ordre des sections de la page, la suivante est le formulaire.
+    const sections = Array.from(document.querySelectorAll("main section"));
+    expect(sections[sections.indexOf(section as HTMLElement) + 1]?.id).toBe("formulaire");
+    expect(document.querySelector("[data-rail-zone]")?.contains(related)).toBe(true);
     expect(screen.getByRole("link", { name: /Source deux/ })).toHaveAttribute(
       "href",
       "https://example.org/deux",
@@ -255,8 +306,11 @@ describe("ServiceTemplate", () => {
     expect(document.querySelectorAll("[data-reveal]")).toHaveLength(0);
     expect(document.querySelectorAll("[data-situation].m-tilt")).toHaveLength(3);
     expect(
+      screen.getByRole("navigation", { name: "À lire aussi" }).querySelectorAll(".m-tilt"),
+    ).toHaveLength(3);
+    expect(
       screen.getByRole("navigation", { name: "Pages proches" }).querySelectorAll(".m-tilt").length,
-    ).toBeGreaterThanOrEqual(3);
+    ).toBeGreaterThanOrEqual(2);
   });
 
   it("choisit le geste du hero selon `hero.geste`", () => {

@@ -1,0 +1,19 @@
+{
+  "_lisezmoi": "Page /plan-du-site/ (docs/04 §2 « Maillage », P5.5) : toutes les pages construites et indexables, par groupe, en listes imbriquées (piliers puis sous-pages en retrait). Les pages listées et leurs libellés viennent du contenu (navigation.json, en-têtes des pages services, fils d'Ariane des pages JSON) : ce fichier ne porte que les textes de la page et les titres des groupes. Un groupe vide (pages légales tant qu'elles n'existent pas) n'est pas affiché.",
+  "seo": {
+    "titre": "Plan du site Youdom Care : toutes nos pages, par thème",
+    "description": "Toutes les pages du site Youdom Care, classées par thème : pour qui, nos services, aidants, comment ça marche, tarifs et aides, formulaires, à propos."
+  },
+  "ariane": "Plan du site",
+  "h1": "Plan du site : toutes nos pages, au même endroit",
+  "chapo": "Vous cherchez une page précise ? Elles sont toutes ici, classées par thème. Les pages principales sont suivies de leurs pages détaillées.",
+  "groupes": {
+    "fonctionnement": "Accueil et fonctionnement",
+    "pour_qui": "Pour qui ?",
+    "services": "Nos services",
+    "aidants": "Aidants",
+    "formulaires": "Décrire votre situation",
+    "entreprise": "À propos",
+    "legal": "Pages légales"
+  }
+}

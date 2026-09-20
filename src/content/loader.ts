@@ -12,6 +12,8 @@ import specialFormsJson from "../../content/pages/formulaires-speciaux.json";
 import emailsJson from "../../content/emails.json";
 import howItWorksJson from "../../content/pages/comment-ca-marche.json";
 import caregiverCheckJson from "../../content/pages/ou-en-etes-vous.json";
+import siteMapJson from "../../content/pages/plan-du-site.json";
+import notFoundJson from "../../content/pages/404.json";
 import modesJson from "../../content/pages/prestataire-ou-mandataire.json";
 import pricingPageJson from "../../content/pages/tarifs-et-aides.json";
 import aidsJson from "../../content/aides.json";
@@ -30,6 +32,10 @@ import {
   howItWorksSchema,
   caregiverCheckSchema,
   type CaregiverCheckPage,
+  siteMapPageSchema,
+  type SiteMapPage,
+  notFoundPageSchema,
+  type NotFoundPage,
   interfaceSchema,
   modesPageSchema,
   navigationSchema,
@@ -109,6 +115,20 @@ export function getCaregiverCheckPage(): CaregiverCheckPage {
     "pages/ou-en-etes-vous.json",
   );
   return caregiverCheck;
+}
+
+let siteMapPage: SiteMapPage | undefined;
+
+export function getSiteMapPage(): SiteMapPage {
+  siteMapPage ??= parseContent(siteMapPageSchema, siteMapJson, "pages/plan-du-site.json");
+  return siteMapPage;
+}
+
+let notFoundPage: NotFoundPage | undefined;
+
+export function getNotFoundPage(): NotFoundPage {
+  notFoundPage ??= parseContent(notFoundPageSchema, notFoundJson, "pages/404.json");
+  return notFoundPage;
 }
 
 let modesPage: ModesPage | undefined;
@@ -209,6 +229,8 @@ export function loadAllContent() {
     homePage: getHomePage(),
     howItWorks: getHowItWorksPage(),
     caregiverCheck: getCaregiverCheckPage(),
+    siteMapPage: getSiteMapPage(),
+    notFoundPage: getNotFoundPage(),
     modesPage: getModesPage(),
     pricingPage: getPricingPage(),
     aids: getAids(),
