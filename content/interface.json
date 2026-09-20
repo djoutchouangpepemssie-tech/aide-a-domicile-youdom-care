@@ -177,7 +177,17 @@
     "nom": "Actions rapides",
     "appeler": "Appeler",
     "rappel": "Être rappelé(e)",
-    "demande": "Ma demande"
+    "demande": "Ma demande",
+    "court": {
+      "appeler": "Appeler",
+      "rappel": "Rappel",
+      "demande": "Ma demande"
+    }
+  },
+  "rail_conversion": {
+    "nom": "Nous joindre",
+    "appeler": "Appeler le {téléphone}",
+    "reassurance": "Évaluation à domicile gratuite, sans engagement."
   },
   "formulaires": {
     "accroche": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées.",

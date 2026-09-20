@@ -14,6 +14,25 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date AAAA-MM-JJ");
 export const interventionModeSchema = z.enum(["prestataire", "mandataire"]);
 export type InterventionMode = z.infer<typeof interventionModeSchema>;
 
+/* ---------- Photos (docs/design/PHOTOS.md, docs/design/CONCEPT.md §2) ---------- */
+
+/**
+ * Une photo d'illustration servie depuis public/images/ : chemin local, texte alternatif
+ * descriptif et neutre (jamais de prénom, jamais « notre équipe »), point d'intérêt au format
+ * `object-position` (« 50% 40% »). Le ratio d'affichage est choisi par le composant.
+ */
+export const photoSchema = z.strictObject({
+  src: z.string().regex(/^\/images\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\.(?:jpg|jpeg|png|webp|avif)$/, {
+    message: "chemin local sous /images/",
+  }),
+  alt: z.string().trim().min(1),
+  focal: z
+    .string()
+    .regex(/^\d{1,3}% \d{1,3}%$/, "point d'intérêt « 50% 40% »")
+    .optional(),
+});
+export type Photo = z.infer<typeof photoSchema>;
+
 /* ---------- content/site.config.json ---------- */
 
 const zoneSchema = z.strictObject({
@@ -348,6 +367,18 @@ export const interfaceSchema = z.strictObject({
     appeler: text,
     rappel: text,
     demande: text,
+    /** Libellés courts affichés sur une ligne à 375 px ; les libellés complets restent le nom accessible. */
+    court: z.strictObject({
+      appeler: text,
+      rappel: text,
+      demande: text,
+    }),
+  }),
+  /** Rail de conversion des pages intérieures (ConversionRail, docs/design/CONCEPT.md §7). */
+  rail_conversion: z.strictObject({
+    nom: text,
+    appeler: text.includes("{téléphone}"),
+    reassurance: text,
   }),
   formulaires: z.strictObject({
     accroche: text,
@@ -482,6 +513,8 @@ const navigationItemSchema = z
   .strictObject({
     id: slug,
     libelle: text,
+    /** Libellé court pour la barre de l'en-tête (une ligne) ; `libelle` reste le nom accessible et le libellé du menu mobile. */
+    libelle_court: text.optional(),
     href: internalPath.optional(),
     enfants: z.array(navigationChildSchema).min(1).optional(),
   })
@@ -522,6 +555,8 @@ const weekExampleSchema = z
     contexte: text.optional(),
     /** Renvoi au cahier qui décrit l'exemple : aucune semaine type inventée sans source. */
     source: z.string().regex(/^docs\/0[0-7]/, "renvoi à un cahier docs/0x"),
+    /** Photo d'ambiance de l'exemple (docs/design/PHOTOS.md §5) : jamais la personne de l'exemple. */
+    photo: photoSchema.optional(),
     entrees: z.array(weekEntrySchema).min(1),
   })
   .refine(
@@ -553,6 +588,8 @@ export const homePageSchema = z.strictObject({
     note_astérisque: text,
     note_href: internalPath,
     illustration: illustrationName,
+    /** Photo du hero (docs/design/CONCEPT.md §3 bloc 1) ; absente : illustration au fil. */
+    photo: photoSchema.optional(),
   }),
   situations: z.strictObject({
     h2: text,
@@ -579,15 +616,19 @@ export const homePageSchema = z.strictObject({
     stades: z.array(z.strictObject({ titre: text, texte: text.optional() })).length(3),
     bouton: text,
     href: internalPath,
+    photo: photoSchema.optional(),
   }),
   semaine: z.strictObject({
     h2: text,
     texte: text,
     onglets_nom: text,
-    onglets: z.array(z.strictObject({ exemple: slug, libelle: text })).length(3),
+    onglets: z
+      .array(z.strictObject({ exemple: slug, libelle: text, photo: photoSchema.optional() }))
+      .length(3),
   }),
   etapes: z.strictObject({
     h2: text,
+    photo: photoSchema.optional(),
     items: z
       .array(
         z
@@ -610,6 +651,8 @@ export const homePageSchema = z.strictObject({
     h2: text,
     texte: text,
     carte_tarifs: z.strictObject({ titre: text, bouton: text, href: internalPath }),
+    /** Carte de repli tant que content/tarifs.json est vide : aucun chiffre. */
+    carte_devis: z.strictObject({ titre: text, texte: text }),
     carte_aides: z.strictObject({ titre: text, aides: z.array(text).min(1), href: internalPath }),
   }),
   proches: z.strictObject({
@@ -617,6 +660,7 @@ export const homePageSchema = z.strictObject({
     texte: text,
     href: internalPath,
     illustration: illustrationName,
+    photo: photoSchema.optional(),
   }),
   territoire: z.strictObject({
     h2: text,

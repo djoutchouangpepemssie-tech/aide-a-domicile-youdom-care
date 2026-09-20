@@ -15,7 +15,18 @@ const props: HeaderProps = {
         { libelle: "Aidants", href: "/aidants/" },
       ],
     },
-    { id: "tarifs", libelle: "Tarifs et aides", href: "/tarifs-et-aides/" },
+    {
+      id: "services",
+      libelle: "Nos services",
+      libelle_court: "Services",
+      enfants: [{ libelle: "Garde de nuit", href: "/services/garde-de-nuit/" }],
+    },
+    {
+      id: "tarifs",
+      libelle: "Tarifs et aides",
+      libelle_court: "Tarifs",
+      href: "/tarifs-et-aides/",
+    },
   ],
   callbackHref: "/etre-rappele/",
   callbackLabel: "Être rappelé(e)",
@@ -84,6 +95,48 @@ describe("Header", () => {
     expect(within(panel as HTMLElement).getByText("Pour qui ?")).toBeInTheDocument();
     await userEvent.keyboard("{Escape}");
     expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("affiche les libellés courts dans la barre, les complets ailleurs", async () => {
+    render(<Header {...props} />);
+    const [desktopNav] = screen.getAllByRole("navigation", { name: "Navigation principale" });
+    const nav = desktopNav as HTMLElement;
+
+    // Barre : texte court visible, libellé complet comme nom accessible.
+    const tarifs = within(nav).getByRole("link", { name: "Tarifs et aides" });
+    expect(tarifs).toHaveTextContent(/^Tarifs$/);
+    const services = within(nav).getByRole("button", { name: "Nos services" });
+    expect(services).toHaveTextContent(/^Services$/);
+    // Sans libellé court : pas d'aria-label redondant.
+    expect(within(nav).getByRole("button", { name: "Pour qui ?" })).not.toHaveAttribute(
+      "aria-label",
+    );
+
+    // Menu mobile : libellés complets, aucun libellé court.
+    await userEvent.click(screen.getByRole("button", { name: "Menu" }));
+    const panel = document.getElementById("menu-mobile") as HTMLElement;
+    expect(within(panel).getByText("Nos services")).toBeInTheDocument();
+    expect(within(panel).getByRole("link", { name: "Tarifs et aides" })).toHaveTextContent(
+      /^Tarifs et aides$/,
+    );
+    expect(within(panel).queryByText("Services")).not.toBeInTheDocument();
+  });
+
+  it("place le mode confort compact dans la barre et complet dans le menu mobile", () => {
+    render(
+      <Header
+        {...props}
+        comfortSlot={<button type="button">Confort complet</button>}
+        comfortSlotCompact={<button type="button">Confort compact</button>}
+      />,
+    );
+    expect(screen.getByRole("button", { name: "Confort compact" })).toBeInTheDocument();
+    // Le panneau mobile est `hidden` tant que le menu est fermé : on l'interroge quand même.
+    const panel = document.getElementById("menu-mobile") as HTMLElement;
+    expect(
+      within(panel).getByRole("button", { name: "Confort complet", hidden: true }),
+    ).toBeInTheDocument();
+    expect(within(panel).queryByText("Confort compact")).not.toBeInTheDocument();
   });
 
   it("masque le téléphone quand il est inconnu", () => {

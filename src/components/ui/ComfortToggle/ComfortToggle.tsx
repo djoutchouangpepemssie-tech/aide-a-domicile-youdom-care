@@ -23,6 +23,11 @@ export interface ComfortToggleProps {
   texts: ComfortToggleTexts;
   /** `dark` : sur le pied de page (texte blanc). */
   tone?: "light" | "dark";
+  /**
+   * Icône seule, libellé visuellement masqué (barre de l'en-tête à partir de 80 rem, où la place
+   * est comptée). Le nom accessible et l'infobulle (`title`) restent complets.
+   */
+  compact?: boolean;
   className?: string;
 }
 
@@ -52,7 +57,12 @@ function subscribe(onChange: () => void) {
 
 const getServerSnapshot = () => false;
 
-export function ComfortToggle({ texts, tone = "light", className }: ComfortToggleProps) {
+export function ComfortToggle({
+  texts,
+  tone = "light",
+  compact = false,
+  className,
+}: ComfortToggleProps) {
   // L'état vit sur <html> (posé avant l'hydratation par ComfortScript) : lecture externe.
   const on = useSyncExternalStore(subscribe, isComfortOn, getServerSnapshot);
 
@@ -63,7 +73,8 @@ export function ComfortToggle({ texts, tone = "light", className }: ComfortToggl
       title={texts.description}
       onClick={() => applyComfort(!on)}
       className={cn(
-        "inline-flex min-h-12 items-center gap-2 rounded-button border-2 px-3 font-bold transition-colors [transition-duration:var(--duration-fast)] motion-reduce:transition-none",
+        "inline-flex min-h-12 items-center gap-2 rounded-button border-2 font-bold transition-colors [transition-duration:var(--duration-fast)] motion-reduce:transition-none",
+        compact ? "min-w-12 justify-center px-2" : "px-3",
         tone === "dark"
           ? "border-white/60 text-white hover:bg-white/10 aria-pressed:bg-white aria-pressed:text-teal-900"
           : "border-teal-700 text-teal-800 hover:bg-teal-50 aria-pressed:bg-teal-800 aria-pressed:text-white",
@@ -84,7 +95,7 @@ export function ComfortToggle({ texts, tone = "light", className }: ComfortToggl
       >
         <path d="M4 19V6a2 2 0 0 1 2-2h5v15M20 19V6a2 2 0 0 0-2-2h-5M8 9h2M15 9h2M8 13h2M15 13h2" />
       </svg>
-      <span>{texts.libelle}</span>
+      <span className={cn(compact && "sr-only")}>{texts.libelle}</span>
     </button>
   );
 }

@@ -18,9 +18,25 @@ import { cn } from "@/lib/cn";
  * téléphone cliquable, bouton principal « Être rappelé(e) ». Les menus déroulants suivent le motif
  * « disclosure navigation » (bouton aria-expanded + panneau de liens) : Tab parcourt les liens,
  * Échap ferme et rend le focus au bouton, un clic ou un focus hors du menu le ferme.
- * Sur mobile, un bouton « Menu » ouvre un panneau où les groupes sont des details/summary natifs.
+ * Jusqu'à 80 rem (1 280 px), un bouton « Menu » ouvre un panneau où les groupes sont des
+ * details/summary natifs : en dessous, la barre ne peut pas loger six entrées, le téléphone et le
+ * bouton sans replier les libellés (docs/design/CONCEPT.md §1, point 9).
+ * À partir de 80 rem, la barre affiche les entrées sur une ligne (`whitespace-nowrap`, `text-small`)
+ * et utilise `libelle_court` quand il existe ; le libellé complet reste le nom accessible
+ * (`aria-label`) et le libellé du menu mobile. Le conteneur plafonne à 75 rem : la place ne grandit
+ * plus au-delà. La racine fait 18 px sur ordinateur et 20,25 px en mode confort : à ce dernier
+ * réglage la barre ne loge plus ses six entrées avant 96 rem, le menu reprend entre les deux
+ * (variante `[[data-comfort=on]_&]`).
  * Le lien d'évitement « Aller au contenu » cible `#contenu` (chaque page pose `<main id="contenu">`).
  */
+
+/*
+ * Entre 80 et 96 rem, le mode confort (texte × 1,125) rebascule sur le menu. Classes écrites en
+ * toutes lettres : Tailwind les lit dans la source, une chaîne composée ne serait pas générée.
+ */
+const desktopOnly = "hidden xl:block xl:max-2xl:[[data-comfort=on]_&]:hidden";
+const menuButtonOnly = "xl:hidden xl:max-2xl:[[data-comfort=on]_&]:inline-flex";
+const menuPanelOnly = "xl:hidden xl:max-2xl:[[data-comfort=on]_&]:block";
 
 export interface HeaderTexts {
   aller_au_contenu: string;
@@ -40,8 +56,10 @@ export interface HeaderProps {
   callbackHref: string;
   callbackLabel: string;
   texts: HeaderTexts;
-  /** Bouton du mode confort de lecture (P1.7), affiché à côté des actions et dans le menu mobile. */
+  /** Bouton du mode confort de lecture (P1.7), affiché dans le menu mobile. */
   comfortSlot?: ReactNode;
+  /** Variante compacte du même bouton pour la barre à partir de 80 rem ; à défaut, `comfortSlot`. */
+  comfortSlotCompact?: ReactNode;
 }
 
 const COMPACT_AFTER_PX = 24;
@@ -51,8 +69,8 @@ function PhoneIcon() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      width="20"
-      height="20"
+      width="18"
+      height="18"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -95,6 +113,7 @@ export function Header({
   callbackLabel,
   texts,
   comfortSlot,
+  comfortSlotCompact,
 }: HeaderProps) {
   const [openId, setOpenId] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -170,14 +189,15 @@ export function Header({
 
       <div
         className={cn(
-          "container-site flex items-center justify-between gap-4 transition-[height] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
+          "container-site flex items-center justify-between gap-2 transition-[height] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
           compact ? "h-16" : "h-20",
         )}
       >
+        {/* Marque en Fraunces à la taille du H4 : la barre est comptée au pixel à 80 rem. */}
         <Link
           href="/"
           aria-label={texts.accueil}
-          className="heading-3 shrink-0 text-teal-900 no-underline hover:text-teal-700"
+          className="shrink-0 font-heading text-h4 leading-none font-semibold whitespace-nowrap text-teal-900 no-underline hover:text-teal-700"
         >
           {brandName}
         </Link>
@@ -185,14 +205,16 @@ export function Header({
         <nav
           ref={navRef}
           aria-label={texts.navigation_principale}
-          className="hidden lg:block"
+          className={desktopOnly}
           onKeyDown={onNavKeyDown}
           onBlur={onNavBlur}
         >
-          <ul className="m-0 flex list-none items-center gap-1 p-0">
+          <ul className="m-0 flex list-none flex-nowrap items-center gap-0 p-0">
             {navigation.map((item) => {
               const panelId = `menu-${item.id}`;
               const isOpen = openId === item.id;
+              const shortLabel = item.libelle_court ?? item.libelle;
+              const ariaLabel = item.libelle_court ? item.libelle : undefined;
               if (item.enfants) {
                 return (
                   <li key={item.id} className="relative max-w-none">
@@ -204,13 +226,14 @@ export function Header({
                       type="button"
                       aria-expanded={isOpen}
                       aria-controls={panelId}
+                      aria-label={ariaLabel}
                       onClick={() => setOpenId(isOpen ? null : item.id)}
                       className={cn(
-                        "inline-flex min-h-12 items-center gap-1 rounded-button px-3 font-bold text-ink hover:bg-teal-50",
+                        "inline-flex min-h-12 items-center gap-0.5 rounded-button px-1.5 text-small font-bold whitespace-nowrap text-ink hover:bg-teal-50",
                         isOpen && "bg-teal-50 text-teal-900",
                       )}
                     >
-                      {item.libelle}
+                      {shortLabel}
                       <Chevron open={isOpen} />
                     </button>
                     <div
@@ -244,9 +267,10 @@ export function Header({
                 <li key={item.id} className="max-w-none">
                   <Link
                     href={item.href ?? "/"}
-                    className="inline-flex min-h-12 items-center rounded-button px-3 font-bold text-ink no-underline hover:bg-teal-50"
+                    aria-label={ariaLabel}
+                    className="inline-flex min-h-12 items-center rounded-button px-1.5 text-small font-bold whitespace-nowrap text-ink no-underline hover:bg-teal-50"
                   >
-                    {item.libelle}
+                    {shortLabel}
                   </Link>
                 </li>
               );
@@ -254,13 +278,15 @@ export function Header({
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          {comfortSlot ? <div className="hidden xl:block">{comfortSlot}</div> : null}
+        <div className="flex shrink-0 items-center gap-2">
+          {comfortSlot ? (
+            <div className="hidden xl:block">{comfortSlotCompact ?? comfortSlot}</div>
+          ) : null}
           {phone && phoneLabel ? (
             <a
               href={phone.href}
               aria-label={phoneLabel}
-              className="tabular-figures hidden min-h-12 items-center gap-2 rounded-button px-3 font-bold text-teal-800 no-underline hover:bg-teal-50 md:inline-flex"
+              className="tabular-figures hidden min-h-12 items-center gap-1.5 rounded-button px-2 text-small font-bold whitespace-nowrap text-teal-800 no-underline hover:bg-teal-50 md:inline-flex"
             >
               <PhoneIcon />
               <span>{phone.display}</span>
@@ -268,7 +294,7 @@ export function Header({
           ) : null}
           {/* Conteneur masqué plutôt que classe `hidden` sur le bouton : sa classe `inline-flex` l'emporterait. */}
           <div className="hidden sm:block">
-            <Button href={callbackHref} className="min-h-12">
+            <Button href={callbackHref} className="min-h-12 px-3">
               {callbackLabel}
             </Button>
           </div>
@@ -278,7 +304,10 @@ export function Header({
             aria-expanded={mobileOpen}
             aria-controls="menu-mobile"
             onClick={() => setMobileOpen((value) => !value)}
-            className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-button px-3 font-bold text-ink hover:bg-teal-50 lg:hidden"
+            className={cn(
+              "inline-flex min-h-12 min-w-12 items-center justify-center rounded-button px-3 font-bold text-ink hover:bg-teal-50",
+              menuButtonOnly,
+            )}
           >
             {mobileOpen ? texts.fermer_menu : texts.menu}
           </button>
@@ -288,7 +317,10 @@ export function Header({
       <div
         id="menu-mobile"
         hidden={!mobileOpen}
-        className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-white lg:hidden"
+        className={cn(
+          "max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-white",
+          menuPanelOnly,
+        )}
       >
         <nav aria-label={texts.navigation_principale} className="container-site py-4">
           <ul className="m-0 flex list-none flex-col gap-1 p-0">

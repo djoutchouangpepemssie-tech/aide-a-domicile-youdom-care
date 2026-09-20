@@ -24,6 +24,7 @@ export function SiteHeader() {
       callbackLabel={boutons.rappel}
       texts={en_tete}
       comfortSlot={<ComfortToggle texts={confort} />}
+      comfortSlotCompact={<ComfortToggle texts={confort} compact />}
     />
   );
 }
