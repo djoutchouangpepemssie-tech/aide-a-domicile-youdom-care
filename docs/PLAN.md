@@ -97,7 +97,7 @@ Demande d'Arcel du 2026-09-20 : heros personnalisés, images libres de droit par
 - [x] (3fdcd91) **P4b.1 Concept et spécification** (`docs/design/CONCEPT.md`) : diagnostic, concept, accueil bloc par bloc, heros par public, gabarit service, mouvement, conversion, lots de mise en œuvre.
 - [ ] **P4b.2 Jeu d'icônes au fil** (`src/components/ui/Icon/`, styleguide, tests, `docs/design/ICONES.md`).
 - [x] (838e117) **P4b.3 Photothèque libre de droit** (`public/images/`, `CREDITS.md`, `docs/design/PHOTOS.md`) : sources, licences, textes alternatifs, interdits de docs/02 §6 respectés.
-- [ ] **P4b.4 Infrastructure de mouvement et 3D** (`src/components/motion/`, `src/lib/motion/`, `motion.css`, styleguide, tests, `docs/design/MOUVEMENT.md`) : reduced-motion et mode confort, budget mesuré.
+- [x] (838e117) **P4b.4 Infrastructure de mouvement et 3D** (`src/components/motion/`, `src/lib/motion/`, `motion.css`, styleguide, tests, `docs/design/MOUVEMENT.md`) : reduced-motion et mode confort, budget mesuré.
 - [ ] **P4b.5 Heros personnalisés** : accueil et cinq piliers (photo, titre, geste d'entrée, profondeur), variantes mobile, `priority` sur l'image, LCP mesuré.
 - [ ] **P4b.6 Accueil réinventé** : parcours « Pour qui cherchez-vous de l'aide ? », blocs illustrés et animés, appels à l'action, barre mobile.
 - [ ] **P4b.7 Piliers et gabarit service enrichis** : photos par section, icônes par service et rubrique, semaine type illustrée, cartes inclinables, révélations au défilement, sous-pages en cartes visuelles.
