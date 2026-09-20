@@ -64,6 +64,17 @@ module.exports = {
             "resource-summary:script:size": ["error", { maxNumericValue: 220 * KO }],
           },
         },
+        {
+          // Pages services en statut a_relire : noindex voulu (docs/03 §1) tant que la relecture
+          // professionnelle manque, ce qui fait échouer le seul audit « is-crawlable » et plafonne
+          // la catégorie SEO à 0,69. Le seuil remonte à 1 quand ces pages passent en « publie ».
+          matchingUrlPattern: "/personnes-agees/|/services/garde-de-nuit/",
+          aggregationMethod: "median",
+          assertions: {
+            "categories:seo": ["error", { minScore: 0.65 }],
+            "is-crawlable": "off",
+          },
+        },
       ],
     },
     upload: {
