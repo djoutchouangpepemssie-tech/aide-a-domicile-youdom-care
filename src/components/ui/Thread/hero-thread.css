@@ -1,0 +1,87 @@
+/*
+ * Le fil du hero (HeroThread, docs/design/CONCEPT.md §6 `fil-hero`). Trois couches dans la scène
+ * de HeroDepth (photo, fil à 24 px, nœud à 48 px) et, hors de la scène, le trait qui part du H1.
+ * Tracé une fois, 1 200 ms (`--thread-hero-duration`) : le trait du H1 (30 %), le contour (55 %),
+ * le nœud (15 %). Sans JavaScript, tout est visible ; avec (`html[data-js]`, MotionScript), le
+ * fil est caché tant que l'île n'a pas posé `data-state="drawn"` au chargement de la photo, sauf
+ * en mouvement réduit, en mode confort et sous la simulation : affiché d'emblée, sans transition.
+ */
+
+.hero-thread {
+  position: relative;
+}
+
+.hero-thread__photo {
+  position: relative;
+}
+
+.hero-thread__fil,
+.hero-thread__reach,
+.hero-thread__knot {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hero-thread__fil,
+.hero-thread__reach {
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.hero-thread__fil {
+  transform: translateZ(var(--depth-fil, 24px));
+}
+
+.hero-thread__knot {
+  inline-size: 16px;
+  block-size: 16px;
+  margin: -8px 0 0 -8px;
+  transform: translateZ(var(--depth-knot, 48px));
+}
+
+.hero-thread path {
+  stroke-width: var(--thread-width, 2px);
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Armé : JavaScript présent, mouvement permis. Caché jusqu'au chargement de la photo. */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-js]:not([data-comfort="on"]):not([data-motion="reduce"])
+    .hero-thread[data-state="idle"]
+    path {
+    stroke-dashoffset: 1;
+  }
+}
+
+.hero-thread[data-state="drawn"] path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset calc(var(--thread-hero-duration, 1200ms) * 0.55)
+    var(--ease-out, ease-out) calc(var(--thread-hero-duration, 1200ms) * 0.3);
+}
+
+.hero-thread[data-state="drawn"] .hero-thread__reach path {
+  transition-duration: calc(var(--thread-hero-duration, 1200ms) * 0.3);
+  transition-delay: 0ms;
+}
+
+.hero-thread[data-state="drawn"] .hero-thread__knot path {
+  transition-duration: calc(var(--thread-hero-duration, 1200ms) * 0.15);
+  transition-delay: calc(var(--thread-hero-duration, 1200ms) * 0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-thread path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}
+
+:root[data-comfort="on"] .hero-thread path,
+:root[data-motion="reduce"] .hero-thread path {
+  stroke-dashoffset: 0;
+  transition: none;
+}

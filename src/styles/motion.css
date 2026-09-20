@@ -1,0 +1,336 @@
+/*
+ * Mouvement (docs/02 §5, docs/design/BRIEF_EXPERIENCE.md §2, docs/design/MOUVEMENT.md).
+ * Toutes les classes portent le préfixe `.m-`. CSS d'abord : le JavaScript ne fait que poser un
+ * attribut (`data-reveal`, `data-tilt`) ou un style en ligne ; jamais de contenu caché sans lui.
+ * Tout est neutralisé sous `prefers-reduced-motion: reduce`, en mode confort
+ * (`html[data-comfort="on"]`) et sous la simulation du styleguide (`html[data-motion="reduce"]`).
+ * Les règles propres à un composant rarement utilisé (HeroScene) vivent à côté de lui
+ * (hero-scene.css) : elles ne partent qu'avec les pages qui l'utilisent.
+ */
+
+/* La simulation du styleguide éteint aussi les jetons de durée, comme le mode confort. */
+:root[data-motion="reduce"] {
+  --duration-fast: 0ms;
+  --duration-base: 0ms;
+  --duration-slow: 0ms;
+  --motion-rise: 0px;
+  --duration-flip: 0ms;
+  --thread-duration: 0ms;
+  --thread-hero-duration: 0ms;
+}
+
+@layer components {
+  /* ---- Reveal : révélation au défilement, une seule fois ---- */
+  .m-reveal--fade[data-reveal="pending"],
+  .m-reveal--rise[data-reveal="pending"],
+  .m-reveal--stagger[data-reveal="pending"] > * {
+    opacity: 0;
+  }
+
+  .m-reveal--rise[data-reveal="pending"],
+  .m-reveal--stagger[data-reveal="pending"] > * {
+    transform: translateY(var(--motion-rise));
+  }
+
+  .m-reveal--fade[data-reveal="in"],
+  .m-reveal--rise[data-reveal="in"],
+  .m-reveal--stagger[data-reveal="in"] > * {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity var(--duration-slow) var(--ease-out) var(--m-delay, 0ms),
+      transform var(--duration-slow) var(--ease-out) var(--m-delay, 0ms);
+  }
+
+  .m-reveal--stagger[data-reveal="in"] > * {
+    transition-delay: calc(var(--m-delay, 0ms) + var(--m-i, 0) * var(--m-stagger, 60ms));
+  }
+
+  /* Tracé d'un SVG au fil : les formes portent `pathLength="1"` (posé par l'île si absent). */
+  .m-reveal--draw[data-reveal="pending"] :is(path, circle, line, polyline, ellipse) {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .m-reveal--draw[data-reveal="in"] :is(path, circle, line, polyline, ellipse) {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset var(--thread-duration) var(--ease-out) var(--m-delay, 0ms);
+  }
+
+  /* ---- CountUp : chiffre sourcé qui se compte ---- */
+  .m-count {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .m-count__digits {
+    display: inline-block;
+    min-inline-size: var(--m-count-width, auto);
+    text-align: end;
+  }
+
+  /* ---- Tilt : inclinaison au pointeur, retour en 200 ms ---- */
+  .m-tilt {
+    transform-style: preserve-3d;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .m-tilt[data-tilt="active"] {
+    transition-duration: 80ms;
+  }
+
+  /* ---- Parallax : couche liée au défilement, sans JavaScript (animation-timeline) ---- */
+  .m-parallax {
+    --m-parallax: 16px;
+  }
+
+  /* À partir de 64 rem seulement (CONCEPT §6 `parallax-2`) : en dessous, la couche est immobile. */
+  @media (min-width: 64rem) {
+    @supports (animation-timeline: view()) {
+      .m-parallax {
+        animation: m-parallax linear both;
+        animation-timeline: view();
+      }
+    }
+  }
+
+  /* ---- HeroDepth : trois couches (photo, fil, nœud) qui pivotent vers le pointeur ---- */
+  /* L'île pose `--rx` et `--ry` sur la scène ; la CSS ne fait tourner que sur ordinateur avec
+     un pointeur fin. Ailleurs (toucher, mobile, mouvement réduit), aucune perspective : à plat. */
+  .m-depth {
+    position: relative;
+  }
+
+  .m-depth__stage {
+    position: relative;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .m-depth__stage[data-depth="active"] {
+    transition-duration: 80ms;
+  }
+
+  @media (hover: hover) and (pointer: fine) and (min-width: 64rem) {
+    .m-depth {
+      perspective: 1200px;
+    }
+
+    .m-depth__stage {
+      transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transform-style: preserve-3d;
+    }
+  }
+
+  /* ---- PageThread : le fil conducteur, trait vertical lié au défilement, nœud par H2 ---- */
+  /* Mesuré par une île (position de `main` et de ses H2), dessiné en CSS : le trait grandit avec
+     `animation-timeline: scroll()` et sa pointe suit la ligne de lecture (55 % de la hauteur de
+     l'écran) grâce à un `clip-path` calculé sur `--m-pt-top` et `--m-pt-below` ; chaque nœud se
+     noue à l'entrée dans l'écran (`view()`). Sans prise en charge, en mouvement réduit, en mode
+     confort : trait complet, nœuds noués. */
+  .m-pthread {
+    --m-pt-x: max(0.75rem, calc((100% - var(--container-max)) / 2 - 1.5rem));
+    position: absolute;
+    inset-block-start: var(--m-pt-top, 0px);
+    inset-inline-start: 0;
+    z-index: 1;
+    display: none;
+    inline-size: 100%;
+    block-size: var(--m-pt-height, 0px);
+    pointer-events: none;
+  }
+
+  @media (min-width: 64rem) {
+    .m-pthread {
+      display: block;
+    }
+
+    /* Trait statique en attendant le moteur (chargé au premier signe d'usage) : la portion
+       visible en haut de page (jusqu'à la ligne de lecture, à 55 % de l'écran). Retiré dès que
+       le moteur a rendu (`data-pthread="on"`) et absent des chemins exclus (`"off"`, posé par
+       MotionScript avant le premier rendu). */
+    body > main {
+      position: relative;
+    }
+
+    body > main::before {
+      content: "";
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: var(
+        --m-pt-x,
+        max(0.75rem, calc((100% - var(--container-max)) / 2 - 1.5rem))
+      );
+      z-index: 1;
+      inline-size: 2px;
+      block-size: min(100%, calc(55vh - 6rem));
+      margin-inline-start: -1px;
+      background: var(--color-teal-700);
+      pointer-events: none;
+    }
+
+    :root[data-pthread] body > main::before {
+      display: none;
+    }
+  }
+
+  @media print {
+    body > main::before {
+      display: none;
+    }
+  }
+
+  .m-pthread__line,
+  .m-pthread__knot {
+    position: absolute;
+    inset-inline-start: var(--m-pt-x);
+  }
+
+  .m-pthread__line {
+    inset-block-start: 0;
+    inline-size: 2px;
+    block-size: 100%;
+    margin-inline-start: -1px;
+    background: var(--color-teal-700);
+  }
+
+  .m-pthread__knot {
+    inline-size: 12px;
+    block-size: 12px;
+    margin: -6px 0 0 -6px;
+    overflow: visible;
+    color: var(--color-raspberry-500);
+  }
+
+  .m-pthread__knot path {
+    stroke-width: 2px;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .m-pthread__line {
+      animation: m-pthread-grow linear both;
+      animation-timeline: scroll(root);
+    }
+
+    .m-pthread__knot path {
+      animation: m-pthread-knot linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 30%;
+    }
+  }
+
+  /* ---- Mouvement réduit, mode confort, simulation : tout s'éteint ---- */
+  @media (prefers-reduced-motion: reduce) {
+    .m-reveal[data-reveal],
+    .m-reveal--stagger[data-reveal] > * {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .m-reveal--draw[data-reveal] :is(path, circle, line, polyline, ellipse) {
+      stroke-dashoffset: 0;
+      transition: none;
+    }
+
+    .m-tilt {
+      transform: none !important;
+      transition: none;
+    }
+
+    .m-parallax {
+      animation: none;
+    }
+
+    .m-depth {
+      perspective: none;
+    }
+
+    .m-depth__stage {
+      transform: none !important;
+      transition: none;
+    }
+
+    .m-pthread__line,
+    .m-pthread__knot path {
+      animation: none;
+    }
+  }
+
+  :root[data-comfort="on"] .m-reveal[data-reveal],
+  :root[data-motion="reduce"] .m-reveal[data-reveal],
+  :root[data-comfort="on"] .m-reveal--stagger[data-reveal] > *,
+  :root[data-motion="reduce"] .m-reveal--stagger[data-reveal] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  :root[data-comfort="on"] .m-reveal--draw[data-reveal] :is(path, circle, line, polyline, ellipse),
+  :root[data-motion="reduce"]
+    .m-reveal--draw[data-reveal]
+    :is(path, circle, line, polyline, ellipse) {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  :root[data-comfort="on"] .m-tilt,
+  :root[data-motion="reduce"] .m-tilt {
+    transform: none !important;
+    transition: none;
+  }
+
+  :root[data-comfort="on"] .m-depth,
+  :root[data-motion="reduce"] .m-depth {
+    perspective: none;
+  }
+
+  :root[data-comfort="on"] .m-depth__stage,
+  :root[data-motion="reduce"] .m-depth__stage {
+    transform: none !important;
+    transition: none;
+  }
+
+  :root[data-comfort="on"] .m-pthread__line,
+  :root[data-motion="reduce"] .m-pthread__line,
+  :root[data-comfort="on"] .m-pthread__knot path,
+  :root[data-motion="reduce"] .m-pthread__knot path,
+  :root[data-comfort="on"] .m-parallax,
+  :root[data-motion="reduce"] .m-parallax {
+    animation: none;
+  }
+}
+
+@keyframes m-parallax {
+  from {
+    transform: translateY(var(--m-parallax));
+  }
+
+  to {
+    transform: translateY(calc(var(--m-parallax) * -1));
+  }
+}
+
+/* Pointe du trait à 55 % de l'écran : en haut de page, 55vh sous le haut du document ; en bas de
+   page, 45vh au-dessus du bas du document (d'où `--m-pt-below`, ce qui reste sous `main`). */
+@keyframes m-pthread-grow {
+  from {
+    clip-path: inset(0 0 calc(100% - 55vh + var(--m-pt-top, 0px)) 0);
+  }
+
+  to {
+    clip-path: inset(0 0 calc(45vh - var(--m-pt-below, 0px)) 0);
+  }
+}
+
+@keyframes m-pthread-knot {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}

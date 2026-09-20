@@ -20,6 +20,20 @@ describe("FollowUpTimeline", () => {
     expect(screen.getByText("Chaque mois")).toBeInTheDocument();
   });
 
+  it("relie les jalons par le fil (vertical puis horizontal), nœud framboise au dernier, icône par moment", () => {
+    render(<FollowUpTimeline milestones={milestones} icons={{ "Avant de commencer": "maison" }} />);
+    const list = screen.getByRole("list");
+    expect(list).toHaveClass("follow-up-timeline", "t-rail");
+    const items = screen.getAllByRole("listitem");
+    const connector = items[0]?.querySelector(".t-connector");
+    expect(connector).toHaveAttribute("data-orientation", "responsive");
+    expect(connector?.querySelectorAll("path")).toHaveLength(2);
+    expect(items[1]?.querySelector(".t-connector")).toBeNull();
+    expect(items[0]?.querySelector('[data-icon="maison"]')).not.toBeNull();
+    expect(items[1]?.querySelector("[data-icon]")).toBeNull();
+    expect(items[1]?.querySelector(".t-knot")).toHaveClass("text-raspberry-500");
+  });
+
   it("masque aussi les jalons non validés en production", () => {
     vi.stubEnv("VERCEL_ENV", "production");
     expect(visibleMilestones(milestones).map((m) => m.moment)).toEqual(["Avant de commencer"]);

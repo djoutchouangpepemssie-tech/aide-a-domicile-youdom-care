@@ -85,7 +85,7 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 
 - **Q-TECH-1.** Identifiants SMTP de la boîte d'envoi et adresse de réception des demandes (variables d'environnement, jamais dans le dépôt).
 - **Q-TECH-2.** Outil de mesure d'audience souhaité (Plausible, Matomo, aucun).
-- **Q-TECH-3.** Dépôt GitHub et projet Vercel reliés ? (pour les prévisualisations par branche)
+- **Q-TECH-3.** Dépôt GitHub et projet Vercel reliés ? (pour les prévisualisations par branche) — Répondu le 2026-09-20 : dépôt `https://github.com/djoutchouangpepemssie-tech/Youdom-care` (D-025). Reste à relier le projet Vercel.
   Note de la loop (2026-09-20) : le dépôt est pour l'instant local (aucun remote) et `gh auth status` échoue sur cette machine (jeton `GH_TOKEN` invalide). Tant que ce n'est pas réglé, la loop fusionnera les fins de phase en local (squash sur `main` + tag) et ouvrira les PR a posteriori.
   Réponse :
 - **Q-TECH-4.** Budget JavaScript initial : `docs/07 §5` demandait moins de 90 Ko compressés par page de contenu, mais le socle Next 16 + React 19 pèse à lui seul 132 Ko (mesure Lighthouse du 2026-09-20, accueil à 150 Ko au total, LCP 1,9 s, performance 98). La loop a rebasé le budget à 160 Ko (contenu) et 220 Ko (formulaires), voir D-019. Confirmez-vous ce budget, ou souhaitez-vous une pile plus légère pour les pages de contenu (ce qui remettrait en cause D-006) ?

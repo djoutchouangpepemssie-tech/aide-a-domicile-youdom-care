@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type ComponentPropsWithoutRef } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+  type CSSProperties,
+} from "react";
 import { cn } from "@/lib/cn";
 import { threadIllustrations, type ThreadIllustrationName } from "./illustrations";
 
@@ -10,6 +16,9 @@ import { threadIllustrations, type ThreadIllustrationName } from "./illustration
  * Il se dessine une seule fois à l'entrée dans l'écran (600 à 900 ms) ; avec
  * `prefers-reduced-motion` ou le mode confort, il est affiché d'emblée. Sans JavaScript, il est
  * visible : l'état « pending » (invisible) n'est posé qu'après le montage.
+ * `parallax` : la couche glisse de 16 px avec le défilement à partir de 64 rem (`parallax-2`,
+ * docs/design/CONCEPT.md §6), en CSS seul (`.m-parallax`, motion.css) ; immobile ailleurs.
+ * Réservé aux illustrations : jamais une photo, jamais du texte.
  * Décoratif : `aria-hidden="true"`, jamais porteur d'une information absente du texte.
  */
 
@@ -19,7 +28,12 @@ export interface ThreadProps extends Omit<ComponentPropsWithoutRef<"svg">, "chil
   illustration: ThreadIllustrationName;
   /** `light` : fil teal-700 (fond clair) ; `dark` : fil blanc (fond teal-900). */
   tone?: "light" | "dark";
+  /** Couche de profondeur discrète : 16 px liés au défilement, à partir de 64 rem. */
+  parallax?: boolean;
 }
+
+/** Amplitude de `parallax-2` (CONCEPT §6) : 16 px, jamais plus. */
+export const THREAD_PARALLAX_PX = 16;
 
 function prefersNoMotion(): boolean {
   if (typeof window === "undefined") return true;
@@ -28,7 +42,14 @@ function prefersNoMotion(): boolean {
   return reduced || comfort;
 }
 
-export function Thread({ illustration, tone = "light", className, ...rest }: ThreadProps) {
+export function Thread({
+  illustration,
+  tone = "light",
+  parallax = false,
+  className,
+  style,
+  ...rest
+}: ThreadProps) {
   const ref = useRef<SVGSVGElement>(null);
   const [state, setState] = useState<ThreadState>("idle");
   const { main, knot } = threadIllustrations[illustration];
@@ -63,7 +84,17 @@ export function Thread({ illustration, tone = "light", className, ...rest }: Thr
       strokeLinejoin="round"
       data-state={state}
       data-illustration={illustration}
-      className={cn("thread", tone === "dark" ? "text-white" : "text-teal-700", className)}
+      className={cn(
+        "thread",
+        tone === "dark" ? "text-white" : "text-teal-700",
+        parallax && "m-parallax",
+        className,
+      )}
+      style={
+        parallax
+          ? ({ ...style, "--m-parallax": `${THREAD_PARALLAX_PX}px` } as CSSProperties)
+          : style
+      }
       {...rest}
     >
       <path d={main} pathLength={1} />

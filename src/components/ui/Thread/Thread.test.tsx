@@ -56,6 +56,17 @@ describe("Thread", () => {
     expect(container.querySelector(".thread-knot")).toHaveClass("text-raspberry-500");
   });
 
+  it("glisse en parallaxe (16 px, CSS seul) seulement sur demande", () => {
+    const { container, rerender } = render(<Thread illustration="mains" />);
+    const svg = container.querySelector<SVGSVGElement>("svg");
+    expect(svg).not.toHaveClass("m-parallax");
+    expect(svg?.style.getPropertyValue("--m-parallax")).toBe("");
+    rerender(<Thread illustration="mains" parallax style={{ width: 40 }} />);
+    expect(svg).toHaveClass("m-parallax");
+    expect(svg?.style.getPropertyValue("--m-parallax")).toBe("16px");
+    expect(svg?.style.width).toBe("40px");
+  });
+
   it("reste visible sans IntersectionObserver ni matchMedia (progressive)", () => {
     const { container } = render(<Thread illustration="tasse" tone="dark" />);
     const svg = container.querySelector("svg");

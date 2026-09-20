@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { iconNames, type IconName } from "../components/ui/Icon/icons";
 
 /*
  * Schémas des fichiers de content/ : seule source autorisée pour les faits d'entreprise.
@@ -13,6 +14,25 @@ const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date AAAA-MM-JJ");
 
 export const interventionModeSchema = z.enum(["prestataire", "mandataire"]);
 export type InterventionMode = z.infer<typeof interventionModeSchema>;
+
+/* ---------- Photos (docs/design/PHOTOS.md, docs/design/CONCEPT.md §2) ---------- */
+
+/**
+ * Une photo d'illustration servie depuis public/images/ : chemin local, texte alternatif
+ * descriptif et neutre (jamais de prénom, jamais « notre équipe »), point d'intérêt au format
+ * `object-position` (« 50% 40% »). Le ratio d'affichage est choisi par le composant.
+ */
+export const photoSchema = z.strictObject({
+  src: z.string().regex(/^\/images\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\.(?:jpg|jpeg|png|webp|avif)$/, {
+    message: "chemin local sous /images/",
+  }),
+  alt: z.string().trim().min(1),
+  focal: z
+    .string()
+    .regex(/^\d{1,3}% \d{1,3}%$/, "point d'intérêt « 50% 40% »")
+    .optional(),
+});
+export type Photo = z.infer<typeof photoSchema>;
 
 /* ---------- content/site.config.json ---------- */
 
@@ -236,6 +256,9 @@ export const interfaceSchema = z.strictObject({
     resume: text.includes("{h}"),
     nuit_singulier: text,
     nuits_pluriel: text.includes("{n}"),
+    /** Sélecteur segmenté des exemples (WeekStory) et mention sous le récit. */
+    choisir_exemple: text,
+    prenom_fictif: text,
     activites: z.strictObject({
       gestes: text,
       repas: text,
@@ -331,6 +354,15 @@ export const interfaceSchema = z.strictObject({
     relu_par: text.includes("{nom}").includes("{fonction}").includes("{date}"),
     non_relu: text,
     maj: text.includes("{date}"),
+    /** Carte de relecture (SourcesList) : tant que `relu_par` est vide. */
+    relecture_attendue: text,
+    /** Encart « Ce que nous ne faisons pas », variante `frontiere` du Callout. */
+    frontiere: z.strictObject({
+      sous_titre: text,
+      colonne_faits: text,
+      colonne_relais: text,
+      ligne_fin: text,
+    }),
     pilier_lien: text.includes("{titre}"),
     soeurs_h2: text,
     commune_lien: text,
@@ -342,12 +374,69 @@ export const interfaceSchema = z.strictObject({
       aidant: text,
       transverse: text,
     }),
+    /** Nom de la rangée de liens-icônes vers les sous-pages d'un pilier (sous le hero). */
+    sous_pages_nom: text,
+    /**
+     * Gestes d'entrée des heros (docs/design/CONCEPT.md §4, src/components/blocks/HeroGestures/).
+     * Les clés des choix sont les valeurs des paramètres de requête transmis aux formulaires
+     * (`?planning=`, `?nuit=`, `?duree=`, `?sortie=`) : elles ne changent pas sans le formulaire.
+     */
+    gestes: z.strictObject({
+      stades: z.strictObject({ question: text, choix: z.array(text).length(3) }),
+      planning: z.strictObject({
+        question: text,
+        choix: z.strictObject({
+          "matin-soir": text,
+          semaine: text,
+          "week-end": text,
+          "24h": text,
+        }),
+      }),
+      fiche_de_vie: z.strictObject({
+        titre: text,
+        sous_titre: text,
+        voir: text,
+        recto: text,
+        lignes: z.strictObject({
+          aime: text,
+          apaise: text,
+          difficulte: text,
+          communique: text,
+          routines: text,
+          protocoles: text,
+        }),
+      }),
+      questionnaire: z.strictObject({ mention: text }),
+      nuit: z.strictObject({
+        question: text,
+        calme: z.strictObject({ titre: text, texte: text }),
+        active: z.strictObject({ titre: text, texte: text }),
+        duree_question: text,
+        durees: z.strictObject({ jours: text, semaines: text, durable: text }),
+      }),
+      sortie: z.strictObject({
+        question: text,
+        choix: z.strictObject({ demain: text, semaine: text, "a-confirmer": text }),
+      }),
+    }),
   }),
   barre_mobile: z.strictObject({
     nom: text,
     appeler: text,
     rappel: text,
     demande: text,
+    /** Libellés courts affichés sur une ligne à 375 px ; les libellés complets restent le nom accessible. */
+    court: z.strictObject({
+      appeler: text,
+      rappel: text,
+      demande: text,
+    }),
+  }),
+  /** Rail de conversion des pages intérieures (ConversionRail, docs/design/CONCEPT.md §7). */
+  rail_conversion: z.strictObject({
+    nom: text,
+    appeler: text.includes("{téléphone}"),
+    reassurance: text,
   }),
   formulaires: z.strictObject({
     accroche: text,
@@ -482,6 +571,8 @@ const navigationItemSchema = z
   .strictObject({
     id: slug,
     libelle: text,
+    /** Libellé court pour la barre de l'en-tête (une ligne) ; `libelle` reste le nom accessible et le libellé du menu mobile. */
+    libelle_court: text.optional(),
     href: internalPath.optional(),
     enfants: z.array(navigationChildSchema).min(1).optional(),
   })
@@ -522,6 +613,8 @@ const weekExampleSchema = z
     contexte: text.optional(),
     /** Renvoi au cahier qui décrit l'exemple : aucune semaine type inventée sans source. */
     source: z.string().regex(/^docs\/0[0-7]/, "renvoi à un cahier docs/0x"),
+    /** Photo d'ambiance de l'exemple (docs/design/PHOTOS.md §5) : jamais la personne de l'exemple. */
+    photo: photoSchema.optional(),
     entrees: z.array(weekEntrySchema).min(1),
   })
   .refine(
@@ -540,6 +633,37 @@ export type WeekExample = z.infer<typeof weekExampleSchema>;
 /* ---------- content/pages/accueil.json ---------- */
 
 const illustrationName = z.enum(["maison", "mains", "tasse", "lune", "cartable", "carnet"]);
+
+/** Nom d'icône du registre `Icon` (docs/design/ICONES.md), validé contre le registre. */
+const homeIconName = z.enum(iconNames as [IconName, ...IconName[]]);
+
+/**
+ * Parcours « Pour qui cherchez-vous de l'aide ? » (docs/design/CONCEPT.md §3 et §8) : la
+ * question, six choix (icône 32 px, lien de repli sans JavaScript), le titre du panneau du
+ * bloc 2 avec son jeton {pour}, rempli par le `pour` de chaque choix. Un choix sans `pour` n'a
+ * pas de panneau : c'est un lien direct (« Je ne sais pas encore » → Être rappelé(e)), auquel la
+ * page ajoute `?motif=<id>` ; la page de rappel affiche alors le message de `motifs[id]`
+ * (content/pages/etre-rappele.json).
+ */
+const homeJourneySchema = z.strictObject({
+  _lisezmoi: z.string().optional(),
+  question: text,
+  choix: z
+    .array(
+      z.strictObject({
+        id: slug,
+        libelle: text,
+        /** Complément du titre du panneau (« pour votre parent ») ; absent : lien direct. */
+        pour: text.optional(),
+        icone: homeIconName,
+        href: internalPath,
+      }),
+    )
+    .length(6),
+  titre_panneau: text.includes("{pour}"),
+  autre: text,
+  toutes: text,
+});
 const engagementCode = z.string().regex(/^E\d+$/);
 
 export const homePageSchema = z.strictObject({
@@ -553,6 +677,12 @@ export const homePageSchema = z.strictObject({
     note_astérisque: text,
     note_href: internalPath,
     illustration: illustrationName,
+    /** Photo du hero (docs/design/CONCEPT.md §3 bloc 1) ; absente : illustration au fil. */
+    photo: photoSchema.optional(),
+    /** Point où le fil du hero pose son nœud (« 49% 82% ») : un objet, une main, jamais un visage. */
+    noeud: photoSchema.shape.focal,
+    /** Geste d'entrée « Pour qui cherchez-vous de l'aide ? » ; absent : pas de picker. */
+    parcours: homeJourneySchema.optional(),
   }),
   situations: z.strictObject({
     h2: text,
@@ -564,30 +694,62 @@ export const homePageSchema = z.strictObject({
           texte: text,
           lien: text,
           href: internalPath,
-          illustration: illustrationName,
+          /** Icône 48 px de la carte (docs/design/CONCEPT.md §3 bloc 2). */
+          icone: homeIconName,
         }),
       )
       .length(6),
   }),
   engagements: z.strictObject({
     h2: text,
-    items: z.array(z.strictObject({ engagement: engagementCode, titre: text, texte: text })).min(1),
+    items: z
+      .array(
+        z.strictObject({
+          engagement: engagementCode,
+          titre: text,
+          texte: text,
+          /** Icône 32 px dans le nœud du fil (docs/design/CONCEPT.md §3 bloc 3) ; décorative. */
+          icone: homeIconName.optional(),
+        }),
+      )
+      .min(1),
   }),
   neuro: z.strictObject({
     h2: text,
     texte: text,
-    stades: z.array(z.strictObject({ titre: text, texte: text.optional() })).length(3),
+    stades: z
+      .array(
+        z.strictObject({
+          titre: text,
+          texte: text.optional(),
+          /** Icône 32 px dans le nœud du stade ; décorative. */
+          icone: homeIconName.optional(),
+        }),
+      )
+      .length(3),
     bouton: text,
     href: internalPath,
+    photo: photoSchema.optional(),
   }),
   semaine: z.strictObject({
     h2: text,
     texte: text,
-    onglets_nom: text,
-    onglets: z.array(z.strictObject({ exemple: slug, libelle: text })).length(3),
+    /** Exemples du sélecteur segmenté (nom accessible : interface.json > semaine_type.choisir_exemple). */
+    onglets: z
+      .array(
+        z.strictObject({
+          exemple: slug,
+          libelle: text,
+          photo: photoSchema.optional(),
+          /** Icône 24 px dans le bouton du sélecteur ; décorative. */
+          icone: homeIconName.optional(),
+        }),
+      )
+      .length(3),
   }),
   etapes: z.strictObject({
     h2: text,
+    photo: photoSchema.optional(),
     items: z
       .array(
         z
@@ -596,6 +758,8 @@ export const homePageSchema = z.strictObject({
             texte: text,
             texte_engagement: text.optional(),
             engagement: engagementCode.optional(),
+            /** Icône 24 px dans le nœud de l'étape ; décorative. */
+            icone: homeIconName.optional(),
           })
           .refine(
             (step) => (step.texte_engagement === undefined) === (step.engagement === undefined),
@@ -610,6 +774,8 @@ export const homePageSchema = z.strictObject({
     h2: text,
     texte: text,
     carte_tarifs: z.strictObject({ titre: text, bouton: text, href: internalPath }),
+    /** Carte de repli tant que content/tarifs.json est vide : aucun chiffre. */
+    carte_devis: z.strictObject({ titre: text, texte: text }),
     carte_aides: z.strictObject({ titre: text, aides: z.array(text).min(1), href: internalPath }),
   }),
   proches: z.strictObject({
@@ -617,6 +783,7 @@ export const homePageSchema = z.strictObject({
     texte: text,
     href: internalPath,
     illustration: illustrationName,
+    photo: photoSchema.optional(),
   }),
   territoire: z.strictObject({
     h2: text,
@@ -940,6 +1107,11 @@ export const callbackPageSchema = z.strictObject({
   ariane: text,
   h1: text,
   chapo: text,
+  /**
+   * Message affiché au-dessus du formulaire selon `?motif=<clé>` dans l'adresse (lu côté client,
+   * rien n'est conservé) : `inconnu` vient du choix « Je ne sais pas encore » de l'accueil.
+   */
+  motifs: z.record(slug, text),
   appel_h2: text,
   appel_texte: text.includes("{téléphone}"),
 });

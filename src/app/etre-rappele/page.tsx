@@ -7,11 +7,13 @@ import { Lead } from "@/components/ui/Lead/Lead";
 import { getCallbackPage, getInterfaceTexts, getNavigation, getSiteConfig } from "@/content/loader";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { pageTitle } from "@/lib/seo/title";
+import { MotiveNotice } from "./MotiveNotice";
 
 /*
  * /etre-rappele/ (docs/05 §2) : le rappel en trente secondes, ouvert depuis l'en-tête, la barre
  * mobile et la fin de chaque page. Page statique : `?commune=92062` (code INSEE) est lu par le
- * champ commune côté client.
+ * champ commune côté client ; `?motif=inconnu` (choix « Je ne sais pas encore » de l'accueil)
+ * affiche le message correspondant au-dessus du formulaire (`MotiveNotice`).
  */
 
 export function generateMetadata(): Metadata {
@@ -48,6 +50,7 @@ export default function CallbackPage() {
 
       <Section tone="white" aria-label={page.h1}>
         <div className="max-w-2xl">
+          <MotiveNotice messages={page.motifs} className="mb-8" />
           <RappelForm
             texts={{ ...formulaires, ...formulaires.rappel, recherche: recherche_commune }}
             phone={phone}

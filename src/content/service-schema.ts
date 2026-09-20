@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { seoFieldsSchema, sourceSchema } from "./schemas";
+import { photoSchema, seoFieldsSchema, sourceSchema } from "./schemas";
 
 /*
  * En-tête (frontmatter) d'une page service ou pathologie : content/services/*.mdx, gabarit de
@@ -50,6 +50,57 @@ export const serviceForms = [
 
 const personSchema = z.strictObject({ nom: text, fonction: text });
 
+/** Nom d'icône du registre `Icon` (docs/design/ICONES.md) : validé par le composant, pas ici. */
+const iconName = z
+  .string()
+  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "nom d'icône en minuscules et tirets");
+
+/**
+ * Gestes d'entrée du hero (docs/design/CONCEPT.md §4), un par page au plus :
+ * `lecteur` (sélecteur « pour un proche / pour moi »), `stades` (« Où en est la maladie ? »),
+ * `planning` (raccourcis du planning), `fiche-de-vie` (carte qui se retourne), `questionnaire`
+ * (première question de « Où en êtes-vous ? »), `nuit` (nuit calme ou active), `duree`
+ * (« Combien de temps ? », présence 24h/24), `sortie` (« Quand est la sortie ? »).
+ * Composants : src/components/blocks/HeroGestures/.
+ */
+export const heroGestures = [
+  "lecteur",
+  "stades",
+  "planning",
+  "fiche-de-vie",
+  "questionnaire",
+  "nuit",
+  "duree",
+  "sortie",
+] as const;
+export type HeroGesture = (typeof heroGestures)[number];
+
+/**
+ * Bannière personnalisée (docs/design/CONCEPT.md §4) : photo 4:5 (bande 16:9 sur mobile),
+ * variante « pour vous-même » basculée par le sélecteur de lecteur (pilier personnes âgées),
+ * ton sombre (teal-900) pour la garde de nuit et la présence 24h/24, geste d'entrée.
+ */
+export const serviceHeroSchema = z.strictObject({
+  photo: photoSchema,
+  photo_pour_soi: photoSchema.optional(),
+  ton: z.enum(["clair", "sombre"]).optional(),
+  /** Point où le fil pose son nœud (« 50% 78% ») : un objet, une main, jamais un visage. */
+  noeud: photoSchema.shape.focal,
+  geste: z.enum(heroGestures).optional(),
+});
+export type ServiceHero = z.infer<typeof serviceHeroSchema>;
+
+/** Item de « Ce que nous ne faisons pas » avec, en option, qui le fait à notre place. */
+export const frontiereItemSchema = z.strictObject({ texte: text, relais: text.optional() });
+export type FrontiereItem = z.infer<typeof frontiereItemSchema>;
+
+/** Les items de la section 9 sous une forme unique (chaîne → `{ texte }`). */
+export function frontiereItems(
+  items: readonly (string | FrontiereItem)[],
+): { texte: string; relais?: string }[] {
+  return items.map((item) => (typeof item === "string" ? { texte: item } : item));
+}
+
 export const servicePageSchema = z
   .strictObject({
     titre: seoFieldsSchema.shape.titre,
@@ -62,15 +113,34 @@ export const servicePageSchema = z
     /** Deux pages sœurs (maillage de docs/03 §2). */
     soeurs: z.array(internalPath).min(2).max(3),
     h1: text,
+    /** Libellé court (liens-icônes sous le hero du pilier, cartes sœurs) ; à défaut, le H1. */
+    libelle_court: text.optional(),
+    /** Rang d'affichage parmi les sous-pages d'un pilier (liens-icônes) ; à défaut, l'ordre des fichiers. */
+    ordre: z.number().int().positive().optional(),
+    /** Icône de la page (menus, cartes sœurs, formulaire), registre `Icon`. */
+    icone: iconName.optional(),
+    /** Section 1 : photo du hero ; absente, l'illustration au fil reste. */
+    hero: serviceHeroSchema.optional(),
     chapo: text,
     /** docs/03 §4 : version « Pour vous-même » du chapô, affichée par un sélecteur (pilier personnes âgées). */
     chapo_pour_soi: text.optional(),
     /** Deux phrases de promesse sous le H1 (section 1). */
     promesse: z.array(text).length(2),
     reassurance: z.array(text).min(2).max(4),
-    /** Section 2 : situations vécues, du point de vue du proche ou de la personne. */
+    /**
+     * Section 2 : situations vécues, du point de vue du proche ou de la personne. `href` :
+     * destination propre (formulaire ou page précise) ; la carte devient alors un lien, et le
+     * panneau du parcours d'accueil y mène au lieu de l'ancre `#situations` du pilier.
+     */
     situations: z
-      .array(z.strictObject({ titre: text, texte: text }))
+      .array(
+        z.strictObject({
+          titre: text,
+          texte: text,
+          icone: iconName.optional(),
+          href: internalPath.optional(),
+        }),
+      )
       .min(3)
       .max(5),
     /** Section 3 : quatre rubriques, verbes d'action, exemples précis. */
@@ -88,13 +158,29 @@ export const servicePageSchema = z
       .min(2)
       .max(5),
     /** Section 5 : exemple de content/semaines-types.json et récit de 80 à 120 mots. */
-    semaine_type: z.strictObject({ exemple: z.string().min(1), recit: words(80, 120) }),
+    semaine_type: z.strictObject({
+      exemple: z.string().min(1),
+      /** Photo d'ambiance de l'exemple (3:2), jamais la personne de l'exemple. */
+      photo: photoSchema.optional(),
+      recit: words(80, 120),
+    }),
+    /** Photos de section (docs/design/CONCEPT.md §5) : section 3 et section 7, deux au plus. */
+    photos: z
+      .strictObject({ actions: photoSchema.optional(), proches: photoSchema.optional() })
+      .optional(),
     /** Section 7. */
     proches: z.strictObject({ texte: text }),
     /** Section 8. */
     intervenants: z.strictObject({ texte: text }),
-    /** Section 9 : encart de franchise (docs/03 §1, règle 4). */
-    ne_faisons_pas: z.array(text).min(2).max(6),
+    /**
+     * Section 9 : encart de franchise (docs/03 §1, règle 4). Une chaîne, ou `{ texte, relais }`
+     * quand la phrase nomme qui le fait (« les soignants », « l'orthophoniste ») : le relais
+     * s'affiche en seconde colonne de l'encart `frontiere` (docs/design/CONCEPT.md §5).
+     */
+    ne_faisons_pas: z
+      .array(z.union([text, frontiereItemSchema]))
+      .min(2)
+      .max(6),
     /** Section 10 : identifiants de content/aides.json. */
     aides: z.array(z.string().min(1)).min(1).max(6),
     /** Section 11 : 6 à 8 questions réelles, réponses de 40 à 90 mots. */

@@ -35,6 +35,14 @@ test.describe("Pied de page et barre mobile (P1.6)", () => {
       "href",
       "tel:+33184801703",
     );
+    // Libellés courts sur une ligne, libellé complet annoncé (docs/design/CONCEPT.md §7).
+    const callback = bar.getByRole("link", { name: "Être rappelé(e)" });
+    await expect(callback).toHaveText("Rappel");
+    const heights = await bar
+      .locator("a")
+      .evaluateAll((nodes) => nodes.map((node) => node.getBoundingClientRect().height));
+    for (const height of heights) expect(height).toBeGreaterThanOrEqual(48);
+    for (const height of heights) expect(height).toBeLessThanOrEqual(64);
     await page.getByLabel("Votre prénom").focus();
     await expect(bar).toHaveAttribute("data-field-active", "true");
     await expect(bar).toHaveAttribute("inert", "");

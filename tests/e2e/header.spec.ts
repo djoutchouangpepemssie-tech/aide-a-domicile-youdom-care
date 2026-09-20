@@ -52,6 +52,30 @@ test.describe("En-tête (P1.5)", () => {
     await expectNoSeriousAxeViolations(page);
   });
 
+  test("les entrées tiennent sur une ligne, libellés courts affichés, complets annoncés", async ({
+    page,
+    isMobile,
+  }) => {
+    test.skip(isMobile, "barre de navigation réservée aux grands écrans");
+    await page.goto("/");
+    const nav = page.getByRole("navigation", { name: "Navigation principale" }).first();
+    const tarifs = nav.getByRole("link", { name: "Tarifs et aides" });
+    await expect(tarifs).toHaveText("Tarifs");
+    await expect(nav.getByRole("button", { name: "Nos services" })).toHaveText("Services");
+
+    // Aucune entrée repliée : chaque cible tient sur une ligne (docs/design/CONCEPT.md §1, point 9).
+    const entries = nav.locator(":scope > ul > li > :first-child");
+    const heights = await entries.evaluateAll((nodes) =>
+      nodes.map((node) => node.getBoundingClientRect().height),
+    );
+    expect(heights.length).toBe(6);
+    for (const height of heights) expect(height).toBeLessThanOrEqual(60);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
+    expect(overflow).toBe(false);
+  });
+
   test("l'en-tête devient compact au défilement", async ({ page }) => {
     await page.goto("/styleguide/");
     const header = page.locator("header").first();

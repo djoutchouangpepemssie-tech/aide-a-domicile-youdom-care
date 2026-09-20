@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Navigation principale de l'en-tête (docs/00 §5 « Navigation »). Six entrées, deux menus déroulants. Les adresses suivent l'arborescence de docs/00 §5 : minuscules, tirets, barre oblique finale.",
+  "_lisezmoi": "Navigation principale de l'en-tête (docs/00 §5 « Navigation »). Six entrées, deux menus déroulants. Les adresses suivent l'arborescence de docs/00 §5 : minuscules, tirets, barre oblique finale. `libelle_court` (facultatif) est le texte affiché dans la barre de l'en-tête sur ordinateur, pour tenir sur une ligne ; `libelle` reste le nom lu par les lecteurs d'écran et le libellé du menu mobile.",
   "principale": [
     {
       "id": "pour-qui",
@@ -35,6 +35,7 @@
     {
       "id": "services",
       "libelle": "Nos services",
+      "libelle_court": "Services",
       "enfants": [
         {
           "libelle": "Garde de nuit",
@@ -49,7 +50,7 @@
         {
           "libelle": "Sortie d'hospitalisation",
           "href": "/services/sortie-d-hospitalisation/",
-          "description": "Organisation en 48 h"
+          "description": "Un retour préparé"
         },
         {
           "libelle": "Garde-malade",
@@ -67,7 +68,12 @@
       ]
     },
     { "id": "comment-ca-marche", "libelle": "Comment ça marche", "href": "/comment-ca-marche/" },
-    { "id": "tarifs-et-aides", "libelle": "Tarifs et aides", "href": "/tarifs-et-aides/" },
+    {
+      "id": "tarifs-et-aides",
+      "libelle": "Tarifs et aides",
+      "libelle_court": "Tarifs",
+      "href": "/tarifs-et-aides/"
+    },
     { "id": "territoires", "libelle": "Territoires", "href": "/aide-a-domicile/" },
     { "id": "le-fil", "libelle": "Le Fil", "href": "/magazine/" }
   ],

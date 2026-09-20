@@ -1,0 +1,36 @@
+/*
+ * `week-fill` (docs/design/CONCEPT.md §6) : quand la grille entre dans l'écran, les cases
+ * remplies apparaissent l'une après l'autre, ligne par ligne, 20 ms d'écart (`--m-i` posé par le
+ * composant, côté serveur), une seule fois. Le composant est enveloppé par `Reveal` : l'attribut
+ * `data-reveal` n'est posé qu'après le montage, seulement si le mouvement est permis ; sans
+ * JavaScript, la grille est pleine d'emblée. Tout s'éteint en mouvement réduit, en mode confort
+ * et sous la simulation du styleguide.
+ */
+
+.week-planner[data-reveal="pending"] .week-fill {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.week-planner[data-reveal="in"] .week-fill {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--duration-slow, 300ms) var(--ease-out, ease-out) calc(var(--m-i, 0) * 20ms),
+    transform var(--duration-slow, 300ms) var(--ease-out, ease-out) calc(var(--m-i, 0) * 20ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .week-planner[data-reveal] .week-fill {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+:root[data-comfort="on"] .week-planner[data-reveal] .week-fill,
+:root[data-motion="reduce"] .week-planner[data-reveal] .week-fill {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}

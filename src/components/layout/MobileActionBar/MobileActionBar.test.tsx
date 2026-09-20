@@ -12,6 +12,7 @@ const props = {
     appeler: "Appeler",
     rappel: "Être rappelé(e)",
     demande: "Ma demande",
+    court: { appeler: "Appeler", rappel: "Rappel", demande: "Ma demande" },
   },
 };
 
@@ -29,6 +30,16 @@ describe("MobileActionBar", () => {
     );
     expect(screen.getByRole("link", { name: "Ma demande" })).toBeInTheDocument();
     expect(bar).toHaveAttribute("data-field-active", "false");
+  });
+
+  it("affiche les libellés courts et garde les libellés complets comme nom accessible", () => {
+    render(<MobileActionBar {...props} />);
+    const callback = screen.getByRole("link", { name: "Être rappelé(e)" });
+    expect(callback).toHaveTextContent(/^Rappel$/);
+    expect(callback).toHaveAttribute("aria-label", "Être rappelé(e)");
+    // Libellé court identique au complet : pas d'aria-label redondant.
+    expect(screen.getByRole("link", { name: "Appeler" })).not.toHaveAttribute("aria-label");
+    expect(screen.getByRole("link", { name: "Ma demande" })).toHaveTextContent(/^Ma demande$/);
   });
 
   it("se retire quand un champ de saisie a le focus, puis revient", async () => {

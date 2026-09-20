@@ -18,12 +18,28 @@ export const serviceExemple: ServicePage = {
   pilier: "/exemple/",
   soeurs: ["/exemple/soeur-un/", "/exemple/soeur-deux/"],
   h1: "Exemple de page service",
+  libelle_court: "Exemple",
+  ordre: 1,
+  icone: "maison",
+  hero: {
+    photo: {
+      src: "/images/exemples/exemple-hero.jpg",
+      alt: "Une pièce claire avec une table et deux chaises",
+      focal: "50% 40%",
+    },
+    photo_pour_soi: {
+      src: "/images/exemples/exemple-hero-soi.jpg",
+      alt: "Un balcon ensoleillé avec une chaise et une plante",
+    },
+    ton: "clair",
+    geste: "stades",
+  },
   chapo: "Un chapô fictif pour les tests.",
   promesse: ["Première phrase de promesse.", "Seconde phrase de promesse."],
   reassurance: ["Réassurance une", "Réassurance deux"],
   situations: [
-    { titre: "Situation une", texte: "Texte une." },
-    { titre: "Situation deux", texte: "Texte deux." },
+    { titre: "Situation une", texte: "Texte une.", icone: "tasse" },
+    { titre: "Situation deux", texte: "Texte deux.", href: "/demande/maladie-neurodegenerative/" },
     { titre: "Situation trois", texte: "Texte trois." },
   ],
   actions: [
@@ -39,10 +55,24 @@ export const serviceExemple: ServicePage = {
     { titre: "Au début", texte: "Texte du début." },
     { titre: "Plus tard", texte: "Texte de plus tard." },
   ],
-  semaine_type: { exemple: "madeleine", recit: mots(90) },
+  semaine_type: {
+    exemple: "madeleine",
+    photo: {
+      src: "/images/exemples/exemple-semaine.jpg",
+      alt: "Une table de cuisine avec deux tasses, sous une lumière douce",
+      focal: "50% 55%",
+    },
+    recit: mots(90),
+  },
+  photos: {
+    actions: { src: "/images/exemples/exemple-actions.jpg", alt: "Un couloir lumineux" },
+  },
   proches: { texte: "Texte pour les proches." },
   intervenants: { texte: "Texte sur les intervenants." },
-  ne_faisons_pas: ["Les soins infirmiers", "Les décisions médicales"],
+  ne_faisons_pas: [
+    "Les soins infirmiers",
+    { texte: "Les décisions médicales", relais: "le médecin traitant" },
+  ],
   aides: ["apa", "credit-d-impot-et-avance-immediate"],
   faq: Array.from({ length: 6 }, (_, i) => ({
     question: `Question fictive numéro ${i + 1} ?`,

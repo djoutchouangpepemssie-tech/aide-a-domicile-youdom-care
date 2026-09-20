@@ -4,6 +4,7 @@ import { ServiceTemplate, type ServiceTemplateData } from "@/components/service/
 import { listFormDefinitions } from "@/content/form-definitions";
 import {
   getAids,
+  getCaregiverCheckPage,
   getCommitments,
   getInterfaceTexts,
   getNavigation,
@@ -57,6 +58,23 @@ export async function buildServiceData(chemin: string): Promise<ServiceTemplateD
   const pricing = getPricing();
   const all = await listServicePages();
   const linkedTitles = Object.fromEntries(all.map((p) => [p.meta.chemin, p.meta.h1]));
+  const linkedIcons = Object.fromEntries(all.map((p) => [p.meta.chemin, p.meta.icone]));
+  // Sous-pages d'un pilier (liens-icônes sous le hero) : par `ordre`, puis par chemin.
+  const sousPages = all
+    .filter((p) => p.meta.pilier === page.meta.chemin)
+    .sort(
+      (a, b) =>
+        (a.meta.ordre ?? Number.MAX_SAFE_INTEGER) - (b.meta.ordre ?? Number.MAX_SAFE_INTEGER) ||
+        a.meta.chemin.localeCompare(b.meta.chemin, "fr"),
+    )
+    .map((p) => ({
+      chemin: p.meta.chemin,
+      libelle: p.meta.libelle_court ?? p.meta.h1,
+      ...(p.meta.icone ? { icone: p.meta.icone } : {}),
+    }));
+  // Première question de « Où en êtes-vous ? », posée dans le hero du pilier Aidants.
+  const caregiverCheck = getCaregiverCheckPage();
+  const firstQuestion = caregiverCheck.questions[0];
   const confidentialite =
     navigation.pied_de_page.legal.find((l) => /confidentialit/i.test(l.libelle))?.href ??
     "/politique-de-confidentialite/";
@@ -75,6 +93,15 @@ export async function buildServiceData(chemin: string): Promise<ServiceTemplateD
     specialForms: getSpecialForms(),
     budget: budgetBasis(pricing.prestations, pricing.credit_impot_taux),
     linkedTitles,
+    linkedIcons,
+    sousPages,
+    caregiverQuestion: firstQuestion
+      ? {
+          question: firstQuestion.texte,
+          reponses: caregiverCheck.reponses,
+          href: "/aidants/ou-en-etes-vous/",
+        }
+      : null,
     confidentialiteHref: confidentialite,
     tarifsHref:
       navigation.principale.find((item) => item.href?.includes("tarifs"))?.href ??

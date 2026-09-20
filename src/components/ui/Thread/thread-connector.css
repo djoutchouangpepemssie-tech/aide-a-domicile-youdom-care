@@ -1,0 +1,61 @@
+/*
+ * Rails au fil (docs/design/CONCEPT.md §2 « Il relie pour de vrai », §6 `fil-connecteur`).
+ * Un rail est une liste (`.t-rail`) dont les jalons (`.t-rail__item`) sont reliés par des
+ * segments du fil (`ThreadConnector`) et marqués par des nœuds (`ThreadKnot`). Le rail est
+ * enveloppé par `Reveal` variante `draw` : le fil se trace (motion.css) et, ici, chaque jalon
+ * se révèle quand le tracé l'atteint, au rythme du délai `--m-delay` posé par le composant.
+ * Profondeur légère facultative : `--t-depth` (translateZ) pour les stades.
+ * Rien n'est caché sans JavaScript : `data-reveal` n'est posé qu'après le montage, seulement si
+ * le mouvement est permis. Tout s'éteint en mouvement réduit, en mode confort et sous la
+ * simulation du styleguide.
+ */
+
+.t-rail[data-reveal="pending"] .t-rail__item {
+  opacity: 0;
+  transform: perspective(1200px) translateY(var(--motion-rise, 12px))
+    translateZ(var(--t-depth, 0px));
+}
+
+.t-rail[data-reveal="in"] .t-rail__item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--duration-slow, 300ms) var(--ease-out, ease-out) var(--m-delay, 0ms),
+    transform var(--duration-slow, 300ms) var(--ease-out, ease-out) var(--m-delay, 0ms);
+}
+
+/*
+ * Jalon actif (`data-active` sur le jalon, posé par un geste de hero ou par la prop `active`) :
+ * un seul nœud framboise dans le rail, le sien ; les autres repassent en teal, la carte prend
+ * une bordure teal-700. « Vous êtes ici. »
+ */
+.t-rail:has(.t-rail__item[data-active]:not([data-active="false"]))
+  .t-rail__item:not([data-active])
+  .t-knot,
+.t-rail .t-rail__item[data-active="false"] .t-knot {
+  color: var(--color-teal-700);
+}
+
+.t-rail .t-rail__item[data-active]:not([data-active="false"]) .t-knot {
+  color: var(--color-raspberry-500);
+}
+
+.t-rail .t-rail__item[data-active]:not([data-active="false"]) .t-rail__card {
+  border-color: var(--color-teal-700);
+}
+
+/* Mouvement réduit, mode confort, simulation : jalons visibles, à plat, sans transition. */
+@media (prefers-reduced-motion: reduce) {
+  .t-rail[data-reveal] .t-rail__item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+:root[data-comfort="on"] .t-rail[data-reveal] .t-rail__item,
+:root[data-motion="reduce"] .t-rail[data-reveal] .t-rail__item {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}

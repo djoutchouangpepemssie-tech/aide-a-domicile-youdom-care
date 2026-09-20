@@ -45,3 +45,12 @@ describe("ComfortToggle", () => {
     expect(second).toHaveAttribute("aria-pressed", "false");
   });
 });
+
+describe("ComfortToggle compact", () => {
+  it("garde son nom accessible quand le libellé est masqué", () => {
+    render(<ComfortToggle texts={texts} compact />);
+    const button = screen.getByRole("button", { name: "Confort de lecture" });
+    expect(button).toHaveAttribute("title", "Texte plus grand.");
+    expect(screen.getByText("Confort de lecture")).toHaveClass("sr-only");
+  });
+});

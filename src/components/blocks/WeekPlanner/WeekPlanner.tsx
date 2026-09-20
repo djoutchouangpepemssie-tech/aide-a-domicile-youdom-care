@@ -1,3 +1,6 @@
+import type { CSSProperties } from "react";
+import { CountUp } from "@/components/motion/CountUp/CountUp";
+import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { cn } from "@/lib/cn";
 import {
   indexWeek,
@@ -11,13 +14,19 @@ import {
   type WeekEntry,
   type WeekSlot,
 } from "@/lib/week/week";
+import "./week-planner.css";
 
 /*
- * Semaine type, variante lecture (docs/05 §4, docs/02 §7). Composant serveur, sans JavaScript :
- * un tableau réel (en-têtes de colonne = jours, de ligne = créneaux) à partir de 48 rem, une
- * liste par jour en dessous ; légende par activité ; l'état n'est jamais porté par la couleur
- * seule (texte dans chaque case). Mention « Exemple illustratif » toujours visible.
- * La variante saisie (cases à cocher) arrive en P3.2 sur le même modèle.
+ * Semaine type, variante lecture (docs/05 §4, docs/02 §7, docs/design/CONCEPT.md §3 bloc 5).
+ * Composant serveur, sans JavaScript propre : un tableau réel (en-têtes de colonne = jours, de
+ * ligne = créneaux) à partir de 48 rem, une liste par jour en dessous ; légende par activité ;
+ * l'état n'est jamais porté par la couleur seule (texte dans chaque case). Mention « Exemple
+ * illustratif » toujours visible.
+ * Mouvement : `week-fill` (les cases remplies apparaissent case par case, 20 ms d'écart, une
+ * fois, en CSS, déclenché par `Reveal`) et `count-up` sur le nombre d'heures du résumé (la valeur
+ * finale est rendue côté serveur ; le nombre vient des entrées, jamais d'ailleurs). En mouvement
+ * réduit ou sans JavaScript : grille pleine et résumé définitif d'emblée.
+ * La variante saisie (cases à cocher) vit dans WeekPlannerInput sur le même modèle.
  */
 
 export interface WeekPlannerTexts {
@@ -44,6 +53,9 @@ export interface WeekPlannerDisplayProps {
   className?: string;
 }
 
+/** Durée du comptage du résumé (CONCEPT §6 : 600 ms). */
+export const WEEK_COUNT_DURATION = 600;
+
 /* Couples de couleurs de docs/02 §2 seulement : encre sur fonds teintés, blanc sur teal-900. */
 const activityStyles: Record<WeekActivity, string> = {
   gestes: "bg-teal-50 text-ink",
@@ -53,23 +65,51 @@ const activityStyles: Record<WeekActivity, string> = {
   nuit: "bg-teal-900 text-white",
 };
 
-function summaryText(entries: readonly WeekEntry[], texts: WeekPlannerTexts): string {
-  const { hours, nights } = summarizeWeek(entries);
-  const base = texts.resume.replace("{h}", String(hours));
-  if (nights === 0) return `${base}.`;
-  const suffix =
-    nights === 1 ? texts.nuit_singulier : texts.nuits_pluriel.replace("{n}", String(nights));
-  return `${base}, ${suffix}.`;
+export interface WeekSummaryParts {
+  /** Texte avant le nombre d'heures (« Environ »). */
+  before: string;
+  hours: number;
+  /** Texte après le nombre d'heures, nuits et point final compris. */
+  after: string;
 }
 
-function EntryChip({ entry, texts }: { entry: WeekEntry; texts: WeekPlannerTexts }) {
+/** Découpe le résumé autour de {h} pour que le nombre puisse se compter. */
+export function summaryParts(
+  entries: readonly WeekEntry[],
+  texts: WeekPlannerTexts,
+): WeekSummaryParts {
+  const { hours, nights } = summarizeWeek(entries);
+  const [before = "", rest = ""] = texts.resume.split("{h}");
+  const suffix =
+    nights === 0
+      ? ""
+      : `, ${nights === 1 ? texts.nuit_singulier : texts.nuits_pluriel.replace("{n}", String(nights))}`;
+  return { before, hours, after: `${rest}${suffix}.` };
+}
+
+export function summaryText(entries: readonly WeekEntry[], texts: WeekPlannerTexts): string {
+  const { before, hours, after } = summaryParts(entries, texts);
+  return `${before}${hours}${after}`;
+}
+
+function EntryChip({
+  entry,
+  texts,
+  order,
+}: {
+  entry: WeekEntry;
+  texts: WeekPlannerTexts;
+  /** Rang de la case dans l'ordre de remplissage (`week-fill`). */
+  order: number;
+}) {
   const hours = entry.heures ?? `${slotHours[entry.creneau].from}–${slotHours[entry.creneau].to}`;
   return (
     <span
       className={cn(
-        "block rounded-field px-2 py-1.5 text-small leading-small",
+        "week-fill block rounded-field px-2 py-1.5 text-small leading-small",
         activityStyles[entry.activite],
       )}
+      style={{ "--m-i": String(order) } as CSSProperties}
     >
       <span className="block font-bold">{texts.activites[entry.activite]}</span>
       <span className="tabular-figures block">{hours}</span>
@@ -89,10 +129,18 @@ export function WeekPlanner({
   const usedActivities = weekActivities.filter((activity) =>
     entries.some((entry) => entry.activite === activity),
   );
-  const summary = summaryText(entries, texts);
+  const summary = summaryParts(entries, texts);
+  let tableOrder = 0;
+  let listOrder = 0;
 
   return (
-    <div className={cn("week-planner", className)} data-variant="display">
+    // `draw` ne cache rien ici (aucun tracé) : Reveal ne sert qu'à poser `data-reveal` pour week-fill.
+    <Reveal
+      as="div"
+      variant="draw"
+      className={cn("week-planner", className)}
+      data-variant="display"
+    >
       <table className="hidden w-full border-collapse md:table">
         <caption className="mb-3 text-left">
           <span className="block font-bold">{title}</span>
@@ -127,7 +175,7 @@ export function WeekPlanner({
                 return (
                   <td key={day} className="p-1 align-top">
                     {entry ? (
-                      <EntryChip entry={entry} texts={texts} />
+                      <EntryChip entry={entry} texts={texts} order={tableOrder++} />
                     ) : (
                       <span className="sr-only">{texts.libre}</span>
                     )}
@@ -157,7 +205,7 @@ export function WeekPlanner({
                   <ul className="m-0 mt-2 flex list-none flex-col gap-2 p-0">
                     {dayEntries.map((entry) => (
                       <li key={entry.creneau} className="max-w-none">
-                        <EntryChip entry={entry} texts={texts} />
+                        <EntryChip entry={entry} texts={texts} order={listOrder++} />
                       </li>
                     ))}
                   </ul>
@@ -168,7 +216,11 @@ export function WeekPlanner({
         </ul>
       </div>
 
-      <p className="mt-4 font-bold">{summary}</p>
+      <p className="week-summary mt-4 font-bold">
+        {summary.before}
+        <CountUp value={summary.hours} duration={WEEK_COUNT_DURATION} />
+        {summary.after}
+      </p>
 
       <div className="mt-3">
         <p className="m-0 text-small text-text-soft">{texts.legende}</p>
@@ -186,6 +238,6 @@ export function WeekPlanner({
           ))}
         </ul>
       </div>
-    </div>
+    </Reveal>
   );
 }
