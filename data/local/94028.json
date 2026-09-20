@@ -1,0 +1,447 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "94028",
+  "kind": "commune",
+  "nom": "Créteil",
+  "chemin": "/aide-a-domicile/val-de-marne/creteil/",
+  "slug": "creteil",
+  "departement": "94",
+  "departement_nom": "Val-de-Marne",
+  "codes_postaux": [
+    "94000"
+  ],
+  "parent": "94",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.7845,
+    "lng": 2.4523
+  },
+  "superficie_ha": 1141.93,
+  "population": 93397,
+  "demographie": {
+    "millesime": "2022",
+    "population": 92859,
+    "part_60_74": 13.1,
+    "part_75_89": 5.6,
+    "part_90_plus": 0.8,
+    "part_75_plus": 6.4,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "vitry-sur-seine",
+    "distance_km": 4.2
+  },
+  "communes_voisines": [
+    {
+      "code": "94046",
+      "nom": "Maisons-Alfort",
+      "slug": "maisons-alfort",
+      "distance_km": 2.1,
+      "page": true
+    },
+    {
+      "code": "94002",
+      "nom": "Alfortville",
+      "slug": "alfortville",
+      "distance_km": 2.6,
+      "page": true
+    },
+    {
+      "code": "94011",
+      "nom": "Bonneuil-sur-Marne",
+      "slug": "bonneuil-sur-marne",
+      "distance_km": 3.3,
+      "page": false
+    },
+    {
+      "code": "94022",
+      "nom": "Choisy-le-Roi",
+      "slug": "choisy-le-roi",
+      "distance_km": 3.3,
+      "page": true
+    },
+    {
+      "code": "94068",
+      "nom": "Saint-Maur-des-Fossés",
+      "slug": "saint-maur-des-fosses",
+      "distance_km": 3.4,
+      "page": true
+    },
+    {
+      "code": "94069",
+      "nom": "Saint-Maurice",
+      "slug": "saint-maurice",
+      "distance_km": 3.8,
+      "page": true
+    },
+    {
+      "code": "94074",
+      "nom": "Valenton",
+      "slug": "valenton",
+      "distance_km": 3.9,
+      "page": false
+    },
+    {
+      "code": "94042",
+      "nom": "Joinville-le-Pont",
+      "slug": "joinville-le-pont",
+      "distance_km": 4.1,
+      "page": false
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "13,1 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "6,4 % de la population (75-89 ans : 5,6 % ; 90 ans ou plus : 0,8 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "92 859 habitants (Créteil)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Espace autonomie - Secteur 4",
+      "address": "28 avenue de Verdun, 94000 CRETEIL",
+      "telephone": "01 56 71 56 04",
+      "url": "https://www.valdemarne.fr/a-votre-service/autonomie/centre-local-dinformation-et-de-coordination-secteur-4-clic",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Créteil",
+      "address": "7-9 voie Félix Eboué, Espace autonomie - secteur 4 (ex-CLIC), 94000 Créteil",
+      "commune_insee": "94028",
+      "telephone": "01 56 71 56 04",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/021bd095-a9d5-4c80-a287-9538859b1aae",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Val-de-Marne",
+      "address": "Immeuble Solidarité, 7-9 voie Félix Éboué, 94046 Créteil Cedex",
+      "commune_insee": "94028",
+      "telephone": "01 43 99 79 00",
+      "url": "https://www.valdemarne.fr/a-votre-service/handicap/maison-departementale-des-personnes-handicapees-mdph",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/98a4d3a3-3d62-452e-a9da-d7263de81bc2",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Val-de-Marne",
+      "address": "21 avenue du Général-de-Gaulle, Hôtel du département, 94000 Créteil",
+      "commune_insee": "94028",
+      "telephone": "3994",
+      "url": "https://www.valdemarne.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/b5c9510a-5e42-49fc-928c-db92caf8b76b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD de la Cristolienne",
+      "value": "EHPAD · Accueil de jour · Unité Alzheimer — 86 places",
+      "address": "Avenue du chemin de Mesly, 94000 CRETEIL",
+      "telephone": "01 49 80 20 80",
+      "url": "http://www.abcd94.fr/residences-personnes-agees/les-residences-en-photos/residence-de-la-cristolienne/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Le Hameau du Mesly",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire · Unité Alzheimer — 94 places",
+      "address": "60 Avenue du Docteur Paul Casalis, 94000 CRETEIL",
+      "telephone": "01 49 56 20 90",
+      "url": "http://www.arepa.org/le-hameau-de-mesly-residence-79.html",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer soleil des bordières",
+      "value": "Résidence autonomie — 70 places",
+      "address": "2 rue Henri Koch, 94000 CRETEIL",
+      "telephone": "01 48 98 52 06",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence Joseph Franceschi",
+      "value": "Résidence autonomie — 69 places",
+      "address": "39 rue des écoles, 94000 CRETEIL",
+      "telephone": "01 49 81 05 74",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence Le halage",
+      "value": "Résidence autonomie — 59 places",
+      "address": "55 quartier du halage, 94000 CRETEIL",
+      "telephone": "01 48 99 66 71",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence Marivaux",
+      "value": "Résidence autonomie — 77 places",
+      "address": "2 rue Pierre Marivaux, 94000 CRETEIL",
+      "telephone": "01 48 99 41 70",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Claude Kelman",
+      "value": "EHPAD — 75 places",
+      "address": "1 rue Madame-de-Sevigne, 94000 CRETEIL",
+      "telephone": "01 56 71 85 60",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER INTERCOMMUNAL DE CRETEIL",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "40 avenue DE VERDUN, 94010 CRETEIL CEDEX",
+      "commune_insee": "94028",
+      "telephone": "01 45 17 50 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP HU HENRI MONDOR SITE CHENEVIER",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "40 rue DE MESLY, 94010 CRETEIL CEDEX",
+      "commune_insee": "94028",
+      "telephone": "01 49 81 30 01",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP HU HENRI MONDOR SITE HENRI MONDOR",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "51 avenue MAL DE LATTRE DE TASSIGNY, 94010 CRETEIL CEDEX",
+      "commune_insee": "94028",
+      "telephone": "01 49 81 21 11",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR POUR ADULTES CRETEIL",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "1 rue DES ECOLES, 94000 CRETEIL",
+      "commune_insee": "94028",
+      "telephone": "01 48 99 51 50",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADPED 94 l'Haÿ-Les-Roses, Chevilly-Larue, Fresnes et Rungis",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 ALLEE DES FLEURS, 94260 FRESNES",
+      "telephone": "01 46 68 30 62",
+      "url": "http://adped94.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation du Val-de-Marne",
+      "value": "Délégation départementale ; dd.94@apf.asso.fr",
+      "address": "34 rue de Brie, 94000 Créteil",
+      "telephone": "01 42 07 17 25",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "association",
+      "label": "APOGEI 94",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "70 AVENUE DU GENERAL DE GAULLE, 94000 CRETEIL",
+      "telephone": "01 42 07 52 90",
+      "url": "http://www.apogei94.com",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "association",
+      "label": "ETAI Kremlin-Bicêtre",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5-9 RUE MARCEL PAUL, 94800 VILLEJUIF",
+      "telephone": "01 83 62 39 35",
+      "url": "http://www.etai.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Val-de-Marne",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles, sur rendez-vous",
+      "address": "4 rue du Maréchal Vaillant, 94130 Nogent-sur-Marne",
+      "telephone": "01 48 72 87 82",
+      "url": "https://www.francealzheimer.org/valdemarne/",
+      "source_url": "https://www.francealzheimer.org/valdemarne/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/94/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Créteil",
+      "address": "1 place Salvador-Allende, 94000 Créteil",
+      "commune_insee": "94028",
+      "telephone": "01 49 80 92 94",
+      "url": "https://www.ville-creteil.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/e341dadb-926e-4e80-9868-b67c665aefda",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/94/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 94",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2294%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

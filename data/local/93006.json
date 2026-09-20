@@ -1,0 +1,375 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "93006",
+  "kind": "commune",
+  "nom": "Bagnolet",
+  "chemin": "/aide-a-domicile/seine-saint-denis/bagnolet/",
+  "slug": "bagnolet",
+  "departement": "93",
+  "departement_nom": "Seine-Saint-Denis",
+  "codes_postaux": [
+    "93170"
+  ],
+  "parent": "93",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.8671,
+    "lng": 2.4252
+  },
+  "superficie_ha": 256.63,
+  "population": 43086,
+  "demographie": {
+    "millesime": "2022",
+    "population": 41776,
+    "part_60_74": 12,
+    "part_75_89": 4.4,
+    "part_90_plus": 0.6,
+    "part_75_plus": 5,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "paris-12",
+    "distance_km": 4.4
+  },
+  "communes_voisines": [
+    {
+      "code": "93045",
+      "nom": "Les Lilas",
+      "slug": "les-lilas",
+      "distance_km": 1.7,
+      "page": false
+    },
+    {
+      "code": "93048",
+      "nom": "Montreuil",
+      "slug": "montreuil",
+      "distance_km": 1.8,
+      "page": true
+    },
+    {
+      "code": "75120",
+      "nom": "Paris 20e arrondissement",
+      "slug": "20e-arrondissement",
+      "distance_km": 2.2,
+      "page": true
+    },
+    {
+      "code": "93063",
+      "nom": "Romainville",
+      "slug": "romainville",
+      "distance_km": 2.2,
+      "page": false
+    },
+    {
+      "code": "93061",
+      "nom": "Le Pré-Saint-Gervais",
+      "slug": "le-pre-saint-gervais",
+      "distance_km": 2.4,
+      "page": true
+    },
+    {
+      "code": "94080",
+      "nom": "Vincennes",
+      "slug": "vincennes",
+      "distance_km": 2.4,
+      "page": false
+    },
+    {
+      "code": "94067",
+      "nom": "Saint-Mandé",
+      "slug": "saint-mande",
+      "distance_km": 2.9,
+      "page": true
+    },
+    {
+      "code": "75111",
+      "nom": "Paris 11e arrondissement",
+      "slug": "11e-arrondissement",
+      "distance_km": 3.3,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "proximite",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "5 % de la population (75-89 ans : 4,4 % ; 90 ans ou plus : 0,6 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "41 776 habitants (Bagnolet)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Bagnolet",
+      "address": "Place Salvador Allende, 93170 Bagnolet",
+      "commune_insee": "93006",
+      "telephone": "01 49 93 60 00",
+      "url": "https://www.ville-bagnolet.fr/des-services-a-votre-service/solidarite/le-centre-communal-d-action-sociale-ccas",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/8e5d0d90-fb4d-496b-86c6-d8dfbbbaf245",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-Saint-Denis",
+      "address": "44 rue Proudhon, Immeuble Pulse, 93210 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 43 93 86 86",
+      "url": "https://place-handicap.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/b7261db7-56e9-47eb-9333-2a18d4ae4219",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-Saint-Denis",
+      "address": "3 Esplanade Jean-Moulin, Hôtel du département, 93000 Bobigny",
+      "commune_insee": "93008",
+      "telephone": "01 43 93 93 93",
+      "url": "https://seinesaintdenis.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/012bd5bc-7ddd-4c92-bbd9-49d7fbbd6395",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence La butte aux pinsons",
+      "value": "Résidence autonomie — 48 places",
+      "address": "78 Rue Robespierre, 93170 BAGNOLET",
+      "telephone": "01 43 60 58 90",
+      "url": "http://www.ville-bagnolet.fr/index.php/residences-pour-les-seniors.html",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Les Quatre saisons",
+      "value": "EHPAD · Hébergement temporaire — 65 places",
+      "address": "73 rue Louis-Michel, 93170 BAGNOLET",
+      "telephone": "01 55 82 16 50",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Les Floralies",
+      "value": "EHPAD · Hébergement temporaire · Unité Alzheimer — 84 places",
+      "address": "2 rue Descartes BP 19, 93170 BAGNOLET",
+      "telephone": "01 49 20 50 50",
+      "url": "http://lesfloralies.btprms.com",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Marie",
+      "value": "EHPAD · Hébergement temporaire · Unité Alzheimer — 80 places",
+      "address": "91 Avenue de la République, 93170 BAGNOLET",
+      "telephone": "01 49 72 67 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE MEDICO CHIRURGICAL FLOREAL",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "40 rue FLOREAL, 93170 BAGNOLET",
+      "commune_insee": "93006",
+      "telephone": "01 48 97 72 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AFDAEIM Stains",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 ALLEE DU PARADIS, 93240 STAINS",
+      "telephone": "01 48 26 31 32",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AGECET",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "26, 31-37 avenue Galle, 93370 MONTFERMEIL",
+      "telephone": "01 45 09 46 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-Saint-Denis",
+      "value": "Permanence le lundi et le vendredi de 10 h à 12 h ; dd.93@apf.asso.fr",
+      "address": "89 rue Benoît Frachon, 93000 Bobigny",
+      "telephone": "01 48 10 25 35",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ARPEI Gagny",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 AVENUE DE BELLEVUE, 93220 GAGNY",
+      "telephone": "01 43 30 42 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer 93 et maladies apparentées",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "91 avenue de la Résistance, 93340 Le Raincy",
+      "telephone": "01 41 53 00 05",
+      "url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-Saint-Denis (93)",
+      "value": "Comité départemental de bénévoles (Montreuil)",
+      "telephone": "06 68 83 85 11",
+      "url": "https://www.franceparkinson.fr/comite-93/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Bagnolet",
+      "address": "1 place Salvador-Allende, 93171 Bagnolet Cedex",
+      "commune_insee": "93006",
+      "telephone": "01 49 93 60 00",
+      "url": "http://www.ville-bagnolet.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/b63ca7e7-8111-4f5d-b0d3-1c80b4f7ae64",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 93",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2293%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

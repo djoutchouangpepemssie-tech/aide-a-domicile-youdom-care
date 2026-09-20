@@ -1,0 +1,442 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "91",
+  "kind": "departement",
+  "nom": "Essonne",
+  "chemin": "/aide-a-domicile/essonne/",
+  "slug": "essonne",
+  "departement": "91",
+  "departement_nom": "Essonne",
+  "parent": "idf",
+  "centre": {
+    "lat": 48.6287,
+    "lng": 2.4313
+  },
+  "population": 1338485,
+  "demographie": {
+    "millesime": "2022",
+    "population": 1324546,
+    "part_60_74": 13.5,
+    "part_75_89": 6.4,
+    "part_90_plus": 1,
+    "part_75_plus": 7.4,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "vitry-sur-seine",
+    "distance_km": 18.6
+  },
+  "vague": 1,
+  "motif_vague": "departement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "13,5 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "7,4 % de la population (75-89 ans : 6,4 % ; 90 ans ou plus : 1 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "1 324 546 habitants (Essonne)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Athis-Mons",
+      "address": "Centre local d'information et de coordination - Les Portes-de-L'Essonne, 3 rue Lefèvre-Utile, 91205 Athis-Mons Cedex",
+      "commune_insee": "91027",
+      "telephone": "01 69 57 80 92",
+      "url": "http://www.portesessonne.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/ed9eef8c-f443-48ff-83bc-40f08bf2437a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Ballainvilliers",
+      "address": "Centre local d'information et de coordination Orgyvette, 77 rue du Perray, 91160 Ballainvilliers",
+      "commune_insee": "91044",
+      "telephone": "01 69 80 46 92",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/c515b63d-22b4-4dc9-853a-0cbcf4bb8758",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Bretigny-sur-Orge",
+      "address": "Centre local d'information et de coordination Orgessonne, Espace social départemental, 18 place Federico-Garcia-Lorca, 91220 Bretigny-sur-Orge",
+      "commune_insee": "91103",
+      "telephone": "01 64 90 61 84",
+      "url": "http://www.clic-orgessonne.com",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/7b569b8e-5bc6-4884-8a3c-38b664d73fd0",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Courcouronnes",
+      "address": "Centre local d'information et de coordination du cur Essonne, 128 allée des Champs-Elysées, 91080 Evry-Courcouronnes",
+      "commune_insee": "91228",
+      "telephone": "01 60 78 01 01",
+      "url": "https://www.cliccoeuressonne.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/066027e0-e46f-4a23-862d-e14608738fe5",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Étampes",
+      "address": "Centre local d'information et de coordination sud-Essonne, 19 promenade des Prés, 91150 Étampes",
+      "commune_insee": "91223",
+      "telephone": "01 60 80 15 67",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/895c929c-951a-44e1-850c-2afbbdd6721b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Limours",
+      "address": "Centre local d'information et de coordination du Hurepoix, Place du Gymnase-Municipal, 91470 Limours",
+      "commune_insee": "91338",
+      "telephone": "01 64 91 71 48",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/195dcf24-afd0-4bc3-80d2-0c27a57c2128",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Massy",
+      "address": "Centre local d'information et de coordination La Harpe, 11 rue de Rome, 91300 Massy",
+      "commune_insee": "91377",
+      "telephone": "01 60 13 52 30",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/08439206-7814-4dbc-8666-d56e81847e4c",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Arpajon",
+      "address": "18 avenue de Verdun, Accueil de jour, 91290 Arpajon",
+      "commune_insee": "91021",
+      "telephone": "01 64 92 95 02",
+      "url": "https://www.ch-arpajon.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/3e2912d0-7fff-4c19-8966-4c4804b54a68",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Ballainvilliers",
+      "address": "Hôpital gériatrique Les Magnolias, Accueil de jour, 91160 Ballainvilliers",
+      "commune_insee": "91044",
+      "telephone": "01 69 80 59 72",
+      "url": "http://www.hopital-les-magnolias.com",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/2d4e2bf5-ecb7-4a79-b5f3-6d589c534fa2",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Essonne",
+      "address": "93 rue Henri Rochefort, 91000 Évry",
+      "commune_insee": "91228",
+      "telephone": "01 60 76 11 00",
+      "url": "https://www.essonne.fr/sante-social-solidarite/handicap/la-mdph",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/eb9f20b0-458b-4fff-8047-e2c12e0665f6",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Essonne",
+      "address": "Boulevard de France-Georges Pompidou, Hôtel du département, 91000 Evry-Courcouronnes",
+      "commune_insee": "91228",
+      "telephone": "01 60 91 91 91",
+      "url": "https://www.essonne.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/dc3f7356-c1b2-4641-967f-c3359d2fa22f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueils de jour recensés",
+      "value": "23 dans le département (Essonne)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidences autonomie recensées",
+      "value": "46 dans le département (Essonne)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD recensés",
+      "value": "100 dans le département (Essonne)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "18 avenue DE VERDUN, 91294 ARPAJON CEDEX",
+      "commune_insee": "91021",
+      "telephone": "01 64 92 92 92",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER D'ORSAY DOMAINE DU GRAND MESNIL",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 rue CHARLES DE GAULLE, 91440 BURES SUR YVETTE",
+      "commune_insee": "91122",
+      "telephone": "01 69 29 75 75",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE JUVISY SUR ORGE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "9 rue CAMILLE FLAMMARION, 91260 JUVISY SUR ORGE",
+      "commune_insee": "91326",
+      "telephone": "01 69 54 29 58",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER LONGJUMEAU",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "159 rue DU PDT FRANCOIS MITTERRAND, 91160 LONGJUMEAU",
+      "commune_insee": "91345",
+      "telephone": "01 64 54 33 33",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER NOUVEAU SUD FRANCILIEN",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "40 avenue SERGE DASSAULT, 91106 CORBEIL ESSONNES CEDEX",
+      "commune_insee": "91174",
+      "telephone": "01 61 69 61 69",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER ORSAY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "4 place DU GENERAL LECLERC, 91401 ORSAY CEDEX",
+      "commune_insee": "91471",
+      "telephone": "01 69 29 75 75",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER SUD ESSONNE DOURDAN ETAMPES SITE DOURDAN",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 rue DU POTELET, BP 102, 91415 DOURDAN CEDEX",
+      "commune_insee": "91200",
+      "telephone": "01 60 80 60 48",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER SUD ESSONNE DOURDAN SITE ETAMPES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "26 avenue CHARLES DE GAULLE, 91152 ETAMPES CEDEX",
+      "commune_insee": "91223",
+      "telephone": "01 60 80 60 48",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER SUD FRANCILIEN CH LOUISE MICHEL",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "59 boulevard HENRI DUNANT, BP 85, 91106 CORBEIL ESSONNES CEDEX",
+      "commune_insee": "91174",
+      "telephone": "01 61 69 61 69",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CH SUD ESSONNE DOURDAN ETAMPES CHIRURGIE CANCERS UROLOGIQUES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "40 avenue SERGE D ASSAULT, 91100 CORBEIL ESSONNES",
+      "commune_insee": "91174",
+      "telephone": "01 60 80 60 48",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP HU HENRI MONDOR SITE DUPUYTREN",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "1 rue EUGENE DELACROIX, 91210 DRAVEIL",
+      "commune_insee": "91201",
+      "telephone": "01 69 83 63 63",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "GROUPE PUBLIC DE SANTE PERRAY VAUCLUSE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "rue RIVOLI, 91360 EPINAY SUR ORGE",
+      "commune_insee": "91216",
+      "telephone": "01 69 25 42 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI de l'Essonne",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "124 avenue des Champs Lasniers, 91940 LES ULIS",
+      "telephone": "01 69 41 32 25",
+      "url": "https://adapei91.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de l'Essonne",
+      "value": "Délégation départementale ; dd.91@apf.asso.fr",
+      "address": "14 rue Léo Lagrange, 91700 Sainte-Geneviève-des-Bois",
+      "telephone": "01 60 15 31 35",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Essonne",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "52 rue Louis Robert, 91100 Corbeil-Essonnes",
+      "telephone": "01 60 88 20 07",
+      "url": "https://www.francealzheimer.org/essonne/",
+      "source_url": "https://www.francealzheimer.org/essonne/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de l'Essonne (91)",
+      "value": "Comité départemental de bénévoles (Ris-Orangis)",
+      "telephone": "06 82 28 02 90",
+      "url": "https://www.franceparkinson.fr/comite-91/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20"
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 91",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2291%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

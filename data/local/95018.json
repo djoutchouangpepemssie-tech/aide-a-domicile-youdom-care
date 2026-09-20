@@ -1,0 +1,396 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "95018",
+  "kind": "commune",
+  "nom": "Argenteuil",
+  "chemin": "/aide-a-domicile/val-d-oise/argenteuil/",
+  "slug": "argenteuil",
+  "departement": "95",
+  "departement_nom": "Val-d'Oise",
+  "codes_postaux": [
+    "95100"
+  ],
+  "parent": "95",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.9501,
+    "lng": 2.2478
+  },
+  "superficie_ha": 1738.97,
+  "population": 106130,
+  "demographie": {
+    "millesime": "2022",
+    "population": 107135,
+    "part_60_74": 12.7,
+    "part_75_89": 5.1,
+    "part_90_plus": 0.7,
+    "part_75_plus": 5.8,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "puteaux",
+    "distance_km": 7.4
+  },
+  "communes_voisines": [
+    {
+      "code": "95582",
+      "nom": "Sannois",
+      "slug": "sannois",
+      "distance_km": 2.6,
+      "page": false
+    },
+    {
+      "code": "92025",
+      "nom": "Colombes",
+      "slug": "colombes",
+      "distance_km": 3.1,
+      "page": true
+    },
+    {
+      "code": "95555",
+      "nom": "Saint-Gratien",
+      "slug": "saint-gratien",
+      "distance_km": 3.4,
+      "page": false
+    },
+    {
+      "code": "92036",
+      "nom": "Gennevilliers",
+      "slug": "gennevilliers",
+      "distance_km": 3.6,
+      "page": true
+    },
+    {
+      "code": "95063",
+      "nom": "Bezons",
+      "slug": "bezons",
+      "distance_km": 3.7,
+      "page": true
+    },
+    {
+      "code": "95176",
+      "nom": "Cormeilles-en-Parisis",
+      "slug": "cormeilles-en-parisis",
+      "distance_km": 4.1,
+      "page": false
+    },
+    {
+      "code": "92009",
+      "nom": "Bois-Colombes",
+      "slug": "bois-colombes",
+      "distance_km": 4.2,
+      "page": true
+    },
+    {
+      "code": "95219",
+      "nom": "Ermont",
+      "slug": "ermont",
+      "distance_km": 4.4,
+      "page": false
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,7 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "5,8 % de la population (75-89 ans : 5,1 % ; 90 ans ou plus : 0,7 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "107 135 habitants (Argenteuil)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Argenteuil",
+      "address": "12 Boulevard Leon Feix, 95100 Argenteuil",
+      "commune_insee": "95018",
+      "telephone": "01 34 23 41 00",
+      "url": "https://www.argenteuil.fr/fr/ccas",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/a1b198b2-a37a-4fe4-8e4b-c0a701de4c42",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Val-d'Oise",
+      "address": "Conseil départemental du Val d'Oise, Bâtiment H, 95032 Cergy-Pontoise Cedex",
+      "commune_insee": "95127",
+      "url": "https://www.mdph.valdoise.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c173b0fc-8cb8-4653-8114-1152912a759b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Val-d'Oise",
+      "address": "2 avenue du Parc, Hôtel du département, 95000 Cergy-Pontoise",
+      "commune_insee": "95127",
+      "telephone": "01 34 25 30 30",
+      "url": "https://www.valdoise.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/ac0d4c93-2188-459d-92f3-6253bc77eac6",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD",
+      "value": "EHPAD · Accueil de jour · Unité Alzheimer — 94 places",
+      "address": "74 boulevard Héloïse, 95100 ARGENTEUIL",
+      "telephone": "01 34 34 42 00",
+      "url": "http://www.medicisargenteuil.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Résidence les Pensées",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire · Unité Alzheimer — 98 places",
+      "address": "102 rue Antonin Georges-Belin, 95100 ARGENTEUIL",
+      "telephone": "01 34 34 82 00",
+      "url": "http://www.residence-les-pensees.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence Ambroise-Croizat",
+      "value": "Résidence autonomie — 63 places",
+      "address": "9 Rue des Gobelins, 95100 ARGENTEUIL",
+      "telephone": "01 39 61 49 82",
+      "url": "http://www.argenteuil.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence Jean Baillet",
+      "value": "Résidence autonomie — 48 places",
+      "address": "106 Rue du Perreux, 95100 ARGENTEUIL",
+      "telephone": "01 39 61 12 58",
+      "url": "http://www.argenteuil.fr/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Korian Résidence Le Cottage",
+      "value": "EHPAD — 80 places",
+      "address": "11 rue Jean-Bouin, 95100 ARGENTEUIL",
+      "telephone": "01 34 34 79 79",
+      "url": "http://www.korian.fr/maison-retraite/ehpad-korian-le-cottage-argenteuil-95100/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Val Notre-Dame",
+      "value": "EHPAD — 27 places",
+      "address": "26 Avenue d'Argenteuil, 95100 ARGENTEUIL",
+      "telephone": "01 39 82 66 13",
+      "url": "http://www.residencevalnotredame.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE DE JOUR DU FIEF",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "45 rue DU FIEF, 95100 ARGENTEUIL",
+      "commune_insee": "95018",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "69 rue DU LT COLONEL PRUD HON, 95107 ARGENTEUIL CEDEX",
+      "commune_insee": "95018",
+      "telephone": "01 34 23 24 25",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APED L'Espoir",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "SIEGE SOCIAL 1 IMPASSE DU PETIT MOULIN, 95340 PERSAN",
+      "telephone": "01 30 28 48 81",
+      "url": "http://www.aped-espoir.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "Association Haarp",
+      "value": "Réseau Unapei — organisme et association de parents gestionnaire",
+      "address": "HANDICAP AUTISME ACCOMPAGNEMENT RESPECT ET PARTAGE 31 ROUTE STRATEGIQUE, 95240 CORMEILLES EN PARISIS",
+      "telephone": "01 39 31 59 96",
+      "url": "https://www.haarp.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "Association le Colombier",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "92 rue de Montmagny, 95410 Groslay",
+      "telephone": "01 39 84 18 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Val-d'Oise",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "16 rue Ampère, bâtiment A, 95000 Pontoise",
+      "telephone": "06 70 94 18 84",
+      "url": "https://www.francealzheimer.org/valdoise/",
+      "source_url": "https://www.francealzheimer.org/valdoise/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité du Val-d'Oise (95)",
+      "value": "Comité départemental de bénévoles (Saint-Leu-la-Forêt)",
+      "telephone": "07 69 41 99 94",
+      "url": "https://www.franceparkinson.fr/comite-95/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/95/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Argenteuil",
+      "address": "12-14 boulevard Léon-Feix, 95100 Argenteuil",
+      "commune_insee": "95018",
+      "telephone": "01 34 23 41 00",
+      "url": "https://www.argenteuil.fr/fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/5e27d725-abf2-4cc1-85fb-c7da1f2999c0",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/95/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 95",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2295%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

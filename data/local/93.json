@@ -1,0 +1,417 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "93",
+  "kind": "departement",
+  "nom": "Seine-Saint-Denis",
+  "chemin": "/aide-a-domicile/seine-saint-denis/",
+  "slug": "seine-saint-denis",
+  "departement": "93",
+  "departement_nom": "Seine-Saint-Denis",
+  "parent": "idf",
+  "centre": {
+    "lat": 48.9073,
+    "lng": 2.4432
+  },
+  "population": 1704316,
+  "demographie": {
+    "millesime": "2022",
+    "population": 1681725,
+    "part_60_74": 12,
+    "part_75_89": 4.7,
+    "part_90_plus": 0.6,
+    "part_75_plus": 5.3,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "saint-denis",
+    "distance_km": 7.2
+  },
+  "vague": 1,
+  "motif_vague": "departement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "5,3 % de la population (75-89 ans : 4,7 % ; 90 ans ou plus : 0,6 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "1 681 725 habitants (Seine-Saint-Denis)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Aubervilliers",
+      "address": "5 rue du Docteur-Pesqué, Centre local d'information et de coordination, 93300 Aubervilliers",
+      "commune_insee": "93001",
+      "telephone": "01 48 11 21 92",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/a6d3d349-48cd-491a-a717-f05f11b29e03",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Aulnay-sous-Bois",
+      "address": "Centre local d'information et de coordination, Centre de liaison et d'information pour le maintien à domicile, 19-21 rue Jacques-Duclos, 93600 Aulnay-sous-Bois",
+      "commune_insee": "93005",
+      "telephone": "01 48 79 40 60",
+      "url": "http://www.aulnay-sous-bois.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/a4b7e611-349d-4440-a85e-2e6d4d3462b9",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Bondy",
+      "address": "47-51 rue Louis-Auguste-Blanqui, Maison Marianne, 93140 Bondy",
+      "commune_insee": "93010",
+      "telephone": "01 71 86 64 05",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/6605b5bd-6eb0-4fda-9b11-d900058f02cf",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Montreuil",
+      "address": "1 place Aime-Cesaire, Le pôle de coordination gérontologique, 93100 Montreuil",
+      "commune_insee": "93048",
+      "telephone": "01 48 70 65 01",
+      "url": "https://www.montreuil.fr/solidarites/personnes-agees/le-pole-de-coordination-gerontologique",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/76800e9f-4387-47dd-aebe-f0ba039d5663",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Saint-Denis",
+      "address": "Centre local d'information et de coordination - Sillage de Saint-Denis, 6 rue des Boucheries, 93200 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 55 87 09 19",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/ad5d621a-90f8-4115-bdb5-d6cb18fc0c9c",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Saint-Ouen",
+      "address": "Unité de coordination gérontologie, Antenne de Saint-Ouen, 41 rue Albert-Vhalenne, 93400 Saint-Ouen",
+      "commune_insee": "93070",
+      "telephone": "01 71 86 62 90",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/6036b08f-e3bf-4def-8325-48106a19a7a1",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-Saint-Denis",
+      "address": "44 rue Proudhon, Immeuble Pulse, 93210 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 43 93 86 86",
+      "url": "https://place-handicap.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/b7261db7-56e9-47eb-9333-2a18d4ae4219",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-Saint-Denis",
+      "address": "3 Esplanade Jean-Moulin, Hôtel du département, 93000 Bobigny",
+      "commune_insee": "93008",
+      "telephone": "01 43 93 93 93",
+      "url": "https://seinesaintdenis.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/012bd5bc-7ddd-4c92-bbd9-49d7fbbd6395",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueils de jour recensés",
+      "value": "16 dans le département (Seine-Saint-Denis)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidences autonomie recensées",
+      "value": "40 dans le département (Seine-Saint-Denis)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD recensés",
+      "value": "65 dans le département (Seine-Saint-Denis)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "APPARTEMENT THERAPEUTIQUE MERISIERS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "18 allée DES MERISIERS, 93600 AULNAY SOUS BOIS",
+      "commune_insee": "93005",
+      "telephone": "01 48 66 81 86",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE GERIATRIQUE DEPARTEMENTAL DE MOYEN SEJOUR LES ORMES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "13 place JEAN MERMOZ, 93370 MONTFERMEIL",
+      "commune_insee": "93047",
+      "telephone": "01 45 09 70 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE ST DENIS HOPITAL DELAFONTAINE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 rue DU DR DELAFONTAINE, BP 279, 93205 ST DENIS CEDEX",
+      "commune_insee": "93066",
+      "telephone": "01 42 35 61 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE MEDICO PSYCHOLOGIQUE ENFANTS ET ADOLESCENTS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "3 rue MARCEL DEBOFF, 93150 LE BLANC MESNIL",
+      "commune_insee": "93007",
+      "telephone": "01 48 65 68 11",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP ADULTES DE VILLEPINTE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 rue EUGENIE COTTON, 93420 VILLEPINTE",
+      "commune_insee": "93078",
+      "telephone": "01 49 36 73 59",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP CATTP ADULTES JULES VALLES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "7 cour DE LA REPUBLIQUE, 93290 TREMBLAY EN FRANCE",
+      "commune_insee": "93073",
+      "telephone": "01 75 63 60 32",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP CATTP DE LIVRY GARGAN - VAUJOURS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "105 avenue ARISTIDE BRILLANT, 93190 LIVRY GARGAN",
+      "commune_insee": "93046",
+      "telephone": "01 49 36 74 72",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP CATTP ENFANTS DE VILLEPINTE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 avenue JULES FERRY, 93420 VILLEPINTE",
+      "commune_insee": "93078",
+      "telephone": "01 49 36 73 59",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP CATTP ENFANTS MINUTE PAPILLON",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "boulevard ROBERT BALLANGER, 93602 AULNAY SOUS BOIS CEDEX",
+      "commune_insee": "93005",
+      "telephone": "01 49 36 73 16",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP ENFANTS AULNAY NORD",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "boulevard ROBERT BALLANGER, 93600 AULNAY SOUS BOIS",
+      "commune_insee": "93005",
+      "telephone": "01 49 36 74 61",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP ENFANTS DE SEVRAN",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "13 rue CHARLES CONRAD, 93270 SEVRAN",
+      "commune_insee": "93071",
+      "telephone": "01 82 37 23 34",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "AFDAEIM Stains",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 ALLEE DU PARADIS, 93240 STAINS",
+      "telephone": "01 48 26 31 32",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "AGECET",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "26, 31-37 avenue Galle, 93370 MONTFERMEIL",
+      "telephone": "01 45 09 46 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-Saint-Denis",
+      "value": "Permanence le lundi et le vendredi de 10 h à 12 h ; dd.93@apf.asso.fr",
+      "address": "89 rue Benoît Frachon, 93000 Bobigny",
+      "telephone": "01 48 10 25 35",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "ARPEI Gagny",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 AVENUE DE BELLEVUE, 93220 GAGNY",
+      "telephone": "01 43 30 42 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer 93 et maladies apparentées",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "91 avenue de la Résistance, 93340 Le Raincy",
+      "telephone": "01 41 53 00 05",
+      "url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-Saint-Denis (93)",
+      "value": "Comité départemental de bénévoles (Montreuil)",
+      "telephone": "06 68 83 85 11",
+      "url": "https://www.franceparkinson.fr/comite-93/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20"
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 93",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2293%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

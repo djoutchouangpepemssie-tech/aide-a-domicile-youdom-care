@@ -1,0 +1,422 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "92025",
+  "kind": "commune",
+  "nom": "Colombes",
+  "chemin": "/aide-a-domicile/hauts-de-seine/colombes/",
+  "slug": "colombes",
+  "departement": "92",
+  "departement_nom": "Hauts-de-Seine",
+  "codes_postaux": [
+    "92700"
+  ],
+  "parent": "92",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.9218,
+    "lng": 2.2469
+  },
+  "superficie_ha": 777.84,
+  "population": 91053,
+  "demographie": {
+    "millesime": "2022",
+    "population": 90692,
+    "part_60_74": 12.1,
+    "part_75_89": 5.1,
+    "part_90_plus": 0.8,
+    "part_75_plus": 6,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "puteaux",
+    "distance_km": 4.2
+  },
+  "communes_voisines": [
+    {
+      "code": "92035",
+      "nom": "La Garenne-Colombes",
+      "slug": "la-garenne-colombes",
+      "distance_km": 1.7,
+      "page": true
+    },
+    {
+      "code": "92009",
+      "nom": "Bois-Colombes",
+      "slug": "bois-colombes",
+      "distance_km": 1.8,
+      "page": true
+    },
+    {
+      "code": "95063",
+      "nom": "Bezons",
+      "slug": "bezons",
+      "distance_km": 2.4,
+      "page": true
+    },
+    {
+      "code": "92026",
+      "nom": "Courbevoie",
+      "slug": "courbevoie",
+      "distance_km": 2.8,
+      "page": true
+    },
+    {
+      "code": "95018",
+      "nom": "Argenteuil",
+      "slug": "argenteuil",
+      "distance_km": 3.1,
+      "page": true
+    },
+    {
+      "code": "92036",
+      "nom": "Gennevilliers",
+      "slug": "gennevilliers",
+      "distance_km": 3.2,
+      "page": true
+    },
+    {
+      "code": "92004",
+      "nom": "Asnières-sur-Seine",
+      "slug": "asnieres-sur-seine",
+      "distance_km": 3.4,
+      "page": true
+    },
+    {
+      "code": "92051",
+      "nom": "Neuilly-sur-Seine",
+      "slug": "neuilly-sur-seine",
+      "distance_km": 4.2,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,1 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "6 % de la population (75-89 ans : 5,1 % ; 90 ans ou plus : 0,8 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "90 692 habitants (Colombes)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Pipa CLIC",
+      "address": "36 rue du Maréchal-Joffre, 92700 COLOMBES",
+      "telephone": "01 47 60 43 54",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Colombes",
+      "address": "Centre local d'information et de coordination, 36 rue du Maréchal-Joffre, 92700 Colombes",
+      "commune_insee": "92025",
+      "telephone": "01 47 60 43 54",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/58748ddc-d0ce-4763-a158-482da37885bf",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Colombes",
+      "address": "5 Rue de la Liberté, 92700 Colombes",
+      "commune_insee": "92025",
+      "telephone": "01 47 60 43 90",
+      "url": "https://www.colombes.fr/les-solidarites/le-ccas-engage-a-vos-cotes/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3c9e5094-95b6-4ac3-96a5-ee31fb8589f5",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Hauts-de-Seine",
+      "address": "12 avenue Léonard-de-Vinci, Esplanade Mona-Lisa, 92400 Courbevoie",
+      "commune_insee": "92026",
+      "telephone": "01 41 91 92 50",
+      "url": "https://mdphenligne.cnsa.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3f9f35ee-4761-47c3-8643-bf7b11fcecb4",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Hauts-de-Seine",
+      "address": "57 rue des Longues Raies, Hôtel du département, 92000 Nanterre",
+      "commune_insee": "92050",
+      "telephone": "0 806 00 00 92",
+      "url": "https://www.hauts-de-seine.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68ae9287-fc9e-48b6-a8d6-8e9b669ff131",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Résidence Ambroize-Croizat",
+      "value": "Résidence autonomie — 50 places",
+      "address": "36 Rue du Maréchal Joffre, 92700 COLOMBES",
+      "telephone": "01 47 82 13 36",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Korian L'Impérial",
+      "value": "EHPAD · Unité Alzheimer — 125 places",
+      "address": "8 Rue de Mantes, 92700 COLOMBES",
+      "telephone": "01 56 83 56 56",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD La Tour d'Auvergne",
+      "value": "EHPAD · Hébergement temporaire · Unité Alzheimer — 76 places",
+      "address": "2 Avenue de la Tour d'Auvergne, 92700 COLOMBES",
+      "telephone": "01 42 42 18 70",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Maisons de famille la Roseraie",
+      "value": "EHPAD — 59 places",
+      "address": "76 rue des Cerisiers, 92700 COLOMBES",
+      "telephone": "01 42 42 37 51",
+      "url": "http://roseraie.maisonsdefamille.com/la-roseraie-accueil",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Azur",
+      "value": "EHPAD — 72 places",
+      "address": "92700 COLOMBES",
+      "telephone": "01 47 85 17 17",
+      "url": "https://www.laresidenceazur.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Esterel",
+      "value": "EHPAD — 73 places",
+      "address": "50-58 rue Branly, 92700 COLOMBES",
+      "telephone": "01 47 85 07 78",
+      "url": "http://www.residenceesterel.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP NORD UNIVERSITE PARIS CITE SITE LOUIS MOURIER",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "178 rue DES RENOUILLIERS, 92701 COLOMBES CEDEX",
+      "commune_insee": "92025",
+      "telephone": "01 47 60 61 62",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR GUY DE MAUPASSANT",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "17 rue MOSLARD, 92700 COLOMBES",
+      "commune_insee": "92025",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de la Boucle de la Seine",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 boulevard Charles de GAULLE, 92707 COLOMBES CEDEX",
+      "telephone": "01 42 42 19 91",
+      "url": "https://www.apei-bs.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de Meudon",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "35 RUE CHARLES DESVERGNES, 92190 MEUDON",
+      "telephone": "01 46 26 63 28",
+      "url": "http://apeimeudon92.odns.fr/Site-APEI/",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI la Maison du Phare",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "13 rue des Poissonniers, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 46 24 49 65",
+      "url": "https://www.apeilamaisonduphare.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Hauts-de-Seine",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "94 avenue Achille Peretti, 92200 Neuilly-sur-Seine",
+      "telephone": "01 46 24 68 31",
+      "url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité des Hauts-de-Seine (92)",
+      "value": "Comité départemental de bénévoles (Saint-Cloud)",
+      "telephone": "06 33 46 24 84",
+      "url": "https://www.franceparkinson.fr/comite-92/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Colombes",
+      "address": "Place de la République, 92701 Colombes Cedex",
+      "commune_insee": "92025",
+      "telephone": "01 47 60 80 00",
+      "url": "https://www.colombes.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/39bda65a-aabf-4208-be04-a71333484fa2",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 92",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2292%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

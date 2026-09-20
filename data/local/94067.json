@@ -1,0 +1,364 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "94067",
+  "kind": "commune",
+  "nom": "Saint-Mandé",
+  "chemin": "/aide-a-domicile/val-de-marne/saint-mande/",
+  "slug": "saint-mande",
+  "departement": "94",
+  "departement_nom": "Val-de-Marne",
+  "codes_postaux": [
+    "94160"
+  ],
+  "parent": "94",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.8414,
+    "lng": 2.4195
+  },
+  "superficie_ha": 90.5,
+  "population": 21071,
+  "demographie": {
+    "millesime": "2022",
+    "population": 21223,
+    "part_60_74": 15.3,
+    "part_75_89": 8.7,
+    "part_90_plus": 1.5,
+    "part_75_plus": 10.2,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "paris-12",
+    "distance_km": 3.8
+  },
+  "communes_voisines": [
+    {
+      "code": "75112",
+      "nom": "Paris 12e arrondissement",
+      "slug": "12e-arrondissement",
+      "distance_km": 0.8,
+      "page": true
+    },
+    {
+      "code": "94080",
+      "nom": "Vincennes",
+      "slug": "vincennes",
+      "distance_km": 1.5,
+      "page": false
+    },
+    {
+      "code": "94018",
+      "nom": "Charenton-le-Pont",
+      "slug": "charenton-le-pont",
+      "distance_km": 2.3,
+      "page": true
+    },
+    {
+      "code": "75120",
+      "nom": "Paris 20e arrondissement",
+      "slug": "20e-arrondissement",
+      "distance_km": 2.9,
+      "page": true
+    },
+    {
+      "code": "93006",
+      "nom": "Bagnolet",
+      "slug": "bagnolet",
+      "distance_km": 2.9,
+      "page": true
+    },
+    {
+      "code": "94069",
+      "nom": "Saint-Maurice",
+      "slug": "saint-maurice",
+      "distance_km": 3.1,
+      "page": true
+    },
+    {
+      "code": "93048",
+      "nom": "Montreuil",
+      "slug": "montreuil",
+      "distance_km": 3.3,
+      "page": true
+    },
+    {
+      "code": "75111",
+      "nom": "Paris 11e arrondissement",
+      "slug": "11e-arrondissement",
+      "distance_km": 3.5,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "proximite",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "15,3 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "10,2 % de la population (75-89 ans : 8,7 % ; 90 ans ou plus : 1,5 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "21 223 habitants (Saint-Mandé)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Saint-Mandé",
+      "address": "10 Place Charles Digeon, 94160 Saint-Mandé",
+      "commune_insee": "94067",
+      "telephone": "01 49 57 78 50",
+      "url": "https://www.saintmande.fr/pratique/solidarite-et-sante/ccas",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/82249a00-fae2-4d5e-ac13-b2df81c7761e",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Val-de-Marne",
+      "address": "Immeuble Solidarité, 7-9 voie Félix Éboué, 94046 Créteil Cedex",
+      "commune_insee": "94028",
+      "telephone": "01 43 99 79 00",
+      "url": "https://www.valdemarne.fr/a-votre-service/handicap/maison-departementale-des-personnes-handicapees-mdph",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/98a4d3a3-3d62-452e-a9da-d7263de81bc2",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Val-de-Marne",
+      "address": "21 avenue du Général-de-Gaulle, Hôtel du département, 94000 Créteil",
+      "commune_insee": "94028",
+      "telephone": "3994",
+      "url": "https://www.valdemarne.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/b5c9510a-5e42-49fc-928c-db92caf8b76b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Logements Lenoir Jousserand",
+      "value": "Résidence autonomie — 100 places",
+      "address": "9 rue de l'Amiral Courbet, 94160 ST MANDE",
+      "telephone": "01 44 68 62 90",
+      "url": "http://maison-retraite.ehpadhospiconseil.fr/foyer-logement/940812571/logements-lenoir-jousserand-st-mande",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD La Seigneurie",
+      "value": "EHPAD — 68 places",
+      "address": "57 rue du Commandant René-Mouchotte, 94160 ST MANDE",
+      "telephone": "01 49 74 83 00",
+      "url": "http://www.mri-fontenay-sous-bois.fr/seigneurie.aspx",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Lanmodez",
+      "value": "EHPAD · Hébergement temporaire · Unité Alzheimer — 72 places",
+      "address": "58 Avenue Sainte-Marie, 94160 ST MANDE",
+      "telephone": "01 48 08 85 50",
+      "url": "http://www.fondationpartageetvie.org/etablissements/carte-des-etablissements/residence-lanmodez,258,250.html?&args=_6FVqKftOEs85icXCIxdnz2pplBvXWLFsTAXyobiIPkdCB5C7-S9LrVPnl1KrBOEfhuc_81VK0vd7gm1aCxVxJ4hjUfmkBvBccGJJNJE-TA1YlgzzP7R1O5N-sHrfn3q",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE NATIONAL D OPHTALMOLOGIE DES QUINZE VINGTS DE PARIS",
+      "value": "Centre Hospitalier (C.H.) — à 0,8 km à vol d'oiseau (Paris 12e Arrondissement)",
+      "address": "28 rue DE CHARENTON, 75571 PARIS CEDEX 12",
+      "commune_insee": "75112",
+      "telephone": "01 40 02 15 20",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP SORBONNE UNIVERSITE SITE ROTHSCHILD",
+      "value": "Centre Hospitalier Régional (C.H.R.) — à 0,8 km à vol d'oiseau (Paris 12e Arrondissement)",
+      "address": "5 rue SANTERRE, 75571 PARIS CEDEX 12",
+      "commune_insee": "75112",
+      "telephone": "01 40 19 30 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADPED 94 l'Haÿ-Les-Roses, Chevilly-Larue, Fresnes et Rungis",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 ALLEE DES FLEURS, 94260 FRESNES",
+      "telephone": "01 46 68 30 62",
+      "url": "http://adped94.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation du Val-de-Marne",
+      "value": "Délégation départementale ; dd.94@apf.asso.fr",
+      "address": "34 rue de Brie, 94000 Créteil",
+      "telephone": "01 42 07 17 25",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APOGEI 94",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "70 AVENUE DU GENERAL DE GAULLE, 94000 CRETEIL",
+      "telephone": "01 42 07 52 90",
+      "url": "http://www.apogei94.com",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ETAI Kremlin-Bicêtre",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5-9 RUE MARCEL PAUL, 94800 VILLEJUIF",
+      "telephone": "01 83 62 39 35",
+      "url": "http://www.etai.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Val-de-Marne",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles, sur rendez-vous",
+      "address": "4 rue du Maréchal Vaillant, 94130 Nogent-sur-Marne",
+      "telephone": "01 48 72 87 82",
+      "url": "https://www.francealzheimer.org/valdemarne/",
+      "source_url": "https://www.francealzheimer.org/valdemarne/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/94/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Saint-Mandé",
+      "address": "10 place Charles-Digeon, 94160 Saint-Mandé",
+      "commune_insee": "94067",
+      "telephone": "01 49 57 78 00",
+      "url": "https://www.saintmande.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/d4e96674-1d57-40ec-9a9b-9eede7a61f94",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/94/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 94",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2294%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

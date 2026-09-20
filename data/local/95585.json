@@ -1,0 +1,388 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "95585",
+  "kind": "commune",
+  "nom": "Sarcelles",
+  "chemin": "/aide-a-domicile/val-d-oise/sarcelles/",
+  "slug": "sarcelles",
+  "departement": "95",
+  "departement_nom": "Val-d'Oise",
+  "codes_postaux": [
+    "95200"
+  ],
+  "parent": "95",
+  "epci": {
+    "code": "200055655",
+    "nom": "CA Roissy Pays de France"
+  },
+  "centre": {
+    "lat": 48.9925,
+    "lng": 2.3858
+  },
+  "superficie_ha": 841.97,
+  "population": 59173,
+  "demographie": {
+    "millesime": "2022",
+    "population": 58576,
+    "part_60_74": 12.5,
+    "part_75_89": 4.9,
+    "part_90_plus": 0.7,
+    "part_75_plus": 5.6,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "saint-denis",
+    "distance_km": 8.8
+  },
+  "communes_voisines": [
+    {
+      "code": "95680",
+      "nom": "Villiers-le-Bel",
+      "slug": "villiers-le-bel",
+      "distance_km": 2.2,
+      "page": false
+    },
+    {
+      "code": "95019",
+      "nom": "Arnouville",
+      "slug": "arnouville",
+      "distance_km": 2.4,
+      "page": false
+    },
+    {
+      "code": "95288",
+      "nom": "Groslay",
+      "slug": "groslay",
+      "distance_km": 2.6,
+      "page": false
+    },
+    {
+      "code": "95268",
+      "nom": "Garges-lès-Gonesse",
+      "slug": "garges-les-gonesse",
+      "distance_km": 2.9,
+      "page": true
+    },
+    {
+      "code": "95539",
+      "nom": "Saint-Brice-sous-Forêt",
+      "slug": "saint-brice-sous-foret",
+      "distance_km": 3.2,
+      "page": false
+    },
+    {
+      "code": "95205",
+      "nom": "Écouen",
+      "slug": "ecouen",
+      "distance_km": 3.7,
+      "page": false
+    },
+    {
+      "code": "93072",
+      "nom": "Stains",
+      "slug": "stains",
+      "distance_km": 3.9,
+      "page": false
+    },
+    {
+      "code": "95427",
+      "nom": "Montmagny",
+      "slug": "montmagny",
+      "distance_km": 3.9,
+      "page": false
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,5 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "5,6 % de la population (75-89 ans : 4,9 % ; 90 ans ou plus : 0,7 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "58 576 habitants (Sarcelles)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "CLIC de Sarcelles",
+      "address": "4 place de Navarre, 95200 SARCELLES",
+      "telephone": "01 34 19 69 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Sarcelles",
+      "address": "4 place de Navarre, Centre communal d'action sociale, Service gérontologique, 95200 Sarcelles",
+      "commune_insee": "95585",
+      "telephone": "01 34 19 69 40",
+      "url": "https://www.sarcelles.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c6152d96-5499-4560-a1b6-2cb41311a80f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Sarcelles",
+      "address": "3 Rue de la Résistance, 95200 Sarcelles",
+      "commune_insee": "95585",
+      "telephone": "01 34 38 20 08",
+      "url": "https://www.sarcelles.fr/actualites/permanences-du-ccas/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/8a46489f-37be-4975-b03a-d5f306d716de",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Val-d'Oise",
+      "address": "Conseil départemental du Val d'Oise, Bâtiment H, 95032 Cergy-Pontoise Cedex",
+      "commune_insee": "95127",
+      "url": "https://www.mdph.valdoise.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c173b0fc-8cb8-4653-8114-1152912a759b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Val-d'Oise",
+      "address": "2 avenue du Parc, Hôtel du département, 95000 Cergy-Pontoise",
+      "commune_insee": "95127",
+      "telephone": "01 34 25 30 30",
+      "url": "https://www.valdoise.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/ac0d4c93-2188-459d-92f3-6253bc77eac6",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueil jour Renée Ortin",
+      "value": "Accueil de jour · Unité Alzheimer — 19 places",
+      "address": "3 BD Albert-Camus, 95200 SARCELLES",
+      "telephone": "01 85 46 08 41",
+      "url": "http://www.ose-france.org/grand-age-2/maladie-d%E2%80%99alzheimer/accueil-de-jour/centre-de-jour-renee-ortin/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Annie Beauchais",
+      "value": "EHPAD — 90 places",
+      "address": "Contre allée Henri-Dunant ZAC de l'Entre Deux Pointe Trois Quarts, 95200 SARCELLES",
+      "telephone": "01 34 38 51 00",
+      "url": "http://pourvous.croix-rouge.fr/etablissement-d-hebergement-pour-personnes-agees-dependantes-annie-beauchais",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Korian Les Merlettes",
+      "value": "EHPAD — 156 places",
+      "address": "206 Avenue de la Division Leclerc, 95200 SARCELLES",
+      "telephone": "01 39 92 72 00",
+      "url": "https://www.korian.fr/maison-retraite/ehpad-korian-les-merlettes-sarcelles-95200/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR DE SARCELLES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "66 avenue MAX DORMOY, 95200 SARCELLES",
+      "commune_insee": "95585",
+      "telephone": "01 34 19 42 88",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL PRIVE NORD PARISIEN",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "3 boulevard DE LATTRE DE TASSIGNY, BP 10, 95200 SARCELLES",
+      "commune_insee": "95585",
+      "telephone": "01 39 92 70 69",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APED L'Espoir",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "SIEGE SOCIAL 1 IMPASSE DU PETIT MOULIN, 95340 PERSAN",
+      "telephone": "01 30 28 48 81",
+      "url": "http://www.aped-espoir.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "Association Haarp",
+      "value": "Réseau Unapei — organisme et association de parents gestionnaire",
+      "address": "HANDICAP AUTISME ACCOMPAGNEMENT RESPECT ET PARTAGE 31 ROUTE STRATEGIQUE, 95240 CORMEILLES EN PARISIS",
+      "telephone": "01 39 31 59 96",
+      "url": "https://www.haarp.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "Association le Colombier",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "92 rue de Montmagny, 95410 Groslay",
+      "telephone": "01 39 84 18 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Val-d'Oise",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "16 rue Ampère, bâtiment A, 95000 Pontoise",
+      "telephone": "06 70 94 18 84",
+      "url": "https://www.francealzheimer.org/valdoise/",
+      "source_url": "https://www.francealzheimer.org/valdoise/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité du Val-d'Oise (95)",
+      "value": "Comité départemental de bénévoles (Saint-Leu-la-Forêt)",
+      "telephone": "07 69 41 99 94",
+      "url": "https://www.franceparkinson.fr/comite-95/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "CA Roissy Pays de France",
+      "source_url": "https://geo.api.gouv.fr/departements/95/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Sarcelles",
+      "address": "3 rue de la Résistance, Hôtel de Ville, 95200 Sarcelles",
+      "commune_insee": "95585",
+      "telephone": "01 34 38 21 40",
+      "url": "https://www.sarcelles.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/e8a4aacc-93be-452d-a674-3223965f06fa",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/95/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 95",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2295%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}
