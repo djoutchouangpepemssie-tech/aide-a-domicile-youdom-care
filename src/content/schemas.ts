@@ -256,6 +256,9 @@ export const interfaceSchema = z.strictObject({
     resume: text.includes("{h}"),
     nuit_singulier: text,
     nuits_pluriel: text.includes("{n}"),
+    /** Sélecteur segmenté des exemples (WeekStory) et mention sous le récit. */
+    choisir_exemple: text,
+    prenom_fictif: text,
     activites: z.strictObject({
       gestes: text,
       repas: text,
@@ -351,6 +354,15 @@ export const interfaceSchema = z.strictObject({
     relu_par: text.includes("{nom}").includes("{fonction}").includes("{date}"),
     non_relu: text,
     maj: text.includes("{date}"),
+    /** Carte de relecture (SourcesList) : tant que `relu_par` est vide. */
+    relecture_attendue: text,
+    /** Encart « Ce que nous ne faisons pas », variante `frontiere` du Callout. */
+    frontiere: z.strictObject({
+      sous_titre: text,
+      colonne_faits: text,
+      colonne_relais: text,
+      ligne_fin: text,
+    }),
     pilier_lien: text.includes("{titre}"),
     soeurs_h2: text,
     commune_lien: text,

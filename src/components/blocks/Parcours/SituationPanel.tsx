@@ -80,12 +80,7 @@ export function SituationPanel({
 
       <div aria-live="polite">
         {publics.map((pub) => (
-          <div
-            key={pub.id}
-            hidden={pub.id !== current?.id}
-            data-panel={pub.id}
-            className="mt-8 [&[hidden]]:hidden"
-          >
+          <div key={pub.id} hidden={pub.id !== current?.id} data-panel={pub.id} className="mt-8">
             <ul className="m-0 grid list-none gap-4 p-0 md:grid-cols-2">
               {pub.situations.map((situation) => (
                 <li key={situation.titre} className="max-w-none">

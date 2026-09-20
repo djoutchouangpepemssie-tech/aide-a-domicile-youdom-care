@@ -48,9 +48,10 @@ function useHydrated(): boolean {
   );
 }
 
+/* Rangées de 56 px au moins, de même hauteur sur une ligne de la grille (`h-full`). */
 const rowClass =
-  "flex min-h-14 w-full items-center gap-3 rounded-button border border-line bg-white px-4 py-2 " +
-  "text-left font-bold text-teal-900 no-underline shadow-1 " +
+  "flex h-full min-h-14 w-full items-center gap-3 rounded-button border border-line bg-white px-4 py-2 " +
+  "text-left text-small leading-snug font-bold text-teal-900 no-underline shadow-1 " +
   "transition-[background-color,border-color,box-shadow] [transition-duration:var(--duration-base)] [transition-timing-function:var(--ease-out)] " +
   "hover:border-teal-700 hover:bg-teal-50 motion-reduce:transition-none";
 
