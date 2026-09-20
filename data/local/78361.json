@@ -1,0 +1,460 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "78361",
+  "kind": "commune",
+  "nom": "Mantes-la-Jolie",
+  "chemin": "/aide-a-domicile/yvelines/mantes-la-jolie/",
+  "slug": "mantes-la-jolie",
+  "departement": "78",
+  "departement_nom": "Yvelines",
+  "codes_postaux": [
+    "78200"
+  ],
+  "parent": "78",
+  "epci": {
+    "code": "200059889",
+    "nom": "CU Grand Paris Seine et Oise"
+  },
+  "centre": {
+    "lat": 48.9961,
+    "lng": 1.6918
+  },
+  "superficie_ha": 943.48,
+  "population": 43526,
+  "demographie": {
+    "millesime": "2022",
+    "population": 44246,
+    "part_60_74": 12.4,
+    "part_75_89": 6.5,
+    "part_90_plus": 0.7,
+    "part_75_plus": 7.3,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "versailles",
+    "distance_km": 39.5
+  },
+  "communes_voisines": [
+    {
+      "code": "78118",
+      "nom": "Buchelay",
+      "slug": "buchelay",
+      "distance_km": 1.7,
+      "page": false
+    },
+    {
+      "code": "78362",
+      "nom": "Mantes-la-Ville",
+      "slug": "mantes-la-ville",
+      "distance_km": 2.7,
+      "page": false
+    },
+    {
+      "code": "78354",
+      "nom": "Magnanville",
+      "slug": "magnanville",
+      "distance_km": 3.1,
+      "page": false
+    },
+    {
+      "code": "78335",
+      "nom": "Limay",
+      "slug": "limay",
+      "distance_km": 3.3,
+      "page": false
+    },
+    {
+      "code": "78239",
+      "nom": "Follainville-Dennemont",
+      "slug": "follainville-dennemont",
+      "distance_km": 3.8,
+      "page": false
+    },
+    {
+      "code": "78324",
+      "nom": "Jouy-Mauvoisin",
+      "slug": "jouy-mauvoisin",
+      "distance_km": 4.1,
+      "page": false
+    },
+    {
+      "code": "78290",
+      "nom": "Guernes",
+      "slug": "guernes",
+      "distance_km": 4.2,
+      "page": false
+    },
+    {
+      "code": "78031",
+      "nom": "Auffreville-Brasseuil",
+      "slug": "auffreville-brasseuil",
+      "distance_km": 4.8,
+      "page": false
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,4 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "7,3 % de la population (75-89 ans : 6,5 % ; 90 ans ou plus : 0,7 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "44 246 habitants (Mantes-la-Jolie)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Mantes-la-Jolie",
+      "address": "Rue René-Duguay-Trouin, Coordination gérontologique du Mantois, 78200 Mantes-la-Jolie",
+      "commune_insee": "78361",
+      "telephone": "01 34 78 50 90",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/8b4b5d3e-9d25-4520-bc46-806c29fad1a6",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Pôle autonomie territorial - Seine Aval Antenne Ouest",
+      "address": "Rue de la Somme Immeuble Hermès, 78200 MANTES LA JOLIE",
+      "telephone": "01 39 07 79 04",
+      "url": "https://www.yvelines.fr/mon-conseil-departemental/institution/administration/les-territoires-daction-departementale/pole-autonomie/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Mantes-la-Jolie",
+      "address": "31 Rue Gambetta, 78200 Mantes-la-Jolie",
+      "commune_insee": "78361",
+      "telephone": "01 34 00 11 11",
+      "url": "https://www.manteslajolie.fr/au-quotidien/solidarite/ccas",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/2a1900e9-cf30-4c7b-93e0-320077cb348a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Yvelines",
+      "address": "78539 Buc Cedex",
+      "commune_insee": "78646",
+      "telephone": "08 01 80 11 00",
+      "url": "https://www.yvelines.fr/fiche/maison-departementale-des-personnes-handicapees-mdph-78/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/046d0e8b-e504-475b-af3c-8faec008c5f9",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Yvelines",
+      "address": "2 place André-Mignot, Hôtel du département, 78000 Versailles",
+      "commune_insee": "78646",
+      "telephone": "01 39 07 78 78",
+      "url": "https://www.yvelines.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/1f6be280-273d-46ec-bc5e-a16dbabbee56",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Leopold-Bellan",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire · Unité Alzheimer — 94 places",
+      "address": "8 Rue Castor, 78200 MANTES LA JOLIE",
+      "telephone": "01 30 94 99 00",
+      "url": "http://bellan.fr/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Résidence De la Tour",
+      "value": "Résidence autonomie — 75 places",
+      "address": "2 Rue Henri Clérisse, 78200 MANTES LA JOLIE",
+      "telephone": "01 30 33 33 22",
+      "url": "http://www.manteslajolie.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Résidence fleurie",
+      "value": "Résidence autonomie — 67 places",
+      "address": "2 Rue Frédéric Chopin, 78200 MANTES LA JOLIE",
+      "telephone": "01 30 63 91 62",
+      "url": "http://www.arpavie.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "RPA les Myosotis",
+      "value": "Résidence autonomie — 40 places",
+      "address": "51 rue des graviers, 78200 MAGNANVILLE",
+      "telephone": "01 30 92 87 27",
+      "url": "http://www.magnanville.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD - Résidence Madeleine Brès",
+      "value": "EHPAD · Unité Alzheimer — 90 places",
+      "address": "1 rue Madeleine-Brès, 78200 BUCHELAY",
+      "telephone": "01 30 63 40 10",
+      "url": "https://www.orpea.com/maison-de-retraite-madeleine-bres-buchelay-78",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Centre de gérontologie Clinique Léopold Bellan",
+      "value": "EHPAD · Unité Alzheimer — 324 places",
+      "address": "1 Place Leopold Bellan, 78200 MAGNANVILLE",
+      "telephone": "01 30 98 19 00",
+      "url": "http://www.fondation.bellan.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD du Centre hospitalier de Mantes-la-Jolie",
+      "value": "EHPAD — 50 places",
+      "address": "2 boulevard Sully, 78200 MANTES LA JOLIE",
+      "telephone": "01 34 97 40 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER FRANCOIS QUESNAY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 boulevard SULLY, 78201 MANTES LA JOLIE CEDEX",
+      "commune_insee": "78361",
+      "telephone": "01 34 97 40 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE DE LA REGION MANTAISE",
+      "value": "Etablissement de Soins Chirurgicaux",
+      "address": "23 boulevard VICTOR DUHAMEL, 78200 MANTES LA JOLIE",
+      "commune_insee": "78361",
+      "telephone": "01 30 98 16 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "62 rue ST VINCENT, 78200 MANTES LA JOLIE",
+      "commune_insee": "78361",
+      "telephone": "01 34 77 38 05",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR CH FRANCOIS QUESNAY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "79 rue DE GASSICOURT, 78200 MANTES LA JOLIE",
+      "commune_insee": "78361",
+      "telephone": "01 30 33 53 30",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI 78",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "2 bis Pl. de Touraine, 78000 VERSAILLES",
+      "telephone": "06 25 52 52 27",
+      "url": "https://adapei78.com",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de Vélizy",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "7 rue Eugène Janneton, 78140 VELIZY",
+      "telephone": "06 75 72 11 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de Versailles et Des Communes Environnantes",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "APEI DE VERSAILLES 2 Bis Place De Touraine Maison des associations, 78000 VERSAILLES",
+      "telephone": "06 12 29 31 37",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Yvelines",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "6 place Royale, 78000 Versailles",
+      "telephone": "01 39 50 03 86",
+      "url": "https://www.francealzheimer.org/yvelines/",
+      "source_url": "https://www.francealzheimer.org/yvelines/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité des Yvelines (78)",
+      "value": "Comité départemental de bénévoles (Élancourt)",
+      "telephone": "07 64 76 28 56",
+      "url": "https://www.franceparkinson.fr/comite-78/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "CU Grand Paris Seine et Oise",
+      "source_url": "https://geo.api.gouv.fr/departements/78/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Mantes-la-Jolie",
+      "address": "31 rue Gambetta, 78200 Mantes-la-Jolie",
+      "commune_insee": "78361",
+      "telephone": "01 34 78 81 00",
+      "url": "https://www.manteslajolie.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/7eb6580d-f760-471c-8e83-f695494b5389",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/78/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 78",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2278%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

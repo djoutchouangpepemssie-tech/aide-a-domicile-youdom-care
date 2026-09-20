@@ -1,0 +1,372 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "78498",
+  "kind": "commune",
+  "nom": "Poissy",
+  "chemin": "/aide-a-domicile/yvelines/poissy/",
+  "slug": "poissy",
+  "departement": "78",
+  "departement_nom": "Yvelines",
+  "codes_postaux": [
+    "78300"
+  ],
+  "parent": "78",
+  "epci": {
+    "code": "200059889",
+    "nom": "CU Grand Paris Seine et Oise"
+  },
+  "centre": {
+    "lat": 48.9241,
+    "lng": 2.025
+  },
+  "superficie_ha": 1288.18,
+  "population": 40983,
+  "demographie": {
+    "millesime": "2022",
+    "population": 40792,
+    "part_60_74": 12.8,
+    "part_75_89": 7.5,
+    "part_90_plus": 1.1,
+    "part_75_plus": 8.6,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "versailles",
+    "distance_km": 16.5
+  },
+  "communes_voisines": [
+    {
+      "code": "78672",
+      "nom": "Villennes-sur-Seine",
+      "slug": "villennes-sur-seine",
+      "distance_km": 2.5,
+      "page": false
+    },
+    {
+      "code": "78123",
+      "nom": "Carrières-sous-Poissy",
+      "slug": "carrieres-sous-poissy",
+      "distance_km": 2.5,
+      "page": false
+    },
+    {
+      "code": "78007",
+      "nom": "Aigremont",
+      "slug": "aigremont",
+      "distance_km": 2.5,
+      "page": false
+    },
+    {
+      "code": "78133",
+      "nom": "Chambourcy",
+      "slug": "chambourcy",
+      "distance_km": 3,
+      "page": false
+    },
+    {
+      "code": "78466",
+      "nom": "Orgeval",
+      "slug": "orgeval",
+      "distance_km": 4.1,
+      "page": false
+    },
+    {
+      "code": "78384",
+      "nom": "Médan",
+      "slug": "medan",
+      "distance_km": 4.5,
+      "page": false
+    },
+    {
+      "code": "78643",
+      "nom": "Vernouillet",
+      "slug": "vernouillet",
+      "distance_km": 5.8,
+      "page": false
+    },
+    {
+      "code": "78233",
+      "nom": "Feucherolles",
+      "slug": "feucherolles",
+      "distance_km": 5.8,
+      "page": false
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,8 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "8,6 % de la population (75-89 ans : 7,5 % ; 90 ans ou plus : 1,1 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "40 792 habitants (Poissy)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Poissy",
+      "address": "8bis Boulevard Louis Lemelle, 78300 Poissy",
+      "commune_insee": "78498",
+      "telephone": "01 30 06 86 26",
+      "url": "https://www.ville-poissy.fr/index.php/solidarite-sante/pole-social-simone-veil.html?jscheck=1",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/05bd307b-f848-4e0f-bb06-7d813c86ba20",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Yvelines",
+      "address": "78539 Buc Cedex",
+      "commune_insee": "78646",
+      "telephone": "08 01 80 11 00",
+      "url": "https://www.yvelines.fr/fiche/maison-departementale-des-personnes-handicapees-mdph-78/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/046d0e8b-e504-475b-af3c-8faec008c5f9",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Yvelines",
+      "address": "2 place André-Mignot, Hôtel du département, 78000 Versailles",
+      "commune_insee": "78646",
+      "telephone": "01 39 07 78 78",
+      "url": "https://www.yvelines.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/1f6be280-273d-46ec-bc5e-a16dbabbee56",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Résidence Les ursulines",
+      "value": "Résidence autonomie — 76 places",
+      "address": "27 avenue des ursulines, 78300 POISSY",
+      "telephone": "01 39 65 22 48",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Hervieux",
+      "value": "EHPAD · Unité Alzheimer — 60 places",
+      "address": "7 rue du Beauregard, 78300 POISSY",
+      "telephone": "01 30 06 99 00",
+      "url": "http://www.chi-poissy-st-germain.fr/fr/EHPAD-Etablissement-d-hebergement-pour-personnes-agees-dependantes-181.html",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Jardins d'Eleusis",
+      "value": "EHPAD · Unité Alzheimer — 85 places",
+      "address": "11 rue Saint-Barthélemy, 78300 POISSY",
+      "telephone": "01 39 22 51 90",
+      "url": "https://www.domusvi.com/maisons-de-retraite/residence-eleusis-poissy-634943",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Korian l'Île de Migneaux",
+      "value": "EHPAD · Unité Alzheimer — 124 places",
+      "address": "52 Rue de Villiers, 78300 POISSY",
+      "telephone": "01 39 79 80 00",
+      "url": "https://www.korian.fr/maison-retraite/ehpad-korian-l-ile-de-migneaux-poissy-78300/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE SAINT LOUIS",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "1 rue BASSET, 78300 POISSY",
+      "commune_insee": "78498",
+      "telephone": "01 30 74 88 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CTRE HOSPITALIER INTERCOMMUNAL POISSY ST GERMAIN SITE POISSY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "10 rue DU CHAMP GAILLARD, BP 3082, 78303 POISSY CEDEX",
+      "commune_insee": "78498",
+      "telephone": "01 39 27 40 50",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI 78",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "2 bis Pl. de Touraine, 78000 VERSAILLES",
+      "telephone": "06 25 52 52 27",
+      "url": "https://adapei78.com",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de Vélizy",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "7 rue Eugène Janneton, 78140 VELIZY",
+      "telephone": "06 75 72 11 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de Versailles et Des Communes Environnantes",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "APEI DE VERSAILLES 2 Bis Place De Touraine Maison des associations, 78000 VERSAILLES",
+      "telephone": "06 12 29 31 37",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Yvelines",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "6 place Royale, 78000 Versailles",
+      "telephone": "01 39 50 03 86",
+      "url": "https://www.francealzheimer.org/yvelines/",
+      "source_url": "https://www.francealzheimer.org/yvelines/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité des Yvelines (78)",
+      "value": "Comité départemental de bénévoles (Élancourt)",
+      "telephone": "07 64 76 28 56",
+      "url": "https://www.franceparkinson.fr/comite-78/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "CU Grand Paris Seine et Oise",
+      "source_url": "https://geo.api.gouv.fr/departements/78/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Poissy",
+      "address": "Place de la République, 78303 Poissy Cedex",
+      "commune_insee": "78498",
+      "telephone": "01 39 22 56 40",
+      "url": "https://www.ville-poissy.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/05724710-ca34-4318-9743-e8fbad64ca66",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/78/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 78",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2278%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

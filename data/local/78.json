@@ -1,0 +1,446 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "78",
+  "kind": "departement",
+  "nom": "Yvelines",
+  "chemin": "/aide-a-domicile/yvelines/",
+  "slug": "yvelines",
+  "departement": "78",
+  "departement_nom": "Yvelines",
+  "parent": "idf",
+  "centre": {
+    "lat": 48.8039,
+    "lng": 2.1191
+  },
+  "population": 1485086,
+  "demographie": {
+    "millesime": "2022",
+    "population": 1470778,
+    "part_60_74": 14.1,
+    "part_75_89": 7,
+    "part_90_plus": 1.1,
+    "part_75_plus": 8.1,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "versailles",
+    "distance_km": 1.7
+  },
+  "vague": 1,
+  "motif_vague": "departement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "14,1 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "8,1 % de la population (75-89 ans : 7 % ; 90 ans ou plus : 1,1 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "1 470 778 habitants (Yvelines)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Houilles",
+      "address": "20 place Michelet, Coordination gérontologique Méandre de la Seine, 78800 Houilles",
+      "commune_insee": "78311",
+      "telephone": "01 30 86 93 89",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/eda758b9-a4e7-4744-b2b4-e503475af586",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Le Chesnay",
+      "address": "18 avenue Dutartre, 78150 Le Chesnay",
+      "commune_insee": "78646",
+      "telephone": "01 30 83 60 00",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/d0fec75c-afe2-4088-a9e8-ea5554ea5625",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Le Pecq",
+      "address": "54 route de Sartrouville, Coordination Gérontologique Yvelène, 78230 Le Pecq",
+      "commune_insee": "78481",
+      "telephone": "01 34 51 19 40",
+      "url": "http://www.simad.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/140b81b4-7077-41cb-b729-5be24545cf89",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Louveciennes",
+      "address": "45 rue du Général-Leclerc, Coordination Gérontologique de Louveciennes, 78430 Louveciennes",
+      "commune_insee": "78350",
+      "telephone": "01 34 51 19 40",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/559d1fd8-ae30-4fd1-aa50-afb27deb2996",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Mantes-la-Jolie",
+      "address": "Rue René-Duguay-Trouin, Coordination gérontologique du Mantois, 78200 Mantes-la-Jolie",
+      "commune_insee": "78361",
+      "telephone": "01 34 78 50 90",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/8b4b5d3e-9d25-4520-bc46-806c29fad1a6",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Méré",
+      "address": "3 rue de la Chasière, Pôle autonomie territoriale de centre-Yvelines, 78490 Méré",
+      "commune_insee": "78389",
+      "telephone": "08 01 80 11 00",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/bcc8e87f-dc7d-4686-8dbd-3b46f7f829bf",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Rambouillet",
+      "address": "26 rue Pasteur, Pôle autonomie territoriale, 78120 Rambouillet",
+      "commune_insee": "78517",
+      "telephone": "01 34 83 69 05",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/411aa242-c2dc-4f2e-96f8-2460277e157b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Rambouillet",
+      "address": "13 rue Pasteur, Association instance de coordination sud Yvelines, Bâtiment 11, 78120 Rambouillet",
+      "commune_insee": "78517",
+      "telephone": "01 61 08 66 61",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr/solutions-pour-les-aidants/tout",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/e784fcb6-5538-4076-8ecd-9f47fb4902ce",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Versailles",
+      "address": "6 avenue du Maréchal-Franchet-d'Esperey, Accueil de jour, 78000 Versailles",
+      "commune_insee": "78646",
+      "telephone": "01 39 63 73 88",
+      "url": "https://www.laporteverte-univi.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/6ab78776-c9df-4a4a-8426-0dece2867207",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Yvelines",
+      "address": "78539 Buc Cedex",
+      "commune_insee": "78646",
+      "telephone": "08 01 80 11 00",
+      "url": "https://www.yvelines.fr/fiche/maison-departementale-des-personnes-handicapees-mdph-78/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/046d0e8b-e504-475b-af3c-8faec008c5f9",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Yvelines",
+      "address": "2 place André-Mignot, Hôtel du département, 78000 Versailles",
+      "commune_insee": "78646",
+      "telephone": "01 39 07 78 78",
+      "url": "https://www.yvelines.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/1f6be280-273d-46ec-bc5e-a16dbabbee56",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueils de jour recensés",
+      "value": "19 dans le département (Yvelines)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidences autonomie recensées",
+      "value": "40 dans le département (Yvelines)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD recensés",
+      "value": "92 dans le département (Yvelines)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CAMPS CONFLANS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "10 avenue CARNOT, 78700 CONFLANS STE HONORINE",
+      "commune_insee": "78172",
+      "telephone": "01 39 73 90 80",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE DE RADIOTHERAPIE ANNE D'AUTRICHE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 rue MAURICE LARGET, 78100 ST GERMAIN EN LAYE",
+      "commune_insee": "78551",
+      "telephone": "01 39 27 40 50",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER CHARCOT PLAISIR",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "30 avenue MARC LAURENT, BP 20, 78375 PLAISIR CEDEX",
+      "commune_insee": "78490",
+      "telephone": "01 30 81 84 44",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE LA MAULDRE SITE SAINT LOUIS",
+      "value": "Centre hospitalier, ex Hôpital local",
+      "address": "23 rue SAINT LOUIS, 78760 JOUARS PONTCHARTRAIN",
+      "commune_insee": "78321",
+      "telephone": "01 34 91 78 78",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE PLAISIR",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "220 rue MANSART, BP 19, 78375 PLAISIR CEDEX",
+      "commune_insee": "78490",
+      "telephone": "01 30 79 57 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE RAMBOUILLET",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "5 rue PIERRE ET MARIE CURIE, 78514 RAMBOUILLET CEDEX",
+      "commune_insee": "78517",
+      "telephone": "01 34 83 76 06",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE VERSAILLES ANDRE MIGNOT",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "177 rue DE VERSAILLES, 78157 LE CHESNAY CEDEX",
+      "commune_insee": "78158",
+      "telephone": "01 39 63 91 33",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE VERSAILLES HOPITAL RICHAUD",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "80 boulevard DE LA REINE, 78000 VERSAILLES",
+      "commune_insee": "78646",
+      "telephone": "01 39 63 91 36",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER FRANCOIS QUESNAY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 boulevard SULLY, 78201 MANTES LA JOLIE CEDEX",
+      "commune_insee": "78361",
+      "telephone": "01 34 97 40 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER INTERCOMMUNAL DE MEULAN LES MUREAUX",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 rue DU FORT, 78250 MEULAN EN YVELINES",
+      "commune_insee": "78401",
+      "telephone": "01 30 91 85 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER INTERCOMMUNAL DE MEULAN LES MUREAUX",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 rue BAPTISTE MARCET, 78130 LES MUREAUX",
+      "commune_insee": "78440",
+      "telephone": "01 30 91 85 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER LOCAL DE HOUDAN",
+      "value": "Centre hospitalier, ex Hôpital local",
+      "address": "42 rue DE PARIS, 78550 HOUDAN",
+      "commune_insee": "78310",
+      "telephone": "01 30 46 18 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI 78",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "2 bis Pl. de Touraine, 78000 VERSAILLES",
+      "telephone": "06 25 52 52 27",
+      "url": "https://adapei78.com",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APEI de Vélizy",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "7 rue Eugène Janneton, 78140 VELIZY",
+      "telephone": "06 75 72 11 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APEI de Versailles et Des Communes Environnantes",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "APEI DE VERSAILLES 2 Bis Place De Touraine Maison des associations, 78000 VERSAILLES",
+      "telephone": "06 12 29 31 37",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Yvelines",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "6 place Royale, 78000 Versailles",
+      "telephone": "01 39 50 03 86",
+      "url": "https://www.francealzheimer.org/yvelines/",
+      "source_url": "https://www.francealzheimer.org/yvelines/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité des Yvelines (78)",
+      "value": "Comité départemental de bénévoles (Élancourt)",
+      "telephone": "07 64 76 28 56",
+      "url": "https://www.franceparkinson.fr/comite-78/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20"
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 78",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2278%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

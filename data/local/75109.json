@@ -1,0 +1,533 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "75109",
+  "kind": "arrondissement",
+  "nom": "Paris 9e arrondissement",
+  "chemin": "/aide-a-domicile/paris/9e-arrondissement/",
+  "slug": "9e-arrondissement",
+  "departement": "75",
+  "departement_nom": "Paris",
+  "codes_postaux": [
+    "75009"
+  ],
+  "parent": "75",
+  "centre": {
+    "lat": 48.8771,
+    "lng": 2.3379
+  },
+  "superficie_ha": 217.78,
+  "population": 57271,
+  "demographie": {
+    "millesime": "2022",
+    "population": 58419,
+    "part_60_74": 12,
+    "part_75_89": 5.3,
+    "part_90_plus": 0.8,
+    "part_75_plus": 6.1,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "paris-12",
+    "distance_km": 3.8
+  },
+  "communes_voisines": [
+    {
+      "code": "75102",
+      "nom": "Paris 2e arrondissement",
+      "slug": "2e-arrondissement",
+      "distance_km": 1.1,
+      "page": true
+    },
+    {
+      "code": "75101",
+      "nom": "Paris 1er arrondissement",
+      "slug": "1er-arrondissement",
+      "distance_km": 1.7,
+      "page": true
+    },
+    {
+      "code": "75110",
+      "nom": "Paris 10e arrondissement",
+      "slug": "10e-arrondissement",
+      "distance_km": 1.8,
+      "page": true
+    },
+    {
+      "code": "75118",
+      "nom": "Paris 18e arrondissement",
+      "slug": "18e-arrondissement",
+      "distance_km": 1.8,
+      "page": true
+    },
+    {
+      "code": "75108",
+      "nom": "Paris 8e arrondissement",
+      "slug": "8e-arrondissement",
+      "distance_km": 2,
+      "page": true
+    },
+    {
+      "code": "75103",
+      "nom": "Paris 3e arrondissement",
+      "slug": "3e-arrondissement",
+      "distance_km": 2.2,
+      "page": true
+    },
+    {
+      "code": "75117",
+      "nom": "Paris 17e arrondissement",
+      "slug": "17e-arrondissement",
+      "distance_km": 2.7,
+      "page": true
+    },
+    {
+      "code": "75104",
+      "nom": "Paris 4e arrondissement",
+      "slug": "4e-arrondissement",
+      "distance_km": 2.9,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "arrondissement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "6,1 % de la population (75-89 ans : 5,3 % ; 90 ans ou plus : 0,8 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "58 419 habitants (Paris 9e arrondissement)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Paris 9e - 10e - 19e arrondissements",
+      "address": "126 quai de Jemmapes, Maison des Aînés et des Aidants Paris Nord-Est, 75010 Paris",
+      "commune_insee": "75110",
+      "telephone": "01 40 40 27 80",
+      "url": "https://www.paris.fr/equipements/maison-des-aines-et-des-aidants-paris-nord-est-9e-10e-et-19e-arrondissements-16337",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/3473140c-8d8c-45b1-814b-766b4fdd0b5a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "ccas",
+      "label": "Centre d'Action Sociale de la Ville de Paris (CASVP)",
+      "address": "5 Boulevard Diderot, 75012 Paris",
+      "commune_insee": "75056",
+      "telephone": "01 44 67 16 07",
+      "url": "https://www.paris.fr/dossiers/centre-d-action-sociale-de-la-ville-de-paris-casvp-23",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/e65c2592-484b-42bf-a9ea-baba30ed554f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Paris",
+      "address": "69 rue de la Victoire, 75009 Paris",
+      "commune_insee": "75109",
+      "telephone": "01 53 32 39 39",
+      "url": "https://handicap.paris.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/00a066cb-ebf9-4de3-9a14-30dffb30d81a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil de Paris",
+      "address": "4 place Libération, Hôtel de ville, 75004 Paris",
+      "commune_insee": "75104",
+      "telephone": "01 42 76 39 75",
+      "url": "https://www.paris.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/41f268a5-fea2-4a0f-aa3a-cd0e69f94a6f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueil de jour Geneviève Laroque",
+      "value": "Accueil de jour · Unité Alzheimer — 25 places",
+      "address": "10 rue Tour-des-Dames, 75009 PARIS",
+      "telephone": "01 55 32 09 35",
+      "url": "http://www.croix-saint-simon.org/centre-daccueil-de-jour-genevieve-laroque",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Logements Beaucour",
+      "value": "Résidence autonomie — 64 places",
+      "address": "3 avenue Beaucour, 75009 PARIS",
+      "telephone": "01 42 81 41 94",
+      "url": "http://www.logementseniors@paris.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Logements des Maréchaux",
+      "value": "Résidence autonomie — 77 places",
+      "address": "15 rue Richer, 75009 PARIS",
+      "telephone": "01 48 24 64 13",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Logements Drouot",
+      "value": "Résidence autonomie — 44 places",
+      "address": "14 Rue Chauchat, 75009 PARIS",
+      "telephone": "01 45 23 59 57",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Logements Duhesme-Marcadet",
+      "value": "Résidence autonomie — 46 places",
+      "address": "40 rue Duhesme, 75009 PARIS",
+      "telephone": "01 42 81 36 41",
+      "url": "http://www.logementseniors@paris.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Logements Santos Dumont",
+      "value": "Résidence autonomie — 52 places",
+      "address": "29 rue Santos-Dumont, 75009 PARIS",
+      "telephone": "01 42 85 45 66",
+      "url": "http://www.logementseniors@paris.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Les Parentèles de la rue Blanche",
+      "value": "EHPAD · Hébergement temporaire · Unité Alzheimer — 71 places",
+      "address": "49 rue Blanche, 75009 PARIS",
+      "telephone": "01 70 98 40 40",
+      "url": "http://www.almage.com/parenteles-rue-blanche-projet-centre-alzheimer/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE DENTAIRE JEAN DELIBERO",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "45 rue LA TOUR D AUVERGNE, 75009 PARIS",
+      "commune_insee": "75109",
+      "telephone": "01 42 34 79 25",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR - CENTRE MEDICO PSY LA TOUR D'AUVERGNE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "18 rue DE LA TOUR D AUVERGNE, 75009 PARIS",
+      "commune_insee": "75109",
+      "telephone": "01 42 81 27 22",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADCART Banque de France",
+      "value": "Réseau Unapei — organisme et association de parents gestionnaire",
+      "address": "31 rue de Radziwill Code courrier 60–1535, 75049 PARIS CEDEX 1",
+      "telephone": "01 42 92 34 32",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APAEAI Jours Heureux",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "20 RUE RIBERA, 75016 PARIS",
+      "telephone": "01 42 24 91 79",
+      "url": "https://www.lesjoursheureux.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Paris",
+      "value": "Permanence le mercredi de 14 h à 16 h et le jeudi de 15 h à 17 h ; dd.75@apf.asso.fr",
+      "address": "44 rue des Longues Raies, 75013 Paris",
+      "telephone": "01 53 80 92 97",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Paris",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "Notre Dame de Bon Secours, 68 rue des Plantes, bâtiment D1, 75014 Paris",
+      "telephone": "01 45 40 30 91",
+      "url": "https://www.francealzheimer.org/paris/",
+      "source_url": "https://www.francealzheimer.org/paris/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Paris (75)",
+      "value": "Comité départemental de bénévoles ; permanence téléphonique les mercredi, jeudi et vendredi de 10 h à 12 h et de 14 h à 16 h",
+      "address": "Courrier : 18 rue des Terres au Curé, 75013 Paris",
+      "telephone": "01 84 60 69 50",
+      "url": "https://www.franceparkinson.fr/comite-75/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "marche",
+      "label": "Marché Anvers",
+      "value": "Alimentaire — vendredi apm, 10:00–20:00 en semaine",
+      "address": "Place d'Anvers côté square, du 2 à 10 et Av de trudaine du 15 au17",
+      "source_url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
+      "source_label": "Ville de Paris, opendata.paris.fr — marchés découverts",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "espace-vert",
+      "label": "Jardin Cromot-du Bourg",
+      "value": "Jardin — 789 m²",
+      "address": "9 Rue Cadet, 75009 Paris",
+      "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
+      "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "espace-vert",
+      "label": "Square Alex Biscarre",
+      "value": "Square — 1 180 m²",
+      "address": "31 Rue Notre Dame de Lorette, 75009 Paris",
+      "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
+      "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "espace-vert",
+      "label": "Square Berlioz",
+      "value": "Square — 802 m²",
+      "address": "1 Place Adolphe Max, 75009 Paris",
+      "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
+      "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "espace-vert",
+      "label": "Square d'Anvers-Jean-Claude Carriere",
+      "value": "Square — 4 610 m²",
+      "address": "3 Place D' Anvers, 75009 Paris",
+      "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
+      "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "espace-vert",
+      "label": "Square d'Estienne d'Orves",
+      "value": "Square — 3 164 m²",
+      "address": "1 Place D' Estienne D Orves, 75009 Paris",
+      "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
+      "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "espace-vert",
+      "label": "Square Montholon",
+      "value": "Square — 4 350 m²",
+      "address": "79 Rue la Fayette, 75009 Paris",
+      "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
+      "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "equipement-seniors",
+      "label": "ACTIVITÉS CULTURELLES ET DE LOISIRS DE LA VILLE DE PARIS",
+      "value": "Evènements conviviaux, Sorties collectives · Contactez la structure pour en savoir davantage · Certaines activités sont gratuites et d'autres sont payantes selon un tarif adapté au niveau de ressources à faire calculer auprès de l'EPS. Contactez la structure pour en savoir davantage",
+      "address": "6 rue drouot, 75009, PARIS",
+      "url": "https://www.paris.fr/pages/loisirs-et-citoyennete-185",
+      "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
+      "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "equipement-seniors",
+      "label": "Club Seniors La Tour des Dames",
+      "value": "Ateliers collectifs, Evènements conviviaux · Tous les jours · Gratuit",
+      "address": "12 rue de la tour des Dames, 75009, PARIS",
+      "telephone": "01 48 74 75 10",
+      "url": "https://www.paris.fr/pages/loisirs-et-citoyennete-185",
+      "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
+      "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "equipement-seniors",
+      "label": "MVAC 9",
+      "value": "Cela dépend des propositions des associations inscrites à la MVAC 9, la programmation évolue en fonction des propositions des associations",
+      "address": "54 rue jean-baptiste pigalle, 75009, PARIS",
+      "telephone": "01 49 70 81 70",
+      "url": "https://www.paris.fr/lieux/maison-de-la-vie-associative-et-citoyenne-du-9e-arrondissement-3276",
+      "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
+      "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Paris - 9e arrondissement",
+      "address": "6 rue Drouot, 75009 Paris",
+      "commune_insee": "75109",
+      "telephone": "01 71 37 75 09",
+      "url": "https://www.mairie09.paris.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/d7c1f15a-d319-4ba1-9101-211f96cf0f1d",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/communes?codeDepartement=75&type=arrondissement-municipal&fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 75",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2275%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Ville de Paris — marchés découverts",
+      "url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Ville de Paris — espaces verts (promenades ouvertes)",
+      "url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Ville de Paris — Seniors à Paris, activités de loisirs et citoyenneté",
+      "url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

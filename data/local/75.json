@@ -1,0 +1,463 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "75",
+  "kind": "departement",
+  "nom": "Paris",
+  "chemin": "/aide-a-domicile/paris/",
+  "slug": "paris",
+  "departement": "75",
+  "departement_nom": "Paris",
+  "parent": "idf",
+  "centre": {
+    "lat": 48.8589,
+    "lng": 2.347
+  },
+  "population": 2103778,
+  "demographie": {
+    "millesime": "2022",
+    "population": 2113705,
+    "part_60_74": 14.3,
+    "part_75_89": 7.3,
+    "part_90_plus": 1.2,
+    "part_75_plus": 8.4,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "paris-12",
+    "distance_km": 1.9
+  },
+  "vague": 1,
+  "motif_vague": "departement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "14,3 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "8,4 % de la population (75-89 ans : 7,3 % ; 90 ans ou plus : 1,2 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "2 113 705 habitants (Paris)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Paris 11e- 12e- 20e arrondissements",
+      "address": "Centre local d'information et de coordination Paris Emeraude Est, 55 boulevard de Picpus, Maison des Aînés et des Aidants Paris Est, 75012 Paris",
+      "commune_insee": "75112",
+      "telephone": "01 40 19 36 36",
+      "url": "https://www.paris.fr/equipements/maison-des-aines-et-des-aidants-paris-est-11e-12e-et-20e-arrondissements-16338",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/9b7d7500-8382-4747-9e04-482b7cd0854f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Paris 13e - 14e arrondissements",
+      "address": "58A rue du Dessous-des-Berges, Maison des Aînés et des Aidants Paris Sud, 75013 Paris",
+      "commune_insee": "75113",
+      "telephone": "01 45 88 21 09",
+      "url": "https://www.paris.fr/equipements/maison-des-aines-et-des-aidants-paris-sud-13e-et-14e-arrondissements-16342",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/f3d4000d-a67a-4636-9e0e-1c88ad99913a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Paris 7e - 15e - 16e arrondissements",
+      "address": "24 boulevard de Grenelle, Centre local d'information et de coordination Paris - Émeraude-Ouest, Maison des Aînés et des Aidants Paris-Ouest, 75015 Paris",
+      "commune_insee": "75115",
+      "telephone": "01 44 19 61 60",
+      "url": "https://www.paris.fr/lieux/maison-des-aines-et-des-aidants-paris-ouest-7e-15e-et-16e-arrondissements-16339",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/714d945b-8a79-4278-9e46-64660f957810",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Paris 8e - 17e - 18e arrondissements",
+      "address": "Centre local d'information et de coordination Paris - Émeraude nord-ouest, 56 rue rue Ordener, Maison des Aînés et des Aidants Paris Nord-Ouest, 75018 Paris",
+      "commune_insee": "75118",
+      "telephone": "01 53 11 18 18",
+      "url": "https://www.paris.fr/equipements/maison-des-aines-et-des-aidants-paris-nord-ouest-8e-17e-et-18e-arrondissements-16335",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/4053cdae-c81d-48e8-86cd-610fb52c0273",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Paris 9e - 10e - 19e arrondissements",
+      "address": "126 quai de Jemmapes, Maison des Aînés et des Aidants Paris Nord-Est, 75010 Paris",
+      "commune_insee": "75110",
+      "telephone": "01 40 40 27 80",
+      "url": "https://www.paris.fr/equipements/maison-des-aines-et-des-aidants-paris-nord-est-9e-10e-et-19e-arrondissements-16337",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/3473140c-8d8c-45b1-814b-766b4fdd0b5a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Paris centre 1er - 2e - 3e - 4e - 5e - 6e arrondissements",
+      "address": "11 rue de l'école de Médecine, Autonomie Paris-Saint-Jacques, Maison des Aînés et des Aidants Paris Centre, 75006 Paris",
+      "commune_insee": "75106",
+      "telephone": "01 44 07 13 35",
+      "url": "https://apsj.paris/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/e403d6e5-9d83-4ae3-9cb1-94596eef56e0",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Paris - 11er 12e et 20e arrondissements",
+      "address": "10 rue de Santerre, Club des aidants Joseph-Weill, 75012 Paris",
+      "commune_insee": "75112",
+      "telephone": "01 43 47 30 01",
+      "url": "https://www.ose-france.org",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/5e13450d-2796-4ecc-83e9-245d5a72a408",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Paris 14e",
+      "address": "68 rue des Plantes, Notre-Dame-de-Bon-Secours, Accueil de jour, 75014 Paris",
+      "commune_insee": "75114",
+      "telephone": "01 40 52 42 48",
+      "url": "http://www.ndbs.org",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/a527375c-5ebb-442a-953b-99cc36c573e1",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Paris 15e",
+      "address": "Espace Jeanne-Garnier, 55 rue de Lourmel, 75015 Paris",
+      "commune_insee": "75115",
+      "telephone": "01 43 92 21 76",
+      "url": "https://jeanne-garnier.org/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/130ceeb7-983a-4755-8149-466f81216ec9",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Paris 18e",
+      "address": "5 rue Firmin-Gemier, 75018 Paris",
+      "commune_insee": "75118",
+      "telephone": "01 42 29 29 94",
+      "url": "http://www.delta7.org",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/b55675c4-8851-496a-b3f6-6de87abdb081",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Paris",
+      "address": "69 rue de la Victoire, 75009 Paris",
+      "commune_insee": "75109",
+      "telephone": "01 53 32 39 39",
+      "url": "https://handicap.paris.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/00a066cb-ebf9-4de3-9a14-30dffb30d81a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil de Paris",
+      "address": "4 place Libération, Hôtel de ville, 75004 Paris",
+      "commune_insee": "75104",
+      "telephone": "01 42 76 39 75",
+      "url": "https://www.paris.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/41f268a5-fea2-4a0f-aa3a-cd0e69f94a6f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueils de jour recensés",
+      "value": "20 dans le département (Paris)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidences autonomie recensées",
+      "value": "134 dans le département (Paris)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD recensés",
+      "value": "73 dans le département (Paris)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE D ACCUEIL ET DE CRISE ADULTES CHS STE ANNE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "17 rue GARANCIERE, 75006 PARIS",
+      "commune_insee": "75106",
+      "telephone": "01 45 65 61 22",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER MAISON BLANCHE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "24 rue D HAUTEVILLE, 75010 PARIS",
+      "commune_insee": "75110",
+      "telephone": "01 40 22 12 69",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER SAINTE-ANNE PARIS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 rue CABANIS, 75674 PARIS CEDEX 14",
+      "commune_insee": "75114",
+      "telephone": "01 45 65 80 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER SPECIALISE LUTTE MALADIES MENTALES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "100 rue DE LA SANTE, 75014 PARIS",
+      "commune_insee": "75114",
+      "telephone": "01 45 65 85 72",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE NATIONAL D OPHTALMOLOGIE DES QUINZE VINGTS DE PARIS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "28 rue DE CHARENTON, 75571 PARIS CEDEX 12",
+      "commune_insee": "75112",
+      "telephone": "01 40 02 15 20",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE DENTAIRE DE L HOPITAL SAINTE PERINE DE L APHP",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "49 rue MIRABEAU, 75016 PARIS",
+      "commune_insee": "75116",
+      "telephone": "01 44 96 31 31",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE DENTAIRE GARANCIERE APHP",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "5 rue SANTERRE, 75006 PARIS",
+      "commune_insee": "75106",
+      "telephone": "01 43 25 93 23",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE DENTAIRE JEAN DELIBERO",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "45 rue LA TOUR D AUVERGNE, 75009 PARIS",
+      "commune_insee": "75109",
+      "telephone": "01 42 34 79 25",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CTRE HOSPI SPECIALISE LUTTE MALADIES MENTALES SITE HENRI EY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "15 avenue DE LA PORTE DE CHOISY, 75013 PARIS",
+      "commune_insee": "75113",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "CTRE HOSPI SPECIALISE MALADIES MENTALES COLONEL BONNET",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "11 avenue DU COLONEL BONNET, 75016 PARIS",
+      "commune_insee": "75116",
+      "telephone": "01 42 30 78 18",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU AP-HP UNIVERSITE PARIS SACLAY SITE SAINTE PERINE",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "11 rue CHARDON LAGACHE, 75016 PARIS",
+      "commune_insee": "75116",
+      "telephone": "01 44 96 31 31",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP CENTRE-UNIVERSITE PARIS CITE NECKER ENFANTS MALADES",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "149 rue DE SEVRES, 75743 PARIS CEDEX 15",
+      "commune_insee": "75115",
+      "telephone": "01 44 49 40 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "ADCART Banque de France",
+      "value": "Réseau Unapei — organisme et association de parents gestionnaire",
+      "address": "31 rue de Radziwill Code courrier 60–1535, 75049 PARIS CEDEX 1",
+      "telephone": "01 42 92 34 32",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APAEAI Jours Heureux",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "20 RUE RIBERA, 75016 PARIS",
+      "telephone": "01 42 24 91 79",
+      "url": "https://www.lesjoursheureux.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Paris",
+      "value": "Permanence le mercredi de 14 h à 16 h et le jeudi de 15 h à 17 h ; dd.75@apf.asso.fr",
+      "address": "44 rue des Longues Raies, 75013 Paris",
+      "telephone": "01 53 80 92 97",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Paris",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "Notre Dame de Bon Secours, 68 rue des Plantes, bâtiment D1, 75014 Paris",
+      "telephone": "01 45 40 30 91",
+      "url": "https://www.francealzheimer.org/paris/",
+      "source_url": "https://www.francealzheimer.org/paris/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Paris (75)",
+      "value": "Comité départemental de bénévoles ; permanence téléphonique les mercredi, jeudi et vendredi de 10 h à 12 h et de 14 h à 16 h",
+      "address": "Courrier : 18 rue des Terres au Curé, 75013 Paris",
+      "telephone": "01 84 60 69 50",
+      "url": "https://www.franceparkinson.fr/comite-75/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20"
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 75",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2275%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

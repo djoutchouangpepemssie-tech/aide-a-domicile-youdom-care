@@ -1,0 +1,438 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "77284",
+  "kind": "commune",
+  "nom": "Meaux",
+  "chemin": "/aide-a-domicile/seine-et-marne/meaux/",
+  "slug": "meaux",
+  "departement": "77",
+  "departement_nom": "Seine-et-Marne",
+  "codes_postaux": [
+    "77100"
+  ],
+  "parent": "77",
+  "epci": {
+    "code": "200072130",
+    "nom": "CA du Pays de Meaux"
+  },
+  "centre": {
+    "lat": 48.9573,
+    "lng": 2.9035
+  },
+  "superficie_ha": 1537.45,
+  "population": 56905,
+  "demographie": {
+    "millesime": "2022",
+    "population": 56659,
+    "part_60_74": 11.9,
+    "part_75_89": 5.5,
+    "part_90_plus": 0.9,
+    "part_75_plus": 6.4,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "serris",
+    "distance_km": 15.4
+  },
+  "communes_voisines": [
+    {
+      "code": "77369",
+      "nom": "Poincy",
+      "slug": "poincy",
+      "distance_km": 2.4,
+      "page": false
+    },
+    {
+      "code": "77330",
+      "nom": "Nanteuil-lès-Meaux",
+      "slug": "nanteuil-les-meaux",
+      "distance_km": 2.8,
+      "page": false
+    },
+    {
+      "code": "77143",
+      "nom": "Crégy-lès-Meaux",
+      "slug": "cregy-les-meaux",
+      "distance_km": 3,
+      "page": false
+    },
+    {
+      "code": "77199",
+      "nom": "Fublaines",
+      "slug": "fublaines",
+      "distance_km": 3.6,
+      "page": false
+    },
+    {
+      "code": "77276",
+      "nom": "Mareuil-lès-Meaux",
+      "slug": "mareuil-les-meaux",
+      "distance_km": 4.1,
+      "page": false
+    },
+    {
+      "code": "77513",
+      "nom": "Villenoy",
+      "slug": "villenoy",
+      "distance_km": 4.2,
+      "page": false
+    },
+    {
+      "code": "77475",
+      "nom": "Trilport",
+      "slug": "trilport",
+      "distance_km": 4.6,
+      "page": false
+    },
+    {
+      "code": "77077",
+      "nom": "Chambry",
+      "slug": "chambry",
+      "distance_km": 4.8,
+      "page": false
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "11,9 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "6,4 % de la population (75-89 ans : 5,5 % ; 90 ans ou plus : 0,9 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "56 659 habitants (Meaux)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Pôle autonomie territorial de Meaux",
+      "address": "47 avenue du Président Salvador Allende, 77100 MEAUX",
+      "telephone": "01 81 17 00 10",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Meaux",
+      "address": "Place de l'Hôtel de Ville, 77100 Meaux",
+      "commune_insee": "77284",
+      "telephone": "01 60 24 45 80",
+      "url": "https://www.ville-meaux.fr/?id=734",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/b648932c-c3bb-406c-a5be-c2599f7d9faa",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne",
+      "address": "16 rue de l'Aluminium, 77543 Savigny-le-Temple Cedex",
+      "commune_insee": "77445",
+      "telephone": "01 64 19 11 40",
+      "url": "https://mdph77.fr/fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/7a918fcf-41c7-463f-ad22-21d9a96bb088",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-et-Marne",
+      "address": "12 rue des Saints-Pères, Hôtel du département, 77000 Melun",
+      "commune_insee": "77288",
+      "telephone": "01 64 14 77 77",
+      "url": "https://www.seine-et-marne.fr/fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/eb2af874-daae-4c4b-9d39-f4ccf7a4db42",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Korian Au Fil du Temps",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire · Unité Alzheimer — 83 places",
+      "address": "2 rue de Condé, 77100 MEAUX",
+      "telephone": "01 60 25 10 09",
+      "url": "http://www.korian.fr/maison-retraite/ehpad-au-fil-du-temps-meaux-77100/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Maison des Augustines",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire · Unité Alzheimer — 158 places",
+      "address": "15 Rue de l'Abreuvoir, 77100 MEAUX",
+      "telephone": "01 64 33 50 50",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence Terfaux",
+      "value": "Résidence autonomie — 60 places",
+      "address": "1 Rue Terfaux, 77100 MEAUX",
+      "telephone": "01 64 34 73 03",
+      "url": "http://www.ville-meaux.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD d'Orgement du Centre hospitalier de Meaux",
+      "value": "EHPAD — 30 places",
+      "address": "2 rue d'Orgemont, 77100 MEAUX",
+      "telephone": "01 64 35 39 59",
+      "url": "http://www.ch-meaux.fr/web/guest/home/pages-transverses/les-services/personnes-agees",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "Résidence Ondine Orpea",
+      "value": "EHPAD · Hébergement temporaire — 80 places",
+      "address": "920 rue Charles-de-Gaulle, 77100 MAREUIL LES MEAUX",
+      "telephone": "01 60 24 27 60",
+      "url": "http://www.orpea.com/maison-de-retraite-ondine-mareuil-les-meaux-77",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "ANNEXE SOINS DE SUITE ET READAPTATION D'ORGEMONT",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 rue D ORGEMONT, 77100 MEAUX",
+      "commune_insee": "77284",
+      "telephone": "01 60 09 87 20",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE MEAUX SITE SAINT FARON",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "6 rue SAINT FIACRE, BP 218, 77100 MEAUX",
+      "commune_insee": "77284",
+      "telephone": "01 64 35 38 38",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR DE PSYCHIATRIE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "56 rue SAINT FARON, BP 218, 77100 MEAUX",
+      "commune_insee": "77284",
+      "telephone": "01 64 34 48 92",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "SERVICE D HOSPITALISATION A DOMICILE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "6 avenue DE LA CONCORDE, 77100 MEAUX",
+      "commune_insee": "77284",
+      "telephone": "01 64 35 38 38",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI 77",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "2 Ter Rue René Cassin, 77000 MELUN",
+      "telephone": "01 60 56 54 77",
+      "url": "https://www.adapei77.org",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-et-Marne",
+      "value": "Délégation départementale ; contact : dd.77@apf.asso.fr",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ARAMIS",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "47 RUE THIERS, 77124 VILLENOY",
+      "telephone": "01 64 36 56 40",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "Association Elan 2",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 RUE DU GROS CAILLOU, 77240 CESSON",
+      "telephone": "01 64 41 09 38",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Seine-et-Marne",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "15 rue des Prés, 113 bis, 77310 Saint-Fargeau-Ponthierry",
+      "telephone": "06 38 45 49 83",
+      "url": "https://www.francealzheimer.org/seineetmarne/",
+      "source_url": "https://www.francealzheimer.org/seineetmarne/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-et-Marne (77)",
+      "value": "Comité départemental de bénévoles (Chessy)",
+      "telephone": "07 64 76 29 00",
+      "url": "https://www.franceparkinson.fr/comite-77/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "CA du Pays de Meaux",
+      "source_url": "https://geo.api.gouv.fr/departements/77/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Meaux",
+      "address": "2 place Jacques-Chirac, 77100 Meaux",
+      "commune_insee": "77284",
+      "telephone": "01 60 09 97 00",
+      "url": "https://www.ville-meaux.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/dd2012d8-ce05-4e31-9a14-b863f13655bb",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/77/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 77",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2277%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

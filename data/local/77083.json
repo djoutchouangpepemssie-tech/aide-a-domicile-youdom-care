@@ -1,0 +1,350 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "77083",
+  "kind": "commune",
+  "nom": "Champs-sur-Marne",
+  "chemin": "/aide-a-domicile/seine-et-marne/champs-sur-marne/",
+  "slug": "champs-sur-marne",
+  "departement": "77",
+  "departement_nom": "Seine-et-Marne",
+  "codes_postaux": [
+    "77420"
+  ],
+  "parent": "77",
+  "epci": {
+    "code": "200057958",
+    "nom": "CA Paris - Vallée de la Marne"
+  },
+  "centre": {
+    "lat": 48.8485,
+    "lng": 2.594
+  },
+  "superficie_ha": 768.03,
+  "population": 27451,
+  "demographie": {
+    "millesime": "2022",
+    "population": 26661,
+    "part_60_74": 13.1,
+    "part_75_89": 3.7,
+    "part_90_plus": 0.3,
+    "part_75_plus": 4,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-20"
+  },
+  "agence_proche": {
+    "id": "serris",
+    "distance_km": 14.4
+  },
+  "communes_voisines": [
+    {
+      "code": "77337",
+      "nom": "Noisiel",
+      "slug": "noisiel",
+      "distance_km": 1.8,
+      "page": false
+    },
+    {
+      "code": "93033",
+      "nom": "Gournay-sur-Marne",
+      "slug": "gournay-sur-marne",
+      "distance_km": 1.9,
+      "page": false
+    },
+    {
+      "code": "93051",
+      "nom": "Noisy-le-Grand",
+      "slug": "noisy-le-grand",
+      "distance_km": 3.3,
+      "page": true
+    },
+    {
+      "code": "77169",
+      "nom": "Émerainville",
+      "slug": "emerainville",
+      "distance_km": 3.5,
+      "page": false
+    },
+    {
+      "code": "77258",
+      "nom": "Lognes",
+      "slug": "lognes",
+      "distance_km": 3.6,
+      "page": false
+    },
+    {
+      "code": "77479",
+      "nom": "Vaires-sur-Marne",
+      "slug": "vaires-sur-marne",
+      "distance_km": 3.8,
+      "page": false
+    },
+    {
+      "code": "77468",
+      "nom": "Torcy",
+      "slug": "torcy",
+      "distance_km": 4,
+      "page": false
+    },
+    {
+      "code": "77108",
+      "nom": "Chelles",
+      "slug": "chelles",
+      "distance_km": 4,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "13,1 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "4 % de la population (75-89 ans : 3,7 % ; 90 ans ou plus : 0,3 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "26 661 habitants (Champs-sur-Marne)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne",
+      "address": "16 rue de l'Aluminium, 77543 Savigny-le-Temple Cedex",
+      "commune_insee": "77445",
+      "telephone": "01 64 19 11 40",
+      "url": "https://mdph77.fr/fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/7a918fcf-41c7-463f-ad22-21d9a96bb088",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-et-Marne",
+      "address": "12 rue des Saints-Pères, Hôtel du département, 77000 Melun",
+      "commune_insee": "77288",
+      "telephone": "01 64 14 77 77",
+      "url": "https://www.seine-et-marne.fr/fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/eb2af874-daae-4c4b-9d39-f4ccf7a4db42",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Les Glycines",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire — 53 places",
+      "address": "9 avenue de Chelles, 77420 CHAMPS SUR MARNE",
+      "telephone": "01 60 05 65 09",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Les glycines",
+      "value": "Résidence autonomie — 55 places",
+      "address": "25 avenue du Général de-Gaulle, 77420 CHAMPS SUR MARNE",
+      "telephone": "01 60 05 65 09",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE D ACCUEIL THERAPEUTIQUE A TEMPS PARTIEL",
+      "value": "Centre Hospitalier (C.H.) — à 4,1 km à vol d'oiseau (Villiers-sur-Marne)",
+      "address": "12 rue DE CHENNEVIÈRES, 94350 VILLIERS SUR MARNE",
+      "commune_insee": "94079",
+      "telephone": "01 49 30 74 78",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR MARIE ROSE MAMELET",
+      "value": "Centre Hospitalier (C.H.) — à 4 km à vol d'oiseau (Chelles)",
+      "address": "17 avenue HENIN, 77500 CHELLES",
+      "commune_insee": "77108",
+      "telephone": "01 64 30 70 70",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI 77",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "2 Ter Rue René Cassin, 77000 MELUN",
+      "telephone": "01 60 56 54 77",
+      "url": "https://www.adapei77.org",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-et-Marne",
+      "value": "Délégation départementale ; contact : dd.77@apf.asso.fr",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ARAMIS",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "47 RUE THIERS, 77124 VILLENOY",
+      "telephone": "01 64 36 56 40",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "Association Elan 2",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 RUE DU GROS CAILLOU, 77240 CESSON",
+      "telephone": "01 64 41 09 38",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Seine-et-Marne",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "15 rue des Prés, 113 bis, 77310 Saint-Fargeau-Ponthierry",
+      "telephone": "06 38 45 49 83",
+      "url": "https://www.francealzheimer.org/seineetmarne/",
+      "source_url": "https://www.francealzheimer.org/seineetmarne/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-et-Marne (77)",
+      "value": "Comité départemental de bénévoles (Chessy)",
+      "telephone": "07 64 76 29 00",
+      "url": "https://www.franceparkinson.fr/comite-77/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "CA Paris - Vallée de la Marne",
+      "source_url": "https://geo.api.gouv.fr/departements/77/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Champs-sur-Marne",
+      "address": "Mail Jean-Ferrat, 77420 Champs-sur-Marne",
+      "commune_insee": "77083",
+      "telephone": "01 64 73 48 48",
+      "url": "https://www.ville-champssurmarne.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/41dd51b7-43d5-45c3-a2f7-392b7b50f4cb",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-20",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/77/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 77",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2277%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}
