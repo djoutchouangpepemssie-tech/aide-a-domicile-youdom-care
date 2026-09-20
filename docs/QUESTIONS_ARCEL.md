@@ -89,6 +89,10 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
   Note de la loop (2026-09-20) : le dépôt est pour l'instant local (aucun remote) et `gh auth status` échoue sur cette machine (jeton `GH_TOKEN` invalide). Tant que ce n'est pas réglé, la loop fusionnera les fins de phase en local (squash sur `main` + tag) et ouvrira les PR a posteriori.
   Réponse :
 - **Q-TECH-4.** Budget JavaScript initial : `docs/07 §5` demandait moins de 90 Ko compressés par page de contenu, mais le socle Next 16 + React 19 pèse à lui seul 132 Ko (mesure Lighthouse du 2026-09-20, accueil à 150 Ko au total, LCP 1,9 s, performance 98). La loop a rebasé le budget à 160 Ko (contenu) et 220 Ko (formulaires), voir D-019. Confirmez-vous ce budget, ou souhaitez-vous une pile plus légère pour les pages de contenu (ce qui remettrait en cause D-006) ?
+
+- **Q-TECH-6.** IndexNow : créer une clé (8 à 128 caractères, lettres et chiffres) et la définir dans la variable d'environnement `INDEXNOW_KEY` de la plateforme ; le fichier de clé est écrit au build (`prebuild`) et `pnpm indexnow` envoie les adresses des plans de site. À brancher après le premier déploiement (crochet de déploiement ou étape d'intégration continue : à décider).
+
+- **Q-TECH-7.** Balises de vérification Google Search Console (`GOOGLE_SITE_VERIFICATION`) et Bing Webmaster (`BING_SITE_VERIFICATION`) : à renseigner dans l'environnement de production quand les propriétés seront créées ; absentes tant que vides.
   Réponse :
 
 ## Lancement

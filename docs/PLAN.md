@@ -107,12 +107,12 @@ Fin de phase 4b : `pnpm audit`, fusion locale squash dans `main`, étiquette `ph
 
 ## Phase 5 — SEO technique · `phase/05-seo`
 
-- [ ] **P5.1 Métadonnées.** Assistants de titres, descriptions, canoniques ; `check-seo.ts`. Réf. `docs/04 §2`.
-- [ ] **P5.2 Données structurées.** `src/lib/jsonld/` pour tous les types du tableau ; `check-schema.ts` ; aucun type interdit.
-- [ ] **P5.3 Plans de site segmentés, `robots.txt`, script IndexNow.**
-- [ ] **P5.4 Images Open Graph générées.**
-- [ ] **P5.5 Maillage.** Blocs « À lire aussi », plan du site, page 404 utile, détection des pages orphelines.
-- [ ] **P5.6 `llms.txt`, balises de vérification, configuration Lighthouse CI des pages témoins.**
+- [x] (a45a08e) **P5.1 Métadonnées.** Assistants de titres, descriptions, canoniques ; `check-seo.ts`. Réf. `docs/04 §2`.
+- [x] (a45a08e) **P5.2 Données structurées.** `src/lib/jsonld/` pour tous les types du tableau ; `check-schema.ts` ; aucun type interdit.
+- [x] (4e1d364) **P5.3 Plans de site segmentés, `robots.txt`, script IndexNow.**
+- [x] (4e1d364) **P5.4 Images Open Graph générées.**
+- [x] (cbffe6e) **P5.5 Maillage.** Blocs « À lire aussi », plan du site, page 404 utile, détection des pages orphelines.
+- [x] (a45a08e) **P5.6 `llms.txt`, balises de vérification, configuration Lighthouse CI des pages témoins.**
 
 **Point de validation 5** : `check-seo`, `check-schema`, `check-links` verts sur tout le site ; Lighthouse SEO à 100 sur les pages témoins.
 
