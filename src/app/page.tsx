@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Commitments, visibleCommitments } from "@/components/blocks/Commitments/Commitments";
 import { Hero } from "@/components/blocks/Hero/Hero";
 import { withParam } from "@/components/blocks/HeroGestures/params";
@@ -33,6 +34,7 @@ import {
 } from "@/content/loader";
 import { isProduction } from "@/lib/env";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * Accueil : les douze blocs de docs/01 §4, enrichis par docs/design/CONCEPT.md §3.
@@ -56,6 +58,11 @@ const SITUATIONS_ID = "situations";
 
 /** Paramètre ajouté au lien du choix sans panneau : la page de rappel affiche `motifs[id]`. */
 const MOTIF_PARAM = "motif";
+
+export function generateMetadata(): Metadata {
+  const { seo } = getHomePage();
+  return pageMetadata({ titre: seo.titre, description: seo.description, chemin: "/" });
+}
 
 export default async function Home() {
   const page = getHomePage();

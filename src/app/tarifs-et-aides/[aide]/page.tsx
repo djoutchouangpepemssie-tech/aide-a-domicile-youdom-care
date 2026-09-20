@@ -11,8 +11,8 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Prose } from "@/components/ui/Prose/Prose";
 import { getAidPage, listAidPageIds } from "@/content/aid-pages";
-import { getInterfaceTexts, getNavigation, getPricingPage, getSiteConfig } from "@/content/loader";
-import { pageTitle } from "@/lib/seo/title";
+import { getInterfaceTexts, getNavigation, getPricingPage } from "@/content/loader";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * Page détaillée d'une aide (docs/03 §9) : montants et conditions repris des sources officielles,
@@ -32,12 +32,11 @@ export async function generateMetadata({ params }: AidPageProps): Promise<Metada
   const { aide } = await params;
   const page = getAidPage(aide);
   if (!page) return {};
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: page.seo.titre,
     description: page.seo.description,
-    alternates: { canonical: `/tarifs-et-aides/${aide}/` },
-  };
+    chemin: `/tarifs-et-aides/${aide}/`,
+  });
 }
 
 export default async function AidDetailPage({ params }: AidPageProps) {

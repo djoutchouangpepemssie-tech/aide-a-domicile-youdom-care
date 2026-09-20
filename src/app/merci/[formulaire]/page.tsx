@@ -17,7 +17,7 @@ import {
 import { isProduction } from "@/lib/env";
 import { leadForms, type LeadForm } from "@/lib/lead/forms";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * Confirmation /merci/{formulaire}/ (docs/05 §3) : noindex, ce qui va se passer, le téléphone,
@@ -41,13 +41,13 @@ export async function generateMetadata({ params }: ThanksPageProps): Promise<Met
   const { formulaire } = await params;
   if (!isLeadForm(formulaire)) return {};
   const page = getThanksPage();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.seo.titre, marque.nom),
+  // /merci/ figure dans neverIndexedPaths : noindex quoi qu'il arrive.
+  return pageMetadata({
+    titre: page.seo.titre,
     description: page.seo.description,
-    robots: { index: false, follow: false },
-    alternates: { canonical: `/merci/${formulaire}/` },
-  };
+    chemin: `/merci/${formulaire}/`,
+    noindex: true,
+  });
 }
 
 /** Phrase de succès de docs/01 §7 : avec délai seulement s'il est connu et engagé. */

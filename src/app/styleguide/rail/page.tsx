@@ -6,11 +6,14 @@ import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { TextField } from "@/components/ui/TextField/TextField";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Guide de styles — Rail de conversion — Youdom Care",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata({
+  titre: "Guide de styles — Rail de conversion",
+  description: "Page de travail : le rail de conversion et ses variantes selon la page.",
+  chemin: "/styleguide/rail/",
+  noindex: true,
+});
 
 /*
  * Page de travail (noindex, exclue du plan de site comme /styleguide/) : le rail de conversion

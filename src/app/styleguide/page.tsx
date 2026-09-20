@@ -25,11 +25,15 @@ import { WeekPlanner } from "@/components/blocks/WeekPlanner/WeekPlanner";
 import { WeekPlannerInput } from "@/components/forms/WeekPlannerInput/WeekPlannerInput";
 import { getCommitments, getInterfaceTexts, getPricing, getWeekExamples } from "@/content/loader";
 import { budgetBasis } from "@/lib/pricing/pricing";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Guide de styles — Youdom Care",
-  robots: { index: false, follow: false },
-};
+// /styleguide/ figure dans neverIndexedPaths : noindex quoi qu'il arrive.
+export const metadata: Metadata = pageMetadata({
+  titre: "Guide de styles",
+  description: "Page de travail du design system « Le Fil » : jetons, composants et blocs.",
+  chemin: "/styleguide/",
+  noindex: true,
+});
 
 // Les valeurs viennent de src/styles/tokens.css : ici on ne liste que les noms de jetons.
 const swatches = [

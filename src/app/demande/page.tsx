@@ -6,25 +6,19 @@ import { Button } from "@/components/ui/Button/Button";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { listFormDefinitions } from "@/content/form-definitions";
-import {
-  getInterfaceTexts,
-  getNavigation,
-  getRequestIndexPage,
-  getSiteConfig,
-} from "@/content/loader";
+import { getInterfaceTexts, getNavigation, getRequestIndexPage } from "@/content/loader";
 import { formPaths } from "@/lib/lead/forms";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /* /demande/ : aiguillage vers le formulaire de chaque cas (docs/00 §5). Seuls les cas existants sont listés. */
 
 export function generateMetadata(): Metadata {
   const page = getRequestIndexPage();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: page.seo.titre,
     description: page.seo.description,
-    alternates: { canonical: "/demande/" },
-  };
+    chemin: "/demande/",
+  });
 }
 
 export default function RequestIndexPage() {

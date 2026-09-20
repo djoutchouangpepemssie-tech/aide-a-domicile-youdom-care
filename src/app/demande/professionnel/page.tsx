@@ -11,18 +11,17 @@ import {
   getSiteConfig,
   getSpecialForms,
 } from "@/content/loader";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /* /demande/professionnel/ (docs/05 §2) : les prescripteurs adressent une situation, sans donnée nominative. Page statique. */
 
 export function generateMetadata(): Metadata {
   const page = getSpecialForms().professionnel;
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: page.seo.titre,
     description: page.seo.description,
-    alternates: { canonical: "/demande/professionnel/" },
-  };
+    chemin: "/demande/professionnel/",
+  });
 }
 
 export default function ProfessionalPage() {

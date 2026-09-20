@@ -7,18 +7,17 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { getInterfaceTexts, getNavigation, getSiteConfig, getSpecialForms } from "@/content/loader";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /* /contact/ (docs/05 §2, « autres demandes ») : un message, les coordonnées, l'aiguillage vers la demande. */
 
 export function generateMetadata(): Metadata {
   const page = getSpecialForms().contact;
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: page.seo.titre,
     description: page.seo.description,
-    alternates: { canonical: "/contact/" },
-  };
+    chemin: "/contact/",
+  });
 }
 
 export default function ContactPage() {

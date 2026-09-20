@@ -20,7 +20,7 @@ import {
 } from "@/content/loader";
 import { isProduction } from "@/lib/env";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * « Comment ça marche » (docs/03 §9) : les quatre étapes de docs/01 (source : accueil.json),
@@ -31,12 +31,11 @@ import { pageTitle } from "@/lib/seo/title";
 
 export function generateMetadata(): Metadata {
   const { seo } = getHowItWorksPage();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(seo.titre, marque.nom),
+  return pageMetadata({
+    titre: seo.titre,
     description: seo.description,
-    alternates: { canonical: "/comment-ca-marche/" },
-  };
+    chemin: "/comment-ca-marche/",
+  });
 }
 
 export default function HowItWorksPage() {

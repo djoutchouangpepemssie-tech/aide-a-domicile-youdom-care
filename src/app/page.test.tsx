@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeAll, describe, expect, it, vi } from "vitest";
-import Home from "./page";
+import Home, { generateMetadata } from "./page";
 
 /* La page est asynchrone : les situations du panneau viennent des MDX des piliers. */
 let home: Awaited<ReturnType<typeof Home>>;
@@ -10,6 +10,17 @@ beforeAll(async () => {
   Element.prototype.scrollIntoView = vi.fn();
   home = await Home();
 }, 60_000);
+
+describe("Accueil (métadonnées, P5.1)", () => {
+  it("porte le titre et la description de docs/01 §8 et une canonique absolue", () => {
+    const metadata = generateMetadata();
+    expect(metadata.title).toBe("Aide à domicile spécialisée à Paris et en Île-de-France");
+    expect(String(metadata.description).length).toBeGreaterThanOrEqual(140);
+    expect(String(metadata.description).length).toBeLessThanOrEqual(155);
+    expect(metadata.alternates?.canonical).toBe("https://www.youdom-care.com/");
+    expect(metadata.openGraph).toMatchObject({ locale: "fr_FR", siteName: "Youdom Care" });
+  });
+});
 
 describe("Accueil (blocs 1 à 8)", () => {
   it("rend la bannière, les six situations, les engagements et le bloc neuro", () => {

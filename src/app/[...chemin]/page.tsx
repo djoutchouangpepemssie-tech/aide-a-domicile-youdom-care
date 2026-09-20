@@ -14,13 +14,20 @@ import {
   getWeekExamples,
 } from "@/content/loader";
 import { getServicePage, listBuildableServicePages, listServicePages } from "@/content/services";
+import { JsonLd } from "@/lib/jsonld/JsonLd";
+import { servicePageJsonLd } from "@/lib/jsonld/service-page";
 import { budgetBasis } from "@/lib/pricing/pricing";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { serviceOgImagePath } from "@/lib/og/paths";
 
 /*
  * Pages services et pathologies (docs/00 §5, docs/03) : une route par fichier
  * content/services/**\/*.mdx, construite au build. Un chemin inconnu renvoie 404 ; en
  * production, une page `a_relire` n'est pas construite (docs/03 §1).
+ *
+ * Données structurées (docs/04 §2, P5.2) : `Service`, `MedicalWebPage` (pathologie relue) ou
+ * `WebPage`, et `FAQPage` avec les questions de la section 11 ; `Organization` vient du pied
+ * de page, `BreadcrumbList` du fil d'Ariane.
  */
 
 type ServiceRouteProps = { params: Promise<{ chemin: string[] }> };
@@ -40,13 +47,16 @@ export async function generateMetadata({ params }: ServiceRouteProps): Promise<M
   const { chemin } = await params;
   const page = await getServicePage(toPath(chemin));
   if (!page) return {};
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(page.meta.titre, marque.nom),
+  // docs/04 §2 : canonique absolue, Open Graph et Twitter par pageMetadata ; une page a_relire
+  // reste noindex ; l'image Open Graph est rendue par la route /og/{chemin}/ (segment
+  // attrape-tout : pas d'opengraph-image.tsx possible ici).
+  return pageMetadata({
+    titre: page.meta.titre,
     description: page.meta.description,
-    alternates: { canonical: page.meta.chemin },
-    ...(page.meta.statut === "a_relire" ? { robots: { index: false, follow: false } } : {}),
-  };
+    chemin: page.meta.chemin,
+    noindex: page.meta.statut === "a_relire",
+    image: serviceOgImagePath(page.meta.chemin),
+  });
 }
 
 export async function buildServiceData(chemin: string): Promise<ServiceTemplateData | null> {
@@ -113,5 +123,15 @@ export default async function ServiceRoute({ params }: ServiceRouteProps) {
   const { chemin } = await params;
   const data = await buildServiceData(toPath(chemin));
   if (!data) notFound();
-  return <ServiceTemplate data={data} />;
+  const jsonLd = servicePageJsonLd(
+    data.page,
+    getSiteConfig(),
+    data.texts.service.publics[data.page.public],
+  );
+  return (
+    <>
+      <JsonLd data={jsonLd} />
+      <ServiceTemplate data={data} />
+    </>
+  );
 }

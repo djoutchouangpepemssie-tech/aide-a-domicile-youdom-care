@@ -6,15 +6,9 @@ import { Button } from "@/components/ui/Button/Button";
 import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
-import {
-  getAbout,
-  getCommitments,
-  getInterfaceTexts,
-  getNavigation,
-  getSiteConfig,
-} from "@/content/loader";
+import { getAbout, getCommitments, getInterfaceTexts, getNavigation } from "@/content/loader";
 import { isProduction } from "@/lib/env";
-import { pageTitle } from "@/lib/seo/title";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * « Nos engagements » : chaque engagement de content/engagements.json avec sa preuve quand
@@ -24,12 +18,11 @@ import { pageTitle } from "@/lib/seo/title";
 
 export function generateMetadata(): Metadata {
   const { engagements_page } = getAbout();
-  const { marque } = getSiteConfig();
-  return {
-    title: pageTitle(engagements_page.seo.titre, marque.nom),
+  return pageMetadata({
+    titre: engagements_page.seo.titre,
     description: engagements_page.seo.description,
-    alternates: { canonical: "/a-propos/nos-engagements/" },
-  };
+    chemin: "/a-propos/nos-engagements/",
+  });
 }
 
 export default function CommitmentsPage() {
