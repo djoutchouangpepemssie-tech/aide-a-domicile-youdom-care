@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Atkinson_Hyperlegible_Next, Fraunces } from "next/font/google";
+import { ComfortScript } from "@/components/layout/ComfortScript/ComfortScript";
+import { SiteFooter } from "@/components/layout/SiteFooter/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader/SiteHeader";
+import { SiteMobileActionBar } from "@/components/layout/SiteMobileActionBar/SiteMobileActionBar";
 import { getSiteConfig } from "@/content/loader";
 import { isIndexable } from "@/lib/seo/indexable";
 import "@/styles/globals.css";
@@ -37,8 +41,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${fraunces.variable} ${atkinson.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="fr"
+      className={`${fraunces.variable} ${atkinson.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
+        <ComfortScript />
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+        <SiteMobileActionBar />
+      </body>
     </html>
   );
 }

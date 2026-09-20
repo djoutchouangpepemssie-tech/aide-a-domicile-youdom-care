@@ -16,6 +16,104 @@
     "lecture_accompagnement": "Voir l'accompagnement",
     "lecture_aides": "Je découvre les aides"
   },
+  "en_tete": {
+    "aller_au_contenu": "Aller au contenu",
+    "navigation_principale": "Navigation principale",
+    "accueil": "Youdom Care, accueil",
+    "menu": "Menu",
+    "fermer_menu": "Fermer le menu",
+    "appeler": "Appeler le {téléphone}"
+  },
+  "pied_de_page": {
+    "nous_joindre": "Nous joindre",
+    "nos_agences": "Nos agences",
+    "pour_qui": "Pour qui ?",
+    "nos_services": "Nos services",
+    "territoires": "Territoires",
+    "entreprise": "Youdom Care",
+    "labels": "Labels et adhésions",
+    "navigation_pied": "Pied de page",
+    "toutes_les_agences": "Toutes les agences",
+    "aide_a_domicile_en": "Aide à domicile en {territoire}",
+    "voir_agence": "Voir l’agence {nom}"
+  },
+  "confort": {
+    "libelle": "Confort de lecture",
+    "description": "Texte plus grand, lignes plus aérées, liens soulignés, animations coupées."
+  },
+  "semaine_type": {
+    "exemple_illustratif": "Exemple illustratif",
+    "legende": "Légende des activités",
+    "libre": "Libre",
+    "creneau": "Créneau",
+    "resume": "Environ {h} heures par semaine",
+    "nuit_singulier": "dont une nuit",
+    "nuits_pluriel": "dont {n} nuits",
+    "activites": {
+      "gestes": "Gestes du quotidien",
+      "repas": "Repas",
+      "sorties": "Sorties",
+      "presence": "Présence",
+      "nuit": "Nuit"
+    },
+    "jours": {
+      "lun": "Lundi",
+      "mar": "Mardi",
+      "mer": "Mercredi",
+      "jeu": "Jeudi",
+      "ven": "Vendredi",
+      "sam": "Samedi",
+      "dim": "Dimanche"
+    },
+    "creneaux": {
+      "early": "Tôt le matin",
+      "morning": "Matin",
+      "noon": "Midi",
+      "afternoon": "Après-midi",
+      "evening": "Soirée",
+      "night": "Nuit"
+    }
+  },
+  "tarifs": {
+    "ttc": "TTC",
+    "ht": "HT",
+    "par_unite": "par {unite}",
+    "avant_avantage": "Prix avant avantage fiscal",
+    "apres_credit": "Soit {montant} après crédit d’impôt de {taux}",
+    "exemple_mensuel": "Exemple : {heures} h par semaine, environ {montant} par mois",
+    "mode": "Mode {mode}",
+    "devis": "Devis personnalisé gratuit",
+    "unites": {
+      "heure": "heure",
+      "nuit": "nuit",
+      "jour": "jour",
+      "forfait": "forfait",
+      "mois": "mois"
+    },
+    "modes": {
+      "prestataire": "prestataire",
+      "mandataire": "mandataire"
+    }
+  },
+  "aides": {
+    "pour_qui": "Pour qui ?",
+    "combien": "Combien ?",
+    "comment": "Comment la demander ?",
+    "lien_externe": "site officiel, lien externe"
+  },
+  "situations": {
+    "lire": "Voir"
+  },
+  "fil_ariane": {
+    "nom": "Fil d’Ariane",
+    "accueil": "Accueil"
+  },
+  "barre_mobile": {
+    "nom": "Actions rapides",
+    "appeler": "Appeler",
+    "rappel": "Être rappelé(e)",
+    "demande": "Ma demande"
+  },
   "formulaires": {
     "accroche": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées.",
     "etape_pour_qui": "Pour qui cherchez-vous de l'aide ?",

@@ -1,0 +1,98 @@
+{
+  "_lisezmoi": "Navigation principale de l'en-tête (docs/00 §5 « Navigation »). Six entrées, deux menus déroulants. Les adresses suivent l'arborescence de docs/00 §5 : minuscules, tirets, barre oblique finale.",
+  "principale": [
+    {
+      "id": "pour-qui",
+      "libelle": "Pour qui ?",
+      "enfants": [
+        {
+          "libelle": "Maladies neurodégénératives",
+          "href": "/maladies-neurodegeneratives/",
+          "description": "Alzheimer, Parkinson, sclérose en plaques, corps de Lewy, DFT, Charcot, Huntington"
+        },
+        {
+          "libelle": "Personnes âgées",
+          "href": "/personnes-agees/",
+          "description": "Autonomie, vie quotidienne, compagnie et stimulation"
+        },
+        {
+          "libelle": "Adultes en situation de handicap",
+          "href": "/adultes-en-situation-de-handicap/",
+          "description": "Moteur, sensoriel, cognitif, psychique, maladies invalidantes"
+        },
+        {
+          "libelle": "Enfants en situation de handicap",
+          "href": "/enfants-en-situation-de-handicap/",
+          "description": "Autisme, polyhandicap, handicap moteur, déficience intellectuelle"
+        },
+        {
+          "libelle": "Aidants",
+          "href": "/aidants/",
+          "description": "Solutions de répit, où en êtes-vous ?"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "libelle": "Nos services",
+      "enfants": [
+        {
+          "libelle": "Garde de nuit",
+          "href": "/services/garde-de-nuit/",
+          "description": "Nuit calme, nuit active"
+        },
+        {
+          "libelle": "Présence 24h/24",
+          "href": "/services/presence-24h-24/",
+          "description": "Présence continue, équipes en relais"
+        },
+        {
+          "libelle": "Sortie d'hospitalisation",
+          "href": "/services/sortie-d-hospitalisation/",
+          "description": "Organisation en 48 h"
+        },
+        {
+          "libelle": "Garde-malade",
+          "href": "/services/garde-malade/",
+          "description": "Jour et nuit"
+        },
+        {
+          "libelle": "Accompagnement en vacances",
+          "href": "/services/accompagnement-en-vacances/"
+        },
+        {
+          "libelle": "Remplacement d'auxiliaire de vie",
+          "href": "/services/remplacement-d-auxiliaire-de-vie/"
+        }
+      ]
+    },
+    { "id": "comment-ca-marche", "libelle": "Comment ça marche", "href": "/comment-ca-marche/" },
+    { "id": "tarifs-et-aides", "libelle": "Tarifs et aides", "href": "/tarifs-et-aides/" },
+    { "id": "territoires", "libelle": "Territoires", "href": "/aide-a-domicile/" },
+    { "id": "le-fil", "libelle": "Le Fil", "href": "/magazine/" }
+  ],
+  "rappel_href": "/etre-rappele/",
+  "demande_href": "/demande/",
+  "contact_href": "/contact/",
+  "pied_de_page": {
+    "entreprise": [
+      { "libelle": "À propos", "href": "/a-propos/" },
+      { "libelle": "Nos engagements", "href": "/a-propos/nos-engagements/" },
+      { "libelle": "Comment ça marche", "href": "/comment-ca-marche/" },
+      { "libelle": "Tarifs et aides", "href": "/tarifs-et-aides/" },
+      { "libelle": "Le Fil, le magazine", "href": "/magazine/" },
+      { "libelle": "Lexique", "href": "/lexique/" },
+      { "libelle": "Professionnels", "href": "/professionnels/" },
+      { "libelle": "Recrutement", "href": "/recrutement/" },
+      { "libelle": "Contact", "href": "/contact/" }
+    ],
+    "legal": [
+      { "libelle": "Mentions légales", "href": "/mentions-legales/" },
+      { "libelle": "Politique de confidentialité", "href": "/politique-de-confidentialite/" },
+      { "libelle": "Cookies", "href": "/cookies/" },
+      { "libelle": "Conditions générales", "href": "/conditions-generales/" },
+      { "libelle": "Accessibilité", "href": "/accessibilite/" },
+      { "libelle": "Plan du site", "href": "/plan-du-site/" }
+    ]
+  }
+}

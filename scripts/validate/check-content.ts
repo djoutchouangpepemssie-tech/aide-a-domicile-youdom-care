@@ -4,8 +4,10 @@ import { z } from "zod";
 import {
   commitmentsSchema,
   interfaceSchema,
+  navigationSchema,
   pricingSchema,
   siteConfigSchema,
+  weekExamplesSchema,
   type Commitments,
   type Pricing,
   type SiteConfig,
@@ -17,6 +19,8 @@ const files = {
   "tarifs.json": pricingSchema,
   "engagements.json": commitmentsSchema,
   "interface.json": interfaceSchema,
+  "navigation.json": navigationSchema,
+  "semaines-types.json": weekExamplesSchema,
 } as const;
 
 export interface LoadedContent {

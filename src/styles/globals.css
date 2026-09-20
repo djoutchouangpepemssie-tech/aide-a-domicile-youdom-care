@@ -85,6 +85,63 @@
   --ease-out: var(--ease-out);
 }
 
+/* Échelle typographique de docs/02 §3 : le niveau visuel est découplé du niveau sémantique (Heading). */
+@utility heading-1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-h1);
+  line-height: var(--leading-h1);
+  font-variation-settings: var(--font-soft-h1);
+  text-wrap: balance;
+}
+
+@utility heading-2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--weight-h2);
+  line-height: var(--leading-h2);
+  text-wrap: balance;
+}
+
+@utility heading-3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-h3);
+  line-height: var(--leading-h3);
+  text-wrap: balance;
+}
+
+@utility heading-4 {
+  font-family: var(--font-body);
+  font-size: var(--text-h4);
+  font-weight: var(--weight-h4);
+  line-height: var(--leading-h4);
+}
+
+@utility lead {
+  font-size: var(--text-lead);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-lead);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+@utility tabular-figures {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility figure {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-figure);
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
 @layer base {
   html {
     background-color: var(--color-bg);
@@ -102,37 +159,20 @@
     overflow-wrap: break-word;
   }
 
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-heading);
-    text-wrap: balance;
-  }
-
   h1 {
-    font-size: var(--text-h1);
-    font-weight: var(--weight-h1);
-    line-height: var(--leading-h1);
-    font-variation-settings: var(--font-soft-h1);
+    @apply heading-1;
   }
 
   h2 {
-    font-size: var(--text-h2);
-    font-weight: var(--weight-h2);
-    line-height: var(--leading-h2);
+    @apply heading-2;
   }
 
   h3 {
-    font-size: var(--text-h3);
-    font-weight: var(--weight-h3);
-    line-height: var(--leading-h3);
+    @apply heading-3;
   }
 
   h4 {
-    font-family: var(--font-body);
-    font-size: var(--text-h4);
-    font-weight: var(--weight-h4);
-    line-height: var(--leading-h4);
+    @apply heading-4;
   }
 
   p,
@@ -162,18 +202,226 @@
   }
 }
 
-@utility tabular-figures {
-  font-variant-numeric: tabular-nums;
+/* Texte courant long (pages services, aides, articles) : rythme vertical et mesure de docs/02 §3 */
+@layer components {
+  .prose {
+    max-width: var(--measure);
+    text-wrap: pretty;
+  }
+
+  .prose > * + * {
+    margin-block-start: var(--space-4);
+  }
+
+  .prose > h2 {
+    margin-block-start: var(--space-12);
+  }
+
+  .prose > h3 {
+    margin-block-start: var(--space-8);
+  }
+
+  .prose > h4 {
+    margin-block-start: var(--space-6);
+  }
+
+  .prose > h2 + *,
+  .prose > h3 + *,
+  .prose > h4 + * {
+    margin-block-start: var(--space-3);
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-inline-start: 1.5em;
+  }
+
+  .prose ul {
+    list-style: disc;
+  }
+
+  .prose ol {
+    list-style: decimal;
+  }
+
+  .prose li + li {
+    margin-block-start: var(--space-2);
+  }
+
+  .prose li::marker {
+    color: var(--color-teal-700);
+  }
+
+  /* Italique réservé aux citations (docs/02 §3) */
+  .prose blockquote {
+    margin-inline: 0;
+    padding-inline-start: var(--space-4);
+    border-inline-start: 3px solid var(--color-teal-500);
+    font-style: italic;
+    color: var(--color-text-soft);
+  }
+
+  .prose blockquote cite {
+    display: block;
+    margin-block-start: var(--space-2);
+    font-style: normal;
+    font-size: var(--text-small);
+  }
+
+  .prose strong {
+    font-weight: 700;
+  }
+
+  .prose hr {
+    border: 0;
+    border-block-start: 1px solid var(--color-line);
+    margin-block: var(--space-8);
+  }
+
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .prose caption {
+    caption-side: bottom;
+    padding-block-start: var(--space-2);
+    text-align: start;
+  }
+
+  .prose th,
+  .prose td {
+    padding: var(--space-2) var(--space-3);
+    border-block-end: 1px solid var(--color-line);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  .prose th {
+    font-weight: 700;
+  }
+
+  .prose figure {
+    margin-inline: 0;
+  }
+
+  .prose figcaption,
+  .prose small {
+    font-size: var(--text-small);
+    line-height: var(--leading-small);
+    color: var(--color-text-soft);
+  }
+
+  .prose abbr[title] {
+    text-decoration: underline dotted;
+    text-underline-offset: 0.15em;
+  }
 }
 
-@utility figure {
-  font-family: var(--font-heading);
-  font-weight: var(--weight-figure);
+/* Le fil (docs/02 §1) : épaisseur constante, se dessine une fois, affiché d'emblée sans mouvement */
+@layer components {
+  .thread {
+    display: block;
+    overflow: visible;
+  }
+
+  .thread path {
+    stroke-width: var(--thread-width);
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+
+  .thread[data-state="pending"] path {
+    stroke-dashoffset: 1;
+  }
+
+  .thread[data-state="drawn"] path {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset var(--thread-duration) var(--ease-out);
+  }
+
+  .thread[data-state="drawn"] .thread-knot {
+    transition-delay: calc(var(--thread-duration) * 0.6);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thread path {
+      stroke-dashoffset: 0;
+      transition: none;
+    }
+  }
+
+  :root[data-comfort="on"] .thread path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
 }
 
-@utility container-site {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
+/* Impression : les familles impriment les pages tarifs, aides et articles (docs/02 §9) */
+@page {
+  margin: 18mm 16mm;
+}
+
+@media print {
+  :root {
+    --color-bg: #ffffff;
+    --color-text: #000000;
+    --color-text-soft: #333333;
+    --color-link: #000000;
+  }
+
+  html {
+    font-size: 11.5pt;
+    line-height: 1.5;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  [data-print="hide"],
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  /* L'adresse des liens externes s'imprime après le texte du lien */
+  .prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  p,
+  li,
+  blockquote,
+  figure,
+  table,
+  tr {
+    break-inside: avoid;
+  }
+
+  img,
+  svg {
+    max-width: 100% !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 }

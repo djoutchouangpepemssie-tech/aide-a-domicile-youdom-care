@@ -203,6 +203,95 @@ export const interfaceSchema = z.strictObject({
     lecture_accompagnement: text,
     lecture_aides: text,
   }),
+  en_tete: z.strictObject({
+    aller_au_contenu: text,
+    navigation_principale: text,
+    accueil: text,
+    menu: text,
+    fermer_menu: text,
+    appeler: text.includes("{téléphone}"),
+  }),
+  pied_de_page: z.strictObject({
+    nous_joindre: text,
+    nos_agences: text,
+    pour_qui: text,
+    nos_services: text,
+    territoires: text,
+    entreprise: text,
+    labels: text,
+    navigation_pied: text,
+    toutes_les_agences: text,
+    aide_a_domicile_en: text.includes("{territoire}"),
+    voir_agence: text.includes("{nom}"),
+  }),
+  confort: z.strictObject({
+    libelle: text,
+    description: text,
+  }),
+  semaine_type: z.strictObject({
+    exemple_illustratif: text,
+    legende: text,
+    libre: text,
+    creneau: text,
+    resume: text.includes("{h}"),
+    nuit_singulier: text,
+    nuits_pluriel: text.includes("{n}"),
+    activites: z.strictObject({
+      gestes: text,
+      repas: text,
+      sorties: text,
+      presence: text,
+      nuit: text,
+    }),
+    jours: z.strictObject({
+      lun: text,
+      mar: text,
+      mer: text,
+      jeu: text,
+      ven: text,
+      sam: text,
+      dim: text,
+    }),
+    creneaux: z.strictObject({
+      early: text,
+      morning: text,
+      noon: text,
+      afternoon: text,
+      evening: text,
+      night: text,
+    }),
+  }),
+  tarifs: z.strictObject({
+    ttc: text,
+    ht: text,
+    par_unite: text.includes("{unite}"),
+    avant_avantage: text,
+    apres_credit: text.includes("{montant}").includes("{taux}"),
+    exemple_mensuel: text.includes("{heures}").includes("{montant}"),
+    mode: text.includes("{mode}"),
+    devis: text,
+    unites: z.strictObject({ heure: text, nuit: text, jour: text, forfait: text, mois: text }),
+    modes: z.strictObject({ prestataire: text, mandataire: text }),
+  }),
+  aides: z.strictObject({
+    pour_qui: text,
+    combien: text,
+    comment: text,
+    lien_externe: text,
+  }),
+  situations: z.strictObject({
+    lire: text,
+  }),
+  fil_ariane: z.strictObject({
+    nom: text,
+    accueil: text,
+  }),
+  barre_mobile: z.strictObject({
+    nom: text,
+    appeler: text,
+    rappel: text,
+    demande: text,
+  }),
   formulaires: z.strictObject({
     accroche: text,
     etape_pour_qui: text,
@@ -225,3 +314,76 @@ export const interfaceSchema = z.strictObject({
   }),
 });
 export type InterfaceTexts = z.infer<typeof interfaceSchema>;
+
+/* ---------- content/navigation.json ---------- */
+
+const internalPath = z
+  .string()
+  .regex(/^\/(?:[a-z0-9-]+\/)*$/, "chemin interne, minuscules, tirets, barre finale");
+
+const navigationChildSchema = z.strictObject({
+  libelle: text,
+  href: internalPath,
+  description: text.optional(),
+});
+
+const navigationItemSchema = z
+  .strictObject({
+    id: slug,
+    libelle: text,
+    href: internalPath.optional(),
+    enfants: z.array(navigationChildSchema).min(1).optional(),
+  })
+  .refine((item) => (item.href === undefined) !== (item.enfants === undefined), {
+    message: "une entrée a soit un href, soit des enfants",
+  });
+
+export const navigationSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  principale: z.array(navigationItemSchema).min(1),
+  rappel_href: internalPath,
+  demande_href: internalPath,
+  contact_href: internalPath,
+  pied_de_page: z.strictObject({
+    entreprise: z.array(navigationChildSchema).min(1),
+    legal: z.array(navigationChildSchema).min(1),
+  }),
+});
+export type Navigation = z.infer<typeof navigationSchema>;
+
+/* ---------- content/semaines-types.json ---------- */
+
+const weekEntrySchema = z.strictObject({
+  jour: z.enum(["lun", "mar", "mer", "jeu", "ven", "sam", "dim"]),
+  creneau: z.enum(["early", "morning", "noon", "afternoon", "evening", "night"]),
+  activite: z.enum(["gestes", "repas", "sorties", "presence", "nuit"]),
+  heures: z
+    .string()
+    .regex(/^\d{1,2}h(?:\d{2})?[–-]\d{1,2}h(?:\d{2})?$/, "plage « 8h30–11h »")
+    .optional(),
+  libelle: text.optional(),
+});
+
+const weekExampleSchema = z
+  .strictObject({
+    id: slug,
+    titre: text,
+    contexte: text.optional(),
+    /** Renvoi au cahier qui décrit l'exemple : aucune semaine type inventée sans source. */
+    source: z.string().regex(/^docs\/0[0-7]/, "renvoi à un cahier docs/0x"),
+    entrees: z.array(weekEntrySchema).min(1),
+  })
+  .refine(
+    (example) =>
+      new Set(example.entrees.map((e) => `${e.jour}-${e.creneau}`)).size === example.entrees.length,
+    { message: "une seule entrée par jour et créneau" },
+  );
+
+export const weekExamplesSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  exemples: z.array(weekExampleSchema).min(1),
+});
+export type WeekExamples = z.infer<typeof weekExamplesSchema>;
+export type WeekExample = z.infer<typeof weekExampleSchema>;
+export type NavigationItem = z.infer<typeof navigationItemSchema>;
+export type NavigationChild = z.infer<typeof navigationChildSchema>;

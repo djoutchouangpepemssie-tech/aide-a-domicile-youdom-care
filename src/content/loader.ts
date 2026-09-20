@@ -1,17 +1,23 @@
 import { z } from "zod";
 import commitmentsJson from "../../content/engagements.json";
 import interfaceJson from "../../content/interface.json";
+import navigationJson from "../../content/navigation.json";
 import siteConfigJson from "../../content/site.config.json";
+import weekExamplesJson from "../../content/semaines-types.json";
 import pricingJson from "../../content/tarifs.json";
 import {
   commitmentsSchema,
   interfaceSchema,
+  navigationSchema,
   pricingSchema,
   siteConfigSchema,
+  weekExamplesSchema,
   type Commitments,
   type InterfaceTexts,
+  type Navigation,
   type Pricing,
   type SiteConfig,
+  type WeekExamples,
 } from "./schemas";
 
 /*
@@ -31,6 +37,18 @@ let siteConfig: SiteConfig | undefined;
 let pricing: Pricing | undefined;
 let commitments: Commitments | undefined;
 let interfaceTexts: InterfaceTexts | undefined;
+let navigation: Navigation | undefined;
+let weekExamples: WeekExamples | undefined;
+
+export function getNavigation(): Navigation {
+  navigation ??= parseContent(navigationSchema, navigationJson, "navigation.json");
+  return navigation;
+}
+
+export function getWeekExamples(): WeekExamples {
+  weekExamples ??= parseContent(weekExamplesSchema, weekExamplesJson, "semaines-types.json");
+  return weekExamples;
+}
 
 export function getSiteConfig(): SiteConfig {
   siteConfig ??= parseContent(siteConfigSchema, siteConfigJson, "site.config.json");
@@ -59,5 +77,7 @@ export function loadAllContent() {
     pricing: getPricing(),
     commitments: getCommitments(),
     interfaceTexts: getInterfaceTexts(),
+    navigation: getNavigation(),
+    weekExamples: getWeekExamples(),
   };
 }

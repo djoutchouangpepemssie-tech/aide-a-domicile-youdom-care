@@ -1,0 +1,432 @@
+{
+  "_lisezmoi": "Semaines types affichées par WeekPlanner (variante lecture). Ce sont des illustrations : prénoms fictifs, mention « Exemple illustratif » toujours visible, jamais présentées comme des clients réels. Chaque exemple cite sa source dans docs/03 ; les jours des créneaux non précisés par le cahier (« deux nuits par semaine ») sont choisis pour l'illustration.",
+  "exemples": [
+    {
+      "id": "madeleine",
+      "titre": "Madeleine, 82 ans, maladie d’Alzheimer",
+      "contexte": "Vit avec son mari.",
+      "source": "docs/03 §3 (Alzheimer et maladies apparentées)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever, toilette, petit-déjeuner, activité"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever, toilette, petit-déjeuner, activité"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever, toilette, petit-déjeuner, activité"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever, toilette, petit-déjeuner, activité"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever, toilette, petit-déjeuner, activité"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever, toilette, petit-déjeuner, activité"
+        },
+        {
+          "jour": "dim",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h–11h",
+          "libelle": "Lever, toilette, petit-déjeuner, activité"
+        },
+        {
+          "jour": "mar",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–17h",
+          "libelle": "Sortie, courses"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "14h–17h",
+          "libelle": "Sortie, courses"
+        },
+        {
+          "jour": "mer",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit, pour que son mari dorme"
+        },
+        {
+          "jour": "sam",
+          "creneau": "night",
+          "activite": "nuit",
+          "libelle": "Nuit, pour que son mari dorme"
+        }
+      ]
+    },
+    {
+      "id": "jacques",
+      "titre": "Jacques, 71 ans, maladie de Parkinson",
+      "source": "docs/03 §3 (Maladie de Parkinson)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h30–9h30",
+          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h30–9h30",
+          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h30–9h30",
+          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h30–9h30",
+          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h30–9h30",
+          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h30–9h30",
+          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "dim",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "7h30–9h30",
+          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "mar",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "libelle": "Accompagnement chez le kinésithérapeute"
+        },
+        {
+          "jour": "ven",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "libelle": "Accompagnement chez le kinésithérapeute"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "libelle": "Marche au parc"
+        }
+      ]
+    },
+    {
+      "id": "claire",
+      "titre": "Claire, 38 ans, sclérose en plaques",
+      "contexte": "Deux enfants.",
+      "source": "docs/03 §3 (Sclérose en plaques)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "9h–12h",
+          "libelle": "Logement, linge, repas de la semaine"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "9h–12h",
+          "libelle": "Logement, linge, repas de la semaine"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "9h–12h",
+          "libelle": "Logement, linge, repas de la semaine"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "16h30–19h",
+          "libelle": "Sortie d’école, devoirs, dîner"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "presence",
+          "heures": "16h30–19h",
+          "libelle": "Sortie d’école, devoirs, dîner"
+        }
+      ]
+    },
+    {
+      "id": "suzanne",
+      "titre": "Suzanne, 88 ans",
+      "contexte": "Vit seule.",
+      "source": "docs/03 §4 (Personnes âgées)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h30–10h",
+          "libelle": "Lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "mar",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h30–10h",
+          "libelle": "Lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "mer",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h30–10h",
+          "libelle": "Lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h30–10h",
+          "libelle": "Lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "ven",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h30–10h",
+          "libelle": "Lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "gestes",
+          "heures": "8h30–10h",
+          "libelle": "Lever, toilette, petit-déjeuner"
+        },
+        {
+          "jour": "lun",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "11h–13h",
+          "libelle": "Courses, cuisine"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "noon",
+          "activite": "repas",
+          "heures": "11h–13h",
+          "libelle": "Courses, cuisine"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "15h–17h",
+          "libelle": "Promenade, jeux"
+        }
+      ]
+    },
+    {
+      "id": "karim",
+      "titre": "Karim, 34 ans, tétraplégique",
+      "contexte": "Salarié.",
+      "source": "docs/03 §5 (Adultes en situation de handicap)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "early",
+          "activite": "gestes",
+          "heures": "6h30–8h30",
+          "libelle": "Lever, toilette, habillage, petit-déjeuner"
+        },
+        {
+          "jour": "mar",
+          "creneau": "early",
+          "activite": "gestes",
+          "heures": "6h30–8h30",
+          "libelle": "Lever, toilette, habillage, petit-déjeuner"
+        },
+        {
+          "jour": "mer",
+          "creneau": "early",
+          "activite": "gestes",
+          "heures": "6h30–8h30",
+          "libelle": "Lever, toilette, habillage, petit-déjeuner"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "early",
+          "activite": "gestes",
+          "heures": "6h30–8h30",
+          "libelle": "Lever, toilette, habillage, petit-déjeuner"
+        },
+        {
+          "jour": "ven",
+          "creneau": "early",
+          "activite": "gestes",
+          "heures": "6h30–8h30",
+          "libelle": "Lever, toilette, habillage, petit-déjeuner"
+        },
+        {
+          "jour": "sam",
+          "creneau": "early",
+          "activite": "gestes",
+          "heures": "6h30–8h30",
+          "libelle": "Lever, toilette, habillage, petit-déjeuner"
+        },
+        {
+          "jour": "dim",
+          "creneau": "early",
+          "activite": "gestes",
+          "heures": "6h30–8h30",
+          "libelle": "Lever, toilette, habillage, petit-déjeuner"
+        },
+        {
+          "jour": "lun",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "20h30–22h30",
+          "libelle": "Coucher"
+        },
+        {
+          "jour": "mar",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "20h30–22h30",
+          "libelle": "Coucher"
+        },
+        {
+          "jour": "mer",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "20h30–22h30",
+          "libelle": "Coucher"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "20h30–22h30",
+          "libelle": "Coucher"
+        },
+        {
+          "jour": "ven",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "20h30–22h30",
+          "libelle": "Coucher"
+        },
+        {
+          "jour": "sam",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "20h30–22h30",
+          "libelle": "Coucher"
+        },
+        {
+          "jour": "dim",
+          "creneau": "evening",
+          "activite": "gestes",
+          "heures": "20h30–22h30",
+          "libelle": "Coucher"
+        },
+        { "jour": "sam", "creneau": "afternoon", "activite": "sorties", "libelle": "Sortie" }
+      ]
+    },
+    {
+      "id": "noe",
+      "titre": "Noé, 8 ans, autisme",
+      "source": "docs/03 §6 (Autisme)",
+      "entrees": [
+        {
+          "jour": "lun",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "16h15–19h",
+          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+        },
+        {
+          "jour": "mar",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "16h15–19h",
+          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+        },
+        {
+          "jour": "jeu",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "16h15–19h",
+          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+        },
+        {
+          "jour": "ven",
+          "creneau": "afternoon",
+          "activite": "presence",
+          "heures": "16h15–19h",
+          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+        },
+        {
+          "jour": "mer",
+          "creneau": "afternoon",
+          "activite": "sorties",
+          "heures": "13h30–18h",
+          "libelle": "Orthophonie, parc"
+        },
+        {
+          "jour": "sam",
+          "creneau": "morning",
+          "activite": "presence",
+          "heures": "10h–17h",
+          "libelle": "Un samedi sur deux : relais des parents"
+        }
+      ]
+    }
+  ]
+}

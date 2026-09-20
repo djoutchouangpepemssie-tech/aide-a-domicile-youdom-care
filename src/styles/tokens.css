@@ -133,12 +133,17 @@
   --duration-slow: 300ms;
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
   --motion-rise: 12px; /* fondu-montée des blocs au défilement */
+
+  /* ---- §1 Le fil ---- */
+  --thread-width: 1.75px; /* 2 px à partir de 64 rem (voir media query) */
+  --thread-duration: 800ms; /* tracé au défilement, entre 600 et 900 ms, une seule fois */
 }
 
 @media (min-width: 64rem) {
   :root {
     --text-body: 1.125rem; /* 18 px ordinateur */
     --gutter: 1.5rem; /* 24 px */
+    --thread-width: 2px;
   }
 }
 
@@ -158,6 +163,7 @@
   --duration-base: 0ms;
   --duration-slow: 0ms;
   --motion-rise: 0px;
+  --thread-duration: 0ms;
 }
 
 @media (min-width: 64rem) {
@@ -173,5 +179,6 @@
     --duration-base: 0ms;
     --duration-slow: 0ms;
     --motion-rise: 0px;
+    --thread-duration: 0ms;
   }
 }
