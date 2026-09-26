@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92009.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92009",
+  "seo": {
+    "titre": "Aide à domicile à Bois-Colombes (92270) : aidants, répit",
+    "description": "Auxiliaire de vie à Bois-Colombes : plateforme de répit et accueil de jour rue Maurice-Pelletier, coordination gérontologique, agence de Puteaux à 3,8 km."
+  },
+  "sous_titre": "Bois-Colombes réunit à une même adresse une plateforme de répit et un accueil de jour : l'aide à domicile complète ce dispositif, à la maison.",
+  "zone_editoriale": "Au 15-17 rue Maurice-Pelletier, à Bois-Colombes, deux services se partagent la même adresse. La « Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Bois-Colombes » s'adresse aux proches qui s'épuisent. L'« Accueil de jour les Camélias », 10 places avec unité Alzheimer, reçoit la personne accompagnée dans la journée. Pour une famille, cette adresse unique simplifie les choses : le proche y est accueilli, l'aidant y est écouté.\n\n### Ce que l'aide à domicile ajoute à ce dispositif\n\nUn accueil de jour occupe une partie de la semaine. Le reste du temps, l'auxiliaire de vie prend le relais à la maison. Lever et toilette avant le départ, repas du soir, présence quand l'aidant sort. Pour une personne qui vit avec une maladie d'Alzheimer ou apparentée, les mêmes repères d'un lieu à l'autre comptent beaucoup. Nous ne soignons pas. Nous préservons les habitudes et nous sécurisons le quotidien.\n\n### Les chiffres de Bois-Colombes\n\nLa commune compte 29 376 habitants au recensement de 2022, sur 192,51 hectares. Les 60 à 74 ans représentent 12,1 % de la population, les 75 ans et plus 6,7 %. Les personnes de 90 ans ou plus forment 1,2 % des habitants. Ce dernier chiffre pèse dans les demandes de présence de nuit et d'aide aux gestes essentiels.\n\n### Où s'informer dans la commune\n\nLa « Coordination gérontologique » de Bois-Colombes est le point d'information local pour les personnes âgées. L'annuaire de l'administration la situe au Centre d'action sociale, 15 rue Charles-Duflos. La base de la CNSA indique, elle, 3 rue Félix-Braquet. Le Centre communal d'action sociale (CCAS) - Bois-Colombes reçoit 79 rue Charles-Duflos. Ces guichets renseignent sur l'allocation personnalisée d'autonomie, instruite par le Conseil départemental des Hauts-de-Seine depuis Nanterre. La Maison départementale des personnes handicapées, à Courbevoie, traite les demandes liées au handicap. « France Alzheimer Hauts-de-Seine » accueille les familles à Neuilly-sur-Seine.\n\n### Résidences, hôpital, agence\n\nLe « Foyer-Logement Résidence André Chenier », 19 rue André-Chenier, est une résidence autonomie de 76 places. La « Maison de retraite Leopold-Bellan », 17 avenue Charles-de-Gaulle, propose de l'hébergement temporaire et une unité Alzheimer. L'hôpital le plus proche est le site Louis-Mourier du GHU AP-HP Nord Université Paris Cité, à Colombes. Il est à 1,8 km à vol d'oiseau. L'agence Youdom Care des Hauts-de-Seine, à Puteaux, se trouve à 3,8 km. Elle couvre aussi Colombes et Asnières-sur-Seine, toutes deux à 1,8 km, et La Garenne-Colombes, à 2 km. Bois-Colombes appartient à la Métropole du Grand Paris.\n\nVous accompagnez un proche à Bois-Colombes et vous sentez que vos forces baissent. Une première visite d'évaluation gratuite, chez vous, permet de poser ce qui peut être délégué. Le devis qui suit est gratuit et détaillé.",
+  "questions": [
+    {
+      "question": "Existe-t-il une plateforme de répit pour les aidants à Bois-Colombes ?",
+      "reponse": "Oui. La « Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Bois-Colombes » est au 15-17 rue Maurice-Pelletier. Elle s'adresse aux proches qui accompagnent une personne âgée et qui ont besoin de souffler ou de conseils. À la même adresse se trouve l'« Accueil de jour les Camélias ». Ces deux ressources figurent dans la grille ci-dessus avec leur source."
+    },
+    {
+      "question": "Quel accueil de jour est ouvert à Bois-Colombes ?",
+      "reponse": "L'« Accueil de jour les Camélias », 15-17 rue Maurice-Pelletier, dispose de 10 places et d'une unité Alzheimer. La source est la base de la CNSA. Une auxiliaire de vie prend le relais les jours sans accueil. Elle intervient le matin et le soir les autres jours. La « Maison de retraite Leopold-Bellan », avenue Charles-de-Gaulle, propose par ailleurs de l'hébergement temporaire."
+    },
+    {
+      "question": "Où s'adresser à Bois-Colombes pour la coordination gérontologique ?",
+      "reponse": "La « Coordination gérontologique » est le point d'information local pour les personnes âgées de Bois-Colombes. Deux adresses sont publiées. L'annuaire de l'administration indique le Centre d'action sociale, 15 rue Charles-Duflos. La CNSA indique 3 rue Félix-Braquet. Le Centre communal d'action sociale reçoit pour sa part 79 rue Charles-Duflos. Appelez avant de vous déplacer pour confirmer le bon guichet."
+    },
+    {
+      "question": "À quelle distance de Bois-Colombes se trouve l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care des Hauts-de-Seine est à Puteaux, à 3,8 km à vol d'oiseau de Bois-Colombes. C'est elle qui organise les interventions dans la commune et chez ses voisines, Colombes, Asnières-sur-Seine, La Garenne-Colombes ou Courbevoie. La première visite d'évaluation à domicile est gratuite, comme le devis. La demande se fait par téléphone ou par le formulaire de cette page."
+    }
+  ],
+  "semaine_type": "veronique",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 20],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

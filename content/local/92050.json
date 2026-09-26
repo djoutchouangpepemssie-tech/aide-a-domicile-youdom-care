@@ -1,0 +1,40 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92050.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92050",
+  "seo": {
+    "titre": "Aide à domicile à Nanterre (92000) : APA, PCH, hôpitaux",
+    "description": "Auxiliaire de vie à Nanterre : le Conseil départemental est dans la commune, le CLIC rue du 8-Mai-1945, trois hôpitaux. Agence de Puteaux à 3,8 km."
+  },
+  "sous_titre": "L'hôtel du département des Hauts-de-Seine est à Nanterre : le guichet de l'APA et de la PCH est dans votre ville.",
+  "zone_editoriale": "### L'hôtel du département est à Nanterre\n\nLe Conseil départemental des Hauts-de-Seine siège à Nanterre, 57 rue des Longues Raies. C'est lui qui attribue l'allocation personnalisée d'autonomie aux personnes âgées et qui verse la prestation de compensation du handicap. Pour les habitants de Nanterre, le guichet des aides départementales est donc dans leur ville. La Maison départementale des personnes handicapées, qui instruit la PCH, est à Courbevoie, 12 avenue Léonard-de-Vinci.\n\n### Où s'informer dans la commune\n\nLe « CLIC de Nanterre », 88 rue du 8-Mai-1945, est le point d'information local dédié aux personnes âgées. Le Centre communal d'action sociale (CCAS) - Nanterre est au 1 place du 27-Mars-2002. Ces deux adresses sont le point de départ d'une demande d'APA ou d'une question sur les aides de la ville.\n\n### Trois établissements de santé et un accueil de jour\n\nNanterre compte trois établissements de santé recensés par FINESS. Le Centre hospitalier de Nanterre, hôpital Max-Fourestier, 403 avenue de la République, est un centre hospitalier. L'Hôpital de jour du CASH de Nanterre est au 1 rue du Vieux-Pont. La Clinique chirurgicale de La Défense, 16 boulevard Émile-Zola, est un établissement de soins chirurgicaux. L'« EHPAD Les Vignes », 75 rue des Vignes, propose un accueil de jour et une unité Alzheimer. Trois résidences autonomie accueillent des personnes encore autonomes. Ce sont le « Foyer-Logement Résidence du Parc » et le « Foyer-Logement Résidence Pasteur ». Le « Foyer-Logement CCAS Centre Communal d'Action Sociale » est au 3 rue des Aubépines.\n\n### Une population jeune, des besoins de tous âges\n\nNanterre compte 98 119 habitants au recensement de 2022, sur 1 222,48 hectares. Les 75 ans et plus représentent 5 % de la population, dont 0,6 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 11,9 %. Cette part de 75 ans et plus est basse. L'aide à domicile y concerne aussi des enfants et des adultes en situation de handicap. Pour un enfant polyhandicapé, l'auxiliaire de vie apprend les gestes propres à cet enfant, ses positions, ses repas, ses signes. Elle offre aux parents des heures de répit. L'« APEI de la Boucle de la Seine », réseau Unapei, est domiciliée à Colombes.\n\n### L'agence et les voisines\n\nL'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 3,8 km. Puteaux, Suresnes et La Garenne-Colombes sont à 3,2 km de Nanterre, Rueil-Malmaison à 3,3 km. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite. « France Alzheimer Hauts-de-Seine » écoute les familles depuis Neuilly-sur-Seine. Nanterre appartient à la Métropole du Grand Paris.\n\nParents d'un enfant en situation de handicap, enfants d'un parent âgé, ou vous-même, à Nanterre : décrivez la situation. Une première visite d'évaluation gratuite a lieu chez vous, suivie d'un devis gratuit. Les aides du département viennent ensuite alléger le reste à charge.",
+  "questions": [
+    {
+      "question": "Où se trouve le Conseil départemental pour un habitant de Nanterre ?",
+      "reponse": "Dans la commune même. L'hôtel du département des Hauts-de-Seine est au 57 rue des Longues Raies, à Nanterre. Le Conseil départemental attribue l'allocation personnalisée d'autonomie et verse la prestation de compensation du handicap. Pour préparer une demande d'APA, deux relais de proximité existent. Le « CLIC de Nanterre », 88 rue du 8-Mai-1945, et le Centre communal d'action sociale, place du 27-Mars-2002."
+    },
+    {
+      "question": "Quel est le CLIC de Nanterre ?",
+      "reponse": "Le « CLIC de Nanterre » est au 88 rue du 8-Mai-1945, d'après la base de la CNSA et l'annuaire de l'administration. C'est le point d'information local dédié aux personnes âgées : aides, démarches, orientation vers les services de la ville. Le Centre communal d'action sociale de Nanterre reçoit 1 place du 27-Mars-2002. Les deux adresses figurent dans la grille des ressources avec leurs sources."
+    },
+    {
+      "question": "Quels hôpitaux y a-t-il à Nanterre ?",
+      "reponse": "Trois établissements sont recensés par FINESS. Le Centre hospitalier de Nanterre, hôpital Max-Fourestier, 403 avenue de la République. L'Hôpital de jour du CASH de Nanterre, 1 rue du Vieux-Pont. La Clinique chirurgicale de La Défense, 16 boulevard Émile-Zola. Notre service de sortie d'hospitalisation prépare le retour chez vous avec l'équipe du service, si possible avant la date de sortie."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Nanterre ?",
+      "reponse": "L'agence Youdom Care des Hauts-de-Seine, à Puteaux, à 3,8 km à vol d'oiseau. Elle intervient aussi à Suresnes, La Garenne-Colombes, Rueil-Malmaison et Bezons. La demande se fait par téléphone ou par le formulaire de cette page. Un conseiller vient ensuite chez vous, à Nanterre, pour une première visite d'évaluation gratuite, et vous remet un devis gratuit."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour à Nanterre ?",
+      "reponse": "Oui, un, d'après la base de la CNSA. L'« EHPAD Les Vignes », 75 rue des Vignes, propose un accueil de jour et une unité Alzheimer au sein de l'établissement. La personne y passe la journée ; l'aidant souffle. Une auxiliaire de vie complète ces journées à la maison, le matin et le soir. Elle intervient aussi les jours sans accueil."
+    }
+  ],
+  "semaine_type": "lina",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17, 18, 19, 20, 23, 25],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

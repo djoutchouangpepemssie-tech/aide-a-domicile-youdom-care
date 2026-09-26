@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92073.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92073",
+  "seo": {
+    "titre": "Aide à domicile à Suresnes (92150) : répit, Foch, résidences",
+    "description": "Auxiliaire de vie à Suresnes : deux EHPAD avec accueil de jour et hébergement temporaire, coordination gérontologique, Hôpital Foch. Agence à 2,6 km."
+  },
+  "sous_titre": "À Suresnes, un aidant peut partir une semaine : hébergement temporaire sur place ou présence renforcée à la maison, l'agence est à 2,6 km.",
+  "zone_editoriale": "### Partir une semaine sans laisser son proche seul\n\nÀ Suresnes, deux établissements proposent à la fois un accueil de jour et de l'hébergement temporaire. L'« EHPAD - résidence Tiers Temps », 6 rue Chevreul, compte 160 places. L'« EHPAD Korian Les Sarments », 36 rue Carnot, en compte 108 et dispose d'une unité Alzheimer. Pour un aidant qui veut partir quelques jours, l'hébergement temporaire est une option. L'autre est de rester à la maison avec une présence renforcée, de jour comme de nuit, le temps de l'absence. Notre service d'accompagnement en vacances permet aussi de partir ensemble.\n\n### Le premier rendez-vous : rue du Mont-Valérien\n\nLa « Coordination gérontologique », 7 rue du Mont-Valérien, est le point d'information local dédié aux personnes âgées de Suresnes. Le Centre communal d'action sociale (CCAS) - Suresnes est à la même adresse. C'est là qu'une famille s'informe sur l'allocation personnalisée d'autonomie, instruite par le Conseil départemental des Hauts-de-Seine, à Nanterre.\n\n### L'Hôpital Foch et le retour chez soi\n\nL'Hôpital Foch, 40 rue Worth, est l'établissement de santé de la commune. Après un séjour, le retour se prépare avec le service : date de sortie, matériel, passages des infirmiers. L'auxiliaire de vie prend le reste : premier repas, lever et toilette, courses, présence si la nuit inquiète. Si la sortie est décidée un vendredi pour le lundi, la demande peut se faire dès l'annonce. Plus le retour se prépare tôt, plus le premier soir est calme. Le service de sortie d'hospitalisation existe pour cela.\n\n### Deux résidences autonomie\n\nLe « Foyer-Logement Résidence Locarno », 15 rue Locarno, compte 77 places. La « Résidence Albert-Caron », 24 rue Albert-Caron, en compte 68. Dans ces résidences, une auxiliaire de vie intervient comme dans un logement ordinaire. Toilette, repas ou compagnie régulière.\n\n### Suresnes en chiffres\n\nLa commune compte 48 932 habitants au recensement de 2022. Les 75 ans et plus représentent 6,8 % de la population, dont 1,1 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 11,3 %. Ces parts modérées recouvrent des situations très différentes, du couple qui s'entraide à la personne seule.\n\n### L'agence à 2,6 km\n\nL'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 2,6 km de Suresnes. Puteaux est à 1,9 km, Rueil-Malmaison à 2,8 km, Nanterre à 3,2 km. La Maison départementale des personnes handicapées est à Courbevoie. « France Alzheimer Hauts-de-Seine » écoute les familles depuis Neuilly-sur-Seine. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite. Suresnes appartient à la Métropole du Grand Paris.\n\nVous voulez partir quelques jours, ou simplement dormir une nuit entière, sans laisser votre proche de Suresnes sans relais. Parlez-nous-en. La première visite d'évaluation chez vous est gratuite, le devis aussi.",
+  "questions": [
+    {
+      "question": "Où passer une semaine en hébergement temporaire depuis Suresnes ?",
+      "reponse": "Deux EHPAD de la commune proposent de l'hébergement temporaire, d'après la base de la CNSA. L'« EHPAD - résidence Tiers Temps » est au 6 rue Chevreul. L'« EHPAD Korian Les Sarments » est au 36 rue Carnot. Tous deux ont aussi un accueil de jour. L'autre solution est de rester chez soi avec une présence renforcée pendant l'absence de l'aidant, de jour et de nuit."
+    },
+    {
+      "question": "Où est la coordination gérontologique de Suresnes ?",
+      "reponse": "La « Coordination gérontologique » de Suresnes est au 7 rue du Mont-Valérien, à la même adresse que le Centre communal d'action sociale. C'est le point d'information local dédié aux personnes âgées : aides, démarches, orientation. L'allocation personnalisée d'autonomie est instruite par le Conseil départemental des Hauts-de-Seine, à Nanterre. L'adresse et sa source figurent dans la grille des ressources de cette page."
+    },
+    {
+      "question": "Comment préparer une sortie de l'Hôpital Foch vers un domicile de Suresnes ?",
+      "reponse": "L'Hôpital Foch, 40 rue Worth, est l'établissement de santé de la commune. Dès que la date de sortie est connue, contactez-nous : notre service de sortie d'hospitalisation organise le retour avec l'équipe du service. L'auxiliaire de vie assure le premier repas, le lever, la toilette et une présence de nuit si nécessaire. Les soins restent aux infirmiers, avec qui nous nous coordonnons."
+    },
+    {
+      "question": "Quelle agence Youdom Care est la plus proche de Suresnes ?",
+      "reponse": "L'agence Youdom Care des Hauts-de-Seine, à Puteaux, à 2,6 km à vol d'oiseau. Elle intervient aussi à Puteaux, Rueil-Malmaison et Nanterre. La demande se fait par téléphone ou par le formulaire de cette page. Un conseiller vient ensuite chez vous, à Suresnes, pour une première visite d'évaluation gratuite, et vous remet un devis gratuit."
+    }
+  ],
+  "semaine_type": "gisele",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 15, 19, 21],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
