@@ -84,9 +84,9 @@ describe("LocalTemplate", () => {
     render(<LocalTemplate data={data()} />);
     const block = document.querySelector('[data-local-agence="puteaux"]');
     expect(block).not.toBeNull();
-    expect(block).toHaveAttribute("data-local-distance", "2");
+    expect(block).toHaveAttribute("data-local-distance", "2,4");
     expect(block).toHaveTextContent(
-      "Votre agence la plus proche : Youdom Care Hauts-de-Seine, à environ 2 km à vol d'oiseau.",
+      "Votre agence la plus proche : Youdom Care Hauts-de-Seine, à 2,4 km à vol d'oiseau.",
     );
     expect(block).toHaveTextContent("49-51 quai de Dion-Bouton, 92800 Puteaux");
     const link = within(block as HTMLElement).getByRole("link", {
@@ -120,7 +120,10 @@ describe("LocalTemplate", () => {
     const rows = document.querySelectorAll("[data-fact-type]");
     const sources = document.querySelectorAll("[data-fact-source]");
     expect(rows.length).toBe(sources.length);
-    expect(rows.length).toBe(localDataExemple.facts.length + 5);
+    // Cinq lignes démographiques calculées remplacent les faits `demographie` du pipeline.
+    expect(rows.length).toBe(
+      localDataExemple.facts.filter((fact) => fact.type !== "demographie").length + 5,
+    );
     for (const source of sources) {
       expect(source.textContent).toMatch(/^Source : .+, consulté le 20 septembre 2026$/);
       expect(source.querySelector("a")).toHaveAttribute("href", expect.stringMatching(/^https:/));
@@ -183,7 +186,7 @@ describe("LocalTemplate", () => {
     const review = document.querySelector("[data-local-review]");
     expect(review).toHaveTextContent("Écrit par Auteur fictif, rédaction");
     expect(review).toHaveTextContent("Page mise à jour le 20 septembre 2026");
-    expect(review).toHaveTextContent("Données locales collectées le 20 septembre 2026");
+    expect(review).toHaveTextContent("Données locales assemblées le 20 septembre 2026");
     expect(document.querySelector("#formulaire")).toHaveAttribute("data-local-form-insee", "92999");
     expect(screen.getByRole("form")).toBeInTheDocument();
     expect(screen.getByRole("navigation", { name: "Fil d’Ariane" })).toHaveTextContent(

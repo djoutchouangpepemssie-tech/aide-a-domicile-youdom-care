@@ -74,6 +74,9 @@ export function communePlace(nom: string, texts: LocalTexts): string {
 const LABEL_ACRONYMS = new Set([
   "aphp",
   "ap-hp",
+  "ap",
+  "hp",
+  "gh",
   "ghu",
   "chu",
   "chi",
@@ -157,7 +160,9 @@ export function localTitle(
   texts: LocalTexts,
 ): string {
   const lieu = localPlace(data, texts);
-  const cp = data.codes_postaux?.[0];
+  // Plusieurs codes postaux (Cergy : 95000 et 95800) : les trois premiers, pour que chaque
+  // habitant se reconnaisse.
+  const cp = (data.codes_postaux ?? []).slice(0, 3).join(", ");
   if (data.kind !== "departement" && data.kind !== "region" && cp) {
     return fill(texts.h1_code_postal, { lieu, cp });
   }

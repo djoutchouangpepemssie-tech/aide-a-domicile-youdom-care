@@ -15,6 +15,7 @@ import {
   confidentialiteHref,
   departementCodeOf,
   departementHref,
+  departementPages,
   localCrumbs,
   neighbourPaths,
 } from "@/content/local-site";
@@ -91,6 +92,7 @@ export async function buildLocalData(chemin: string): Promise<LocalTemplateData 
     accompagnements: await accompagnementLinks(),
     crumbs: await localCrumbs(page),
     neighbourPaths: await neighbourPaths(page),
+    departementPages: await departementPages(page),
     departementHref: data.kind === "departement" ? null : await departementHref(departement),
     confidentialiteHref: confidentialiteHref(),
     tarifsHref:

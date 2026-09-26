@@ -431,9 +431,11 @@
     "reassurance_24h": "Jour et nuit, 24h/24",
     "reponse": {
       "oui": "Oui, nous intervenons {lieu}.",
-      "agence": "Votre agence la plus proche : {agence}, à environ {distance} km à vol d'oiseau.",
+      "agence": "Votre agence la plus proche : {agence}, à {distance} km à vol d'oiseau.",
       "agence_proche": "Votre agence la plus proche : {agence}, à moins d'un kilomètre.",
       "agence_ici": "Votre agence : {agence}, installée {lieu}.",
+      "agence_departement": "Votre agence dans le département : {agence}, à {commune}.",
+      "agence_hors_departement": "Votre agence la plus proche : {agence}, à {commune}.",
       "voir_agence": "Voir l'agence {nom}",
       "appeler": "Appeler le {téléphone}"
     },
@@ -487,6 +489,8 @@
     "aides_texte": "L'APA et la PCH sont instruites par le conseil départemental et la MDPH. Voici leurs contacts, relevés dans les sources officielles, et nos pages qui expliquent chaque aide.",
     "aides_lien": "Tarifs et aides en détail",
     "voisines_h2": "Communes voisines",
+    "communes_h2": "Communes et arrondissements couverts {lieu}",
+    "communes_texte": "Chaque page décrit les ressources du lieu et l'agence qui intervient.",
     "voisines_texte": "Par distance à vol d'oiseau, la plus proche en premier.",
     "voisines_distance": "{distance} km",
     "autres_pages_h3": "Autres pages du territoire",
@@ -496,7 +500,7 @@
     "non_relu": "Cette page attend sa relecture : elle n'est pas encore publiée.",
     "auteur": "Écrit par {nom}, {fonction}",
     "maj": "Page mise à jour le {date}",
-    "donnees": "Données locales collectées le {date}",
+    "donnees": "Données locales assemblées le {date} ; chaque fait porte la date à laquelle sa source a été consultée",
     "territoires": "Territoires",
     "carte": {
       "titre": "Carte des huit départements d'Île-de-France",

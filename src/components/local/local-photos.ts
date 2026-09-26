@@ -8,6 +8,46 @@ import type { Photo } from "@/content/schemas";
  * photothèque : descriptifs et neutres, jamais un prénom ni un nom de commune.
  */
 
+/** Photos de bannière alternatives pour les communes, choisies selon le code INSEE. */
+const communePhotos: readonly Photo[] = [
+  {
+    src: "/images/ambiance/promenade-allee-banc.jpg",
+    alt: "Une allée bordée d'arbres avec un banc, sous une lumière tamisée par les feuilles",
+    focal: "50% 55%",
+  },
+  {
+    src: "/images/ambiance/balcon-chaise-soleil.jpg",
+    alt: "Un balcon ensoleillé avec une petite table, une chaise et une plante verte",
+    focal: "50% 50%",
+  },
+  {
+    src: "/images/ambiance/cuisine-fenetre-soleil.jpg",
+    alt: "Le soleil entre par la fenêtre en bois d'une cuisine et éclaire le plan de travail",
+    focal: "50% 40%",
+  },
+  {
+    src: "/images/ambiance/salon-fauteuil-fenetre.jpg",
+    alt: "Un fauteuil beige près d'une fenêtre, entouré de plantes vertes",
+    focal: "50% 60%",
+  },
+  {
+    src: "/images/ambiance/cuisine-table-pain.jpg",
+    alt: "Une table de cuisine avec du pain, une cafetière italienne et des coings, sous une lumière douce",
+    focal: "50% 55%",
+  },
+];
+
+/**
+ * Photo de bannière d'un territoire : par type, et pour une commune l'une des cinq photos
+ * d'ambiance selon son code INSEE, pour que deux communes voisines ne partagent pas la même.
+ */
+export function localHeroPhoto(kind: TerritoryKind, code: string): Photo {
+  if (kind !== "commune") return localHeroPhotos[kind];
+  const index = Number.parseInt(code, 10);
+  const photo = communePhotos[Number.isFinite(index) ? index % communePhotos.length : 0];
+  return photo ?? localHeroPhotos.commune;
+}
+
 export const localHeroPhotos: Record<TerritoryKind, Photo> = {
   region: {
     src: "/images/ambiance/jardin-luxembourg-chaises.jpg",

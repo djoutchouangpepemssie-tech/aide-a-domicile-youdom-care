@@ -591,6 +591,9 @@ export const interfaceSchema = z.strictObject({
       agence_proche: text.includes("{agence}"),
       /** L'agence est installée dans le territoire même (code INSEE identique). */
       agence_ici: text.includes("{agence}").includes("{lieu}"),
+      /** Page de département : l'agence du département, ou la plus proche, sans distance. */
+      agence_departement: text.includes("{agence}").includes("{commune}"),
+      agence_hors_departement: text.includes("{agence}").includes("{commune}"),
       voir_agence: text.includes("{nom}"),
       appeler: text.includes("{téléphone}"),
     }),
@@ -644,6 +647,9 @@ export const interfaceSchema = z.strictObject({
     aides_texte: text,
     aides_lien: text,
     voisines_h2: text,
+    /** Page de département : liste des pages de communes et d'arrondissements construites. */
+    communes_h2: text.includes("{lieu}"),
+    communes_texte: text,
     voisines_texte: text,
     voisines_distance: text.includes("{distance}"),
     autres_pages_h3: text,

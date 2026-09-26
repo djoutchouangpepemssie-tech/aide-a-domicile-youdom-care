@@ -97,6 +97,18 @@ export async function accompagnementLinks(): Promise<AccompagnementLink[]> {
   }));
 }
 
+/** Page de département : pages de communes et d'arrondissements construites, par nom. */
+export async function departementPages(
+  page: LocalPage,
+): Promise<{ href: string; label: string }[]> {
+  if (page.data.kind !== "departement") return [];
+  const pages = await listBuildableLocalPages();
+  return pages
+    .filter((p) => p.data.kind !== "departement" && p.data.departement === page.data.code)
+    .map((p) => ({ href: p.chemin, label: p.data.nom }))
+    .sort((a, b) => a.label.localeCompare(b.label, "fr"));
+}
+
 /** Chemins des communes voisines qui ont une page construite, par code INSEE. */
 export async function neighbourPaths(page: LocalPage): Promise<Record<string, string>> {
   const pages = await listBuildableLocalPages();

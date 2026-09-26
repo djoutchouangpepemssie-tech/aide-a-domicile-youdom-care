@@ -23,7 +23,7 @@ import { cn } from "@/lib/cn";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { LocalFactsGrid } from "./LocalFactsGrid";
 import { Markdown } from "./Markdown";
-import { localHeroPhotos } from "./local-photos";
+import { localHeroPhoto } from "./local-photos";
 import {
   aidFactTypes,
   fill,
@@ -34,6 +34,7 @@ import {
   lifeFactTypes,
   localPlace,
   localTitle,
+  type LocalTexts,
   resourceFactTypes,
   roundedDistance,
 } from "./local-texts";
@@ -82,9 +83,31 @@ export interface LocalTemplateData {
   neighbourPaths: Readonly<Record<string, string>>;
   /** Page du département si elle est construite. */
   departementHref: string | null;
+  /** Page de département : pages de communes et d'arrondissements construites, par nom. */
+  departementPages?: readonly { href: string; label: string }[];
   confidentialiteHref: string;
   tarifsHref: string;
   reassurance: readonly string[];
+}
+
+/**
+ * Gabarit de la réponse immédiate (docs/04 §4, anatomie 2) : agence installée dans le territoire,
+ * agence du département (sans distance depuis un centroïde qui n'a pas de sens), agence la plus
+ * proche avec sa distance à une décimale, ou « à moins d'un kilomètre ».
+ */
+export function agencyResponse(
+  data: Pick<LocalData, "kind" | "code">,
+  agency: Pick<Agency, "code_insee" | "departement">,
+  distance: string | null,
+  t: LocalTexts,
+): string {
+  if (data.kind === "departement") {
+    return agency.departement === data.code
+      ? t.reponse.agence_departement
+      : t.reponse.agence_hors_departement;
+  }
+  if (agency.code_insee === data.code) return t.reponse.agence_ici;
+  return distance ? t.reponse.agence : t.reponse.agence_proche;
 }
 
 /** Colonne du rail : 17,5 rem (280 px) + 3 rem d'écart, réservés à droite des sections 2 à 9. */
@@ -149,12 +172,16 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
   const lieu = localPlace(data, t);
   const h1 = localTitle(data, t);
   const telHref = phone ? toTelHref(phone) : null;
-  const photo = localHeroPhotos[data.kind];
+  const photo = localHeroPhoto(data.kind, data.code);
   const surtitle =
     data.kind === "commune" || data.kind === "arrondissement" || data.kind === "quartier"
       ? (data.departement_nom ?? t.sur_titre)
       : t.sur_titre;
-  const distance = data.agence_proche ? roundedDistance(data.agence_proche.distance_km) : null;
+  // Distance à l'agence : une décimale comme dans les textes (« 5,7 km »), rien sous un kilomètre.
+  const distanceKm = data.agence_proche?.distance_km ?? null;
+  const distance =
+    distanceKm !== null && roundedDistance(distanceKm) !== null ? formatDistance(distanceKm) : null;
+  const departementPages: readonly { href: string; label: string }[] = page.departementPages ?? [];
   const neighbours = [...(data.communes_voisines ?? [])].sort(
     (a, b) => a.distance_km - b.distance_km,
   );
@@ -253,14 +280,12 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           {agency ? (
             <div className="mt-6 max-w-2xl rounded-card border border-line bg-white p-6 shadow-1">
               <p className="m-0 text-lead">
-                {fill(
-                  agency.code_insee === data.code
-                    ? t.reponse.agence_ici
-                    : distance
-                      ? t.reponse.agence
-                      : t.reponse.agence_proche,
-                  { agence: agency.nom, distance: distance ?? "", lieu },
-                )}
+                {fill(agencyResponse(data, agency, distance, t), {
+                  agence: agency.nom,
+                  distance: distance ?? "",
+                  lieu,
+                  commune: agency.commune,
+                })}
               </p>
               <p className="m-0 mt-2">
                 {agency.adresse}, {agency.code_postal} {agency.commune}
@@ -317,7 +342,12 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           <LocalFactsGrid
             id="reperes"
             className="mt-4 max-w-3xl"
-            facts={[...demographyFacts(data.demographie, t.demographie), ...data.facts]}
+            facts={[
+              ...demographyFacts(data.demographie, t.demographie),
+              // Les lignes démographiques calculées remplacent les faits `demographie` du pipeline
+              // (mêmes valeurs, même source) : pas de doublon dans les repères.
+              ...data.facts.filter((fact) => fact.type !== "demographie"),
+            ]}
             types={lifeFactTypes}
             texts={t.faits}
             headingLevel={4}
@@ -435,11 +465,29 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
         </Section>
 
         {/* 8. Communes voisines (par distance) et autres pages du territoire */}
-        {neighbours.length > 0 || otherPages.length > 0 ? (
+        {neighbours.length > 0 || otherPages.length > 0 || departementPages.length > 0 ? (
           <Section tone="white" aria-labelledby="voisines" className={withRail}>
             <Heading level={2} id="voisines">
-              {t.voisines_h2}
+              {data.kind === "departement" ? fill(t.communes_h2, { lieu }) : t.voisines_h2}
             </Heading>
+            {departementPages.length > 0 ? (
+              <>
+                <Lead className="mt-3">{t.communes_texte}</Lead>
+                <ul
+                  className="m-0 mt-6 grid list-none gap-3 p-0 sm:grid-cols-2 xl:grid-cols-3"
+                  data-local-communes
+                >
+                  {departementPages.map((item) => (
+                    <li key={item.href} className="max-w-none">
+                      <Link href={item.href} prefetch={false} className={linkCard}>
+                        <Icon name="maison" />
+                        <span className="min-w-0 flex-1">{item.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
             {neighbours.length > 0 ? (
               <>
                 <Lead className="mt-3">{t.voisines_texte}</Lead>
