@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78686.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78686",
+  "seo": {
+    "titre": "Aide à domicile à Viroflay (78220) : relais des aidants",
+    "description": "Aide à domicile à Viroflay : accueil de jour et hébergement temporaire de l'EHPAD La Source, Hôpital de jour de Versailles sur place. Agence à 2,6 km."
+  },
+  "sous_titre": "À Viroflay, l'EHPAD La Source offre un accueil de jour et un hébergement temporaire ; l'aide à domicile complète ces relais pour les proches.",
+  "zone_editoriale": "### Quand le proche aidant a besoin de souffler, à Viroflay\n\nL'EHPAD La Source, avenue de Versailles, propose trois choses utiles à un proche aidant : un accueil de jour, un hébergement temporaire et une unité Alzheimer. L'accueil de jour libère des journées. L'hébergement temporaire permet de partir une semaine ou de se faire opérer. Entre les deux, et tous les autres jours, il reste le domicile. C'est là que Youdom Care se rend utile : une auxiliaire de vie le matin, une présence l'après-midi, une nuit de temps en temps pour que le conjoint dorme.\n\nLe relais peut aussi prendre la forme d'un remplacement pendant les vacances de l'aidant, ou d'un accompagnement en vacances avec l'auxiliaire de vie habituelle. Ces solutions sont décrites dans les pages consacrées aux proches.\n\n### Un hôpital de jour dans la commune\n\nL'Hôpital de jour de Versailles est installé avenue du Général Leclerc, à Viroflay. Les données ne recensent pas d'autre établissement hospitalier dans la commune. Pour une hospitalisation complète, les habitants se tournent vers les hôpitaux des communes voisines, et le retour à domicile se prépare avec le service concerné et l'agence.\n\nL'EHPAD Les Aulnettes, rue Joseph Bertrand, est le second établissement pour personnes âgées relevé à Viroflay. Aucune résidence autonomie, aucun CCAS et aucun point d'information dédié n'apparaissent dans les données ouvertes pour la commune ; la mairie, place du Général-de-Gaulle, reste le point d'entrée communal.\n\n### Les habitants de Viroflay\n\nLa commune comptait 16 943 habitants au recensement de 2022. Les 75 ans et plus représentent 9,4 % de la population, dont 1,7 % de personnes de 90 ans ou plus. Les 60-74 ans en forment 13,2 %. Une part de ces personnes vit seule, une autre en couple avec un conjoint qui aide.\n\n### Le département des Yvelines\n\nL'APA et la PCH sont attribuées par le Conseil départemental - Yvelines, dont l'hôtel du département est à Versailles. La Maison départementale des personnes handicapées (MDPH) - Yvelines est domiciliée à Buc. Le PAM Île-de-France, transport à la demande régional, s'adresse aux personnes à mobilité réduite. France Alzheimer Yvelines écoute les familles place Royale à Versailles. France Parkinson a un comité départemental à Élancourt. L'APEI de Vélizy, l'ADAPEI 78 et l'APEI de Versailles et Des Communes Environnantes réunissent des parents de personnes en situation de handicap intellectuel.\n\n### L'agence, tout près\n\nL'agence Youdom Care Yvelines, à Versailles, est à 2,6 km du centre de Viroflay. Chaville est à 1,6 km, Ville-d'Avray à 2,2 km, Vélizy-Villacoublay à 2,6 km, Marnes-la-Coquette à 3 km, Sèvres à 3,3 km, Versailles à 3,9 km. Viroflay appartient à la CA Versailles Grand Parc (CAVGP).\n\nSi vous aidez un proche à Viroflay et que vous sentez la fatigue monter, ne restez pas seul avec cette question. Une visite gratuite chez vous permet d'y voir clair ; demandez-la par le formulaire ou par téléphone.",
+  "questions": [
+    {
+      "question": "Existe-t-il un accueil de jour à Viroflay ?",
+      "reponse": "Oui. L'EHPAD La Source, avenue de Versailles, propose un accueil de jour, ainsi qu'un hébergement temporaire et une unité Alzheimer. Ces relais soulagent un proche aidant à la journée ou pour quelques jours. Youdom Care assure l'autre versant : à la maison, le matin, le soir, la nuit ou en continu, selon ce dont vous avez besoin."
+    },
+    {
+      "question": "Quel hôpital se trouve à Viroflay ?",
+      "reponse": "L'Hôpital de jour de Versailles, avenue du Général Leclerc, est le seul établissement hospitalier recensé dans la commune. Pour une hospitalisation complète, les habitants de Viroflay dépendent des hôpitaux voisins. Dans tous les cas, prévenez Youdom Care avant la sortie pour qu'une auxiliaire de vie soit présente dès le retour à la maison."
+    },
+    {
+      "question": "Quelle agence Youdom Care s'occupe des habitants de Viroflay ?",
+      "reponse": "L'agence Youdom Care Yvelines, à Versailles, à 2,6 km du centre de Viroflay. Elle reçoit votre demande, vient chez vous pour l'évaluation gratuite et organise les interventions. Vous pouvez la contacter par téléphone ou par le formulaire de cette page, que la demande vienne de vous ou d'un proche."
+    },
+    {
+      "question": "Comment obtenir un relais quand on s'occupe d'un proche à Viroflay ?",
+      "reponse": "Trois pistes se complètent. L'accueil de jour ou l'hébergement temporaire de l'EHPAD La Source, avenue de Versailles. L'aide à domicile de Youdom Care, pour les heures où la personne est chez elle, y compris la nuit. Et les associations départementales : France Alzheimer Yvelines, à Versailles, écoute les familles. L'APA, décidée par le Conseil départemental - Yvelines, peut financer une partie de l'aide."
+    }
+  ],
+  "semaine_type": "sophie",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/91657.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "91657",
+  "seo": {
+    "titre": "Aide à domicile à Vigneux-sur-Seine (91270) : le relais",
+    "description": "Aide à domicile à Vigneux-sur-Seine : hébergement temporaire de la Résidence du Cinéma et du Spectacle, résidence Gaston Grinbaum, CCAS. Agence à 10,5 km."
+  },
+  "sous_titre": "À Vigneux-sur-Seine, l'hébergement temporaire et l'aide à domicile se relaient pour qu'un proche aidant puisse s'absenter sans tout arrêter.",
+  "zone_editoriale": "### Quand l'aidant doit s'absenter, à Vigneux-sur-Seine\n\nUn proche aidant part en vacances, se fait opérer, ou n'en peut plus. Trois options existent alors à Vigneux-sur-Seine, et elles ne s'excluent pas. La première est l'hébergement temporaire de l'EHPAD Résidence Retraite du Cinéma et du Spectacle, rue Gaston Grinbaum : la personne y séjourne quelques jours ou semaines. La deuxième est le remplacement de l'aidant à domicile par une auxiliaire de vie, de jour, de nuit ou en continu, pour que la personne ne quitte pas sa maison. La troisième est l'accompagnement en vacances avec l'auxiliaire de vie habituelle. Youdom Care propose les deux dernières ; la première se demande à l'établissement.\n\n### Le reste de la commune\n\nLa Résidence autonomie Gaston Grinbaum, dans la même rue, loge des personnes indépendantes ; une aide à domicile peut y intervenir pour la toilette, les repas ou une présence. L'Hôpital de jour Camille Claudel, rue Jules Verne, est l'établissement de santé recensé à Vigneux-sur-Seine. Aucun accueil de jour, aucun point d'information dédié aux personnes âgées et aucun hôpital de court séjour n'apparaissent dans les données pour la commune.\n\nLe Centre communal d'action sociale (CCAS) - Vigneux-sur-Seine, rue Pierre Marin, est l'interlocuteur communal pour les aides et l'orientation ; la mairie est dans la même rue.\n\n### Les habitants\n\nVigneux-sur-Seine comptait 31 233 habitants au recensement de 2022. Les 75 ans et plus représentent 6,4 % de la population, dont 0,8 % de personnes de 90 ans ou plus. Les 60-74 ans en forment 12,3 %. Ces parts modérées cachent des situations très différentes : un veuf qui ne cuisine plus, un couple dont l'un a la maladie de Parkinson, un adulte en situation de handicap qui organise sa vie.\n\n### Les ressources de l'Essonne\n\nLe Conseil départemental - Essonne, hôtel du département à Évry-Courcouronnes, attribue l'APA et la PCH. La Maison départementale des personnes handicapées (MDPH) - Essonne est rue Henri Rochefort, à Évry. Le PAM Île-de-France, transport à la demande régional, s'adresse aux personnes à mobilité réduite. France Alzheimer Essonne écoute les familles à Corbeil-Essonnes. La délégation de l'Essonne d'APF France handicap est à Sainte-Geneviève-des-Bois, l'ADAPEI de l'Essonne aux Ulis, le comité de l'Essonne de France Parkinson à Ris-Orangis.\n\n### L'agence : Vitry-sur-Seine, à 10,5 km\n\nL'agence Youdom Care la plus proche de Vigneux-sur-Seine est celle du Val-de-Marne, à Vitry-sur-Seine, à 10,5 km du centre. C'est elle qui vient évaluer gratuitement la situation chez vous et qui organise les interventions. Ablon-sur-Seine est à 2,4 km, Draveil à 2,7 km, Montgeron à 2,8 km, Athis-Mons et Crosne à 3,2 km. Vigneux-sur-Seine appartient à la CA Val d'Yerres Val de Seine.\n\nSi vous êtes l'aidant et que vous avez besoin de souffler, dites-le avant d'être à bout. Une visite gratuite à votre domicile de Vigneux-sur-Seine permet de poser les options ; demandez-la par le formulaire ou par téléphone.",
+  "questions": [
+    {
+      "question": "Existe-t-il un hébergement temporaire à Vigneux-sur-Seine ?",
+      "reponse": "Oui : l'EHPAD Résidence Retraite du Cinéma et du Spectacle, rue Gaston Grinbaum, propose un hébergement temporaire selon les données ouvertes. C'est une solution quand l'aidant doit s'absenter. L'autre solution est de rester chez soi avec une auxiliaire de vie Youdom Care qui remplace l'aidant, de jour, de nuit ou en continu. Les deux peuvent se combiner."
+    },
+    {
+      "question": "Y a-t-il une résidence autonomie à Vigneux-sur-Seine ?",
+      "reponse": "Oui, la Résidence autonomie Gaston Grinbaum, rue Gaston-Grinbaum, avec 70 places selon les données ouvertes. Les résidents y gardent leur logement et leur indépendance. Une aide à domicile peut y intervenir aux heures convenues, pour la toilette, les repas, les courses ou une présence, comme dans tout autre logement de Vigneux-sur-Seine."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Vigneux-sur-Seine ?",
+      "reponse": "L'agence Youdom Care Val-de-Marne, à Vitry-sur-Seine, à 10,5 km du centre de Vigneux-sur-Seine. Elle reçoit votre demande, vient chez vous pour l'évaluation gratuite et organise les interventions. Vous la joignez par téléphone ou par le formulaire de cette page, pour vous-même ou pour un proche."
+    },
+    {
+      "question": "Où demander l'APA quand on habite Vigneux-sur-Seine ?",
+      "reponse": "L'allocation personnalisée d'autonomie est attribuée par le Conseil départemental - Essonne, dont l'hôtel du département est à Évry-Courcouronnes. Le Centre communal d'action sociale (CCAS) - Vigneux-sur-Seine, rue Pierre Marin, aide à constituer le dossier et renseigne sur les aides communales. L'évaluation gratuite de Youdom Care précise le besoin heure par heure."
+    }
+  ],
+  "semaine_type": "jacques",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

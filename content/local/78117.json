@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78117.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78117",
+  "seo": {
+    "titre": "Aide à domicile à Buc (78530) : auxiliaires de vie",
+    "description": "Aide à domicile à Buc, à 2,7 km de l'agence Youdom Care de Versailles. MDPH des Yvelines dans la commune, CCAS rue des Frères Robin, hôpitaux voisins."
+  },
+  "sous_titre": "Buc accueille le siège de la MDPH des Yvelines et se trouve à 2,7 km de l'agence Youdom Care de Versailles.",
+  "zone_editoriale": "### La MDPH est à Buc\n\nLa Maison départementale des personnes handicapées (MDPH) - Yvelines a son adresse postale à Buc. Pour un habitant de la commune, la reconnaissance du handicap, la prestation de compensation ou la carte mobilité inclusion se traitent donc tout près. Youdom Care accompagne des adultes et des enfants en situation de handicap : une fois le plan d'aide notifié, l'auxiliaire de vie intervient aux heures que vous choisissez, pour les gestes du matin, les repas, les déplacements ou une présence en soirée.\n\n### Ce que disent les chiffres\n\nBuc comptait 5 868 habitants au recensement de 2022. Les 60-74 ans représentent 15,6 % de la population, une part notable. Les 75 ans et plus en forment 9,9 %, et 1,7 % des habitants ont 90 ans ou plus. Beaucoup de ces personnes vivent chez elles, parfois avec un conjoint du même âge. L'aide à domicile sert alors autant à la personne aidée qu'à celui ou celle qui l'accompagne au quotidien.\n\n### Les ressources sur place et à côté\n\nLe Centre communal d'action sociale (CCAS) - Buc, rue des Frères Robin, à la même adresse que la mairie, reçoit les demandes d'aide communale et oriente vers le Département. L'EHPAD Pierre-Bienvenu Noailles, avenue Morane Saulnier, est le seul établissement pour personnes âgées recensé dans la commune. Aucun accueil de jour ni résidence autonomie n'apparaît dans les données à Buc : ces relais se cherchent dans les communes voisines.\n\nPour les soins, les habitants de Buc se tournent vers Versailles. Le Centre hospitalier de Versailles Hôpital Richaud, boulevard de la Reine, est à 3,4 km à vol d'oiseau. Lorsqu'un retour à la maison s'organise après une hospitalisation, l'auxiliaire de vie peut être présente le jour même de la sortie, puis les jours suivants, le temps de retrouver ses repères.\n\n### Les appuis départementaux\n\nLe Conseil départemental - Yvelines, à l'hôtel du département de Versailles, instruit l'allocation personnalisée d'autonomie (APA) et la prestation de compensation du handicap (PCH). Le PAM Île-de-France, service régional de transport à la demande, s'adresse aux personnes à mobilité réduite pour les déplacements hors de la commune. France Alzheimer Yvelines, place Royale à Versailles, écoute les familles. Le comité des Yvelines de France Parkinson réunit des bénévoles à Élancourt. L'ADAPEI 78 et l'APEI de Versailles et Des Communes Environnantes rassemblent des parents de personnes en situation de handicap intellectuel.\n\n### L'agence et les voisines\n\nL'agence Youdom Care Yvelines, à Versailles, est à 2,7 km du centre de Buc. Les Loges-en-Josas sont à 1,8 km, Jouy-en-Josas à 2,8 km, Versailles à 3,4 km, Viroflay à 4,7 km. Buc fait partie de la CA Versailles Grand Parc (CAVGP), comme ces communes des Yvelines.\n\nUne évaluation à domicile, sans frais, précède toute intervention. Elle sert à comprendre vos journées, ce qui pèse et ce qui doit rester tel quel. Vous pouvez la demander depuis le formulaire ou par téléphone, pour vous ou pour un proche qui habite Buc.",
+  "questions": [
+    {
+      "question": "Où se trouve la MDPH pour les habitants de Buc ?",
+      "reponse": "La Maison départementale des personnes handicapées (MDPH) - Yvelines a son adresse postale à Buc même. C'est elle qui instruit les demandes de prestation de compensation du handicap, de carte mobilité inclusion ou de reconnaissance du handicap. Une fois le plan d'aide notifié, Youdom Care organise les interventions à domicile en fonction des heures accordées et de vos priorités."
+    },
+    {
+      "question": "Quelle est l'agence Youdom Care la plus proche de Buc ?",
+      "reponse": "L'agence Youdom Care Yvelines, installée à Versailles, se trouve à 2,7 km du centre de Buc. C'est elle qui reçoit votre demande, se déplace pour l'évaluation gratuite et suit les interventions. Vous pouvez la joindre par téléphone ou remplir le formulaire de cette page ; les coordonnées figurent en haut de page."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour ou une résidence autonomie à Buc ?",
+      "reponse": "Les données ouvertes n'en recensent pas dans la commune. Le seul établissement pour personnes âgées relevé à Buc est l'EHPAD Pierre-Bienvenu Noailles, avenue Morane Saulnier. Pour un accueil de jour, il faut regarder du côté de Versailles ou de Jouy-en-Josas. Le CCAS de Buc, rue des Frères Robin, peut vous orienter selon votre situation."
+    },
+    {
+      "question": "Quel hôpital est le plus proche de Buc pour un retour à domicile ?",
+      "reponse": "Le Centre hospitalier de Versailles Hôpital Richaud, boulevard de la Reine à Versailles, est à 3,4 km de Buc à vol d'oiseau. Avant la sortie, prévenez Youdom Care : une auxiliaire de vie peut être présente dès le premier jour à la maison, pour les repas, la toilette et la surveillance des habitudes qui changent."
+    }
+  ],
+  "semaine_type": "karim",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 12, 13, 14, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
