@@ -20,6 +20,11 @@ const localSections = [
   "Être rappelé(e)",
 ];
 
+/** « Être rappelé(e) » contient des parenthèses : le titre est cherché littéralement. */
+function escapeRegExp(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 async function jsonLdNodes(page: Page) {
   const blocks = await page
     .locator('script[type="application/ld+json"]')
@@ -180,9 +185,10 @@ test.describe("Page locale (P6.5, données réelles du dépôt)", () => {
     await expect(page.locator("main")).toHaveAttribute("data-local", local.chemin);
     for (const title of localSections) {
       await expect(
-        page
-          .locator("main section")
-          .getByRole("heading", { level: 2, name: new RegExp(`^${title}`) }),
+        page.locator("main section").getByRole("heading", {
+          level: 2,
+          name: new RegExp(`^${escapeRegExp(title)}`),
+        }),
       ).toHaveCount(1);
     }
     await expect(

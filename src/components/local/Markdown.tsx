@@ -5,8 +5,8 @@ import { Prose } from "@/components/ui/Prose/Prose";
 /*
  * Rendu Markdown minimal et sûr de la zone éditoriale des pages locales (docs/04 §4,
  * anatomie 3). Le texte vient de content/local/{code}.json, écrit à la main : on ne compile
- * rien (pas de MDX, aucune expression), on ne rend que des paragraphes, des titres (`##` → h3,
- * `###` → h4, sous le H2 « Vivre à domicile à … »), des listes à puces et numérotées, du gras,
+ * rien (pas de MDX, aucune expression), on ne rend que des paragraphes, des titres (le moins
+ * profond → h3 sous le H2 « Vivre à domicile à … », le suivant → h4), des listes à puces et numérotées, du gras,
  * de l'italique et des liens. Tout le reste est du texte, échappé par React. Un lien interne
  * passe par `Link`, un lien externe est signalé (`rel`, texte pour le lecteur d'écran).
  */
@@ -137,12 +137,17 @@ export function renderInline(
 
 export function Markdown({ source, headingLevel = 3, externalLabel, className }: MarkdownProps) {
   const blocks = parseBlocks(source);
+  // Le titre le moins profond du texte devient `headingLevel` (h3 sous le H2 de la section),
+  // qu'il soit écrit `##` ou `###` : aucun saut de hiérarchie (docs/07, check-seo).
+  const minDepth = Math.min(
+    ...blocks.flatMap((block) => (block.kind === "heading" ? [block.depth] : [])),
+  );
   return (
     <Prose className={className} data-markdown="">
       {blocks.map((block, index) => {
         const key = `b-${index}`;
         if (block.kind === "heading") {
-          const level = Math.min(6, headingLevel + block.depth - 2);
+          const level = Math.min(6, headingLevel + block.depth - minDepth);
           const Tag = `h${level}` as "h3" | "h4" | "h5";
           return <Tag key={key}>{renderInline(block.text, externalLabel, key)}</Tag>;
         }

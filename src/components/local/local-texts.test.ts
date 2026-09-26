@@ -4,6 +4,7 @@ import { localFactTypes } from "@/content/local-schema";
 import {
   aidFactTypes,
   arrondissementNumber,
+  displayLabel,
   formInsee,
   formatDistance,
   lifeFactTypes,
@@ -110,5 +111,54 @@ describe("local-texts", () => {
     expect(formInsee({ kind: "arrondissement", code: "75115" })).toBe("75115");
     expect(formInsee({ kind: "quartier", code: "7511501", parent: "75115" })).toBe("75115");
     expect(formInsee({ kind: "departement", code: "92" })).toBeUndefined();
+  });
+});
+
+describe("local-texts : élisions et libellés", () => {
+  it("élide l'article des communes « Le » et « Les »", () => {
+    expect(
+      localPlace(
+        { kind: "commune", nom: "Le Blanc-Mesnil", code: "93007", departement: "93" },
+        texts,
+      ),
+    ).toBe("au Blanc-Mesnil");
+    expect(
+      localPlace({ kind: "commune", nom: "Les Mureaux", code: "78440", departement: "78" }, texts),
+    ).toBe("aux Mureaux");
+    expect(
+      localPlace({ kind: "commune", nom: "La Courneuve", code: "93027", departement: "93" }, texts),
+    ).toBe("à La Courneuve");
+    expect(
+      localPlace(
+        { kind: "commune", nom: "L'Haÿ-les-Roses", code: "94038", departement: "94" },
+        texts,
+      ),
+    ).toBe("à L'Haÿ-les-Roses");
+    expect(
+      localTitle(
+        {
+          kind: "commune",
+          nom: "Le Pré-Saint-Gervais",
+          code: "93061",
+          departement: "93",
+          codes_postaux: ["93310"],
+        },
+        texts,
+      ),
+    ).toBe("Aide à domicile au Pré-Saint-Gervais (93310)");
+  });
+
+  it("rend lisibles les libellés FINESS en capitales sans toucher aux autres", () => {
+    expect(displayLabel("CENTRE HOSPITALIER DE VERSAILLES HOPITAL RICHAUD")).toBe(
+      "Centre Hospitalier de Versailles Hopital Richaud",
+    );
+    expect(displayLabel("GHU APHP CENTRE-UNIVERSITE PARIS CITE SITE HOTEL DIEU")).toBe(
+      "GHU APHP Centre-Universite Paris Cite site Hotel Dieu",
+    );
+    expect(displayLabel("HDJ INFANTO JUVENILE ASTROLABE")).toBe("HDJ Infanto Juvenile Astrolabe");
+    expect(displayLabel("EHPAD Résidence Les Berges du Danube")).toBe(
+      "EHPAD Résidence Les Berges du Danube",
+    );
+    expect(displayLabel("Marché Convention")).toBe("Marché Convention");
   });
 });

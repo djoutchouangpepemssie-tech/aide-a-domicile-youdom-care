@@ -253,10 +253,14 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           {agency ? (
             <div className="mt-6 max-w-2xl rounded-card border border-line bg-white p-6 shadow-1">
               <p className="m-0 text-lead">
-                {fill(distance ? t.reponse.agence : t.reponse.agence_proche, {
-                  agence: agency.nom,
-                  distance: distance ?? "",
-                })}
+                {fill(
+                  agency.code_insee === data.code
+                    ? t.reponse.agence_ici
+                    : distance
+                      ? t.reponse.agence
+                      : t.reponse.agence_proche,
+                  { agence: agency.nom, distance: distance ?? "", lieu },
+                )}
               </p>
               <p className="m-0 mt-2">
                 {agency.adresse}, {agency.code_postal} {agency.commune}

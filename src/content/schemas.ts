@@ -564,6 +564,9 @@ export const interfaceSchema = z.strictObject({
     sur_titre: text,
     lieu: z.strictObject({
       commune: text.includes("{nom}"),
+      /** Élisions : « au Blanc-Mesnil », « aux Mureaux » (le nom est donné sans son article). */
+      commune_le: text.includes("{nom}"),
+      commune_les: text.includes("{nom}"),
       arrondissement: text.includes("{numero}"),
       quartier: text.includes("{nom}"),
       /** Préposition et nom par département : « dans les Hauts-de-Seine ». */
@@ -586,6 +589,8 @@ export const interfaceSchema = z.strictObject({
       oui: text.includes("{lieu}"),
       agence: text.includes("{agence}").includes("{distance}"),
       agence_proche: text.includes("{agence}"),
+      /** L'agence est installée dans le territoire même (code INSEE identique). */
+      agence_ici: text.includes("{agence}").includes("{lieu}"),
       voir_agence: text.includes("{nom}"),
       appeler: text.includes("{téléphone}"),
     }),

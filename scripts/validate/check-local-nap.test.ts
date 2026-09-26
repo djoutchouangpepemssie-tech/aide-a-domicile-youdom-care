@@ -41,10 +41,10 @@ describe("check-local-nap", () => {
       report.errors.filter((e) => e.includes("23 45 67 89") || e.includes("123456789")),
     ).toHaveLength(1);
     expect(report.errors).toContain(
-      `${route} : adresse « 12 rue Imaginaire » n'est celle d'aucune agence de site.config.json`,
+      `${route} : adresse « 12 rue Imaginaire » n'est ni une agence de site.config.json ni l'adresse d'un fait de data/local`,
     );
     expect(report.errors).toContain(
-      `${route} : code postal et ville « 75001 Paris » ne sont ceux d'aucune agence de site.config.json`,
+      `${route} : code postal et ville « 75001 Paris » ne sont ni ceux d'une agence de site.config.json ni ceux d'un fait de data/local`,
     );
     expect(report.errors).toContain(
       `${route} : affiche l'agence paris-12 (61 rue de Lyon, 75012 Paris), l'agence la plus proche est puteaux (49-51 quai de Dion-Bouton, 92800 Puteaux) (docs/04 §4)`,
@@ -76,15 +76,15 @@ describe("check-local-nap", () => {
     ]);
   });
 
-  it("refuse l'adresse d'un fait hors de la grille quand le repère existe", async () => {
+  it("tolère l'adresse d'un fait hors de la grille (zone éditoriale) mais refuse une adresse étrangère", async () => {
     const { pages, config } = await scan(conforme);
     const page = pages.find((p) => p.code === "92062") ?? null;
     const html =
-      "<main><p>Permanence : 131 rue de la République, 92800 Puteaux</p>" +
+      "<main><p>Permanence : 131 rue de la République, 92800 Puteaux. Autre : 9 rue Inconnue.</p>" +
       "<section data-local-facts><p>2 rue Rigault, 92000 Nanterre</p></section></main>";
     const report = auditPageNap("/aide-a-domicile/hauts-de-seine/puteaux/", html, { config, page });
     expect(report.errors).toEqual([
-      "/aide-a-domicile/hauts-de-seine/puteaux/ : adresse « 131 rue de la République » n'est celle d'aucune agence de site.config.json",
+      "/aide-a-domicile/hauts-de-seine/puteaux/ : adresse « 9 rue Inconnue » n'est ni une agence de site.config.json ni l'adresse d'un fait de data/local",
     ]);
   });
 

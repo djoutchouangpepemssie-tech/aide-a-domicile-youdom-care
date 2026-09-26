@@ -23,8 +23,11 @@ import { stripDiacritics } from "./text";
 const streetTypes =
   "rue|avenue|av\\.?|boulevard|bd|quai|place|all[ée]e|chemin|impasse|route|cours|square|passage|villa|voie|esplanade|promenade|mail|sente|rond-point";
 
+// Une année (1900 à 2099) n'est pas un numéro de rue : dans le texte visible d'une grille,
+// « consulté le 20 septembre 2026 » précède le libellé suivant (« Square Louvois »). La mention
+// s'arrête aussi devant « à » (« 84 avenue du Général-Leclerc à Viroflay »).
 const streetAddressPattern = new RegExp(
-  `(?<![\\d,.])\\b\\d{1,4}(?:\\s?(?:bis|ter|quater)\\b)?(?:\\s?[-–/]\\s?\\d{1,4})*,?\\s+(?:${streetTypes})\\s+[^,;.:()\\n|]*?(?=\\s*(?:[,;.:()|]|\\d{5}\\b|$))`,
+  `(?<![\\d,.])\\b(?!(?:19|20)\\d{2}\\b)\\d{1,4}(?:\\s?(?:bis|ter|quater)\\b)?(?:\\s?[-–/]\\s?\\d{1,4})*,?\\s+(?:${streetTypes})\\s+[^,;.:()\\n|]*?(?=\\s*(?:[,;.:()|]|\\d{5}\\b|\\s(?:à|et|ou)\\s|$))`,
   "giu",
 );
 
@@ -51,12 +54,53 @@ export function normalizePhone(display: string): string | null {
   return null;
 }
 
-/** Forme comparable d'une adresse ou d'un nom de ville. */
+/**
+ * Forme comparable d'une adresse ou d'un nom de ville. Un mot répété à la suite est réduit
+ * (« 56 rue rue Ordener », coquille de source, vaut « 56 rue Ordener »).
+ */
 export function normalizeAddress(text: string): string {
-  return stripDiacritics(text.toLowerCase())
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+  return (
+    stripDiacritics(text.toLowerCase())
+      .replace(/[^a-z0-9]+/g, " ")
+      // « 24bis » → « 24 bis »
+      .replace(/(\d)([a-z])/g, "$1 $2")
+      .split(" ")
+      .map((token) => ADDRESS_ABBREVIATIONS[token] ?? token)
+      .filter((token) => token !== "" && !ADDRESS_STOPWORDS.has(token))
+      .join(" ")
+      .replace(/\b(\w+)(?: \1\b)+/g, "$1")
+      .trim()
+  );
 }
+
+/** Abréviations courantes des sources officielles (FINESS, CNSA) ramenées au mot entier. */
+const ADDRESS_ABBREVIATIONS: Record<string, string> = {
+  av: "avenue",
+  bd: "boulevard",
+  bld: "boulevard",
+  pl: "place",
+  dr: "docteur",
+  gal: "general",
+  gen: "general",
+  mal: "marechal",
+  lt: "lieutenant",
+  col: "colonel",
+  st: "saint",
+  ste: "sainte",
+  pdt: "president",
+};
+
+/** Mots-outils ignorés dans la comparaison (« rue de la Paix » vaut « rue La Paix »). */
+const ADDRESS_STOPWORDS: ReadonlySet<string> = new Set([
+  "de",
+  "du",
+  "des",
+  "la",
+  "le",
+  "les",
+  "l",
+  "d",
+]);
 
 export interface Mention {
   raw: string;

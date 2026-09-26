@@ -410,6 +410,8 @@
     "sur_titre": "Île-de-France",
     "lieu": {
       "commune": "à {nom}",
+      "commune_le": "au {nom}",
+      "commune_les": "aux {nom}",
       "arrondissement": "à Paris {numero}",
       "quartier": "à {nom}",
       "departements": {
@@ -431,6 +433,7 @@
       "oui": "Oui, nous intervenons {lieu}.",
       "agence": "Votre agence la plus proche : {agence}, à environ {distance} km à vol d'oiseau.",
       "agence_proche": "Votre agence la plus proche : {agence}, à moins d'un kilomètre.",
+      "agence_ici": "Votre agence : {agence}, installée {lieu}.",
       "voir_agence": "Voir l'agence {nom}",
       "appeler": "Appeler le {téléphone}"
     },

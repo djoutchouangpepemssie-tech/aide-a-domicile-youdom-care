@@ -38,10 +38,21 @@ describe("téléphones", () => {
 
 describe("adresses", () => {
   it("normalise sans accents ni ponctuation", () => {
-    expect(normalizeAddress("49-51 quai de Dion-Bouton")).toBe("49 51 quai de dion bouton");
-    expect(normalizeAddress("Hôtel de ville, place de l'Église")).toBe(
-      "hotel de ville place de l eglise",
-    );
+    expect(normalizeAddress("49-51 quai de Dion-Bouton")).toBe("49 51 quai dion bouton");
+    expect(normalizeAddress("24bis Avenue André Morizet")).toBe("24 bis avenue andre morizet");
+    expect(normalizeAddress("2 rue DU DR DELAFONTAINE")).toBe("2 rue docteur delafontaine");
+    expect(normalizeAddress("Hôtel de ville, place de l'Église")).toBe("hotel ville place eglise");
+    expect(normalizeAddress("56 rue rue Ordener")).toBe("56 rue ordener");
+  });
+
+  it("ignore les années et s'arrête devant « à »", () => {
+    const text =
+      "Source : Ville de Paris, consulté le 20 septembre 2026 Square Louvois 2 rue de Louvois ; " +
+      "l'hôpital de jour, 84 avenue du Général-Leclerc à Viroflay, est proche.";
+    expect(extractStreetAddresses(text).map((m) => m.raw)).toEqual([
+      "2 rue de Louvois",
+      "84 avenue du Général-Leclerc",
+    ]);
   });
 
   it("relève les adresses de voie avec numéro, jusqu'à la ponctuation ou au code postal", () => {

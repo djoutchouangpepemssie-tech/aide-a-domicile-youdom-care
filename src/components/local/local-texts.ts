@@ -58,8 +58,97 @@ export function localPlace(data: LocalPlaceInput, texts: LocalTexts): string {
     case "quartier":
       return fill(texts.lieu.quartier, { nom: data.nom });
     default:
-      return fill(texts.lieu.commune, { nom: data.nom });
+      return communePlace(data.nom, texts);
   }
+}
+
+/** « à Puteaux », « au Blanc-Mesnil », « aux Mureaux » : élision de l'article du nom de commune. */
+export function communePlace(nom: string, texts: LocalTexts): string {
+  const le = /^Le\s+(.+)$/.exec(nom);
+  if (le?.[1]) return fill(texts.lieu.commune_le, { nom: le[1] });
+  const les = /^Les\s+(.+)$/.exec(nom);
+  if (les?.[1]) return fill(texts.lieu.commune_les, { nom: les[1] });
+  return fill(texts.lieu.commune, { nom });
+}
+
+const LABEL_ACRONYMS = new Set([
+  "aphp",
+  "ap-hp",
+  "ghu",
+  "chu",
+  "chi",
+  "chr",
+  "chs",
+  "ch",
+  "ehpad",
+  "esld",
+  "usld",
+  "ssr",
+  "had",
+  "hdj",
+  "cmp",
+  "cattp",
+  "camsp",
+  "camps",
+  "sa",
+  "sas",
+  "sarl",
+  "cos",
+  "mdph",
+  "clic",
+  "ccas",
+  "rpa",
+  "apf",
+  "apei",
+  "pam",
+  "cs",
+  "bp",
+  "ii",
+  "iii",
+  "cedex",
+]);
+const LABEL_STOPWORDS = new Set([
+  "de",
+  "du",
+  "des",
+  "la",
+  "le",
+  "les",
+  "l",
+  "d",
+  "et",
+  "en",
+  "sur",
+  "sous",
+  "a",
+  "au",
+  "aux",
+  "pour",
+  "par",
+  "site",
+  "dit",
+  "dite",
+]);
+
+/**
+ * Libellé lisible d'un fait : les sources FINESS publient en capitales sans accents
+ * (« CENTRE HOSPITALIER DE VERSAILLES HOPITAL RICHAUD ») ; on garde les mots exacts, en
+ * capitales initiales, mots-outils en minuscules et sigles en capitales. Un libellé qui contient
+ * déjà des minuscules est rendu tel quel.
+ */
+export function displayLabel(label: string): string {
+  if (/[a-zà-ÿ]/.test(label)) return label;
+  return label
+    .split(/(\s+|-|\/)/)
+    .map((part, index) => {
+      if (/^(\s+|-|\/)$/.test(part) || part === "") return part;
+      const lower = part.toLowerCase();
+      const bare = lower.replace(/[^a-z0-9]/g, "");
+      if (LABEL_ACRONYMS.has(bare) || LABEL_ACRONYMS.has(lower)) return part.toUpperCase();
+      if (index > 0 && LABEL_STOPWORDS.has(bare)) return lower;
+      return lower.charAt(0).toUpperCase() + lower.slice(1);
+    })
+    .join("");
 }
 
 /** H1 de la page locale : avec le code postal pour une commune, un arrondissement ou un quartier. */

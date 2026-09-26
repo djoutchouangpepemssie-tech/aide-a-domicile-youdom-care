@@ -3,7 +3,7 @@ import { Heading, type HeadingLevel } from "@/components/ui/Heading/Heading";
 import type { LocalFact, LocalFactType } from "@/content/local-schema";
 import { cn } from "@/lib/cn";
 import { toTelHref } from "@/lib/phone";
-import { fill, type LocalTexts } from "./local-texts";
+import { displayLabel, fill, type LocalTexts } from "./local-texts";
 
 /*
  * Ressources locales sourcées (docs/02 §7 `LocalFactsGrid`, docs/04 §4 anatomie 4 et 7) :
@@ -63,7 +63,7 @@ function FactRow({ fact, texts }: { fact: LocalFact; texts: LocalTexts["faits"] 
   return (
     <li className="max-w-none" data-fact-type={fact.type}>
       <p className="m-0 font-bold text-teal-900">
-        {fact.label}
+        {displayLabel(fact.label)}
         {fact.value ? <span className="font-normal text-ink"> : {fact.value}</span> : null}
       </p>
       {fact.address ? (

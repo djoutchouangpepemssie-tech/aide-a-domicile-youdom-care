@@ -145,8 +145,13 @@ function toleratedFromFacts(page: LocalPage | null): Tolerated {
         ...extractPostalCities(fact.address).map((m) => m.normalized),
       );
     }
+    // Un champ téléphone de source peut en porter deux (« 01 45 54 04 80 selon le tableau
+    // 01 45 54 85 93 ») : chaque numéro relevé est toléré, comme il l'est dans le rendu.
     const phone = fact.telephone ? normalizePhone(fact.telephone) : null;
     if (phone) tolerated.phones.add(phone);
+    for (const found of fact.telephone ? extractPhones(fact.telephone) : []) {
+      tolerated.phones.add(found.normalized);
+    }
   }
   return tolerated;
 }
@@ -236,7 +241,6 @@ export function auditPageNap(route: string, html: string, options: PageNapOption
   const page = options.page ?? null;
   const errors: string[] = [];
   const warnings: string[] = [];
-  const none: Tolerated = { streets: [], postalCities: [], phones: new Set() };
   const facts = toleratedFromFacts(page);
   const ownPostalCities = territoryPostalCities(page);
 
@@ -247,14 +251,13 @@ export function auditPageNap(route: string, html: string, options: PageNapOption
       `${route} : repère ${FACTS_ATTRIBUTE} absent, adresses et téléphones de facts[] tolérés sur toute la page`,
     );
   }
+  // Hors de la grille, la zone éditoriale et les questions locales citent légitimement des
+  // ressources sourcées avec leur adresse (docs/04 §4, anatomie 3 et 9) : les adresses et
+  // téléphones de facts[] restent tolérés partout ; seule une adresse d'agence autre que
+  // l'agence la plus proche, ou une adresse étrangère aux faits, est une erreur.
   const outside = removeRegions(html, factsRegions);
   errors.push(
-    ...auditScope(
-      route,
-      { html: outside, label: "", tolerated: hasFactsRegion ? none : facts },
-      config,
-      ownPostalCities,
-    ),
+    ...auditScope(route, { html: outside, label: "", tolerated: facts }, config, ownPostalCities),
   );
   for (const region of factsRegions) {
     errors.push(
