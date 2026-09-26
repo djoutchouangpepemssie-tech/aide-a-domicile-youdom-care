@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77514.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77514",
+  "seo": {
+    "titre": "Aide à domicile à Villeparisis (77270) : auxiliaire de vie",
+    "description": "Auxiliaire de vie à Villeparisis : résidence autonomie Octave-Landry, CCAS rue de Ruzé, Roissy Pays de France. Agence à 16,9 km, visite gratuite."
+  },
+  "sous_titre": "Villeparisis dépend de Roissy Pays de France et se trouve loin de notre agence : voici ce que cela change, et ce que cela ne change pas.",
+  "zone_editoriale": "La RPA Octave Landry, 1 chemin de la Couronne, est la résidence autonomie de Villeparisis. Des personnes âgées y vivent dans des logements indépendants, avec des services communs. Une auxiliaire de vie y intervient comme dans une maison : ménage, repas, toilette, accompagnement.\n\nC'est le seul établissement pour personnes âgées référencé dans la commune. Ni accueil de jour ni EHPAD n'apparaissent dans les données de Villeparisis.\n\n### Ce que les chiffres disent\n\nVilleparisis compte 26 794 habitants au recensement de 2022. Les 60 à 74 ans représentent 11,1 % de la population, les 75 ans et plus 5,4 %. Les 90 ans ou plus sont 0,5 %.\n\nSans accueil de jour référencé sur place, les proches aidants s'appuient d'abord sur l'aide à domicile. Quelques heures par semaine, à jour fixe, suffisent souvent à retrouver du souffle. Quand la maladie avance, les heures augmentent, jusqu'à la présence de nuit si nécessaire.\n\n### Le CCAS et le département\n\nLe Centre communal d'action sociale (CCAS) - Villeparisis est au 32 rue de Ruzé, à l'adresse de la mairie. Il aide à constituer les dossiers et oriente vers les services du département.\n\nL'allocation personnalisée d'autonomie et la prestation de compensation du handicap relèvent du Conseil départemental - Seine-et-Marne, à Melun. La Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne se trouve à Savigny-le-Temple. Ces deux services sont départementaux ; les dossiers se préparent sur place, avec le CCAS.\n\n### Les hôpitaux référencés sont hors de la commune\n\nLe « CENTRE GERIATRIQUE DEPARTEMENTAL DE MOYEN SEJOUR LES ORMES », à Montfermeil, est à 6 km à vol d'oiseau. Il accueille des séjours de convalescence pour personnes âgées, après lesquels le retour à la maison se prépare. L'« HOPITAL DE JOUR DE PSYCHIATRIE MITRY MORY », 40 avenue de Verdun, est à 4,3 km.\n\nUne sortie de moyen séjour est un moment charnière. L'auxiliaire de vie peut être présente dès le retour, pour les courses, les repas et les gestes que la convalescence rend lents.\n\n### Se déplacer et se faire aider\n\nLe PAM Île-de-France est le transport à la demande de la région pour les personnes à mobilité réduite éligibles. Il est utile pour les trajets vers Montfermeil ou Mitry-Mory. France Alzheimer Seine-et-Marne, association départementale, accueille et écoute les familles.\n\n### Loin de l'agence, dans une autre intercommunalité\n\nL'agence Youdom Care Seine-et-Marne est à Serris, à 16,9 km à vol d'oiseau de Villeparisis. C'est loin, et nous le disons sans détour. Cela ne change rien à l'aide : l'évaluation et les interventions ont lieu chez vous.\n\nVilleparisis appartient à la communauté d'agglomération Roissy Pays de France et s'étend sur 834 hectares. Courtry et Vaujours sont à 2,9 km, Le Pin à 3,1 km, Coubron à 4 km. Mitry-Mory, Gressy, Claye-Souilly et Villevaudé se situent entre 4,3 et 4,6 km.\n\nDepuis Villeparisis, la demande se fait par le formulaire ou par téléphone. Nous venons chez vous pour une première évaluation, gratuite, puis vous recevez un devis.",
+  "questions": [
+    {
+      "question": "Où est la résidence autonomie de Villeparisis ?",
+      "reponse": "La RPA Octave Landry se trouve 1 chemin de la Couronne, à Villeparisis. C'est une résidence autonomie : des logements indépendants pour personnes âgées, avec des services collectifs. Une auxiliaire de vie peut intervenir dans le logement d'un résident pour le ménage, les repas ou la toilette. C'est le seul établissement pour personnes âgées référencé dans la commune."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour à Villeparisis ?",
+      "reponse": "Non, d'après les données rassemblées pour cette page : aucun accueil de jour ni EHPAD n'est référencé à Villeparisis. Le Centre communal d'action sociale (CCAS) - Villeparisis, 32 rue de Ruzé, peut orienter vers les structures des communes voisines. Pour le répit d'un proche aidant, l'aide à domicile à jours fixes reste la solution la plus directe sur place."
+    },
+    {
+      "question": "Quel hôpital pour un habitant de Villeparisis ?",
+      "reponse": "Deux établissements sont référencés, tous deux hors de la commune. Le « CENTRE GERIATRIQUE DEPARTEMENTAL DE MOYEN SEJOUR LES ORMES », 13 place Jean-Mermoz à Montfermeil, est à 6 km à vol d'oiseau. L'« HOPITAL DE JOUR DE PSYCHIATRIE MITRY MORY », 40 avenue de Verdun, est à 4,3 km. Après un séjour, l'aide à domicile se prépare avant la sortie."
+    },
+    {
+      "question": "Villeparisis est-elle loin de l'agence Youdom Care ?",
+      "reponse": "Oui : l'agence Youdom Care Seine-et-Marne, à Serris, est à 16,9 km à vol d'oiseau de Villeparisis. C'est notre agence la plus proche. La distance ne pèse pas sur l'accompagnement, puisque l'auxiliaire de vie vient à votre domicile. La première visite d'évaluation se fait aussi chez vous, gratuitement, avant la remise du devis."
+    }
+  ],
+  "semaine_type": "veronique",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

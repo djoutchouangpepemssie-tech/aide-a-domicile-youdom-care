@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77018.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77018",
+  "seo": {
+    "titre": "Aide à domicile à Bailly-Romainvilliers (77700) : nos aides",
+    "description": "Auxiliaire de vie à Bailly-Romainvilliers, à 2,1 km de l'agence de Serris : handicap, enfants, retour d'hospitalisation, personnes âgées. Visite gratuite."
+  },
+  "sous_titre": "À Bailly-Romainvilliers, une commune jeune du Val d'Europe, l'aide à domicile concerne d'abord les familles.",
+  "zone_editoriale": "Au recensement de 2022, Bailly-Romainvilliers compte 7 049 habitants. Les 75 ans et plus représentent 2,6 % de la population, dont 0,3 % de 90 ans ou plus. Les 60 à 74 ans sont 7,8 %.\n\nCes chiffres décrivent une commune jeune. Ils orientent le travail d'une auxiliaire de vie vers d'autres situations que la perte d'autonomie liée à l'âge.\n\n### Ce qu'une commune jeune change pour l'aide à domicile\n\nUn enfant en situation de handicap a besoin d'aide au lever, à l'habillage, au repas et sur le trajet de l'école. Un adulte qui vit avec un handicap moteur attend une aide fiable, à heures fixes, compatible avec son travail. Un parent épuisé cherche quelqu'un qui prenne le relais le mercredi ou le soir.\n\nLes personnes âgées de Bailly-Romainvilliers sont moins nombreuses, mais leurs besoins sont les mêmes qu'ailleurs. Une aide au ménage, aux courses ou à la toilette s'organise sur la commune comme dans les villes plus âgées.\n\n### Les interlocuteurs sur place et dans le département\n\nLe Centre communal d'action sociale (CCAS) - Bailly-Romainvilliers est au 51 rue de Paris, à l'adresse de la mairie. Il aide à monter un dossier d'aide sociale et oriente vers les services du département.\n\nPour un handicap, la Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne, à Savigny-le-Temple, reçoit les demandes de prestation de compensation du handicap (PCH). Le Conseil départemental - Seine-et-Marne, à Melun, verse la PCH et l'allocation personnalisée d'autonomie. Ces deux services sont départementaux, sans antenne dans la commune d'après les données.\n\nL'APF France handicap — Délégation de Seine-et-Marne est l'association départementale de référence pour les adultes en situation de handicap. Les associations du réseau Unapei du département, comme l'ADAPEI 77 à Melun, accompagnent les familles concernées par une déficience intellectuelle.\n\n### Hôpitaux et accueil de jour\n\nDeux hôpitaux sont référencés pour la commune. Le « GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY » est à 4,4 km à vol d'oiseau. Le « CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY » est à 8,9 km.\n\nPour une personne atteinte d'une maladie de la mémoire, l'accueil de jour le plus proche est à Serris. Il dépend de l'EHPAD Résidence Les Berges du Danube. L'établissement dispose aussi d'un hébergement temporaire et d'une unité Alzheimer.\n\n### L'agence et les communes voisines\n\nL'agence Youdom Care Seine-et-Marne est à Serris, à 2,1 km à vol d'oiseau de Bailly-Romainvilliers. Coutevroult est à 2,1 km, Serris à 2,3 km, Magny-le-Hongre à 2,5 km. Villeneuve-le-Comte, Villeneuve-Saint-Denis et Jossigny sont entre 4 et 4,4 km.\n\nBailly-Romainvilliers appartient à la communauté d'agglomération Val d'Europe Agglomération. Le territoire communal couvre 852 hectares.\n\nLe PAM Île-de-France, transport régional à la demande, est ouvert aux personnes à mobilité réduite qui remplissent les conditions d'accès. Il complète les déplacements que l'auxiliaire de vie accompagne à pied ou en voiture.\n\nPour une première évaluation à Bailly-Romainvilliers, décrivez votre situation dans le formulaire. La visite et le devis sont gratuits.",
+  "questions": [
+    {
+      "question": "Où déposer un dossier MDPH quand on habite Bailly-Romainvilliers ?",
+      "reponse": "La Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne est au 16 rue de l'Aluminium, à Savigny-le-Temple. C'est elle qui reçoit les demandes de prestation de compensation du handicap et de reconnaissance du handicap pour toute la Seine-et-Marne. Le Centre communal d'action sociale (CCAS) - Bailly-Romainvilliers, 51 rue de Paris, peut vous aider à préparer le dossier."
+    },
+    {
+      "question": "Un enfant en situation de handicap peut-il être aidé à domicile à Bailly-Romainvilliers ?",
+      "reponse": "Oui. Une auxiliaire de vie intervient au domicile de l'enfant pour le lever, l'habillage, les repas et le trajet vers l'école ou les activités. Les heures se calent sur le rythme scolaire et sur celui des parents. La prestation de compensation du handicap, versée par le département, peut financer une partie de l'aide selon le plan établi par la MDPH."
+    },
+    {
+      "question": "À quelle distance de Bailly-Romainvilliers se trouve l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care Seine-et-Marne est installée à Serris, à 2,1 km à vol d'oiseau de Bailly-Romainvilliers. Les deux communes font partie de la même communauté d'agglomération, Val d'Europe Agglomération. La première visite d'évaluation se fait chez vous, gratuitement, puis un devis vous est remis. Les coordonnées de l'agence sont affichées en haut de cette page."
+    },
+    {
+      "question": "Quel accueil de jour pour un habitant de Bailly-Romainvilliers atteint d'Alzheimer ?",
+      "reponse": "Aucun accueil de jour n'est situé dans la commune d'après les données. Le plus proche est celui de l'EHPAD Résidence Les Berges du Danube, 45 cours du Danube à Serris, à 2,3 km. Il comprend une unité Alzheimer et un hébergement temporaire. Une auxiliaire de vie peut assurer l'accompagnement entre le domicile et l'accueil de jour, à l'aller comme au retour."
+    }
+  ],
+  "semaine_type": "tom",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

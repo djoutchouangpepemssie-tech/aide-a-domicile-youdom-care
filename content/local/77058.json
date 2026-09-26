@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77058.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77058",
+  "seo": {
+    "titre": "Aide à domicile à Bussy-Saint-Georges (77600) : Youdom Care",
+    "description": "Auxiliaire de vie à Bussy-Saint-Georges : deux hôpitaux référencés, accueil de jour à Chanteloup-en-Brie, CCAS passage Carter. Agence de Serris à 6,1 km."
+  },
+  "sous_titre": "Deux établissements hospitaliers sont référencés pour Bussy-Saint-Georges : l'aide à domicile s'organise souvent à partir d'eux.",
+  "zone_editoriale": "Deux établissements hospitaliers sont rattachés à Bussy-Saint-Georges dans les données. Le « GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY », 2 cours de la Gondoire, est à 4 km à vol d'oiseau. L'« HDJ INFANTO JUVENILE ASTROLABE », à Bussy-Saint-Martin, est à 2,9 km.\n\nLe premier accueille les hospitalisations des adultes. Le second est un hôpital de jour pour enfants et adolescents. Cette paire dit quelque chose du territoire : une aide à domicile y concerne autant les familles que les aînés.\n\n### Après l'hôpital\n\nUne sortie du site de Jossigny se prépare avant le jour du retour. L'auxiliaire de vie peut être présente dès l'arrivée à la maison, faire les premières courses et préparer les repas. Elle aide aux gestes que la convalescence rend difficiles : se lever, se laver, s'habiller.\n\nPour un enfant suivi en hôpital de jour, l'aide se cale sur le calendrier des séances. Le trajet, le retour à la maison et la fin de journée sont les moments où un relais compte.\n\n### Une ville de 26 334 habitants, encore jeune\n\nAu recensement de 2022, Bussy-Saint-Georges compte 26 334 habitants. Les 60 à 74 ans représentent 10,8 % de la population. Les 75 ans et plus sont 2,8 %, dont 0,4 % de 90 ans ou plus.\n\nLa part des personnes très âgées est faible. Mais la tranche des 60 à 74 ans est déjà nette, et une partie de ces habitants aident un parent. Une aide à domicile les soulage sans les remplacer.\n\n### Les structures pour les personnes âgées\n\nL'EHPAD COS Fontenelle, allée de Fontenelle à Chanteloup-en-Brie, propose un accueil de jour et une unité Alzheimer. L'EHPAD Les Jardins de Bussy est au 2 cours du Pavillon-de-Chasse, dans la commune. L'EHPAD Le Château des Cèdres se trouve à Conches-sur-Gondoire.\n\nCes établissements sont utiles même quand on reste chez soi. Un accueil de jour offre une respiration à l'aidant. Un hébergement en EHPAD peut être une étape que l'aide à domicile précède ou évite.\n\nLe Centre communal d'action sociale (CCAS) - Bussy-Saint-Georges est au 4 passage Carter. Il oriente vers les aides communales et départementales.\n\n### Le département et l'agence\n\nLa Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne siège à Savigny-le-Temple. Le Conseil départemental - Seine-et-Marne, à Melun, instruit l'allocation personnalisée d'autonomie et la prestation de compensation du handicap. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite dans toute la région.\n\nL'agence Youdom Care Seine-et-Marne est à Serris, à 6,1 km à vol d'oiseau. Bussy-Saint-Georges appartient à la communauté d'agglomération Marne et Gondoire. Les communes les plus proches sont Ferrières-en-Brie, à 1,3 km, puis Collégien et Guermantes, à 2,5 km.\n\nBussy-Saint-Martin, Gouvernes, Conches-sur-Gondoire et Pontcarré se trouvent entre 2,9 et 3,8 km. Chanteloup-en-Brie, où se situe l'accueil de jour, est à 3,9 km.\n\nSi une hospitalisation approche ou vient de se terminer, écrivez-nous par le formulaire. L'évaluation à votre domicile de Bussy-Saint-Georges est gratuite, le devis aussi.",
+  "questions": [
+    {
+      "question": "Comment organiser un retour d'hospitalisation à domicile à Bussy-Saint-Georges ?",
+      "reponse": "Le « GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY » est à 4 km à vol d'oiseau de Bussy-Saint-Georges. Contactez-nous dès que la date de sortie est connue. L'évaluation à domicile est gratuite et permet de fixer les horaires de présence, les courses et les repas des premiers jours. L'aide commence, si besoin, le jour même du retour."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour près de Bussy-Saint-Georges ?",
+      "reponse": "Le plus proche référencé est celui de l'EHPAD COS Fontenelle, allée de Fontenelle à Chanteloup-en-Brie, à 3,9 km. Il comprend une unité Alzheimer. Dans la commune même, l'EHPAD Les Jardins de Bussy, 2 cours du Pavillon-de-Chasse, propose un hébergement permanent. Une auxiliaire de vie peut accompagner votre proche vers l'accueil de jour et le ramener chez lui."
+    },
+    {
+      "question": "Où se trouve le CCAS de Bussy-Saint-Georges et à quoi sert-il ?",
+      "reponse": "Le Centre communal d'action sociale (CCAS) - Bussy-Saint-Georges est au 4 passage Carter. Il renseigne sur les aides de la commune et aide à constituer les dossiers destinés au département, comme l'allocation personnalisée d'autonomie. C'est un bon point de départ avant de demander une aide à domicile, pour connaître les financements possibles selon votre situation."
+    },
+    {
+      "question": "Quelle est l'agence la plus proche de Bussy-Saint-Georges ?",
+      "reponse": "L'agence Youdom Care Seine-et-Marne, à Serris, se trouve à 6,1 km à vol d'oiseau de Bussy-Saint-Georges. Elle organise la première visite d'évaluation, gratuite, chez vous. Ses coordonnées sont indiquées en haut de cette page. La demande peut aussi passer par le formulaire, en précisant si elle concerne un enfant, un adulte ou une personne âgée."
+    }
+  ],
+  "semaine_type": "noe",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18, 19],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

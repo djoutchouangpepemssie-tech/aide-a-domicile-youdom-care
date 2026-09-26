@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77307.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77307",
+  "seo": {
+    "titre": "Aide à domicile à Montévrain (77144) : semaine ordinaire",
+    "description": "Auxiliaire de vie à Montévrain : commune jeune de Marne et Gondoire, CCAS rue Bonne-Mouche, hôpitaux de Lagny à 3,4 km, agence de Serris à 4,2 km. Devis."
+  },
+  "sous_titre": "À Montévrain, une semaine d'aide à domicile se construit autour des rendez-vous, des repas et des relais familiaux.",
+  "zone_editoriale": "Le matin, à Montévrain, une auxiliaire de vie commence souvent par le lever et le petit-déjeuner. Le midi, elle prépare un repas ou accompagne une sortie, si la personne le souhaite et le peut. Le soir, elle assure le coucher ou prend le relais d'un conjoint qui rentre tard.\n\nCette semaine ordinaire n'a pas de prénom. Elle a en revanche des adresses, que voici.\n\n### Le jour du rendez-vous à Lagny-sur-Marne\n\nLes deux établissements hospitaliers référencés pour Montévrain sont à Lagny-sur-Marne, à 3,4 km à vol d'oiseau. Le « CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY » reçoit les consultations et les hospitalisations. L'« HOPITAL DE JOUR GAUSSON », 13 rue Léo-Gausson, fonctionne à la journée.\n\nCe jour-là, l'auxiliaire de vie prépare les documents, accompagne le trajet et attend sur place. Au retour, elle note ce que le service a demandé et prévient la famille.\n\n### Le jour de la démarche\n\nLe Centre communal d'action sociale (CCAS) - Montévrain se trouve au 4 rue Bonne-Mouche, à l'adresse de la mairie. On y dépose une demande d'aide sociale ou on y demande une orientation. L'allocation personnalisée d'autonomie et la prestation de compensation du handicap sont instruites ensuite par le Conseil départemental - Seine-et-Marne, à Melun.\n\nPour un handicap, le dossier passe par la Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne, à Savigny-le-Temple. Ces deux services sont départementaux ; l'auxiliaire de vie peut aider à réunir les pièces, la famille dépose le dossier.\n\n### Les autres jours\n\nMontévrain compte 14 847 habitants au recensement de 2022. Les 75 ans et plus représentent 1,8 % de la population et les 90 ans ou plus 0,3 %. Les 60 à 74 ans sont 7,3 %.\n\nLa commune est jeune.\n\nLes autres jours de la semaine ressemblent donc souvent à ceci. Un parent qui travaille et dont l'enfant a besoin d'aide le matin. Un adulte malade qui veut rester actif, un couple dont l'un s'épuise. L'aide se cale sur ces rythmes, pas sur un horaire de bureau.\n\nAucun accueil de jour ni résidence autonomie n'est référencé dans les données pour Montévrain. Le répit passe par l'aide à domicile elle-même, à jours fixes.\n\n### Se déplacer, s'informer\n\nLe PAM Île-de-France, transport à la demande de la région, est ouvert aux personnes à mobilité réduite qui remplissent les conditions. France Alzheimer Seine-et-Marne et l'APF France handicap — Délégation de Seine-et-Marne sont des associations départementales, joignables depuis Montévrain.\n\n### L'agence et les alentours\n\nL'agence Youdom Care Seine-et-Marne est à Serris, à 4,2 km à vol d'oiseau. Montévrain appartient à la communauté d'agglomération Marne et Gondoire et couvre 538 hectares.\n\nChanteloup-en-Brie est à 1,3 km, Chessy à 1,4 km, Conches-sur-Gondoire à 2,4 km. Dampmart, Guermantes, Lagny-sur-Marne, Chalifert et Serris se situent entre 2,9 et 3,6 km.\n\nUne semaine ordinaire à Montévrain commence par une visite d'évaluation chez vous, gratuite. Le devis suit ; le planning se décide avec vous.",
+  "questions": [
+    {
+      "question": "Quel hôpital pour les habitants de Montévrain ?",
+      "reponse": "Les deux établissements référencés sont à Lagny-sur-Marne, à 3,4 km à vol d'oiseau de Montévrain. Le « CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY », 31 avenue du Général-Leclerc, assure les consultations et hospitalisations. L'« HOPITAL DE JOUR GAUSSON », 13 rue Léo-Gausson, reçoit en journée. Une auxiliaire de vie peut accompagner le trajet et organiser le retour à la maison."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour à Montévrain ?",
+      "reponse": "Non, d'après les données rassemblées pour cette page : aucun accueil de jour ni résidence autonomie n'est référencé à Montévrain. Le Centre communal d'action sociale (CCAS) - Montévrain, 4 rue Bonne-Mouche, peut indiquer les structures des communes voisines. En attendant, le répit d'un proche aidant s'organise avec une aide à domicile à jours et heures fixes."
+    },
+    {
+      "question": "Une aide à domicile pour un parent qui travaille, c'est possible à Montévrain ?",
+      "reponse": "Oui. Dans une commune jeune comme Montévrain, l'aide concerne souvent un enfant ou un adulte en situation de handicap dont le proche travaille. L'auxiliaire de vie intervient tôt le matin, à la sortie de l'école ou le soir, selon les horaires du foyer. La prestation de compensation du handicap peut financer une partie de ces heures."
+    },
+    {
+      "question": "Où est l'agence Youdom Care pour Montévrain ?",
+      "reponse": "À Serris, à 4,2 km à vol d'oiseau de Montévrain. L'agence Youdom Care Seine-et-Marne organise la première visite d'évaluation, gratuite, à votre domicile, puis vous remet un devis. Ses coordonnées figurent en haut de cette page. Le formulaire permet aussi de décrire votre situation, en précisant les horaires qui vous conviendraient."
+    }
+  ],
+  "semaine_type": "claire",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

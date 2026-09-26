@@ -1,0 +1,32 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77508.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77508",
+  "seo": {
+    "titre": "Aide à domicile à Villeneuve-le-Comte (77174) : chez vous",
+    "description": "Auxiliaire de vie à Villeneuve-le-Comte, commune étendue de 1 869 habitants à 4,8 km de l'agence de Serris : CCAS, EHPAD La Guette, APA. Devis gratuit."
+  },
+  "sous_titre": "Villeneuve-le-Comte est vaste et peu peuplée : l'aide à domicile y vient à vous, où que vous habitiez sur la commune.",
+  "zone_editoriale": "Villeneuve-le-Comte s'étend sur 1 909 hectares pour 1 869 habitants au recensement de 2022. Un territoire large, une population réduite : les trajets comptent. L'aide à domicile s'organise pour venir jusqu'à vous, sans que vous ayez à vous déplacer.\n\n### Une commune où les aînés sont bien présents\n\nLes 60 à 74 ans représentent 15,4 % de la population de Villeneuve-le-Comte. Les 75 ans et plus sont 6,4 %, dont 0,4 % de 90 ans ou plus. Ces parts sont nettes pour une commune de cette taille.\n\nElles dessinent des besoins précis : des personnes âgées qui vivent chez elles, parfois seules, et des enfants retraités qui les aident. Une auxiliaire de vie assure une partie du quotidien : ménage, courses, repas, toilette, accompagnement aux rendez-vous. Les horaires se fixent lors de la première visite, avec la personne et sa famille.\n\n### Le CCAS, place de la Mairie\n\nLe Centre communal d'action sociale (CCAS) - Villeneuve-le-Comte se trouve place de la Mairie, à l'adresse de la mairie. C'est le premier interlocuteur pour une demande d'aide sociale et pour être orienté vers le département. L'allocation personnalisée d'autonomie est instruite par le Conseil départemental - Seine-et-Marne, à Melun.\n\nLa Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne, à Savigny-le-Temple, reçoit les demandes liées au handicap, à tout âge.\n\nCes services sont départementaux. Depuis Villeneuve-le-Comte, le dossier se prépare avec le CCAS, puis part à Melun ou à Savigny-le-Temple.\n\n### Établissements et hôpitaux\n\nL'EHPAD La Guette, à Villeneuve-Saint-Denis, est l'établissement pour personnes âgées référencé pour la commune. Aucun accueil de jour n'apparaît dans les données de Villeneuve-le-Comte. Le répit d'un proche aidant passe donc par l'aide à domicile, à jours fixes.\n\nDeux hôpitaux sont référencés. Le « GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY » est à 5,8 km à vol d'oiseau. Le « CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY » est à 11,9 km.\n\nUn retour d'hospitalisation vers Villeneuve-le-Comte se prépare avec le service, avant la sortie.\n\n### Transport et associations départementales\n\nLe PAM Île-de-France, transport à la demande de la région, dessert les personnes à mobilité réduite éligibles, sur réservation. Sur une commune étendue, il complète les trajets que l'auxiliaire de vie accompagne en voiture. France Alzheimer Seine-et-Marne accueille et écoute les familles du département.\n\n### À 4,8 km de l'agence\n\nL'agence Youdom Care Seine-et-Marne est à Serris, à 4,8 km à vol d'oiseau de Villeneuve-le-Comte. La commune appartient à la communauté d'agglomération Val d'Europe Agglomération.\n\nVilleneuve-Saint-Denis est à 3,4 km, Bailly-Romainvilliers à 4 km, Neufmoutiers-en-Brie à 4,3 km. Tigeaux, Dammartin-sur-Tigeaux, Coutevroult, Villiers-sur-Morin et Voulangis se situent entre 4,4 et 4,9 km.\n\nPour une première visite à Villeneuve-le-Comte, indiquez-nous votre adresse et ce qui devient difficile. La visite est gratuite ; le devis vous est remis ensuite.",
+  "questions": [
+    {
+      "question": "Quel EHPAD est référencé pour Villeneuve-le-Comte ?",
+      "reponse": "L'EHPAD La Guette, situé à Villeneuve-Saint-Denis, la commune voisine à 3,4 km. C'est le seul établissement pour personnes âgées référencé dans les données de Villeneuve-le-Comte ; aucun accueil de jour n'y figure. Une entrée en EHPAD n'est pas la seule voie : une aide à domicile régulière est l'autre façon d'organiser le quotidien, chez soi."
+    },
+    {
+      "question": "Comment obtenir l'APA à Villeneuve-le-Comte ?",
+      "reponse": "Le Centre communal d'action sociale (CCAS) - Villeneuve-le-Comte, place de la Mairie, aide à préparer la demande. Le dossier est instruit par le Conseil départemental - Seine-et-Marne, 12 rue des Saints-Pères à Melun. L'allocation personnalisée d'autonomie dépend du degré d'autonomie évalué et des ressources ; elle peut financer une partie des heures d'aide à domicile."
+    },
+    {
+      "question": "L'aide à domicile couvre-t-elle toute la commune de Villeneuve-le-Comte ?",
+      "reponse": "Oui. Villeneuve-le-Comte s'étend sur 1 909 hectares : les trajets sur la commune peuvent être longs. L'auxiliaire de vie se rend à votre adresse, quelle qu'elle soit sur la commune, aux horaires convenus. L'agence Youdom Care Seine-et-Marne, à Serris, est à 4,8 km à vol d'oiseau ; la première visite d'évaluation est gratuite."
+    }
+  ],
+  "semaine_type": "suzanne",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

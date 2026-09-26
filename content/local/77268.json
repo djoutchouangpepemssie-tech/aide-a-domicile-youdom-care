@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77268.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77268",
+  "seo": {
+    "titre": "Aide à domicile à Magny-le-Hongre (77700) : handicap et âge",
+    "description": "Auxiliaire de vie à Magny-le-Hongre, commune jeune du Val d'Europe à 3,6 km de l'agence de Serris : handicap, PCH et MDPH, CCAS. Devis gratuit."
+  },
+  "sous_titre": "Magny-le-Hongre est une commune jeune : l'aide à domicile y parle d'abord de handicap et de relais des parents.",
+  "zone_editoriale": "Un adulte en situation de handicap qui travaille, un jeune en fauteuil, un parent dont l'enfant a besoin d'aide chaque matin. Voilà les demandes qu'une commune comme Magny-le-Hongre adresse d'abord à un service d'aide à domicile. Les chiffres l'expliquent.\n\n### Les 75 ans et plus : 1,7 % de la population\n\nAu recensement de 2022, Magny-le-Hongre compte 9 058 habitants. Les 75 ans et plus représentent 1,7 % de la population, et les 90 ans ou plus 0,1 %. Les 60 à 74 ans sont 5,9 %.\n\nCes parts sont très basses. L'aide aux personnes âgées existe, mais elle est minoritaire. Le handicap, la maladie et le relais des parents occupent la place principale.\n\n### La MDPH et la PCH, deux sigles à connaître\n\nLa Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne est à Savigny-le-Temple. Elle évalue les besoins et établit le plan de compensation. La prestation de compensation du handicap (PCH) qui en découle est versée par le Conseil départemental - Seine-et-Marne, à Melun.\n\nLa PCH peut financer des heures d'aide humaine à domicile : lever, toilette, habillage, repas, déplacements. Un habitant de Magny-le-Hongre dépose son dossier auprès de la MDPH. Le Centre communal d'action sociale (CCAS) - Magny-le-Hongre, 21 rue du Moulin-à-Vent, peut l'aider à le constituer.\n\nL'APF France handicap — Délégation de Seine-et-Marne représente les personnes en situation de handicap moteur dans le département. Les associations du réseau Unapei, dont l'ADAPEI 77 à Melun, accompagnent les familles concernées par une déficience intellectuelle.\n\n### Se déplacer\n\nLe PAM Île-de-France est le transport à la demande de la région pour les personnes à mobilité réduite. Il est ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité, sur réservation. Pour les trajets du quotidien, l'auxiliaire de vie accompagne à pied ou en voiture.\n\n### Pour les personnes âgées de la commune\n\nL'accueil de jour référencé pour Magny-le-Hongre est celui de l'EHPAD Résidence Les Berges du Danube, à Serris. Il comprend une unité Alzheimer et un hébergement temporaire.\n\nDeux hôpitaux sont référencés. Le « GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY » est à 5,8 km à vol d'oiseau. Le « CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY » est à 8,2 km.\n\n### L'agence et les alentours\n\nL'agence Youdom Care Seine-et-Marne se trouve à Serris, à 3,6 km à vol d'oiseau de Magny-le-Hongre. La commune fait partie de la communauté d'agglomération Val d'Europe Agglomération et couvre 467 hectares.\n\nSaint-Germain-sur-Morin est à 2 km, Montry à 2,2 km, Bailly-Romainvilliers à 2,5 km. Coutevroult, Coupvray, Serris, Chessy et Condé-Sainte-Libiaire se situent entre 2,6 et 3,7 km.\n\nVous vivez avec un handicap à Magny-le-Hongre, ou vous êtes parent d'un enfant qui a besoin d'aide ? Décrivez la situation dans le formulaire. La première visite chez vous est gratuite, comme le devis.",
+  "questions": [
+    {
+      "question": "Comment obtenir la PCH quand on habite Magny-le-Hongre ?",
+      "reponse": "La demande se dépose auprès de la Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne, 16 rue de l'Aluminium à Savigny-le-Temple. La MDPH évalue les besoins et propose un plan de compensation. La prestation est ensuite versée par le Conseil départemental - Seine-et-Marne. Le Centre communal d'action sociale (CCAS) - Magny-le-Hongre, 21 rue du Moulin-à-Vent, peut vous aider à remplir le dossier."
+    },
+    {
+      "question": "Une aide à domicile est-elle possible pour un adulte handicapé qui travaille à Magny-le-Hongre ?",
+      "reponse": "Oui. L'aide se cale sur les horaires de travail. Lever, toilette et habillage tôt le matin ; repas et coucher le soir ; présence le week-end si besoin. La régularité des horaires et des intervenants est essentielle dans ce cas. La première visite d'évaluation, gratuite, sert à définir ce cadre avec vous, à Magny-le-Hongre."
+    },
+    {
+      "question": "Quel transport adapté depuis Magny-le-Hongre ?",
+      "reponse": "Le PAM Île-de-France est le service régional de transport à la demande pour les personnes à mobilité réduite. Il est ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité et aux personnes âgées relevant des GIR 1 à 4. La réservation se fait par téléphone ou en ligne. Une auxiliaire de vie peut accompagner les trajets non couverts par ce service."
+    },
+    {
+      "question": "Où est l'agence Youdom Care pour Magny-le-Hongre ?",
+      "reponse": "À Serris, à 3,6 km à vol d'oiseau. L'agence Youdom Care Seine-et-Marne couvre Magny-le-Hongre et les communes du Val d'Europe. La première visite d'évaluation a lieu à votre domicile, gratuitement, puis un devis vous est remis. Les coordonnées de l'agence sont affichées en haut de cette page ; le formulaire permet aussi de nous écrire."
+    }
+  ],
+  "semaine_type": "karim",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

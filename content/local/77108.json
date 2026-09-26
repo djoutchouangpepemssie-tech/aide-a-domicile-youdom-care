@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77108.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77108",
+  "seo": {
+    "titre": "Aide à domicile à Chelles (77500) : une auxiliaire de vie",
+    "description": "Auxiliaire de vie à Chelles : CLIC avenue Aimé-Auberville, accueil de jour COS Le Manoir, deux résidences autonomie, hôpital de jour. Évaluation gratuite."
+  },
+  "sous_titre": "À Chelles, un point d'information dédié aux personnes âgées renseigne les familles avant toute démarche.",
+  "zone_editoriale": "La première porte à pousser, quand un parent vieillit à Chelles, est celle du Point d'information local dédié aux personnes âgées - Chelles. Il s'agit du Centre local d'information et de coordination partage Nord-Ouest 77, 2 avenue Aimé-Auberville. On y pose ses questions sur les aides, les structures et les démarches, gratuitement.\n\n### Une ville où les aînés sont nombreux\n\nChelles compte 54 372 habitants au recensement de 2022. Les 75 ans et plus représentent 7,5 % de la population. Les 60 à 74 ans en forment 14,1 %.\n\nLes 90 ans ou plus sont 0,9 %. À cet âge, l'aide à domicile devient souvent quotidienne : lever, toilette, repas, présence en soirée. Elle peut aller jusqu'à une présence continue, jour et nuit, avec plusieurs intervenants qui se relaient.\n\n### Des structures sur place, de l'accueil de jour à la résidence\n\nL'EHPAD COS Le Manoir, 8 avenue du Gendarme-Castermant, propose un accueil de jour et une unité Alzheimer. Une personne qui vit chez elle peut y passer certaines journées, accompagnée à l'aller et au retour par son auxiliaire de vie.\n\nChelles compte deux résidences autonomie : le Foyer-Logement Henri Trinquant, rue du Château-Gaillard, et la Résidence Albert Flamant, 21 rue Cugnot. Leurs résidents vivent dans un logement indépendant et peuvent recevoir une aide à domicile. La Maison du Tilleul Argenté, 37 avenue du Grand-Cerf, est un EHPAD avec unité Alzheimer.\n\nL'« HOPITAL DE JOUR MARIE ROSE MAMELET », 17 avenue Hénin, est l'établissement hospitalier référencé dans la commune. Il reçoit en journée ; les allers et retours peuvent être organisés avec l'aide à domicile.\n\n### Le CCAS et le département\n\nLe Centre communal d'action sociale (CCAS) - Chelles est installé parc du Souvenir-Émile-Fouchard, à l'adresse de la mairie. Il constitue les dossiers d'aide sociale et oriente vers le Conseil départemental - Seine-et-Marne, à Melun, pour l'allocation personnalisée d'autonomie.\n\nLa Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne, à Savigny-le-Temple, reçoit les demandes liées au handicap. Le PAM Île-de-France, transport régional à la demande, dessert Chelles comme le reste de la région. France Alzheimer Seine-et-Marne écoute et accueille les familles du département.\n\n### Loin de l'agence, mais couverts\n\nL'agence Youdom Care Seine-et-Marne se trouve à Serris, à 15,1 km à vol d'oiseau de Chelles. C'est notre agence la plus proche, et c'est loin. L'évaluation à domicile reste gratuite et le devis aussi ; les interventions ont lieu chez vous, pas à l'agence.\n\nChelles appartient à la communauté d'agglomération Paris - Vallée de la Marne et s'étend sur 1 600 hectares. Montfermeil est à 2,5 km, Gournay-sur-Marne à 3 km, Vaires-sur-Marne à 3,2 km. Brou-sur-Chantereine, Courtry, Gagny, Coubron et Champs-sur-Marne se situent entre 3,3 et 4 km.\n\nAprès votre passage au point d'information, ou avant, décrivez-nous la situation de votre proche à Chelles. Nous fixons ensemble une visite d'évaluation, gratuite, à son domicile.",
+  "questions": [
+    {
+      "question": "Quel est le point d'information pour les personnes âgées à Chelles ?",
+      "reponse": "C'est le Point d'information local dédié aux personnes âgées - Chelles, qui correspond au Centre local d'information et de coordination partage Nord-Ouest 77. Il se trouve 2 avenue Aimé-Auberville, à Chelles. On y obtient des informations sur les aides, les établissements et les services à domicile du secteur. Le Centre communal d'action sociale (CCAS) - Chelles, parc du Souvenir-Émile-Fouchard, complète cette orientation."
+    },
+    {
+      "question": "Combien de résidences autonomie y a-t-il à Chelles ?",
+      "reponse": "Deux résidences autonomie sont référencées dans les données : le Foyer-Logement Henri Trinquant, rue du Château-Gaillard, et la Résidence Albert Flamant, 21 rue Cugnot. Ce sont des logements indépendants pour personnes âgées autonomes, avec des services collectifs. Une auxiliaire de vie peut intervenir dans l'appartement d'un résident pour le ménage, les repas ou la toilette."
+    },
+    {
+      "question": "Une présence de nuit est-elle possible à Chelles ?",
+      "reponse": "Oui. Une présence de nuit ou une présence continue, jour et nuit, s'organise à Chelles comme ailleurs, avec plusieurs intervenants qui se relaient. Elle concerne souvent les personnes de 90 ans ou plus, qui représentent 0,9 % des habitants de la commune. La première visite d'évaluation, gratuite, sert à définir le rythme des relais et les gestes attendus."
+    },
+    {
+      "question": "Pourquoi l'agence la plus proche de Chelles est-elle à Serris ?",
+      "reponse": "Notre agence de Seine-et-Marne est à Serris, à 15,1 km à vol d'oiseau de Chelles. La distance est réelle, mais elle ne pèse pas sur l'accompagnement : l'auxiliaire de vie vient chez vous, à Chelles, aux horaires prévus. L'évaluation initiale se fait aussi à votre domicile, gratuitement, avant la remise du devis."
+    }
+  ],
+  "semaine_type": "louise",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17, 19, 20],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
