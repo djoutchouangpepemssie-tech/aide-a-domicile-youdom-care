@@ -144,7 +144,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
       "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "mdph",
@@ -178,7 +178,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "accueil-jour",
@@ -236,7 +236,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "hopital",
@@ -306,7 +306,7 @@
       "source_url": "https://www.francealzheimer.org/valdoise/",
       "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "association",
@@ -341,7 +341,7 @@
       "in_territory": true
     }
   ],
-  "generated_at": "2026-09-20",
+  "generated_at": "2026-09-26",
   "sources": [
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",

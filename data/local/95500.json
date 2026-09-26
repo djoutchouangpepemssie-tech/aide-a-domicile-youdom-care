@@ -179,7 +179,7 @@
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/ac0d4c93-2188-459d-92f3-6253bc77eac6",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "accueil-jour",
@@ -202,7 +202,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "residence-autonomie",
@@ -214,7 +214,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "residence-autonomie",
@@ -226,7 +226,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "residence-autonomie",
@@ -237,7 +237,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "ehpad",
@@ -249,7 +249,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "ehpad",
@@ -260,7 +260,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "hopital",
@@ -366,7 +366,7 @@
       "in_territory": true
     }
   ],
-  "generated_at": "2026-09-20",
+  "generated_at": "2026-09-26",
   "sources": [
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
