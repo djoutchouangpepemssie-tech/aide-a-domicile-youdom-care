@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94033.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94033",
+  "seo": {
+    "titre": "Aide à domicile à Fontenay-sous-Bois (94120) | Youdom Care",
+    "description": "Aide à domicile à Fontenay-sous-Bois, moment par moment : lever, repas, coucher. Espace autonomie, accueil de jour, agence à Paris. Visite offerte."
+  },
+  "sous_titre": "Une semaine d'aide à domicile à Fontenay-sous-Bois se construit moment par moment, du lever au coucher.",
+  "zone_editoriale": "Le matin d'abord. Pour une personne qui vit avec la maladie de Parkinson à Fontenay-sous-Bois, la journée commence par le lever : les médicaments à l'heure, puis la toilette et l'habillage, sans précipitation. C'est le premier passage d'une auxiliaire de vie. Le midi, le repas ; l'après-midi, une sortie ou un rendez-vous ; le soir, le coucher. Une semaine d'aide à domicile s'écrit ainsi, moment par moment, et non par formule.\n\nFontenay-sous-Bois compte 52 646 habitants en 2022. Les 60-74 ans représentent 13,9 % de la population, les 75 ans et plus 7,2 %, et les 90 ans ou plus 1,2 %.\n\n### Les rendez-vous de la semaine\n\nL'« Espace autonomie - Secteur 1 », 5 rue Jean-Douat, est le point d'information local dédié aux personnes âgées, ancien CLIC. On s'y renseigne sur l'allocation personnalisée d'autonomie et les services. Le « Centre communal d'action sociale (CCAS) - Fontenay-sous-Bois », esplanade Louis Bayeurte, traite les aides de la ville. Une auxiliaire de vie peut accompagner ces rendez-vous, comme ceux chez le médecin.\n\n### Les jours d'accueil de jour\n\nL'EHPAD Saint-François-d'Assise, rue du Commandant-Jean-Duhail, propose un accueil de jour et une unité Alzheimer, 54 places au total. Les jours où la personne y va, l'auxiliaire de vie prépare le départ et assure le retour. Deux autres EHPAD de la commune ont une unité Alzheimer : la Résidence Dame Blanche, avenue de la Dame-blanche, et la Maison de Retraite intercommunale Hector Malot, avenue de Stalingrad. La Résidence Gaston Charles, rue Gaston Charles, est une résidence autonomie de 27 places où l'aide à domicile reste possible.\n\n### Les semaines où l'hôpital s'invite\n\nTrois structures hospitalières sont recensées à Fontenay-sous-Bois. Le « CENTRE D ACCUEIL THERAPEUTIQUE A TEMPS PARTIEL » est rue Mot. L'« HOPITAL DE JOUR FONTENAY S/BOIS », rue de Neuilly, et l'« HOPITAL DE JOUR FONTENAY SOUS BOIS 94G01 », rue Anatole France, complètent la liste. Pour une hospitalisation complète, l'établissement est souvent hors de la commune ; le retour se prépare avec l'agence avant la sortie. Youdom Care ne réalise pas de soins infirmiers.\n\n### Le département, l'agence\n\nLa Maison départementale des personnes handicapées et le Conseil départemental du Val-de-Marne sont à Créteil. France Alzheimer Val-de-Marne reçoit les familles à Nogent-sur-Marne, commune voisine à 1,6 km. Le Pam Île-de-France assure le transport à la demande des personnes à mobilité réduite. L'agence la plus proche est Youdom Care Paris, dans le 12e arrondissement, à 7,6 km ; Montreuil, à 2,3 km, est aussi couverte. Fontenay-sous-Bois appartient à la Métropole du Grand Paris.\n\nRacontez-nous à quoi ressemble une de vos semaines, avec ses bons et ses mauvais jours. La première visite d'évaluation, gratuite, se tient chez vous à Fontenay-sous-Bois ; le devis qui en découle est gratuit lui aussi.",
+  "questions": [
+    {
+      "question": "Où s'informer sur l'APA quand on vit à Fontenay-sous-Bois ?",
+      "reponse": "À l'« Espace autonomie - Secteur 1 », 5 rue Jean-Douat, point d'information local dédié aux personnes âgées, ancien CLIC. Il renseigne sur l'allocation personnalisée d'autonomie, attribuée par le Conseil départemental du Val-de-Marne à Créteil, et sur les services du secteur. Le « Centre communal d'action sociale (CCAS) - Fontenay-sous-Bois », 4 esplanade Louis Bayeurte, traite les aides communales."
+    },
+    {
+      "question": "Quelle agence Youdom Care est la plus proche de Fontenay-sous-Bois ?",
+      "reponse": "L'agence Youdom Care Paris, dans le 12e arrondissement, à 7,6 km. C'est elle qui organise l'aide à domicile à Fontenay-sous-Bois et à Montreuil, à 2,3 km. Les auxiliaires de vie se déplacent chez vous ; la première visite d'évaluation aussi, et elle est gratuite. Téléphone et formulaire figurent sur cette page."
+    },
+    {
+      "question": "Existe-t-il un accueil de jour à Fontenay-sous-Bois ?",
+      "reponse": "Oui. L'EHPAD Saint-François-d'Assise, 33 rue du Commandant-Jean-Duhail, propose un accueil de jour et dispose d'une unité Alzheimer, pour 54 places. Les modalités d'admission dépendent de l'établissement. À la maison, une auxiliaire de vie peut assurer le lever avant le départ et la fin de journée après le retour. Elle prend le relais les jours où l'accueil n'a pas lieu."
+    },
+    {
+      "question": "Une personne atteinte de la maladie de Parkinson peut-elle être aidée à domicile à Fontenay-sous-Bois ?",
+      "reponse": "Oui. L'aide porte sur les gestes du quotidien : lever, toilette, habillage, repas, déplacements dans le logement et à l'extérieur, médicaments donnés à l'heure prévue par le médecin. Les soins restent aux professionnels de santé. La première visite gratuite, chez vous à Fontenay-sous-Bois, permet de fixer des horaires qui suivent le rythme de la personne, avec ses bons et ses mauvais moments."
+    }
+  ],
+  "semaine_type": "jacques",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

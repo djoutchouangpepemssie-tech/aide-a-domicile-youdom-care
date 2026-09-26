@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94037.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94037",
+  "seo": {
+    "titre": "Aide à domicile à Gentilly (94250) : auxiliaires Youdom Care",
+    "description": "Aide à domicile à Gentilly, pour un enfant en situation de handicap comme pour un parent âgé : lever, toilette, repas, présence. Première visite gratuite."
+  },
+  "sous_titre": "Gentilly tient sur 118 hectares : ce qui manque dans la commune se trouve à un kilomètre, et l'aide vient à domicile.",
+  "zone_editoriale": "Gentilly tient sur 118 hectares. À cette échelle, ce qui compte pour une aide à domicile se trouve souvent chez les voisines : Arcueil et Le Kremlin-Bicêtre sont à 1 km, Cachan, Villejuif et le 14e arrondissement de Paris à 2,4 km, le 13e à 2,6 km. Le « GHU AP-HP UNIVERSITE PARIS SACLAY SITE KREMLIN BICETRE » est lui aussi à 1 km à vol d'oiseau.\n\nDans la commune même, les données publiques recensent peu de structures. Le « Centre communal d'action sociale (CCAS) - Gentilly », 14 place Henri Barbusse, à la mairie, reçoit les demandes d'aide et oriente. Le Foyer-Logement bièvre, rue de la Bièvre, est une résidence autonomie de 64 places. L'EHPAD Le Sacré Coeur, rue Charles-Frérot, dispose de 90 places, avec hébergement temporaire et unité Alzheimer. Aucun Espace autonomie ni accueil de jour n'est signalé à Gentilly : pour l'allocation personnalisée d'autonomie, on s'adresse au Conseil départemental du Val-de-Marne, à Créteil.\n\n### Une population plutôt jeune\n\nGentilly compte 18 883 habitants en 2022. Les 75 ans et plus représentent 5,6 % de la population, les 60-74 ans 12,4 %. L'aide à domicile y concerne donc aussi des enfants et des adultes en situation de handicap : un enfant avec un handicap moteur qu'il faut lever, habiller, accompagner à l'école ; un adulte qui a besoin d'aide pour les transferts. La Maison départementale des personnes handicapées du Val-de-Marne, à Créteil, instruit la prestation de compensation du handicap, y compris pour les enfants.\n\n### Le handicap, côté associations\n\nLes associations de parents du réseau Unapei sont présentes dans le département : APOGEI 94 à Créteil, ETAI Kremlin-Bicêtre à Villejuif, ADPED 94 à Fresnes. APF France handicap a sa délégation du Val-de-Marne à Créteil. Le Pam Île-de-France, transport à la demande régional, est ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité.\n\n### Les hôpitaux, tout près mais hors de la commune\n\nDeux établissements sont signalés à proximité : le site Kremlin-Bicêtre du GHU AP-HP Université Paris-Saclay, à 1 km, et le « CENTRE HOSPITALIER SAINTE-ANNE PARIS », rue Cabanis dans le 14e, à 2,4 km à vol d'oiseau. Un retour à domicile depuis l'un ou l'autre se prépare avant la sortie, pour que quelqu'un soit là le premier soir. Youdom Care ne fait pas de soins infirmiers ; l'auxiliaire de vie travaille à côté de ceux qui les font.\n\n### L'agence\n\nL'agence Youdom Care Val-de-Marne est à Vitry-sur-Seine, à 4,4 km de Gentilly. Elle couvre aussi Arcueil, Le Kremlin-Bicêtre, Cachan et Villejuif. Gentilly appartient à la Métropole du Grand Paris. France Alzheimer Val-de-Marne, à Nogent-sur-Marne, reçoit les familles sur rendez-vous.\n\nPour un enfant comme pour un parent âgé, la première étape est la même : une visite d'évaluation chez vous, à Gentilly, gratuite et suivie d'un devis gratuit. Décrivez votre situation par téléphone ou par le formulaire, et dites-nous ce qui presse le plus.",
+  "questions": [
+    {
+      "question": "Quel hôpital est le plus proche de Gentilly ?",
+      "reponse": "Le « GHU AP-HP UNIVERSITE PARIS SACLAY SITE KREMLIN BICETRE », 78 avenue du Général Leclerc au Kremlin-Bicêtre, à 1 km à vol d'oiseau. Le « CENTRE HOSPITALIER SAINTE-ANNE PARIS », 1 rue Cabanis dans le 14e arrondissement, est à 2,4 km. Aucun hôpital n'est recensé dans Gentilly même. Pour un retour chez vous après un séjour, contactez l'agence avant la date de sortie."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour ou un Espace autonomie à Gentilly ?",
+      "reponse": "Les données départementales n'en recensent pas dans la commune. Le « Centre communal d'action sociale (CCAS) - Gentilly », 14 place Henri Barbusse, oriente les habitants. L'EHPAD Le Sacré Coeur, 2 rue Charles-Frérot, propose de l'hébergement temporaire et une unité Alzheimer, ce qui peut offrir un répit à un proche aidant. L'allocation personnalisée d'autonomie se demande au Conseil départemental du Val-de-Marne, à Créteil."
+    },
+    {
+      "question": "Youdom Care aide-t-il les enfants en situation de handicap à Gentilly ?",
+      "reponse": "Oui. L'aide à domicile pour un enfant porte sur le lever, la toilette, l'habillage, les repas, les trajets vers l'école ou les activités, et la présence quand les parents travaillent. Elle se construit avec la famille et les professionnels qui suivent l'enfant. La prestation de compensation du handicap, instruite par la MDPH du Val-de-Marne à Créteil, peut y contribuer. La première visite chez vous, à Gentilly, est gratuite."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Gentilly et à quelle distance ?",
+      "reponse": "L'agence Youdom Care Val-de-Marne, à Vitry-sur-Seine, à 4,4 km. Elle couvre aussi les communes proches de Gentilly : Arcueil et Le Kremlin-Bicêtre à 1 km, Cachan et Villejuif à 2,4 km. Montrouge et Bagneux sont voisines également ; demandez par téléphone. La visite d'évaluation se fait chez vous et ne coûte rien ; le devis non plus."
+    }
+  ],
+  "semaine_type": "tom",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

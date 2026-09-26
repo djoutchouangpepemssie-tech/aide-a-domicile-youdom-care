@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94041.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94041",
+  "seo": {
+    "titre": "Aide à domicile à Ivry-sur-Seine (94200) | Youdom Care",
+    "description": "Aide à domicile à Ivry-sur-Seine après une hospitalisation : présence des premiers jours, toilette, repas, courses. Agence à 2,1 km. Visite gratuite."
+  },
+  "sous_titre": "Deux sites hospitaliers à Ivry-sur-Seine et une agence à 2,1 km : le retour à domicile se prépare avant la sortie.",
+  "zone_editoriale": "Une sortie d'hospitalisation se décide souvent vite, et la maison n'est pas prête. Ivry-sur-Seine compte deux sites hospitaliers : le « GHU APHP SORBONNE UNIVERSITE SITE CHARLES FOIX », avenue de la République, et « CHARLES FOIX JEAN ROSTAND GPT HOSP UNIVERSITAIRE EST », rue Jean Le Galleu. Tous deux sont des centres hospitaliers régionaux. Rentrer chez soi après un séjour demande d'anticiper : le lit, les repas des premiers jours, la toilette quand on ne tient pas encore debout longtemps, les rendez-vous de suivi. L'auxiliaire de vie fait cela ; les soins infirmiers relèvent des infirmiers, à domicile ou en service.\n\n### Ce que la proximité de l'agence change\n\nL'agence Youdom Care Val-de-Marne est à Vitry-sur-Seine, à 2,1 km d'Ivry-sur-Seine. Prévenez-la dès que la date de sortie est connue, pour que la première visite d'évaluation, gratuite, précède le retour. Le devis qui en découle est gratuit lui aussi ; il décrit les heures, les gestes et les jours convenus ensemble.\n\n### Après l'hôpital, la suite\n\nL'EHPAD Tiers Temps Ivry, avenue Maurice Thorez, propose un accueil de jour et de l'hébergement temporaire, 64 places au total. C'est une étape possible entre le service hospitalier et la maison, ou un relais pour le proche qui accompagne. Trois résidences autonomie logent des personnes âgées en appartement indépendant : la Résidence Ambroise-Croizat, la Résidence chevaleret et la Résidence Danielle Casanova. L'aide à domicile y reste possible. L'EHPAD L'Orangerie, rue Fouilloux, dispose d'une unité Alzheimer.\n\n### Une commune plutôt jeune\n\nIvry-sur-Seine compte 64 526 habitants en 2022. Les 75 ans et plus représentent 5,6 % de la population, les 60-74 ans 11,3 %. Les retours d'hospitalisation ne concernent donc pas que les personnes âgées. Un adulte en situation de handicap ou une personne qui vit avec une maladie neurologique rentre aussi chez lui avec des besoins nouveaux. La Maison départementale des personnes handicapées du Val-de-Marne, à Créteil, instruit la prestation de compensation du handicap.\n\n### Les guichets\n\nLe « Centre communal d'action sociale (CCAS) - Ivry-sur-Seine », esplanade Georges Marrane, à la mairie, reçoit les demandes d'aide et oriente. Aucun Espace autonomie n'est recensé dans la commune : l'allocation personnalisée d'autonomie se demande auprès du Conseil départemental du Val-de-Marne, à Créteil. Le Pam Île-de-France assure le transport à la demande des personnes à mobilité réduite ; France Alzheimer Val-de-Marne reçoit les familles à Nogent-sur-Marne.\n\nIvry-sur-Seine appartient à la Métropole du Grand Paris. Charenton-le-Pont est à 1,7 km, Le Kremlin-Bicêtre à 2,3 km, le 13e arrondissement de Paris à 2,5 km, Vitry-sur-Seine à 2,6 km.\n\nSortie prévue dans trois jours ou dans trois semaines : décrivez la situation par téléphone ou par le formulaire. La visite d'évaluation à votre domicile d'Ivry-sur-Seine ne coûte rien.",
+  "questions": [
+    {
+      "question": "Quels hôpitaux se trouvent à Ivry-sur-Seine ?",
+      "reponse": "Deux sites de centre hospitalier régional sont recensés : le « GHU APHP SORBONNE UNIVERSITE SITE CHARLES FOIX », 7 avenue de la République, et « CHARLES FOIX JEAN ROSTAND GPT HOSP UNIVERSITAIRE EST », 39 rue Jean Le Galleu. Pour un retour à domicile depuis l'un d'eux, prévenez l'agence Youdom Care de Vitry-sur-Seine, à 2,1 km, dès que la date de sortie est connue."
+    },
+    {
+      "question": "Comment se passe un retour à domicile à Ivry-sur-Seine après une hospitalisation ?",
+      "reponse": "La première visite d'évaluation, gratuite, fixe ce qui est nécessaire : présence les premiers jours, aide au lever et à la toilette, repas, courses, accompagnement aux rendez-vous de suivi. Les soins infirmiers restent assurés par les professionnels de santé. Si un passage en hébergement temporaire est envisagé, l'EHPAD Tiers Temps Ivry, 147 avenue Maurice Thorez, en propose. L'aide à domicile reprend ensuite chez vous."
+    },
+    {
+      "question": "Y a-t-il des résidences autonomie à Ivry-sur-Seine ?",
+      "reponse": "Oui, trois : la Résidence Ambroise-Croizat, 21 rue Jean-Marie Poulmarch, 20 places ; la Résidence chevaleret, 3 place de l'Insurrection, 52 places ; la Résidence Danielle Casanova, 140 avenue Danielle Casanova, 22 places. Leurs habitants ont un logement indépendant et peuvent faire venir une auxiliaire de vie pour la toilette, le ménage, les repas ou les sorties."
+    },
+    {
+      "question": "Où demander l'APA ou une aide sociale quand on habite Ivry-sur-Seine ?",
+      "reponse": "Le « Centre communal d'action sociale (CCAS) - Ivry-sur-Seine », esplanade Georges Marrane, reçoit les demandes d'aide sociale et oriente les habitants. L'allocation personnalisée d'autonomie relève du Conseil départemental du Val-de-Marne, à Créteil ; aucun Espace autonomie n'est recensé à Ivry-sur-Seine dans les données départementales. Pour le handicap, la MDPH du Val-de-Marne, à Créteil également, instruit la prestation de compensation."
+    }
+  ],
+  "semaine_type": "bernard",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

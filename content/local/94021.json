@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94021.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94021",
+  "seo": {
+    "titre": "Aide à domicile à Chevilly-Larue (94550) | Youdom Care",
+    "description": "Aide à domicile à Chevilly-Larue après des soins lourds : auxiliaire de vie pour les repas, la toilette et les nuits. Première visite gratuite chez vous."
+  },
+  "sous_titre": "Rentrer chez soi à Chevilly-Larue après un séjour hospitalier : l'aide à domicile prend le relais des soins, sans les remplacer.",
+  "zone_editoriale": "Un séjour au « CLCC HOPITAL GUSTAVE ROUSSY SITE CHEVILLY LARUE », rue Albert Thuret, laisse souvent une personne fatiguée au moment de rentrer. C'est le seul établissement hospitalier recensé dans la commune, un centre de lutte contre le cancer. Revenir à Chevilly-Larue après des soins lourds demande une organisation : quelqu'un pour les courses et les repas, pour la toilette les jours où le corps ne suit pas, pour l'accompagnement aux rendez-vous. C'est le travail d'une auxiliaire de vie, à raison de quelques heures par jour ou d'une présence continue selon la période. Les soins eux-mêmes restent aux équipes médicales et aux infirmiers, à l'hôpital comme à la maison.\n\n### Les guichets de la commune\n\nL'« Espace autonomie - Secteur 6 », 3 rue du Béarn, est le point d'information local dédié aux personnes âgées, l'ancien CLIC. On s'y renseigne sur l'allocation personnalisée d'autonomie et sur les services du secteur. Le « Centre communal d'action sociale (CCAS) - Chevilly-Larue », 88 avenue du Général de Gaulle, à l'adresse de la mairie, traite les aides communales.\n\n### Qui vit à Chevilly-Larue\n\nLa commune compte 19 813 habitants en 2022. Les 60-74 ans représentent 14,1 % de la population et les 75 ans et plus 7,3 %, dont 1 % de 90 ans ou plus. La Résidence Le chêne rouge, rue du Nivernais, est une résidence autonomie de 75 places : une aide à domicile y est possible comme dans tout logement. L'EHPAD Résidence Saint-Jean Eudes Fondation de Rothschild, rue Outrequin, compte 37 places.\n\n### Le handicap\n\nL'ADPED 94, association de parents du réseau Unapei, couvre L'Haÿ-les-Roses, Chevilly-Larue, Fresnes et Rungis depuis Fresnes. La Maison départementale des personnes handicapées du Val-de-Marne, à Créteil, instruit la prestation de compensation du handicap. APF France handicap a sa délégation départementale à Créteil. Le Pam Île-de-France, transport à la demande, est ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité. Il accueille aussi les personnes âgées classées en GIR 1 à 4.\n\n### L'agence et les communes proches\n\nL'agence Youdom Care Val-de-Marne est à Vitry-sur-Seine, à 4,5 km. L'Haÿ-les-Roses est à 1,3 km, Thiais à 2,8 km, Villejuif à 2,9 km, Cachan à 3 km. Rungis et Fresnes, à 2,1 km, sont voisines aussi. Chevilly-Larue appartient à la Métropole du Grand Paris. Le Conseil départemental, à Créteil, attribue l'allocation personnalisée d'autonomie ; France Alzheimer Val-de-Marne reçoit les familles à Nogent-sur-Marne, sur rendez-vous.\n\nSi un retour d'hospitalisation approche, appelez avant la date de sortie ou décrivez la situation dans le formulaire. La première visite d'évaluation est gratuite ; elle a lieu chez vous, à Chevilly-Larue, et le devis qui la suit ne coûte rien non plus.",
+  "questions": [
+    {
+      "question": "Comment organiser le retour à domicile après Gustave Roussy quand on habite Chevilly-Larue ?",
+      "reponse": "Le « CLCC HOPITAL GUSTAVE ROUSSY SITE CHEVILLY LARUE », 24 rue Albert Thuret, est dans la commune. Dès que la sortie est envisagée, contactez l'agence Youdom Care de Vitry-sur-Seine, à 4,5 km. La première visite, gratuite, définit les besoins : repas, courses, toilette, présence de nuit, accompagnement aux rendez-vous. Les soins médicaux et infirmiers restent assurés par l'hôpital et les professionnels libéraux."
+    },
+    {
+      "question": "Où se trouve l'Espace autonomie pour les habitants de Chevilly-Larue ?",
+      "reponse": "L'« Espace autonomie - Secteur 6 » est au 3 rue du Béarn, à Chevilly-Larue. C'est l'ancien CLIC, point d'information dédié aux personnes âgées : allocation personnalisée d'autonomie, services d'aide, structures du secteur. Le « Centre communal d'action sociale (CCAS) - Chevilly-Larue », 88 avenue du Général de Gaulle, complète pour les aides de la ville. Les deux adresses figurent dans la grille des ressources plus haut."
+    },
+    {
+      "question": "Quelle association soutient les familles d'un enfant handicapé à Chevilly-Larue ?",
+      "reponse": "L'ADPED 94, association de parents gestionnaire du réseau Unapei, couvre L'Haÿ-les-Roses, Chevilly-Larue, Fresnes et Rungis ; son siège est 1 allée des Fleurs, à Fresnes. APF France handicap a une délégation départementale à Créteil. Les droits, dont la prestation de compensation du handicap, se demandent à la Maison départementale des personnes handicapées du Val-de-Marne, à Créteil. Youdom Care accompagne aussi les enfants en situation de handicap à domicile."
+    },
+    {
+      "question": "Chevilly-Larue dispose-t-elle d'une résidence autonomie ?",
+      "reponse": "Oui, la Résidence Le chêne rouge, 1 rue du Nivernais, compte 75 places. Ses habitants disposent d'un logement indépendant et peuvent faire venir une auxiliaire de vie pour la toilette, le ménage, les repas ou les sorties. La commune compte aussi l'EHPAD Résidence Saint-Jean Eudes Fondation de Rothschild, 5 rue Outrequin, 37 places. Précisez votre lieu de vie au moment de la demande."
+    }
+  ],
+  "semaine_type": "bernard",
+  "faits_utilises": [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

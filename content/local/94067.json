@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94067.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94067",
+  "seo": {
+    "titre": "Aide à domicile à Saint-Mandé (94160) | Youdom Care",
+    "description": "Aide à domicile à Saint-Mandé, commune âgée aux portes de Paris : accompagnements longs, retours d'hôpital. Agence de Paris à 3,8 km, visite gratuite."
+  },
+  "sous_titre": "Saint-Mandé est dans le Val-de-Marne, mais son quotidien regarde vers Paris : l'agence et les hôpitaux les plus proches y sont.",
+  "zone_editoriale": "Saint-Mandé est dans le Val-de-Marne, mais son quotidien regarde vers Paris. Le 12e arrondissement est à 0,8 km ; l'agence la plus proche est Youdom Care Paris, dans ce même arrondissement, à 3,8 km. Les deux hôpitaux signalés à proximité sont parisiens, à 0,8 km à vol d'oiseau. Il s'agit du « CENTRE NATIONAL D OPHTALMOLOGIE DES QUINZE VINGTS DE PARIS », rue de Charenton, et du « GHU APHP SORBONNE UNIVERSITE SITE ROTHSCHILD », rue Santerre.\n\n### Une population âgée\n\nLes chiffres du recensement de 2022 sont nets : sur 21 223 habitants, 15,3 % ont de 60 à 74 ans et 10,2 % ont 75 ans et plus, dont 1,5 % de 90 ans ou plus. Sur 90,5 hectares, cela fait une commune où l'on vieillit chez soi, et où les proches aidants sont eux-mêmes souvent retraités.\n\nPour une aide à domicile, cela signifie des accompagnements qui durent : une aide-ménagère qui devient présence du matin, puis du soir, puis des nuits. Les Logements Lenoir Jousserand, rue de l'Amiral Courbet, sont une résidence autonomie de 100 places où cette aide vient comme dans tout logement. Deux EHPAD sont recensés : l'EHPAD La Seigneurie, rue du Commandant René-Mouchotte, et l'EHPAD Résidence Lanmodez, avenue Sainte-Marie, qui propose de l'hébergement temporaire et une unité Alzheimer.\n\n### Les démarches\n\nLe « Centre communal d'action sociale (CCAS) - Saint-Mandé », 10 place Charles Digeon, partage l'adresse de la mairie et reçoit les demandes d'aide. Aucun Espace autonomie n'est recensé dans la commune. Les guichets départementaux restent ceux du Val-de-Marne, à Créteil : le Conseil départemental pour l'allocation personnalisée d'autonomie, la Maison départementale des personnes handicapées pour la prestation de compensation du handicap. France Alzheimer Val-de-Marne reçoit les familles à Nogent-sur-Marne ; le Pam Île-de-France assure le transport à la demande des personnes à mobilité réduite dans les huit départements de la région.\n\n### Retour de l'hôpital\n\nAprès un séjour à Rothschild ou aux Quinze-Vingts, le retour à Saint-Mandé se prépare avant la sortie : présence les premiers jours, repas, aide pour les gestes que la vue ou la fatigue rendent difficiles. Youdom Care ne réalise pas de soins infirmiers et travaille avec ceux qui les font.\n\n### Autour de Saint-Mandé\n\nVincennes est à 1,5 km, Charenton-le-Pont à 2,3 km, le 20e arrondissement et Bagnolet à 2,9 km, Saint-Maurice à 3,1 km, Montreuil à 3,3 km. Saint-Mandé appartient à la Métropole du Grand Paris.\n\nSi vous voyez un parent de Saint-Mandé perdre pied doucement, sans urgence mais sûrement, c'est le bon moment pour une première visite d'évaluation. Elle a lieu chez lui, elle est gratuite, et le devis qui suit l'est aussi.",
+  "questions": [
+    {
+      "question": "Quelle agence Youdom Care s'occupe de Saint-Mandé ?",
+      "reponse": "L'agence Youdom Care Paris, située dans le 12e arrondissement, à 3,8 km de Saint-Mandé. C'est la plus proche de la commune. Les auxiliaires de vie viennent chez vous, et la première visite d'évaluation, gratuite, se fait à domicile. Les communes voisines ont chacune leur agence de référence, indiquée sur leur propre page. Téléphone et formulaire figurent sur cette page."
+    },
+    {
+      "question": "Quelle est la part des 75 ans et plus à Saint-Mandé ?",
+      "reponse": "Au recensement de 2022, 10,2 % des 21 223 habitants de Saint-Mandé ont 75 ans et plus, dont 8,7 % de 75-89 ans et 1,5 % de 90 ans ou plus. Les 60-74 ans représentent 15,3 %. Ces parts élevées vont avec des besoins d'aide qui durent et qui augmentent avec le temps : ménage d'abord, puis toilette, repas, présence de nuit."
+    },
+    {
+      "question": "Quels hôpitaux sont proches de Saint-Mandé ?",
+      "reponse": "Deux établissements parisiens sont à 0,8 km à vol d'oiseau, dans le 12e arrondissement. Le « CENTRE NATIONAL D OPHTALMOLOGIE DES QUINZE VINGTS DE PARIS » est au 28 rue de Charenton ; le « GHU APHP SORBONNE UNIVERSITE SITE ROTHSCHILD », au 5 rue Santerre. Aucun hôpital n'est recensé dans Saint-Mandé même. Pour un retour à domicile, prévenez l'agence avant la date de sortie."
+    },
+    {
+      "question": "Où demander l'APA quand on habite Saint-Mandé ?",
+      "reponse": "Au Conseil départemental du Val-de-Marne, à Créteil, qui attribue l'allocation personnalisée d'autonomie pour toutes les communes du département. Aucun Espace autonomie n'est recensé à Saint-Mandé ; le « Centre communal d'action sociale (CCAS) - Saint-Mandé », 10 place Charles Digeon, peut vous orienter et vous aider à constituer le dossier. Lors de la première visite, gratuite, Youdom Care vous explique comment l'aide s'articule avec le plan d'aide."
+    }
+  ],
+  "semaine_type": "suzanne",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
