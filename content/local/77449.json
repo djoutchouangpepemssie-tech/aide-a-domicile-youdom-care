@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77449.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77449",
+  "seo": {
+    "titre": "Aide à domicile à Serris (77700) : une agence dans la ville",
+    "description": "Auxiliaire de vie à Serris : l'agence Youdom Care Seine-et-Marne est installée dans la commune. Accueil de jour, CCAS, hôpitaux proches. Visite gratuite."
+  },
+  "sous_titre": "Serris est la commune de notre agence de Seine-et-Marne : l'évaluation à domicile se prépare depuis chez vous.",
+  "zone_editoriale": "### Une agence installée dans la commune\n\nL'agence Youdom Care Seine-et-Marne se trouve à Serris même, à 0,7 km à vol d'oiseau du centre. Concrètement, la première visite d'évaluation part de la ville où vous habitez. Elle est gratuite, comme le devis qui la suit.\n\nCette proximité profite aux communes alentour. Bailly-Romainvilliers est à 2,3 km, Jossigny à 2,5 km, Chessy à 3,2 km et Magny-le-Hongre à 3,3 km. Montévrain, Villeneuve-Saint-Denis, Chanteloup-en-Brie et Coutevroult se situent entre 3,6 et 4,3 km.\n\nSerris fait partie de la communauté d'agglomération Val d'Europe Agglomération. La commune s'étend sur 566 hectares.\n\n### Une population encore jeune\n\nAu recensement de 2022, Serris compte 9 988 habitants. Les 60 à 74 ans représentent 9 % de la population, les 75 ans et plus 4,8 %. Les 90 ans ou plus sont 0,9 %.\n\nCes parts sont basses. Les demandes prennent donc souvent une autre forme que le grand âge. Un retour d'hospitalisation, un handicap, un proche à relayer le soir : l'aide s'ajuste à chaque cas.\n\nQuand l'âge avance, l'aide régulière reste possible au même titre. Le lever, la toilette, les repas et les courses se partagent alors avec la famille.\n\n### Les lieux avec lesquels une auxiliaire de vie travaille\n\nLe Centre communal d'action sociale (CCAS) - Serris est au 2 place Antoine-Mauny, à l'adresse de la mairie. C'est le premier interlocuteur pour constituer un dossier d'aide sociale.\n\nL'EHPAD Résidence Les Berges du Danube est au 45 cours du Danube. Il propose un accueil de jour, un hébergement temporaire et une unité Alzheimer. Une auxiliaire de vie peut y conduire votre proche le matin et le retrouver l'après-midi.\n\nL'hébergement temporaire sert de relais quand l'aidant s'absente quelques jours. La reprise à la maison se prépare alors avec l'intervenante habituelle.\n\nPour les hospitalisations, deux établissements figurent dans les données. Le « GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY » est à 2,5 km à vol d'oiseau. Le « CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY » est à 6,7 km.\n\nUn retour à la maison se prépare avec le service avant la sortie : horaires, matériel, premiers repas. La présence peut commencer le jour même du retour.\n\n### Les ressources du département\n\nL'allocation personnalisée d'autonomie (APA) et la prestation de compensation du handicap (PCH) relèvent du Conseil départemental - Seine-et-Marne, à Melun. La Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne est installée à Savigny-le-Temple.\n\nLe PAM Île-de-France est le transport à la demande régional pour les personnes à mobilité réduite. La réservation se fait par téléphone ou en ligne. France Alzheimer Seine-et-Marne accueille et écoute les familles du département.\n\nFrance Parkinson a un comité départemental de bénévoles basé à Chessy, à 3,2 km de Serris.\n\n### Pour commencer\n\nDécrivez votre situation par le formulaire ou par téléphone. Nous venons chez vous à Serris, gratuitement, puis vous recevez un devis.",
+  "questions": [
+    {
+      "question": "Où se trouve l'agence Youdom Care la plus proche de Serris ?",
+      "reponse": "Dans la commune elle-même. L'agence Youdom Care Seine-et-Marne est à Serris, à 0,7 km à vol d'oiseau du centre. C'est elle qui organise la première visite d'évaluation, gratuite, à votre domicile. Ses coordonnées et son adresse complète figurent dans l'encadré en haut de cette page. Les communes voisines, de Bailly-Romainvilliers à Coutevroult, dépendent de la même agence."
+    },
+    {
+      "question": "Existe-t-il un accueil de jour à Serris pour une personne atteinte d'Alzheimer ?",
+      "reponse": "Oui. L'EHPAD Résidence Les Berges du Danube, 45 cours du Danube à Serris, dispose d'un accueil de jour et d'une unité Alzheimer. Il propose aussi un hébergement temporaire. Une auxiliaire de vie peut assurer le trajet et la transition entre la maison et l'accueil de jour. Les jours et horaires d'accueil sont à confirmer directement auprès de l'établissement."
+    },
+    {
+      "question": "Quel hôpital est le plus proche de Serris pour préparer une sortie d'hospitalisation ?",
+      "reponse": "Les données citent deux centres hospitaliers. Le « GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY », à Jossigny, est à 2,5 km à vol d'oiseau. Le « CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY » est à 6,7 km. Dans les deux cas, l'aide à domicile se met en place avant la date de sortie. Le service hospitalier est prévenu de l'organisation retenue."
+    },
+    {
+      "question": "À qui s'adresser pour l'APA quand on habite Serris ?",
+      "reponse": "L'allocation personnalisée d'autonomie est instruite par le Conseil départemental - Seine-et-Marne, 12 rue des Saints-Pères à Melun. Sur place, le Centre communal d'action sociale (CCAS) - Serris, 2 place Antoine-Mauny, aide à constituer le dossier. Le montant dépend du degré d'autonomie évalué et des ressources. Il peut financer une partie des heures d'aide à domicile."
+    }
+  ],
+  "semaine_type": "suzanne",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 15, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
