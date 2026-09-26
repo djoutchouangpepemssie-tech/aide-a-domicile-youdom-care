@@ -18,7 +18,7 @@ Pour chaque territoire de votre lot, un fichier `content/local/{code}.json` conf
   "faits_utilises": [0, 1, 3, 7],
   "auteur": { "nom": "Équipe éditoriale Youdom Care", "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité" },
   "statut": "a_relire",
-  "maj": "2026-09-20"
+  "maj": "2026-09-27"
 }
 ```
 
