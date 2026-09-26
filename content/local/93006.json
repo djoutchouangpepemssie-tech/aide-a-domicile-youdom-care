@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/93006.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "93006",
+  "seo": {
+    "titre": "Aide à domicile à Bagnolet (93170) : agence Paris à 4,4 km",
+    "description": "Auxiliaire de vie à Bagnolet, jour et nuit : aide au lever, repas, présence continue. Agence Youdom Care Paris à 4,4 km. Devis et première visite gratuits."
+  },
+  "sous_titre": "Bagnolet est plus proche de notre agence parisienne que de celle de Saint-Denis : c'est depuis Paris que s'organise l'aide à domicile dans la commune.",
+  "zone_editoriale": "Bagnolet est à 2,2 km du 20e arrondissement de Paris. Pour l'aide à domicile, cela a une conséquence pratique : l'agence Youdom Care Paris, dans le 12e arrondissement, est l'agence la plus proche, à 4,4 km à vol d'oiseau. Les interventions à Bagnolet sont donc coordonnées depuis Paris, au même titre que celles du 11e arrondissement, à 3,3 km.\n\n### Une présence qui peut devenir continue\n\nLa commune compte 41 776 habitants. Les 75 ans et plus représentent 5 % de la population et les 90 ans ou plus 0,6 %. Passé un certain âge, la question n'est plus seulement celle des courses ou du ménage : c'est celle de la nuit, des chutes, du repas oublié. L'aide peut commencer par quelques heures et s'étendre jusqu'à une présence 24h/24 à domicile, par relais d'intervenants, si la famille le décide. Ce passage progressif évite de trancher trop tôt entre rester chez soi et partir.\n\nLe Centre communal d'action sociale (CCAS) de Bagnolet, place Salvador-Allende, est l'interlocuteur communal pour les aides. La « Résidence La butte aux pinsons », rue Robespierre, est la résidence autonomie de la ville : ses locataires peuvent recevoir une auxiliaire de vie chez eux, comme dans tout logement.\n\n### Trois EHPAD avec hébergement temporaire\n\nBagnolet a une particularité utile aux familles : ses trois EHPAD proposent tous un hébergement temporaire. Il s'agit de l'« EHPAD Les Quatre saisons », rue Louis-Michel, de l'« EHPAD Résidence Les Floralies », rue Descartes, et de l'« EHPAD Résidence Marie », avenue de la République. Les deux derniers disposent aussi d'une unité Alzheimer.\n\nUn hébergement temporaire sert à passer un cap : hospitalisation du conjoint, vacances de l'aidant, travaux dans le logement. Pendant le séjour, l'aide à domicile s'arrête ; au retour, elle reprend, parfois avec plus d'heures qu'avant. Nous coordonnons ces deux moments avec l'établissement et la famille.\n\n### Soins et sorties\n\nLe « CENTRE MEDICO CHIRURGICAL FLOREAL », rue Floréal, est l'établissement de soins de la commune. Après une intervention, le retour au domicile se prépare : lit, repas, aide au lever et à la toilette, présence de nuit les premiers jours si nécessaire.\n\n### Le département et les voisines\n\nLa Maison départementale des personnes handicapées (MDPH) de la Seine-Saint-Denis se trouve à Saint-Denis, rue Proudhon ; le Conseil départemental, qui instruit l'APA et la PCH, siège à Bobigny. France Alzheimer 93 et maladies apparentées reçoit les familles au Raincy ; le comité de Seine-Saint-Denis de France Parkinson est animé par des bénévoles à Montreuil, la commune voisine. La délégation départementale d'APF France handicap est à Bobigny. Le PAM Île-de-France est le transport régional à la demande des personnes à mobilité réduite.\n\nAutour de Bagnolet, membre de la Métropole du Grand Paris, nous intervenons à Montreuil (1,8 km), Le Pré-Saint-Gervais (2,4 km) et Saint-Mandé (2,9 km), ainsi que dans les arrondissements parisiens voisins.\n\nUn accompagnement à Bagnolet se construit lors d'une première visite à votre domicile, gratuite. Elle sert à écouter, à mesurer les besoins et à proposer un devis, lui aussi sans frais.",
+  "questions": [
+    {
+      "question": "Quelle agence Youdom Care est la plus proche de Bagnolet ?",
+      "reponse": "L'agence Youdom Care Paris, située dans le 12e arrondissement, à 4,4 km de Bagnolet à vol d'oiseau. Elle est plus proche que l'agence de Saint-Denis et coordonne aussi les interventions dans les 11e et 20e arrondissements, à Montreuil et au Pré-Saint-Gervais. Vous pouvez la joindre par téléphone ou décrire votre situation dans le formulaire de cette page."
+    },
+    {
+      "question": "Où trouver un hébergement temporaire à Bagnolet quand l'aidant doit s'absenter ?",
+      "reponse": "Les trois EHPAD de Bagnolet proposent un hébergement temporaire : « EHPAD Les Quatre saisons », 73 rue Louis-Michel, « EHPAD Résidence Les Floralies », 2 rue Descartes, et « EHPAD Résidence Marie », 91 avenue de la République. Les deux derniers ont une unité Alzheimer. Le séjour se réserve auprès de l'établissement ; l'aide à domicile reprend à la sortie, ajustée si les besoins ont changé."
+    },
+    {
+      "question": "Une présence de nuit ou 24h/24 est-elle possible à Bagnolet ?",
+      "reponse": "Oui. La garde de nuit, la présence 24h/24 et le garde-malade font partie des services proposés à Bagnolet comme ailleurs. La présence continue s'organise par relais de plusieurs intervenants. Elle se met en place après une visite d'évaluation à domicile, gratuite, qui fixe les horaires, les gestes attendus et le mode d'intervention, prestataire ou mandataire."
+    },
+    {
+      "question": "Qui instruit l'APA pour un habitant de Bagnolet ?",
+      "reponse": "Le Conseil départemental de Seine-Saint-Denis, dont l'hôtel du département est à Bobigny, instruit l'allocation personnalisée d'autonomie. Le Centre communal d'action sociale (CCAS) de Bagnolet, place Salvador-Allende, aide à constituer le dossier. Le plan d'aide notifié précise le nombre d'heures financées ; l'auxiliaire de vie les réalise ensuite à votre domicile."
+    }
+  ],
+  "semaine_type": "louise",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 16, 17, 18],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

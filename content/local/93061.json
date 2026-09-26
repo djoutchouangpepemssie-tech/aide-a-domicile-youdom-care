@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/93061.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "93061",
+  "seo": {
+    "titre": "Aide à domicile au Pré-Saint-Gervais (93310) : aidants",
+    "description": "Au Pré-Saint-Gervais, une plateforme de répit avenue du Belvédère et des auxiliaires de vie pour relayer les proches aidants. Agence Paris à 4,5 km."
+  },
+  "sous_titre": "Le Pré-Saint-Gervais abrite une plateforme d'accompagnement et de répit pour les aidants : l'aide à domicile se construit avec elle.",
+  "zone_editoriale": "Le Pré-Saint-Gervais dispose, sur son propre territoire, d'une plateforme dédiée aux proches aidants : la « Plateforme d'accompagnement et de répit \"Les Rives Le Relais\" », avenue du Belvédère. Une plateforme de répit informe, écoute et propose des solutions aux personnes qui aident un proche atteint d'une maladie neurodégénérative. Nous la citons parce qu'elle change l'ordre des choses : avant de chercher des heures d'aide, un aidant du Pré-Saint-Gervais peut d'abord y déposer sa fatigue.\n\n### Une commune dense, une population qui vieillit\n\nLe Pré-Saint-Gervais compte 16 733 habitants sur 70,23 hectares. Les 60-74 ans y représentent 14,6 % de la population et les 75 ans et plus 6 %. Beaucoup de foyers sont donc composés d'un couple âgé, ou d'une personne seule dont les enfants vivent ailleurs. L'aide à domicile s'organise alors à l'heure près : toilette le matin, repas, sortie, présence le soir.\n\nÀ la même adresse que la plateforme, la « Résidence Le clos lamotte », avenue du Belvédère, est une résidence autonomie de 148 places. L'« EHPAD Résidence Orpea La Chanterelle », rue d'Estienne-d'Orves, propose un hébergement temporaire et une unité Alzheimer. Le Centre communal d'action sociale (CCAS), rue Émile-Augier, reçoit les demandes d'aide et oriente vers l'APA.\n\n### Les hôpitaux du 19e arrondissement\n\nAucun hôpital n'est recensé dans la commune. Le « GHU APHP NORD UNIVERSITE PARIS CITE SITE ROBERT DEBRE » et le « GHU PARIS SITE LASALLE » sont dans le 19e arrondissement de Paris, à 1,3 km. Une sortie d'hospitalisation vers Le Pré-Saint-Gervais se prépare avec le service avant le retour.\n\n### L'agence de Paris à 4,5 km\n\nL'agence Youdom Care Paris, dans le 12e arrondissement, est l'agence la plus proche, à 4,5 km à vol d'oiseau. Elle coordonne aussi les interventions à Pantin (1,9 km), Bagnolet (2,4 km) et dans les 19e, 20e, 11e et 10e arrondissements. Les Lilas (1,1 km) et Romainville (2,5 km) sont les autres voisines. La commune appartient à la Métropole du Grand Paris.\n\n### Les ressources départementales\n\nLa Maison départementale des personnes handicapées (MDPH) de Seine-Saint-Denis est à Saint-Denis, rue Proudhon ; le Conseil départemental, à Bobigny, instruit l'APA et la PCH. France Alzheimer 93 et maladies apparentées, au Raincy, et le comité de Seine-Saint-Denis de France Parkinson, à Montreuil, complètent le soutien aux familles. La délégation d'APF France handicap reçoit à Bobigny le lundi et le vendredi matin. Le PAM Île-de-France est le transport régional à la demande des personnes à mobilité réduite.\n\nSi vous accompagnez un proche au Pré-Saint-Gervais, la première visite d'évaluation, gratuite, peut se faire en votre présence et en la sienne. Elle sert à mesurer ce qui vous pèse et ce que nous pouvons reprendre. Le devis ne coûte rien non plus.",
+  "questions": [
+    {
+      "question": "Qu'est-ce que la plateforme de répit du Pré-Saint-Gervais ?",
+      "reponse": "La « Plateforme d'accompagnement et de répit \"Les Rives Le Relais\" », 142-146 avenue du Belvédère au Pré-Saint-Gervais, s'adresse aux proches qui aident une personne atteinte d'une maladie neurodégénérative. Elle informe, écoute et propose des solutions de répit. L'aide à domicile peut ensuite prendre le relais chez vous : nuits, après-midi, remplacement pendant une absence, selon ce que vous avez besoin de déléguer."
+    },
+    {
+      "question": "Quelle agence Youdom Care est la plus proche du Pré-Saint-Gervais ?",
+      "reponse": "L'agence Youdom Care Paris, dans le 12e arrondissement, à 4,5 km du Pré-Saint-Gervais à vol d'oiseau. Elle coordonne aussi Pantin, Bagnolet et les arrondissements voisins de Paris. Les démarches d'aide restent celles de la Seine-Saint-Denis : APA au Conseil départemental à Bobigny, PCH à la MDPH de Saint-Denis. La visite d'évaluation à domicile est gratuite."
+    },
+    {
+      "question": "Existe-t-il une résidence autonomie au Pré-Saint-Gervais ?",
+      "reponse": "Oui, la « Résidence Le clos lamotte », 142 avenue du Belvédère, avec 148 places. Une résidence autonomie propose des logements indépendants à des personnes âgées ; une auxiliaire de vie peut y intervenir pour la toilette, les repas ou les courses, comme dans tout appartement. L'« EHPAD Résidence Orpea La Chanterelle », rue d'Estienne-d'Orves, offre par ailleurs un hébergement temporaire."
+    },
+    {
+      "question": "Où sont les hôpitaux les plus proches du Pré-Saint-Gervais ?",
+      "reponse": "Dans le 19e arrondissement de Paris, à 1,3 km : le « GHU APHP NORD UNIVERSITE PARIS CITE SITE ROBERT DEBRE », 48 boulevard Sérurier, et le « GHU PARIS SITE LASALLE », 10 rue du Général-Lasalle. Aucun hôpital n'est recensé au Pré-Saint-Gervais même. Un retour à domicile se prépare avec le service : aide au lever, repas, présence de nuit les premiers jours si nécessaire."
+    }
+  ],
+  "semaine_type": "veronique",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 16, 17, 18],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
