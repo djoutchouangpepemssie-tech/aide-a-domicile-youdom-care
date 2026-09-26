@@ -145,7 +145,7 @@
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/yvelines/046d0e8b-e504-475b-af3c-8faec008c5f9",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
       "collected_at": "2026-09-20",
-      "in_territory": false
+      "in_territory": true
     },
     {
       "type": "aide-departementale",
@@ -285,7 +285,7 @@
       "in_territory": true
     }
   ],
-  "generated_at": "2026-09-20",
+  "generated_at": "2026-09-26",
   "sources": [
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",

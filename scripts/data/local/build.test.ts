@@ -2,7 +2,8 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { localDataSchema, localThresholds } from "../../../src/content/local-schema";
-import { buildTerritories, compareWithSeed, type BuildInputs, type Seed } from "./build";
+import { addressPlace, buildTerritories, compareWithSeed, locateFacts, normalizePlaceName, type BuildInputs, type Seed } from "./build";
+import type { TerritoryContext } from "./types";
 import type { GeoData } from "./geo-api";
 import type { InseeData } from "./insee";
 import type { AnnuaireData } from "./sources/annuaire";
@@ -229,5 +230,62 @@ describe("fichiers produits dans data/local", () => {
       expect(data.chemin.startsWith("/aide-a-domicile/")).toBe(true);
       for (const f of data.facts) expect(f.source_url.startsWith("http")).toBe(true);
     }
+  });
+});
+
+describe("locateFacts", () => {
+  const base = {
+    type: "ehpad" as const,
+    label: "EHPAD",
+    source_url: "https://example.org/base",
+    collected_at: "2026-09-20",
+  };
+  const chessy: TerritoryContext = {
+    code: "77111",
+    kind: "commune",
+    nom: "Chessy",
+    departement: "77",
+    codes_postaux: ["77700"],
+    centre: null,
+  };
+
+  it("se fie au code postal et à la ville de l'adresse plutôt qu'au code INSEE de la source", () => {
+    const [serris, chessyFact, sansCp, leChesnay] = locateFacts(
+      [
+        { ...base, address: "12 rue du Danube, 77700 SERRIS", commune_insee: "77111" },
+        { ...base, address: "3 place de la Gare, 77700 CHESSY", commune_insee: "77449" },
+        { ...base, address: "Mairie", commune_insee: "77111" },
+        { ...base, address: "1 rue X, 78150 LE CHESNAY", commune_insee: "78158" },
+      ],
+      chessy,
+    );
+    expect(serris?.in_territory).toBe(false);
+    expect(chessyFact?.in_territory).toBe(true);
+    expect(sansCp?.in_territory).toBe(true);
+    expect(leChesnay?.in_territory).toBe(false);
+  });
+
+  it("accepte un nom de commune abrégé et un code postal 750XX ou 751XX pour un arrondissement", () => {
+    const [abrege] = locateFacts(
+      [{ ...base, address: "1 rue X, 78150 LE CHESNAY" }],
+      { code: "78158", kind: "commune", nom: "Le Chesnay-Rocquencourt", codes_postaux: ["78150"], centre: null },
+    );
+    expect(abrege?.in_territory).toBe(true);
+    const [dans, ailleurs] = locateFacts(
+      [
+        { ...base, address: "57 rue de Vaugirard, 75015 PARIS", commune_insee: "75109" },
+        { ...base, address: "7 rue Clauzel, 75009 PARIS", commune_insee: "75115" },
+      ],
+      { code: "75115", kind: "arrondissement", nom: "Paris 15e arrondissement", departement: "75", codes_postaux: ["75015"], arrondissement: 15, centre: null },
+    );
+    expect(dans?.in_territory).toBe(true);
+    expect(ailleurs?.in_territory).toBe(false);
+  });
+
+  it("normalise les noms de lieu et lit une adresse", () => {
+    expect(normalizePlaceName("L'Haÿ-les-Roses")).toBe("l hay les roses");
+    expect(normalizePlaceName("78539 BUC CEDEX")).toBe("78539 buc");
+    expect(addressPlace("133 rue de la République CCAS - Hôtel de ville, 92800 PUTEAUX")).toEqual({ postcode: "92800", city: "puteaux" });
+    expect(addressPlace("Hôtel de ville")).toBeNull();
   });
 });

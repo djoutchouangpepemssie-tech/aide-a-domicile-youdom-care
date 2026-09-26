@@ -326,18 +326,72 @@ export function buildTerritories(inputs: BuildInputs): BuildResult {
 
 const TERRITORY_BOUND_TYPES: ReadonlySet<LocalFact["type"]> = new Set(["demographie", "marche", "espace-vert", "equipement-seniors"]);
 
+/** Minuscules, sans accents ni ponctuation, espaces réduits : « L'Haÿ-les-Roses » → « l hay les roses ». */
+export function normalizePlaceName(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\bcedex\b.*$/, "")
+    .replace(/\bste\b/g, "sainte")
+    .replace(/\bst\b/g, "saint")
+    .trim();
+}
+
+/** Code postal et ville d'une adresse publiée (« 133 rue X, 92800 PUTEAUX ») ; null sans code postal. */
+export function addressPlace(address: string): { postcode: string; city: string } | null {
+  const match = /(^|\D)(\d{5})(?!\d)\s*([^,;\d]*)$/.exec(address.trim());
+  if (!match?.[2]) return null;
+  return { postcode: match[2], city: normalizePlaceName(match[3] ?? "") };
+}
+
+function sameCommune(city: string, nom: string): boolean {
+  if (!city) return true;
+  const target = normalizePlaceName(nom);
+  const short = Math.min(city.length, target.length);
+  if (short < 4) return city === target;
+  return city.startsWith(target) || target.startsWith(city);
+}
+
 /**
  * Marque `in_territory` pour une commune ou un arrondissement : vrai si le fait est situé dans le
- * territoire (code INSEE, code postal de l'adresse, fait calculé pour lui), faux pour les faits
- * du département ou de la région (MDPH, conseil départemental, PAM, associations…).
+ * territoire, faux pour les faits du département ou de la région (MDPH, conseil départemental, PAM,
+ * associations…). Quand l'adresse publiée porte un code postal, c'est elle qui décide : le code
+ * postal doit être l'un de ceux du territoire (pour un arrondissement, 750XX ou 751XX) et, si la
+ * ville est écrite, elle doit correspondre au nom du territoire (plusieurs communes partagent un
+ * code postal : 77700 pour Serris, Chessy, Magny-le-Hongre…). Sans code postal dans l'adresse, le
+ * code INSEE fourni par la source fait foi ; les sources CNSA le donnent parfois faux (résidences
+ * autonomie parisiennes rattachées au mauvais arrondissement), d'où la priorité à l'adresse.
  */
 export function locateFacts(facts: readonly LocalFact[], ctx: TerritoryContext): LocalFact[] {
-  const postcodes = ctx.codes_postaux.filter((cp) => /^\d{5}$/.test(cp));
+  const postcodes = new Set(ctx.codes_postaux.filter((cp) => /^\d{5}$/.test(cp)));
+  if (ctx.kind === "arrondissement" && ctx.arrondissement !== undefined) {
+    const nn = String(ctx.arrondissement).padStart(2, "0");
+    postcodes.add(`750${nn}`);
+    postcodes.add(`751${nn}`);
+  }
   return facts.map((f) => {
-    const located =
-      TERRITORY_BOUND_TYPES.has(f.type) ||
-      f.commune_insee === ctx.code ||
-      (f.address !== undefined && postcodes.some((cp) => new RegExp(`(^|\\D)${cp}(\\D|$)`).test(f.address ?? "")));
+    if (TERRITORY_BOUND_TYPES.has(f.type)) return { ...f, in_territory: true };
+    const place = f.address ? addressPlace(f.address) : null;
+    let located: boolean;
+    if (place) {
+      // Un code postal du territoire (ou, pour une commune, un code « cedex » du même
+      // département accompagné du nom exact de la commune) ; la ville écrite doit correspondre.
+      const knownPostcode = postcodes.has(place.postcode);
+      const cedexSameCommune =
+        ctx.kind !== "arrondissement" &&
+        place.city.length > 0 &&
+        ctx.departement !== undefined &&
+        place.postcode.startsWith(ctx.departement) &&
+        sameCommune(place.city, ctx.nom);
+      located =
+        ctx.kind === "arrondissement"
+          ? knownPostcode
+          : (knownPostcode && sameCommune(place.city, ctx.nom)) || cedexSameCommune;
+    } else {
+      located = f.commune_insee === ctx.code;
+    }
     return { ...f, in_territory: located };
   });
 }

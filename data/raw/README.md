@@ -1,7 +1,7 @@
 # Données brutes du pipeline local
 
 Fichiers téléchargés par `pnpm data:local` (scripts/data/local). Ce dossier est ignoré par git
-à l'exception de ce fichier, régénéré à chaque exécution (dernière : 2026-09-20). `--offline`
+à l'exception de ce fichier, régénéré à chaque exécution (dernière : 2026-09-26). `--offline`
 réutilise le fichier le plus récent de chaque source.
 
 Une entrée par source : libellé (identifiant du fichier), adresse, licence, date de collecte, taille, état.

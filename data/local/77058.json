@@ -169,7 +169,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "ehpad",
@@ -180,7 +180,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "ehpad",
@@ -204,7 +204,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "hopital",
@@ -216,7 +216,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "transport-adapte",
@@ -319,7 +319,7 @@
       "in_territory": true
     }
   ],
-  "generated_at": "2026-09-20",
+  "generated_at": "2026-09-26",
   "sources": [
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",

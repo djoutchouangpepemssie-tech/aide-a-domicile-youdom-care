@@ -191,7 +191,7 @@
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
       "collected_at": "2026-09-20",
-      "in_territory": true
+      "in_territory": false
     },
     {
       "type": "residence-autonomie",
@@ -388,7 +388,7 @@
       "in_territory": true
     }
   ],
-  "generated_at": "2026-09-20",
+  "generated_at": "2026-09-26",
   "sources": [
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
