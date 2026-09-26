@@ -1,0 +1,39 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/75115.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "75115",
+  "seo": {
+    "titre": "Aide à domicile Paris 15e (75015) : retour d'hôpital",
+    "description": "Retour d'hospitalisation depuis Pompidou, Vaugirard ou Necker, trois accueils de jour, marchés de quartier : l'aide à domicile dans le 15e arrondissement."
+  },
+  "sous_titre": "Six hôpitaux, trois accueils de jour : dans le 15e arrondissement, l'aide à domicile commence souvent à la sortie de l'hôpital.",
+  "zone_editoriale": "Six établissements hospitaliers sont recensés dans le 15e arrondissement : le site Georges-Pompidou du GHU AP-HP Centre-Université Paris Cité, rue Leblanc, le site Vaugirard, rue Vaugelas, Necker-Enfants malades, rue de Sèvres, le Centre Blomet, la Clinique chirurgicale Alleray-Labrouste et l'Hôpital de jour adultes Falguière. Autant de lieux d'où l'on rentre un jour chez soi, souvent plus fragile qu'avant. Pour les 228 754 habitants du 15e, la question du retour à domicile se pose donc à la porte.\n\n### Avant la sortie\n\nLe service social de l'hôpital fixe la date et évalue ce dont votre proche aura besoin chez lui. C'est le moment de nous décrire la situation : la première visite d'évaluation est gratuite et sert à préparer le retour, du passage dans l'appartement aux courses et aux horaires. Nous ne réalisons pas de soins ; les infirmiers libéraux ou le service d'hospitalisation à domicile s'en chargent, et nous nous coordonnons avec eux.\n\n### Les premiers jours à la maison\n\nLes premiers jours décident souvent de la suite. Une auxiliaire de vie aide au lever, à la toilette, à l'habillage, prépare les repas et veille à ce que la personne boive. Elle accompagne aux rendez-vous de suivi, à Pompidou ou à Vaugirard, et signale ce qui change. Le PAM Île-de-France, transport à la demande sur réservation, peut assurer les trajets des personnes à mobilité réduite.\n\n### Retrouver le quartier\n\nQuand la marche revient, le 15e offre de quoi reprendre pied. Le Marché Grenelle, le mercredi et le dimanche, s'étend sur le terre-plein du boulevard de Grenelle, entre la rue de Lourmel et la rue du Commerce. Le Marché Convention se tient le mardi, le jeudi et le dimanche, le Marché Saint-Charles le mardi et le vendredi. Le Parc Georges Brassens, place Jacques-Marette, le Parc André Citroën et le Jardin Atlantique permettent des promenades progressives. Le Club Seniors Oscar Roty, rue de Lourmel, et le Club Seniors Desnouettes proposent des ateliers gratuits tous les jours ; la Bibliothèque Andrée Chedid, rue Émeriau, organise aussi des ateliers collectifs.\n\n### Quand le retour ne suffit pas\n\nCertaines sorties d'hospitalisation révèlent une perte de mémoire ou d'autonomie durable. Le 15e compte trois accueils de jour, tous avec une unité Alzheimer : Accueil de jour Madeleine Meyer, rue Marie-Skobtsov, Accueil de jour thérapeutique Espace Jeanne-Garnier, rue de Lourmel, et Memoire Plus Isatis, rue Falguière. La Plateforme d'accompagnement et de répit - Espace Jeanne-Garnier, avenue Émile-Zola, soutient les aidants. La Maison des Aînés et des Aidants Paris Ouest, 24 boulevard de Grenelle, héberge le point d'information local des 7e, 15e et 16e arrondissements : c'est le lieu où poser vos questions sur l'APA, versée par le Conseil de Paris. La MDPH de Paris, dans le 9e, traite le handicap ; le CASVP, les aides municipales.\n\nLes 75 ans et plus représentent 9,6 % de la population du 15e, les 90 ans et plus 1,3 %, les 60-74 ans 13,9 %. Six résidences autonomie sont recensées, dont le Logement Grenelle, boulevard de Grenelle, et la Résidence autonomie Maréchal Leclerc-Hauteclocque, rue Saint-Charles.\n\nL'agence Youdom Care Paris, dans le 12e, est à 5,7 km du 15e arrondissement. Le 7e est à 2 km, Vanves à 2,3 km, le 14e à 2,5 km. Un retour d'hôpital se prépare mieux à deux : exposez-nous la situation par le formulaire ou par téléphone, et nous fixons la visite d'évaluation, gratuite.",
+  "questions": [
+    {
+      "question": "Comment organiser un retour d'hospitalisation à domicile dans le 15e arrondissement ?",
+      "reponse": "Parlez-en au service social de l'hôpital dès que la sortie se profile, qu'il s'agisse de Pompidou, de Vaugirard, de Necker, du Centre Blomet ou de la Clinique Alleray-Labrouste. En parallèle, demandez la visite d'évaluation gratuite de Youdom Care : elle organise les gestes du quotidien, lever, toilette, repas, présence. Les soins restent aux infirmiers ou à l'hospitalisation à domicile ; l'auxiliaire de vie travaille avec eux."
+    },
+    {
+      "question": "Quels accueils de jour existent à Paris 15e ?",
+      "reponse": "Trois accueils de jour avec unité Alzheimer sont recensés : l'Accueil de jour Madeleine Meyer, 14 rue Marie-Skobtsov, 25 places ; l'Accueil de jour thérapeutique Espace Jeanne-Garnier, 55 rue de Lourmel, 15 places ; Memoire Plus Isatis, 127 rue Falguière, 20 places. Une auxiliaire de vie peut assurer la préparation du matin et le retour, pour que la journée d'accueil soulage vraiment l'aidant."
+    },
+    {
+      "question": "Où s'informer sur l'APA quand on habite le 15e arrondissement ?",
+      "reponse": "À la Maison des Aînés et des Aidants Paris Ouest, 24 boulevard de Grenelle, qui abrite le Centre local d'information et de coordination Paris Émeraude-Ouest et le point d'information local des 7e, 15e et 16e arrondissements. L'allocation elle-même est attribuée par le Conseil de Paris. Le Centre d'Action Sociale de la Ville de Paris (CASVP), 5 boulevard Diderot, renseigne sur les aides municipales."
+    },
+    {
+      "question": "L'agence Youdom Care est-elle loin du 15e arrondissement ?",
+      "reponse": "L'agence Youdom Care Paris, dans le 12e arrondissement, est à 5,7 km. Paris entier fait partie des zones couvertes, et la démarche est la même partout : un appel ou le formulaire, puis une visite d'évaluation gratuite chez votre proche et un devis gratuit. Le 7e arrondissement, à 2 km, Vanves, à 2,3 km, et le 14e, à 2,5 km, sont les voisins du 15e."
+    }
+  ],
+  "semaine_type": "bernard",
+  "faits_utilises": [
+    0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13, 14, 19, 26, 27, 28, 29, 30, 31, 32, 39, 40, 43, 44, 46,
+    47, 51, 52, 53
+  ],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

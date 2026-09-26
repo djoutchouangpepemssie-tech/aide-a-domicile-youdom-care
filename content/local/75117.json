@@ -1,0 +1,39 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/75117.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "75117",
+  "seo": {
+    "titre": "Aide à domicile Paris 17e (75017) : sortir chaque jour",
+    "description": "Parc Clichy-Batignolles - Martin Luther King, marchés Berthier et Navier, clubs seniors : l'aide à domicile dans le 17e arrondissement, jour après jour."
+  },
+  "sous_titre": "Du hall d'immeuble au banc du parc Martin Luther King : l'aide à domicile dans le 17e arrondissement, pas à pas.",
+  "zone_editoriale": "Au 147 rue Cardinet s'ouvre le Parc Clichy-Batignolles - Martin Luther King, 101 000 m² recensés par la Ville de Paris. Au 144, le Square des Batignolles ; au 152, l'EHPAD Le Trèfle Bleu. Une seule rue du 17e arrondissement réunit ainsi le grand parc, le petit square et une maison de retraite. C'est là, concrètement, que se joue la sortie quotidienne d'une personne âgée accompagnée.\n\n### Pourquoi le parc compte\n\nSortir chaque jour, même brièvement, garde un rythme et un motif de s'habiller. Une auxiliaire de vie qui connaît le trajet entre l'appartement et le banc du parc sait aussi le raccourcir les jours de fatigue. Dans le 17e, les autres espaces recensés sont le Square des Epinettes, rue Maria-Deraismes, le Square Sainte-Odile, boulevard de la Somme, la Promenade Bernard Lafay, boulevard de Reims, et la Promenade Tranchée Pereire, rue de Saussure.\n\n### Autour du parc, les marchés et les clubs\n\nLe Marché Berthier se tient le mercredi et le samedi boulevard de Reims, le long du square A. Ulmann, sur le même boulevard que la Promenade Bernard Lafay. Le Marché Navier, les mêmes jours, occupe la place bordée par les rues Navier, Lantiez et des Épinettes. Le Marché Aux Fleurs Ternes, place des Ternes, est ouvert tous les jours. Les clubs seniors de la Ville sont gratuits et ouverts tous les jours : Club Seniors Saussure, rue de Saussure, Club Seniors des Ternes, rue Bayen, Club Seniors Des Epinettes, Club Seniors Jean Moréas et Club Seniors Saint-Ange.\n\n### Les habitants du 17e\n\nLe 17e arrondissement compte 161 206 habitants en 2022. Les 60-74 ans représentent 13,2 % de la population, les 75 ans et plus 7,8 %, les 90 ans et plus 1,1 %. Ces proportions indiquent des besoins qui portent d'abord sur la sortie, les courses et le ménage, puis sur la toilette et la présence quand la fragilité s'installe.\n\n### Accueil de jour, résidences, hôpitaux\n\nL'Accueil de jour Casa Delta 7 (51 avenue de Saint-Ouen) offre 25 places. Les résidences autonomie recensées comprennent les Logements Jean Moréas, rue Jean-Moréas, à la même adresse que le club seniors du même nom, les Logements Villa Saint-Ange et la Résidence André Leroux, rue Jean-Leclaire, les Logements de la Jonquière et les Logements Damet, rue Lemercier. Quatre EHPAD figurent dans les données, dont trois avec hébergement temporaire : EHPAD COS Jacques Barrot, EHPAD Korian Monceau et EHPAD Les artistes de Batignolles. Cinq établissements hospitaliers sont recensés, dont la Clinique internationale du Parc Monceau, rue de Chazelles, et la Clinique Sainte-Thérèse de l'Enfant-Jésus, rue Gustave-Doré.\n\n### Démarches et agence\n\nLe point d'information local dédié aux personnes âgées des 8e, 17e et 18e arrondissements se trouve 56 rue Ordener, dans le 18e. Le Conseil de Paris décide de l'APA et de la PCH ; la MDPH de Paris, rue de la Victoire, instruit les droits liés au handicap ; le Centre d'Action Sociale de la Ville de Paris (CASVP), boulevard Diderot, gère les aides municipales. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite dans toute la région.\n\nL'agence la plus proche du 17e est Youdom Care Hauts-de-Seine, à Puteaux, à 4,1 km. Levallois-Perret est à 1,5 km, le 8e arrondissement à 1,6 km, Clichy à 1,9 km. Racontez-nous le trajet que fait encore votre proche, du hall d'immeuble au banc du parc ; la visite d'évaluation, gratuite, part de là.",
+  "questions": [
+    {
+      "question": "Quel parc du 17e arrondissement convient à une promenade accompagnée ?",
+      "reponse": "Le Parc Clichy-Batignolles - Martin Luther King, 147 rue Cardinet, avec 101 000 m², et le Square des Batignolles, au 144 de la même rue, se prêtent à une marche adaptée au souffle de la personne. Le Square des Epinettes, le Square Sainte-Odile et la Promenade Bernard Lafay sont plus petits. L'auxiliaire de vie choisit la boucle avec votre proche et la raccourcit les jours de fatigue."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour dans le 17e arrondissement ?",
+      "reponse": "Oui, un seul est recensé : l'Accueil de jour Casa Delta 7 (51 avenue de Saint-Ouen), 25 places. Pour un répit de plusieurs jours, trois EHPAD de l'arrondissement proposent de l'hébergement temporaire : EHPAD COS Jacques Barrot, rue Gilbert-Cesbron, EHPAD Korian Monceau, rue Médéric, et EHPAD Les artistes de Batignolles, rue René-Blum. Entre ces temps d'accueil, l'auxiliaire de vie assure la continuité à la maison."
+    },
+    {
+      "question": "Où s'adresser pour l'APA quand on habite Paris 17e ?",
+      "reponse": "Le point d'information local dédié aux personnes âgées des 8e, 17e et 18e arrondissements est au Centre local d'information et de coordination Paris - Émeraude nord-ouest, 56 rue Ordener, dans le 18e. L'APA est décidée par le Conseil de Paris. Le Centre d'Action Sociale de la Ville de Paris (CASVP), 5 boulevard Diderot, instruit les aides municipales. La visite d'évaluation gratuite de Youdom Care aide à chiffrer les heures avant le dépôt."
+    },
+    {
+      "question": "Quelle agence Youdom Care est la plus proche de Paris 17e ?",
+      "reponse": "C'est Youdom Care Hauts-de-Seine, à Puteaux, à 4,1 km du 17e arrondissement. Levallois-Perret, à 1,5 km, et Clichy, à 1,9 km, dépendent de la même agence. Décrivez votre situation par téléphone ou dans le formulaire de cette page : une visite d'évaluation gratuite est organisée chez votre proche, et le devis qui suit est gratuit."
+    }
+  ],
+  "semaine_type": "veronique",
+  "faits_utilises": [
+    0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 23, 29, 30, 31, 32, 33, 34,
+    35, 36, 37, 39, 40, 41, 42, 43
+  ],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
