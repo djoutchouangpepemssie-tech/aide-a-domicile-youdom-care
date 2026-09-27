@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Les montants vivent sur /tarifs-et-aides/aeeh/ ; ici, la définition et le fonctionnement, repris de la fiche officielle citée.",
+  "slug": "aeeh",
+  "terme": "AEEH",
+  "developpe": "Allocation d'éducation de l'enfant handicapé",
+  "variantes": ["allocation d'éducation de l'enfant handicapé"],
+  "seo": {
+    "titre": "AEEH : l'allocation d'éducation de l'enfant handicapé",
+    "description": "L'AEEH, allocation d'éducation de l'enfant handicapé, en clair : le montant de base, les compléments, la décision de la MDPH, l'aide financée à la maison."
+  },
+  "definition": "L'AEEH est une allocation versée aux parents pour compenser les dépenses liées au handicap d'un enfant de moins de 20 ans.",
+  "explication": "L'allocation d'éducation de l'enfant handicapé comprend un montant de base. Un complément peut s'y ajouter, selon les frais engagés, le recours à une tierce personne et la réduction d'activité d'un parent. Une majoration existe pour le parent isolé.\n\nLa décision revient à la commission des droits et de l'autonomie (CDAPH), au sein de la MDPH. La CAF ou la MSA verse l'allocation. La MDPH dispose de quatre mois pour répondre ; sans réponse, la demande est considérée comme refusée.\n\nL'enfant doit résider en France et présenter un taux d'incapacité d'au moins 80 %, ou compris entre 50 et 80 % sous conditions d'accompagnement. Le complément peut financer une aide humaine à la maison : sortie d'école, mercredis, vacances, relais pour souffler. Un droit d'option existe entre le complément d'AEEH et la PCH.\n\nNous vous aidons à décrire les besoins de votre enfant, semaine par semaine. Nous ne remplaçons pas la MDPH.",
+  "pour_qui": "Les parents d'un enfant ou d'un adolescent en situation de handicap, de la naissance à 20 ans, qui organisent l'aide au quotidien.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Allocation d'éducation de l'enfant handicapé (AEEH)",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14809",
+    "verifie_le": "2026-06-01",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/tarifs-et-aides/aeeh/",
+    "/enfants-en-situation-de-handicap/",
+    "/enfants-en-situation-de-handicap/autisme/"
+  ],
+  "maj": "2026-09-27"
+}

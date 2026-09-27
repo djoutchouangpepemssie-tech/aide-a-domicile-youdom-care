@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du portail national pour-les-personnes-agees.gouv.fr (fiche « L'aide à domicile auprès des personnes âgées »).",
+  "slug": "auxiliaire-de-vie",
+  "terme": "auxiliaire de vie",
+  "developpe": "Auxiliaire de vie sociale",
+  "variantes": ["auxiliaires de vie", "auxiliaire de vie sociale", "auxiliaires de vie sociale"],
+  "seo": {
+    "titre": "Auxiliaire de vie : définition, rôle et limites du métier",
+    "description": "L'auxiliaire de vie, en clair : la personne qui aide au lever, à la toilette, aux repas et à la présence au quotidien, et ce qu'elle ne fait pas."
+  },
+  "definition": "L'auxiliaire de vie est la personne qui aide au quotidien, à domicile, une personne âgée, malade ou en situation de handicap : lever, toilette, repas, courses, présence.",
+  "explication": "Son rôle : accompagner les gestes essentiels et la vie de tous les jours, avec la personne, jamais à sa place tant qu'elle peut faire. Elle aide à se lever et à se coucher, à se laver, à s'habiller, à préparer et prendre les repas, à se déplacer, à faire les courses et l'entretien courant. Elle veille, stimule, écoute et fait le lien avec la famille et les professionnels de santé.\n\nL'auxiliaire de vie ne réalise pas de soins infirmiers ni d'actes médicaux. Les pansements, les injections ou la préparation des médicaments relèvent des infirmiers et du SSIAD. Le portail officiel précise qu'une aide à domicile sans diplôme n'est pas habilitée aux toilettes complètes ; l'auxiliaire de vie sociale, diplômée (DEAES, ou ancien DEAVS), intervient auprès des personnes les plus dépendantes.\n\nChez Youdom Care, l'auxiliaire de vie est salariée du service en mode prestataire, ou employée par vous en mode mandataire. Nous nous coordonnons avec les soignants ; nous ne les remplaçons pas.",
+  "pour_qui": "Toute personne qui a besoin d'aide pour les gestes du quotidien, et ses proches qui cherchent à comprendre qui fait quoi à la maison.",
+  "lien_officiel": {
+    "libelle": "pour-les-personnes-agees.gouv.fr — L'aide à domicile auprès des personnes âgées",
+    "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/a-qui-s-adresser/l-aide-a-domicile-aupres-des-personnes-agees",
+    "verifie_le": "2025-01-20",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/personnes-agees/aide-a-l-autonomie/",
+    "/services/remplacement-d-auxiliaire-de-vie/",
+    "/comment-ca-marche/"
+  ],
+  "maj": "2026-09-27"
+}

@@ -1,0 +1,29 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise de la fiche officielle service-public.gouv.fr sur l'accompagnement des enfants en situation de handicap à l'école et en dehors.",
+  "slug": "sessad",
+  "terme": "SESSAD",
+  "developpe": "Service d'éducation spéciale et de soins à domicile",
+  "variantes": [
+    "service d'éducation spéciale et de soins à domicile",
+    "services d'éducation spéciale et de soins à domicile"
+  ],
+  "seo": {
+    "titre": "SESSAD : éducation spéciale et soins à domicile, pour qui",
+    "description": "Le SESSAD, service d'éducation spéciale et de soins à domicile, en clair : une équipe qui suit un enfant handicapé à la maison, à l'école, en loisirs."
+  },
+  "definition": "Un SESSAD est un service médico-social dont l'équipe accompagne un enfant ou un adolescent en situation de handicap là où il vit : à la maison, à la crèche, à l'école, au centre de loisirs.",
+  "explication": "Le service d'éducation spéciale et de soins à domicile s'adresse aux enfants et adolescents en situation de handicap qui ont besoin de soins ou d'un soutien éducatif, tout en restant scolarisés en milieu ordinaire et en vivant chez eux.\n\nL'équipe est pluridisciplinaire : selon le service, pédopsychiatre, psychomotricien, orthophoniste, kinésithérapeute, ergothérapeute, éducateurs. Elle travaille le développement global de l'enfant : langage, motricité, autonomie, relations. Elle se coordonne avec l'école, sans en dépendre, et avec la famille.\n\nL'accès passe par une demande à la MDPH. La commission des droits et de l'autonomie (CDAPH) prononce l'orientation ; elle dispose de quatre mois pour répondre. Déposez la demande tôt, avec l'aide de l'école ou du médecin qui suit votre enfant.\n\nLe SESSAD n'est pas un service d'aide à domicile : il ne remplace ni la garde ni l'aide aux gestes du quotidien. Nos intervenants s'articulent avec lui, en respectant les repères que l'équipe met en place avec votre enfant.",
+  "pour_qui": "Les parents d'un enfant ou d'un adolescent en situation de handicap qui a besoin de soins et d'un accompagnement éducatif sans quitter son école ni sa maison.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Un enfant ou un adolescent en situation de handicap peut-il recevoir un accompagnement à l'école ou en dehors de l'école ?",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31448",
+    "verifie_le": "2026-04-23",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/enfants-en-situation-de-handicap/",
+    "/enfants-en-situation-de-handicap/autisme/",
+    "/tarifs-et-aides/aeeh/"
+  ],
+  "maj": "2026-09-27"
+}

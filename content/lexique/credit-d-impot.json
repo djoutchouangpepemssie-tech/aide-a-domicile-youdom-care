@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Le taux et les plafonds sont ceux de la fiche officielle citée et de /tarifs-et-aides/credit-d-impot-et-avance-immediate/ (même source, même date) : ne pas les modifier ici sans les modifier là.",
+  "slug": "credit-d-impot",
+  "terme": "crédit d'impôt",
+  "developpe": "Crédit d'impôt pour l'emploi d'un salarié à domicile et les services à la personne",
+  "variantes": ["crédits d'impôt", "avance immédiate"],
+  "seo": {
+    "titre": "Crédit d'impôt aide à domicile : définition, taux, plafond",
+    "description": "Le crédit d'impôt services à la personne, en clair : la moitié des sommes payées remboursée, imposable ou non, le plafond annuel et l'avance immédiate."
+  },
+  "definition": "Le crédit d'impôt services à la personne vous rembourse la moitié des sommes payées pour une aide à domicile, dans la limite d'un plafond annuel de dépenses.",
+  "explication": "Le crédit d'impôt s'élève à 50 % des dépenses de l'année, pour des services rendus à votre domicile ou à celui d'un ascendant qui perçoit l'APA. Il concerne l'emploi direct d'un salarié comme le recours à un organisme prestataire ou mandataire déclaré.\n\nLe plafond de dépenses est de 12 000 € par an dans le cas général. Il est majoré dans certaines situations : première année d'emploi direct, enfant à charge, personne de plus de 65 ans au foyer, et jusqu'à 20 000 € en cas d'invalidité ou de perte d'autonomie.\n\nLe crédit d'impôt est versé même si vous n'êtes pas imposable : l'administration vous rembourse la somme. Vous déclarez les dépenses dans votre déclaration de revenus, à partir de l'attestation fiscale annuelle de l'organisme. Avec l'avance immédiate proposée par l'Urssaf, le crédit est déduit dès le paiement : vous ne réglez que le reste à charge.\n\nSur ce site, le prix affiché est toujours le prix TTC avant crédit d'impôt. Le montant après crédit apparaît à part, plus petit.",
+  "pour_qui": "Toute personne dont le domicile fiscal est en France et qui paie une aide à domicile, qu'elle soit imposable ou non.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Crédit d'impôt pour l'emploi d'un salarié à domicile",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12",
+    "verifie_le": "2026-04-15",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/tarifs-et-aides/credit-d-impot-et-avance-immediate/",
+    "/tarifs-et-aides/",
+    "/comment-ca-marche/prestataire-ou-mandataire/"
+  ],
+  "maj": "2026-09-27"
+}

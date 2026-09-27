@@ -1,0 +1,27 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du portail national pour-les-personnes-agees.gouv.fr.",
+  "slug": "clic",
+  "terme": "CLIC",
+  "developpe": "Centre local d'information et de coordination gérontologique",
+  "variantes": [
+    "centre local d'information et de coordination",
+    "centres locaux d'information et de coordination",
+    "point d'information autonomie",
+    "points d'information locaux"
+  ],
+  "seo": {
+    "titre": "CLIC : le point d'information gratuit des personnes âgées",
+    "description": "Le CLIC, centre local d'information et de coordination, en clair : un accueil gratuit et de proximité pour les personnes âgées et les aidants, qui oriente."
+  },
+  "definition": "Le CLIC est un point d'information gratuit et de proximité pour les personnes âgées et leurs proches : il écoute, évalue les besoins et oriente vers les solutions.",
+  "explication": "Le centre local d'information et de coordination accueille les personnes de 60 ans et plus et leurs aidants. Selon les départements, il porte d'autres noms : point d'information autonomie, service senior, maison de l'autonomie.\n\nSes missions : écouter, définir les besoins, proposer des solutions adaptées. Il renseigne sur les aides financières, l'aide à domicile, les accueils de jour, les dossiers d'entrée en établissement et les actions contre l'isolement. Il soutient aussi les proches aidants : démarches, aides possibles, formations.\n\nL'accueil est gratuit et personnalisé. Un appel suffit pour prendre rendez-vous. Le portail national pour-les-personnes-agees.gouv.fr propose un annuaire pour trouver le point d'information de votre commune.\n\nNous orientons souvent les familles vers le CLIC de leur secteur avant de démarrer un accompagnement. Il aide à voir clair dans les aides, sans parti pris, et il connaît les acteurs locaux.",
+  "pour_qui": "Les personnes de 60 ans et plus et leurs proches aidants, dès les premières questions sur le maintien à domicile.",
+  "lien_officiel": {
+    "libelle": "pour-les-personnes-agees.gouv.fr — Les points d'information locaux dédiés aux personnes âgées",
+    "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie-s-informer-et-anticiper/a-qui-s-adresser/les-points-d-information-locaux-dedies-aux-personnes-agees",
+    "verifie_le": "2026-01-30",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": ["/personnes-agees/", "/aidants/", "/aide-a-domicile/"],
+  "maj": "2026-09-27"
+}

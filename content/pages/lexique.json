@@ -1,0 +1,22 @@
+{
+  "_lisezmoi": "Page /lexique/ (docs/06 §6, P7.2) : index alphabétique des termes de content/lexique/*.json. Les termes, leurs définitions, leur lien officiel et leurs pages liées vivent dans ces fichiers ; ici, seulement les textes de la page (balises, titre, chapô, recherche, appel). Les libellés du gabarit d'un terme sont dans interface.json › lexique.",
+  "seo": {
+    "titre": "Lexique de l'aide à domicile : APA, PCH, GIR, SSIAD, MDPH",
+    "description": "Les sigles et les mots de l'aide à domicile, définis en une phrase puis expliqués : APA, PCH, AEEH, MDPH, GIR, SSIAD, avec le lien officiel de chacun."
+  },
+  "ariane": "Lexique",
+  "h1": "Le lexique : les mots de l'aide à domicile, expliqués",
+  "chapo": "APA, GIR, MDPH, prestataire, mandataire : les dossiers sont pleins de sigles. Chaque terme a ici sa définition en une phrase, une explication courte, le lien officiel et les pages du site qui en parlent.",
+  "lettres_nom": "Aller à une lettre",
+  "recherche": {
+    "label": "Chercher un terme",
+    "aide": "Un sigle ou un mot : APA, répit, mandataire…",
+    "un_resultat": "1 terme affiché",
+    "resultats": "{n} termes affichés",
+    "aucun": "Aucun terme ne correspond. Essayez un autre mot, ou parcourez la liste par lettre."
+  },
+  "appel": {
+    "h2": "Un mot vous manque encore ?",
+    "texte": "Appelez-nous : un conseiller vous explique les aides et les démarches qui concernent votre situation, sans jargon."
+  }
+}

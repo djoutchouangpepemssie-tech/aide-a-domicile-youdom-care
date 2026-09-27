@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Aucun montant ici : la fiche officielle citée les publie et les met à jour.",
+  "slug": "aah",
+  "terme": "AAH",
+  "developpe": "Allocation aux adultes handicapés",
+  "variantes": ["allocation aux adultes handicapés"],
+  "seo": {
+    "titre": "AAH : l'allocation aux adultes handicapés, en clair",
+    "description": "L'AAH, allocation aux adultes handicapés, en clair : un revenu minimal, les conditions d'âge et d'incapacité, la MDPH qui décide et la CAF qui verse."
+  },
+  "definition": "L'AAH est une allocation qui assure un revenu minimal aux adultes en situation de handicap dont les ressources sont faibles.",
+  "explication": "L'allocation aux adultes handicapés est attribuée par la commission des droits et de l'autonomie (CDAPH), au sein de la MDPH. La CAF ou la MSA la verse chaque mois. Son montant dépend des ressources et de la situation du foyer.\n\nElle s'adresse aux personnes de 20 ans et plus, ou de 16 ans si elles ne sont plus à la charge de leurs parents. Le taux d'incapacité doit être d'au moins 80 %. Entre 50 et 79 %, l'AAH reste possible si le handicap entraîne une restriction substantielle et durable d'accès à l'emploi. La personne doit résider en France de façon stable.\n\nLa demande se dépose auprès de la MDPH, en ligne ou par courrier, avec un certificat médical. La MDPH dispose de quatre mois pour répondre.\n\nL'AAH ne finance pas des heures d'aide à domicile : c'est le rôle de la PCH, qui peut s'y ajouter. Nous vous orientons vers la MDPH pour vérifier vos droits, sans les instruire à sa place.",
+  "pour_qui": "Les adultes en situation de handicap qui ont peu ou pas de revenus, et les proches qui les aident dans leurs démarches.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Allocation aux adultes handicapés (AAH)",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F12242",
+    "verifie_le": "2026-09-14",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/adultes-en-situation-de-handicap/",
+    "/tarifs-et-aides/pch/",
+    "/tarifs-et-aides/"
+  ],
+  "maj": "2026-09-27"
+}

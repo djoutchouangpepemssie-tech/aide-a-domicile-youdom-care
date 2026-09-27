@@ -1,0 +1,22 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du portail national pour-les-personnes-agees.gouv.fr.",
+  "slug": "ccas",
+  "terme": "CCAS",
+  "developpe": "Centre communal d'action sociale",
+  "variantes": ["centre communal d'action sociale", "centres communaux d'action sociale", "CIAS"],
+  "seo": {
+    "titre": "CCAS : le centre communal d'action sociale, à quoi il sert",
+    "description": "Le CCAS, centre communal d'action sociale, en clair : le service social de votre mairie, ce qu'il fait pour les personnes âgées et les aidants, sans frais."
+  },
+  "definition": "Le CCAS est le service d'action sociale de votre commune : il informe, oriente et aide les habitants, dont les personnes âgées et leurs proches aidants.",
+  "explication": "Chaque commune dispose d'un centre communal d'action sociale ou, à défaut, c'est la mairie qui remplit ce rôle. Quand plusieurs communes se regroupent, on parle de centre intercommunal, le CIAS.\n\nLe CCAS soutient les habitants, en particulier les personnes âgées et leurs proches aidants. Il aide à constituer les dossiers, par exemple la demande d'APA ou d'aide ménagère du département. Il accorde des secours d'urgence, une aide alimentaire ou des prêts sans intérêt. Il gère parfois des services de proximité : portage de repas, résidences autonomie, actions contre l'isolement, accès aux loisirs.\n\nSes conseils sont gratuits. Le CCAS est souvent la première porte à pousser quand on ne sait pas par où commencer. Il connaît les services d'aide à domicile du secteur et les points d'information dédiés aux personnes âgées.\n\nNous travaillons en lien avec les CCAS des communes où nous intervenons. Nous ne nous substituons pas à eux.",
+  "pour_qui": "Les personnes âgées, les personnes en difficulté et leurs proches qui cherchent une première orientation près de chez eux.",
+  "lien_officiel": {
+    "libelle": "pour-les-personnes-agees.gouv.fr — Le centre communal d'action sociale (CCAS) / la Mairie",
+    "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/a-qui-s-adresser/le-centre-communal-d-action-sociale-ccas-la-mairie",
+    "verifie_le": "2025-08-01",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": ["/tarifs-et-aides/", "/personnes-agees/", "/aide-a-domicile/"],
+  "maj": "2026-09-27"
+}

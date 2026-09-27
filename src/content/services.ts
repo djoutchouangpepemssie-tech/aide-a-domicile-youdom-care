@@ -4,6 +4,8 @@ import type { MDXContent } from "mdx/types";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
 import { isProduction } from "@/lib/env";
+import { rehypeLexique } from "@/lib/mdx/rehype-lexique";
+import { lexiqueLinkTargets } from "./lexique";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "./service-meta";
 import type { ServicePage } from "./service-schema";
 
@@ -24,6 +26,8 @@ let cache: Promise<LoadedServicePage[]> | undefined;
 
 async function loadAll(): Promise<LoadedServicePage[]> {
   const files = await listMdxFiles(SERVICES_DIR);
+  // Lien automatique des sigles vers le lexique (docs/06 §6) : première occurrence de chaque terme.
+  const lexique = await lexiqueLinkTargets();
   const pages: LoadedServicePage[] = [];
   const seen = new Set<string>();
   for (const file of files) {
@@ -33,7 +37,11 @@ async function loadAll(): Promise<LoadedServicePage[]> {
     seen.add(meta.chemin);
     let Body: MDXContent | null = null;
     if (body.trim().length > 0) {
-      const compiled = await evaluate(body, { ...runtime, remarkPlugins: [remarkGfm] });
+      const compiled = await evaluate(body, {
+        ...runtime,
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [[rehypeLexique, { terms: lexique }]],
+      });
       Body = compiled.default;
     }
     pages.push({ meta, Body, file: path.relative(process.cwd(), file) });

@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Les montants par GIR vivent sur /tarifs-et-aides/apa/ ; ici, la définition des six groupes, reprise de la fiche officielle citée.",
+  "slug": "gir-et-grille-aggir",
+  "terme": "GIR et grille AGGIR",
+  "developpe": "Groupes iso-ressources et grille Autonomie gérontologie groupes iso-ressources",
+  "variantes": ["GIR", "AGGIR", "grille AGGIR", "groupe iso-ressources"],
+  "seo": {
+    "titre": "GIR et grille AGGIR : les six niveaux de perte d'autonomie",
+    "description": "La grille AGGIR et les GIR, en clair : comment le département évalue la perte d'autonomie, le sens des GIR 1 à 6 et lesquels ouvrent droit à l'APA."
+  },
+  "definition": "La grille AGGIR mesure la perte d'autonomie d'une personne âgée et la classe dans un GIR, de 1 (la perte d'autonomie la plus forte) à 6 (autonomie).",
+  "explication": "AGGIR signifie Autonomie gérontologie groupes iso-ressources. La grille observe ce que la personne fait seule, en partie ou pas du tout : se lever, se laver, s'habiller, se déplacer, s'alimenter, s'orienter dans le temps et l'espace, communiquer. Dix activités déterminent le GIR ; sept autres complètent le regard.\n\nLe GIR 1 correspond aux personnes confinées au lit ou au fauteuil, dont les fonctions mentales sont gravement altérées, et qui ont besoin d'une présence continue. Le GIR 2 regroupe celles qui restent confinées avec des fonctions mentales en partie conservées, ou qui se déplacent mais ont besoin d'une surveillance permanente. En GIR 3, la personne garde son autonomie mentale mais a besoin d'aide plusieurs fois par jour pour les soins corporels. En GIR 4, elle a des difficultés pour se lever ou se coucher, ou besoin d'aide pour la toilette et l'habillage. Les GIR 5 et 6 relèvent d'aides ponctuelles ou d'aucune aide.\n\nLes GIR 1 à 4 ouvrent le droit à l'APA. L'évaluation est faite à domicile par l'équipe médico-sociale du département. Si l'état de santé change, vous pouvez demander une nouvelle évaluation. Nous adaptons la semaine d'aide au GIR retenu et à ce que vous vivez.",
+  "pour_qui": "Les personnes de 60 ans et plus qui demandent l'APA, et leurs proches qui veulent comprendre le résultat de l'évaluation.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Apa : que sont les Gir 1, Gir 2, Gir 3 et Gir 4 de la grille Aggir ?",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1229",
+    "verifie_le": "2026-01-09",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/tarifs-et-aides/apa/",
+    "/personnes-agees/aide-a-l-autonomie/",
+    "/personnes-agees/"
+  ],
+  "maj": "2026-09-27"
+}

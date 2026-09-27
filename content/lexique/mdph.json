@@ -1,0 +1,29 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du glossaire officiel monparcourshandicap.gouv.fr.",
+  "slug": "mdph",
+  "terme": "MDPH",
+  "developpe": "Maison départementale des personnes handicapées",
+  "variantes": [
+    "maison départementale des personnes handicapées",
+    "maisons départementales des personnes handicapées"
+  ],
+  "seo": {
+    "titre": "MDPH : la maison départementale des personnes handicapées",
+    "description": "La MDPH, maison départementale des personnes handicapées, en clair : le guichet unique du handicap, ce qu'elle évalue, les droits attribués, la démarche."
+  },
+  "definition": "La MDPH est le guichet unique de chaque département pour les droits et les aides des personnes en situation de handicap.",
+  "explication": "Créées par la loi du 11 février 2005, les maisons départementales des personnes handicapées accueillent, informent et conseillent les personnes en situation de handicap et leurs familles. Il en existe une par département.\n\nLa MDPH organise une équipe pluridisciplinaire qui évalue les besoins de la personne dans sa vie quotidienne. Elle prépare les décisions de la commission des droits et de l'autonomie (CDAPH). Cette commission attribue la PCH, l'AAH, l'AEEH et son complément, la reconnaissance de la qualité de travailleur handicapé, les cartes mobilité inclusion et les orientations vers les établissements et services.\n\nUne seule demande, par formulaire ou en ligne, ouvre l'examen de tous ces droits. Le dossier comprend un certificat médical et un projet de vie : vous y décrivez votre quotidien, vos difficultés et vos attentes. C'est ce texte qui permet à l'équipe de comprendre vos besoins d'aide humaine.\n\nNous pouvons vous aider à décrire une journée réelle dans le projet de vie. Les décisions restent celles de la CDAPH.",
+  "pour_qui": "Toute personne en situation de handicap, enfant ou adulte, et ses proches, pour ouvrir ou renouveler un droit.",
+  "lien_officiel": {
+    "libelle": "monparcourshandicap.gouv.fr — MDPH : Maison départementale des personnes handicapées",
+    "href": "https://www.monparcourshandicap.gouv.fr/glossaire/mdph",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/tarifs-et-aides/pch/",
+    "/tarifs-et-aides/aeeh/",
+    "/adultes-en-situation-de-handicap/",
+    "/enfants-en-situation-de-handicap/"
+  ],
+  "maj": "2026-09-27"
+}
