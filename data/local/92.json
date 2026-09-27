@@ -21,7 +21,7 @@
     "part_90_plus": 1.2,
     "part_75_plus": 7.6,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "puteaux",
@@ -36,7 +36,7 @@
       "value": "12,8 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -44,7 +44,7 @@
       "value": "7,6 % de la population (75-89 ans : 6,4 % ; 90 ans ou plus : 1,2 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -52,7 +52,7 @@
       "value": "1 647 435 habitants (Hauts-de-Seine)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -63,7 +63,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/f19d8f9c-3d36-4655-ba0a-809bc4b51f5a",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -74,7 +74,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/9de39121-12e8-4ed7-84ac-b1a688c0e7a5",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -85,7 +85,7 @@
       "url": "http://www.bois-colombes.com",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/cb02ddb0-2df8-46ed-8db0-3b3529aec7de",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -96,7 +96,7 @@
       "url": "https://www.boulognebillancourt.com/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/d5d2037f-9122-40e4-be50-ccff67f238e2",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -104,10 +104,10 @@
       "address": "Espace prévention-santé, Coordination gérontologique de Châtenay-Malabry, Square Henri-Sellier, 92290 Châtenay-Malabry",
       "commune_insee": "92019",
       "telephone": "01 46 32 93 49",
-      "url": "http://www.hauts-de-seine.frsolidarites/personnes-agees/maintien-a-domicile/adresses-des-clic-et-coordinations-gerontologiques",
+      "url": "http://www.hauts-de-seine.fr/solidarites/personnes-agees/maintien-a-domicile/adresses-des-clic-et-coordinations-gerontologiques",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/05206600-0ce3-4255-87e0-c4658211fd77",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -118,7 +118,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/6e159496-ea2c-4f4a-97db-cf7b7e8d28ea",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -129,7 +129,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/09fb4f27-f522-432d-aaf1-2af7e8e50513",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -140,7 +140,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/58748ddc-d0ce-4763-a158-482da37885bf",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -151,7 +151,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/12248933-1d2a-423f-b0af-89e77f2b2af8",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -162,7 +162,7 @@
       "url": "http://www.valleesud.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/ef61fd0e-75d5-4056-99b2-9aa74091f144",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -173,7 +173,7 @@
       "url": "https://www.ville-gennevilliers.fr/164/demarches-et-services/action-sociale/centre-communal-d-action-sociale-ccas.htm",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/732f3c4c-86fa-4aea-8969-af60778609c5",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -184,7 +184,7 @@
       "url": "https://www.plessis-robinson.com/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/d2ccb2c4-129e-44dd-be9f-3f4262e1516d",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -195,7 +195,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr/solutions-pour-les-aidants/tout",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/380b2f1e-2e35-4d1e-8cc5-9379ab16488b",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -203,10 +203,10 @@
       "address": "Centre de gérontologie Les Abondances, 49 rue Saint-Denis, 92100 Boulogne-Billancourt",
       "commune_insee": "92012",
       "telephone": "01 41 22 57 51",
-      "url": "http://www.lesabondances.frplateforme-des-aidants",
+      "url": "http://www.lesabondances.fr/plateforme-des-aidants",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/2561552c-4aa2-4782-a91c-7d35e3354a3e",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -217,7 +217,7 @@
       "url": "http://www.fondation-odilon-lannelongue.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/0c82df71-b711-44ad-a490-2adc1d7be2a9",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "mdph",
@@ -228,7 +228,7 @@
       "url": "https://mdphenligne.cnsa.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3f9f35ee-4761-47c3-8643-bf7b11fcecb4",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "aide-departementale",
@@ -239,7 +239,7 @@
       "url": "https://www.hauts-de-seine.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68ae9287-fc9e-48b6-a8d6-8e9b669ff131",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "accueil-jour",
@@ -247,7 +247,7 @@
       "value": "30 dans le département (Hauts-de-Seine)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "residence-autonomie",
@@ -255,7 +255,7 @@
       "value": "48 dans le département (Hauts-de-Seine)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "ehpad",
@@ -263,7 +263,7 @@
       "value": "111 dans le département (Hauts-de-Seine)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -274,7 +274,7 @@
       "telephone": "01 47 69 65 65",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -285,7 +285,7 @@
       "telephone": "01 41 29 90 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -296,7 +296,7 @@
       "telephone": "01 77 70 70 70",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -307,7 +307,7 @@
       "telephone": "01 77 70 70 70",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -318,7 +318,7 @@
       "telephone": "01 41 40 46 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -329,7 +329,7 @@
       "telephone": "01 40 88 63 40",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -340,7 +340,7 @@
       "telephone": "01 40 88 63 40",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -351,7 +351,7 @@
       "telephone": "01 40 88 60 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -362,7 +362,7 @@
       "telephone": "01 49 09 50 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -373,7 +373,7 @@
       "telephone": "01 45 37 44 44",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -384,7 +384,7 @@
       "telephone": "01 47 10 79 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -395,7 +395,7 @@
       "telephone": "01 58 00 40 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "transport-adapte",
@@ -417,7 +417,7 @@
       "url": "https://www.apei-bs.asso.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -428,7 +428,7 @@
       "url": "http://apeimeudon92.odns.fr/Site-APEI/",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -439,7 +439,7 @@
       "url": "https://www.apeilamaisonduphare.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -468,32 +468,32 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 92",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2292%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

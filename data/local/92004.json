@@ -29,7 +29,7 @@
     "part_90_plus": 0.9,
     "part_75_plus": 5.6,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "saint-denis",
@@ -102,7 +102,7 @@
       "value": "10,7 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -111,7 +111,7 @@
       "value": "5,6 % de la population (75-89 ans : 4,7 % ; 90 ans ou plus : 0,9 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -120,7 +120,7 @@
       "value": "91 457 habitants (Asnières-sur-Seine)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -130,7 +130,7 @@
       "telephone": "01 41 11 17 70",
       "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
       "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -142,7 +142,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/9de39121-12e8-4ed7-84ac-b1a688c0e7a5",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -154,7 +154,7 @@
       "url": "https://asnieres-sur-seine.fr/asnieres-a-tout-age/aines?tx_eannuaires_pi2%5Baction%5D=show&tx_eannuaires_pi2%5Bcontroller%5D=Fiche&tx_eannuaires_pi2%5Bfiche%5D=117&cHash=b58711d02bc067ebf8b598cfee9fbbfe",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68432282-a61e-4da2-b468-3e3bf0b5bf1e",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -166,7 +166,7 @@
       "url": "https://mdphenligne.cnsa.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3f9f35ee-4761-47c3-8643-bf7b11fcecb4",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -178,7 +178,7 @@
       "url": "https://www.hauts-de-seine.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68ae9287-fc9e-48b6-a8d6-8e9b669ff131",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -189,7 +189,7 @@
       "telephone": "01 40 86 42 42",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -201,7 +201,7 @@
       "url": "http://www.domusvi.com/maison-retraite/hauts-de-seine-92-asnieres-sur-seine-27548.html/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -212,7 +212,7 @@
       "telephone": "01 47 90 63 12",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -223,7 +223,7 @@
       "telephone": "01 47 90 63 12",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -235,7 +235,7 @@
       "url": "https://www.univi.fr/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -246,7 +246,7 @@
       "telephone": "01 55 02 19 60",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -258,7 +258,7 @@
       "url": "https://www.orpea.com/maisons-de-retraite",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -270,7 +270,7 @@
       "url": "https://www.domusvi.com/maisons-de-retraite/residence-rabelais-asnieres-sur-seine-630822",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -282,7 +282,7 @@
       "url": "http://asnieres.maisonsdefamille.com/villa-concorde-accueil",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -294,7 +294,7 @@
       "telephone": "01 41 40 46 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -306,7 +306,7 @@
       "telephone": "01 40 87 50 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -330,7 +330,7 @@
       "url": "https://www.apei-bs.asso.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -342,7 +342,7 @@
       "url": "http://apeimeudon92.odns.fr/Site-APEI/",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -354,7 +354,7 @@
       "url": "https://www.apeilamaisonduphare.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -386,7 +386,7 @@
       "value": "Métropole du Grand Paris",
       "source_url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
       "source_label": "API Découpage administratif (geo.api.gouv.fr)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -398,7 +398,7 @@
       "url": "https://asnieres-sur-seine.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/90b3deac-b4f6-4c48-92b4-d787a265ad19",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     }
   ],
@@ -407,37 +407,37 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 92",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2292%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

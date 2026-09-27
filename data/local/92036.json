@@ -29,7 +29,7 @@
     "part_90_plus": 0.6,
     "part_75_plus": 5.3,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "saint-denis",
@@ -102,7 +102,7 @@
       "value": "11,9 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -111,7 +111,7 @@
       "value": "5,3 % de la population (75-89 ans : 4,7 % ; 90 ans ou plus : 0,6 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -120,7 +120,7 @@
       "value": "50 874 habitants (Gennevilliers)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -131,7 +131,7 @@
       "url": "http://www.hauts-de-seine.fr/solidarites/personnes-agees/maintien-a-domicile/adresses-des-clic-et-coordinations-gerontologiques/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
       "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -143,7 +143,7 @@
       "url": "https://www.ville-gennevilliers.fr/164/demarches-et-services/action-sociale/centre-communal-d-action-sociale-ccas.htm",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/732f3c4c-86fa-4aea-8969-af60778609c5",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -155,7 +155,7 @@
       "url": "https://www.ville-gennevilliers.fr/164/demarches-et-services/action-sociale/centre-communal-d-action-sociale-ccas.htm",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/2e2eb456-b783-472a-9cd3-e57a518e012f",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -167,7 +167,7 @@
       "url": "https://mdphenligne.cnsa.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3f9f35ee-4761-47c3-8643-bf7b11fcecb4",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -179,7 +179,7 @@
       "url": "https://www.hauts-de-seine.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68ae9287-fc9e-48b6-a8d6-8e9b669ff131",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -191,7 +191,7 @@
       "url": "http://www.arpavie.fr",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -203,7 +203,7 @@
       "url": "http://www.repotel.fr/fr/gennevilliers-maison-de-retraite-ehpad-hauts-de-seine-92/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -215,7 +215,7 @@
       "url": "https://www.domusvi.com/maisons-de-retraite/residence-villa-caroline-gennevilliers-630904",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -227,7 +227,7 @@
       "url": "http://www.adef-residences.com/nos-maisons/nos-residences/ile-de-france/gennevilliers/la-maison-des-cytises",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -239,7 +239,7 @@
       "telephone": "01 47 60 61 62",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -250,7 +250,7 @@
       "commune_insee": "92025",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -274,7 +274,7 @@
       "url": "https://www.apei-bs.asso.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -286,7 +286,7 @@
       "url": "http://apeimeudon92.odns.fr/Site-APEI/",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -298,7 +298,7 @@
       "url": "https://www.apeilamaisonduphare.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -330,7 +330,7 @@
       "value": "Métropole du Grand Paris",
       "source_url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
       "source_label": "API Découpage administratif (geo.api.gouv.fr)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -342,7 +342,7 @@
       "url": "https://www.ville-gennevilliers.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/e674993d-27c8-4ff0-afc0-9917844bbd68",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     }
   ],
@@ -351,37 +351,37 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 92",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2292%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

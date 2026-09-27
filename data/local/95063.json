@@ -29,7 +29,7 @@
     "part_90_plus": 0.6,
     "part_75_plus": 5.1,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "puteaux",
@@ -102,7 +102,7 @@
       "value": "10,7 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -111,7 +111,7 @@
       "value": "5,1 % de la population (75-89 ans : 4,5 % ; 90 ans ou plus : 0,6 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -120,7 +120,7 @@
       "value": "34 314 habitants (Bezons)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -132,7 +132,7 @@
       "url": "https://www.ville-bezons.fr/vivre-a-bezons/action-sociale-et-solidarites/centre-communal-daction-sociale/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/2883a91a-bd20-4f94-b17a-02e5f167c298",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -143,7 +143,7 @@
       "url": "https://www.mdph.valdoise.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c173b0fc-8cb8-4653-8114-1152912a759b",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -155,7 +155,7 @@
       "url": "https://www.valdoise.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/ac0d4c93-2188-459d-92f3-6253bc77eac6",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -166,7 +166,7 @@
       "telephone": "01 39 61 08 40",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -178,7 +178,7 @@
       "url": "https://mapad.fr/etablissements/residence-arc-en-ciel-bezons/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -190,7 +190,7 @@
       "telephone": "01 39 96 36 54",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -214,7 +214,7 @@
       "url": "http://www.aped-espoir.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -226,7 +226,7 @@
       "url": "https://www.haarp.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -237,7 +237,7 @@
       "telephone": "01 39 84 18 45",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -269,7 +269,7 @@
       "value": "CA Saint Germain Boucles de Seine",
       "source_url": "https://geo.api.gouv.fr/departements/95/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
       "source_label": "API Découpage administratif (geo.api.gouv.fr)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -281,7 +281,7 @@
       "url": "https://www.ville-bezons.fr/a-la-une/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/9eb6008b-eac3-43bc-b7d4-317cbaadda96",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     }
   ],
@@ -290,32 +290,32 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements/95/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 95",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2295%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

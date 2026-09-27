@@ -31,7 +31,7 @@
     "part_90_plus": 0.5,
     "part_75_plus": 4.3,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "saint-denis",
@@ -104,7 +104,7 @@
       "value": "11 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -113,7 +113,7 @@
       "value": "4,3 % de la population (75-89 ans : 3,8 % ; 90 ans ou plus : 0,5 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -122,7 +122,7 @@
       "value": "148 907 habitants (Saint-Denis)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -132,7 +132,7 @@
       "telephone": "01 55 87 09 19",
       "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
       "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -144,7 +144,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/ad5d621a-90f8-4115-bdb5-d6cb18fc0c9c",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -156,7 +156,7 @@
       "url": "https://www.saintdenis.fr/CCAS",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/6238c430-c5e7-4d30-b3e9-bc7e6c6a8730",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -168,7 +168,7 @@
       "url": "https://place-handicap.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/b7261db7-56e9-47eb-9333-2a18d4ae4219",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -180,7 +180,7 @@
       "url": "https://seinesaintdenis.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/012bd5bc-7ddd-4c92-bbd9-49d7fbbd6395",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -192,7 +192,7 @@
       "url": "http://www.residencelapeupleraie.com/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -204,7 +204,7 @@
       "url": "http://www.arpavie.fr",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -216,7 +216,7 @@
       "url": "http://www.ville-saint-denis.fr",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -227,7 +227,7 @@
       "telephone": "01 49 33 69 75",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -239,7 +239,7 @@
       "url": "http://ville-saint-denis.fr/jcms/jcms/w_12774/residence-pour-personnes-agees-basilique",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -250,7 +250,7 @@
       "telephone": "01 42 35 61 70",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -261,7 +261,7 @@
       "telephone": "01 49 21 23 41",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -272,7 +272,7 @@
       "telephone": "01 42 35 70 64",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -284,7 +284,7 @@
       "url": "http://www.adef-residences.com/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -296,7 +296,7 @@
       "telephone": "01 42 35 61 40",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -308,7 +308,7 @@
       "telephone": "01 42 35 61 40",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -320,7 +320,7 @@
       "telephone": "01 49 33 41 41",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -343,7 +343,7 @@
       "telephone": "01 48 26 31 32",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -354,7 +354,7 @@
       "telephone": "01 45 09 46 45",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -377,7 +377,7 @@
       "telephone": "01 43 30 42 00",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -409,7 +409,7 @@
       "value": "Métropole du Grand Paris",
       "source_url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
       "source_label": "API Découpage administratif (geo.api.gouv.fr)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -421,7 +421,7 @@
       "url": "https://ville-saint-denis.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/73ad7558-2bf1-417e-8d98-9f064514edd2",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -433,7 +433,7 @@
       "url": "http://www.mairie-pierrefitte93.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/f2532de6-6c81-495c-b67c-d629248c0a97",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     }
   ],
@@ -442,37 +442,37 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 93",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2293%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

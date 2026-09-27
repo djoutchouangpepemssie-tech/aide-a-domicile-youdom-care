@@ -29,7 +29,7 @@
     "part_90_plus": 0.8,
     "part_75_plus": 5.5,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "vitry-sur-seine",
@@ -102,7 +102,7 @@
       "value": "12,6 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -111,7 +111,7 @@
       "value": "5,5 % de la population (75-89 ans : 4,7 % ; 90 ans ou plus : 0,8 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -120,7 +120,7 @@
       "value": "46 122 habitants (Choisy-le-Roi)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -132,7 +132,7 @@
       "url": "https://www.choisyleroi.fr/action-sociale/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/eb12919b-28c2-4d74-9347-7f8c3434048d",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -144,7 +144,7 @@
       "url": "https://www.valdemarne.fr/a-votre-service/handicap/maison-departementale-des-personnes-handicapees-mdph",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/98a4d3a3-3d62-452e-a9da-d7263de81bc2",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -156,7 +156,7 @@
       "url": "https://www.valdemarne.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/b5c9510a-5e42-49fc-928c-db92caf8b76b",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -167,7 +167,7 @@
       "telephone": "01 48 84 03 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -179,7 +179,7 @@
       "url": "http://www.ledepartement66.fr/structure/197/22-les-structures-d-accueil.htm",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -190,7 +190,7 @@
       "telephone": "01 48 90 01 01",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -202,7 +202,7 @@
       "telephone": "01 46 80 11 68",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -213,7 +213,7 @@
       "commune_insee": "94022",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -237,7 +237,7 @@
       "url": "http://adped94.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -261,7 +261,7 @@
       "url": "http://www.apogei94.com",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -273,7 +273,7 @@
       "url": "http://www.etai.asso.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -294,7 +294,7 @@
       "value": "Métropole du Grand Paris",
       "source_url": "https://geo.api.gouv.fr/departements/94/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
       "source_label": "API Découpage administratif (geo.api.gouv.fr)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -306,7 +306,7 @@
       "url": "https://www.choisyleroi.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/a7cb763f-e6a9-4ddd-9f5a-2809b282e2e0",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     }
   ],
@@ -315,32 +315,32 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements/94/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 94",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2294%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

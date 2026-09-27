@@ -21,7 +21,7 @@
     "part_90_plus": 1,
     "part_75_plus": 7.3,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "vitry-sur-seine",
@@ -36,7 +36,7 @@
       "value": "13,3 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -44,7 +44,7 @@
       "value": "7,3 % de la population (75-89 ans : 6,2 % ; 90 ans ou plus : 1 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -52,7 +52,7 @@
       "value": "1 419 531 habitants (Val-de-Marne)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -63,7 +63,7 @@
       "url": "https://www.valdemarne.fr/a-votre-service/autonomie/espace-autonomie-ex-centre-local-dinformation-et-de-coordination-clic-secteur-3",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/9de4113f-767c-4451-a9e6-a69f7e2cce8d",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -74,7 +74,7 @@
       "url": "http://www.clic2marne.org",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/6dedd33c-88cb-4115-bb25-382d80511d46",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -85,7 +85,7 @@
       "url": "https://www.valdemarne.fr/a-votre-service/autonomie/espace-autonomie-ex-centre-local-dinformation-et-de-coordination-clic-secteur-2",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/c7435f0c-4bba-460f-a486-fb6d69c63011",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -96,7 +96,7 @@
       "url": "https://www.valdemarne.fr/a-votre-service/autonomie/espace-autonomie-ex-centre-local-dinformation-et-de-coordination-clic-secteur-6",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/6e189524-abfd-4f65-a188-467e1f48e33d",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -107,7 +107,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/021bd095-a9d5-4c80-a287-9538859b1aae",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -118,7 +118,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr/annuaire-points-dinformation-et-plateformes-de-repit/CLIC/val-de-marne-94/fontenay-sous-bois-94120/espace-autonomie-secteur-1/89967",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/9e9ee421-653a-4625-b6a5-3a0f6c1c1395",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -129,7 +129,7 @@
       "url": "http://www.clic3-94.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/fe47547a-37a7-4426-ab38-d17eb0533ec1",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -140,7 +140,7 @@
       "url": "https://www.valdemarne.fr/a-votre-service/autonomie/espace-autonomie-ex-centre-local-dinformation-et-de-coordination-clic-secteur-5",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/1168b84f-af7c-43b1-b3d9-8b7b9a5ba1f6",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -151,7 +151,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/5505fc78-7bf8-46cc-b572-a22e25816483",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -162,7 +162,7 @@
       "url": "http://www.abcd94.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/3e64dc33-def3-4477-9eca-e1e29885dcbf",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -173,7 +173,7 @@
       "url": "http://www.orpea.com",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/dda569e3-ac3e-43ff-84fc-bfabc32bd370",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -184,7 +184,7 @@
       "url": "http://www.delta7.asso.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/3ff992a9-b14d-407c-a77f-abe84c01ad7d",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "mdph",
@@ -195,7 +195,7 @@
       "url": "https://www.valdemarne.fr/a-votre-service/handicap/maison-departementale-des-personnes-handicapees-mdph",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/98a4d3a3-3d62-452e-a9da-d7263de81bc2",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "aide-departementale",
@@ -206,7 +206,7 @@
       "url": "https://www.valdemarne.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-de-marne/b5c9510a-5e42-49fc-928c-db92caf8b76b",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "accueil-jour",
@@ -214,7 +214,7 @@
       "value": "28 dans le département (Val-de-Marne)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "residence-autonomie",
@@ -222,7 +222,7 @@
       "value": "53 dans le département (Val-de-Marne)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "ehpad",
@@ -230,7 +230,7 @@
       "value": "72 dans le département (Val-de-Marne)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -241,7 +241,7 @@
       "telephone": "01 48 71 40 72",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -252,7 +252,7 @@
       "telephone": "01 49 30 74 78",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -263,7 +263,7 @@
       "telephone": "01 41 81 45 63",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -274,7 +274,7 @@
       "telephone": "01 48 76 47 47",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -285,7 +285,7 @@
       "telephone": "01 55 98 10 56",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -296,7 +296,7 @@
       "telephone": "01 53 88 10 06",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -307,7 +307,7 @@
       "telephone": "01 45 10 19 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -318,7 +318,7 @@
       "telephone": "01 45 17 50 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -329,7 +329,7 @@
       "telephone": "01 45 93 71 71",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -339,7 +339,7 @@
       "commune_insee": "94015",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -350,7 +350,7 @@
       "telephone": "01 49 59 40 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -361,7 +361,7 @@
       "telephone": "01 43 86 20 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "transport-adapte",
@@ -383,7 +383,7 @@
       "url": "http://adped94.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -405,7 +405,7 @@
       "url": "http://www.apogei94.com",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -416,7 +416,7 @@
       "url": "http://www.etai.asso.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -435,32 +435,32 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 94",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2294%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

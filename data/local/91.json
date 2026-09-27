@@ -21,7 +21,7 @@
     "part_90_plus": 1,
     "part_75_plus": 7.4,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "vitry-sur-seine",
@@ -36,7 +36,7 @@
       "value": "13,5 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -44,7 +44,7 @@
       "value": "7,4 % de la population (75-89 ans : 6,4 % ; 90 ans ou plus : 1 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -52,7 +52,7 @@
       "value": "1 324 546 habitants (Essonne)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -63,7 +63,7 @@
       "url": "http://www.portesessonne.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/ed9eef8c-f443-48ff-83bc-40f08bf2437a",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -74,7 +74,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/c515b63d-22b4-4dc9-853a-0cbcf4bb8758",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -85,7 +85,7 @@
       "url": "http://www.clic-orgessonne.com",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/7b569b8e-5bc6-4884-8a3c-38b664d73fd0",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -96,7 +96,7 @@
       "url": "https://www.cliccoeuressonne.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/066027e0-e46f-4a23-862d-e14608738fe5",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -107,7 +107,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/895c929c-951a-44e1-850c-2afbbdd6721b",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -118,7 +118,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/195dcf24-afd0-4bc3-80d2-0c27a57c2128",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -129,7 +129,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/08439206-7814-4dbc-8666-d56e81847e4c",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -140,7 +140,7 @@
       "url": "https://www.ch-arpajon.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/3e2912d0-7fff-4c19-8966-4c4804b54a68",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -151,7 +151,7 @@
       "url": "http://www.hopital-les-magnolias.com",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/2d4e2bf5-ecb7-4a79-b5f3-6d589c534fa2",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "mdph",
@@ -162,7 +162,7 @@
       "url": "https://www.essonne.fr/sante-social-solidarite/handicap/la-mdph",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/eb9f20b0-458b-4fff-8047-e2c12e0665f6",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "aide-departementale",
@@ -173,7 +173,7 @@
       "url": "https://www.essonne.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/dc3f7356-c1b2-4641-967f-c3359d2fa22f",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "accueil-jour",
@@ -181,7 +181,7 @@
       "value": "23 dans le département (Essonne)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "residence-autonomie",
@@ -189,7 +189,7 @@
       "value": "46 dans le département (Essonne)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "ehpad",
@@ -197,7 +197,7 @@
       "value": "100 dans le département (Essonne)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -208,7 +208,7 @@
       "telephone": "01 64 92 92 92",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -219,7 +219,7 @@
       "telephone": "01 69 29 75 75",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -230,7 +230,7 @@
       "telephone": "01 69 54 29 58",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -241,7 +241,7 @@
       "telephone": "01 64 54 33 33",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -252,7 +252,7 @@
       "telephone": "01 61 69 61 69",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -263,7 +263,7 @@
       "telephone": "01 69 29 75 75",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -274,7 +274,7 @@
       "telephone": "01 60 80 60 48",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -285,7 +285,7 @@
       "telephone": "01 60 80 60 48",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -296,7 +296,7 @@
       "telephone": "01 61 69 61 69",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -307,7 +307,7 @@
       "telephone": "01 60 80 60 48",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -318,7 +318,7 @@
       "telephone": "01 69 83 63 63",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -329,7 +329,7 @@
       "telephone": "01 69 25 42 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "transport-adapte",
@@ -351,7 +351,7 @@
       "url": "https://adapei91.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -391,32 +391,32 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 91",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2291%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

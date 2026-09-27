@@ -14,7 +14,7 @@
     "part_90_plus": 1,
     "part_75_plus": 7.2,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "vague": 1,
   "motif_vague": "region",
@@ -25,7 +25,7 @@
       "value": "13,4 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -33,7 +33,7 @@
       "value": "7,2 % de la population (75-89 ans : 6,2 % ; 90 ans ou plus : 1 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -41,7 +41,7 @@
       "value": "12 380 964 habitants (Île-de-France)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "transport-adapte",
@@ -63,7 +63,7 @@
       "url": "https://www.unapei-idf.org",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     }
   ],
   "generated_at": "2026-09-26",
@@ -71,17 +71,17 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

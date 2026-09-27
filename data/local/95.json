@@ -21,7 +21,7 @@
     "part_90_plus": 0.8,
     "part_75_plus": 6.2,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "puteaux",
@@ -36,7 +36,7 @@
       "value": "13,2 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -44,7 +44,7 @@
       "value": "6,2 % de la population (75-89 ans : 5,4 % ; 90 ans ou plus : 0,8 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "demographie",
@@ -52,7 +52,7 @@
       "value": "1 270 845 habitants (Val-d'Oise)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -63,7 +63,7 @@
       "url": "https://www.sarcelles.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c6152d96-5499-4560-a1b6-2cb41311a80f",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "point-information",
@@ -74,7 +74,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/b7c86baf-1058-473f-beb3-bcd14765a0ca",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -85,7 +85,7 @@
       "url": "https://www.pour-les-personnes-agees.gouv.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/4522da1d-cb4d-4839-8260-4c9ede83e540",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "plateforme-repit",
@@ -96,7 +96,7 @@
       "url": "https://hopital-novo.fr/ch-pontoise/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/1e039b27-c4d8-4979-9eb8-b5ce7dca7f6a",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "mdph",
@@ -106,7 +106,7 @@
       "url": "https://www.mdph.valdoise.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c173b0fc-8cb8-4653-8114-1152912a759b",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "aide-departementale",
@@ -117,7 +117,7 @@
       "url": "https://www.valdoise.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/ac0d4c93-2188-459d-92f3-6253bc77eac6",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "accueil-jour",
@@ -125,7 +125,7 @@
       "value": "18 dans le département (Val-d'Oise)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "residence-autonomie",
@@ -133,7 +133,7 @@
       "value": "36 dans le département (Val-d'Oise)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "ehpad",
@@ -141,7 +141,7 @@
       "value": "77 dans le département (Val-d'Oise)",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -151,7 +151,7 @@
       "commune_insee": "95052",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -162,7 +162,7 @@
       "telephone": "01 34 39 15 10",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -172,7 +172,7 @@
       "commune_insee": "95018",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -183,7 +183,7 @@
       "telephone": "01 34 23 24 25",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -194,7 +194,7 @@
       "telephone": "01 34 53 21 21",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -205,7 +205,7 @@
       "telephone": "01 39 37 15 20",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -216,7 +216,7 @@
       "telephone": "01 30 40 60 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -226,7 +226,7 @@
       "commune_insee": "95052",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -237,7 +237,7 @@
       "telephone": "01 30 63 83 30",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "hopital",
@@ -248,7 +248,7 @@
       "telephone": "01 34 06 60 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "transport-adapte",
@@ -270,7 +270,7 @@
       "url": "http://www.aped-espoir.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -281,7 +281,7 @@
       "url": "https://www.haarp.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -291,7 +291,7 @@
       "telephone": "01 39 84 18 45",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "type": "association",
@@ -320,32 +320,32 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 95",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2295%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",
