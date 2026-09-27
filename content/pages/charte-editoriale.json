@@ -1,0 +1,34 @@
+{
+  "_lisezmoi": "Section « Le Fil » de la page /a-propos/charte-editoriale/ (docs/06 §4, P7.1) : comment les articles du magazine sont écrits, relus, sourcés et mis à jour, et l'usage d'outils d'aide à la rédaction sous la responsabilité d'un auteur et d'un relecteur nommés. Les principes généraux de la charte restent dans pages/a-propos.json (charte_page). Seulement la méthode : aucun fait d'entreprise, aucun chiffre.",
+  "magazine": {
+    "h2": "Le Fil : comment un article est fabriqué",
+    "chapo": "Chaque article du magazine suit le même chemin, du choix de la question jusqu'à sa révision. Le voici, étape par étape.",
+    "etapes": [
+      {
+        "titre": "Écrit pour une question réelle",
+        "texte": "Un article part d'une question que se posent les proches : que change la maladie à la maison, comment prévenir une chute, à quelle aide a-t-on droit. Il y répond dès le premier paragraphe, en phrases courtes, sans jargon. L'auteur est nommé sous le titre, avec sa fonction."
+      },
+      {
+        "titre": "Relu par un professionnel quand la santé est en jeu",
+        "texte": "Un article qui touche à une maladie, à un handicap ou à des soins n'est publié qu'après relecture par un professionnel nommé ; son nom et la date de relecture apparaissent sous le titre. Tant que cette relecture n'a pas eu lieu, l'article porte la mention « Relecture professionnelle à venir » et n'est pas mis en ligne."
+      },
+      {
+        "titre": "Sourcé, avec des chiffres datés",
+        "texte": "Chaque fait chiffré ou juridique renvoie à une source numérotée en fin d'article : institutions et associations reconnues, adresse réellement ouverte pendant la rédaction, date de consultation indiquée. Les montants d'aides portent leur année. Une adresse non vérifiée n'est jamais citée."
+      },
+      {
+        "titre": "Mis à jour à date fixe",
+        "texte": "Un article affiche sa date de publication et sa date de dernière mise à jour. Il porte aussi une date de révision prévue : douze mois au plus, six mois pour la rubrique « Droits et aides ». Un article dont la révision est échue est signalé à l'équipe et revu avant de rester en ligne."
+      },
+      {
+        "titre": "Des outils d'aide à la rédaction, sous responsabilité humaine",
+        "texte": "Des outils d'aide à la rédaction peuvent servir à préparer un plan, à reformuler une phrase ou à vérifier une longueur. Ils n'écrivent jamais seuls : un auteur nommé et, pour les sujets de santé, un relecteur nommé lisent, corrigent et répondent de chaque phrase publiée."
+      },
+      {
+        "titre": "Un seul encart, aucun récit inventé",
+        "texte": "Un article utile contient au plus un encart vers un service, situé après le corps, là où il répond à la question du lecteur. Les exemples sont présentés comme des illustrations. Aucun témoignage ni portrait n'est publié sans l'accord écrit de la personne concernée."
+      }
+    ],
+    "lien": { "libelle": "Découvrir le magazine", "href": "/magazine/" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_lisezmoi": "Index /outils/ (docs/06 §7, P7.7) : cinq documents gratuits à imprimer, offerts sans demander d'e-mail. Le contenu de chaque outil vit dans content/outils/{slug}.json ; ce fichier ne porte que les textes de l'index. Aucun fait d'entreprise ici.",
+  "seo": {
+    "titre": "Outils gratuits à imprimer : listes, fiches de vie, mémo",
+    "description": "Cinq documents gratuits à imprimer, sans e-mail à laisser : les 48 heures après l'hôpital, fiches de vie de l'enfant et du proche, tour anti-chutes, aides."
+  },
+  "ariane": "Outils à imprimer",
+  "h1": "Des outils à imprimer, gratuits, sans rien demander",
+  "chapo": "Une liste à cocher, une fiche à remplir à la main, un mémo à garder près du téléphone. Cinq documents pensés pour les jours où tout va vite.",
+  "liste_h2": "Les cinq outils",
+  "confiance": {
+    "titre": "Sans e-mail, sans compte, sans contrepartie",
+    "texte": "Vous imprimez, vous remplissez à la main, vous gardez le papier chez vous. Rien n'est saisi sur le site, rien n'est collecté."
+  },
+  "appel": {
+    "h2": "Vous préférez en parler ?",
+    "texte": "Un conseiller vous rappelle et regarde votre situation avec vous, sans engagement."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "_lisezmoi": "Index /magazine/ et rubriques /magazine/categorie/{rubrique}/ du magazine « Le Fil » (docs/06 §1 et §2, P7.1). Les articles sont dans content/magazine/*.mdx ; ce fichier ne porte que les textes des pages d'ensemble. Les titres moteur font 50 à 53 caractères et les descriptions 140 à 147, pour laisser la place au suffixe des pages 2 et suivantes (interface.json › magazine.pagination). Aucun fait Youdom Care ici : seulement la ligne éditoriale.",
+  "seo": {
+    "titre": "Le Fil, le magazine de Youdom Care pour les aidants",
+    "description": "Comprendre une maladie, vivre chez soi, obtenir une aide, tenir dans la durée : des articles courts, sourcés et relus, pour les proches qui aident."
+  },
+  "ariane": "Le Fil",
+  "h1": "Le Fil, le magazine qui aide ceux qui aident",
+  "chapo": "Comprendre une maladie, aménager un logement, obtenir une aide, tenir dans la durée : des articles courts, sourcés et relus, écrits pour les proches qui accompagnent.",
+  "promesse": "Sortir de chaque article avec une chose que l'on comprend mieux, une chose que l'on peut faire aujourd'hui, et le sentiment de ne pas être seul.",
+  "rubriques": {
+    "comprendre": {
+      "seo": {
+        "titre": "Comprendre la maladie et le handicap, articles du Fil",
+        "description": "Maladies neurodégénératives, handicaps, vieillissement : ce qui se passe, ce que cela change à la maison, ce qui aide les proches. Sourcé et relu."
+      },
+      "h1": "Comprendre",
+      "texte": "Maladies neurodégénératives, handicaps, vieillissement : ce qui se passe, ce que cela change au quotidien."
+    },
+    "vivre-chez-soi": {
+      "seo": {
+        "titre": "Vivre chez soi : aménager, sécuriser, manger, dormir",
+        "description": "Aménagement du logement, prévention des chutes, repas, sommeil, activités, saisons : des repères concrets pour rester chez soi en confiance."
+      },
+      "h1": "Vivre chez soi",
+      "texte": "Aménagement, sécurité, repas, sommeil, activités, saisons : le quotidien à la maison, pièce par pièce."
+    },
+    "grandir-avec-un-handicap": {
+      "seo": {
+        "titre": "Grandir avec un handicap : école, fratrie et relais",
+        "description": "Enfants et adolescents en situation de handicap : école, fratrie, relais à domicile, passage à l’âge adulte. Des repères sourcés pour les parents."
+      },
+      "h1": "Grandir avec un handicap",
+      "texte": "Enfants et adolescents, école, fratrie, passage à l'âge adulte : accompagner sans s'oublier."
+    },
+    "tenir-dans-la-duree": {
+      "seo": {
+        "titre": "Tenir dans la durée : fatigue, relais, couple, emploi",
+        "description": "Fatigue, culpabilité, relais, couple, travail : ce que vivent les aidants, comment le reconnaître et où trouver du soutien, sans jugement ni leçon."
+      },
+      "h1": "Tenir dans la durée",
+      "texte": "Fatigue, culpabilité, relais, couple, travail : ce que vivent les aidants et ce qui les soulage."
+    },
+    "droits-et-aides": {
+      "seo": {
+        "titre": "Droits et aides : APA, PCH, AEEH et crédit d’impôt",
+        "description": "APA, PCH, AEEH, crédit d’impôt, protection juridique : qui y a droit, combien, comment la demander, pas à pas. Montants datés, sources officielles."
+      },
+      "h1": "Droits et aides",
+      "texte": "APA, PCH, AEEH, crédit d'impôt, protection juridique : les démarches expliquées pas à pas, avec leurs montants datés."
+    },
+    "dans-les-coulisses": {
+      "seo": {
+        "titre": "Dans les coulisses : le métier d'auxiliaire de vie",
+        "description": "Le métier d’auxiliaire de vie, la formation, la préparation d’une intervention, le cahier de liaison : comment se construit un accompagnement."
+      },
+      "h1": "Dans les coulisses",
+      "texte": "Le métier d'auxiliaire de vie, la formation, une journée avec les personnes accompagnées."
+    }
+  },
+  "charte": {
+    "texte": "Chaque article dit qui l'a écrit, qui l'a relu, d'où viennent ses chiffres et quand il sera revu.",
+    "lien": "Lire notre charte éditoriale",
+    "href": "/a-propos/charte-editoriale/"
+  }
+}
