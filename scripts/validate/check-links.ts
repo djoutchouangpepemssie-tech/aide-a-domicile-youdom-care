@@ -21,8 +21,6 @@ import { result, type Check, type CheckContext, type CheckResult } from "./types
 
 /** Pages annoncées par docs/PLAN.md et pas encore construites (phase entre parenthèses). */
 export const plannedRoutes: Readonly<Record<string, string>> = {
-  "/magazine/": "phase 7 (Le Fil)",
-  "/lexique/": "phase 7 (Le Fil)",
   "/professionnels/": "phase 8 (fonctionnement et entreprise)",
   "/recrutement/": "phase 8 (fonctionnement et entreprise)",
   "/recrutement/postuler/": "phase 8 (fonctionnement et entreprise)",
@@ -71,7 +69,7 @@ function walkJson(
 
 const markdownLink = /\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
 
-/** Adresses externes citées comme sources (`sources[].href`) d'un JSON ou d'un MDX. */
+/** Adresses externes citées comme sources (`sources[].href`, `lien_officiel.href` du lexique) d'un JSON ou d'un MDX. */
 export function extractSourceUrls(raw: string, isJson: boolean): string[] {
   const data: unknown = isJson ? JSON.parse(raw) : matter(raw).data;
   const urls: string[] = [];
@@ -89,7 +87,7 @@ export function extractSourceUrls(raw: string, isJson: boolean): string[] {
         ) {
           urls.push(item);
         } else {
-          walk(item, underSources || key === "sources");
+          walk(item, underSources || key === "sources" || key === "lien_officiel");
         }
       }
     }

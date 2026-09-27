@@ -2,7 +2,17 @@ import type { Dirent } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
+import {
+  listArticleFiles,
+  listAuthorFiles,
+  readArticleMeta,
+  readAuthor,
+} from "../../src/content/article-meta";
+import { findSharedSpellings, listLexiqueFiles, readLexiqueTerm } from "../../src/content/lexique";
+import { lexiquePageSchema, type LexiqueTerm } from "../../src/content/lexique-schema";
+import { editorialCharterSchema, magazinePageSchema } from "../../src/content/magazine-schema";
 import { readServiceMeta } from "../../src/content/service-meta";
+import { toolPageSchema, toolsPageSchema } from "../../src/content/tools-schema";
 import {
   aboutSchema,
   agenciesPageSchema,
@@ -49,6 +59,9 @@ const files = {
   "pages/formulaires-speciaux.json": specialFormsSchema,
   "pages/aide-a-domicile.json": regionPageSchema,
   "pages/agences.json": agenciesPageSchema,
+  "pages/magazine.json": magazinePageSchema,
+  "pages/charte-editoriale.json": editorialCharterSchema,
+  "pages/lexique.json": lexiquePageSchema,
   "emails.json": emailsSchema,
   "formulaires/neuro.json": formDefinitionSchema,
   "formulaires/personne-agee.json": formDefinitionSchema,
@@ -63,6 +76,13 @@ const files = {
   "aides/aeeh.json": aidPageSchema,
   "aides/cesu.json": aidPageSchema,
   "aides/aides-apres-hospitalisation.json": aidPageSchema,
+  // Outils à imprimer (docs/06 §7, P7.7).
+  "pages/outils.json": toolsPageSchema,
+  "outils/sortie-d-hospitalisation-48-heures.json": toolPageSchema,
+  "outils/fiche-de-vie-enfant.json": toolPageSchema,
+  "outils/fiche-de-vie-personne-agee.json": toolPageSchema,
+  "outils/tour-du-logement-anti-chutes.json": toolPageSchema,
+  "outils/aides-en-un-coup-d-oeil.json": toolPageSchema,
 } as const;
 
 export interface LoadedContent {
@@ -196,6 +216,48 @@ export async function runContentCheck(ctx: CheckContext): Promise<CheckResult> {
     } catch (error) {
       errors.push(error instanceof Error ? error.message : `${relative} : ${String(error)}`);
     }
+  }
+
+  // Articles du Fil (content/magazine/*.mdx, docs/06) : en-tête validé et corps borné aux
+  // composants autorisés ; un article invalide est une erreur ici (le chargeur, lui, l’ignore
+  // avec un avertissement pour ne jamais casser le build). Statuts : brouillon jamais construit,
+  // a_relire non construit en production ; en production, un sujet de santé publié sans
+  // relecteur est refusé par le schéma lui-même.
+  for (const file of await listArticleFiles(path.join(ctx.rootDir, "content", "magazine"))) {
+    const relative = path.relative(ctx.rootDir, file).split(path.sep).join("/");
+    try {
+      const article = await readArticleMeta(file);
+      if (article.meta.statut === "brouillon") {
+        warnings.push(`${relative} : statut brouillon, article jamais construit.`);
+      } else if (article.meta.statut === "a_relire") {
+        warnings.push(`${relative} : statut a_relire, article non construit en production.`);
+      }
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : `${relative} : ${String(error)}`);
+    }
+  }
+  // Fiches auteurs (content/auteurs/*.json) : validées quand il en existe.
+  for (const file of await listAuthorFiles(path.join(ctx.rootDir, "content", "auteurs"))) {
+    const relative = path.relative(ctx.rootDir, file).split(path.sep).join("/");
+    try {
+      await readAuthor(file);
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : `${relative} : ${String(error)}`);
+    }
+  }
+
+  // Lexique (content/lexique/*.json, docs/06 §6, P7.2) : chaque terme validé (120 à 250 mots,
+  // slug = nom du fichier), aucune graphie partagée par deux termes (lien automatique ambigu).
+  const lexiqueTerms: LexiqueTerm[] = [];
+  for (const file of await listLexiqueFiles(path.join(ctx.rootDir, "content", "lexique"))) {
+    try {
+      lexiqueTerms.push(await readLexiqueTerm(file));
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : String(error));
+    }
+  }
+  for (const shared of findSharedSpellings(lexiqueTerms)) {
+    errors.push(`content/lexique : graphie partagée par deux termes : ${shared}`);
   }
 
   if (errors.length > 0 || !ctx.prod) {

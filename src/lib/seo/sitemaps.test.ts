@@ -3,6 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { listFormDefinitions } from "@/content/form-definitions";
 import { getAidPage } from "@/content/aid-pages";
+import { listArticleMetas } from "@/content/article-meta";
+import { listLexiqueTerms } from "@/content/lexique";
 import { getSiteConfig } from "@/content/loader";
 import { departementCodeOf, listIndexableLocalPages } from "@/content/local";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
@@ -60,10 +62,26 @@ describe("plans de site segmentés", () => {
     expect(ids[0]).toBe("pages");
     for (const segment of populated) expect(segment.entries.length).toBeGreaterThan(0);
     // Sans contenu éditorial, ces segments restent absents ; les agences sont là depuis la phase 6.
-    for (const id of ["magazine", "lexique"]) {
-      expect(ids).not.toContain(id);
-    }
+    // Le segment magazine n’existe que si un article est publié (P7.1).
+    const published = (await listArticleMetas({ warn: () => {} })).some(
+      (article) => article.meta.statut === "publie",
+    );
+    expect(ids.includes("magazine")).toBe(published);
+    // Le lexique est alimenté depuis P7.2 (une page par terme de content/lexique).
+    expect(ids).toContain("lexique");
     expect(ids).toContain("agences");
+  });
+
+  it("liste une page par terme du lexique, datée par son champ maj", async () => {
+    const terms = await listLexiqueTerms();
+    const entries = (await segmentEntries("lexique")) ?? [];
+    expect(Object.fromEntries(entries.map((e) => [e.path, e.lastmod]))).toEqual(
+      Object.fromEntries(terms.map((term) => [`/lexique/${term.slug}/`, term.maj])),
+    );
+    expect(entries.length).toBeGreaterThanOrEqual(20);
+    // L'index /lexique/ est une route statique : il relève du segment pages, à sa date déclarée.
+    const pages = (await segmentEntries("pages")) ?? [];
+    expect(pages.find((e) => e.path === "/lexique/")?.lastmod).toBe(declaredLastmod["/lexique/"]);
   });
 
   it("n'émet que des chemins internes avec barre finale, hors zones jamais indexées, datés", async () => {
@@ -80,6 +98,8 @@ describe("plans de site segmentés", () => {
     const entries = await segmentEntries("pages");
     const paths = new Set(entries?.map((e) => e.path));
     for (const route of await staticAppRoutes()) {
+      // /magazine/ relève du segment magazine, alimenté quand un article est publié (P7.1).
+      if (route.startsWith("/magazine/")) continue;
       const excluded = neverIndexedPaths.some((prefix) => route.startsWith(prefix));
       expect(paths.has(route), route).toBe(!excluded);
     }
@@ -175,7 +195,10 @@ describe("plans de site segmentés", () => {
     expect(xml).toContain('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
     expect(xml).toContain("<loc>https://www.youdom-care.com/sitemap/pages.xml</loc>");
     expect(xml).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
-    expect(xml).not.toContain("/sitemap/magazine.xml");
+    const published = (await listArticleMetas({ warn: () => {} })).some(
+      (article) => article.meta.statut === "publie",
+    );
+    expect(xml.includes("/sitemap/magazine.xml")).toBe(published);
   });
 
   it("rend le plan d'un segment avec adresses absolues et lastmod", () => {

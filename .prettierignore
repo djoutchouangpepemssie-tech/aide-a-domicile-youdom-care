@@ -16,3 +16,7 @@ AGENTS.md
 
 # Données brutes et transformées (formatées par leurs propres scripts)
 data/
+
+# MDX du magazine : Prettier fusionne les listes placées dans <ARetenir> et <Attention> (phase 7)
+content/magazine/*.mdx
+tests/fixtures/magazine/*.mdx

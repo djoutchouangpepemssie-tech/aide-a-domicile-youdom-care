@@ -1,4 +1,7 @@
 import { getAidPage, listAidPageIds } from "@/content/aid-pages";
+import { MAGAZINE_PATH, rubriquePath } from "@/content/article-meta";
+import { articleRubriques, rubriqueLabels } from "@/content/article-schema";
+import { articlesOfRubrique, listBuildableArticles } from "@/content/articles";
 import { listFormDefinitions } from "@/content/form-definitions";
 import {
   getAbout,
@@ -6,6 +9,8 @@ import {
   getCallbackPage,
   getCaregiverCheckPage,
   getInterfaceTexts,
+  getLexiquePage,
+  getMagazinePage,
   getModesPage,
   getNavigation,
   getPricingPage,
@@ -19,6 +24,7 @@ import { departementCodeOf, listBuildableLocalPages } from "@/content/local";
 import type { SiteMapPage } from "@/content/schemas";
 import type { ServicePage } from "@/content/service-schema";
 import { listBuildableServicePages } from "@/content/services";
+import { getToolsPage, listToolPages, TOOLS_PATH, toolPath } from "@/content/tool-pages";
 
 /*
  * Plan du site (docs/04 §2 « Maillage », P5.5) : toutes les pages construites et indexables,
@@ -221,6 +227,39 @@ export async function buildSiteMap(): Promise<SiteMapGroup[]> {
     },
   ];
 
+  // Outils à imprimer (docs/06 §7, P7.7) : l'index et les cinq documents en retrait.
+  const toolsPage = getToolsPage();
+  const outils: SiteMapEntry[] = [
+    {
+      href: TOOLS_PATH,
+      label: toolsPage.ariane,
+      children: listToolPages().map((tool) => ({ href: toolPath(tool.id), label: tool.ariane })),
+    },
+  ];
+
+  // Magazine « Le Fil » (docs/06 §2, P7.1) : l'index, les six rubriques et leurs articles construits.
+  const magazinePage = getMagazinePage();
+  const articles = await listBuildableArticles();
+  const magazine: SiteMapEntry[] = [
+    {
+      href: MAGAZINE_PATH,
+      label: magazinePage.ariane,
+      children: articleRubriques.map((rubrique) => {
+        const children = articlesOfRubrique(articles, rubrique).map((article) => ({
+          href: article.chemin,
+          label: article.meta.titre,
+        }));
+        return {
+          href: rubriquePath(rubrique),
+          label: rubriqueLabels[rubrique],
+          ...(children.length > 0 ? { children } : {}),
+        };
+      }),
+    },
+    // Lexique du Fil (docs/06 §6, P7.2) : l'index seulement, les termes sont sur la page même.
+    { href: "/lexique/", label: getLexiquePage().ariane },
+  ];
+
   const groups: SiteMapGroup[] = [
     { id: "fonctionnement", title: page.groupes.fonctionnement, entries: fonctionnement },
     { id: "pour_qui", title: page.groupes.pour_qui, entries: pourQui },
@@ -229,6 +268,8 @@ export async function buildSiteMap(): Promise<SiteMapGroup[]> {
     { id: "formulaires", title: page.groupes.formulaires, entries: formulaires },
     { id: "territoires", title: page.groupes.territoires, entries: territoires },
     { id: "entreprise", title: page.groupes.entreprise, entries: entreprise },
+    { id: "magazine", title: page.groupes.magazine, entries: magazine },
+    { id: "outils", title: page.groupes.outils, entries: outils },
     { id: "legal", title: page.groupes.legal, entries: [...legalRoutes] },
   ];
   return groups.filter((group) => group.entries.length > 0);

@@ -1,8 +1,17 @@
 import { getAidPage, listAidPageIds } from "@/content/aid-pages";
+import {
+  listArticleMetas,
+  MAGAZINE_PATH,
+  rubriquePath,
+  type ArticleMeta,
+} from "@/content/article-meta";
+import { articleRubriques } from "@/content/article-schema";
 import { listFormDefinitions } from "@/content/form-definitions";
+import { lexiqueTermPath, listLexiqueTerms } from "@/content/lexique";
 import { getSiteConfig } from "@/content/loader";
 import { departementCodeOf, listIndexableLocalPages, type LocalPage } from "@/content/local";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
+import { latestToolUpdate, listToolPages, TOOLS_PATH, toolPath } from "@/content/tool-pages";
 import { neverIndexedPaths } from "./indexable";
 
 /*
@@ -100,6 +109,7 @@ export const declaredLastmod: Readonly<Record<string, string>> = {
   "/demande/relais-aidant/": "2026-09-20",
   "/aide-a-domicile/": "2026-09-20",
   "/agences/": "2026-09-20",
+  "/lexique/": "2026-09-27",
 };
 
 /** Date de la dernière révision des pages d'agences (site.config.json > agences, content/pages/agences.json). */
@@ -122,7 +132,14 @@ async function pagesEntries(): Promise<SitemapEntry[]> {
     return page ? [{ path: `/tarifs-et-aides/${id}/`, lastmod: page.maj }] : [];
   });
 
-  return [...declared, ...aids];
+  // Outils à imprimer (docs/06 §7, P7.7) : cinq pages utilitaires statiques, datées par le `maj`
+  // de content/outils/{id}.json ; l'index porte la date la plus récente. Elles restent dans le
+  // segment `pages`, comme les pages d'aides : docs/04 §2 fixe treize segments et ces documents
+  // ne forment pas une famille éditoriale distincte (contrairement au magazine ou au lexique).
+  const tools = listToolPages().map((tool) => ({ path: toolPath(tool.id), lastmod: tool.maj }));
+  const toolsIndex = tools.length > 0 ? [{ path: TOOLS_PATH, lastmod: latestToolUpdate() }] : [];
+
+  return [...declared, ...aids, ...toolsIndex, ...tools];
 }
 
 /** Segment `services` : pages relues seulement ; une page `a_relire` est en noindex. */
@@ -137,8 +154,11 @@ async function servicesEntries(): Promise<SitemapEntry[]> {
   return entries;
 }
 
-/** Segment prêt mais sans contenu pour l'instant. */
-const empty = async (): Promise<SitemapEntry[]> => [];
+/** Segment `lexique` (docs/06 §6, P7.2) : une page par terme, datée par `maj` ; l'index /lexique/ est dans `pages`. */
+async function lexiqueEntries(): Promise<SitemapEntry[]> {
+  const terms = await listLexiqueTerms();
+  return terms.map((term) => ({ path: lexiqueTermPath(term.slug), lastmod: term.maj }));
+}
 
 /** Segment `local-{departement}` : pages locales publiées du département, datées par `maj`. */
 function localEntries(departement: string): () => Promise<SitemapEntry[]> {
@@ -148,6 +168,32 @@ function localEntries(departement: string): () => Promise<SitemapEntry[]> {
       .filter((page: LocalPage) => departementCodeOf(page) === departement)
       .map((page) => ({ path: page.chemin, lastmod: page.editorial.maj }));
   };
+}
+
+/**
+ * Segment `magazine` (docs/06, P7.1) : articles `publie` datés par `maj_le`, l'index /magazine/
+ * et chaque rubrique qui compte au moins un article publié (date : le `maj_le` le plus récent).
+ * Vide tant qu'aucun article n'est publié : l'index et les rubriques sont alors en noindex.
+ * Les pages 2 et suivantes ne sont pas listées : les articles le sont déjà.
+ */
+async function magazineEntries(): Promise<SitemapEntry[]> {
+  const published = (await listArticleMetas({ warn: () => {} })).filter(
+    (article) => article.meta.statut === "publie",
+  );
+  if (published.length === 0) return [];
+  const latest = (articles: readonly ArticleMeta[]) =>
+    articles.map((a) => a.meta.maj_le).reduce((max, date) => (date > max ? date : max));
+  const entries: SitemapEntry[] = [{ path: MAGAZINE_PATH, lastmod: latest(published) }];
+  for (const rubrique of articleRubriques) {
+    const inRubrique = published.filter((article) => article.meta.rubrique === rubrique);
+    if (inRubrique.length > 0) {
+      entries.push({ path: rubriquePath(rubrique), lastmod: latest(inRubrique) });
+    }
+  }
+  for (const article of published) {
+    entries.push({ path: article.chemin, lastmod: article.meta.maj_le });
+  }
+  return entries;
 }
 
 /** Segment `agences` : une page par agence réelle de site.config.json. */
@@ -170,9 +216,10 @@ export const sitemapSegments: readonly SitemapSegment[] = [
   { id: "local-seine-saint-denis", entries: localEntries("93") },
   { id: "local-val-de-marne", entries: localEntries("94") },
   { id: "local-val-d-oise", entries: localEntries("95") },
-  // Magazine « Le Fil » et lexique (docs/06), phase 8.
-  { id: "magazine", entries: empty },
-  { id: "lexique", entries: empty },
+  // Magazine « Le Fil » (docs/06, P7.1) : articles publiés, index et rubriques qui en listent.
+  { id: "magazine", entries: magazineEntries },
+  // Lexique (docs/06 §6), phase 7.
+  { id: "lexique", entries: lexiqueEntries },
   // Pages d'agences (/agences/{id}/), phase 6.
   { id: "agences", entries: agencesEntries },
 ];
