@@ -83,8 +83,6 @@
     box-shadow: var(--shadow-1);
     /* Un long mot ne déborde jamais d'une surface de verre. */
     overflow-wrap: break-word;
-<<<<<<< HEAD
-=======
   }
 
   /*
@@ -102,7 +100,6 @@
   .glass-strong,
   .glass-dark,
   .glass-blur {
->>>>>>> f83f095 (feat(design): photo de fond sur toutes les pages, verre liquide rétabli partout)
     -webkit-backdrop-filter: var(--glass-filter);
     backdrop-filter: var(--glass-filter);
   }
