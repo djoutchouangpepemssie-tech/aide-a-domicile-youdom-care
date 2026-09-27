@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCommitments, getEmailTexts, getInterfaceTexts, getSiteConfig } from "@/content/loader";
 import { isProduction } from "@/lib/env";
+import { clientIp, originAllowed } from "@/lib/http/request";
 import {
   createRateLimiter,
   handleLead,
@@ -22,33 +23,8 @@ export const dynamic = "force-dynamic";
 // LEAD_RATE_LIMIT : envois par adresse et par dix minutes (5 par défaut ; élevé pour les tests).
 const limiter = createRateLimiter(Number(process.env.LEAD_RATE_LIMIT ?? "") || 5);
 
-/** Origine acceptée : celle de la requête elle-même (même hôte) ou l'adresse publique du site. */
-export function originAllowed(request: Request): boolean {
-  const origin = request.headers.get("origin") ?? request.headers.get("referer");
-  if (!origin) return false;
-  let host: string;
-  try {
-    host = new URL(origin).host;
-  } catch {
-    return false;
-  }
-  const own = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-  if (own && host === own) return true;
-  const site = process.env.NEXT_PUBLIC_SITE_URL;
-  if (site) {
-    try {
-      if (new URL(site).host === host) return true;
-    } catch {
-      /* adresse publique mal formée : on ignore */
-    }
-  }
-  return false;
-}
-
-function clientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  return forwarded?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "inconnue";
-}
+// Contrôle d'origine et adresse du client : partagés avec api/mesure (src/lib/http/request.ts).
+export { originAllowed };
 
 function callbackDelay(): string | null {
   const { contact } = getSiteConfig();

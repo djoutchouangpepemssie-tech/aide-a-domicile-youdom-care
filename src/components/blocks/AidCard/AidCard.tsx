@@ -72,10 +72,12 @@ export function AidCard({
         </p>
       ) : null}
       <p className="m-0 mt-auto pt-4">
+        {/* Un nom de domaine long (monparcourshandicap.gouv.fr) doit pouvoir se couper : sans
+            cela la carte élargit la grille et la page défile horizontalement à 320 px (RGAA 10.11). */}
         <a
           href={official.href}
           rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center gap-2 font-bold"
+          className="inline-flex min-h-12 items-center gap-2 font-bold [overflow-wrap:anywhere]"
         >
           {official.label}
           <svg

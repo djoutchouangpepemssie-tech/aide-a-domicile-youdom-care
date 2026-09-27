@@ -22,6 +22,9 @@ import pricingJson from "../../content/tarifs.json";
 import regionPageJson from "../../content/pages/aide-a-domicile.json";
 import agenciesPageJson from "../../content/pages/agences.json";
 import lexiquePageJson from "../../content/pages/lexique.json";
+import professionalsPageJson from "../../content/pages/professionnels.json";
+import recruitmentPageJson from "../../content/pages/recrutement.json";
+import accessibilityPageJson from "../../content/pages/accessibilite.json";
 import { lexiquePageSchema, type LexiquePage } from "./lexique-schema";
 import magazinePageJson from "../../content/pages/magazine.json";
 import editorialCharterJson from "../../content/pages/charte-editoriale.json";
@@ -76,6 +79,12 @@ import {
   type RegionPage,
   agenciesPageSchema,
   type AgenciesPage,
+  professionalsPageSchema,
+  type ProfessionalsPage,
+  recruitmentPageSchema,
+  type RecruitmentPage,
+  accessibilityPageSchema,
+  type AccessibilityPage,
 } from "./schemas";
 
 /*
@@ -271,6 +280,42 @@ export function getLexiquePage(): LexiquePage {
   return lexiquePage;
 }
 
+let professionalsPage: ProfessionalsPage | undefined;
+
+/** Page /professionnels/ pour les prescripteurs (docs/03 §9, P8.1). */
+export function getProfessionalsPage(): ProfessionalsPage {
+  professionalsPage ??= parseContent(
+    professionalsPageSchema,
+    professionalsPageJson,
+    "pages/professionnels.json",
+  );
+  return professionalsPage;
+}
+
+let recruitmentPage: RecruitmentPage | undefined;
+
+/** Pages /recrutement/ et /recrutement/postuler/ (docs/03 §9, P8.2) ; les offres sont dans src/content/offres.ts. */
+export function getRecruitmentPage(): RecruitmentPage {
+  recruitmentPage ??= parseContent(
+    recruitmentPageSchema,
+    recruitmentPageJson,
+    "pages/recrutement.json",
+  );
+  return recruitmentPage;
+}
+
+let accessibilityPage: AccessibilityPage | undefined;
+
+/** Déclaration d'accessibilité /accessibilite/ (docs/07 §2 et §4, P8.4). */
+export function getAccessibilityPage(): AccessibilityPage {
+  accessibilityPage ??= parseContent(
+    accessibilityPageSchema,
+    accessibilityPageJson,
+    "pages/accessibilite.json",
+  );
+  return accessibilityPage;
+}
+
 export function getSiteConfig(): SiteConfig {
   siteConfig ??= parseContent(siteConfigSchema, siteConfigJson, "site.config.json");
   return siteConfig;
@@ -319,5 +364,8 @@ export function loadAllContent() {
     magazinePage: getMagazinePage(),
     editorialCharter: getEditorialCharter(),
     lexiquePage: getLexiquePage(),
+    professionalsPage: getProfessionalsPage(),
+    recruitmentPage: getRecruitmentPage(),
+    accessibilityPage: getAccessibilityPage(),
   };
 }

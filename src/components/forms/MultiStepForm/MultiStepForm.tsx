@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { Callout } from "@/components/ui/Callout/Callout";
 import { cn } from "@/lib/cn";
 import type { LeadForm } from "@/lib/lead/forms";
+import { track } from "@/lib/mesure/client";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 
 /*
@@ -135,15 +136,29 @@ export function MultiStepForm<T>({
   const headingRef = useRef<HTMLHeadingElement>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
 
+  // Étape d'une saisie conservée en attente de reprise : la mesure ne compte pas l'étape 1 affichée
+  // le temps du montage quand le visiteur revient en réalité à l'étape 3.
+  const pendingStep = useRef<number | null>(null);
+
   useEffect(() => {
     const stored = readStored<T>(form);
-    if (stored) queueMicrotask(() => setState(stored));
+    if (stored) {
+      pendingStep.current = stored.step;
+      queueMicrotask(() => setState(stored));
+    }
     restored.current = true;
   }, [form]);
 
   useEffect(() => {
     if (restored.current) writeStored(form, state);
   }, [form, state]);
+
+  // Mesure sans donnée personnelle (docs/05 §9) : le formulaire et le numéro d'étape, rien d'autre.
+  useEffect(() => {
+    if (pendingStep.current !== null && pendingStep.current !== state.step) return;
+    pendingStep.current = null;
+    track("demande_etape_vue", { formulaire: form, etape: state.step + 1 });
+  }, [form, state.step]);
 
   const step = steps[state.step] ?? steps[0];
   if (!step) throw new Error("MultiStepForm : aucune étape");
@@ -164,7 +179,13 @@ export function MultiStepForm<T>({
     const first = Object.keys(found)[0];
     if (first) {
       requestAnimationFrame(() => {
-        document.getElementById(fieldId(first))?.focus();
+        // L'identifiant d'un groupe (boutons radio, cases) est porté par le `fieldset`, qui ne
+        // prend pas le focus : on vise alors son premier contrôle (audit P8.4, RGAA 11.10).
+        const target = document.getElementById(fieldId(first));
+        const focusable = target?.matches("input, select, textarea, button, [tabindex]")
+          ? target
+          : target?.querySelector<HTMLElement>("input, select, textarea, button, [tabindex]");
+        (focusable ?? summaryRef.current)?.focus();
       });
       return false;
     }
@@ -221,6 +242,7 @@ export function MultiStepForm<T>({
         <div
           ref={summaryRef}
           role="alert"
+          tabIndex={-1}
           className="rounded-card border-2 border-danger bg-danger-bg p-4"
         >
           <p className="m-0 font-bold">{texts.erreurs_titre}</p>
@@ -270,7 +292,11 @@ export function MultiStepForm<T>({
       {status === "failed" ? (
         <Callout variant="attention" role="alert">
           {failureText[0]}
-          {telHref && phone ? <a href={telHref}>{formatFrenchPhone(phone)}</a> : null}
+          {telHref && phone ? (
+            <a href={telHref} data-mesure="formulaire">
+              {formatFrenchPhone(phone)}
+            </a>
+          ) : null}
           {failureText[1]}
         </Callout>
       ) : null}

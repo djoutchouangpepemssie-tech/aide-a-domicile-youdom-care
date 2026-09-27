@@ -32,7 +32,15 @@ export const forbiddenWords: readonly { label: string; regex: RegExp }[] = [
  * Formulations imposées par la loi (docs/07 §1) : elles contiennent un mot interdit et sont
  * retirées du texte avant contrôle.
  */
-const legalPhrases: readonly string[] = ["contrat de placement de travailleurs"];
+const legalPhrases: readonly string[] = [
+  "contrat de placement de travailleurs",
+  // RGPD (pages légales, P8.3) : « traitement » au sens du règlement, jamais au sens médical.
+  "responsable du traitement",
+  "traitement de vos données",
+  "traitement de données",
+  "traitement des données",
+  "traitements de données",
+];
 
 export const bannedLabels: readonly string[] = ["Envoyer", "En savoir plus", "Cliquez ici"];
 

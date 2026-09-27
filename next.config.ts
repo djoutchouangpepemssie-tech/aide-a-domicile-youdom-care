@@ -23,10 +23,14 @@ const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  // Permissions-Policy minimale (docs/07 §6). `browsing-topics` remplace `interest-cohort`
+  // (FLoC, retiré des navigateurs) : Chrome signalait l'ancienne directive comme inconnue (D-029).
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+    value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()",
   },
+  // Le site n'ouvre aucune fenêtre secondaire : isoler son contexte de navigation ne coûte rien (D-029).
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
 ];
 
 // Tant que la phase 9 n'est pas validée, tout est en noindex : c'est Arcel qui passe SITE_INDEXABLE à "true".

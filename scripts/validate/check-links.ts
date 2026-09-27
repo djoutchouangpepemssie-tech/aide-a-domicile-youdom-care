@@ -20,16 +20,7 @@ import { result, type Check, type CheckContext, type CheckResult } from "./types
  */
 
 /** Pages annoncées par docs/PLAN.md et pas encore construites (phase entre parenthèses). */
-export const plannedRoutes: Readonly<Record<string, string>> = {
-  "/professionnels/": "phase 8 (fonctionnement et entreprise)",
-  "/recrutement/": "phase 8 (fonctionnement et entreprise)",
-  "/recrutement/postuler/": "phase 8 (fonctionnement et entreprise)",
-  "/mentions-legales/": "phase 8 (pages légales)",
-  "/politique-de-confidentialite/": "phase 8 (pages légales)",
-  "/cookies/": "phase 8 (pages légales)",
-  "/conditions-generales/": "phase 8 (pages légales)",
-  "/accessibilite/": "phase 8 (pages légales)",
-};
+export const plannedRoutes: Readonly<Record<string, string>> = {};
 
 const internalHref = /^\/(?:[a-z0-9-]+\/)*(?:[a-z0-9-]+\/?)?(?:[?#].*)?$/;
 

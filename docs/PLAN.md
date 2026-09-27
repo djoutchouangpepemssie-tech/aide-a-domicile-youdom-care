@@ -156,11 +156,11 @@ Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la
 
 ## Phase 8 — Professionnels, recrutement, légal, mesure · `phase/08-complements`
 
-- [ ] **P8.1 Page « Professionnels »** et formulaire express.
-- [ ] **P8.2 Recrutement** : page, offres en JSON, `JobPosting`, candidature avec pièce jointe.
-- [ ] **P8.3 Pages légales** générées depuis la configuration ; `check-legal.ts`. Réf. `docs/07 §1–2`.
-- [ ] **P8.4 Déclaration d'accessibilité** et audit clavier manuel consigné.
-- [ ] **P8.5 Mesure d'audience** et événements de `docs/05 §9`, sans donnée personnelle ; logique de consentement si nécessaire.
+- [x] (55fb8ed) **P8.1 Page « Professionnels »** et formulaire express.
+- [x] (55fb8ed) **P8.2 Recrutement** : page, offres en JSON, `JobPosting`, candidature avec pièce jointe.
+- [x] (b7a5204) **P8.3 Pages légales** générées depuis la configuration ; `check-legal.ts`. Réf. `docs/07 §1–2`.
+- [x] (2bc19b4) **P8.4 Déclaration d'accessibilité** et audit clavier manuel consigné.
+- [x] (042c1a2) **P8.5 Mesure d'audience** et événements de `docs/05 §9`, sans donnée personnelle ; logique de consentement si nécessaire.
 
 ## Phase 9 — Qualité finale · `phase/09-qualite`
 

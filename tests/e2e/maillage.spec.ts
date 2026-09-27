@@ -64,9 +64,10 @@ test.describe("Maillage (P5.5)", () => {
     ]) {
       await expect(page.locator("main").getByRole("navigation", { name: title })).toBeVisible();
     }
+    // Phase 8 : les pages légales sont construites, le groupe existe désormais.
     await expect(
       page.locator("main").getByRole("navigation", { name: "Pages légales" }),
-    ).toHaveCount(0);
+    ).toBeVisible();
     const plan = page.locator("[data-plan-du-site]");
     for (const chemin of servicePaths) {
       await expect(plan.locator(`a[href="${chemin}"]`), chemin).toHaveCount(1);

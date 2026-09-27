@@ -84,7 +84,12 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href="#formulaire">{texts.boutons.rappel}</Button>
               {phone && telHref ? (
-                <Button href={telHref} variant="link" className="tabular-figures">
+                <Button
+                  href={telHref}
+                  variant="link"
+                  className="tabular-figures"
+                  data-mesure="agence"
+                >
                   {fill(t.reponse.appeler, { téléphone: formatFrenchPhone(phone) })}
                 </Button>
               ) : null}

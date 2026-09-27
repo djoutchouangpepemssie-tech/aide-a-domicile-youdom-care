@@ -143,7 +143,11 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {rows.map((item) => (
-                  <tr key={item.id} className="border-b border-line align-top">
+                  <tr
+                    key={item.id}
+                    className="border-b border-line align-top"
+                    data-mode={item.mode}
+                  >
                     <th scope="row" className="p-3 text-left">
                       <span className="block font-bold">{item.libelle}</span>
                       {item.activite ? (
@@ -240,6 +244,7 @@ export default function PricingPage() {
               <div
                 key={service.id}
                 className="rounded-card border border-line bg-white p-6 shadow-1"
+                data-mode={service.mode}
               >
                 <Heading level={3} visual={4}>
                   {service.libelle} · {tarifs.modes[service.mode]}

@@ -94,6 +94,7 @@ export function MobileActionBar({ phone, callbackHref, requestHref, texts }: Mob
             <a
               href={phone.href}
               aria-label={accessibleName(texts.appeler, texts.court.appeler)}
+              data-mesure="barre-mobile"
               className={cn(itemClass, "text-teal-800")}
             >
               <svg {...iconProps}>

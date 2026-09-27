@@ -304,6 +304,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                   <li className="max-w-none">
                     <a
                       href={telHref}
+                      data-mesure="reponse-locale"
                       className="tabular-figures inline-flex min-h-12 items-center font-bold"
                     >
                       {fill(t.reponse.appeler, { téléphone: formatFrenchPhone(phone) })}
@@ -316,6 +317,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
             <p className="mt-6">
               <a
                 href={telHref}
+                data-mesure="reponse-locale"
                 className="tabular-figures inline-flex min-h-12 items-center font-bold"
               >
                 {fill(t.reponse.appeler, { téléphone: formatFrenchPhone(phone) })}
