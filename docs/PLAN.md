@@ -168,7 +168,7 @@ Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la
 - [x] (7ccbd0f) **P9.2 Accessibilité** : axe sur tous les gabarits, corrections, déclaration d'accessibilité à jour.
 - [x] (8bab028) **P9.3 Relecture de voix** : tout le site contre `docs/01 §2` ; boutons conformes à la bibliothèque. Complété le 27/09/2026 par deux audits (D-038) : libellés alignés sur leur destination, titres de section harmonisés, comptes calculés.
 - [x] (8bab028) **P9.4 Exploration interne** : liens, orphelines, profondeur de clic (toute page à 3 clics au plus de l'accueil), plans de site. Contrôle `check-depth` ajouté (D-031).
-- [x] (à venir) **P9.5 Bilan de lancement** : résultat de `pnpm validate --prod` (les échecs attendus deviennent la liste d'actions d'Arcel), `docs/SUIVI_SEO.md`, mise à jour de `docs/QUESTIONS_ARCEL.md`. `SITE_INDEXABLE` était à `false` par défaut ; **D-035 l'a ouvert à la demande d'Arcel le 27/09/2026**, le site est donc indexable sauf à poser `SITE_INDEXABLE=false`.
+- [x] (385bfde) **P9.5 Bilan de lancement** : résultat de `pnpm validate --prod` (les échecs attendus deviennent la liste d'actions d'Arcel), `docs/SUIVI_SEO.md`, mise à jour de `docs/QUESTIONS_ARCEL.md`. `SITE_INDEXABLE` était à `false` par défaut ; **D-035 l'a ouvert à la demande d'Arcel le 27/09/2026**, le site est donc indexable sauf à poser `SITE_INDEXABLE=false`.
 
 **Point de validation 9** : `pnpm validate` vert, `pnpm lhci` vert, `git status` propre, PR fusionnée, tag `phase-09`. La loop rédige son bilan et s'arrête.
 
