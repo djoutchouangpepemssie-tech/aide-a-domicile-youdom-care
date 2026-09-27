@@ -26,12 +26,16 @@ export interface AgencyCardProps {
 }
 
 /**
- * Adresse postale affichée : « 49-51 quai de Dion-Bouton, 92800 Puteaux », ou seulement
- * « 92800 Puteaux » quand l'adresse de voie n'est pas publiée (D-036).
+ * Adresse postale affichée : « 49-51 quai de Dion-Bouton, 92800 Puteaux ». `null` quand l'agence
+ * ne publie pas d'adresse de voie (D-036, complété le 27/09/2026) : le site n'affiche alors **rien
+ * du tout**, ni voie, ni code postal, ni commune, comme pour un téléphone ou des horaires
+ * inconnus. Tout appelant doit donc traiter le cas `null` et masquer son bloc.
  */
-export function fullAddress(agency: Pick<Agency, "adresse" | "code_postal" | "commune">): string {
-  const city = `${agency.code_postal} ${agency.commune}`;
-  return agency.adresse ? `${agency.adresse}, ${city}` : city;
+export function fullAddress(
+  agency: Pick<Agency, "adresse" | "code_postal" | "commune">,
+): string | null {
+  if (!agency.adresse) return null;
+  return `${agency.adresse}, ${agency.code_postal} ${agency.commune}`;
 }
 
 export function AgencyCard({
@@ -45,6 +49,7 @@ export function AgencyCard({
   const ownPhone = agency.telephone;
   const phone = ownPhone ?? standardPhone ?? null;
   const telHref = phone ? toTelHref(phone) : null;
+  const address = fullAddress(agency);
   return (
     <Card
       as="article"
@@ -56,10 +61,12 @@ export function AgencyCard({
         {agency.nom}
       </Heading>
       <dl className="m-0 mt-3 grid gap-3">
-        <div>
-          <dt className="text-small font-bold text-teal-900">{texts.adresse}</dt>
-          <dd className="m-0">{fullAddress(agency)}</dd>
-        </div>
+        {address ? (
+          <div>
+            <dt className="text-small font-bold text-teal-900">{texts.adresse}</dt>
+            <dd className="m-0">{address}</dd>
+          </div>
+        ) : null}
         {phone && telHref ? (
           <div>
             <dt className="text-small font-bold text-teal-900">

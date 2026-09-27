@@ -64,7 +64,7 @@ export default async function OfferPage({ params }: OfferRouteProps) {
     },
     {
       label: t.lieu,
-      value: `${agency.nom} · ${fullAddress(agency)}`,
+      value: [agency.nom, fullAddress(agency)].filter(Boolean).join(" · "),
     },
     { label: t.secteur, value: offer.secteur },
     ...(offer.salaire ? [{ label: t.salaire, value: formatSalary(offer.salaire, t) }] : []),

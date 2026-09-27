@@ -43,7 +43,7 @@ describe("À propos", () => {
     );
   });
 
-  it("nos engagements : quatre engagements avec texte en prévisualisation, aucun en production", async () => {
+  it("nos engagements : quatre en prévisualisation, le seul validé en production", async () => {
     const { unmount } = render(await CommitmentsPage());
     expect(document.querySelectorAll("[data-engagement]")).toHaveLength(4);
     expect(
@@ -51,9 +51,12 @@ describe("À propos", () => {
     ).toBeInTheDocument();
     unmount();
 
+    // E2 est validé depuis le 27/09/2026 : c'est le seul engagement affiché en production.
     vi.stubEnv("VERCEL_ENV", "production");
     render(await CommitmentsPage());
-    expect(document.querySelectorAll("[data-engagement]")).toHaveLength(0);
+    const shown = document.querySelectorAll("[data-engagement]");
+    expect(shown).toHaveLength(1);
+    expect(shown[0]).toHaveTextContent("Si l'intervenant ne convient pas, nous changeons");
   });
 
   it("charte éditoriale : huit principes et un moyen de contact", async () => {

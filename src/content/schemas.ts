@@ -952,6 +952,11 @@ export const homePageSchema = z.strictObject({
     noeud: photoSchema.shape.focal,
     /** Geste d'entrée « Pour qui cherchez-vous de l'aide ? » ; absent : pas de picker. */
     parcours: homeJourneySchema.optional(),
+    /**
+     * Bande de signature posée juste sous la bannière (27/09/2026, photo fournie par Arcel) :
+     * la photo détourée et la signature de marque de site.config.json. Absente : pas de bande.
+     */
+    signature: z.strictObject({ photo: photoSchema }).optional(),
   }),
   situations: z.strictObject({
     h2: text,
@@ -1758,6 +1763,8 @@ export const agenciesPageSchema = z.strictObject({
     sur_titre: text,
     /** Contient {adresse} (adresse postale complète) et {lieu} (« dans les Hauts-de-Seine »). */
     chapo: text.includes("{adresse}").includes("{lieu}"),
+    /** Même phrase sans l'adresse, pour une agence qui n'en publie pas (D-036). */
+    chapo_sans_adresse: text.includes("{lieu}"),
     rappel_h2: text,
     rappel_texte: text,
   }),

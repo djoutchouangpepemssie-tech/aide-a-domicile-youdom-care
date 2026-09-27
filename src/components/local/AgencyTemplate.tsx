@@ -76,6 +76,8 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
   } = data;
   const t = texts.local;
   const telHref = phone ? toTelHref(phone) : null;
+  // D-036 : null quand l'agence ne publie pas d'adresse de voie ; rien n'est alors affiché.
+  const address = fullAddress(agency);
   const rappelTexts = {
     ...texts.formulaires,
     ...texts.formulaires.rappel,
@@ -120,13 +122,15 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
               {agency.nom}
             </Heading>
             <Lead className={cn(heroGap, heroLeadClamp)}>
-              {fill(page.chapo, { adresse: fullAddress(agency), lieu })}
+              {address
+                ? fill(page.chapo, { adresse: address, lieu })
+                : fill(page.chapo_sans_adresse, { lieu })}
             </Lead>
             <div
               className={cn(heroOrderPanel, heroGapWide, heroPanelClass("sable"))}
               data-hero-interaction=""
             >
-              <p className="m-0 font-bold">{fullAddress(agency)}</p>
+              {address ? <p className="m-0 font-bold">{address}</p> : null}
               <ul className="m-0 mt-2 flex list-none flex-wrap gap-x-6 gap-y-1 p-0">
                 {/* D-036 : plus de lien d'itinéraire vers un service de carte externe. */}
                 {phone && telHref ? (

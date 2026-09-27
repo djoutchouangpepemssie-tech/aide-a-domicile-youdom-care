@@ -43,10 +43,11 @@ describe("Comment ça marche", () => {
     expect(screen.getByRole("link", { name: "Être rappelé(e)" })).toBeInTheDocument();
   });
 
-  it("masque en production les phrases liées à un engagement non validé", async () => {
+  it("affiche en production la phrase dont l'engagement est validé", async () => {
+    // E2 est validé depuis le 27/09/2026 : la phrase n'est plus masquée en production.
     vi.stubEnv("VERCEL_ENV", "production");
     render(await HowItWorksPage());
-    expect(screen.queryByText(/Si le courant ne passe pas/)).not.toBeInTheDocument();
-    expect(screen.getByText("Dites-le à votre référent, sans détour.")).toBeInTheDocument();
+    expect(screen.getAllByText(/Si le courant ne passe pas/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Dites-le à votre référent, sans détour/).length).toBeGreaterThan(0);
   });
 });

@@ -283,15 +283,15 @@ export function auditPageNap(route: string, html: string, options: PageNapOption
     warnings.push(`${route} : pas d'élément <main>, agence affichée non vérifiable`);
   }
   const mainText = mainHtml === null ? null : extractVisibleText(mainHtml);
-  // Une agence dont l'adresse de voie n'est pas publiée (D-036) est reconnue à son couple code
-  // postal + commune : c'est tout ce que la page en affiche.
+  /*
+   * Une agence qui ne publie pas d'adresse de voie (D-036, complété le 27/09/2026) n'affiche
+   * **rien** : ni voie, ni code postal, ni commune. Elle ne peut donc pas être « affichée » au
+   * sens de ce contrôle, et son absence n'est pas une erreur.
+   */
   const displayedAgencies = (text: string) => {
     const streets = extractStreetAddresses(text).map((s) => s.normalized);
-    const postalCities = extractPostalCities(text).map((s) => s.normalized);
-    return config.agencies.filter((a) =>
-      a.street !== null
-        ? streets.some((s) => addressStartsWith(s, a.street as string))
-        : postalCities.some((s) => addressStartsWith(s, a.postalCity)),
+    return config.agencies.filter(
+      (a) => a.street !== null && streets.some((s) => addressStartsWith(s, a.street as string)),
     );
   };
 
@@ -308,7 +308,7 @@ export function auditPageNap(route: string, html: string, options: PageNapOption
           );
         }
       }
-      if (!displayed.some((a) => a.id === nearest.id)) {
+      if (nearest.street !== null && !displayed.some((a) => a.id === nearest.id)) {
         warnings.push(
           `${route} : adresse de l'agence la plus proche (${nearest.id}, ${nearest.display}) absente du corps de la page`,
         );
@@ -320,7 +320,10 @@ export function auditPageNap(route: string, html: string, options: PageNapOption
     const agency = config.agencies.find((a) => a.id === options.agencyId);
     if (!agency) {
       errors.push(`${route} : aucune agence « ${options.agencyId} » dans site.config.json`);
-    } else if (!displayedAgencies(mainText).some((a) => a.id === agency.id)) {
+    } else if (
+      agency.street !== null &&
+      !displayedAgencies(mainText).some((a) => a.id === agency.id)
+    ) {
       errors.push(
         `${route} : adresse de l'agence ${agency.id} (${agency.display}) absente du corps de la page`,
       );

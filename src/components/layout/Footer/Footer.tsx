@@ -154,28 +154,37 @@ export function Footer({
               {texts.nos_agences}
             </h2>
             <ul className="m-0 mt-3 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
-              {agencies.map((agency) => (
-                <li key={agency.id} className="max-w-none">
-                  <Link
-                    href={`/agences/${agency.id}/`}
-                    className="block text-white no-underline hover:underline"
-                    aria-label={`${texts.voir_agence.replace("{nom}", agency.nom)}, ${fullAddress(agency)}`}
-                  >
-                    <span className="block font-bold">{agency.nom}</span>
-                    {/* D-036 : adresse de voie seulement si elle est publiée. */}
-                    <span className="block text-small text-white/85">{fullAddress(agency)}</span>
-                  </Link>
-                  {agency.telephone ? (
-                    <a
-                      href={`tel:${agency.telephone.replace(/\s/g, "")}`}
-                      data-mesure="pied-de-page"
-                      className={`tabular-figures mt-1 text-small ${linkClass}`}
+              {agencies.map((agency) => {
+                // D-036 : rien du tout quand l'agence ne publie pas d'adresse de voie.
+                const address = fullAddress(agency);
+                return (
+                  <li key={agency.id} className="max-w-none">
+                    <Link
+                      href={`/agences/${agency.id}/`}
+                      className="block text-white no-underline hover:underline"
+                      aria-label={
+                        address
+                          ? `${texts.voir_agence.replace("{nom}", agency.nom)}, ${address}`
+                          : texts.voir_agence.replace("{nom}", agency.nom)
+                      }
                     >
-                      {agency.telephone}
-                    </a>
-                  ) : null}
-                </li>
-              ))}
+                      <span className="block font-bold">{agency.nom}</span>
+                      {address ? (
+                        <span className="block text-small text-white/85">{address}</span>
+                      ) : null}
+                    </Link>
+                    {agency.telephone ? (
+                      <a
+                        href={`tel:${agency.telephone.replace(/\s/g, "")}`}
+                        data-mesure="pied-de-page"
+                        className={`tabular-figures mt-1 text-small ${linkClass}`}
+                      >
+                        {agency.telephone}
+                      </a>
+                    ) : null}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         ) : null}

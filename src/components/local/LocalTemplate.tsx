@@ -345,8 +345,8 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                   commune: agency.commune,
                 })}
               </p>
-              {/* D-036 : adresse de voie seulement si elle est publiée. */}
-              <p className="m-0 mt-2">{fullAddress(agency)}</p>
+              {/* D-036 : rien du tout quand l'agence ne publie pas d'adresse de voie. */}
+              {fullAddress(agency) ? <p className="m-0 mt-2">{fullAddress(agency)}</p> : null}
               <ul className="m-0 mt-4 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
                 <li className="max-w-none">
                   <Link
