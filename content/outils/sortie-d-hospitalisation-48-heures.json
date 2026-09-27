@@ -1,0 +1,196 @@
+{
+  "id": "sortie-d-hospitalisation-48-heures",
+  "seo": {
+    "titre": "Sortie d'hospitalisation : la liste des 48 heures à imprimer",
+    "description": "Liste de contrôle gratuite à imprimer : ce qu'il faut vérifier à l'hôpital, préparer dans le logement et surveiller les deux premiers jours à la maison."
+  },
+  "ariane": "Sortie d'hospitalisation : les 48 heures",
+  "h1": "Sortie d'hospitalisation : la liste des 48 heures",
+  "sous_titre": "Ce qu'il faut vérifier avant de quitter l'hôpital, préparer à la maison et surveiller les deux premiers jours.",
+  "icone": "retour-hopital",
+  "mode_emploi": [
+    "Imprimez cette liste dès que la date de sortie est annoncée, même provisoire.",
+    "Cochez au fil des jours, et gardez-la près du téléphone avec les numéros utiles."
+  ],
+  "maj": "2026-09-27",
+  "sections": [
+    {
+      "h2": "Avant le départ, à l'hôpital",
+      "intro": "La Haute Autorité de santé demande à l'hôpital de vérifier ces points avant toute sortie. Vous pouvez les demander.",
+      "items": [
+        {
+          "type": "case",
+          "texte": "La date et l'heure de sortie sont confirmées avec le service."
+        },
+        {
+          "type": "case",
+          "texte": "L'ordonnance de sortie est remise et expliquée : quels médicaments, à quel moment, jusqu'à quand.",
+          "precision": "En cas de doute, le pharmacien et le médecin répondent. Personne d'autre."
+        },
+        {
+          "type": "case",
+          "texte": "La lettre de sortie pour le médecin traitant est remise, ou envoyée."
+        },
+        {
+          "type": "case",
+          "texte": "Les rendez-vous de suivi sont notés : dates, lieux, avec qui."
+        },
+        {
+          "type": "case",
+          "texte": "Les prescriptions pour les soins à domicile sont remises : infirmier, kinésithérapeute, matériel (lit, fauteuil, déambulateur)."
+        },
+        {
+          "type": "case",
+          "texte": "Le transport du retour est organisé : ambulance, véhicule sanitaire, famille."
+        },
+        {
+          "type": "case",
+          "texte": "Le service social de l'hôpital est rencontré pour les aides : retour à domicile (caisse de retraite), APA en urgence."
+        },
+        {
+          "type": "case",
+          "texte": "Les affaires et papiers sont récupérés : carte Vitale, carte de mutuelle, clés, lunettes, appareils auditifs, prothèses dentaires."
+        }
+      ]
+    },
+    {
+      "h2": "Le logement, avant le retour",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Le chemin est dégagé de la porte au lit, et du lit aux toilettes."
+        },
+        {
+          "type": "case",
+          "texte": "Les tapis sont retirés ou fixés au sol ; aucun fil ne traverse un passage."
+        },
+        {
+          "type": "case",
+          "texte": "Le lit est accessible, à bonne hauteur ; lampe et téléphone à portée de main."
+        },
+        {
+          "type": "case",
+          "texte": "Le réfrigérateur est rempli, avec des repas simples pour trois jours."
+        },
+        {
+          "type": "case",
+          "texte": "Les médicaments de l'ordonnance de sortie sont retirés à la pharmacie."
+        },
+        {
+          "type": "case",
+          "texte": "Le matériel prescrit est livré et installé avant l'arrivée."
+        },
+        {
+          "type": "case",
+          "texte": "Une veilleuse éclaire le trajet de nuit vers les toilettes."
+        },
+        {
+          "type": "case",
+          "texte": "Les numéros utiles sont écrits en grand, près du téléphone (voir plus bas)."
+        }
+      ]
+    },
+    {
+      "h2": "Les 48 premières heures",
+      "intro": "Deux jours où la fatigue est forte et où tout est nouveau. Une présence, un regard, un carnet.",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Qui est présent le premier soir et la première nuit ?",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Qui passe le deuxième jour, et à quelle heure ?",
+          "lignes": 2
+        },
+        {
+          "type": "case",
+          "texte": "Les médicaments sont pris comme l'ordonnance l'indique, ni plus ni moins.",
+          "precision": "Un oubli, un effet inhabituel : appelez le pharmacien ou le médecin. Ne modifiez rien vous-même."
+        },
+        {
+          "type": "case",
+          "texte": "L'infirmier ou le kinésithérapeute est passé comme prévu."
+        },
+        {
+          "type": "case",
+          "texte": "La personne a mangé et bu à chaque repas."
+        },
+        {
+          "type": "case",
+          "texte": "Elle s'est levée et a marché un peu, accompagnée si besoin."
+        },
+        {
+          "type": "case",
+          "texte": "Rien d'inquiétant : ni fièvre, ni douleur nouvelle, ni essoufflement, ni chute, ni confusion, ni plaie qui change.",
+          "precision": "Au moindre doute, appelez le médecin. En urgence, le 15."
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce que j'ai remarqué et que je veux dire au médecin",
+          "lignes": 3
+        }
+      ]
+    },
+    {
+      "h2": "Les numéros à garder près du téléphone",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Médecin traitant"
+        },
+        {
+          "type": "champ",
+          "libelle": "Pharmacie"
+        },
+        {
+          "type": "champ",
+          "libelle": "Infirmier ou service de soins à domicile"
+        },
+        {
+          "type": "champ",
+          "libelle": "Service hospitalier (en cas de question sur la sortie)"
+        },
+        {
+          "type": "champ",
+          "libelle": "Service d'aide à domicile"
+        },
+        {
+          "type": "champ",
+          "libelle": "Proche à prévenir"
+        },
+        {
+          "type": "info",
+          "libelle": "Urgences",
+          "texte": "15 (SAMU) ou 112"
+        }
+      ]
+    }
+  ],
+  "prudence": [
+    "Cette liste ne remplace ni les consignes de sortie ni l'avis du médecin.",
+    "Pour tout ce qui touche aux médicaments, le pharmacien et le médecin sont vos seuls interlocuteurs.",
+    "Un signe inquiétant se signale tout de suite : le médecin, ou le 15 en urgence."
+  ],
+  "sources": [
+    {
+      "libelle": "Haute Autorité de santé — Check-list de sortie d'hospitalisation supérieure à 24 h",
+      "href": "https://www.has-sante.fr/jcms/c_2035081/fr/check-list-de-sortie-d-hospitalisation-superieure-a-24h",
+      "verifie_le": "2015-05-22",
+      "consulte_le": "2026-09-27"
+    },
+    {
+      "libelle": "pour-les-personnes-agees.gouv.fr — Comment organiser sa sortie d'hospitalisation ?",
+      "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/etre-hospitalise/comment-organiser-sa-sortie-d-hospitalisation",
+      "verifie_le": "2026-01-15",
+      "consulte_le": "2026-09-27"
+    },
+    {
+      "libelle": "pour-les-personnes-agees.gouv.fr — Quelles sont les aides des caisses de retraite ?",
+      "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/aides-financieres/quelles-sont-les-aides-des-caisses-de-retraite",
+      "verifie_le": "2026-04-09",
+      "consulte_le": "2026-09-27"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "id": "fiche-de-vie-personne-agee",
+  "seo": {
+    "titre": "La fiche de vie de votre proche : histoire, goûts, habitudes",
+    "description": "Modèle gratuit à imprimer et remplir à la main : l'histoire de votre proche, ses goûts, ses habitudes, ce qui le rassure, pour l'accompagner comme vous."
+  },
+  "ariane": "Fiche de vie de la personne âgée",
+  "h1": "La fiche de vie de votre proche : son histoire, ses goûts, ses habitudes",
+  "sous_titre": "Ce que vous savez de lui ou d'elle, écrit pour que chaque personne qui vient l'accompagne comme vous le feriez.",
+  "icone": "memoire",
+  "mode_emploi": [
+    "Imprimez la fiche et remplissez-la avec votre proche, à son rythme, en plusieurs fois s'il le faut.",
+    "Laissez-la chez lui, visible, et relisez-la ensemble quand une habitude change."
+  ],
+  "maj": "2026-09-27",
+  "sections": [
+    {
+      "h2": "Son histoire",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Son prénom, et comment il ou elle aime qu'on l'appelle"
+        },
+        {
+          "type": "champ",
+          "libelle": "Où il ou elle a grandi, où il ou elle a vécu",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Son métier, ce qu'il ou elle en raconte",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Les personnes qui comptent : famille, amis, voisins",
+          "lignes": 3
+        },
+        {
+          "type": "champ",
+          "libelle": "Les moments dont il ou elle aime parler",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Les sujets à éviter",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Ses goûts",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Ses plats préférés, ce qu'il ou elle ne mange pas",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ses boissons, à quel moment de la journée"
+        },
+        {
+          "type": "champ",
+          "libelle": "Musique, radio, télévision, lectures",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qui lui fait plaisir : une sortie, un jeu, un jardin, un café",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ses convictions, sa foi, ce qui a du sens pour lui ou elle (si vous le souhaitez)"
+        }
+      ]
+    },
+    {
+      "h2": "Ses habitudes, au fil de la journée",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Le lever : à quelle heure, comment",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Le petit-déjeuner et la toilette",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "La matinée"
+        },
+        {
+          "type": "champ",
+          "libelle": "Le déjeuner et l'après-midi",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "La soirée et le coucher : rituel, lumière, porte",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Les rendez-vous fixes de la semaine (marché, coiffeur, messe, club, famille)",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Ce qui rassure, ce qui inquiète",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Les signes de fatigue ou de contrariété",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qui l'apaise : une voix, un geste, un objet, une chanson",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il faut éviter",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il ou elle veut faire seul, même lentement",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Se déplacer, voir, entendre",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Canne, déambulateur, fauteuil : quand et où"
+        },
+        {
+          "type": "champ",
+          "libelle": "Lunettes, appareils auditifs, prothèses dentaires : où ils se rangent"
+        },
+        {
+          "type": "champ",
+          "libelle": "Les repères dans le logement : sa place à table, son fauteuil, la lumière de la nuit",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Sa santé, en pratique",
+      "intro": "Cette fiche ne décrit pas les soins. Elle dit seulement qui s'en occupe et où trouver les documents.",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Médecin traitant"
+        },
+        {
+          "type": "champ",
+          "libelle": "Pharmacie"
+        },
+        {
+          "type": "champ",
+          "libelle": "Infirmier ou service de soins à domicile"
+        },
+        {
+          "type": "champ",
+          "libelle": "Où sont rangés l'ordonnance et le cahier de liaison"
+        }
+      ]
+    },
+    {
+      "h2": "Les personnes à prévenir",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Proche 1"
+        },
+        {
+          "type": "champ",
+          "libelle": "Proche 2"
+        },
+        {
+          "type": "info",
+          "libelle": "Urgences",
+          "texte": "15 (SAMU) ou 112"
+        },
+        {
+          "type": "champ",
+          "libelle": "Fiche remplie le … avec …, relue le …"
+        }
+      ]
+    }
+  ],
+  "prudence": [
+    "Les soins et les médicaments relèvent du médecin, du pharmacien et de l'infirmier : cette fiche n'en dit rien de plus que qui appeler.",
+    "La fiche reste chez votre proche. Elle n'est ni envoyée ni enregistrée : vous la remplissez à la main, et il ou elle décide qui la lit."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du portail national pour-les-personnes-agees.gouv.fr ; le nombre de séances (12 à 15 sur trois mois) vient de cette fiche.",
+  "slug": "esa",
+  "terme": "ESA",
+  "developpe": "Équipe spécialisée Alzheimer",
+  "variantes": ["équipe spécialisée Alzheimer", "équipes spécialisées Alzheimer"],
+  "seo": {
+    "titre": "ESA : l'équipe spécialisée Alzheimer qui vient à domicile",
+    "description": "L'ESA, équipe spécialisée Alzheimer, en clair : des séances à domicile sur prescription, pour qui, avec quels professionnels, sans frais pour la famille."
+  },
+  "definition": "Une ESA est une équipe de professionnels qui intervient à domicile, sur prescription médicale, auprès d'une personne atteinte de la maladie d'Alzheimer ou d'une maladie apparentée, à un stade léger ou modéré.",
+  "explication": "Les équipes spécialisées Alzheimer sont rattachées à des services de soins infirmiers à domicile (SSIAD). Elles réunissent des ergothérapeutes, des psychomotriciens et des assistants de soins en gérontologie formés à la maladie.\n\nLeur but : aider la personne à garder ses capacités et ses habitudes le plus longtemps possible, chez elle, et soutenir ses proches. Les séances portent sur les gestes du quotidien, l'aménagement du logement, la communication et les activités qui ont du sens pour la personne.\n\nL'accompagnement compte 12 à 15 séances au maximum, réparties sur trois mois dans l'année ; il peut être renouvelé l'année suivante. Il faut une prescription du médecin. Le coût des interventions est intégralement pris en charge par l'assurance maladie.\n\nPour trouver l'ESA de votre secteur, adressez-vous au CLIC, au médecin traitant ou à la consultation mémoire qui suit votre proche.\n\nNos auxiliaires de vie prennent le relais entre les séances et après : mêmes gestes, mêmes repères, pour que ce qui a été mis en place tienne dans la durée. Nous ne remplaçons pas l'ESA.",
+  "pour_qui": "Les personnes atteintes de la maladie d'Alzheimer ou d'une maladie apparentée, au début de la maladie, et leurs proches.",
+  "lien_officiel": {
+    "libelle": "pour-les-personnes-agees.gouv.fr — Les équipes spécialisées Alzheimer (ESA)",
+    "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/a-qui-s-adresser/les-equipes-specialisees-alzheimer-esa",
+    "verifie_le": "2024-04-03",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/maladies-neurodegeneratives/alzheimer/",
+    "/maladies-neurodegeneratives/",
+    "/aidants/solutions-de-repit/"
+  ],
+  "maj": "2026-09-27"
+}

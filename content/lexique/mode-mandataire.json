@@ -1,0 +1,25 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du portail national pour-les-personnes-agees.gouv.fr ; la mention légale du mandataire (docs/07) est portée par les pages tarifs et services.",
+  "slug": "mode-mandataire",
+  "terme": "mode mandataire",
+  "variantes": ["service mandataire", "services mandataires", "en mandataire"],
+  "seo": {
+    "titre": "Mode mandataire : définition, vous êtes l'employeur",
+    "description": "Le mode mandataire, en clair : vous employez l'intervenant, le service le recrute et gère l'administratif pour vous. Vos responsabilités et les aides."
+  },
+  "definition": "En mode mandataire, vous êtes l'employeur de l'intervenant ; le service vous aide à le recruter et gère l'administratif pour votre compte.",
+  "explication": "Le service mandataire sélectionne et vous présente des candidats. Vous choisissez la personne, vous signez son contrat de travail et vous devenez son employeur. Le service établit les bulletins de salaire et les déclarations, et vous accompagne dans les formalités, contre des frais de gestion.\n\nVous gardez la responsabilité d'employeur : rémunération, congés, fin de contrat, remplacement en cas d'absence. En contrepartie, vous choisissez vous-même la personne qui entre chez vous. Un service mandataire doit être agréé.\n\nLes aides s'appliquent : APA, PCH au tarif mandataire, crédit d'impôt de 50 %, Cesu. Le Cesu déclaratif peut servir à déclarer le salarié.\n\nSur ce site, chaque prestation indique son mode. En mandataire, une mention légale rappelle que vous êtes l'employeur. Nous vous expliquons les deux modes sans parti pris : le bon choix dépend du temps et de la responsabilité que vous souhaitez porter.",
+  "pour_qui": "Les familles qui souhaitent choisir elles-mêmes l'intervenant et accepter le rôle d'employeur, avec un appui administratif.",
+  "lien_officiel": {
+    "libelle": "pour-les-personnes-agees.gouv.fr — Les services d'aide à domicile",
+    "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/beneficier-d-aide-a-domicile/les-services-d-aide-a-domicile",
+    "verifie_le": "2025-08-25",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/comment-ca-marche/prestataire-ou-mandataire/",
+    "/comment-ca-marche/",
+    "/tarifs-et-aides/"
+  ],
+  "maj": "2026-09-27"
+}

@@ -1,0 +1,22 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Les durées reprises (66 et 264 jours) sont celles de la fiche officielle citée ; le montant journalier n'est pas repris.",
+  "slug": "ajpa",
+  "terme": "AJPA",
+  "developpe": "Allocation journalière du proche aidant",
+  "variantes": ["allocation journalière du proche aidant", "congé de proche aidant"],
+  "seo": {
+    "titre": "AJPA : l'allocation journalière du proche aidant, en clair",
+    "description": "L'AJPA, allocation journalière du proche aidant, en clair : compenser une partie du revenu pendant le congé de proche aidant, pour qui, combien de jours."
+  },
+  "definition": "L'AJPA est une allocation versée par la CAF ou la MSA pour compenser une partie de la perte de revenu d'un aidant qui réduit ou interrompt son activité.",
+  "explication": "L'allocation journalière du proche aidant accompagne le congé de proche aidant. Ce congé permet à un salarié de s'arrêter, à temps plein ou à temps partiel, pour aider une personne de son entourage en situation de handicap ou en perte d'autonomie d'une particulière gravité. Les indépendants, les demandeurs d'emploi et certains agents publics peuvent aussi y prétendre.\n\nL'AJPA est versée par jour ou par demi-journée. Elle est limitée à 66 jours par personne aidée, et à 264 jours sur l'ensemble de la carrière. Son montant est fixé par la réglementation et revalorisé ; il figure sur la fiche officielle.\n\nLa demande se fait auprès de la CAF ou de la MSA, avec un formulaire dédié et une attestation de l'employeur. Le congé lui-même se demande à l'employeur, dans les délais prévus.\n\nQuand un aidant prend ce congé, une aide à domicile peut compléter sa présence : le matin, la nuit, ou quelques heures pour souffler. Nous construisons la semaine avec lui, pour qu'il puisse aussi se reposer.",
+  "pour_qui": "Les salariés, indépendants et demandeurs d'emploi qui s'arrêtent pour aider un proche en perte d'autonomie ou en situation de handicap.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Congé de proche aidant et allocation journalière du proche aidant (AJPA)",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16920",
+    "verifie_le": "2026-06-15",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": ["/aidants/", "/aidants/solutions-de-repit/", "/tarifs-et-aides/"],
+  "maj": "2026-09-27"
+}

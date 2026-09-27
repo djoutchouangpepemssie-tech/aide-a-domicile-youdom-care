@@ -1,0 +1,27 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Les montants vivent sur /tarifs-et-aides/apa/ ; ici, la définition et le fonctionnement, repris de la fiche officielle citée.",
+  "slug": "apa",
+  "terme": "APA",
+  "developpe": "Allocation personnalisée d'autonomie",
+  "variantes": ["allocation personnalisée d'autonomie"],
+  "seo": {
+    "titre": "APA : définition, conditions et démarche de l'allocation",
+    "description": "L'APA, allocation personnalisée d'autonomie, en clair : pour qui après 60 ans, ce qu'elle finance à domicile et comment la demander au département."
+  },
+  "definition": "L'APA est une aide versée par le département pour financer une partie de l'aide à domicile des personnes de 60 ans et plus en perte d'autonomie.",
+  "explication": "L'allocation personnalisée d'autonomie s'adresse aux personnes qui vivent chez elles, chez un proche, chez un accueillant familial ou en résidence autonomie. Le département évalue la perte d'autonomie avec la grille AGGIR. Seuls les GIR 1 à 4 ouvrent le droit à l'APA.\n\nUne équipe médico-sociale vient à domicile. Elle établit un plan d'aide : heures d'aide à domicile, portage de repas, aides techniques, adaptation du logement, relais pour l'aidant. Le montant maximal dépend du GIR. Une participation peut rester à votre charge selon vos ressources.\n\nLa demande se fait auprès du conseil départemental, en ligne ou par formulaire. Le département dispose de deux mois pour répondre. L'APA ne se cumule pas avec une autre aide à l'autonomie de même nature.\n\nNous vous aidons à traduire le plan d'aide en semaine concrète : qui vient, quand, pour quoi. Nous ne décidons pas à la place du département.",
+  "pour_qui": "Les personnes de 60 ans et plus qui vivent à domicile et ont besoin d'aide pour les gestes du quotidien, ainsi que les proches qui préparent le dossier.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Allocation personnalisée d'autonomie (Apa) à domicile",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10009",
+    "verifie_le": "2026-06-01",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/tarifs-et-aides/apa/",
+    "/personnes-agees/",
+    "/personnes-agees/aide-a-l-autonomie/",
+    "/tarifs-et-aides/"
+  ],
+  "maj": "2026-09-27"
+}

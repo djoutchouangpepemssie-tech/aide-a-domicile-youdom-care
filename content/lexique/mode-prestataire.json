@@ -1,0 +1,25 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du portail national pour-les-personnes-agees.gouv.fr ; le mode de chaque prestation est indiqué sur les pages tarifs.",
+  "slug": "mode-prestataire",
+  "terme": "mode prestataire",
+  "variantes": ["service prestataire", "services prestataires", "en prestataire"],
+  "seo": {
+    "titre": "Mode prestataire : définition d'un service d'aide à domicile",
+    "description": "Le mode prestataire, en clair : le service emploie l'intervenant, vous êtes client et payez les heures. Ce que cela change pour vous, et les aides."
+  },
+  "definition": "En mode prestataire, le service d'aide à domicile est l'employeur de l'intervenant ; vous êtes client et vous payez les heures réalisées.",
+  "explication": "Le service recrute, forme, encadre et remplace l'intervenant. Il gère les plannings, les absences, les congés et toute la responsabilité d'employeur. Vous signez un contrat de prestation, vous recevez une facture et vous n'avez aucune démarche de salaire ni de cotisations.\n\nPour intervenir auprès des personnes âgées ou en situation de handicap, un service prestataire doit être autorisé par le conseil départemental. Le prix horaire couvre le salaire, l'encadrement, les déplacements et la continuité du service. C'est le mode le plus simple quand vous souhaitez déléguer l'organisation.\n\nLes aides s'appliquent : APA, PCH au tarif prestataire, crédit d'impôt de 50 %, Cesu préfinancés. La PCH prévoit d'ailleurs un tarif horaire propre à ce mode.\n\nYoudom Care intervient en mode prestataire et en mode mandataire. Pour chaque accompagnement, nous vous indiquons le mode retenu et ce qu'il change pour vous, sans parti pris.",
+  "pour_qui": "Les familles qui veulent une aide organisée de bout en bout, avec un remplacement organisé par le service en cas d'absence.",
+  "lien_officiel": {
+    "libelle": "pour-les-personnes-agees.gouv.fr — Les services d'aide à domicile",
+    "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/beneficier-d-aide-a-domicile/les-services-d-aide-a-domicile",
+    "verifie_le": "2025-08-25",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/comment-ca-marche/prestataire-ou-mandataire/",
+    "/comment-ca-marche/",
+    "/tarifs-et-aides/"
+  ],
+  "maj": "2026-09-27"
+}

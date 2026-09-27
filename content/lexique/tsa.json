@@ -1,0 +1,30 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise de la page officielle ameli.fr ; ce terme définit une notion, il ne donne aucun conseil médical. Vocabulaire de docs/01 : « enfant autiste » ou « enfant avec un TSA ».",
+  "slug": "tsa",
+  "terme": "TSA",
+  "developpe": "Trouble du spectre de l'autisme",
+  "variantes": [
+    "trouble du spectre de l'autisme",
+    "troubles du spectre de l'autisme",
+    "trouble du spectre autistique"
+  ],
+  "seo": {
+    "titre": "TSA : le trouble du spectre de l'autisme, défini simplement",
+    "description": "Le TSA, trouble du spectre de l'autisme, en clair : un trouble du neurodéveloppement, ses signes, la diversité des formes, et une aide qui rassure."
+  },
+  "definition": "Le TSA est un trouble du neurodéveloppement qui se manifeste par des particularités de la communication, des relations et des comportements, très différentes d'une personne à l'autre.",
+  "explication": "On parle de spectre parce que les formes sont très variées : certaines personnes parlent peu, d'autres beaucoup ; certaines ont besoin d'aide pour tous les gestes, d'autres vivent de façon autonome. Les signes associent des difficultés dans la communication et les interactions sociales, des intérêts restreints, des gestes ou rituels répétés, une intolérance au changement et, souvent, des particularités sensorielles : bruit, lumière, textures.\n\nLes premiers signes apparaissent le plus souvent avant trois ans. Le diagnostic repose sur l'observation de ces signes par des professionnels formés, sur orientation du médecin traitant ou du pédiatre. Les causes sont multiples, avec une part génétique importante.\n\nL'autisme n'est pas une maladie que l'on fait disparaître : c'est une façon différente de percevoir et de communiquer. L'accompagnement vise l'autonomie, la communication et une vie quotidienne prévisible.\n\nChez Youdom Care, nous écrivons avec les parents une fiche de vie : ce que l'enfant aime, ce qui l'apaise, comment il communique. L'intervenant s'y tient, semaine après semaine.",
+  "pour_qui": "Les parents d'un enfant autiste, les adultes concernés et les proches qui cherchent une aide qui respecte les habitudes de la personne.",
+  "lien_officiel": {
+    "libelle": "ameli.fr — Comprendre l'autisme : définition, causes et fréquence",
+    "href": "https://www.ameli.fr/assure/sante/themes/autisme/comprendre-l-autisme-definition-causes-et-frequence",
+    "verifie_le": "2026-05-04",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/enfants-en-situation-de-handicap/autisme/",
+    "/enfants-en-situation-de-handicap/",
+    "/tarifs-et-aides/aeeh/"
+  ],
+  "maj": "2026-09-27"
+}

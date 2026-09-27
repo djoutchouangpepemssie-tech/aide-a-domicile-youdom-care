@@ -1,0 +1,29 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise de la fiche officielle service-public.gouv.fr.",
+  "slug": "ssiad",
+  "terme": "SSIAD",
+  "developpe": "Service de soins infirmiers à domicile",
+  "variantes": [
+    "service de soins infirmiers à domicile",
+    "services de soins infirmiers à domicile"
+  ],
+  "seo": {
+    "titre": "SSIAD : le service de soins infirmiers à domicile, défini",
+    "description": "Le SSIAD, service de soins infirmiers à domicile : des soins d'hygiène et infirmiers sur prescription, pour qui, remboursés par l'assurance maladie."
+  },
+  "definition": "Un SSIAD est un service qui réalise, sur prescription médicale, des soins d'hygiène et des soins infirmiers au domicile des personnes âgées, malades ou en situation de handicap.",
+  "explication": "Les services de soins infirmiers à domicile interviennent auprès des personnes de 60 ans et plus malades ou en perte d'autonomie, et des personnes de moins de 60 ans en situation de handicap ou atteintes d'une maladie chronique. Des aides-soignants assurent les soins d'hygiène et de confort ; des infirmiers réalisent les actes infirmiers, comme les pansements ou les injections.\n\nLe médecin prescrit les soins. Vous contactez ensuite le SSIAD de votre secteur, qui évalue la situation et organise les passages, y compris le week-end quand la santé l'exige. Les soins sont pris en charge directement par l'assurance maladie : vous n'avancez rien.\n\nLe SSIAD ne fait pas l'aide à la vie quotidienne : courses, repas, entretien, présence. C'est le rôle d'un service d'aide à domicile. Les deux se complètent souvent chez la même personne.\n\nYoudom Care ne réalise aucun soin. Nous travaillons avec le SSIAD et les infirmiers qui interviennent chez vous, et nous ajustons nos horaires aux leurs.",
+  "pour_qui": "Les personnes qui ont besoin de soins réguliers à domicile, et leurs proches qui organisent le retour ou le maintien à la maison.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Service de soins infirmiers à domicile (SSIAD)",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F246",
+    "verifie_le": "2023-06-30",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/personnes-agees/aide-a-l-autonomie/",
+    "/services/sortie-d-hospitalisation/",
+    "/services/garde-malade/"
+  ],
+  "maj": "2026-09-27"
+}

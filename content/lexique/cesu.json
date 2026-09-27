@@ -1,0 +1,26 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Les montants vivent sur /tarifs-et-aides/cesu/ ; ici, la définition des deux Cesu, reprise de la fiche officielle citée.",
+  "slug": "cesu",
+  "terme": "CESU",
+  "developpe": "Chèque emploi service universel",
+  "variantes": ["Cesu", "chèque emploi service universel", "chèques emploi service universel"],
+  "seo": {
+    "titre": "CESU : le chèque emploi service universel, en deux versions",
+    "description": "Le CESU en clair : le Cesu déclaratif pour déclarer un salarié à domicile, le Cesu préfinancé pour payer un service, qui le remet et ce qu'il règle."
+  },
+  "definition": "Le CESU est un dispositif qui simplifie l'emploi et le paiement d'une aide à domicile ; il existe en version déclarative et en version préfinancée.",
+  "explication": "Le Cesu déclaratif sert à déclarer un salarié que vous employez chez vous. Vous déclarez les heures à l'Urssaf, qui calcule les cotisations et édite les bulletins de salaire. Il concerne l'emploi direct et le mode mandataire, où vous êtes l'employeur.\n\nLe Cesu préfinancé est un titre de paiement à montant défini, sous forme de carnet de chèques ou de titre dématérialisé. Il est remis par un employeur, un comité social et économique, une caisse de retraite, une mutuelle ou un organisme social. Il ne se demande pas à titre individuel.\n\nLe Cesu préfinancé règle un salarié à domicile ou la facture d'un organisme de services à la personne, prestataire ou mandataire. Youdom Care accepte les Cesu préfinancés.\n\nLes sommes payées par Cesu sont des dépenses de services à la personne : elles comptent pour le crédit d'impôt, dans les conditions de la fiche officielle. Conservez vos attestations annuelles.",
+  "pour_qui": "Les particuliers qui emploient une aide à domicile, et les salariés, agents ou retraités dont l'employeur ou la caisse distribue des Cesu préfinancés.",
+  "lien_officiel": {
+    "libelle": "service-public.gouv.fr — Cesu déclaratif ou Cesu préfinancé : quelles différences ?",
+    "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13607",
+    "verifie_le": "2026-02-06",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/tarifs-et-aides/cesu/",
+    "/tarifs-et-aides/",
+    "/tarifs-et-aides/credit-d-impot-et-avance-immediate/"
+  ],
+  "maj": "2026-09-27"
+}

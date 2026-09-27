@@ -1,0 +1,31 @@
+{
+  "_lisezmoi": "Terme du lexique (docs/06 §6). Définition reprise du portail national pour-les-personnes-agees.gouv.fr.",
+  "slug": "saad",
+  "terme": "SAAD",
+  "developpe": "Service d'aide et d'accompagnement à domicile",
+  "variantes": [
+    "service d'aide et d'accompagnement à domicile",
+    "services d'aide et d'accompagnement à domicile",
+    "service autonomie à domicile",
+    "services autonomie à domicile"
+  ],
+  "seo": {
+    "titre": "SAAD : le service d'aide et d'accompagnement à domicile",
+    "description": "Le SAAD, service d'aide et d'accompagnement à domicile, en clair : ce qu'il fait au quotidien, l'autorisation du département, sa différence avec le SSIAD."
+  },
+  "definition": "Un SAAD est un service qui envoie des professionnels au domicile des personnes âgées ou en situation de handicap pour les aider dans la vie quotidienne.",
+  "explication": "Les services d'aide et d'accompagnement à domicile interviennent pour la toilette, l'habillage, les repas, les courses, l'entretien du logement, les déplacements et la présence. Certains proposent aussi le portage de repas ou la téléassistance.\n\nUn SAAD travaille en mode prestataire, parfois aussi en mode mandataire. Pour accompagner des personnes âgées ou en situation de handicap, il doit être autorisé par le conseil départemental. Progressivement, les SAAD, les SSIAD et les SPASAD deviennent des services autonomie à domicile, qui réunissent l'aide et les soins sous un même toit.\n\nUn SAAD ne fait pas de soins infirmiers : c'est le rôle du SSIAD ou des infirmiers libéraux. Les deux peuvent intervenir chez la même personne et se coordonner, par exemple le matin pour la toilette puis le repas.\n\nYoudom Care est un service d'aide et d'accompagnement à domicile. Nos intervenants sont des auxiliaires de vie ; nous nous coordonnons avec les soignants qui passent chez vous.",
+  "pour_qui": "Les personnes âgées, les personnes en situation de handicap et leurs proches qui cherchent une aide organisée par un service, plutôt qu'un emploi direct.",
+  "lien_officiel": {
+    "libelle": "pour-les-personnes-agees.gouv.fr — Les services d'aide à domicile",
+    "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/beneficier-d-aide-a-domicile/les-services-d-aide-a-domicile",
+    "verifie_le": "2025-08-25",
+    "consulte_le": "2026-09-27"
+  },
+  "pages_liees": [
+    "/comment-ca-marche/prestataire-ou-mandataire/",
+    "/personnes-agees/",
+    "/aide-a-domicile/"
+  ],
+  "maj": "2026-09-27"
+}

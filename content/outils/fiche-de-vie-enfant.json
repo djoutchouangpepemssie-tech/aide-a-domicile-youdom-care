@@ -1,0 +1,219 @@
+{
+  "id": "fiche-de-vie-enfant",
+  "seo": {
+    "titre": "La fiche de vie de votre enfant : le modèle à imprimer",
+    "description": "Modèle gratuit à imprimer et remplir à la main : ce que votre enfant aime, comment il communique, ce qui l'apaise, ses routines. Pour ne plus tout redire."
+  },
+  "ariane": "Fiche de vie de l'enfant",
+  "h1": "La fiche de vie de votre enfant",
+  "sous_titre": "Votre connaissance de votre enfant, écrite pour que chaque nouvelle personne la respecte dès la première fois.",
+  "icone": "fiche-de-vie",
+  "mode_emploi": [
+    "Imprimez la fiche et remplissez-la à la main, avec votre enfant si c'est possible.",
+    "Donnez-la à lire à chaque personne qui s'occupe de lui, et mettez-la à jour à chaque changement."
+  ],
+  "maj": "2026-09-27",
+  "sections": [
+    {
+      "h2": "Qui est votre enfant",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Son prénom, et comment il aime qu'on l'appelle"
+        },
+        {
+          "type": "champ",
+          "libelle": "Son âge, sa classe ou sa structure (école, IME, SESSAD)"
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il aime, ce qui le fait rire",
+          "lignes": 3
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il n'aime pas du tout",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il sait bien faire, ce dont il est fier",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Comment il communique",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Comment il dit oui, non, « encore », « stop »",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Comment il montre qu'il a mal, faim, soif, sommeil",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ses outils : mots, gestes, pictogrammes, classeur, tablette",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il comprend bien, ce qu'il faut lui dire autrement",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Ce qui l'apaise, ce qui le met en difficulté",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Les signes qui annoncent un moment difficile",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qui l'aide à retrouver son calme",
+          "lignes": 3
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il faut éviter absolument",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Son objet, son coin ou son bruit refuge"
+        },
+        {
+          "type": "champ",
+          "libelle": "Qui appeler si cela ne passe pas"
+        }
+      ]
+    },
+    {
+      "h2": "Ses routines, dans le même ordre, avec les mêmes mots",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Le matin",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "La sortie d'école ou de structure, le goûter",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Le bain, le brossage des dents",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Le coucher : rituel, lumière, doudou, porte ouverte ou fermée",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Le mercredi, le week-end, les vacances",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Les repas et les gestes du quotidien",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Ce qu'il mange volontiers, textures et couverts",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Allergies ou interdits alimentaires écrits par le médecin",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "L'aide dont il a besoin pour manger, se laver, s'habiller",
+          "lignes": 3
+        },
+        {
+          "type": "champ",
+          "libelle": "Les déplacements, les transferts, le matériel",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Sa santé, en pratique",
+      "intro": "Cette fiche décrit votre enfant, pas ses soins. Elle dit seulement où trouver ce que le médecin a écrit.",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Où sont rangés les protocoles écrits par le médecin"
+        },
+        {
+          "type": "champ",
+          "libelle": "Qui donne les médicaments, et à quel moment, selon l'ordonnance",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Les professionnels qui le suivent (médecin, orthophoniste, psychomotricien, éducateur)",
+          "lignes": 3
+        }
+      ]
+    },
+    {
+      "h2": "Ses frères et sœurs, sa famille",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Leurs prénoms, leur place dans la journée",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qu'ils aiment faire ensemble",
+          "lignes": 2
+        }
+      ]
+    },
+    {
+      "h2": "Les personnes à prévenir",
+      "items": [
+        {
+          "type": "champ",
+          "libelle": "Parent 1"
+        },
+        {
+          "type": "champ",
+          "libelle": "Parent 2 ou autre proche"
+        },
+        {
+          "type": "champ",
+          "libelle": "Médecin"
+        },
+        {
+          "type": "info",
+          "libelle": "Urgences",
+          "texte": "15 (SAMU) ou 112"
+        },
+        {
+          "type": "champ",
+          "libelle": "Fiche remplie le … par …, mise à jour le …"
+        }
+      ]
+    }
+  ],
+  "prudence": [
+    "Les protocoles médicaux sont écrits par le médecin ; les médicaments se donnent selon l'ordonnance, jamais autrement.",
+    "Cette fiche reste chez vous. Elle n'est ni envoyée ni enregistrée : vous la remplissez à la main, et vous décidez qui la lit."
+  ]
+}
