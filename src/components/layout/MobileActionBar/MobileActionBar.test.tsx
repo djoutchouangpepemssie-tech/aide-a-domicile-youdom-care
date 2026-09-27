@@ -64,4 +64,15 @@ describe("MobileActionBar", () => {
     expect(screen.queryByRole("link", { name: "Appeler" })).not.toBeInTheDocument();
     expect(screen.getAllByRole("link")).toHaveLength(2);
   });
+
+  it("s'habille de verre dense et réserve l'encoche du bas (P9.6)", () => {
+    render(<MobileActionBar {...props} />);
+    const bar = screen.getByRole("navigation", { name: "Actions rapides" });
+    expect(bar).toHaveClass("glass-strong", "glass-edge");
+    expect(bar).toHaveClass("pb-[env(safe-area-inset-bottom)]");
+    // Chaque voie fait 56 px de haut au moins (docs/02 §4 : bouton principal).
+    for (const link of screen.getAllByRole("link")) {
+      expect(link.className).toContain("min-h-14");
+    }
+  });
 });

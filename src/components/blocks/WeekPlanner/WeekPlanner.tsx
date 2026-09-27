@@ -19,7 +19,10 @@ import "./week-planner.css";
 /*
  * Semaine type, variante lecture (docs/05 §4, docs/02 §7, docs/design/CONCEPT.md §3 bloc 5).
  * Composant serveur, sans JavaScript propre : un tableau réel (en-têtes de colonne = jours, de
- * ligne = créneaux) à partir de 48 rem, une liste par jour en dessous ; légende par activité ;
+ * ligne = créneaux) à partir de 64 rem, une liste par jour en dessous ; légende par activité ;
+ * le tableau demande 750 à 900 px de large (sept jours et le créneau) : à 48 rem il débordait de
+ * la page (P9.6, 14 à 44 px selon le gabarit), il ne s'affiche donc qu'à partir de 64 rem, et
+ * reste dans une zone défilante au clavier si le conteneur est plus étroit que son contenu ;
  * l'état n'est jamais porté par la couleur seule (texte dans chaque case). Mention « Exemple
  * illustratif » toujours visible.
  * Mouvement : `week-fill` (les cases remplies apparaissent case par case, 20 ms d'écart, une
@@ -141,53 +144,57 @@ export function WeekPlanner({
       className={cn("week-planner", className)}
       data-variant="display"
     >
-      <table className="hidden w-full border-collapse md:table">
-        <caption className="mb-3 text-left">
-          <span className="block font-bold">{title}</span>
-          {context ? <span className="block text-small text-text-soft">{context}</span> : null}
-          <span className="mt-1 block text-small font-bold text-raspberry-700">
-            {texts.exemple_illustratif}
-          </span>
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col" className="p-2 text-left text-small text-text-soft">
-              {texts.creneau}
-            </th>
-            {weekDays.map((day) => (
-              <th key={day} scope="col" className="p-2 text-left align-bottom">
-                {texts.jours[day]}
+      {/* Zone défilante focalisable : le tableau garde sa largeur minimale sans jamais faire
+          défiler la page (docs/07 §4, contrat mobile de D-032 §6). */}
+      <div className="hidden overflow-x-auto lg:block" tabIndex={0}>
+        <table className="w-full border-collapse">
+          <caption className="mb-3 text-left">
+            <span className="block font-bold">{title}</span>
+            {context ? <span className="block text-small text-text-soft">{context}</span> : null}
+            <span className="mt-1 block text-small font-bold text-raspberry-700">
+              {texts.exemple_illustratif}
+            </span>
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col" className="p-2 text-left text-small text-text-soft">
+                {texts.creneau}
               </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {weekSlots.map((slot) => (
-            <tr key={slot} className="border-t border-line">
-              <th scope="row" className="p-2 text-left align-top">
-                <span className="block">{texts.creneaux[slot]}</span>
-                <span className="tabular-figures block text-small font-normal text-text-soft">
-                  {slotHours[slot].from}–{slotHours[slot].to}
-                </span>
-              </th>
-              {weekDays.map((day) => {
-                const entry = index.get(day)?.get(slot);
-                return (
-                  <td key={day} className="p-1 align-top">
-                    {entry ? (
-                      <EntryChip entry={entry} texts={texts} order={tableOrder++} />
-                    ) : (
-                      <span className="sr-only">{texts.libre}</span>
-                    )}
-                  </td>
-                );
-              })}
+              {weekDays.map((day) => (
+                <th key={day} scope="col" className="p-2 text-left align-bottom">
+                  {texts.jours[day]}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {weekSlots.map((slot) => (
+              <tr key={slot} className="border-t border-line">
+                <th scope="row" className="p-2 text-left align-top">
+                  <span className="block">{texts.creneaux[slot]}</span>
+                  <span className="tabular-figures block text-small font-normal text-text-soft">
+                    {slotHours[slot].from}–{slotHours[slot].to}
+                  </span>
+                </th>
+                {weekDays.map((day) => {
+                  const entry = index.get(day)?.get(slot);
+                  return (
+                    <td key={day} className="p-1 align-top">
+                      {entry ? (
+                        <EntryChip entry={entry} texts={texts} order={tableOrder++} />
+                      ) : (
+                        <span className="sr-only">{texts.libre}</span>
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <p className="font-bold">{title}</p>
         {context ? <p className="text-small text-text-soft">{context}</p> : null}
         <p className="mt-1 text-small font-bold text-raspberry-700">{texts.exemple_illustratif}</p>

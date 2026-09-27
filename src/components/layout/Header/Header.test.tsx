@@ -165,4 +165,22 @@ describe("Header", () => {
     render(<Header {...props} phone={null} />);
     expect(screen.queryByRole("link", { name: /Appeler le/ })).not.toBeInTheDocument();
   });
+
+  it("habille l'en-tête de verre et donne 44 px de haut au lien de marque (P9.6)", () => {
+    render(<Header {...props} />);
+    const header = screen.getByRole("banner");
+    // `glass` au repos, `glass-strong` seulement au défilement (data-compact="true").
+    expect(header).toHaveClass("glass", "glass-edge");
+    expect(header).not.toHaveClass("glass-strong");
+    expect(header).toHaveAttribute("data-compact", "false");
+    expect(header).toHaveAttribute("data-edge", "bottom");
+    expect(screen.getByRole("link", { name: "Youdom Care, accueil" })).toHaveClass("min-h-11");
+    // Le panneau du menu réserve la place de la barre d'action mobile.
+    const panel = document.getElementById("menu-mobile") as HTMLElement;
+    expect(panel).toHaveClass("glass-strong");
+    expect(panel.firstElementChild).toHaveClass(
+      "pb-[calc(4rem+env(safe-area-inset-bottom))]",
+      "lg:pb-4",
+    );
+  });
 });

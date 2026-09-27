@@ -71,7 +71,12 @@ export function SourcesList({
       >
         {sources.map((source) => (
           <li key={source.href} className="max-w-none">
-            <a href={source.href} rel="noopener noreferrer" className="font-bold">
+            {/* Cible de 44 px de haut (WCAG 2.5.8, P9.6) : le libellé mesurait 22 px. */}
+            <a
+              href={source.href}
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 flex-wrap items-center font-bold"
+            >
               {source.libelle}
               <span aria-hidden="true"> ↗</span>
               <span className="sr-only"> ({texts.lien_externe})</span>

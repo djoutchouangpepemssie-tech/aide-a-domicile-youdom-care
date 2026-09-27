@@ -135,6 +135,7 @@ export function MultiStepForm<T>({
   const startedAt = useRef(new Date().toISOString());
   const headingRef = useRef<HTMLHeadingElement>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
+  const failureRef = useRef<HTMLElement>(null);
 
   // Étape d'une saisie conservée en attente de reprise : la mesure ne compte pas l'étape 1 affichée
   // le temps du montage quand le visiteur revient en réalité à l'étape 3.
@@ -159,6 +160,12 @@ export function MultiStepForm<T>({
     pendingStep.current = null;
     track("demande_etape_vue", { formulaire: form, etape: state.step + 1 });
   }, [form, state.step]);
+
+  // Panne d'envoi : l'alerte est annoncée (`role="alert"`) et reçoit le focus, pour que le clavier
+  // et le lecteur d'écran se trouvent sur le message et le téléphone proposé (audit P8.4 R-4).
+  useEffect(() => {
+    if (status === "failed") failureRef.current?.focus();
+  }, [status]);
 
   const step = steps[state.step] ?? steps[0];
   if (!step) throw new Error("MultiStepForm : aucune étape");
@@ -290,7 +297,7 @@ export function MultiStepForm<T>({
       </div>
 
       {status === "failed" ? (
-        <Callout variant="attention" role="alert">
+        <Callout ref={failureRef} variant="attention" role="alert" tabIndex={-1}>
           {failureText[0]}
           {telHref && phone ? (
             <a href={telHref} data-mesure="formulaire">

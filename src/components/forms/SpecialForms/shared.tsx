@@ -270,8 +270,11 @@ export function ConsentField<T extends ContactValue>({
           {errors["consentement"]}
         </p>
       ) : null}
+      {/* Lien seul dans son paragraphe : cible de 44 px (WCAG 2.5.8, P9.6). */}
       <p className="m-0 mt-3 text-small text-text-soft">
-        <Link href={confidentialiteHref}>{texts.rappel.confidentialite}</Link>
+        <Link href={confidentialiteHref} className="inline-flex min-h-11 items-center">
+          {texts.rappel.confidentialite}
+        </Link>
       </p>
     </div>
   );

@@ -29,7 +29,7 @@ describe("StepsTimeline", () => {
     expect(items[1]?.querySelector(".t-connector")).toBeNull();
     expect(items[1]?.querySelector(".t-knot")).toHaveClass("text-raspberry-500");
     expect(items[0]?.querySelector(".t-knot")).toHaveClass("text-teal-700");
-    expect((items[1] as HTMLElement).style.getPropertyValue("--m-delay")).toBe("200ms");
+    expect((items[1] as HTMLElement).style.getPropertyValue("--m-delay")).toBe("40ms");
   });
 
   it("est complet au rendu serveur, sans état de révélation", () => {

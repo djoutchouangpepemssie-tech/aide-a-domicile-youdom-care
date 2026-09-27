@@ -397,7 +397,9 @@ export function DetailedForm({
             ) : null}
           </div>
           <p className="m-0 text-small text-text-soft">
-            <Link href={confidentialiteHref}>{texts.rappel.confidentialite}</Link>
+            <Link href={confidentialiteHref} className="inline-flex min-h-11 items-center">
+              {texts.rappel.confidentialite}
+            </Link>
           </p>
         </>
       ),

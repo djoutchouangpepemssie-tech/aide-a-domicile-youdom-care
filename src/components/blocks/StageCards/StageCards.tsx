@@ -61,7 +61,7 @@ export function StageCards({ stages, ids, active, className, ...rest }: StageCar
             key={stage.title}
             id={stageId(stage, index, ids)}
             data-active={isActive ? "true" : undefined}
-            className="t-rail__item relative max-w-none"
+            className="t-rail__item relative min-w-0 max-w-none"
             style={railItemStyle(index, index * STAGE_DEPTH_PX)}
           >
             {!last ? (
@@ -77,7 +77,8 @@ export function StageCards({ stages, ids, active, className, ...rest }: StageCar
                 <ThreadKnot size={40} tone={last ? "raspberry" : "teal"}>
                   {stage.icone ? <Icon name={stage.icone} size="sm" tone="ink" /> : index + 1}
                 </ThreadKnot>
-                <span className="heading-4">{stage.title}</span>
+                {/* min-w-0 : un mot long se coupe dans la carte sous espacement du texte forcé (RGAA 10.12). */}
+                <span className="heading-4 min-w-0">{stage.title}</span>
               </p>
               {stage.text ? <div className="mt-3 [&_p]:m-0 [&_p+p]:mt-2">{stage.text}</div> : null}
             </article>
