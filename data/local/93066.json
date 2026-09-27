@@ -1,0 +1,498 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "93066",
+  "kind": "commune",
+  "nom": "Saint-Denis",
+  "chemin": "/aide-a-domicile/seine-saint-denis/saint-denis/",
+  "slug": "saint-denis",
+  "departement": "93",
+  "departement_nom": "Seine-Saint-Denis",
+  "codes_postaux": [
+    "93200",
+    "93210",
+    "93380"
+  ],
+  "parent": "93",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.9378,
+    "lng": 2.3657
+  },
+  "superficie_ha": 1577.25,
+  "population": 149077,
+  "demographie": {
+    "millesime": "2022",
+    "population": 148907,
+    "part_60_74": 11,
+    "part_75_89": 3.8,
+    "part_90_plus": 0.5,
+    "part_75_plus": 4.3,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "saint-denis",
+    "distance_km": 2.7
+  },
+  "communes_voisines": [
+    {
+      "code": "93027",
+      "nom": "La Courneuve",
+      "slug": "la-courneuve",
+      "distance_km": 2.4,
+      "page": true
+    },
+    {
+      "code": "93079",
+      "nom": "Villetaneuse",
+      "slug": "villetaneuse",
+      "distance_km": 2.7,
+      "page": true
+    },
+    {
+      "code": "93072",
+      "nom": "Stains",
+      "slug": "stains",
+      "distance_km": 2.7,
+      "page": false
+    },
+    {
+      "code": "92078",
+      "nom": "Villeneuve-la-Garenne",
+      "slug": "villeneuve-la-garenne",
+      "distance_km": 3.1,
+      "page": true
+    },
+    {
+      "code": "93001",
+      "nom": "Aubervilliers",
+      "slug": "aubervilliers",
+      "distance_km": 3.2,
+      "page": true
+    },
+    {
+      "code": "93039",
+      "nom": "L'Île-Saint-Denis",
+      "slug": "l-ile-saint-denis",
+      "distance_km": 3.4,
+      "page": true
+    },
+    {
+      "code": "95427",
+      "nom": "Montmagny",
+      "slug": "montmagny",
+      "distance_km": 3.6,
+      "page": false
+    },
+    {
+      "code": "93070",
+      "nom": "Saint-Ouen-sur-Seine",
+      "slug": "saint-ouen-sur-seine",
+      "distance_km": 3.8,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "commune-agence",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "11 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "4,3 % de la population (75-89 ans : 3,8 % ; 90 ans ou plus : 0,5 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "148 907 habitants (Saint-Denis)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "CLIC Sillage",
+      "address": "6 rue des boucheries, 93200 ST DENIS",
+      "telephone": "01 55 87 09 19",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Saint-Denis",
+      "address": "Centre local d'information et de coordination - Sillage de Saint-Denis, 6 rue des Boucheries, 93200 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 55 87 09 19",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/ad5d621a-90f8-4115-bdb5-d6cb18fc0c9c",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d’action sociale (CCAS) - Saint-Denis",
+      "address": "15 Rue Catulienne, 93200 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 49 33 64 70",
+      "url": "https://www.saintdenis.fr/CCAS",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/6238c430-c5e7-4d30-b3e9-bc7e6c6a8730",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-Saint-Denis",
+      "address": "44 rue Proudhon, Immeuble Pulse, 93210 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 43 93 86 86",
+      "url": "https://place-handicap.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/b7261db7-56e9-47eb-9333-2a18d4ae4219",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-Saint-Denis",
+      "address": "3 Esplanade Jean-Moulin, Hôtel du département, 93000 Bobigny",
+      "commune_insee": "93008",
+      "telephone": "01 43 93 93 93",
+      "url": "https://seinesaintdenis.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/012bd5bc-7ddd-4c92-bbd9-49d7fbbd6395",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD La Peupleraie",
+      "value": "EHPAD · Accueil de jour · Unité Alzheimer — 96 places",
+      "address": "65 Boulevard Jean Mermoz, 93380 PIERREFITTE SUR SEINE",
+      "telephone": "01 49 71 86 86",
+      "url": "http://www.residencelapeupleraie.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Cité Floréal",
+      "value": "Résidence autonomie — 65 places",
+      "address": "4 Promenade de la Basilique, 93200 ST DENIS",
+      "telephone": "01 48 23 70 71",
+      "url": "http://www.arpavie.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Ambroize Croizat",
+      "value": "Résidence autonomie — 70 places",
+      "address": "10 avenue Romain-Roland, 93200 ST DENIS",
+      "telephone": "01 48 27 09 28",
+      "url": "http://www.ville-saint-denis.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement soleil Pablo Picasso",
+      "value": "Résidence autonomie — 90 places",
+      "address": "Place Victor-Hugo, 93200 ST DENIS",
+      "telephone": "01 49 33 69 75",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence Basilique",
+      "value": "Résidence autonomie — 66 places",
+      "address": "4 rue du pont godet, 93200 ST DENIS",
+      "telephone": "01 42 43 18 65",
+      "url": "http://ville-saint-denis.fr/jcms/jcms/w_12774/residence-pour-personnes-agees-basilique",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Casanova du Centre hospitalier Général de Saint-Denis",
+      "value": "EHPAD — 75 places",
+      "address": "11 rue Danielle-Casanova, 93200 ST DENIS",
+      "telephone": "01 42 35 61 70",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD La Maison des Lumières",
+      "value": "EHPAD · Hébergement temporaire — 84 places",
+      "address": "129 avenue du Président-Wilson, 93200 ST DENIS",
+      "telephone": "01 49 21 23 41",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Petites Soeurs des Pauvres",
+      "value": "EHPAD · Hébergement temporaire — 62 places",
+      "address": "23 rue Gaston Philippe, 93200 ST DENIS",
+      "telephone": "01 42 35 70 64",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "La Maison du Laurier Noble",
+      "value": "EHPAD · Hébergement temporaire — 75 places",
+      "address": "1 rue du Docteur-Delafontaine, 93200 ST DENIS",
+      "telephone": "01 42 35 69 40",
+      "url": "http://www.adef-residences.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE ST DENIS HOPITAL DELAFONTAINE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 rue DU DR DELAFONTAINE, BP 279, 93205 ST DENIS CEDEX",
+      "commune_insee": "93066",
+      "telephone": "01 42 35 61 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL CASANOVA DU CENTRE HOSPITALIER GENERAL DE SAINT DENI",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "11 rue DANIELE CASANOVA, 93205 ST DENIS CEDEX",
+      "commune_insee": "93066",
+      "telephone": "01 42 35 61 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "SOCIETE D EXPLOITATION DU CENTRE CARDIOLOGIQUE DU NORD",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "32 rue DES MOULINS GEMEAUX, 93207 ST DENIS CEDEX",
+      "commune_insee": "93066",
+      "telephone": "01 49 33 41 41",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AFDAEIM Stains",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 ALLEE DU PARADIS, 93240 STAINS",
+      "telephone": "01 48 26 31 32",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AGECET",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "26, 31-37 avenue Galle, 93370 MONTFERMEIL",
+      "telephone": "01 45 09 46 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-Saint-Denis",
+      "value": "Permanence le lundi et le vendredi de 10 h à 12 h ; dd.93@apf.asso.fr",
+      "address": "89 rue Benoît Frachon, 93000 Bobigny",
+      "telephone": "01 48 10 25 35",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ARPEI Gagny",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 AVENUE DE BELLEVUE, 93220 GAGNY",
+      "telephone": "01 43 30 42 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer 93 et maladies apparentées",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "91 avenue de la Résistance, 93340 Le Raincy",
+      "telephone": "01 41 53 00 05",
+      "url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-Saint-Denis (93)",
+      "value": "Comité départemental de bénévoles (Montreuil)",
+      "telephone": "06 68 83 85 11",
+      "url": "https://www.franceparkinson.fr/comite-93/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Saint-Denis",
+      "address": "2 place du Caquet, 93200 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 49 33 66 66",
+      "url": "https://ville-saint-denis.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/73ad7558-2bf1-417e-8d98-9f064514edd2",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "autre",
+      "label": "Mairie déléguée - Pierrefitte-sur-Seine",
+      "address": "2 place de la Libération, Pierrefitte-sur-Seine, 93200 Saint-Denis",
+      "commune_insee": "93059",
+      "telephone": "01 72 09 33 80",
+      "url": "http://www.mairie-pierrefitte93.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/f2532de6-6c81-495c-b67c-d629248c0a97",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 93",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2293%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

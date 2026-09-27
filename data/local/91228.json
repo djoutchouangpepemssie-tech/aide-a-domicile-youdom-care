@@ -1,0 +1,406 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "91228",
+  "kind": "commune",
+  "nom": "Évry-Courcouronnes",
+  "chemin": "/aide-a-domicile/essonne/evry-courcouronnes/",
+  "slug": "evry-courcouronnes",
+  "departement": "91",
+  "departement_nom": "Essonne",
+  "codes_postaux": [
+    "91000",
+    "91080"
+  ],
+  "parent": "91",
+  "epci": {
+    "code": "200059228",
+    "nom": "CA Grand Paris Sud Seine Essonne Sénart"
+  },
+  "centre": {
+    "lat": 48.6287,
+    "lng": 2.4313
+  },
+  "superficie_ha": 1309.47,
+  "population": 66919,
+  "demographie": {
+    "millesime": "2022",
+    "population": 66700,
+    "part_60_74": 12.4,
+    "part_75_89": 4.2,
+    "part_90_plus": 0.4,
+    "part_75_plus": 4.6,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "vitry-sur-seine",
+    "distance_km": 18.6
+  },
+  "communes_voisines": [
+    {
+      "code": "91521",
+      "nom": "Ris-Orangis",
+      "slug": "ris-orangis",
+      "distance_km": 2.4,
+      "page": false
+    },
+    {
+      "code": "91340",
+      "nom": "Lisses",
+      "slug": "lisses",
+      "distance_km": 3.9,
+      "page": false
+    },
+    {
+      "code": "91086",
+      "nom": "Bondoufle",
+      "slug": "bondoufle",
+      "distance_km": 4.1,
+      "page": false
+    },
+    {
+      "code": "91174",
+      "nom": "Corbeil-Essonnes",
+      "slug": "corbeil-essonnes",
+      "distance_km": 4.3,
+      "page": true
+    },
+    {
+      "code": "91600",
+      "nom": "Soisy-sur-Seine",
+      "slug": "soisy-sur-seine",
+      "distance_km": 4.3,
+      "page": false
+    },
+    {
+      "code": "91235",
+      "nom": "Fleury-Mérogis",
+      "slug": "fleury-merogis",
+      "distance_km": 4.4,
+      "page": false
+    },
+    {
+      "code": "91553",
+      "nom": "Saint-Germain-lès-Corbeil",
+      "slug": "saint-germain-les-corbeil",
+      "distance_km": 4.5,
+      "page": false
+    },
+    {
+      "code": "91225",
+      "nom": "Étiolles",
+      "slug": "etiolles",
+      "distance_km": 4.5,
+      "page": false
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,4 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "4,6 % de la population (75-89 ans : 4,2 % ; 90 ans ou plus : 0,4 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "66 700 habitants (Évry-Courcouronnes)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "CLIC du Coeur Essonne",
+      "address": "128 allée des Champs-Elysées, 91000 EVRY",
+      "telephone": "01 60 78 01 01",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Courcouronnes",
+      "address": "Centre local d'information et de coordination du cur Essonne, 128 allée des Champs-Elysées, 91080 Evry-Courcouronnes",
+      "commune_insee": "91228",
+      "telephone": "01 60 78 01 01",
+      "url": "https://www.cliccoeuressonne.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/066027e0-e46f-4a23-862d-e14608738fe5",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Évry-Courcouronnes",
+      "address": "Cours Monseigneur Roméro, 91000 Évry-Courcouronnes",
+      "commune_insee": "91228",
+      "telephone": "01 60 91 60 01",
+      "url": "https://evrycourcouronnes.fr/annuaire/le-centre-communal-daction-sociale-ccas/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/5ed441fe-0598-4964-bde2-c45aa72cc136",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Essonne",
+      "address": "93 rue Henri Rochefort, 91000 Évry",
+      "commune_insee": "91228",
+      "telephone": "01 60 76 11 00",
+      "url": "https://www.essonne.fr/sante-social-solidarite/handicap/la-mdph",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/eb9f20b0-458b-4fff-8047-e2c12e0665f6",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Essonne",
+      "address": "Boulevard de France-Georges Pompidou, Hôtel du département, 91000 Evry-Courcouronnes",
+      "commune_insee": "91228",
+      "telephone": "01 60 91 91 91",
+      "url": "https://www.essonne.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/dc3f7356-c1b2-4641-967f-c3359d2fa22f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Louise Michel",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire · Unité Alzheimer — 72 places",
+      "address": "Rue de la Cerisaie (Courcouronnes) COURCOURONNES, 91000 EVRY",
+      "telephone": "01 64 99 26 26",
+      "url": "http://courcouronnes.sega91.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence autonomie Jean-Philippe Rameau",
+      "value": "Résidence autonomie — 79 places",
+      "address": "100 place Salvador-Allende, 91000 EVRY",
+      "telephone": "01 60 79 28 28",
+      "url": "https://www.arpavie.fr/residence/residence-jean-philippe-rameau",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD - résidence Médicis",
+      "value": "EHPAD · Unité Alzheimer — 74 places",
+      "address": "35 Boulevard Decauville, 91000 EVRY",
+      "telephone": "01 69 36 02 60",
+      "url": "http://www.medicisevry.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Les Tisserins",
+      "value": "EHPAD — 82 places",
+      "address": "203 bis rue Pierre-et-Marie-Curie, 91000 EVRY",
+      "telephone": "01 69 87 70 50",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE DE L ESSONNE",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "boulevard DES CHAMPS ELYSEES, 1-5 RUE DE LA CLAIRIERE, 91024 EVRY CEDEX",
+      "commune_insee": "91228",
+      "telephone": "01 60 87 86 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CLINIQUE DU MOUSSEAU",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "2 avenue DE MOUSSEAU, 91035 EVRY CEDEX",
+      "commune_insee": "91228",
+      "telephone": "01 60 90 10 10",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR CHSF EVRY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "9 cour BLAISE PASCAL, 91000 EVRY COURCOURONNES",
+      "commune_insee": "91228",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI de l'Essonne",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "124 avenue des Champs Lasniers, 91940 LES ULIS",
+      "telephone": "01 69 41 32 25",
+      "url": "https://adapei91.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de l'Essonne",
+      "value": "Délégation départementale ; dd.91@apf.asso.fr",
+      "address": "14 rue Léo Lagrange, 91700 Sainte-Geneviève-des-Bois",
+      "telephone": "01 60 15 31 35",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Essonne",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "52 rue Louis Robert, 91100 Corbeil-Essonnes",
+      "telephone": "01 60 88 20 07",
+      "url": "https://www.francealzheimer.org/essonne/",
+      "source_url": "https://www.francealzheimer.org/essonne/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de l'Essonne (91)",
+      "value": "Comité départemental de bénévoles (Ris-Orangis)",
+      "telephone": "06 82 28 02 90",
+      "url": "https://www.franceparkinson.fr/comite-91/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "CA Grand Paris Sud Seine Essonne Sénart",
+      "source_url": "https://geo.api.gouv.fr/departements/91/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Évry-Courcouronnes",
+      "address": "Place des Droits-de-l'Homme-et-du-Citoyen, Hôtel de ville, 91011 Évry-Courcouronnes",
+      "commune_insee": "91228",
+      "telephone": "01 69 36 66 66",
+      "url": "https://www.evrycourcouronnes.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/essonne/adbeceb5-b624-4fa5-a83a-ed06e4288f54",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/91/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 91",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2291%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

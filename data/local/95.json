@@ -1,0 +1,366 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "95",
+  "kind": "departement",
+  "nom": "Val-d'Oise",
+  "chemin": "/aide-a-domicile/val-d-oise/",
+  "slug": "val-d-oise",
+  "departement": "95",
+  "departement_nom": "Val-d'Oise",
+  "parent": "idf",
+  "centre": {
+    "lat": 49.0488,
+    "lng": 2.0996
+  },
+  "population": 1281653,
+  "demographie": {
+    "millesime": "2022",
+    "population": 1270845,
+    "part_60_74": 13.2,
+    "part_75_89": 5.4,
+    "part_90_plus": 0.8,
+    "part_75_plus": 6.2,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "puteaux",
+    "distance_km": 21.4
+  },
+  "vague": 1,
+  "motif_vague": "departement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "13,2 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "6,2 % de la population (75-89 ans : 5,4 % ; 90 ans ou plus : 0,8 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "1 270 845 habitants (Val-d'Oise)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Sarcelles",
+      "address": "4 place de Navarre, Centre communal d'action sociale, Service gérontologique, 95200 Sarcelles",
+      "commune_insee": "95585",
+      "telephone": "01 34 19 69 40",
+      "url": "https://www.sarcelles.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c6152d96-5499-4560-a1b6-2cb41311a80f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Soisy-sous-Montmorency",
+      "address": "Association gérontologique vallée de Montmorency - rives-de-Seine, 55 avenue de Paris, 95230 Soisy-sous-Montmorency",
+      "commune_insee": "95219",
+      "telephone": "01 34 15 09 62",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/b7c86baf-1058-473f-beb3-bcd14765a0ca",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Cormeilles-en-Parisis",
+      "address": "81 rue de Saint-Germain, Maison de l'entraide, 95240 Cormeilles-en-Parisis",
+      "commune_insee": "95176",
+      "telephone": "01 39 78 54 51",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/4522da1d-cb4d-4839-8260-4c9ede83e540",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Pontoise",
+      "address": "6 avenue de l'Île de France, Plateforme des aidants, Hopital NOVO - Bâtiment F, 95300 Pontoise",
+      "commune_insee": "95500",
+      "telephone": "01 30 75 49 96",
+      "url": "https://hopital-novo.fr/ch-pontoise/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/1e039b27-c4d8-4979-9eb8-b5ce7dca7f6a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Val-d'Oise",
+      "address": "Conseil départemental du Val d'Oise, Bâtiment H, 95032 Cergy-Pontoise Cedex",
+      "commune_insee": "95127",
+      "url": "https://www.mdph.valdoise.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/c173b0fc-8cb8-4653-8114-1152912a759b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Val-d'Oise",
+      "address": "2 avenue du Parc, Hôtel du département, 95000 Cergy-Pontoise",
+      "commune_insee": "95127",
+      "telephone": "01 34 25 30 30",
+      "url": "https://www.valdoise.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/val-d-oise/ac0d4c93-2188-459d-92f3-6253bc77eac6",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueils de jour recensés",
+      "value": "18 dans le département (Val-d'Oise)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidences autonomie recensées",
+      "value": "36 dans le département (Val-d'Oise)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD recensés",
+      "value": "77 dans le département (Val-d'Oise)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE D ACCUEIL THERAPEUTIQUE A TEMPS PARTIEL",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "7 rue LEON GODIN, 95260 BEAUMONT SUR OISE",
+      "commune_insee": "95052",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE D ACCUEIL THERAPEUTIQUE HOPITAL NOVO - TEMPS PARTIEL",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "8 allée NORMANDE, 95330 DOMONT",
+      "commune_insee": "95199",
+      "telephone": "01 34 39 15 10",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE DE JOUR DU FIEF",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "45 rue DU FIEF, 95100 ARGENTEUIL",
+      "commune_insee": "95018",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "69 rue DU LT COLONEL PRUD HON, 95107 ARGENTEUIL CEDEX",
+      "commune_insee": "95018",
+      "telephone": "01 34 23 24 25",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER GENERAL DE GONESSE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 boulevard DU 19 MARS 1962, CS 30071, 95503 GONESSE CEDEX",
+      "commune_insee": "95277",
+      "telephone": "01 34 53 21 21",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE PSYCHOTHERAPIQUE LES OLIVIERS HOPITAL NOVO",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "route DE NOISY, 95260 BEAUMONT SUR OISE",
+      "commune_insee": "95052",
+      "telephone": "01 39 37 15 20",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CH LE PARC",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "chemin DES AUMUSES, 95150 TAVERNY",
+      "commune_insee": "95607",
+      "telephone": "01 30 40 60 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CMP CATTP HOPITAL NOVO SITE BEAUMONT SUR OISE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "25 rue EDMOND TURCQ, 95260 BEAUMONT SUR OISE",
+      "commune_insee": "95052",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP SORBONNE UNIVERSITE SITE LA ROCHE GUYON",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "1 rue JUSTINIEN BLAZY, 95780 LA ROCHE GUYON",
+      "commune_insee": "95523",
+      "telephone": "01 30 63 83 30",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GROUPEMENT HOSPITALIER EAUBONNE MONTMORENCY - SIMONE VEIL",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "14 rue DE SAINT PRIX, 95602 EAUBONNE CEDEX",
+      "commune_insee": "95203",
+      "telephone": "01 34 06 60 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APED L'Espoir",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "SIEGE SOCIAL 1 IMPASSE DU PETIT MOULIN, 95340 PERSAN",
+      "telephone": "01 30 28 48 81",
+      "url": "http://www.aped-espoir.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "Association Haarp",
+      "value": "Réseau Unapei — organisme et association de parents gestionnaire",
+      "address": "HANDICAP AUTISME ACCOMPAGNEMENT RESPECT ET PARTAGE 31 ROUTE STRATEGIQUE, 95240 CORMEILLES EN PARISIS",
+      "telephone": "01 39 31 59 96",
+      "url": "https://www.haarp.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "Association le Colombier",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "92 rue de Montmagny, 95410 Groslay",
+      "telephone": "01 39 84 18 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Val-d'Oise",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "16 rue Ampère, bâtiment A, 95000 Pontoise",
+      "telephone": "06 70 94 18 84",
+      "url": "https://www.francealzheimer.org/valdoise/",
+      "source_url": "https://www.francealzheimer.org/valdoise/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité du Val-d'Oise (95)",
+      "value": "Comité départemental de bénévoles (Saint-Leu-la-Forêt)",
+      "telephone": "07 69 41 99 94",
+      "url": "https://www.franceparkinson.fr/comite-95/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20"
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 95",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2295%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

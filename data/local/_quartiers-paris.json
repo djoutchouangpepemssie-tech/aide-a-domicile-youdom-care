@@ -1,0 +1,1139 @@
+{
+  "_lisezmoi": "Les 80 quartiers administratifs de Paris (vague 2, docs/04 §4) : liste de référence produite par pnpm data:local, sans page tant que le contenu ne le justifie pas. Les noms d'usage (synonymes) restent à établir avec une source par correspondance.",
+  "_source": {
+    "label": "Ville de Paris — quartiers administratifs (quartier_paris)",
+    "url": "https://opendata.paris.fr/explore/dataset/quartier_paris/",
+    "collected_at": "2026-09-26",
+    "licence": "Open Database License (ODbL) — Ville de Paris"
+  },
+  "quartiers": [
+    {
+      "numero": 1,
+      "nom": "Saint-Germain-l'Auxerrois",
+      "slug": "saint-germain-l-auxerrois",
+      "arrondissement": 1,
+      "code_insee_arrondissement": "75101",
+      "code_quartier_insee": "7510101",
+      "chemin_prevu": "/aide-a-domicile/paris/1er-arrondissement/saint-germain-l-auxerrois/",
+      "surface_m2": 869001,
+      "centre": {
+        "lat": 48.86065013520993,
+        "lng": 2.3349103292801994
+      }
+    },
+    {
+      "numero": 2,
+      "nom": "Halles",
+      "nom_seed": "Les Halles",
+      "slug": "halles",
+      "arrondissement": 1,
+      "code_insee_arrondissement": "75101",
+      "code_quartier_insee": "7510102",
+      "chemin_prevu": "/aide-a-domicile/paris/1er-arrondissement/halles/",
+      "surface_m2": 412458,
+      "centre": {
+        "lat": 48.86228910809422,
+        "lng": 2.3448988583110166
+      }
+    },
+    {
+      "numero": 3,
+      "nom": "Palais-Royal",
+      "slug": "palais-royal",
+      "arrondissement": 1,
+      "code_insee_arrondissement": "75101",
+      "code_quartier_insee": "7510103",
+      "chemin_prevu": "/aide-a-domicile/paris/1er-arrondissement/palais-royal/",
+      "surface_m2": 273697,
+      "centre": {
+        "lat": 48.86465997810256,
+        "lng": 2.3363089189653063
+      }
+    },
+    {
+      "numero": 4,
+      "nom": "Place-Vendôme",
+      "slug": "place-vendome",
+      "arrondissement": 1,
+      "code_insee_arrondissement": "75101",
+      "code_quartier_insee": "7510104",
+      "chemin_prevu": "/aide-a-domicile/paris/1er-arrondissement/place-vendome/",
+      "surface_m2": 269457,
+      "centre": {
+        "lat": 48.867018590627694,
+        "lng": 2.328581664931248
+      }
+    },
+    {
+      "numero": 5,
+      "nom": "Gaillon",
+      "slug": "gaillon",
+      "arrondissement": 2,
+      "code_insee_arrondissement": "75102",
+      "code_quartier_insee": "7510201",
+      "chemin_prevu": "/aide-a-domicile/paris/2e-arrondissement/gaillon/",
+      "surface_m2": 188012,
+      "centre": {
+        "lat": 48.869306638088744,
+        "lng": 2.3334318076581146
+      }
+    },
+    {
+      "numero": 6,
+      "nom": "Vivienne",
+      "slug": "vivienne",
+      "arrondissement": 2,
+      "code_insee_arrondissement": "75102",
+      "code_quartier_insee": "7510202",
+      "chemin_prevu": "/aide-a-domicile/paris/2e-arrondissement/vivienne/",
+      "surface_m2": 243551,
+      "centre": {
+        "lat": 48.86910019977125,
+        "lng": 2.3394607437483312
+      }
+    },
+    {
+      "numero": 7,
+      "nom": "Mail",
+      "slug": "mail",
+      "arrondissement": 2,
+      "code_insee_arrondissement": "75102",
+      "code_quartier_insee": "7510203",
+      "chemin_prevu": "/aide-a-domicile/paris/2e-arrondissement/mail/",
+      "surface_m2": 278143,
+      "centre": {
+        "lat": 48.868008337402706,
+        "lng": 2.3446991274274604
+      }
+    },
+    {
+      "numero": 8,
+      "nom": "Bonne-Nouvelle",
+      "slug": "bonne-nouvelle",
+      "arrondissement": 2,
+      "code_insee_arrondissement": "75102",
+      "code_quartier_insee": "7510204",
+      "chemin_prevu": "/aide-a-domicile/paris/2e-arrondissement/bonne-nouvelle/",
+      "surface_m2": 281448,
+      "centre": {
+        "lat": 48.8671501183107,
+        "lng": 2.3500801904088187
+      }
+    },
+    {
+      "numero": 9,
+      "nom": "Arts-et-Métiers",
+      "slug": "arts-et-metiers",
+      "arrondissement": 3,
+      "code_insee_arrondissement": "75103",
+      "code_quartier_insee": "7510301",
+      "chemin_prevu": "/aide-a-domicile/paris/3e-arrondissement/arts-et-metiers/",
+      "surface_m2": 318088,
+      "centre": {
+        "lat": 48.86647028948414,
+        "lng": 2.3570831310567835
+      }
+    },
+    {
+      "numero": 10,
+      "nom": "Enfants-Rouges",
+      "slug": "enfants-rouges",
+      "arrondissement": 3,
+      "code_insee_arrondissement": "75103",
+      "code_quartier_insee": "7510302",
+      "chemin_prevu": "/aide-a-domicile/paris/3e-arrondissement/enfants-rouges/",
+      "surface_m2": 271750,
+      "centre": {
+        "lat": 48.86388739200144,
+        "lng": 2.363123300986952
+      }
+    },
+    {
+      "numero": 11,
+      "nom": "Archives",
+      "slug": "archives",
+      "arrondissement": 3,
+      "code_insee_arrondissement": "75103",
+      "code_quartier_insee": "7510303",
+      "chemin_prevu": "/aide-a-domicile/paris/3e-arrondissement/archives/",
+      "surface_m2": 367728,
+      "centre": {
+        "lat": 48.859192412713874,
+        "lng": 2.3632050573309638
+      }
+    },
+    {
+      "numero": 12,
+      "nom": "Sainte-Avoie",
+      "nom_seed": "Sainte-Avoye",
+      "slug": "sainte-avoie",
+      "arrondissement": 3,
+      "code_insee_arrondissement": "75103",
+      "code_quartier_insee": "7510304",
+      "chemin_prevu": "/aide-a-domicile/paris/3e-arrondissement/sainte-avoie/",
+      "surface_m2": 213316,
+      "centre": {
+        "lat": 48.862557245043206,
+        "lng": 2.354851518245669
+      }
+    },
+    {
+      "numero": 13,
+      "nom": "Saint-Merri",
+      "slug": "saint-merri",
+      "arrondissement": 4,
+      "code_insee_arrondissement": "75104",
+      "code_quartier_insee": "7510401",
+      "chemin_prevu": "/aide-a-domicile/paris/4e-arrondissement/saint-merri/",
+      "surface_m2": 313040,
+      "centre": {
+        "lat": 48.85852137232379,
+        "lng": 2.3516669671389687
+      }
+    },
+    {
+      "numero": 14,
+      "nom": "Saint-Gervais",
+      "slug": "saint-gervais",
+      "arrondissement": 4,
+      "code_insee_arrondissement": "75104",
+      "code_quartier_insee": "7510402",
+      "chemin_prevu": "/aide-a-domicile/paris/4e-arrondissement/saint-gervais/",
+      "surface_m2": 422028,
+      "centre": {
+        "lat": 48.85571865089275,
+        "lng": 2.358162333852766
+      }
+    },
+    {
+      "numero": 15,
+      "nom": "Arsenal",
+      "slug": "arsenal",
+      "arrondissement": 4,
+      "code_insee_arrondissement": "75104",
+      "code_quartier_insee": "7510403",
+      "chemin_prevu": "/aide-a-domicile/paris/4e-arrondissement/arsenal/",
+      "surface_m2": 487265,
+      "centre": {
+        "lat": 48.851585175021285,
+        "lng": 2.3647679538731117
+      }
+    },
+    {
+      "numero": 16,
+      "nom": "Notre-Dame",
+      "slug": "notre-dame",
+      "arrondissement": 4,
+      "code_insee_arrondissement": "75104",
+      "code_quartier_insee": "7510404",
+      "chemin_prevu": "/aide-a-domicile/paris/4e-arrondissement/notre-dame/",
+      "surface_m2": 378252,
+      "centre": {
+        "lat": 48.852895586218004,
+        "lng": 2.3527750121216795
+      }
+    },
+    {
+      "numero": 17,
+      "nom": "Saint-Victor",
+      "slug": "saint-victor",
+      "arrondissement": 5,
+      "code_insee_arrondissement": "75105",
+      "code_quartier_insee": "7510501",
+      "chemin_prevu": "/aide-a-domicile/paris/5e-arrondissement/saint-victor/",
+      "surface_m2": 604156,
+      "centre": {
+        "lat": 48.84766363545046,
+        "lng": 2.354093153377686
+      }
+    },
+    {
+      "numero": 18,
+      "nom": "Jardin-des-Plantes",
+      "slug": "jardin-des-plantes",
+      "arrondissement": 5,
+      "code_insee_arrondissement": "75105",
+      "code_quartier_insee": "7510502",
+      "chemin_prevu": "/aide-a-domicile/paris/5e-arrondissement/jardin-des-plantes/",
+      "surface_m2": 798389,
+      "centre": {
+        "lat": 48.84194019337512,
+        "lng": 2.356893889624744
+      }
+    },
+    {
+      "numero": 19,
+      "nom": "Val-de-Grace",
+      "nom_seed": "Val-de-Grâce",
+      "slug": "val-de-grace",
+      "arrondissement": 5,
+      "code_insee_arrondissement": "75105",
+      "code_quartier_insee": "7510503",
+      "chemin_prevu": "/aide-a-domicile/paris/5e-arrondissement/val-de-grace/",
+      "surface_m2": 703631,
+      "centre": {
+        "lat": 48.84168428795317,
+        "lng": 2.3438609263160095
+      }
+    },
+    {
+      "numero": 20,
+      "nom": "Sorbonne",
+      "slug": "sorbonne",
+      "arrondissement": 5,
+      "code_insee_arrondissement": "75105",
+      "code_quartier_insee": "7510504",
+      "chemin_prevu": "/aide-a-domicile/paris/5e-arrondissement/sorbonne/",
+      "surface_m2": 433198,
+      "centre": {
+        "lat": 48.8490447659431,
+        "lng": 2.3457466001872485
+      }
+    },
+    {
+      "numero": 21,
+      "nom": "Monnaie",
+      "slug": "monnaie",
+      "arrondissement": 6,
+      "code_insee_arrondissement": "75106",
+      "code_quartier_insee": "7510601",
+      "chemin_prevu": "/aide-a-domicile/paris/6e-arrondissement/monnaie/",
+      "surface_m2": 293361,
+      "centre": {
+        "lat": 48.85438440363996,
+        "lng": 2.340035371130514
+      }
+    },
+    {
+      "numero": 22,
+      "nom": "Odéon",
+      "slug": "odeon",
+      "arrondissement": 6,
+      "code_insee_arrondissement": "75106",
+      "code_quartier_insee": "7510602",
+      "chemin_prevu": "/aide-a-domicile/paris/6e-arrondissement/odeon/",
+      "surface_m2": 716148,
+      "centre": {
+        "lat": 48.847800629292664,
+        "lng": 2.3363388275876775
+      }
+    },
+    {
+      "numero": 23,
+      "nom": "Notre-Dame-des-Champs",
+      "slug": "notre-dame-des-champs",
+      "arrondissement": 6,
+      "code_insee_arrondissement": "75106",
+      "code_quartier_insee": "7510603",
+      "chemin_prevu": "/aide-a-domicile/paris/6e-arrondissement/notre-dame-des-champs/",
+      "surface_m2": 861307,
+      "centre": {
+        "lat": 48.84642759400415,
+        "lng": 2.327356878234607
+      }
+    },
+    {
+      "numero": 24,
+      "nom": "Saint-Germain-des-Prés",
+      "slug": "saint-germain-des-pres",
+      "arrondissement": 6,
+      "code_insee_arrondissement": "75106",
+      "code_quartier_insee": "7510604",
+      "chemin_prevu": "/aide-a-domicile/paris/6e-arrondissement/saint-germain-des-pres/",
+      "surface_m2": 282280,
+      "centre": {
+        "lat": 48.85528871996157,
+        "lng": 2.3336568680904577
+      }
+    },
+    {
+      "numero": 25,
+      "nom": "Saint-Thomas-d'Aquin",
+      "slug": "saint-thomas-d-aquin",
+      "arrondissement": 7,
+      "code_insee_arrondissement": "75107",
+      "code_quartier_insee": "7510701",
+      "chemin_prevu": "/aide-a-domicile/paris/7e-arrondissement/saint-thomas-d-aquin/",
+      "surface_m2": 826559,
+      "centre": {
+        "lat": 48.85526326937375,
+        "lng": 2.3255876525808024
+      }
+    },
+    {
+      "numero": 26,
+      "nom": "Invalides",
+      "slug": "invalides",
+      "arrondissement": 7,
+      "code_insee_arrondissement": "75107",
+      "code_quartier_insee": "7510702",
+      "chemin_prevu": "/aide-a-domicile/paris/7e-arrondissement/invalides/",
+      "surface_m2": 1073734,
+      "centre": {
+        "lat": 48.858514966137854,
+        "lng": 2.3164447403399206
+      }
+    },
+    {
+      "numero": 27,
+      "nom": "Ecole-Militaire",
+      "nom_seed": "École-Militaire",
+      "slug": "ecole-militaire",
+      "arrondissement": 7,
+      "code_insee_arrondissement": "75107",
+      "code_quartier_insee": "7510703",
+      "chemin_prevu": "/aide-a-domicile/paris/7e-arrondissement/ecole-militaire/",
+      "surface_m2": 807871,
+      "centre": {
+        "lat": 48.85035926154756,
+        "lng": 2.3110309362657557
+      }
+    },
+    {
+      "numero": 28,
+      "nom": "Gros-Caillou",
+      "slug": "gros-caillou",
+      "arrondissement": 7,
+      "code_insee_arrondissement": "75107",
+      "code_quartier_insee": "7510704",
+      "chemin_prevu": "/aide-a-domicile/paris/7e-arrondissement/gros-caillou/",
+      "surface_m2": 1381893,
+      "centre": {
+        "lat": 48.85829990387876,
+        "lng": 2.3015415556941874
+      }
+    },
+    {
+      "numero": 29,
+      "nom": "Champs-Elysées",
+      "nom_seed": "Champs-Élysées",
+      "slug": "champs-elysees",
+      "arrondissement": 8,
+      "code_insee_arrondissement": "75108",
+      "code_quartier_insee": "7510801",
+      "chemin_prevu": "/aide-a-domicile/paris/8e-arrondissement/champs-elysees/",
+      "surface_m2": 1140254,
+      "centre": {
+        "lat": 48.867074492185395,
+        "lng": 2.3086516846814
+      }
+    },
+    {
+      "numero": 30,
+      "nom": "Faubourg-du-Roule",
+      "slug": "faubourg-du-roule",
+      "arrondissement": 8,
+      "code_insee_arrondissement": "75108",
+      "code_quartier_insee": "7510802",
+      "chemin_prevu": "/aide-a-domicile/paris/8e-arrondissement/faubourg-du-roule/",
+      "surface_m2": 796589,
+      "centre": {
+        "lat": 48.874135575605415,
+        "lng": 2.3041188097211407
+      }
+    },
+    {
+      "numero": 31,
+      "nom": "Madeleine",
+      "slug": "madeleine",
+      "arrondissement": 8,
+      "code_insee_arrondissement": "75108",
+      "code_quartier_insee": "7510803",
+      "chemin_prevu": "/aide-a-domicile/paris/8e-arrondissement/madeleine/",
+      "surface_m2": 760727,
+      "centre": {
+        "lat": 48.87126549302095,
+        "lng": 2.320053028649194
+      }
+    },
+    {
+      "numero": 32,
+      "nom": "Europe",
+      "slug": "europe",
+      "arrondissement": 8,
+      "code_insee_arrondissement": "75108",
+      "code_quartier_insee": "7510804",
+      "chemin_prevu": "/aide-a-domicile/paris/8e-arrondissement/europe/",
+      "surface_m2": 1182467,
+      "centre": {
+        "lat": 48.87814767585099,
+        "lng": 2.3171746113048903
+      }
+    },
+    {
+      "numero": 33,
+      "nom": "Saint-Georges",
+      "slug": "saint-georges",
+      "arrondissement": 9,
+      "code_insee_arrondissement": "75109",
+      "code_quartier_insee": "7510901",
+      "chemin_prevu": "/aide-a-domicile/paris/9e-arrondissement/saint-georges/",
+      "surface_m2": 717092,
+      "centre": {
+        "lat": 48.87993433878255,
+        "lng": 2.3328501965554715
+      }
+    },
+    {
+      "numero": 34,
+      "nom": "Chaussée-d'Antin",
+      "slug": "chaussee-d-antin",
+      "arrondissement": 9,
+      "code_insee_arrondissement": "75109",
+      "code_quartier_insee": "7510902",
+      "chemin_prevu": "/aide-a-domicile/paris/9e-arrondissement/chaussee-d-antin/",
+      "surface_m2": 543441,
+      "centre": {
+        "lat": 48.87354738020911,
+        "lng": 2.332268868869704
+      }
+    },
+    {
+      "numero": 35,
+      "nom": "Faubourg-Montmartre",
+      "slug": "faubourg-montmartre",
+      "arrondissement": 9,
+      "code_insee_arrondissement": "75109",
+      "code_quartier_insee": "7510903",
+      "chemin_prevu": "/aide-a-domicile/paris/9e-arrondissement/faubourg-montmartre/",
+      "surface_m2": 417335,
+      "centre": {
+        "lat": 48.873934691758095,
+        "lng": 2.343252579473346
+      }
+    },
+    {
+      "numero": 36,
+      "nom": "Rochechouart",
+      "slug": "rochechouart",
+      "arrondissement": 9,
+      "code_insee_arrondissement": "75109",
+      "code_quartier_insee": "7510904",
+      "chemin_prevu": "/aide-a-domicile/paris/9e-arrondissement/rochechouart/",
+      "surface_m2": 500435,
+      "centre": {
+        "lat": 48.87981191977869,
+        "lng": 2.3448612910024424
+      }
+    },
+    {
+      "numero": 37,
+      "nom": "Saint-Vincent-de-Paul",
+      "slug": "saint-vincent-de-paul",
+      "arrondissement": 10,
+      "code_insee_arrondissement": "75110",
+      "code_quartier_insee": "7511001",
+      "chemin_prevu": "/aide-a-domicile/paris/10e-arrondissement/saint-vincent-de-paul/",
+      "surface_m2": 926865,
+      "centre": {
+        "lat": 48.88073523727109,
+        "lng": 2.35747081044636
+      }
+    },
+    {
+      "numero": 38,
+      "nom": "Porte-Saint-Denis",
+      "slug": "porte-saint-denis",
+      "arrondissement": 10,
+      "code_insee_arrondissement": "75110",
+      "code_quartier_insee": "7511002",
+      "chemin_prevu": "/aide-a-domicile/paris/10e-arrondissement/porte-saint-denis/",
+      "surface_m2": 472114,
+      "centre": {
+        "lat": 48.87361766097465,
+        "lng": 2.352282894951218
+      }
+    },
+    {
+      "numero": 39,
+      "nom": "Porte-Saint-Martin",
+      "slug": "porte-saint-martin",
+      "arrondissement": 10,
+      "code_insee_arrondissement": "75110",
+      "code_quartier_insee": "7511003",
+      "chemin_prevu": "/aide-a-domicile/paris/10e-arrondissement/porte-saint-martin/",
+      "surface_m2": 609035,
+      "centre": {
+        "lat": 48.87124465089237,
+        "lng": 2.3615036473450113
+      }
+    },
+    {
+      "numero": 40,
+      "nom": "Hôpital-Saint-Louis",
+      "slug": "hopital-saint-louis",
+      "arrondissement": 10,
+      "code_insee_arrondissement": "75110",
+      "code_quartier_insee": "7511004",
+      "chemin_prevu": "/aide-a-domicile/paris/10e-arrondissement/hopital-saint-louis/",
+      "surface_m2": 883726,
+      "centre": {
+        "lat": 48.876008290020586,
+        "lng": 2.36812301788768
+      }
+    },
+    {
+      "numero": 41,
+      "nom": "Folie-Méricourt",
+      "slug": "folie-mericourt",
+      "arrondissement": 11,
+      "code_insee_arrondissement": "75111",
+      "code_quartier_insee": "7511101",
+      "chemin_prevu": "/aide-a-domicile/paris/11e-arrondissement/folie-mericourt/",
+      "surface_m2": 725752,
+      "centre": {
+        "lat": 48.86740319007272,
+        "lng": 2.3729648249267643
+      }
+    },
+    {
+      "numero": 42,
+      "nom": "Saint-Ambroise",
+      "slug": "saint-ambroise",
+      "arrondissement": 11,
+      "code_insee_arrondissement": "75111",
+      "code_quartier_insee": "7511102",
+      "chemin_prevu": "/aide-a-domicile/paris/11e-arrondissement/saint-ambroise/",
+      "surface_m2": 837993,
+      "centre": {
+        "lat": 48.86234502354463,
+        "lng": 2.376118055918989
+      }
+    },
+    {
+      "numero": 43,
+      "nom": "Roquette",
+      "slug": "roquette",
+      "arrondissement": 11,
+      "code_insee_arrondissement": "75111",
+      "code_quartier_insee": "7511103",
+      "chemin_prevu": "/aide-a-domicile/paris/11e-arrondissement/roquette/",
+      "surface_m2": 1172087,
+      "centre": {
+        "lat": 48.85706404083103,
+        "lng": 2.380364061726767
+      }
+    },
+    {
+      "numero": 44,
+      "nom": "Sainte-Marguerite",
+      "slug": "sainte-marguerite",
+      "arrondissement": 11,
+      "code_insee_arrondissement": "75111",
+      "code_quartier_insee": "7511104",
+      "chemin_prevu": "/aide-a-domicile/paris/11e-arrondissement/sainte-marguerite/",
+      "surface_m2": 929609,
+      "centre": {
+        "lat": 48.85209650697998,
+        "lng": 2.3887648336025635
+      }
+    },
+    {
+      "numero": 45,
+      "nom": "Bel-Air",
+      "slug": "bel-air",
+      "arrondissement": 12,
+      "code_insee_arrondissement": "75112",
+      "code_quartier_insee": "7511201",
+      "chemin_prevu": "/aide-a-domicile/paris/12e-arrondissement/bel-air/",
+      "surface_m2": 5970921,
+      "centre": {
+        "lat": 48.8379956461218,
+        "lng": 2.4331784419569793
+      }
+    },
+    {
+      "numero": 46,
+      "nom": "Picpus",
+      "slug": "picpus",
+      "arrondissement": 12,
+      "code_insee_arrondissement": "75112",
+      "code_quartier_insee": "7511202",
+      "chemin_prevu": "/aide-a-domicile/paris/12e-arrondissement/picpus/",
+      "surface_m2": 7205014,
+      "centre": {
+        "lat": 48.830359242366505,
+        "lng": 2.428826815083849
+      }
+    },
+    {
+      "numero": 47,
+      "nom": "Bercy",
+      "slug": "bercy",
+      "arrondissement": 12,
+      "code_insee_arrondissement": "75112",
+      "code_quartier_insee": "7511203",
+      "chemin_prevu": "/aide-a-domicile/paris/12e-arrondissement/bercy/",
+      "surface_m2": 1902932,
+      "centre": {
+        "lat": 48.835209049865114,
+        "lng": 2.3862100842120184
+      }
+    },
+    {
+      "numero": 48,
+      "nom": "Quinze-Vingts",
+      "slug": "quinze-vingts",
+      "arrondissement": 12,
+      "code_insee_arrondissement": "75112",
+      "code_quartier_insee": "7511204",
+      "chemin_prevu": "/aide-a-domicile/paris/12e-arrondissement/quinze-vingts/",
+      "surface_m2": 1235916,
+      "centre": {
+        "lat": 48.84691594405347,
+        "lng": 2.374401626479208
+      }
+    },
+    {
+      "numero": 49,
+      "nom": "Salpêtrière",
+      "slug": "salpetriere",
+      "arrondissement": 13,
+      "code_insee_arrondissement": "75113",
+      "code_quartier_insee": "7511301",
+      "chemin_prevu": "/aide-a-domicile/paris/13e-arrondissement/salpetriere/",
+      "surface_m2": 1181560,
+      "centre": {
+        "lat": 48.83740588522813,
+        "lng": 2.3633186351497177
+      }
+    },
+    {
+      "numero": 50,
+      "nom": "Gare",
+      "slug": "gare",
+      "arrondissement": 13,
+      "code_insee_arrondissement": "75113",
+      "code_quartier_insee": "7511302",
+      "chemin_prevu": "/aide-a-domicile/paris/13e-arrondissement/gare/",
+      "surface_m2": 3044178,
+      "centre": {
+        "lat": 48.82752745777257,
+        "lng": 2.3723977369189355
+      }
+    },
+    {
+      "numero": 51,
+      "nom": "Maison-Blanche",
+      "slug": "maison-blanche",
+      "arrondissement": 13,
+      "code_insee_arrondissement": "75113",
+      "code_quartier_insee": "7511303",
+      "chemin_prevu": "/aide-a-domicile/paris/13e-arrondissement/maison-blanche/",
+      "surface_m2": 2231506,
+      "centre": {
+        "lat": 48.82312780567426,
+        "lng": 2.352433149542824
+      }
+    },
+    {
+      "numero": 52,
+      "nom": "Croulebarbe",
+      "slug": "croulebarbe",
+      "arrondissement": 13,
+      "code_insee_arrondissement": "75113",
+      "code_quartier_insee": "7511304",
+      "chemin_prevu": "/aide-a-domicile/paris/13e-arrondissement/croulebarbe/",
+      "surface_m2": 692068,
+      "centre": {
+        "lat": 48.83373367612219,
+        "lng": 2.3476730460658106
+      }
+    },
+    {
+      "numero": 53,
+      "nom": "Montparnasse",
+      "slug": "montparnasse",
+      "arrondissement": 14,
+      "code_insee_arrondissement": "75114",
+      "code_quartier_insee": "7511401",
+      "chemin_prevu": "/aide-a-domicile/paris/14e-arrondissement/montparnasse/",
+      "surface_m2": 1126205,
+      "centre": {
+        "lat": 48.8376230959726,
+        "lng": 2.331783822887114
+      }
+    },
+    {
+      "numero": 54,
+      "nom": "Parc-de-Montsouris",
+      "slug": "parc-de-montsouris",
+      "arrondissement": 14,
+      "code_insee_arrondissement": "75114",
+      "code_quartier_insee": "7511402",
+      "chemin_prevu": "/aide-a-domicile/paris/14e-arrondissement/parc-de-montsouris/",
+      "surface_m2": 1357950,
+      "centre": {
+        "lat": 48.823452771575106,
+        "lng": 2.337070179863054
+      }
+    },
+    {
+      "numero": 55,
+      "nom": "Petit-Montrouge",
+      "slug": "petit-montrouge",
+      "arrondissement": 14,
+      "code_insee_arrondissement": "75114",
+      "code_quartier_insee": "7511403",
+      "chemin_prevu": "/aide-a-domicile/paris/14e-arrondissement/petit-montrouge/",
+      "surface_m2": 1345774,
+      "centre": {
+        "lat": 48.82665262554388,
+        "lng": 2.3264369992249008
+      }
+    },
+    {
+      "numero": 56,
+      "nom": "Plaisance",
+      "slug": "plaisance",
+      "arrondissement": 14,
+      "code_insee_arrondissement": "75114",
+      "code_quartier_insee": "7511404",
+      "chemin_prevu": "/aide-a-domicile/paris/14e-arrondissement/plaisance/",
+      "surface_m2": 1784948,
+      "centre": {
+        "lat": 48.83031704260011,
+        "lng": 2.315304931573413
+      }
+    },
+    {
+      "numero": 57,
+      "nom": "Saint-Lambert",
+      "slug": "saint-lambert",
+      "arrondissement": 15,
+      "code_insee_arrondissement": "75115",
+      "code_quartier_insee": "7511501",
+      "chemin_prevu": "/aide-a-domicile/paris/15e-arrondissement/saint-lambert/",
+      "surface_m2": 2829202,
+      "centre": {
+        "lat": 48.83429362836976,
+        "lng": 2.296919974448867
+      }
+    },
+    {
+      "numero": 58,
+      "nom": "Necker",
+      "slug": "necker",
+      "arrondissement": 15,
+      "code_insee_arrondissement": "75115",
+      "code_quartier_insee": "7511502",
+      "chemin_prevu": "/aide-a-domicile/paris/15e-arrondissement/necker/",
+      "surface_m2": 1578484,
+      "centre": {
+        "lat": 48.84271125032415,
+        "lng": 2.3107774536393966
+      }
+    },
+    {
+      "numero": 59,
+      "nom": "Grenelle",
+      "slug": "grenelle",
+      "arrondissement": 15,
+      "code_insee_arrondissement": "75115",
+      "code_quartier_insee": "7511503",
+      "chemin_prevu": "/aide-a-domicile/paris/15e-arrondissement/grenelle/",
+      "surface_m2": 1478299,
+      "centre": {
+        "lat": 48.850171655497846,
+        "lng": 2.291852642697574
+      }
+    },
+    {
+      "numero": 60,
+      "nom": "Javel",
+      "slug": "javel",
+      "arrondissement": 15,
+      "code_insee_arrondissement": "75115",
+      "code_quartier_insee": "7511504",
+      "chemin_prevu": "/aide-a-domicile/paris/15e-arrondissement/javel/",
+      "surface_m2": 2609009,
+      "centre": {
+        "lat": 48.83906040108164,
+        "lng": 2.2780763469189345
+      }
+    },
+    {
+      "numero": 61,
+      "nom": "Auteuil",
+      "slug": "auteuil",
+      "arrondissement": 16,
+      "code_insee_arrondissement": "75116",
+      "code_quartier_insee": "7511601",
+      "chemin_prevu": "/aide-a-domicile/paris/16e-arrondissement/auteuil/",
+      "surface_m2": 6383888,
+      "centre": {
+        "lat": 48.850622342726865,
+        "lng": 2.252276907538065
+      }
+    },
+    {
+      "numero": 62,
+      "nom": "Muette",
+      "slug": "muette",
+      "arrondissement": 16,
+      "code_insee_arrondissement": "75116",
+      "code_quartier_insee": "7511602",
+      "chemin_prevu": "/aide-a-domicile/paris/16e-arrondissement/muette/",
+      "surface_m2": 5477898,
+      "centre": {
+        "lat": 48.86327454383974,
+        "lng": 2.259935831704838
+      }
+    },
+    {
+      "numero": 63,
+      "nom": "Porte-Dauphine",
+      "slug": "porte-dauphine",
+      "arrondissement": 16,
+      "code_insee_arrondissement": "75116",
+      "code_quartier_insee": "7511603",
+      "chemin_prevu": "/aide-a-domicile/paris/16e-arrondissement/porte-dauphine/",
+      "surface_m2": 3086718,
+      "centre": {
+        "lat": 48.871765634282355,
+        "lng": 2.2719177404675657
+      }
+    },
+    {
+      "numero": 64,
+      "nom": "Chaillot",
+      "slug": "chaillot",
+      "arrondissement": 16,
+      "code_insee_arrondissement": "75116",
+      "code_quartier_insee": "7511604",
+      "chemin_prevu": "/aide-a-domicile/paris/16e-arrondissement/chaillot/",
+      "surface_m2": 1424035,
+      "centre": {
+        "lat": 48.86843361445447,
+        "lng": 2.2916790427412166
+      }
+    },
+    {
+      "numero": 65,
+      "nom": "Ternes",
+      "slug": "ternes",
+      "arrondissement": 17,
+      "code_insee_arrondissement": "75117",
+      "code_quartier_insee": "7511701",
+      "chemin_prevu": "/aide-a-domicile/paris/17e-arrondissement/ternes/",
+      "surface_m2": 1465071,
+      "centre": {
+        "lat": 48.88117755028415,
+        "lng": 2.289963738115156
+      }
+    },
+    {
+      "numero": 66,
+      "nom": "Plaine de Monceaux",
+      "nom_seed": "Plaine-de-Monceaux",
+      "slug": "plaine-de-monceaux",
+      "arrondissement": 17,
+      "code_insee_arrondissement": "75117",
+      "code_quartier_insee": "7511702",
+      "chemin_prevu": "/aide-a-domicile/paris/17e-arrondissement/plaine-de-monceaux/",
+      "surface_m2": 1383508,
+      "centre": {
+        "lat": 48.88504369140323,
+        "lng": 2.302909824651906
+      }
+    },
+    {
+      "numero": 67,
+      "nom": "Batignolles",
+      "slug": "batignolles",
+      "arrondissement": 17,
+      "code_insee_arrondissement": "75117",
+      "code_quartier_insee": "7511703",
+      "chemin_prevu": "/aide-a-domicile/paris/17e-arrondissement/batignolles/",
+      "surface_m2": 1441711,
+      "centre": {
+        "lat": 48.888481513920595,
+        "lng": 2.313856169006357
+      }
+    },
+    {
+      "numero": 68,
+      "nom": "Epinettes",
+      "nom_seed": "Épinettes",
+      "slug": "epinettes",
+      "arrondissement": 17,
+      "code_insee_arrondissement": "75117",
+      "code_quartier_insee": "7511704",
+      "chemin_prevu": "/aide-a-domicile/paris/17e-arrondissement/epinettes/",
+      "surface_m2": 1378545,
+      "centre": {
+        "lat": 48.8949426537908,
+        "lng": 2.321118743705154
+      }
+    },
+    {
+      "numero": 69,
+      "nom": "Grandes-Carrières",
+      "slug": "grandes-carrieres",
+      "arrondissement": 18,
+      "code_insee_arrondissement": "75118",
+      "code_quartier_insee": "7511801",
+      "chemin_prevu": "/aide-a-domicile/paris/18e-arrondissement/grandes-carrieres/",
+      "surface_m2": 1905566,
+      "centre": {
+        "lat": 48.89257777114592,
+        "lng": 2.334363089913081
+      }
+    },
+    {
+      "numero": 70,
+      "nom": "Clignancourt",
+      "slug": "clignancourt",
+      "arrondissement": 18,
+      "code_insee_arrondissement": "75118",
+      "code_quartier_insee": "7511802",
+      "chemin_prevu": "/aide-a-domicile/paris/18e-arrondissement/clignancourt/",
+      "surface_m2": 1653715,
+      "centre": {
+        "lat": 48.89166759106752,
+        "lng": 2.3459787545931863
+      }
+    },
+    {
+      "numero": 71,
+      "nom": "Goutte-d'Or",
+      "slug": "goutte-d-or",
+      "arrondissement": 18,
+      "code_insee_arrondissement": "75118",
+      "code_quartier_insee": "7511803",
+      "chemin_prevu": "/aide-a-domicile/paris/18e-arrondissement/goutte-d-or/",
+      "surface_m2": 1089226,
+      "centre": {
+        "lat": 48.89213818760241,
+        "lng": 2.355536163296278
+      }
+    },
+    {
+      "numero": 72,
+      "nom": "La Chapelle",
+      "slug": "la-chapelle",
+      "arrondissement": 18,
+      "code_insee_arrondissement": "75118",
+      "code_quartier_insee": "7511804",
+      "chemin_prevu": "/aide-a-domicile/paris/18e-arrondissement/la-chapelle/",
+      "surface_m2": 1347545,
+      "centre": {
+        "lat": 48.894012169582226,
+        "lng": 2.3643867790293243
+      }
+    },
+    {
+      "numero": 73,
+      "nom": "Villette",
+      "nom_seed": "La Villette",
+      "slug": "villette",
+      "arrondissement": 19,
+      "code_insee_arrondissement": "75119",
+      "code_quartier_insee": "7511901",
+      "chemin_prevu": "/aide-a-domicile/paris/19e-arrondissement/villette/",
+      "surface_m2": 1285705,
+      "centre": {
+        "lat": 48.88766108880349,
+        "lng": 2.3744682121256666
+      }
+    },
+    {
+      "numero": 74,
+      "nom": "Pont-de-Flandre",
+      "slug": "pont-de-flandre",
+      "arrondissement": 19,
+      "code_insee_arrondissement": "75119",
+      "code_quartier_insee": "7511902",
+      "chemin_prevu": "/aide-a-domicile/paris/19e-arrondissement/pont-de-flandre/",
+      "surface_m2": 2376238,
+      "centre": {
+        "lat": 48.89555577457166,
+        "lng": 2.384777229270242
+      }
+    },
+    {
+      "numero": 75,
+      "nom": "Amérique",
+      "slug": "amerique",
+      "arrondissement": 19,
+      "code_insee_arrondissement": "75119",
+      "code_quartier_insee": "7511903",
+      "chemin_prevu": "/aide-a-domicile/paris/19e-arrondissement/amerique/",
+      "surface_m2": 1835720,
+      "centre": {
+        "lat": 48.88163816729657,
+        "lng": 2.3954401666237373
+      }
+    },
+    {
+      "numero": 76,
+      "nom": "Combat",
+      "slug": "combat",
+      "arrondissement": 19,
+      "code_insee_arrondissement": "75119",
+      "code_quartier_insee": "7511904",
+      "chemin_prevu": "/aide-a-domicile/paris/19e-arrondissement/combat/",
+      "surface_m2": 1294988,
+      "centre": {
+        "lat": 48.87863907572485,
+        "lng": 2.380127281829295
+      }
+    },
+    {
+      "numero": 77,
+      "nom": "Belleville",
+      "slug": "belleville",
+      "arrondissement": 20,
+      "code_insee_arrondissement": "75120",
+      "code_quartier_insee": "7512001",
+      "chemin_prevu": "/aide-a-domicile/paris/20e-arrondissement/belleville/",
+      "surface_m2": 806569,
+      "centre": {
+        "lat": 48.87153120058614,
+        "lng": 2.3875492398498035
+      }
+    },
+    {
+      "numero": 78,
+      "nom": "Saint-Fargeau",
+      "slug": "saint-fargeau",
+      "arrondissement": 20,
+      "code_insee_arrondissement": "75120",
+      "code_quartier_insee": "7512002",
+      "chemin_prevu": "/aide-a-domicile/paris/20e-arrondissement/saint-fargeau/",
+      "surface_m2": 1486971,
+      "centre": {
+        "lat": 48.87103473909125,
+        "lng": 2.406171530151038
+      }
+    },
+    {
+      "numero": 79,
+      "nom": "Père-Lachaise",
+      "slug": "pere-lachaise",
+      "arrondissement": 20,
+      "code_insee_arrondissement": "75120",
+      "code_quartier_insee": "7512003",
+      "chemin_prevu": "/aide-a-domicile/paris/20e-arrondissement/pere-lachaise/",
+      "surface_m2": 1599002,
+      "centre": {
+        "lat": 48.86371948395739,
+        "lng": 2.395272820760115
+      }
+    },
+    {
+      "numero": 80,
+      "nom": "Charonne",
+      "slug": "charonne",
+      "arrondissement": 20,
+      "code_insee_arrondissement": "75120",
+      "code_quartier_insee": "7512004",
+      "chemin_prevu": "/aide-a-domicile/paris/20e-arrondissement/charonne/",
+      "surface_m2": 2090904,
+      "centre": {
+        "lat": 48.854760283035255,
+        "lng": 2.407430328235969
+      }
+    }
+  ]
+}

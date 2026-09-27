@@ -1,0 +1,514 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "92",
+  "kind": "departement",
+  "nom": "Hauts-de-Seine",
+  "chemin": "/aide-a-domicile/hauts-de-seine/",
+  "slug": "hauts-de-seine",
+  "departement": "92",
+  "departement_nom": "Hauts-de-Seine",
+  "parent": "idf",
+  "centre": {
+    "lat": 48.8974,
+    "lng": 2.2018
+  },
+  "population": 1654712,
+  "demographie": {
+    "millesime": "2022",
+    "population": 1647435,
+    "part_60_74": 12.8,
+    "part_75_89": 6.4,
+    "part_90_plus": 1.2,
+    "part_75_plus": 7.6,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "puteaux",
+    "distance_km": 3.8
+  },
+  "vague": 1,
+  "motif_vague": "departement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,8 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "7,6 % de la population (75-89 ans : 6,4 % ; 90 ans ou plus : 1,2 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "1 647 435 habitants (Hauts-de-Seine)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Antony",
+      "address": "77 rue Prosper-Legouté, Centre local d'information et de coordination, 92160 Antony",
+      "commune_insee": "92002",
+      "telephone": "01 40 96 31 70",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/f19d8f9c-3d36-4655-ba0a-809bc4b51f5a",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Asnières-sur-Seine",
+      "address": "Centre local d'information et de coordination gérontologique, 5-7 rue de l'Alma, 92600 Asnières-sur-Seine",
+      "commune_insee": "92004",
+      "telephone": "01 41 11 17 70",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/9de39121-12e8-4ed7-84ac-b1a688c0e7a5",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Bois-Colombes",
+      "address": "Centre d'action sociale, Coordination gérontologique de Bois-Colombes, 15 rue Charles-Duflos, 92270 Bois-Colombes",
+      "commune_insee": "92009",
+      "telephone": "01 41 19 83 47",
+      "url": "http://www.bois-colombes.com",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/cb02ddb0-2df8-46ed-8db0-3b3529aec7de",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Boulogne-Billancourt",
+      "address": "92 rue Gabriel-Charles-Voisin, Conseil Séniors, 92100 Boulogne-Billancourt",
+      "commune_insee": "92012",
+      "telephone": "01 55 18 47 82",
+      "url": "https://www.boulognebillancourt.com/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/d5d2037f-9122-40e4-be50-ccff67f238e2",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Châtenay-Malabry",
+      "address": "Espace prévention-santé, Coordination gérontologique de Châtenay-Malabry, Square Henri-Sellier, 92290 Châtenay-Malabry",
+      "commune_insee": "92019",
+      "telephone": "01 46 32 93 49",
+      "url": "http://www.hauts-de-seine.fr/solidarites/personnes-agees/maintien-a-domicile/adresses-des-clic-et-coordinations-gerontologiques",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/05206600-0ce3-4255-87e0-c4658211fd77",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Châtillon",
+      "address": "79 Rue Pierre Semard, Coordination gérontologique de Châtillon, CCAS, 92320 Châtillon",
+      "commune_insee": "92020",
+      "telephone": "01 58 07 15 37",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/6e159496-ea2c-4f4a-97db-cf7b7e8d28ea",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Clichy",
+      "address": "Centre local d'information et de coordination de Clichy, Antenne de Clichy, 90 bis rue Martre, 92110 Clichy",
+      "commune_insee": "92024",
+      "telephone": "01 47 15 72 98",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/09fb4f27-f522-432d-aaf1-2af7e8e50513",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Colombes",
+      "address": "Centre local d'information et de coordination, 36 rue du Maréchal-Joffre, 92700 Colombes",
+      "commune_insee": "92025",
+      "telephone": "01 47 60 43 54",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/58748ddc-d0ce-4763-a158-482da37885bf",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Courbevoie",
+      "address": "30 avenue Puvis-de-Chavannes, Centre local d'information et de coordination Archipel, 92400 Courbevoie",
+      "commune_insee": "92026",
+      "telephone": "01 47 88 12 22",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/12248933-1d2a-423f-b0af-89e77f2b2af8",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Fontenay-aux-Roses",
+      "address": "Vallée sud grand Paris, 28 rue de la Redoute, 92260 Fontenay-aux-Roses",
+      "commune_insee": "92032",
+      "telephone": "01 55 95 95 38",
+      "url": "http://www.valleesud.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/ef61fd0e-75d5-4056-99b2-9aa74091f144",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Gennevilliers",
+      "address": "17 rue Victor-Hugo, Coordination gérontologique de Gennevilliers, 92230 Gennevilliers",
+      "commune_insee": "92036",
+      "telephone": "01 40 85 68 68",
+      "url": "https://www.ville-gennevilliers.fr/164/demarches-et-services/action-sociale/centre-communal-d-action-sociale-ccas.htm",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/732f3c4c-86fa-4aea-8969-af60778609c5",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Le Plessis-Robinson",
+      "address": "3 place de la Mairie, Hôtel de Ville, Coordination gérontologique du Plessis-Robinson, 92350 Le Plessis-Robinson",
+      "commune_insee": "92060",
+      "telephone": "01 46 01 43 21",
+      "url": "https://www.plessis-robinson.com/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/d2ccb2c4-129e-44dd-be9f-3f4262e1516d",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Bois-Colombes",
+      "address": "15-17 rue Maurice-Pelletier, 92270 Bois-Colombes",
+      "commune_insee": "92009",
+      "telephone": "01 47 81 90 11",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr/solutions-pour-les-aidants/tout",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/380b2f1e-2e35-4d1e-8cc5-9379ab16488b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Boulogne-Billancourt",
+      "address": "Centre de gérontologie Les Abondances, 49 rue Saint-Denis, 92100 Boulogne-Billancourt",
+      "commune_insee": "92012",
+      "telephone": "01 41 22 57 51",
+      "url": "http://www.lesabondances.fr/plateforme-des-aidants",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/2561552c-4aa2-4782-a91c-7d35e3354a3e",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Vanves",
+      "address": "29 rue Diderot, PARA Odilon-Lannelongue, 92170 Vanves",
+      "commune_insee": "92075",
+      "telephone": "01 46 42 31 51",
+      "url": "http://www.fondation-odilon-lannelongue.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/0c82df71-b711-44ad-a490-2adc1d7be2a9",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Hauts-de-Seine",
+      "address": "12 avenue Léonard-de-Vinci, Esplanade Mona-Lisa, 92400 Courbevoie",
+      "commune_insee": "92026",
+      "telephone": "01 41 91 92 50",
+      "url": "https://mdphenligne.cnsa.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3f9f35ee-4761-47c3-8643-bf7b11fcecb4",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Hauts-de-Seine",
+      "address": "57 rue des Longues Raies, Hôtel du département, 92000 Nanterre",
+      "commune_insee": "92050",
+      "telephone": "0 806 00 00 92",
+      "url": "https://www.hauts-de-seine.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68ae9287-fc9e-48b6-a8d6-8e9b669ff131",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueils de jour recensés",
+      "value": "30 dans le département (Hauts-de-Seine)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidences autonomie recensées",
+      "value": "48 dans le département (Hauts-de-Seine)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD recensés",
+      "value": "111 dans le département (Hauts-de-Seine)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE NANTERRE HOP MAX FOURESTIER",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "403 avenue DE LA REPUBLIQUE, 92014 NANTERRE CEDEX",
+      "commune_insee": "92050",
+      "telephone": "01 47 69 65 65",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DEPARTEMENTAL STELL",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 rue CHARLES DROT, 92501 RUEIL MALMAISON CEDEX",
+      "commune_insee": "92063",
+      "telephone": "01 41 29 90 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DES QUATRE VILLES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "3 place SILLY, 92210 ST CLOUD",
+      "commune_insee": "92064",
+      "telephone": "01 77 70 70 70",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DES QUATRE VILLES",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "141 GRANDE RUE, 92310 SEVRES",
+      "commune_insee": "92072",
+      "telephone": "01 77 70 70 70",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER FONDATION ROGUET",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "64 rue VILLENEUVE, 92110 CLICHY",
+      "commune_insee": "92024",
+      "telephone": "01 41 40 46 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER RIVES DE SEINE SITE PUTEAUX",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 boulevard RICHARD WALLACE, 92800 PUTEAUX",
+      "commune_insee": "92062",
+      "telephone": "01 40 88 63 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER RIVES DE SEINESITE COURBEVOIE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "30 rue KILFORD, 92400 COURBEVOIE",
+      "commune_insee": "92026",
+      "telephone": "01 40 88 63 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CH RIVES DE SEINE SITE NEUILLY SUR SEINE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "36 boulevard DU GENERAL LECLERC, BP 79, 92205 NEUILLY SUR SEINE CEDEX",
+      "commune_insee": "92051",
+      "telephone": "01 40 88 60 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU AP-HP UNIVERSITE PARIS SACLAY SITE AMBROISE PARE",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "9 avenue CHARLES DE GAULLE, 92104 BOULOGNE BILLANCOURT CEDEX",
+      "commune_insee": "92012",
+      "telephone": "01 49 09 50 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU AP-HP UNIVERSITE PARIS SACLAY SITE ANTOINE BECLERE",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "157 rue DE LA PTE DE TRIVAUX, 92140 CLAMART",
+      "commune_insee": "92023",
+      "telephone": "01 45 37 44 44",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU AP-HP UNIVERSITE PARIS SACLAY SITE RAYMOND POINCARE",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "104 boulevard RAYMOND POINCARE, 92380 GARCHES",
+      "commune_insee": "92033",
+      "telephone": "01 47 10 79 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP CENTRE-UNIVERSITE PARIS CITE SITE CELTON",
+      "value": "Centre Hospitalier Régional (C.H.R.)",
+      "address": "4 prv CORENTIN CELTON, BP 66, 92133 ISSY LES MOULINEAUX CEDEX",
+      "commune_insee": "92040",
+      "telephone": "01 58 00 40 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "APEI de la Boucle de la Seine",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 boulevard Charles de GAULLE, 92707 COLOMBES CEDEX",
+      "telephone": "01 42 42 19 91",
+      "url": "https://www.apei-bs.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "APEI de Meudon",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "35 RUE CHARLES DESVERGNES, 92190 MEUDON",
+      "telephone": "01 46 26 63 28",
+      "url": "http://apeimeudon92.odns.fr/Site-APEI/",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "APEI la Maison du Phare",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "13 rue des Poissonniers, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 46 24 49 65",
+      "url": "https://www.apeilamaisonduphare.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Hauts-de-Seine",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "94 avenue Achille Peretti, 92200 Neuilly-sur-Seine",
+      "telephone": "01 46 24 68 31",
+      "url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité des Hauts-de-Seine (92)",
+      "value": "Comité départemental de bénévoles (Saint-Cloud)",
+      "telephone": "06 33 46 24 84",
+      "url": "https://www.franceparkinson.fr/comite-92/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20"
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 92",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2292%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

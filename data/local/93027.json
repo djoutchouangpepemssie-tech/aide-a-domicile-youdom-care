@@ -1,0 +1,353 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "93027",
+  "kind": "commune",
+  "nom": "La Courneuve",
+  "chemin": "/aide-a-domicile/seine-saint-denis/la-courneuve/",
+  "slug": "la-courneuve",
+  "departement": "93",
+  "departement_nom": "Seine-Saint-Denis",
+  "codes_postaux": [
+    "93120"
+  ],
+  "parent": "93",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.9341,
+    "lng": 2.3986
+  },
+  "superficie_ha": 751.63,
+  "population": 47167,
+  "demographie": {
+    "millesime": "2022",
+    "population": 47086,
+    "part_60_74": 10.6,
+    "part_75_89": 3.3,
+    "part_90_plus": 0.3,
+    "part_75_plus": 3.6,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "saint-denis",
+    "distance_km": 4.3
+  },
+  "communes_voisines": [
+    {
+      "code": "93013",
+      "nom": "Le Bourget",
+      "slug": "le-bourget",
+      "distance_km": 2.2,
+      "page": false
+    },
+    {
+      "code": "93066",
+      "nom": "Saint-Denis",
+      "slug": "saint-denis",
+      "distance_km": 2.4,
+      "page": true
+    },
+    {
+      "code": "93001",
+      "nom": "Aubervilliers",
+      "slug": "aubervilliers",
+      "distance_km": 2.5,
+      "page": true
+    },
+    {
+      "code": "93030",
+      "nom": "Dugny",
+      "slug": "dugny",
+      "distance_km": 2.6,
+      "page": false
+    },
+    {
+      "code": "93072",
+      "nom": "Stains",
+      "slug": "stains",
+      "distance_km": 2.8,
+      "page": false
+    },
+    {
+      "code": "93029",
+      "nom": "Drancy",
+      "slug": "drancy",
+      "distance_km": 3.5,
+      "page": true
+    },
+    {
+      "code": "93055",
+      "nom": "Pantin",
+      "slug": "pantin",
+      "distance_km": 3.8,
+      "page": true
+    },
+    {
+      "code": "95268",
+      "nom": "Garges-lès-Gonesse",
+      "slug": "garges-les-gonesse",
+      "distance_km": 4,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "proximite",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "10,6 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "3,6 % de la population (75-89 ans : 3,3 % ; 90 ans ou plus : 0,3 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "47 086 habitants (La Courneuve)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - La Courneuve",
+      "address": "58 Avenue Gabriel Péri, 93120 La Courneuve",
+      "commune_insee": "93027",
+      "telephone": "01 49 92 60 00",
+      "url": "https://lacourneuve.fr/direction-des-solidarites",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/fe4dd308-8eaa-4fa8-8e91-5eeba800868b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-Saint-Denis",
+      "address": "44 rue Proudhon, Immeuble Pulse, 93210 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 43 93 86 86",
+      "url": "https://place-handicap.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/b7261db7-56e9-47eb-9333-2a18d4ae4219",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-Saint-Denis",
+      "address": "3 Esplanade Jean-Moulin, Hôtel du département, 93000 Bobigny",
+      "commune_insee": "93008",
+      "telephone": "01 43 93 93 93",
+      "url": "https://seinesaintdenis.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/012bd5bc-7ddd-4c92-bbd9-49d7fbbd6395",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "accueil-jour",
+      "label": "EHPAD Jean Viollet",
+      "value": "EHPAD · Accueil de jour · Hébergement temporaire · Unité Alzheimer — 82 places",
+      "address": "10 rue Suzanne-Masson, 93120 LA COURNEUVE",
+      "telephone": "01 53 56 68 00",
+      "url": "https://ehpad-lacourneuve.lemoulinvert.asso.fr/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE ST DENIS HOPITAL DELAFONTAINE",
+      "value": "Centre Hospitalier (C.H.) — à 2,4 km à vol d'oiseau (Saint-Denis)",
+      "address": "2 rue DU DR DELAFONTAINE, BP 279, 93205 ST DENIS CEDEX",
+      "commune_insee": "93066",
+      "telephone": "01 42 35 61 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL CASANOVA DU CENTRE HOSPITALIER GENERAL DE SAINT DENI",
+      "value": "Centre Hospitalier (C.H.) — à 2,4 km à vol d'oiseau (Saint-Denis)",
+      "address": "11 rue DANIELE CASANOVA, 93205 ST DENIS CEDEX",
+      "commune_insee": "93066",
+      "telephone": "01 42 35 61 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AFDAEIM Stains",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 ALLEE DU PARADIS, 93240 STAINS",
+      "telephone": "01 48 26 31 32",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AGECET",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "26, 31-37 avenue Galle, 93370 MONTFERMEIL",
+      "telephone": "01 45 09 46 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-Saint-Denis",
+      "value": "Permanence le lundi et le vendredi de 10 h à 12 h ; dd.93@apf.asso.fr",
+      "address": "89 rue Benoît Frachon, 93000 Bobigny",
+      "telephone": "01 48 10 25 35",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ARPEI Gagny",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 AVENUE DE BELLEVUE, 93220 GAGNY",
+      "telephone": "01 43 30 42 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer 93 et maladies apparentées",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "91 avenue de la Résistance, 93340 Le Raincy",
+      "telephone": "01 41 53 00 05",
+      "url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-Saint-Denis (93)",
+      "value": "Comité départemental de bénévoles (Montreuil)",
+      "telephone": "06 68 83 85 11",
+      "url": "https://www.franceparkinson.fr/comite-93/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - La Courneuve",
+      "address": "Avenue de la République, 93120 La Courneuve",
+      "commune_insee": "93027",
+      "telephone": "01 49 92 60 00",
+      "url": "https://lacourneuve.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/5e566cc0-af29-41b5-b979-44af8c4e1fb2",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 93",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2293%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

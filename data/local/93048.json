@@ -1,0 +1,427 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "93048",
+  "kind": "commune",
+  "nom": "Montreuil",
+  "chemin": "/aide-a-domicile/seine-saint-denis/montreuil/",
+  "slug": "montreuil",
+  "departement": "93",
+  "departement_nom": "Seine-Saint-Denis",
+  "codes_postaux": [
+    "93100"
+  ],
+  "parent": "93",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.8637,
+    "lng": 2.4491
+  },
+  "superficie_ha": 890.68,
+  "population": 111934,
+  "demographie": {
+    "millesime": "2022",
+    "population": 110758,
+    "part_60_74": 12.9,
+    "part_75_89": 4.7,
+    "part_90_plus": 0.6,
+    "part_75_plus": 5.3,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "paris-12",
+    "distance_km": 6
+  },
+  "communes_voisines": [
+    {
+      "code": "93006",
+      "nom": "Bagnolet",
+      "slug": "bagnolet",
+      "distance_km": 1.8,
+      "page": true
+    },
+    {
+      "code": "94080",
+      "nom": "Vincennes",
+      "slug": "vincennes",
+      "distance_km": 2,
+      "page": false
+    },
+    {
+      "code": "94033",
+      "nom": "Fontenay-sous-Bois",
+      "slug": "fontenay-sous-bois",
+      "distance_km": 2.3,
+      "page": true
+    },
+    {
+      "code": "93063",
+      "nom": "Romainville",
+      "slug": "romainville",
+      "distance_km": 2.5,
+      "page": false
+    },
+    {
+      "code": "93045",
+      "nom": "Les Lilas",
+      "slug": "les-lilas",
+      "distance_km": 2.9,
+      "page": false
+    },
+    {
+      "code": "93064",
+      "nom": "Rosny-sous-Bois",
+      "slug": "rosny-sous-bois",
+      "distance_km": 3,
+      "page": false
+    },
+    {
+      "code": "93053",
+      "nom": "Noisy-le-Sec",
+      "slug": "noisy-le-sec",
+      "distance_km": 3.2,
+      "page": false
+    },
+    {
+      "code": "94067",
+      "nom": "Saint-Mandé",
+      "slug": "saint-mande",
+      "distance_km": 3.3,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "12,9 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "5,3 % de la population (75-89 ans : 4,7 % ; 90 ans ou plus : 0,6 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "110 758 habitants (Montreuil)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "CLIC",
+      "address": "23 rue Gaston-Lauriau, 93100 MONTREUIL",
+      "telephone": "01 48 70 65 01",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Montreuil",
+      "address": "1 place Aime-Cesaire, Le pôle de coordination gérontologique, 93100 Montreuil",
+      "commune_insee": "93048",
+      "telephone": "01 48 70 65 01",
+      "url": "https://www.montreuil.fr/solidarites/personnes-agees/le-pole-de-coordination-gerontologique",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/76800e9f-4387-47dd-aebe-f0ba039d5663",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Montreuil Seine-Saint-Denis",
+      "address": "1 Place Aimé Césaire, 93100 Montreuil",
+      "commune_insee": "93048",
+      "telephone": "01 48 70 69 33",
+      "url": "https://www.montreuil.fr/ville-et-citoyennete/solidarites/le-centre-communal-daction-sociale-ccas",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/06040383-fc9b-41c5-8bc2-c5982cb712b1",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-Saint-Denis",
+      "address": "44 rue Proudhon, Immeuble Pulse, 93210 Saint-Denis",
+      "commune_insee": "93066",
+      "telephone": "01 43 93 86 86",
+      "url": "https://place-handicap.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/b7261db7-56e9-47eb-9333-2a18d4ae4219",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-Saint-Denis",
+      "address": "3 Esplanade Jean-Moulin, Hôtel du département, 93000 Bobigny",
+      "commune_insee": "93008",
+      "telephone": "01 43 93 93 93",
+      "url": "https://seinesaintdenis.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/012bd5bc-7ddd-4c92-bbd9-49d7fbbd6395",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence autonomie Les Blancs vilains",
+      "value": "Résidence autonomie — 69 places",
+      "address": "85 rue des Blancs Vilains, 93100 MONTREUIL",
+      "telephone": "01 48 54 68 90",
+      "url": "http://www.montreuil.fr/solidarites/seniors/vous-recherchez-un-etablissement/#ancre1",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidence autonomie Les Ramenas",
+      "value": "Résidence autonomie — 60 places",
+      "address": "43 rue du Colonel Fabien, 93100 MONTREUIL",
+      "telephone": "01 43 60 49 19",
+      "url": "http://www.montreuil.fr/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD La Maison des Vergers",
+      "value": "EHPAD · Hébergement temporaire — 91 places",
+      "address": "113 avenue du Président-Wilson, 93100 MONTREUIL",
+      "telephone": "01 49 88 88 50",
+      "url": "http://www.isatis.asso.fr/hebergement/9/la-maison-des-vergers",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Les Beaux-Monts",
+      "value": "EHPAD · Hébergement temporaire — 83 places",
+      "address": "33 Rue Lenain de Tillemont, 93100 MONTREUIL",
+      "telephone": "01 48 59 12 52",
+      "url": "https://www.arpavie.fr/residence/residence-les-beaux-monts",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Diane Benvenuti",
+      "value": "EHPAD · Unité Alzheimer — 80 places",
+      "address": "118 rue de Paris, 93100 MONTREUIL",
+      "telephone": "01 41 58 48 20",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence les Murs à Pêches",
+      "value": "EHPAD · Unité Alzheimer — 90 places",
+      "address": "198 rue de Rosny, 93100 MONTREUIL",
+      "telephone": "01 49 74 45 00",
+      "url": "http://www.gcsms-ehpadpublics94.fr/index.aspx",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "GHT GPNE SITE CHI ANDRE GREGOIRE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "56 boulevard DE LA BOISSIERE, 93100 MONTREUIL",
+      "commune_insee": "93048",
+      "telephone": "01 49 20 30 40",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AFDAEIM Stains",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 ALLEE DU PARADIS, 93240 STAINS",
+      "telephone": "01 48 26 31 32",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "AGECET",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "26, 31-37 avenue Galle, 93370 MONTFERMEIL",
+      "telephone": "01 45 09 46 45",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-Saint-Denis",
+      "value": "Permanence le lundi et le vendredi de 10 h à 12 h ; dd.93@apf.asso.fr",
+      "address": "89 rue Benoît Frachon, 93000 Bobigny",
+      "telephone": "01 48 10 25 35",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "ARPEI Gagny",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 AVENUE DE BELLEVUE, 93220 GAGNY",
+      "telephone": "01 43 30 42 00",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer 93 et maladies apparentées",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "91 avenue de la Résistance, 93340 Le Raincy",
+      "telephone": "01 41 53 00 05",
+      "url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_url": "https://www.francealzheimer.org/seinesaintdenis/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-Saint-Denis (93)",
+      "value": "Comité départemental de bénévoles (Montreuil)",
+      "telephone": "06 68 83 85 11",
+      "url": "https://www.franceparkinson.fr/comite-93/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Montreuil",
+      "address": "Place Jean-Jaurès, Hôtel de ville, 93100 Montreuil",
+      "commune_insee": "93048",
+      "telephone": "01 48 70 60 00",
+      "url": "https://www.montreuil.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-saint-denis/922f8708-fb37-4b2b-acd0-db6c747c274c",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/93/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 93",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2293%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

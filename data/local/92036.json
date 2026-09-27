@@ -1,0 +1,402 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "92036",
+  "kind": "commune",
+  "nom": "Gennevilliers",
+  "chemin": "/aide-a-domicile/hauts-de-seine/gennevilliers/",
+  "slug": "gennevilliers",
+  "departement": "92",
+  "departement_nom": "Hauts-de-Seine",
+  "codes_postaux": [
+    "92230"
+  ],
+  "parent": "92",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.9319,
+    "lng": 2.288
+  },
+  "superficie_ha": 1162.71,
+  "population": 50979,
+  "demographie": {
+    "millesime": "2022",
+    "population": 50874,
+    "part_60_74": 11.9,
+    "part_75_89": 4.7,
+    "part_90_plus": 0.6,
+    "part_75_plus": 5.3,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "saint-denis",
+    "distance_km": 4.5
+  },
+  "communes_voisines": [
+    {
+      "code": "92004",
+      "nom": "Asnières-sur-Seine",
+      "slug": "asnieres-sur-seine",
+      "distance_km": 1.6,
+      "page": true
+    },
+    {
+      "code": "92009",
+      "nom": "Bois-Colombes",
+      "slug": "bois-colombes",
+      "distance_km": 2.3,
+      "page": true
+    },
+    {
+      "code": "92078",
+      "nom": "Villeneuve-la-Garenne",
+      "slug": "villeneuve-la-garenne",
+      "distance_km": 2.6,
+      "page": true
+    },
+    {
+      "code": "93039",
+      "nom": "L'Île-Saint-Denis",
+      "slug": "l-ile-saint-denis",
+      "distance_km": 2.9,
+      "page": true
+    },
+    {
+      "code": "92025",
+      "nom": "Colombes",
+      "slug": "colombes",
+      "distance_km": 3.2,
+      "page": true
+    },
+    {
+      "code": "93031",
+      "nom": "Épinay-sur-Seine",
+      "slug": "epinay-sur-seine",
+      "distance_km": 3.3,
+      "page": true
+    },
+    {
+      "code": "92024",
+      "nom": "Clichy",
+      "slug": "clichy",
+      "distance_km": 3.3,
+      "page": true
+    },
+    {
+      "code": "95018",
+      "nom": "Argenteuil",
+      "slug": "argenteuil",
+      "distance_km": 3.6,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "proximite",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "11,9 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "5,3 % de la population (75-89 ans : 4,7 % ; 90 ans ou plus : 0,6 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "50 874 habitants (Gennevilliers)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Coordination gérontologique",
+      "address": "17 rue Victor Hugo, 92230 GENNEVILLIERS",
+      "telephone": "01 40 85 66 66",
+      "url": "http://www.hauts-de-seine.fr/solidarites/personnes-agees/maintien-a-domicile/adresses-des-clic-et-coordinations-gerontologiques/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Gennevilliers",
+      "address": "17 rue Victor-Hugo, Coordination gérontologique de Gennevilliers, 92230 Gennevilliers",
+      "commune_insee": "92036",
+      "telephone": "01 40 85 68 68",
+      "url": "https://www.ville-gennevilliers.fr/164/demarches-et-services/action-sociale/centre-communal-d-action-sociale-ccas.htm",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/732f3c4c-86fa-4aea-8969-af60778609c5",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Gennevilliers",
+      "address": "5 Rue des Chevrins, 92230 Gennevilliers",
+      "commune_insee": "92036",
+      "telephone": "01 40 85 65 81",
+      "url": "https://www.ville-gennevilliers.fr/164/demarches-et-services/action-sociale/centre-communal-d-action-sociale-ccas.htm",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/2e2eb456-b783-472a-9cd3-e57a518e012f",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Hauts-de-Seine",
+      "address": "12 avenue Léonard-de-Vinci, Esplanade Mona-Lisa, 92400 Courbevoie",
+      "commune_insee": "92026",
+      "telephone": "01 41 91 92 50",
+      "url": "https://mdphenligne.cnsa.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3f9f35ee-4761-47c3-8643-bf7b11fcecb4",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Hauts-de-Seine",
+      "address": "57 rue des Longues Raies, Hôtel du département, 92000 Nanterre",
+      "commune_insee": "92050",
+      "telephone": "0 806 00 00 92",
+      "url": "https://www.hauts-de-seine.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68ae9287-fc9e-48b6-a8d6-8e9b669ff131",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Résidence Camille Cartier",
+      "value": "Résidence autonomie — 72 places",
+      "address": "10 Rue Paul Verlaine, 92230 GENNEVILLIERS",
+      "telephone": "01 41 21 15 00",
+      "url": "http://www.arpavie.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Repotel",
+      "value": "EHPAD — 74 places",
+      "address": "49 rue du Pont-d'Argenteuil, 92230 GENNEVILLIERS",
+      "telephone": "01 47 94 66 66",
+      "url": "http://www.repotel.fr/fr/gennevilliers-maison-de-retraite-ehpad-hauts-de-seine-92/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Villa Caroline",
+      "value": "EHPAD — 76 places",
+      "address": "22 rue Jeanne-d'Arc, 92230 GENNEVILLIERS",
+      "telephone": "01 47 94 97 10",
+      "url": "https://www.domusvi.com/maisons-de-retraite/residence-villa-caroline-gennevilliers-630904",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "La Maison des Cytises",
+      "value": "EHPAD · Hébergement temporaire — 82 places",
+      "address": "23 rue Jaffeux, 92230 GENNEVILLIERS",
+      "telephone": "01 47 91 73 07",
+      "url": "http://www.adef-residences.com/nos-maisons/nos-residences/ile-de-france/gennevilliers/la-maison-des-cytises",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "GHU APHP NORD UNIVERSITE PARIS CITE SITE LOUIS MOURIER",
+      "value": "Centre Hospitalier Régional (C.H.R.) — à 3,2 km à vol d'oiseau (Colombes)",
+      "address": "178 rue DES RENOUILLIERS, 92701 COLOMBES CEDEX",
+      "commune_insee": "92025",
+      "telephone": "01 47 60 61 62",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL DE JOUR GUY DE MAUPASSANT",
+      "value": "Centre Hospitalier Régional (C.H.R.) — à 3,2 km à vol d'oiseau (Colombes)",
+      "address": "17 rue MOSLARD, 92700 COLOMBES",
+      "commune_insee": "92025",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de la Boucle de la Seine",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 boulevard Charles de GAULLE, 92707 COLOMBES CEDEX",
+      "telephone": "01 42 42 19 91",
+      "url": "https://www.apei-bs.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de Meudon",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "35 RUE CHARLES DESVERGNES, 92190 MEUDON",
+      "telephone": "01 46 26 63 28",
+      "url": "http://apeimeudon92.odns.fr/Site-APEI/",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI la Maison du Phare",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "13 rue des Poissonniers, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 46 24 49 65",
+      "url": "https://www.apeilamaisonduphare.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Hauts-de-Seine",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "94 avenue Achille Peretti, 92200 Neuilly-sur-Seine",
+      "telephone": "01 46 24 68 31",
+      "url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité des Hauts-de-Seine (92)",
+      "value": "Comité départemental de bénévoles (Saint-Cloud)",
+      "telephone": "06 33 46 24 84",
+      "url": "https://www.franceparkinson.fr/comite-92/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Gennevilliers",
+      "address": "177 avenue Gabriel-Péri, 92230 Gennevilliers",
+      "commune_insee": "92036",
+      "telephone": "01 40 85 66 66",
+      "url": "https://www.ville-gennevilliers.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/e674993d-27c8-4ff0-afc0-9917844bbd68",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 92",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2292%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}

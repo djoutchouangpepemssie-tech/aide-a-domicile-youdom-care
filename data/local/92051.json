@@ -1,0 +1,459 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "92051",
+  "kind": "commune",
+  "nom": "Neuilly-sur-Seine",
+  "chemin": "/aide-a-domicile/hauts-de-seine/neuilly-sur-seine/",
+  "slug": "neuilly-sur-seine",
+  "departement": "92",
+  "departement_nom": "Hauts-de-Seine",
+  "codes_postaux": [
+    "92200"
+  ],
+  "parent": "92",
+  "epci": {
+    "code": "200054781",
+    "nom": "Métropole du Grand Paris"
+  },
+  "centre": {
+    "lat": 48.8862,
+    "lng": 2.2651
+  },
+  "superficie_ha": 371.71,
+  "population": 59538,
+  "demographie": {
+    "millesime": "2022",
+    "population": 59200,
+    "part_60_74": 15.7,
+    "part_75_89": 10.2,
+    "part_90_plus": 2.3,
+    "part_75_plus": 12.5,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "puteaux",
+    "distance_km": 1.2
+  },
+  "communes_voisines": [
+    {
+      "code": "92026",
+      "nom": "Courbevoie",
+      "slug": "courbevoie",
+      "distance_km": 1.4,
+      "page": true
+    },
+    {
+      "code": "92044",
+      "nom": "Levallois-Perret",
+      "slug": "levallois-perret",
+      "distance_km": 1.9,
+      "page": true
+    },
+    {
+      "code": "92062",
+      "nom": "Puteaux",
+      "slug": "puteaux",
+      "distance_km": 2,
+      "page": true
+    },
+    {
+      "code": "92035",
+      "nom": "La Garenne-Colombes",
+      "slug": "la-garenne-colombes",
+      "distance_km": 2.8,
+      "page": true
+    },
+    {
+      "code": "75117",
+      "nom": "Paris 17e arrondissement",
+      "slug": "17e-arrondissement",
+      "distance_km": 2.9,
+      "page": true
+    },
+    {
+      "code": "92009",
+      "nom": "Bois-Colombes",
+      "slug": "bois-colombes",
+      "distance_km": 3.2,
+      "page": true
+    },
+    {
+      "code": "75116",
+      "nom": "Paris 16e arrondissement",
+      "slug": "16e-arrondissement",
+      "distance_km": 3.2,
+      "page": true
+    },
+    {
+      "code": "92024",
+      "nom": "Clichy",
+      "slug": "clichy",
+      "distance_km": 3.5,
+      "page": true
+    }
+  ],
+  "vague": 1,
+  "motif_vague": "proximite",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "15,7 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "12,5 % de la population (75-89 ans : 10,2 % ; 90 ans ou plus : 2,3 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "59 200 habitants (Neuilly-sur-Seine)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "CLIC Espace Solidarités Séniors",
+      "address": "96 avenue Achille-Peretti, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 40 88 87 07",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "source_label": "CNSA, data.gouv.fr — points d'information locaux (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Neuilly-sur-Seine",
+      "address": "Centre local d'information et de coordination, Espace solidarités séniors, 96 bis avenue Achille-Peretti, 92200 Neuilly-sur-Seine",
+      "commune_insee": "92051",
+      "telephone": "01 40 88 87 07",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/74a39b0a-5489-43bf-892a-08ff8bf79066",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ccas",
+      "label": "Centre communal d'action sociale (CCAS) - Neuilly-sur-Seine",
+      "address": "96 Avenue Achille Peretti, 92200 Neuilly-sur-Seine",
+      "commune_insee": "92051",
+      "telephone": "01 40 88 89 39",
+      "url": "https://www.neuillysurseine.fr/page/aides-sociales-aux-personnes-en-situation-de-precarite",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/05c715e1-b73d-4750-85ce-d07aaa3d200c",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Hauts-de-Seine",
+      "address": "12 avenue Léonard-de-Vinci, Esplanade Mona-Lisa, 92400 Courbevoie",
+      "commune_insee": "92026",
+      "telephone": "01 41 91 92 50",
+      "url": "https://mdphenligne.cnsa.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/3f9f35ee-4761-47c3-8643-bf7b11fcecb4",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Hauts-de-Seine",
+      "address": "57 rue des Longues Raies, Hôtel du département, 92000 Nanterre",
+      "commune_insee": "92050",
+      "telephone": "0 806 00 00 92",
+      "url": "https://www.hauts-de-seine.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/68ae9287-fc9e-48b6-a8d6-8e9b669ff131",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Beloeuil-Miller",
+      "value": "Résidence autonomie — 113 places",
+      "address": "55 rue Pauline-Borghese, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 40 88 33 18",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Foyer-Logement Communal de Neuilly",
+      "value": "Résidence autonomie — 80 places",
+      "address": "28 Rue du Pont, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 55 62 63 50",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Maison de Retraite de la fondation Marthe-André-Lucas",
+      "value": "Résidence autonomie — 80 places",
+      "address": "26 boulevard Maillot, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 46 24 91 51",
+      "url": "http://residencelucas.pagesperso-orange.fr",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Galignani",
+      "value": "EHPAD · Unité Alzheimer — 118 places",
+      "address": "89 boulevard Bineau, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 47 45 25 44",
+      "url": "http://equipement.paris.fr/ehpad-galignani-casvp-17220",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Les bords de Seine",
+      "value": "EHPAD · Hébergement temporaire · Unité Alzheimer — 125 places",
+      "address": "76 boulevard Bourdon, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 41 92 20 20",
+      "url": "http://www.orpea.com/maison-de-retraite-les-bords-de-seine-neuilly-sur-seine-92",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Résidence Soyer",
+      "value": "EHPAD — 80 places",
+      "address": "3 rue Soyer, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 55 61 40 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD Roger Teullé",
+      "value": "EHPAD · Unité Alzheimer — 120 places",
+      "address": "20 Rue des Graviers, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 47 45 38 44",
+      "url": "http://www.ehpadneuilly.com/",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CH RIVES DE SEINE SITE NEUILLY SUR SEINE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "36 boulevard DU GENERAL LECLERC, BP 79, 92205 NEUILLY SUR SEINE CEDEX",
+      "commune_insee": "92051",
+      "telephone": "01 40 88 60 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CTRE MEDICO CHIR AMBROISE PARE HARTMANN SITE 48 TER",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "48 boulevard VICTOR HUGO, 92200 NEUILLY SUR SEINE",
+      "commune_insee": "92051",
+      "telephone": "01 46 39 89 89",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "CTRE MEDICO CHIRURGICAL AMBROISE PAR HARTMANN SITE 25",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "25 boulevard VICTOR HUGO, 92200 NEUILLY SUR SEINE",
+      "commune_insee": "92051",
+      "telephone": "01 46 41 88 88",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "hopital",
+      "label": "HOPITAL AMERICAIN",
+      "value": "Etablissement de Soins Pluridisciplinaire",
+      "address": "63 boulevard VICTOR HUGO, BP 109, 92202 NEUILLY SUR SEINE CEDEX",
+      "commune_insee": "92051",
+      "telephone": "01 46 41 25 25",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de la Boucle de la Seine",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "1 boulevard Charles de GAULLE, 92707 COLOMBES CEDEX",
+      "telephone": "01 42 42 19 91",
+      "url": "https://www.apei-bs.asso.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI de Meudon",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "35 RUE CHARLES DESVERGNES, 92190 MEUDON",
+      "telephone": "01 46 26 63 28",
+      "url": "http://apeimeudon92.odns.fr/Site-APEI/",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "association",
+      "label": "APEI la Maison du Phare",
+      "value": "Réseau Unapei — association de parents non gestionnaire",
+      "address": "13 rue des Poissonniers, 92200 NEUILLY SUR SEINE",
+      "telephone": "01 46 24 49 65",
+      "url": "https://www.apeilamaisonduphare.fr",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Hauts-de-Seine",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "94 avenue Achille Peretti, 92200 Neuilly-sur-Seine",
+      "telephone": "01 46 24 68 31",
+      "url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_url": "https://www.francealzheimer.org/hautsdeseine/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20",
+      "in_territory": true
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité des Hauts-de-Seine (92)",
+      "value": "Comité départemental de bénévoles (Saint-Cloud)",
+      "telephone": "06 33 46 24 84",
+      "url": "https://www.franceparkinson.fr/comite-92/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Intercommunalité",
+      "value": "Métropole du Grand Paris",
+      "source_url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "source_label": "API Découpage administratif (geo.api.gouv.fr)",
+      "collected_at": "2026-09-26",
+      "in_territory": false
+    },
+    {
+      "type": "autre",
+      "label": "Mairie - Neuilly-sur-Seine",
+      "address": "96 avenue Achille-Peretti, 92522 Neuilly-sur-Seine Cedex",
+      "commune_insee": "92051",
+      "telephone": "01 40 88 88 88",
+      "url": "https://www.neuillysurseine.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/c6635792-dc57-4a64-ae2f-5146f731f6e7",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26",
+      "in_territory": true
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements/92/communes?fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 92",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2292%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Points d'informations locaux pour les personnes âgées (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/points-dinformations-locaux-pour-les-personnes-agees/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}
