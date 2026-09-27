@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { heroSectionShell, sceneClass, type HeroSceneName } from "./hero-scene";
 
@@ -26,23 +26,41 @@ export interface HeroSectionProps extends ComponentPropsWithoutRef<"section"> {
   scene: HeroSceneName;
   /** Classe du conteneur intérieur, si la page a besoin d'y toucher. */
   innerClassName?: string;
+  /** Image de fond décorative, posée derrière le contenu (aucune alternative textuelle). */
+  background?: ReactNode;
 }
 
 export function HeroSection({
   scene,
   className,
   innerClassName,
+  background,
   children,
   ...rest
 }: HeroSectionProps) {
   return (
     <section
-      className={cn(sceneClass(scene), heroSectionShell, className)}
+      className={cn(sceneClass(scene), heroSectionShell, "relative", className)}
       data-hero-section=""
       data-scene={scene}
       {...rest}
     >
-      <div className={cn("container-site w-full", innerClassName)}>{children}</div>
+      {/*
+       * Fond d'image (27/09/2026) : décoratif, derrière le contenu, sans jamais le gêner. Il est
+       * masqué sous 40 rem de large et sous 42 rem de haut, où le hero est déjà compacté et où une
+       * image passerait sous le texte. `aria-hidden` et `pointer-events-none` : rien à lire, rien
+       * à cliquer.
+       */}
+      {background ? (
+        <div
+          aria-hidden="true"
+          data-hero-fond=""
+          className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden sm:block [@media(max-height:42rem)]:hidden"
+        >
+          {background}
+        </div>
+      ) : null}
+      <div className={cn("container-site relative z-10 w-full", innerClassName)}>{children}</div>
     </section>
   );
 }

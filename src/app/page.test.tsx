@@ -159,13 +159,13 @@ describe("Accueil (blocs 1 à 8)", () => {
       "alt",
       "Une femme d'une soixantaine d'années, assise sur un rebord de fenêtre, regarde dehors",
     );
-    // Aucune photo de section n'est prioritaire : seule celle du hero l'est, les cinq autres
-    // (signature sous la bannière, neuro, la semaine affichée, étapes, proches) se chargent à la
-    // demande.
+    // 27/09/2026 : la bannière porte une photo de fond décorative, sans cadre ni priorité. Les
+    // cinq images de la page (fond de bannière, neuro, la semaine affichée, étapes, proches) se
+    // chargent donc toutes à la demande.
     const images = Array.from(document.querySelectorAll("main img"));
-    expect(images).toHaveLength(6);
+    expect(images).toHaveLength(5);
     expect(images.filter((img) => img.getAttribute("loading") === "lazy")).toHaveLength(5);
-    expect(images[0]).not.toHaveAttribute("loading", "lazy");
+    expect(images[0]).toHaveAttribute("alt", "");
   });
 });
 
