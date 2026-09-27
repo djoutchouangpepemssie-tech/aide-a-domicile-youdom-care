@@ -47,10 +47,9 @@ describe("ToolSheet", () => {
 
     expect(screen.getByRole("note", { name: "Prudence" })).toHaveTextContent(/pharmacien/);
     const sources = screen.getByRole("region", { name: "Sources" });
-    expect(within(sources).getByRole("link", { name: /Haute Autorité de santé/ })).toHaveAttribute(
-      "href",
-      "https://www.has-sante.fr/jcms/c_2035081/fr/check-list-de-sortie-d-hospitalisation-superieure-a-24h",
-    );
+    // 27/09/2026 : les sources sont nommées et datées, sans lien sortant.
+    expect(within(sources).queryByRole("link", { name: /Haute Autorité de santé/ })).toBeNull();
+    expect(within(sources).getByText(/Haute Autorité de santé/)).toBeInTheDocument();
     expect(within(sources).getAllByText(/consultée le 27 septembre 2026/)).toHaveLength(3);
     expect(within(sources).getByText(/vérifiée le 22 mai 2015/)).toBeInTheDocument();
 

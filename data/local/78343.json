@@ -32,8 +32,8 @@
     "collected_at": "2026-09-26"
   },
   "agence_proche": {
-    "id": "versailles",
-    "distance_km": 3.8
+    "id": "puteaux",
+    "distance_km": 15.7
   },
   "communes_voisines": [
     {

@@ -243,13 +243,24 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
     )
   ) : undefined;
 
+  /*
+   * 27/09/2026 : le geste vit **dans** le panneau de verre du hero, qui est clair par construction
+   * — `scenes.css` impose d'ailleurs du texte sombre à tout verre clair posé sur la scène de nuit.
+   * Lui transmettre le ton sombre du hero lui faisait poser du texte blanc sur ce fond clair :
+   * mesuré à 1,01 de contraste sur « garde de nuit » et « présence 24h/24 », le panneau paraissait
+   * vide. Le contenu du panneau est donc toujours en ton clair, quel que soit celui de la scène.
+   */
+  const panelTone: HeroTone = "clair";
+
   let gesture: ReactNode = null;
   switch (hero?.geste) {
     case "stades":
-      gesture = <StageChooser texts={t.gestes.stades} tone={heroTone} />;
+      gesture = <StageChooser texts={t.gestes.stades} tone={panelTone} />;
       break;
     case "planning":
-      gesture = <PlanningShortcuts texts={t.gestes.planning} formHref={formHref} tone={heroTone} />;
+      gesture = (
+        <PlanningShortcuts texts={t.gestes.planning} formHref={formHref} tone={panelTone} />
+      );
       break;
     case "fiche-de-vie":
       gesture = (
@@ -267,7 +278,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           reponses={caregiverQuestion.reponses}
           href={caregiverQuestion.href}
           mention={t.gestes.questionnaire.mention}
-          tone={heroTone}
+          tone={panelTone}
         />
       ) : null;
       break;
@@ -278,7 +289,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           texts={t.gestes.nuit}
           formHref={formPaths["nuit-24h"]}
           variant={hero.geste}
-          tone={heroTone}
+          tone={panelTone}
         />
       );
       break;
@@ -287,7 +298,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         <DischargeChooser
           texts={t.gestes.sortie}
           formHref={formPaths["sortie-hospitalisation"]}
-          tone={heroTone}
+          tone={panelTone}
         />
       );
       break;
@@ -305,7 +316,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
               icone: toIconName(situation.icone),
             }))}
             fallbackHref="#situations"
-            tone={heroTone}
+            tone={panelTone}
           />
         );
   }
@@ -497,21 +508,41 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                 className="mb-8 lg:order-last lg:mb-0"
               />
             ) : null}
-            <Reveal variant="stagger" className="grid gap-8 md:grid-cols-2">
-              {page.actions.map((action) => (
-                <div key={action.rubrique} data-rubrique={action.rubrique}>
-                  <Heading level={3} visual={4} className="flex items-center gap-3">
-                    <Icon name={rubricIcons[action.rubrique]} size="lg" />
-                    <span>{t.rubriques[action.rubrique]}</span>
-                  </Heading>
-                  <ul className="mt-3 list-disc pl-5">
-                    {action.exemples.map((exemple) => (
-                      <li key={exemple}>{exemple}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </Reveal>
+            {/*
+             * 27/09/2026, demande d'Arcel : chaque rubrique est une carte, pas une colonne de
+             * texte. L'icône est au-dessus du titre, qui prend toute la largeur : à côté, un
+             * titre de deux mots comme « Coordination avec les soignants » s'étalait sur quatre
+             * lignes dans une colonne étroite.
+             */}
+            {/* Deux colonnes seulement quand le bloc est assez large (27/09/2026) : posé à côté
+                d'une photo, il tombait à deux colonnes trop étroites pour leurs titres. Le
+                conteneur de référence est le parent, un élément ne répond pas à sa propre requête. */}
+            <div className="@container">
+              <Reveal
+                as="ul"
+                variant="stagger"
+                className="m-0 grid list-none gap-6 p-0 @2xl:grid-cols-2"
+              >
+                {page.actions.map((action) => (
+                  <li key={action.rubrique} className="max-w-none">
+                    <article
+                      className="flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1"
+                      data-rubrique={action.rubrique}
+                    >
+                      <Icon name={rubricIcons[action.rubrique]} size="lg" />
+                      <Heading level={3} visual={4} className="mt-3 text-balance">
+                        {t.rubriques[action.rubrique]}
+                      </Heading>
+                      <ul className="mt-3 grid list-disc gap-2 pl-5">
+                        {action.exemples.map((exemple) => (
+                          <li key={exemple}>{exemple}</li>
+                        ))}
+                      </ul>
+                    </article>
+                  </li>
+                ))}
+              </Reveal>
+            </div>
           </div>
           {Body ? (
             <Prose className="mt-10">

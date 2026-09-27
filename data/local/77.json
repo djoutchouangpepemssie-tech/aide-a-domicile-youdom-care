@@ -24,8 +24,8 @@
     "collected_at": "2026-09-26"
   },
   "agence_proche": {
-    "id": "serris",
-    "distance_km": 34.6
+    "id": "paris-12",
+    "distance_km": 40.2
   },
   "vague": 1,
   "motif_vague": "departement",

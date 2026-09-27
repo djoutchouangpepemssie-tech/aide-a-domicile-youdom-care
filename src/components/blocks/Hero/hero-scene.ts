@@ -60,6 +60,23 @@ export const heroSectionShell = cn(
 export type HeroSceneName =
   "aurore" | "teal" | "azure" | "verte" | "sable" | "framboise" | "nuit" | "neutre";
 
+/*
+ * Photo de fond de bannière, par scène (27/09/2026, demande d'Arcel). Ces photos viennent du site
+ * youdom-care.com, dont Arcel est propriétaire : ce sont ses images, elles n'étaient utilisées
+ * nulle part ailleurs sur ce site. Chacune est posée à droite de la bannière, derrière le contenu,
+ * effacée vers la gauche par un dégradé : le titre et la promesse restent sur la couleur de scène,
+ * jamais sur la photo, ce qui garde leur contraste mesuré. La scène neutre (pages légales) n'en a
+ * pas : ces pages restent sobres. L'accueil non plus : il porte déjà sa photo détourée.
+ */
+export const heroBackgrounds: Partial<Record<HeroSceneName, { src: string }>> = {
+  teal: { src: "/images/heros/fonds/fond-aide-a-domicile.jpg" },
+  azure: { src: "/images/heros/fonds/fond-premiere-visite.jpg" },
+  verte: { src: "/images/heros/fonds/fond-projet-de-vie.webp" },
+  sable: { src: "/images/heros/fonds/fond-auxiliaire-de-vie.jpg" },
+  framboise: { src: "/images/heros/fonds/fond-repas-partage.jpg" },
+  nuit: { src: "/images/heros/fonds/fond-presence-nuit.jpg" },
+};
+
 /** Teinte du verre des panneaux, par scène (information, chaleur, action). */
 const sceneTints: Record<HeroSceneName, GlassTint> = {
   aurore: "teal",

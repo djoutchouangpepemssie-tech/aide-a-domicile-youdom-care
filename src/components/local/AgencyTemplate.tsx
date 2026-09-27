@@ -28,7 +28,7 @@ import { cn } from "@/lib/cn";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { AgencyCard, fullAddress } from "./AgencyCard";
 import { agencyPhoto } from "./local-photos";
-import { fill, formatDistance } from "./local-texts";
+import { fill } from "./local-texts";
 
 /*
  * Page d'une agence (docs/00 §5, docs/04 §2 `LocalBusiness`, P6.6) : nom, adresse, téléphone
@@ -214,9 +214,6 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
                 >
                   {commune.nom}
                 </Link>
-                <span className="tabular-figures text-small text-text-soft">
-                  {fill(t.voisines_distance, { distance: formatDistance(commune.distance_km) })}
-                </span>
               </li>
             ))}
           </ol>

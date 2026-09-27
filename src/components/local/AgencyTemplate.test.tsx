@@ -60,7 +60,8 @@ describe("AgencyTemplate (P6.6)", () => {
     expect(document.querySelector('a[href*="openstreetmap"]')).toBeNull();
     const communes = document.querySelector("[data-agence-communes]");
     const items = within(communes as HTMLElement).getAllByRole("listitem");
-    expect(items.map((item) => item.textContent)).toEqual(["Puteaux0,4 km", "Nanterre3,1 km"]);
+    // 27/09/2026 : aucun kilométrage affiché nulle part sur le site.
+    expect(items.map((item) => item.textContent)).toEqual(["Puteaux", "Nanterre"]);
     expect(
       screen
         .getByRole("link", { name: "Aide à domicile dans les Hauts-de-Seine" })

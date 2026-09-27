@@ -170,10 +170,9 @@ describe("ServiceTemplate", () => {
     const sections = Array.from(document.querySelectorAll("main section"));
     expect(sections[sections.indexOf(section as HTMLElement) + 1]?.id).toBe("formulaire");
     expect(document.querySelector("[data-rail-zone]")?.contains(related)).toBe(true);
-    expect(screen.getByRole("link", { name: /Source deux/ })).toHaveAttribute(
-      "href",
-      "https://example.org/deux",
-    );
+    // 27/09/2026 : les sources sont nommées et datées, sans lien sortant.
+    expect(screen.queryByRole("link", { name: /Source deux/ })).toBeNull();
+    expect(screen.getByText("Source deux")).toBeInTheDocument();
   });
 
   it("n'affiche pas le bandeau pour une page relue et publiée", () => {

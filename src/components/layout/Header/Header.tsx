@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   useCallback,
@@ -208,12 +209,28 @@ export function Header({
       >
         {/* Marque en Fraunces à la taille du H4 : la barre est comptée au pixel à 80 rem.
             `min-h-11` : cible de 44 px de haut (WCAG 2.5.8) ; le lien mesurait 21 px (P9.6). */}
+        {/*
+         * 27/09/2026 : le vrai logo de l'entreprise remplace le nom en toutes lettres. Il ramène
+         * à l'accueil depuis toutes les pages, sur mobile comme sur ordinateur — le nom écrit ne
+         * se lisait pas comme un logo, et Arcel ne pensait pas à cliquer dessus. Le nom reste
+         * dans le nom accessible du lien, pour les lecteurs d'écran.
+         */}
         <Link
           href="/"
           aria-label={texts.accueil}
-          className="inline-flex min-h-11 shrink-0 items-center font-heading text-h4 leading-none font-semibold whitespace-nowrap text-teal-900 no-underline hover:text-teal-700"
+          className="inline-flex min-h-11 shrink-0 items-center no-underline"
         >
-          {brandName}
+          <Image
+            src="/images/marque/logo-youdom-care.png"
+            alt={brandName}
+            width={797}
+            height={308}
+            priority
+            className={cn(
+              "h-auto w-auto transition-[max-height] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
+              compact ? "max-h-9" : "max-h-11",
+            )}
+          />
         </Link>
 
         <nav

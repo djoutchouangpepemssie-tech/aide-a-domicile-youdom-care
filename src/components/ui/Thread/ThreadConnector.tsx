@@ -28,13 +28,19 @@ import "./thread-connector.css";
 export const RAIL_STEP_MS = MOTION_STAGGER;
 
 export type ThreadOrientation = "vertical" | "horizontal" | "responsive";
-export type ThreadBreakpoint = "sm" | "md" | "lg";
+export type ThreadBreakpoint = "sm" | "md" | "lg" | "container";
 
-/* Classes statiques (Tailwind ne compose pas les préfixes à l'exécution). */
+/*
+ * Classes statiques (Tailwind ne compose pas les préfixes à l'exécution). `container` bascule sur
+ * la largeur du **bloc** et non sur celle de l'écran : des cartes posées dans une demi-page
+ * restaient côte à côte à trois colonnes de 218 px, où un titre de quarante-cinq caractères
+ * s'étalait sur cinq lignes (27/09/2026).
+ */
 const orientationClasses: Record<ThreadBreakpoint, { vertical: string; horizontal: string }> = {
   sm: { vertical: "sm:hidden", horizontal: "hidden sm:block" },
   md: { vertical: "md:hidden", horizontal: "hidden md:block" },
   lg: { vertical: "lg:hidden", horizontal: "hidden lg:block" },
+  container: { vertical: "@3xl:hidden", horizontal: "hidden @3xl:block" },
 };
 
 export interface ThreadConnectorProps extends Omit<ComponentPropsWithoutRef<"span">, "children"> {

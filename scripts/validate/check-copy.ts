@@ -25,7 +25,13 @@ export const forbiddenWords: readonly { label: string; regex: RegExp }[] = [
   { label: "meilleur", regex: word("meilleure?s?") },
   { label: "unique en France", regex: word("uniques?\\s+en\\s+France") },
   { label: "patient", regex: word("patient(?:e|s|es)?") },
-  { label: "placement / placer", regex: word("placements?|placer|placée?s?") },
+  /*
+   * « placement / placer » vise le placement en établissement, jamais les locutions courantes.
+   * Le motif d'origine attrapait « place » — donc « sur place », « à la place de », « faire à sa
+   * place » — parce que `plac[ée]e?s?` couvre aussi « place ». Corrigé le 27/09/2026 : seules les
+   * formes du placement sont interdites, et le participe garde son accent.
+   */
+  { label: "placement / placer", regex: word("placements?|placer|placée?s?|placés?") },
 ];
 
 /**

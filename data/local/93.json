@@ -24,8 +24,8 @@
     "collected_at": "2026-09-26"
   },
   "agence_proche": {
-    "id": "saint-denis",
-    "distance_km": 7.2
+    "id": "paris-12",
+    "distance_km": 8.3
   },
   "vague": 1,
   "motif_vague": "departement",

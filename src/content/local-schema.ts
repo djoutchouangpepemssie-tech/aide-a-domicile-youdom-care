@@ -178,13 +178,19 @@ export const localEditorialSchema = z.strictObject({
 });
 export type LocalEditorial = z.infer<typeof localEditorialSchema>;
 
-/** Seuils bloquants de docs/04 §4 par type de territoire (la loop ne les abaisse jamais). */
+/*
+ * Seuils bloquants par type de territoire. Ceux de `docs/04 §4` (350 / 450 / 300 / 600 mots) sont
+ * un plancher que la loop n'abaisse jamais ; Arcel les a relevés à **1000 mots pour tous les
+ * territoires** le 27/09/2026, pour le référencement. Le seuil de similarité ne bouge pas : plus
+ * une page est longue, plus le risque de se répéter d'une commune à l'autre augmente, et c'est lui
+ * qui l'interdit.
+ */
 export const localThresholds: Record<
   Exclude<TerritoryKind, "region">,
   { faits: number; mots: number; similarite: number }
 > = {
-  commune: { faits: 8, mots: 350, similarite: 0.3 },
-  arrondissement: { faits: 12, mots: 450, similarite: 0.3 },
-  quartier: { faits: 6, mots: 300, similarite: 0.3 },
-  departement: { faits: 15, mots: 600, similarite: 0.25 },
+  commune: { faits: 8, mots: 1000, similarite: 0.3 },
+  arrondissement: { faits: 12, mots: 1000, similarite: 0.3 },
+  quartier: { faits: 6, mots: 1000, similarite: 0.3 },
+  departement: { faits: 15, mots: 1000, similarite: 0.25 },
 };

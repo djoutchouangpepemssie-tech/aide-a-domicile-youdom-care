@@ -10,19 +10,39 @@ import {
   runLocalFactsCheck,
 } from "./check-local-facts";
 
+/*
+ * Les gabarits de test font quelques centaines de mots ; le seuil de production est à 1000 depuis
+ * D-043. Ces tests vérifient le **comportement** du contrôle, pas la valeur du seuil : ils gardent
+ * donc les seuils d'origine de docs/04 §4.
+ */
+const SEUILS_GABARITS = {
+  commune: 350,
+  arrondissement: 450,
+  quartier: 300,
+  departement: 600,
+};
+
 const fixtures = path.join(__dirname, "fixtures", "local");
 const conforme = path.join(fixtures, "conforme");
 const fautif = path.join(fixtures, "fautif");
 
 describe("check-local-facts", () => {
   it("passe sur deux pages conformes", async () => {
-    const { errors, warnings } = await runLocalFactsCheck({ rootDir: conforme, prod: false });
+    const { errors, warnings } = await runLocalFactsCheck({
+      rootDir: conforme,
+      prod: false,
+      motsMin: SEUILS_GABARITS,
+    });
     expect(errors).toEqual([]);
     expect(warnings).toEqual([]);
   });
 
   it("signale un fait sans source et ses conséquences sur un département", async () => {
-    const { errors } = await runLocalFactsCheck({ rootDir: fautif, prod: false });
+    const { errors } = await runLocalFactsCheck({
+      rootDir: fautif,
+      prod: false,
+      motsMin: SEUILS_GABARITS,
+    });
     const has = (pattern: RegExp) => expect(errors.some((e) => pattern.test(e))).toBe(true);
     has(/data\/local\/92\.json : facts\[1\]\.source_url/);
     has(
@@ -35,7 +55,11 @@ describe("check-local-facts", () => {
   });
 
   it("signale un nombre absent des faits, un index hors de facts[] et une zone trop courte", async () => {
-    const { errors } = await runLocalFactsCheck({ rootDir: fautif, prod: false });
+    const { errors } = await runLocalFactsCheck({
+      rootDir: fautif,
+      prod: false,
+      motsMin: SEUILS_GABARITS,
+    });
     const has = (pattern: RegExp) => expect(errors.some((e) => pattern.test(e))).toBe(true);
     has(
       /92050\.json › zone_editoriale : nombre\(s\) absent\(s\) des faits et de la démographie — « 12 000 »/,
@@ -65,7 +89,7 @@ describe("check-local-facts", () => {
         facts: puteaux.data.facts.map((f, i) => ({ ...f, in_territory: i < 3 })),
       },
     };
-    const audit = auditFacts(quartier);
+    const audit = auditFacts(quartier, SEUILS_GABARITS);
     expect(audit.errors).toEqual([
       expect.stringContaining("3 fait(s) situé(s) dans le quartier (in_territory), seuil 6"),
     ]);
@@ -94,7 +118,11 @@ describe("check-local-facts", () => {
     });
 
     it("passe avec un avertissement", async () => {
-      const { errors, warnings } = await runLocalFactsCheck({ rootDir: dir, prod: false });
+      const { errors, warnings } = await runLocalFactsCheck({
+        rootDir: dir,
+        prod: false,
+        motsMin: SEUILS_GABARITS,
+      });
       expect(errors).toEqual([]);
       expect(warnings).toEqual(["aucune page locale : content/local absent ou vide"]);
     });

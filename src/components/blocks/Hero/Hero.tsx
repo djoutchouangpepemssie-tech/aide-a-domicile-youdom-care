@@ -228,7 +228,15 @@ export function Hero({
           <Button
             href={secondary.href}
             variant="outline"
-            className={dark ? "border-white text-white hover:bg-white/10" : undefined}
+            /*
+             * 27/09/2026 : sur une scène sombre, le fond doit devenir transparent en même temps
+             * que le texte passe au blanc. Le variant `outline` pose `glass-quiet`, dont la base
+             * est blanche à 100 % d'opacité : le bouton restait un aplat blanc avec du texte blanc
+             * dessus, mesuré à 1,00 de contraste, et se lisait comme une pastille vide.
+             */
+            className={
+              dark ? "border-white bg-transparent text-white hover:bg-white/10" : undefined
+            }
           >
             {secondary.label}
           </Button>

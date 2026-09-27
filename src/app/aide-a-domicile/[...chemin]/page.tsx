@@ -71,7 +71,7 @@ export async function buildLocalData(chemin: string): Promise<LocalTemplateData 
   const { data, editorial } = page;
   const texts = getInterfaceTexts();
   const navigation = getNavigation();
-  const { contact, agences, disponibilite } = getSiteConfig();
+  const { contact, agences, disponibilite, couverture } = getSiteConfig();
   const agency = data.agence_proche
     ? (agences.find((a) => a.id === data.agence_proche?.id) ?? null)
     : null;
@@ -89,6 +89,8 @@ export async function buildLocalData(chemin: string): Promise<LocalTemplateData 
     navigation,
     phone: contact.telephone_principal,
     agency,
+    // Confirmé par Arcel le 27/09/2026 : les auxiliaires de vie interviennent dans toute la région.
+    coverage: couverture?.phrase ?? null,
     weekExample: getWeekExamples().exemples.find((e) => e.id === editorial.semaine_type) ?? null,
     aids,
     accompagnements: await accompagnementLinks(),

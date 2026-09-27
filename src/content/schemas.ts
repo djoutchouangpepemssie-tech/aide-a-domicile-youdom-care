@@ -130,6 +130,20 @@ export const siteConfigSchema = z.strictObject({
     linkedin: z.url().nullable(),
     youtube: z.url().nullable(),
   }),
+  /*
+   * Couverture géographique, confirmée par Arcel le 27/09/2026 : les auxiliaires de vie
+   * interviennent dans toute l'Île-de-France. Les agences sont des points de coordination ;
+   * la distance d'une commune à une agence n'est donc jamais une limite, et le site ne la
+   * présente jamais comme telle.
+   */
+  couverture: z
+    .strictObject({
+      _lisezmoi: z.string(),
+      toute_idf: z.boolean(),
+      phrase: z.string().min(1),
+      source: z.string().min(1),
+    })
+    .optional(),
   a_confirmer: z.array(z.string()),
 });
 export type SiteConfig = z.infer<typeof siteConfigSchema>;
@@ -592,7 +606,12 @@ export const interfaceSchema = z.strictObject({
     reassurance_24h: text,
     reponse: z.strictObject({
       oui: text.includes("{lieu}"),
-      agence: text.includes("{agence}").includes("{distance}"),
+      /*
+       * 27/09/2026 : plus de distance dans la phrase. Arcel a confirmé que les auxiliaires de vie
+       * interviennent dans toute l'Île-de-France ; une distance à l'agence laisserait croire à une
+       * limite qui n'existe pas.
+       */
+      agence: text.includes("{agence}"),
       agence_proche: text.includes("{agence}"),
       /** L'agence est installée dans le territoire même (code INSEE identique). */
       agence_ici: text.includes("{agence}").includes("{lieu}"),

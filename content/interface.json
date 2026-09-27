@@ -431,11 +431,11 @@
     "reassurance_24h": "Jour et nuit, 24h/24",
     "reponse": {
       "oui": "Oui, nous intervenons {lieu}.",
-      "agence": "Votre agence la plus proche : {agence}, à {distance} km à vol d'oiseau.",
-      "agence_proche": "Votre agence la plus proche : {agence}, à moins d'un kilomètre.",
+      "agence": "Vos interventions sont coordonnées par {agence}.",
+      "agence_proche": "Vos interventions sont coordonnées par {agence}.",
       "agence_ici": "Votre agence : {agence}, installée {lieu}.",
       "agence_departement": "Votre agence dans le département : {agence}, à {commune}.",
-      "agence_hors_departement": "Votre agence la plus proche : {agence}, à {commune}.",
+      "agence_hors_departement": "Vos interventions sont coordonnées par {agence}, à {commune}.",
       "voir_agence": "Voir l'agence {nom}",
       "appeler": "Appeler le {téléphone}"
     },
@@ -611,8 +611,14 @@
     "secteur": "Secteur d'intervention",
     "salaire": "Rémunération",
     "salaire_fourchette": "de {min} à {max} {unite}",
-    "contrats": { "cdi": "CDI", "cdd": "CDD" },
-    "temps": { "temps-plein": "Temps plein", "temps-partiel": "Temps partiel" },
+    "contrats": {
+      "cdi": "CDI",
+      "cdd": "CDD"
+    },
+    "temps": {
+      "temps-plein": "Temps plein",
+      "temps-partiel": "Temps partiel"
+    },
     "unites_salaire": {
       "heure": "€ brut de l'heure",
       "mois": "€ brut par mois",

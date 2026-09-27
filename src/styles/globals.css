@@ -439,25 +439,17 @@
 }
 
 /*
- * Rendu différé des sections hors écran (27/09/2026). Mesuré : sur une page locale, le calcul des
- * styles et de la mise en page occupait 603 ms du fil principal au chargement, et le temps de
- * blocage total montait à plus de 300 ms depuis la refonte visuelle (D-032, jamais mesurée avec
- * Lighthouse). `content-visibility: auto` laisse le navigateur sauter le style, la mise en page et
- * la peinture d'une section tant qu'elle n'approche pas de l'écran ; `contain-intrinsic-size: auto`
- * lui fait mémoriser la hauteur réelle après le premier rendu, ce qui évite tout saut de
- * défilement. La bannière en est exclue : elle est visible d'emblée.
+ * Rendu différé des sections hors écran : **retiré le 27/09/2026**, un jour après avoir été posé.
  *
- * Effets de bord surveillés : la recherche dans la page et le défilement vers une ancre
- * fonctionnent (le navigateur rend la section à la demande) ; l'impression rend tout (`print.css`
- * le force) ; aucun effet sur les lecteurs d'écran, le contenu reste dans l'arbre d'accessibilité.
+ * Le gain était réel et mesuré (temps de blocage d'une page locale ramené de 292-432 ms à
+ * 166-286 ms, D-040). L'effet de bord l'était tout autant, et il est pire : `contain-intrinsic-size`
+ * donnait 600 px à des sections qui en mesurent 403 à 2 645. Tant qu'une section n'avait pas été
+ * peinte une première fois, le navigateur la comptait pour 600 px. Mesuré sur `/aidants/` à 390 px :
+ * le document passait de 15 678 à 19 963 px pendant la lecture, soit 27 % de dérive, et un
+ * défilement demandé à 6 000 px atterrissait à 7 749 — un saut de 1 750 px sous le doigt du
+ * lecteur. Un ascenseur qui ment et une page qui grandit pendant qu'on la lit coûtent plus cher au
+ * visiteur que cent millisecondes de blocage.
+ *
+ * Une hauteur intrinsèque juste par famille de sections reste possible : c'est une piste de la
+ * dette DP.2, à instruire avec des mesures, pas une valeur unique posée au jugé.
  */
-section:not(.hero-section):not(:first-of-type) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
-}
-
-@media print {
-  section:not(.hero-section):not(:first-of-type) {
-    content-visibility: visible;
-  }
-}

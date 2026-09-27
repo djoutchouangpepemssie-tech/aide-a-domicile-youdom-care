@@ -71,31 +71,13 @@ export function AidCard({
           </Link>
         </p>
       ) : null}
-      <p className="m-0 mt-auto pt-4">
-        {/* Un nom de domaine long (monparcourshandicap.gouv.fr) doit pouvoir se couper : sans
-            cela la carte élargit la grille et la page défile horizontalement à 320 px (RGAA 10.11). */}
-        <a
-          href={official.href}
-          rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center gap-2 font-bold [overflow-wrap:anywhere]"
-        >
-          {official.label}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="shrink-0"
-          >
-            <path d="M14 4h6v6M20 4l-9 9M18 13v6H5V6h6" />
-          </svg>
-          <span className="sr-only"> ({texts.lien_externe})</span>
-        </a>
+      {/*
+       * 27/09/2026, demande d'Arcel : plus aucun lien sortant vers un service public. Le nom de
+       * la source officielle reste affiché — le lecteur sait d'où vient l'information et peut la
+       * retrouver — mais la carte ne l'envoie plus ailleurs.
+       */}
+      <p className="m-0 mt-auto pt-4 text-small text-text-soft [overflow-wrap:anywhere]">
+        {official.label}
       </p>
     </Card>
   );

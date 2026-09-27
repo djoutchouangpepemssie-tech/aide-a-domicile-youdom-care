@@ -173,7 +173,8 @@ describe("Accueil (blocs 9 à 12)", () => {
   it("rend le territoire avec le nombre d'agences calculé, l'appel final et le recrutement", () => {
     render(home);
     const territoire = screen.getByRole("region", { name: "Partout à Paris et en Île-de-France" });
-    expect(territoire).toHaveTextContent("6 agences, huit départements.");
+    // 27/09/2026 : deux agences réelles, le compte reste calculé depuis site.config.json.
+    expect(territoire).toHaveTextContent("2 agences, huit départements.");
     expect(within(territoire).getByRole("combobox")).toBeInTheDocument();
     expect(within(territoire).getByRole("button", { name: "Vérifier" })).toBeInTheDocument();
 

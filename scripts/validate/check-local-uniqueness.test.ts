@@ -75,10 +75,11 @@ describe("check-local-uniqueness", () => {
   it("imprime un rapport par page avec type, faits, mots et similarité maximale", async () => {
     const report = await formatLocalReport(fautif);
     expect(report).toContain("92 (departement) /aide-a-domicile/hauts-de-seine/");
-    expect(report).toContain("faits sourcés 2/15 · mots 108/600");
+    // D-043 : le seuil de mots est passé à 1000 pour tous les types de territoire.
+    expect(report).toContain("faits sourcés 2/15 · mots 108/1000");
     expect(report).toContain("92062 (commune) /aide-a-domicile/hauts-de-seine/puteaux/");
     expect(report).toContain("similarité max 0,41 avec 92050 (seuil < 0,30, 40,8 %)");
-    expect(report).toContain("faits sourcés 9/8 · mots 364/350");
+    expect(report).toContain("faits sourcés 9/8 · mots 364/1000");
   });
 
   it("annonce l'absence de page locale", async () => {
