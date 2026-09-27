@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { getInterfaceTexts, getSiteConfig } from "@/content/loader";
 import type { Agency } from "@/content/schemas";
-import { AgencyCard, fullAddress, routeUrl } from "./AgencyCard";
+import { AgencyCard, fullAddress } from "./AgencyCard";
 
 const texts = getInterfaceTexts().local.agence;
 
@@ -13,7 +13,7 @@ function agency(patch: Partial<Agency> = {}): Agency {
 }
 
 describe("AgencyCard", () => {
-  it("affiche le nom, l'adresse et l'itinéraire encodé ; masque téléphone et horaires nuls", () => {
+  it("affiche le nom et l'adresse ; masque téléphone, horaires nuls et tout itinéraire", () => {
     render(<AgencyCard agency={agency()} texts={texts} href="/agences/puteaux/" />);
     expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
       "Youdom Care Hauts-de-Seine",
@@ -22,12 +22,9 @@ describe("AgencyCard", () => {
     expect(screen.queryByText("Téléphone de l'agence")).not.toBeInTheDocument();
     expect(screen.queryByText("Standard")).not.toBeInTheDocument();
     expect(screen.queryByText("Horaires")).not.toBeInTheDocument();
-    const route = screen.getByRole("link", { name: /Itinéraire vers l'agence/ });
-    expect(route).toHaveAttribute(
-      "href",
-      `https://www.openstreetmap.org/search?query=${encodeURIComponent("49-51 quai de Dion-Bouton, 92800 Puteaux")}`,
-    );
-    expect(route).toHaveAccessibleName(/lien externe/);
+    // D-036 : plus aucun lien vers un service de carte externe.
+    expect(screen.queryByRole("link", { name: /Itinéraire/ })).not.toBeInTheDocument();
+    expect(document.querySelector('a[href*="openstreetmap"]')).toBeNull();
     expect(
       screen
         .getByRole("link", { name: "Voir l'agence Youdom Care Hauts-de-Seine" })
@@ -64,8 +61,8 @@ describe("AgencyCard", () => {
     expect(screen.getByText("Du lundi au vendredi, de 9h à 18h")).toBeInTheDocument();
   });
 
-  it("compose l'adresse et l'adresse d'itinéraire", () => {
+  it("compose l'adresse, et se limite à la commune sans adresse de voie", () => {
     expect(fullAddress(agency())).toBe("49-51 quai de Dion-Bouton, 92800 Puteaux");
-    expect(routeUrl(agency())).toMatch(/^https:\/\/www\.openstreetmap\.org\/search\?query=49-51/);
+    expect(fullAddress(agency({ adresse: null }))).toBe("92800 Puteaux");
   });
 });

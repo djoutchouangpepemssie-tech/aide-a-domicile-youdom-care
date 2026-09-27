@@ -7,11 +7,11 @@ import { toTelHref, formatFrenchPhone } from "@/lib/phone";
 import { fill, type LocalTexts } from "./local-texts";
 
 /*
- * Carte d'agence (docs/02 §7 `AgencyCard`) : nom, adresse, téléphone, horaires, itinéraire.
- * Données de content/site.config.json uniquement : un champ null (téléphone, horaires) n'est
- * pas affiché, jamais remplacé. L'itinéraire est un lien vers OpenStreetMap avec l'adresse
- * encodée (`routeUrl`), signalé comme externe. Avec `href`, la carte se termine par le lien vers
- * la page de l'agence ; sans `href` (page de l'agence elle-même), elle reste un bloc de faits.
+ * Carte d'agence (docs/02 §7 `AgencyCard`) : nom, adresse, téléphone, horaires. Données de
+ * content/site.config.json uniquement : un champ null (adresse de voie, téléphone, horaires)
+ * n'est pas affiché, jamais remplacé. Aucun lien d'itinéraire vers un service de carte externe
+ * (D-036). Avec `href`, la carte se termine par le lien vers la page de l'agence ; sans `href`
+ * (page de l'agence elle-même), elle reste un bloc de faits.
  */
 
 export interface AgencyCardProps {
@@ -25,32 +25,14 @@ export interface AgencyCardProps {
   className?: string;
 }
 
-/** Adresse postale complète : « 49-51 quai de Dion-Bouton, 92800 Puteaux ». */
+/**
+ * Adresse postale affichée : « 49-51 quai de Dion-Bouton, 92800 Puteaux », ou seulement
+ * « 92800 Puteaux » quand l'adresse de voie n'est pas publiée (D-036).
+ */
 export function fullAddress(agency: Pick<Agency, "adresse" | "code_postal" | "commune">): string {
-  return `${agency.adresse}, ${agency.code_postal} ${agency.commune}`;
+  const city = `${agency.code_postal} ${agency.commune}`;
+  return agency.adresse ? `${agency.adresse}, ${city}` : city;
 }
-
-/** Lien d'itinéraire : recherche OpenStreetMap sur l'adresse encodée (aucun script tiers). */
-export function routeUrl(agency: Pick<Agency, "adresse" | "code_postal" | "commune">): string {
-  return `https://www.openstreetmap.org/search?query=${encodeURIComponent(fullAddress(agency))}`;
-}
-
-const externalIcon = (
-  <svg
-    aria-hidden="true"
-    viewBox="0 0 24 24"
-    width="16"
-    height="16"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="shrink-0"
-  >
-    <path d="M14 4h6v6M20 4l-9 9M18 13v6H5V6h6" />
-  </svg>
-);
 
 export function AgencyCard({
   agency,
@@ -101,18 +83,7 @@ export function AgencyCard({
           </div>
         ) : null}
       </dl>
-      <p className="m-0 mt-auto pt-4">
-        <a
-          href={routeUrl(agency)}
-          rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center gap-2 font-bold"
-          data-agence-itineraire
-        >
-          {texts.itineraire}
-          {externalIcon}
-          <span className="sr-only"> ({texts.itineraire_externe})</span>
-        </a>
-      </p>
+      {/* D-036 : plus de lien d'itinéraire vers un service de carte externe. */}
       {href ? (
         <p className="m-0 mt-2">
           <Link

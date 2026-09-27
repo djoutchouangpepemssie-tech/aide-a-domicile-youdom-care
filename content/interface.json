@@ -513,8 +513,6 @@
       "telephone": "Téléphone de l'agence",
       "standard": "Standard",
       "horaires": "Horaires",
-      "itineraire": "Itinéraire vers l'agence",
-      "itineraire_externe": "OpenStreetMap, lien externe",
       "communes_h2": "Les communes suivies par cette agence",
       "communes_texte": "Les pages locales dont cette agence est la plus proche, par distance à vol d'oiseau.",
       "communes_aucune": "Les pages locales de ce secteur sont en cours de rédaction : appelez-nous, nous vous répondons pour toute commune d'Île-de-France.",

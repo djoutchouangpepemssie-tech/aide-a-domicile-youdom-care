@@ -791,7 +791,8 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                   date: formatFrenchDate(page.relu_par.date),
                 })
               : null,
-            pending: page.statut === "a_relire" ? t.relecture_attendue : undefined,
+            // D-034 : aucune mention d'attente de relecture affichée.
+            pending: undefined,
             updated: fill(t.maj, { date: formatFrenchDate(page.maj) }),
           }}
         />

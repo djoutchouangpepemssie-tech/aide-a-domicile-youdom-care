@@ -26,13 +26,13 @@ import { PhotoFigure } from "@/components/ui/PhotoFigure/PhotoFigure";
 import type { AgenciesPage, Agency, InterfaceTexts } from "@/content/schemas";
 import { cn } from "@/lib/cn";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
-import { AgencyCard, fullAddress, routeUrl } from "./AgencyCard";
+import { AgencyCard, fullAddress } from "./AgencyCard";
 import { agencyPhoto } from "./local-photos";
 import { fill, formatDistance } from "./local-texts";
 
 /*
  * Page d'une agence (docs/00 §5, docs/04 §2 `LocalBusiness`, P6.6) : nom, adresse, téléphone
- * et horaires seulement s'ils sont renseignés (site.config.json), itinéraire, communes suivies
+ * et horaires seulement s'ils sont renseignés (site.config.json), communes suivies
  * (pages locales construites dont cette agence est la plus proche, par distance), lien vers la
  * page du département si elle existe, formulaire de rappel. Le JSON-LD `LocalBusiness` est
  * émis par la route (src/lib/jsonld/local-business.ts).
@@ -86,8 +86,8 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
     <main id="contenu" data-agence-page={agency.id}>
       {/*
        * Bannière de l'agence (brief docs/design/BRIEF_LIQUID_GLASS.md §4, D-032) : scène sable,
-       * contenu compris et actionnable sans défiler. L'interaction immédiate, c'est l'adresse avec
-       * son itinéraire et l'appel, dans un panneau de verre ; l'action principale reste le rappel.
+       * contenu compris et actionnable sans défiler. L'interaction immédiate, c'est l'adresse et
+       * l'appel, dans un panneau de verre ; l'action principale reste le rappel.
        */}
       <HeroSection scene="sable" aria-labelledby="titre">
         <Breadcrumb
@@ -128,17 +128,7 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
             >
               <p className="m-0 font-bold">{fullAddress(agency)}</p>
               <ul className="m-0 mt-2 flex list-none flex-wrap gap-x-6 gap-y-1 p-0">
-                <li className="max-w-none">
-                  <a
-                    href={routeUrl(agency)}
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-12 items-center gap-2 font-bold"
-                    data-agence-itineraire
-                  >
-                    {t.agence.itineraire}
-                    <span className="sr-only"> ({t.agence.itineraire_externe})</span>
-                  </a>
-                </li>
+                {/* D-036 : plus de lien d'itinéraire vers un service de carte externe. */}
                 {phone && telHref ? (
                   <li className="max-w-none">
                     <a

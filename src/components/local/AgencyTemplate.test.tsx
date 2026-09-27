@@ -41,7 +41,7 @@ function data(overrides: Partial<AgencyTemplateData> = {}): AgencyTemplateData {
 }
 
 describe("AgencyTemplate (P6.6)", () => {
-  it("affiche le nom, l'adresse, l'itinéraire, les communes suivies et le formulaire ; masque les champs nuls", async () => {
+  it("affiche le nom, l'adresse, les communes suivies et le formulaire ; masque les champs nuls et tout itinéraire", async () => {
     render(<AgencyTemplate data={data()} />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Youdom Care Hauts-de-Seine",
@@ -54,19 +54,10 @@ describe("AgencyTemplate (P6.6)", () => {
     expect(document.querySelector("[data-agence-horaires]")).toBeNull();
     // Le standard, lui, est connu et proposé.
     expect(screen.getByText("Standard")).toBeInTheDocument();
-    // L'itinéraire est proposé deux fois : dans le panneau du hero (action immédiate, D-032) et
-    // dans l'encart d'agence. Les deux mènent au même plan.
-    const routes = screen.getAllByRole("link", { name: /Itinéraire vers l'agence/ });
-    expect(routes).toHaveLength(2);
-    expect(
-      document.querySelector("[data-hero-interaction] [data-agence-itineraire]"),
-    ).not.toBeNull();
-    for (const route of routes) {
-      expect(route).toHaveAttribute(
-        "href",
-        expect.stringMatching(/^https:\/\/www\.openstreetmap\.org\/search\?query=/),
-      );
-    }
+    // D-036 : plus aucun lien d'itinéraire, ni dans le hero, ni dans l'encart d'agence.
+    expect(screen.queryByRole("link", { name: /Itinéraire/ })).not.toBeInTheDocument();
+    expect(document.querySelector("[data-agence-itineraire]")).toBeNull();
+    expect(document.querySelector('a[href*="openstreetmap"]')).toBeNull();
     const communes = document.querySelector("[data-agence-communes]");
     const items = within(communes as HTMLElement).getAllByRole("listitem");
     expect(items.map((item) => item.textContent)).toEqual(["Puteaux0,4 km", "Nanterre3,1 km"]);

@@ -78,7 +78,7 @@
     {
       "id": "saint-denis",
       "nom": "Youdom Care Seine-Saint-Denis",
-      "adresse": "5-7-9 rue Pleyel",
+      "adresse": null,
       "code_postal": "93200",
       "commune": "Saint-Denis",
       "code_insee": "93066",
@@ -90,7 +90,7 @@
     {
       "id": "vitry-sur-seine",
       "nom": "Youdom Care Val-de-Marne",
-      "adresse": "86 avenue Paul-Vaillant-Couturier",
+      "adresse": null,
       "code_postal": "94400",
       "commune": "Vitry-sur-Seine",
       "code_insee": "94081",
@@ -102,7 +102,7 @@
     {
       "id": "serris",
       "nom": "Youdom Care Seine-et-Marne",
-      "adresse": "1 boulevard Michael-Faraday",
+      "adresse": null,
       "code_postal": "77700",
       "commune": "Serris",
       "code_insee": "77449",
@@ -114,7 +114,7 @@
     {
       "id": "versailles",
       "nom": "Youdom Care Yvelines",
-      "adresse": "35 rue des Chantiers",
+      "adresse": null,
       "code_postal": "78000",
       "commune": "Versailles",
       "code_insee": "78646",

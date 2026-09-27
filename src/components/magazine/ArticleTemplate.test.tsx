@@ -47,7 +47,8 @@ describe("ArticleTemplate", () => {
     // 3. ligne de confiance
     const trust = container.querySelector("[data-confiance]");
     expect(trust).toHaveTextContent("Écrit par Équipe éditoriale Youdom Care");
-    expect(trust).toHaveTextContent("Relecture professionnelle à venir");
+    // D-034 : plus aucune mention d'attente de relecture.
+    expect(trust).not.toHaveTextContent(/[Rr]electure/);
     expect(trust).toHaveTextContent("Publié le 20 septembre 2026");
     expect(trust).toHaveTextContent("Mis à jour le 27 septembre 2026");
     expect(trust).toHaveTextContent("1 min de lecture");
