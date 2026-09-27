@@ -99,7 +99,8 @@ test.describe("Carte régionale /aide-a-domicile/ (P6.5)", () => {
     await expect(
       page.locator("[data-agences]").getByRole("link", { name: /Voir l'agence Youdom Care Paris/ }),
     ).toHaveAttribute("href", "/agences/paris-12/");
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+    // D-035 : la carte régionale est indexable.
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     await expectNoSeriousAxeViolations(page);
   });
 
@@ -203,9 +204,9 @@ test.describe("Page locale (P6.5, données réelles du dépôt)", () => {
     );
     await expect(page.locator("[data-local-editorial]")).toBeVisible();
     await expect(page.getByRole("form")).toBeVisible();
-    if (local.statut === "a_relire") {
-      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-    }
+    // D-034 et D-035 : aucun bandeau d'attente, page indexable quel que soit le statut.
+    await expect(page.getByText(/attend sa relecture/)).toHaveCount(0);
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
     const { blocks, nodes } = await jsonLdNodes(page);
     expect(nodes.map((node) => node["@type"])).toEqual(
       expect.arrayContaining(["BreadcrumbList", "WebPage", "FAQPage"]),

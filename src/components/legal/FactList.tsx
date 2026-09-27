@@ -15,9 +15,15 @@ export function FactList({ entries, className }: { entries: LegalEntry[]; classN
           <dt className="m-0 font-bold">{entry.label}</dt>
           <dd className="m-0">
             {entry.href ? (
+              // Cible de 44 px de haut (WCAG 2.5.8, P9.6) : le lien seul dans sa définition
+              // (téléphone, courriel) mesurait 22 px.
               <a
                 href={entry.href}
-                className={entry.href.startsWith("tel:") ? "tabular-figures" : undefined}
+                className={
+                  entry.href.startsWith("tel:")
+                    ? "tabular-figures inline-flex min-h-11 items-center"
+                    : "inline-flex min-h-11 items-center [overflow-wrap:anywhere]"
+                }
               >
                 {entry.value}
               </a>

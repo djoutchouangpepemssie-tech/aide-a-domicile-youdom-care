@@ -67,11 +67,11 @@ describe("llms.txt", () => {
     expect(chemins.some((c) => c.startsWith("/merci/") || c.startsWith("/styleguide/"))).toBe(
       false,
     );
-    // Aucune page `a_relire` : tant qu'aucune page service n'est relue, les sections sont vides.
+    // D-035 : toutes les pages services construites sont listées, relues ou non.
     const { listMdxFiles, readServiceMeta, SERVICES_DIR } = await import("@/content/service-meta");
     for (const file of await listMdxFiles(SERVICES_DIR)) {
       const { meta } = await readServiceMeta(file);
-      expect(chemins.includes(meta.chemin)).toBe(meta.statut === "publie");
+      expect(chemins.includes(meta.chemin)).toBe(true);
     }
     // Lexique : un terme par page, avec sa définition en une phrase (docs/04 §2, P9.4).
     const { listLexiqueTerms } = await import("@/content/lexique");
@@ -82,12 +82,12 @@ describe("llms.txt", () => {
       expect(page.description.trim().length).toBeGreaterThan(0);
       expect(page.titre.trim().length).toBeGreaterThan(0);
     }
-    // Le Fil : articles publiés seulement, jamais un article `a_relire`.
+    // Le Fil : tout article construit (D-035), jamais un brouillon.
     const { listArticleMetas } = await import("@/content/article-meta");
     const articles = await listArticleMetas({ warn: () => {} });
     for (const article of articles) {
       expect(built.magazine.some((p) => p.chemin === article.chemin)).toBe(
-        article.meta.statut === "publie",
+        article.meta.statut !== "brouillon",
       );
     }
   });

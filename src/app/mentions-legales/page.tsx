@@ -5,6 +5,7 @@ import { FactList } from "@/components/legal/FactList";
 import { LegalHeader } from "@/components/legal/LegalHeader";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Prose } from "@/components/ui/Prose/Prose";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { getPhotoCredits, groupByAuthor } from "@/content/credits";
 import { getMentionsLegales, MENTIONS_LEGALES_PATH } from "@/content/legal";
 import { getSiteConfig } from "@/content/loader";
@@ -28,7 +29,7 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function MentionsLegalesPage() {
+export default async function MentionsLegalesPage() {
   const page = getMentionsLegales();
   const config = getSiteConfig();
   const { legal } = config;
@@ -38,6 +39,7 @@ export default function MentionsLegalesPage() {
   const licences = getPhotoCredits().licences;
   const sap = page.services_a_la_personne;
 
+  const groupLinks = await groupCards("/mentions-legales/");
   return (
     <main id="contenu">
       <LegalHeader
@@ -230,6 +232,8 @@ export default function MentionsLegalesPage() {
           ))}
         </ul>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import ModesPage, { generateMetadata } from "./page";
 
 describe("Prestataire ou mandataire", () => {
-  it("a des balises titre et description aux longueurs de docs/01 §8", () => {
+  it("a des balises titre et description aux longueurs de docs/01 §8", async () => {
     const metadata = generateMetadata();
     expect(String(metadata.title).length).toBeGreaterThanOrEqual(50);
     expect(String(metadata.title).length).toBeLessThanOrEqual(60);
@@ -11,8 +11,8 @@ describe("Prestataire ou mandataire", () => {
     expect(String(metadata.description).length).toBeLessThanOrEqual(155);
   });
 
-  it("rend un tableau comparatif réel, la mention mandataire et la question qui tranche", () => {
-    render(<ModesPage />);
+  it("rend un tableau comparatif réel, la mention mandataire et la question qui tranche", async () => {
+    render(await ModesPage());
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Prestataire ou mandataire : quel mode choisir ?",
     );

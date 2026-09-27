@@ -7,7 +7,7 @@ import { getAidPage } from "@/content/aid-pages";
 import { listArticleMetas } from "@/content/article-meta";
 import { listLexiqueTerms } from "@/content/lexique";
 import { getSiteConfig } from "@/content/loader";
-import { departementCodeOf, listIndexableLocalPages } from "@/content/local";
+import { departementCodeOf, listBuildableLocalPages } from "@/content/local";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
 import { neverIndexedPaths } from "./indexable";
 import {
@@ -62,12 +62,11 @@ describe("plans de site segmentés", () => {
     const ids = populated.map((s) => s.id);
     expect(ids[0]).toBe("pages");
     for (const segment of populated) expect(segment.entries.length).toBeGreaterThan(0);
-    // Sans contenu éditorial, ces segments restent absents ; les agences sont là depuis la phase 6.
-    // Le segment magazine n’existe que si un article est publié (P7.1).
-    const published = (await listArticleMetas({ warn: () => {} })).some(
-      (article) => article.meta.statut === "publie",
+    // D-035 : le segment magazine existe dès qu'un article est construit (hors brouillon).
+    const construits = (await listArticleMetas({ warn: () => {} })).some(
+      (article) => article.meta.statut !== "brouillon",
     );
-    expect(ids.includes("magazine")).toBe(published);
+    expect(ids.includes("magazine")).toBe(construits);
     // Le lexique est alimenté depuis P7.2 (une page par terme de content/lexique).
     expect(ids).toContain("lexique");
     expect(ids).toContain("agences");
@@ -120,11 +119,11 @@ describe("plans de site segmentés", () => {
     for (const date of Object.values(declaredLastmod)) expect(date).toMatch(ISO_DATE);
   });
 
-  it("ne met dans le segment services que les pages relues, datées par maj", async () => {
+  it("met toutes les pages services construites dans le segment, datées par maj (D-035)", async () => {
     const expected: Record<string, string> = {};
     for (const file of await listMdxFiles(SERVICES_DIR)) {
       const { meta } = await readServiceMeta(file);
-      if (meta.statut === "publie") expected[meta.chemin] = meta.maj;
+      expected[meta.chemin] = meta.maj;
     }
     const entries = (await segmentEntries("services")) ?? [];
     expect(Object.fromEntries(entries.map((e) => [e.path, e.lastmod]))).toEqual(expected);
@@ -140,8 +139,8 @@ describe("plans de site segmentés", () => {
     for (const entry of entries) expect(entry.lastmod).toBe(agencesLastmod);
   });
 
-  it("date les pages locales publiées par leur maj, dans le segment de leur département", async () => {
-    const pages = await listIndexableLocalPages();
+  it("date les pages locales construites par leur maj, dans le segment de leur département", async () => {
+    const pages = await listBuildableLocalPages();
     const byDepartement = new Map<string, Record<string, string>>();
     for (const page of pages) {
       const code = departementCodeOf(page) ?? "";
@@ -196,10 +195,10 @@ describe("plans de site segmentés", () => {
     expect(xml).toContain('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
     expect(xml).toContain("<loc>https://www.youdom-care.com/sitemap/pages.xml</loc>");
     expect(xml).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
-    const published = (await listArticleMetas({ warn: () => {} })).some(
-      (article) => article.meta.statut === "publie",
+    const construits = (await listArticleMetas({ warn: () => {} })).some(
+      (article) => article.meta.statut !== "brouillon",
     );
-    expect(xml.includes("/sitemap/magazine.xml")).toBe(published);
+    expect(xml.includes("/sitemap/magazine.xml")).toBe(construits);
   });
 
   it("rend le plan d'un segment avec adresses absolues et lastmod", () => {

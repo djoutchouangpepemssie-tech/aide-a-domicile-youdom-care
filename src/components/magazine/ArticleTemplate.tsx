@@ -1,18 +1,37 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/blocks/Breadcrumb/Breadcrumb";
+import { HeroSection } from "@/components/blocks/Hero/HeroSection";
+import { ScrollCue } from "@/components/blocks/Hero/ScrollCue";
+import {
+  heroActionsClass,
+  heroGap,
+  heroGapWide,
+  heroOrderLast,
+  heroOrderPanel,
+  heroLeadClamp,
+  heroMediaWidth,
+  heroOnlyWide,
+  heroPhotoSizes,
+  heroPanelClass,
+  heroTypeScale,
+  heroWhenRoomy,
+  heroWhenTall,
+  sceneByRubrique,
+  sceneTint,
+} from "@/components/blocks/Hero/hero-scene";
 import { SourcesList, formatFrenchDate } from "@/components/blocks/SourcesList/SourcesList";
 import { Section } from "@/components/layout/Section/Section";
 import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Button } from "@/components/ui/Button/Button";
-import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
-import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
+import { PhotoFigure } from "@/components/ui/PhotoFigure/PhotoFigure";
 import { Prose } from "@/components/ui/Prose/Prose";
 import { authorPath, MAGAZINE_PATH, rubriquePath, type ArticleMeta } from "@/content/article-meta";
 import { rubriqueLabels, type Author } from "@/content/article-schema";
 import type { LoadedArticle } from "@/content/articles";
 import type { InterfaceTexts } from "@/content/schemas";
+import { cn } from "@/lib/cn";
 import { ArticleGrid } from "./ArticleCard";
 import { articleMdxComponents } from "./ArticleMdx";
 import { ShareActions } from "./ShareActions";
@@ -70,6 +89,17 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
   const mailto = `mailto:?subject=${encodeURIComponent(fill(t.partager_email_objet, { titre: meta.titre }))}&body=${encodeURIComponent(url)}`;
   const authorLabel = fill(t.auteur, { nom: meta.auteur.nom, fonction: meta.auteur.fonction });
   const cardTexts = { temps_lecture: t.temps_lecture, maj_le: t.maj_le };
+  /*
+   * Scène du hero (D-032) : une couleur par rubrique du Fil, framboise par défaut (famille
+   * magazine). Le repère de défilement annonce le premier titre du corps quand il y en a un,
+   * « L'essentiel » sinon : il dit ce qu'on trouve plus bas, mot pour mot.
+   */
+  const heroScene = sceneByRubrique[meta.rubrique] ?? "framboise";
+  const heroTint = sceneTint(heroScene);
+  const firstHeading = article.headings[0];
+  const heroCue = firstHeading
+    ? { label: firstHeading.text, href: `#${firstHeading.id}` }
+    : { label: t.essentiel_h2, href: "#essentiel" };
 
   return (
     <main
@@ -78,14 +108,18 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
       data-rubrique={meta.rubrique}
       data-statut={meta.statut}
     >
-      {meta.statut === "a_relire" ? (
-        <div className="container-site pt-6 print:hidden">
-          <Callout variant="attention">{t.non_relu}</Callout>
-        </div>
-      ) : null}
+      {/*
+       * D-034 : pas de bandeau d'avertissement visible ; l'article reste `noindex` et hors des
+       * plans de site, et la ligne de confiance indique qu'une relecture est attendue.
+       */}
 
-      {/* 1. Fil d'Ariane, rubrique, titre — 2. chapô — 3. ligne de confiance */}
-      <Section tone="paper" aria-labelledby="titre" className="pt-8!">
+      {/*
+       * 1. Rubrique, titre — 2. chapô — 3. ligne de confiance, dans une bannière à la hauteur de la
+       * fenêtre (brief docs/design/BRIEF_LIQUID_GLASS.md §4, D-032) : scène colorée par rubrique, et
+       * pour interaction immédiate « L'essentiel » en aperçu (les deux premiers points) avec le lien
+       * vers la liste complète et celui de la rubrique.
+       */}
+      <HeroSection scene={heroScene} aria-labelledby="titre">
         <Breadcrumb
           texts={texts.fil_ariane}
           items={[
@@ -93,72 +127,130 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
             { label: rubrique, href: rubriquePath(meta.rubrique) },
             { label: meta.titre },
           ]}
-          className="mb-6"
+          className={cn("mb-4", heroOnlyWide)}
         />
-        <p className="m-0 text-small font-bold text-teal-800">
-          <span className="sr-only">{t.rubrique} : </span>
-          <Link href={rubriquePath(meta.rubrique)} className="no-underline hover:underline">
-            {rubrique}
-          </Link>
-        </p>
-        <Heading level={1} id="titre" className="mt-2">
-          {meta.titre}
-        </Heading>
-        <Lead className="mt-5">{meta.chapo}</Lead>
-        <ul
-          className="tabular-figures m-0 mt-6 flex list-none flex-wrap gap-x-4 gap-y-1 p-0 text-small text-text-soft"
-          data-confiance
+        <div
+          className={cn(
+            "hero grid w-full grid-cols-1 items-center gap-x-10",
+            "lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]",
+            heroTypeScale,
+          )}
+          data-hero=""
         >
-          <li className="max-w-none font-bold text-ink">
-            {author ? (
-              <Link href={authorPath(author.slug)} className="text-ink">
-                {authorLabel}
+          {/* Colonne de texte en flex : l'ordre de la compaction (action avant interaction au dernier
+              palier) s'y applique. */}
+          <div className="flex min-w-0 flex-col">
+            <p className={cn("m-0 text-small font-bold text-teal-800", heroWhenRoomy)}>
+              <span className="sr-only">{t.rubrique} : </span>
+              <Link href={rubriquePath(meta.rubrique)} className="no-underline hover:underline">
+                {rubrique}
               </Link>
-            ) : (
-              authorLabel
+            </p>
+            <Heading level={1} id="titre" className="mt-2">
+              {meta.titre}
+            </Heading>
+            <Lead className={cn(heroGap, heroLeadClamp)}>{meta.chapo}</Lead>
+            {/* Aperçu de « L'essentiel » : deux points, puis le lien vers la liste complète. */}
+            <div
+              className={cn(heroOrderPanel, heroGapWide, heroPanelClass(heroTint))}
+              data-hero-interaction=""
+              data-essentiel-apercu
+            >
+              <p className="m-0">
+                <a
+                  href="#essentiel"
+                  className="heading-4 inline-flex min-h-11 items-center text-teal-900"
+                >
+                  {t.essentiel_h2}
+                </a>
+              </p>
+              <ul className="m-0 mt-1 grid gap-1 pl-5 text-small">
+                {meta.essentiel.slice(0, 2).map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+            <div className={heroActionsClass}>
+              <span data-hero-primary="">
+                <Button href={meta.encart.href}>{meta.encart.libelle}</Button>
+              </span>
+              <Link
+                href={rubriquePath(meta.rubrique)}
+                className={cn("inline-flex min-h-12 items-center font-bold", heroOnlyWide)}
+              >
+                {rubrique}
+              </Link>
+            </div>
+            <p className={cn("m-0", heroOrderLast, heroGap)}>
+              <ScrollCue label={heroCue.label} href={heroCue.href} />
+            </p>
+          </div>
+          <div
+            className={cn(
+              heroOnlyWide,
+              heroWhenTall,
+              heroGapWide,
+              "lg:mt-0 print:hidden",
+              heroMediaWidth,
             )}
-          </li>
-          {meta.relu_par ? (
-            <li className="max-w-none">
-              {fill(t.relu_par, {
-                nom: meta.relu_par.nom,
-                fonction: meta.relu_par.fonction,
-                date: formatFrenchDate(meta.relu_par.date),
-              })}
-            </li>
-          ) : pendingReview ? (
-            <li className="max-w-none font-bold text-warning" data-relecture="a-venir">
-              {t.relecture_a_venir}
-            </li>
-          ) : null}
-          <li className="max-w-none">
-            <time dateTime={meta.publie_le}>
-              {fill(t.publie_le, { date: formatFrenchDate(meta.publie_le) })}
-            </time>
-          </li>
-          {meta.maj_le !== meta.publie_le ? (
-            <li className="max-w-none">
-              <time dateTime={meta.maj_le}>
-                {fill(t.maj_le, { date: formatFrenchDate(meta.maj_le) })}
-              </time>
-            </li>
-          ) : null}
-          <li className="max-w-none" data-temps-lecture>
-            {fill(t.temps_lecture, { n: String(article.readingMinutes) })}
-          </li>
-        </ul>
-        <PhotoFigure
-          src={meta.image.src}
-          alt={meta.image.alt}
-          focal={meta.image.focal}
-          ratio="3:2"
-          mobileRatio="16:9"
-          radius={28}
-          sizes={photoSizes.full}
-          priority
-          className="mt-8 print:hidden"
-        />
-      </Section>
+          >
+            <PhotoFigure
+              src={meta.image.src}
+              alt={meta.image.alt}
+              focal={meta.image.focal}
+              ratio="3:2"
+              mobileRatio="16:9"
+              radius={28}
+              sizes={heroPhotoSizes}
+              priority
+            />
+            <ul
+              className={cn(
+                "tabular-figures m-0 mt-4 flex list-none flex-wrap gap-x-4 gap-y-1 p-0 text-small text-text-soft",
+              )}
+              data-confiance
+            >
+              <li className="max-w-none font-bold text-ink">
+                {author ? (
+                  <Link href={authorPath(author.slug)} className="text-ink">
+                    {authorLabel}
+                  </Link>
+                ) : (
+                  authorLabel
+                )}
+              </li>
+              {meta.relu_par ? (
+                <li className="max-w-none">
+                  {fill(t.relu_par, {
+                    nom: meta.relu_par.nom,
+                    fonction: meta.relu_par.fonction,
+                    date: formatFrenchDate(meta.relu_par.date),
+                  })}
+                </li>
+              ) : pendingReview ? (
+                <li className="max-w-none font-bold text-warning" data-relecture="a-venir">
+                  {t.relecture_a_venir}
+                </li>
+              ) : null}
+              <li className="max-w-none">
+                <time dateTime={meta.publie_le}>
+                  {fill(t.publie_le, { date: formatFrenchDate(meta.publie_le) })}
+                </time>
+              </li>
+              {meta.maj_le !== meta.publie_le ? (
+                <li className="max-w-none">
+                  <time dateTime={meta.maj_le}>
+                    {fill(t.maj_le, { date: formatFrenchDate(meta.maj_le) })}
+                  </time>
+                </li>
+              ) : null}
+              <li className="max-w-none" data-temps-lecture>
+                {fill(t.temps_lecture, { n: String(article.readingMinutes) })}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </HeroSection>
 
       {/* 4. L'essentiel */}
       <Section tone="white" aria-labelledby="essentiel" className="py-10!" data-section="essentiel">
@@ -175,7 +267,9 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
       </Section>
 
       {/* 5. Sommaire — 6. corps — 7. demain — 8. encart d'appel — 9. sources */}
-      <Section tone="paper" aria-label={meta.titre} data-section="corps">
+      {/* Sans nom de région : le titre nomme déjà la région d'en-tête ; le sommaire (`nav`), « Et
+          concrètement, demain ? » et les sources restent des repères nommés (RGAA 12.6, R-1). */}
+      <Section tone="paper" data-section="corps">
         <div className="grid gap-10 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-16 print:block">
           {article.headings.length > 0 ? (
             <nav
@@ -186,8 +280,11 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
               <p className="m-0 font-bold text-teal-900">{t.sommaire}</p>
               <ol className="m-0 mt-3 grid list-decimal gap-2 pl-5 text-small marker:text-teal-700">
                 {article.headings.map((heading) => (
+                  // Cible de 44 px de haut (WCAG 2.5.8, P9.6) : les entrées mesuraient 21 px.
                   <li key={heading.id}>
-                    <a href={`#${heading.id}`}>{heading.text}</a>
+                    <a href={`#${heading.id}`} className="inline-flex min-h-11 items-center">
+                      {heading.text}
+                    </a>
                   </li>
                 ))}
               </ol>

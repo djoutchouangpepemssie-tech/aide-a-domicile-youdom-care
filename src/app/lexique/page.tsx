@@ -51,9 +51,10 @@ export default async function LexiqueIndexPage() {
   const jsonLd = definedTermSet({ name: lexique.ensemble_nom }, getSiteConfig(), terms);
 
   return (
-    <main id="contenu">
+    // D-032 : chaque famille de pages porte sa couleur de scène (ici azure pour le lexique).
+    <main id="contenu" data-famille="lexique">
       <JsonLd data={jsonLd} />
-      <Section tone="paper" aria-labelledby="titre">
+      <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <Heading level={1} id="titre">
           {page.h1}

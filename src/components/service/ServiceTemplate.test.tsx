@@ -82,7 +82,7 @@ function withHero(hero: Partial<NonNullable<ServicePage["hero"]>>): ServicePage 
 }
 
 describe("ServiceTemplate", () => {
-  it("rend les 13 sections dans l'ordre de docs/03 §2", () => {
+  it("rend les 13 sections dans l'ordre de docs/03 §2", async () => {
     render(<ServiceTemplate data={data()} />);
     // Les titres des étapes du formulaire (section 12) ne comptent pas parmi les sections.
     const headings = screen
@@ -117,18 +117,22 @@ describe("ServiceTemplate", () => {
     expect(
       document.querySelectorAll('.follow-up-timeline [data-icon="maison"]').length,
     ).toBeGreaterThan(0);
-    expect(screen.getByRole("form")).toBeInTheDocument();
+    // Formulaire à hydratation différée (D-030) : il arrive après le premier rendu, le temps que
+    // l'`import()` se résolve — délai large parce que Vitest transforme la chaîne de modules du
+    // formulaire à la volée quand aucun autre test du lot ne l'a déjà importée.
+    expect(await screen.findByRole("form", {}, { timeout: 20_000 })).toBeInTheDocument();
     expect(screen.queryByText(/par mois TTC|TTC/)).toBeNull();
     expect(
       screen.getAllByRole("link", { name: /Voir la démarche|Combien/ }).length,
     ).toBeGreaterThan(0);
     // La section 12 porte l'identifiant que vise le rail et l'ancre « #formulaire ».
     expect(document.getElementById("formulaire")?.tagName).toBe("SECTION");
-  });
+  }, 30_000);
 
-  it("signale une page non relue, cite auteur et sources, maille pilier, sœurs et commune", () => {
+  it("cite auteur et sources sans bandeau d'attente, maille pilier, sœurs et commune", () => {
     render(<ServiceTemplate data={data()} />);
-    expect(screen.getByText(/attend sa relecture/)).toBeInTheDocument();
+    // D-034 : aucun bandeau d'avertissement ; la carte de relecture suffit.
+    expect(screen.queryByText(/attend sa relecture/)).toBeNull();
     // Carte de relecture (section 13) : auteur, attente de relecture, mise à jour.
     const review = document.querySelector(".sources-review");
     expect(review).not.toBeNull();

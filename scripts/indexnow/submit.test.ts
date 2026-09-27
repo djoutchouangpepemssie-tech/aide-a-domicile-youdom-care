@@ -71,7 +71,8 @@ describe("indexnow : charge utile", () => {
       expect(url.endsWith("/")).toBe(true);
       expect(url).not.toMatch(/\/(merci|styleguide|api)\//);
     }
-  });
+    // D-035 : les plans de site couvrent maintenant 500 adresses, la collecte prend du temps.
+  }, 30_000);
 });
 
 describe("indexnow : exécution", () => {

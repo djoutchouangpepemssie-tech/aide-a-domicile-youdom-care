@@ -7,6 +7,14 @@ import { SiteConversionRail } from "@/components/blocks/ConversionRail/SiteConve
 import { FAQ } from "@/components/blocks/FAQ/FAQ";
 import { FollowUpTimeline } from "@/components/blocks/FollowUpTimeline/FollowUpTimeline";
 import { Hero, type HeroTone } from "@/components/blocks/Hero/Hero";
+import { HeroSection } from "@/components/blocks/Hero/HeroSection";
+import {
+  heroOnlyWide,
+  heroPhotoSizes,
+  sceneByPublic,
+  sceneTint,
+  type HeroSceneName,
+} from "@/components/blocks/Hero/hero-scene";
 import type { HeroThreadFil } from "@/components/ui/Thread/hero-threads";
 import { CaregiverFirstQuestion } from "@/components/blocks/HeroGestures/CaregiverFirstQuestion";
 import { DischargeChooser } from "@/components/blocks/HeroGestures/DischargeChooser";
@@ -14,6 +22,7 @@ import { LifeSheetCard } from "@/components/blocks/HeroGestures/LifeSheetCard";
 import { NightChooser } from "@/components/blocks/HeroGestures/NightChooser";
 import { PlanningShortcuts } from "@/components/blocks/HeroGestures/PlanningShortcuts";
 import { StageChooser } from "@/components/blocks/HeroGestures/StageChooser";
+import { SituationChooser } from "@/components/blocks/HeroGestures/SituationChooser";
 import { stageAnchorId } from "@/components/blocks/HeroGestures/params";
 import { MandataireNotice } from "@/components/blocks/MandataireNotice/MandataireNotice";
 import { isDisplayablePrice, PriceCard } from "@/components/blocks/PriceCard/PriceCard";
@@ -21,9 +30,9 @@ import { SourcesList, formatFrenchDate } from "@/components/blocks/SourcesList/S
 import { StageCards } from "@/components/blocks/StageCards/StageCards";
 import { WeekPlanner } from "@/components/blocks/WeekPlanner/WeekPlanner";
 import { WeekStory } from "@/components/blocks/WeekStory/WeekStory";
-import { DetailedForm } from "@/components/forms/DetailedForm/DetailedForm";
-import { RappelForm } from "@/components/forms/RappelForm/RappelForm";
-import { HospitalDischargeForm } from "@/components/forms/SpecialForms/HospitalDischargeForm";
+import { LazyDetailedForm } from "@/components/forms/DeferredForm/LazyDetailedForm";
+import { LazyHospitalDischargeForm } from "@/components/forms/DeferredForm/LazyHospitalDischargeForm";
+import { LazyRappelForm } from "@/components/forms/DeferredForm/LazyRappelForm";
 import { Section } from "@/components/layout/Section/Section";
 import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Tilt } from "@/components/motion/Tilt/Tilt";
@@ -228,7 +237,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         ratio="4:5"
         mobileRatio="16:9"
         radius={28}
-        sizes={photoSizes.hero}
+        sizes={heroPhotoSizes}
         priority
       />
     )
@@ -283,9 +292,32 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       );
       break;
     default:
-      // `lecteur` : le sélecteur est déjà dans le chapô (ReaderSwitch) ; sans geste : rien.
-      gesture = null;
+      // `lecteur` : le sélecteur est déjà dans le chapô (ReaderSwitch), il porte l'interaction.
+      // Sans geste déclaré : les situations de la page font l'interaction immédiate du hero
+      // (brief docs/design/BRIEF_LIQUID_GLASS.md §4 : chaque gabarit en a une).
+      gesture =
+        hero?.geste === "lecteur" ? null : (
+          <SituationChooser
+            question={t.situations_h2}
+            situations={page.situations.map((situation) => ({
+              titre: situation.titre,
+              href: situation.href,
+              icone: toIconName(situation.icone),
+            }))}
+            fallbackHref="#situations"
+            tone={heroTone}
+          />
+        );
   }
+
+  /*
+   * Scène du hero (D-032) : une couleur par public, la scène de nuit pour le ton sombre. Le verre
+   * des panneaux prend la teinte de la scène. L'interaction vit dans le chapô sur le pilier
+   * Personnes âgées (sélecteur « pour un proche / pour vous-même »), dans son panneau ailleurs.
+   */
+  const heroScene: HeroSceneName =
+    heroTone === "sombre" ? "nuit" : (sceneByPublic[page.public] ?? "teal");
+  const heroInteraction = hero?.geste === "lecteur" ? "lead" : "gesture";
 
   // Profondeur et fil du hero (docs/design/CONCEPT.md §4) : aucune inclinaison pour les adultes
   // en situation de handicap (photo posée, stable), 2° pour les aidants, 4° ailleurs ; le nœud du
@@ -322,6 +354,9 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       reassurance={page.reassurance}
       media={heroMedia}
       gesture={gesture}
+      interaction={heroInteraction}
+      tint={sceneTint(heroScene)}
+      cue={{ label: t.situations_h2, href: "#situations" }}
       tone={heroTone}
       depth={heroDepth}
       thread={heroThread}
@@ -333,25 +368,24 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
 
   return (
     <main id="contenu" data-service={page.chemin} data-statut={page.statut}>
-      {page.statut === "a_relire" ? (
-        <div className="container-site pt-6">
-          <Callout variant="attention">{t.non_relu}</Callout>
-        </div>
-      ) : null}
-      <div className="container-site pt-6">
-        <Breadcrumb texts={texts.fil_ariane} items={crumbs} />
-      </div>
-
-      {/* 1. Bannière */}
-      <Section
-        tone={heroTone === "sombre" ? "dark" : "paper"}
-        aria-label={t.publics[page.public]}
-        className="pt-8!"
-        data-hero-tone={heroTone}
-      >
+      {/*
+       * D-034 : aucun bandeau d'avertissement visible tant que la relecture manque. La page reste
+       * `noindex, nofollow` et hors des plans de site (D-033) ; la carte de relecture en bas de
+       * page continue de nommer l'auteur et d'indiquer qu'un relecteur est attendu.
+       */}
+      {/* 1. Bannière : scène colorée du public, contenu compris et actionnable sans défiler. Le fil
+          d'Ariane est dans la scène : il compte dans sa hauteur, et se retire au dernier palier de
+          compaction (le plan du site et le fil d'Ariane structuré restent, eux, toujours là). */}
+      <HeroSection scene={heroScene} aria-label={t.publics[page.public]} data-hero-tone={heroTone}>
+        <Breadcrumb texts={texts.fil_ariane} items={crumbs} className={cn("mb-4", heroOnlyWide)} />
         {withReader ? <ReaderProvider>{banner}</ReaderProvider> : banner}
-        {page.type === "pilier" && sousPages.length >= 2 ? (
-          <nav aria-label={t.sous_pages_nom} className="mt-10" data-sous-pages>
+      </HeroSection>
+
+      {/* Rangée de liens-icônes vers les sous-pages : juste sous le hero, hors de sa hauteur
+          visible (elle ne doit pas manger la scène). */}
+      {page.type === "pilier" && sousPages.length >= 2 ? (
+        <Section tone={heroTone === "sombre" ? "dark" : "paper"} className="py-6!">
+          <nav aria-label={t.sous_pages_nom} data-sous-pages>
             <ul className="m-0 flex list-none flex-wrap gap-3 p-0">
               {sousPages.map((sousPage) => {
                 const icon = toIconName(sousPage.icone);
@@ -378,8 +412,8 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
               })}
             </ul>
           </nav>
-        ) : null}
-      </Section>
+        </Section>
+      ) : null}
 
       <div className="relative" data-rail-zone>
         {/* 2. Vous vous reconnaissez ? */}
@@ -690,7 +724,8 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         </div>
       </div>
 
-      {/* 12. Formulaire dédié */}
+      {/* 12. Formulaire dédié : balisage rendu par le serveur, code chargé à l'approche de la
+          section (DeferredForm, D-030). */}
       <Section
         tone="white"
         id="formulaire"
@@ -710,7 +745,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         <Lead className="mt-3">{t.formulaire_texte}</Lead>
         <div className="mt-8 max-w-3xl">
           {page.formulaire === "rappel" ? (
-            <RappelForm
+            <LazyRappelForm
               texts={{
                 ...texts.formulaires,
                 ...texts.formulaires.rappel,
@@ -720,14 +755,14 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
               confidentialiteHref={confidentialiteHref}
             />
           ) : page.formulaire === "sortie-hospitalisation" ? (
-            <HospitalDischargeForm
+            <LazyHospitalDischargeForm
               texts={formTexts}
               page={specialForms.sortie_hospitalisation}
               phone={phone}
               confidentialiteHref={confidentialiteHref}
             />
           ) : definition ? (
-            <DetailedForm
+            <LazyDetailedForm
               definition={definition}
               texts={formTexts}
               phone={phone}

@@ -7,6 +7,7 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Prose } from "@/components/ui/Prose/Prose";
 import { Thread } from "@/components/ui/Thread/Thread";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { getAbout, getCommitments, getInterfaceTexts, getSiteConfig } from "@/content/loader";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -25,7 +26,7 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
   const { a_propos: page } = getAbout();
   const { marque, agences, labels } = getSiteConfig();
   const { engagements } = getCommitments();
@@ -35,9 +36,11 @@ export default function AboutPage() {
     .filter((e): e is typeof e & { texte: string } => e.texte !== null)
     .map((e) => ({ engagement: e.code, titre: e.titre, texte: e.texte }));
 
+  const groupLinks = await groupCards("/a-propos/");
   return (
-    <main id="contenu">
-      <Section tone="paper" aria-labelledby="titre">
+    // D-032 : scène de la famille « entreprise ».
+    <main id="contenu" data-famille="entreprise">
+      <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">
           <div>
@@ -157,6 +160,8 @@ export default function AboutPage() {
           </Link>
         </p>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

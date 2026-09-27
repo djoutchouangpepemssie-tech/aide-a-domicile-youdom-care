@@ -99,7 +99,7 @@ export async function buildLlmsInput(): Promise<LlmsInput> {
   const piliers: LlmsPage[] = [];
   for (const file of await listMdxFiles(SERVICES_DIR)) {
     const { meta } = await readServiceMeta(file);
-    if (meta.statut !== "publie") continue;
+    // D-035 : les pages construites sont listées, relues ou non.
     const page = { titre: meta.h1, chemin: meta.chemin, description: meta.description };
     (meta.type === "pilier" ? piliers : services).push(page);
   }
@@ -117,9 +117,9 @@ export async function buildLlmsInput(): Promise<LlmsInput> {
     }))
     .sort((a, b) => collator.compare(a.titre, b.titre));
 
-  // Le Fil : articles publiés seulement, du plus récent au plus ancien.
+  // Le Fil : articles construits (D-035 : hors brouillons), du plus récent au plus ancien.
   const magazine: LlmsPage[] = (await listArticleMetas({ warn: () => {} }))
-    .filter((article) => article.meta.statut === "publie")
+    .filter((article) => article.meta.statut !== "brouillon")
     .sort((a, b) => (a.meta.publie_le < b.meta.publie_le ? 1 : -1))
     .map((article) => ({
       titre: article.meta.titre,

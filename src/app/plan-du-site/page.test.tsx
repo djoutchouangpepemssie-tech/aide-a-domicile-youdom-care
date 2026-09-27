@@ -126,11 +126,14 @@ describe("Plan du site", () => {
     expect(
       screen.getByRole("navigation", { name: "Fil d’Ariane" }).querySelector("[aria-current=page]"),
     ).toHaveTextContent("Plan du site");
+    // Nom préfixé par la page : les navigations du pied de page portent déjà « Pour qui ? » et
+    // « Nos services » (RGAA 12.6, audit P8.4 R-1) ; le titre visible reste le titre du groupe.
     for (const group of groups) {
-      const nav = screen.getByRole("navigation", { name: group.title });
+      const nav = screen.getByRole("navigation", { name: `Plan du site : ${group.title}` });
       expect(within(nav).getAllByRole("link").length).toBeGreaterThanOrEqual(group.entries.length);
+      expect(within(nav).getByRole("heading", { level: 2 })).toHaveTextContent(group.title);
     }
-    const pourQui = screen.getByRole("navigation", { name: "Pour qui ?" });
+    const pourQui = screen.getByRole("navigation", { name: "Plan du site : Pour qui ?" });
     const pilier = within(pourQui).getByRole("link", { name: "Personnes âgées" });
     expect(bare(pilier.getAttribute("href"))).toBe("/personnes-agees");
     // Les sous-pages sont dans une liste imbriquée sous le pilier.

@@ -6,6 +6,7 @@ import { Section } from "@/components/layout/Section/Section";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Prose } from "@/components/ui/Prose/Prose";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { getAccessibilityPage, getInterfaceTexts, getSiteConfig } from "@/content/loader";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -57,7 +58,7 @@ function formatLongDate(iso: string): string {
   );
 }
 
-export default function AccessibilityPage() {
+export default async function AccessibilityPage() {
   const page = getAccessibilityPage();
   const { marque, contact } = getSiteConfig();
   const { fil_ariane } = getInterfaceTexts();
@@ -74,6 +75,7 @@ export default function AccessibilityPage() {
     non_applicables: String(etat.criteres_non_applicables),
   };
 
+  const groupLinks = await groupCards("/accessibilite/");
   return (
     <main id="contenu">
       <Section tone="paper" aria-labelledby="titre">
@@ -190,6 +192,7 @@ export default function AccessibilityPage() {
           <Heading level={3} visual={4}>
             {page.etablissement.pages_h3}
           </Heading>
+          <p>{page.etablissement.pages_texte}</p>
           <ul>
             {page.etablissement.pages.map((item) => (
               <li key={item.href}>
@@ -258,6 +261,8 @@ export default function AccessibilityPage() {
           <p>{page.recours.telephone_libelle}</p>
         </Prose>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

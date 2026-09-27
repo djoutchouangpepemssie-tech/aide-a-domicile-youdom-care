@@ -55,7 +55,7 @@ export default function ContactPage() {
           </p>
         ) : null}
       </Section>
-      <Section tone="white" aria-label={page.h1}>
+      <Section tone="white" aria-label={page.ariane}>
         <div className="max-w-2xl">
           <ContactForm
             texts={{

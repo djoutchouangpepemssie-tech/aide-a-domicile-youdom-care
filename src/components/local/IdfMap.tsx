@@ -8,6 +8,9 @@ import { cn } from "@/lib/cn";
  * titre et description), et juste à côté la liste équivalente de liens, seule partie
  * interactive. Un département sans page construite est nommé sans lien, sans promesse de
  * date. Le SVG ne porte aucune information absente de la liste.
+ * Sur téléphone (jusqu'à 64 rem) la liste passe devant la carte : au doigt, seuls les liens de la
+ * liste sont utilisables, la carte n'est qu'une image (D-032 §6, P9.6). À partir de 64 rem la
+ * carte reprend sa place à gauche.
  */
 
 export interface MapDepartment {
@@ -57,7 +60,7 @@ export function IdfMap({ departments, texts, className }: IdfMapProps) {
         role="img"
         aria-labelledby="idf-map-titre"
         aria-describedby="idf-map-description"
-        className="h-auto w-full max-w-xl"
+        className="order-2 h-auto w-full max-w-xl lg:order-1"
         data-idf-map
       >
         <title id="idf-map-titre">{texts.titre}</title>
@@ -88,7 +91,7 @@ export function IdfMap({ departments, texts, className }: IdfMapProps) {
           );
         })}
       </svg>
-      <nav aria-label={texts.liste}>
+      <nav aria-label={texts.liste} className="order-1 lg:order-2">
         <p className="m-0 font-bold">{texts.liste}</p>
         <ul className="m-0 mt-3 grid list-none gap-2 p-0" data-idf-list>
           {departments.map((department) => (

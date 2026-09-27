@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon } from "@/components/ui/Icon/Icon";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { getInterfaceTexts, getNavigation, getSiteConfig } from "@/content/loader";
 import {
   getToolsPage,
@@ -32,7 +33,7 @@ export function generateMetadata(): Metadata {
   return pageMetadata({ titre: seo.titre, description: seo.description, chemin: TOOLS_PATH });
 }
 
-export default function ToolsIndexPage() {
+export default async function ToolsIndexPage() {
   const page = getToolsPage();
   const tools = listToolPages();
   const siteConfig = getSiteConfig();
@@ -49,10 +50,12 @@ export default function ToolsIndexPage() {
     siteConfig,
   );
 
+  const groupLinks = await groupCards("/outils/");
   return (
-    <main id="contenu">
+    // D-032 : scène verte pour la famille des outils à imprimer.
+    <main id="contenu" data-famille="outils">
       <JsonLd data={jsonLd} />
-      <Section tone="paper" aria-labelledby="titre">
+      <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu print:!bg-white">
         <Breadcrumb texts={fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <Heading level={1} id="titre">
           {page.h1}
@@ -69,7 +72,10 @@ export default function ToolsIndexPage() {
             <Card key={tool.id} as="li" interactive className="flex max-w-none flex-col">
               <Icon name={tool.icone} size="lg" tone="teal" />
               <Heading level={3} visual={4} className="mt-4">
-                <Link href={toolPath(tool.id)} className="text-ink no-underline hover:underline">
+                <Link
+                  href={toolPath(tool.id)}
+                  className="inline-flex min-h-11 items-center text-ink no-underline hover:underline"
+                >
                   {tool.h1}
                 </Link>
               </Heading>
@@ -116,6 +122,8 @@ export default function ToolsIndexPage() {
           </Button>
         </div>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

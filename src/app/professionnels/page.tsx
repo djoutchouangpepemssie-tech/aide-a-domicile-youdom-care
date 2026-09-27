@@ -9,6 +9,7 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon } from "@/components/ui/Icon/Icon";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Thread } from "@/components/ui/Thread/Thread";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import {
   getCommitments,
   getInterfaceTexts,
@@ -102,13 +103,16 @@ export default async function ProfessionalsPage() {
     siteConfig,
   );
 
+  const groupLinks = await groupCards("/professionnels/");
   return (
-    <main id="contenu">
+    // D-032 : scène de la famille « entreprise » (professionnels, recrutement, à propos).
+    <main id="contenu" data-famille="entreprise">
       <JsonLd data={jsonLd} />
-      <Section tone="paper" aria-labelledby="titre">
+      <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: crumbLabel }]} className="mb-6" />
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">
-          <div>
+          {/* min-w-0 : « Professionnels » ne dilate pas la colonne à 320 px sous espacement du texte forcé (RGAA 10.12). */}
+          <div className="min-w-0">
             <Heading level={1} id="titre">
               {page.h1}
             </Heading>
@@ -116,7 +120,10 @@ export default async function ProfessionalsPage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href={page.formulaire.href}>{boutons.prescripteur}</Button>
               {phone && telHref ? (
-                <a href={telHref} className="tabular-figures font-bold">
+                <a
+                  href={telHref}
+                  className="tabular-figures inline-flex min-h-11 items-center font-bold"
+                >
                   {t.appeler.replace("{téléphone}", phone)}
                 </a>
               ) : null}
@@ -169,7 +176,7 @@ export default async function ProfessionalsPage() {
           </Heading>
           <p className="mt-3">{page.mise_en_place.modes_texte}</p>
           <p className="m-0 mt-4">
-            <Link href={MODES_PATH} className="font-bold">
+            <Link href={MODES_PATH} className="inline-flex min-h-11 items-center font-bold">
               {page.mise_en_place.modes_lien} : {modesPage.ariane}
             </Link>
           </p>
@@ -204,7 +211,10 @@ export default async function ProfessionalsPage() {
             <ul className="m-0 mt-3 grid list-none gap-2 p-0">
               {agences.map((agency) => (
                 <li key={agency.id} className="max-w-none">
-                  <Link href={`/agences/${agency.id}/`} className="font-bold">
+                  <Link
+                    href={`/agences/${agency.id}/`}
+                    className="inline-flex min-h-11 items-center font-bold"
+                  >
                     {agency.nom}
                   </Link>
                   <span className="text-text-soft">
@@ -252,7 +262,7 @@ export default async function ProfessionalsPage() {
           footer={service.frontiere.ligne_fin}
         />
         <p className="m-0 mt-8">
-          <Link href={HOW_IT_WORKS_PATH} className="font-bold">
+          <Link href={HOW_IT_WORKS_PATH} className="inline-flex min-h-11 items-center font-bold">
             {t.fonctionnement_lien}
           </Link>
         </p>
@@ -275,6 +285,8 @@ export default async function ProfessionalsPage() {
           ) : null}
         </div>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

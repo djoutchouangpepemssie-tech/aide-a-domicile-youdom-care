@@ -41,6 +41,11 @@ import { getToolsPage, listToolPages, TOOLS_PATH, toolPath } from "@/content/too
  * Les pages légales (phase 8) s'ajoutent dans `legalRoutes` quand elles existent. Territoires
  * (phase 6) : la carte régionale, les pages de département construites avec leurs communes et
  * arrondissements en retrait, l'index des agences et chaque agence réelle.
+ *
+ * Chaque groupe a son constructeur (P9.4) : `buildSiteMap` les assemble tous dans l'ordre de
+ * la page ; `findSiteMapGroup` ne construit que ce qu'il faut pour trouver le groupe d'une
+ * page, les groupes légers d'abord (JSON) et les lourds ensuite (services, articles, pages
+ * locales), pour le bloc « À lire aussi » des pages d'un même groupe (GroupLinks).
  */
 
 export interface SiteMapEntry {
@@ -49,11 +54,41 @@ export interface SiteMapEntry {
   children?: SiteMapEntry[];
 }
 
+export type SiteMapGroupId = keyof SiteMapPage["groupes"];
+
 export interface SiteMapGroup {
-  id: keyof SiteMapPage["groupes"];
+  id: SiteMapGroupId;
   title: string;
   entries: SiteMapEntry[];
 }
+
+/** Ordre d'affichage des groupes sur la page. */
+export const siteMapGroupOrder: readonly SiteMapGroupId[] = [
+  "fonctionnement",
+  "pour_qui",
+  "services",
+  "aidants",
+  "formulaires",
+  "territoires",
+  "entreprise",
+  "magazine",
+  "outils",
+  "legal",
+];
+
+/** Ordre de recherche d'une page : les groupes qui ne lisent que du JSON d'abord. */
+const lookupOrder: readonly SiteMapGroupId[] = [
+  "fonctionnement",
+  "entreprise",
+  "legal",
+  "outils",
+  "formulaires",
+  "pour_qui",
+  "services",
+  "aidants",
+  "magazine",
+  "territoires",
+];
 
 /**
  * Pages légales construites (phase 8) : les quatre pages de P8.3 (content/legal/*.json, dans
@@ -83,220 +118,253 @@ function orderByMenu(pages: ServicePage[], menuHrefs: readonly string[]): Servic
   );
 }
 
-export async function buildSiteMap(): Promise<SiteMapGroup[]> {
-  const page = getSiteMapPage();
+/** Constructeurs des groupes, avec les lectures partagées (services) faites une fois. */
+function groupBuilders(): Record<SiteMapGroupId, () => Promise<SiteMapEntry[]>> {
   const navigation = getNavigation();
   const texts = getInterfaceTexts();
-  const services = (await listBuildableServicePages()).map((p) => p.meta);
   const menu = (id: string) => navigation.principale.find((item) => item.id === id)?.enfants ?? [];
   const menuLabel = (id: string) =>
     navigation.principale.find((item) => item.id === id)?.libelle ?? "";
 
-  const subPages = (pilier: ServicePage): SiteMapEntry[] =>
-    services
+  let servicesCache: Promise<ServicePage[]> | undefined;
+  const services = () => {
+    servicesCache ??= listBuildableServicePages().then((pages) => pages.map((p) => p.meta));
+    return servicesCache;
+  };
+  const subPages = (all: ServicePage[], pilier: ServicePage): SiteMapEntry[] =>
+    all
       .filter((p) => p.pilier === pilier.chemin)
       .sort(byOrderThenPath)
       .map((p) => ({ href: p.chemin, label: p.libelle_court ?? p.h1 }));
-  const pilierEntry = (pilier: ServicePage): SiteMapEntry => {
-    const children = subPages(pilier);
+  const pilierEntry = (all: ServicePage[], pilier: ServicePage): SiteMapEntry => {
+    const children = subPages(all, pilier);
     return {
       href: pilier.chemin,
       label: texts.service.publics[pilier.public],
       ...(children.length > 0 ? { children } : {}),
     };
   };
-
-  // Accueil et fonctionnement.
-  const pricingPage = getPricingPage();
-  const aidEntries = listAidPageIds()
-    .map((id) => ({ id, page: getAidPage(id) }))
-    .filter(
-      (entry): entry is { id: string; page: NonNullable<typeof entry.page> } => entry.page !== null,
-    )
-    .map(({ id, page: aid }) => ({ href: `/tarifs-et-aides/${id}/`, label: aid.ariane }));
-  const fonctionnement: SiteMapEntry[] = [
-    { href: "/", label: texts.fil_ariane.accueil },
-    {
-      href: "/comment-ca-marche/",
-      label: menuLabel("comment-ca-marche"),
-      children: [
-        { href: "/comment-ca-marche/prestataire-ou-mandataire/", label: getModesPage().ariane },
-      ],
-    },
-    {
-      href: "/tarifs-et-aides/",
-      label: pricingPage.ariane,
-      ...(aidEntries.length > 0 ? { children: aidEntries } : {}),
-    },
-  ];
-
-  // Pour qui : les piliers dans l'ordre du menu, leurs sous-pages en retrait ; l'espace Aidants à part.
-  const pourQuiMenu = menu("pour-qui").map((child) => child.href);
-  const piliers = orderByMenu(
-    services.filter((p) => p.type === "pilier"),
-    pourQuiMenu,
-  );
-  const pourQui = piliers.filter((p) => p.public !== "aidant").map(pilierEntry);
-
-  const caregiverCheck = getCaregiverCheckPage();
-  const ouEnEtesVous: SiteMapEntry = {
-    href: "/aidants/ou-en-etes-vous/",
-    label: caregiverCheck.ariane,
-  };
-  const aidantsPilier = piliers.find((p) => p.public === "aidant");
-  const aidants: SiteMapEntry[] = aidantsPilier
-    ? [
-        {
-          href: aidantsPilier.chemin,
-          label: texts.service.publics.aidant,
-          children: [...subPages(aidantsPilier), ouEnEtesVous],
-        },
-      ]
-    : [ouEnEtesVous];
-
-  // Nos services : dans l'ordre du menu, avec son libellé.
-  const servicesMenu = menu("services");
-  const servicesEntries = orderByMenu(
-    services.filter((p) => p.type === "service"),
-    servicesMenu.map((child) => child.href),
-  ).map((p) => ({
-    href: p.chemin,
-    label:
-      servicesMenu.find((child) => child.href === p.chemin)?.libelle ?? p.libelle_court ?? p.h1,
-  }));
-
-  // Formulaires : l'aiguillage et ses cas, le rappel, le contact.
-  const requestIndex = getRequestIndexPage();
-  const specialForms = getSpecialForms();
-  const formulaires: SiteMapEntry[] = [
-    {
-      href: navigation.demande_href,
-      label: requestIndex.ariane,
-      children: [
-        ...listFormDefinitions().map((definition) => ({
-          href: `/demande/${definition.slug}/`,
-          label: definition.ariane,
-        })),
-        {
-          href: "/demande/sortie-d-hospitalisation/",
-          label: specialForms.sortie_hospitalisation.ariane,
-        },
-        { href: "/demande/professionnel/", label: specialForms.professionnel.ariane },
-      ],
-    },
-    { href: navigation.rappel_href, label: getCallbackPage().ariane },
-    { href: navigation.contact_href, label: specialForms.contact.ariane },
-  ];
-
-  // À propos, professionnels, recrutement (docs/03 §9, P8.1 et P8.2) : la candidature et les
-  // offres publiées (aucune aujourd'hui) en retrait du recrutement.
-  const about = getAbout();
-  const recruitment = getRecruitmentPage();
-  const liveOffers = await listLiveOffers();
-  const entreprise: SiteMapEntry[] = [
-    {
-      href: "/a-propos/",
-      label: about.a_propos.ariane,
-      children: [
-        { href: "/a-propos/nos-engagements/", label: about.engagements_page.ariane },
-        { href: "/a-propos/charte-editoriale/", label: about.charte_page.ariane },
-      ],
-    },
-    { href: "/professionnels/", label: getProfessionalsPage().ariane },
-    {
-      href: RECRUITMENT_PATH,
-      label: recruitment.ariane,
-      children: [
-        { href: APPLY_PATH, label: recruitment.postuler.ariane },
-        ...liveOffers.map((entry) => ({ href: entry.chemin, label: entry.offer.titre })),
-      ],
-    },
-  ];
-
-  // Territoires et agences : seulement les pages locales construites, par département.
-  const localPages = await listBuildableLocalPages();
-  const zones = getSiteConfig().zones;
-  const departementEntries: SiteMapEntry[] = [];
-  for (const zone of zones) {
-    const departement = localPages.find(
-      (p) => p.data.kind === "departement" && departementCodeOf(p) === zone.code,
+  const piliers = async () =>
+    orderByMenu(
+      (await services()).filter((p) => p.type === "pilier"),
+      menu("pour-qui").map((child) => child.href),
     );
-    const communes = localPages
-      .filter((p) => p.data.kind !== "departement" && departementCodeOf(p) === zone.code)
-      .sort((a, b) => a.chemin.localeCompare(b.chemin, "fr"))
-      .map((p) => ({ href: p.chemin, label: p.data.nom }));
-    if (departement) {
-      departementEntries.push({
-        href: departement.chemin,
-        label: zone.nom,
-        ...(communes.length > 0 ? { children: communes } : {}),
-      });
-    } else {
-      departementEntries.push(...communes);
-    }
+
+  return {
+    // Accueil et fonctionnement.
+    fonctionnement: async () => {
+      const pricingPage = getPricingPage();
+      const aidEntries = listAidPageIds()
+        .map((id) => ({ id, page: getAidPage(id) }))
+        .filter(
+          (entry): entry is { id: string; page: NonNullable<typeof entry.page> } =>
+            entry.page !== null,
+        )
+        .map(({ id, page: aid }) => ({ href: `/tarifs-et-aides/${id}/`, label: aid.ariane }));
+      return [
+        { href: "/", label: texts.fil_ariane.accueil },
+        {
+          href: "/comment-ca-marche/",
+          label: menuLabel("comment-ca-marche"),
+          children: [
+            {
+              href: "/comment-ca-marche/prestataire-ou-mandataire/",
+              label: getModesPage().ariane,
+            },
+          ],
+        },
+        {
+          href: "/tarifs-et-aides/",
+          label: pricingPage.ariane,
+          ...(aidEntries.length > 0 ? { children: aidEntries } : {}),
+        },
+      ];
+    },
+
+    // Pour qui : les piliers dans l'ordre du menu, leurs sous-pages en retrait ; l'espace Aidants à part.
+    pour_qui: async () => {
+      const all = await services();
+      return (await piliers())
+        .filter((p) => p.public !== "aidant")
+        .map((pilier) => pilierEntry(all, pilier));
+    },
+
+    // Nos services : dans l'ordre du menu, avec son libellé.
+    services: async () => {
+      const servicesMenu = menu("services");
+      return orderByMenu(
+        (await services()).filter((p) => p.type === "service"),
+        servicesMenu.map((child) => child.href),
+      ).map((p) => ({
+        href: p.chemin,
+        label:
+          servicesMenu.find((child) => child.href === p.chemin)?.libelle ?? p.libelle_court ?? p.h1,
+      }));
+    },
+
+    aidants: async () => {
+      const caregiverCheck = getCaregiverCheckPage();
+      const ouEnEtesVous: SiteMapEntry = {
+        href: "/aidants/ou-en-etes-vous/",
+        label: caregiverCheck.ariane,
+      };
+      const all = await services();
+      const aidantsPilier = (await piliers()).find((p) => p.public === "aidant");
+      return aidantsPilier
+        ? [
+            {
+              href: aidantsPilier.chemin,
+              label: texts.service.publics.aidant,
+              children: [...subPages(all, aidantsPilier), ouEnEtesVous],
+            },
+          ]
+        : [ouEnEtesVous];
+    },
+
+    // Formulaires : l'aiguillage et ses cas, le rappel, le contact.
+    formulaires: async () => {
+      const requestIndex = getRequestIndexPage();
+      const specialForms = getSpecialForms();
+      return [
+        {
+          href: navigation.demande_href,
+          label: requestIndex.ariane,
+          children: [
+            ...listFormDefinitions().map((definition) => ({
+              href: `/demande/${definition.slug}/`,
+              label: definition.ariane,
+            })),
+            {
+              href: "/demande/sortie-d-hospitalisation/",
+              label: specialForms.sortie_hospitalisation.ariane,
+            },
+            { href: "/demande/professionnel/", label: specialForms.professionnel.ariane },
+          ],
+        },
+        { href: navigation.rappel_href, label: getCallbackPage().ariane },
+        { href: navigation.contact_href, label: specialForms.contact.ariane },
+      ];
+    },
+
+    // Territoires et agences : seulement les pages locales construites, par département.
+    territoires: async () => {
+      const localPages = await listBuildableLocalPages();
+      const zones = getSiteConfig().zones;
+      const departementEntries: SiteMapEntry[] = [];
+      for (const zone of zones) {
+        const departement = localPages.find(
+          (p) => p.data.kind === "departement" && departementCodeOf(p) === zone.code,
+        );
+        const communes = localPages
+          .filter((p) => p.data.kind !== "departement" && departementCodeOf(p) === zone.code)
+          .sort((a, b) => a.chemin.localeCompare(b.chemin, "fr"))
+          .map((p) => ({ href: p.chemin, label: p.data.nom }));
+        if (departement) {
+          departementEntries.push({
+            href: departement.chemin,
+            label: zone.nom,
+            ...(communes.length > 0 ? { children: communes } : {}),
+          });
+        } else {
+          departementEntries.push(...communes);
+        }
+      }
+      const agenciesPage = getAgenciesPage();
+      return [
+        {
+          href: "/aide-a-domicile/",
+          label: getRegionPage().ariane,
+          ...(departementEntries.length > 0 ? { children: departementEntries } : {}),
+        },
+        {
+          href: "/agences/",
+          label: agenciesPage.index.ariane,
+          children: getSiteConfig().agences.map((agency) => ({
+            href: `/agences/${agency.id}/`,
+            label: agency.nom,
+          })),
+        },
+      ];
+    },
+
+    // À propos, professionnels, recrutement (docs/03 §9, P8.1 et P8.2) : la candidature et les
+    // offres publiées (aucune aujourd'hui) en retrait du recrutement.
+    entreprise: async () => {
+      const about = getAbout();
+      const recruitment = getRecruitmentPage();
+      const liveOffers = await listLiveOffers();
+      return [
+        {
+          href: "/a-propos/",
+          label: about.a_propos.ariane,
+          children: [
+            { href: "/a-propos/nos-engagements/", label: about.engagements_page.ariane },
+            { href: "/a-propos/charte-editoriale/", label: about.charte_page.ariane },
+          ],
+        },
+        { href: "/professionnels/", label: getProfessionalsPage().ariane },
+        {
+          href: RECRUITMENT_PATH,
+          label: recruitment.ariane,
+          children: [
+            { href: APPLY_PATH, label: recruitment.postuler.ariane },
+            ...liveOffers.map((entry) => ({ href: entry.chemin, label: entry.offer.titre })),
+          ],
+        },
+      ];
+    },
+
+    // Magazine « Le Fil » (docs/06 §2, P7.1) : l'index, les six rubriques et leurs articles construits.
+    magazine: async () => {
+      const magazinePage = getMagazinePage();
+      const articles = await listBuildableArticles();
+      return [
+        {
+          href: MAGAZINE_PATH,
+          label: magazinePage.ariane,
+          children: articleRubriques.map((rubrique) => {
+            const children = articlesOfRubrique(articles, rubrique).map((article) => ({
+              href: article.chemin,
+              label: article.meta.titre,
+            }));
+            return {
+              href: rubriquePath(rubrique),
+              label: rubriqueLabels[rubrique],
+              ...(children.length > 0 ? { children } : {}),
+            };
+          }),
+        },
+        // Lexique du Fil (docs/06 §6, P7.2) : l'index seulement, les termes sont sur la page même.
+        { href: "/lexique/", label: getLexiquePage().ariane },
+      ];
+    },
+
+    // Outils à imprimer (docs/06 §7, P7.7) : l'index et les cinq documents en retrait.
+    outils: async () => {
+      const toolsPage = getToolsPage();
+      return [
+        {
+          href: TOOLS_PATH,
+          label: toolsPage.ariane,
+          children: listToolPages().map((tool) => ({
+            href: toolPath(tool.id),
+            label: tool.ariane,
+          })),
+        },
+      ];
+    },
+
+    legal: async () => legalRoutes(),
+  };
+}
+
+export async function buildSiteMap(): Promise<SiteMapGroup[]> {
+  const page = getSiteMapPage();
+  const builders = groupBuilders();
+  const groups: SiteMapGroup[] = [];
+  for (const id of siteMapGroupOrder) {
+    groups.push({ id, title: page.groupes[id], entries: await builders[id]() });
   }
-  const agenciesPage = getAgenciesPage();
-  const territoires: SiteMapEntry[] = [
-    {
-      href: "/aide-a-domicile/",
-      label: getRegionPage().ariane,
-      ...(departementEntries.length > 0 ? { children: departementEntries } : {}),
-    },
-    {
-      href: "/agences/",
-      label: agenciesPage.index.ariane,
-      children: getSiteConfig().agences.map((agency) => ({
-        href: `/agences/${agency.id}/`,
-        label: agency.nom,
-      })),
-    },
-  ];
-
-  // Outils à imprimer (docs/06 §7, P7.7) : l'index et les cinq documents en retrait.
-  const toolsPage = getToolsPage();
-  const outils: SiteMapEntry[] = [
-    {
-      href: TOOLS_PATH,
-      label: toolsPage.ariane,
-      children: listToolPages().map((tool) => ({ href: toolPath(tool.id), label: tool.ariane })),
-    },
-  ];
-
-  // Magazine « Le Fil » (docs/06 §2, P7.1) : l'index, les six rubriques et leurs articles construits.
-  const magazinePage = getMagazinePage();
-  const articles = await listBuildableArticles();
-  const magazine: SiteMapEntry[] = [
-    {
-      href: MAGAZINE_PATH,
-      label: magazinePage.ariane,
-      children: articleRubriques.map((rubrique) => {
-        const children = articlesOfRubrique(articles, rubrique).map((article) => ({
-          href: article.chemin,
-          label: article.meta.titre,
-        }));
-        return {
-          href: rubriquePath(rubrique),
-          label: rubriqueLabels[rubrique],
-          ...(children.length > 0 ? { children } : {}),
-        };
-      }),
-    },
-    // Lexique du Fil (docs/06 §6, P7.2) : l'index seulement, les termes sont sur la page même.
-    { href: "/lexique/", label: getLexiquePage().ariane },
-  ];
-
-  const groups: SiteMapGroup[] = [
-    { id: "fonctionnement", title: page.groupes.fonctionnement, entries: fonctionnement },
-    { id: "pour_qui", title: page.groupes.pour_qui, entries: pourQui },
-    { id: "services", title: page.groupes.services, entries: servicesEntries },
-    { id: "aidants", title: page.groupes.aidants, entries: aidants },
-    { id: "formulaires", title: page.groupes.formulaires, entries: formulaires },
-    { id: "territoires", title: page.groupes.territoires, entries: territoires },
-    { id: "entreprise", title: page.groupes.entreprise, entries: entreprise },
-    { id: "magazine", title: page.groupes.magazine, entries: magazine },
-    { id: "outils", title: page.groupes.outils, entries: outils },
-    { id: "legal", title: page.groupes.legal, entries: legalRoutes() },
-  ];
   return groups.filter((group) => group.entries.length > 0);
 }
 
@@ -311,4 +379,20 @@ export function flattenSiteMap(groups: readonly SiteMapGroup[]): string[] {
   };
   for (const group of groups) walk(group.entries);
   return out;
+}
+
+/**
+ * Groupe du plan qui contient la page, construit à la demande, les groupes légers d'abord ;
+ * null si aucun groupe ne la liste (page hors plan : /merci/, /plan-du-site/, pagination…).
+ */
+export async function findSiteMapGroup(chemin: string): Promise<SiteMapGroup | null> {
+  const page = getSiteMapPage();
+  const builders = groupBuilders();
+  for (const id of lookupOrder) {
+    const entries = await builders[id]();
+    if (flattenSiteMap([{ id, title: page.groupes[id], entries }]).includes(chemin)) {
+      return { id, title: page.groupes[id], entries };
+    }
+  }
+  return null;
 }

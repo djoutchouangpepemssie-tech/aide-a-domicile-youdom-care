@@ -93,7 +93,12 @@ function FactRow({ fact, texts }: { fact: LocalFact; texts: LocalTexts["faits"] 
           >
             {texts.site_officiel}
             {externalIcon}
-            <span className="sr-only"> ({texts.lien_externe})</span>
+            {/* Nom du lieu dans le nom accessible : une page compte jusqu'à treize liens « Site
+                officiel », qu'un lecteur d'écran listerait à l'identique (RGAA 6.1, P9.2). */}
+            <span className="sr-only">
+              {" "}
+              : {displayLabel(fact.label)} ({texts.lien_externe})
+            </span>
           </a>
         ) : null}
       </p>

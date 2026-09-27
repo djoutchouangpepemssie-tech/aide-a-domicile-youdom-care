@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { getAbout, getCommitments, getInterfaceTexts, getNavigation } from "@/content/loader";
 import { isProduction } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -25,7 +26,7 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function CommitmentsPage() {
+export default async function CommitmentsPage() {
   const { a_propos, engagements_page: page } = getAbout();
   const { engagements, suivi } = getCommitments();
   const navigation = getNavigation();
@@ -35,6 +36,7 @@ export default function CommitmentsPage() {
     (e): e is typeof e & { texte: string } => e.texte !== null && (!isProduction() || e.valide),
   );
 
+  const groupLinks = await groupCards("/a-propos/nos-engagements/");
   return (
     <main id="contenu">
       <Section tone="paper" aria-labelledby="titre">
@@ -49,7 +51,7 @@ export default function CommitmentsPage() {
         <Lead className="mt-5">{page.chapo}</Lead>
       </Section>
 
-      <Section tone="white" aria-label={page.h1}>
+      <Section tone="white" aria-label={page.ariane}>
         <ol className="m-0 grid list-none gap-6 p-0 md:grid-cols-2">
           {shown.map((e, index) => (
             <Card as="li" key={e.code} className="max-w-none" data-engagement={e.code}>
@@ -89,6 +91,8 @@ export default function CommitmentsPage() {
           </Button>
         </div>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }
