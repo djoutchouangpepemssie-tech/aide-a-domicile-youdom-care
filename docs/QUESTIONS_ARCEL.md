@@ -128,6 +128,54 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 - **Q-VOIX-3.** Cinq sigles employés sans être développés et sans entrée de lexique : SAVS, SAMSAH, IME, ULIS et AJPP. Le site sait pourtant le faire (AESH est développé au premier emploi). Risque particulier sur AJPP (allocation journalière de présence parentale), que le lexique ne contient pas alors qu'il contient AJPA (congé de proche aidant) : deux sigles à une lettre d'écart, un seul expliqué. Je peux les développer au premier emploi et créer les cinq entrées de lexique, mais chaque entrée doit citer une source officielle datée que j'aurai réellement ouverte : dites-moi si vous voulez que je le fasse à la prochaine phase.
   Réponse :
 
+## Ce qui bloque encore la mise en ligne — mesuré le 27 septembre 2026
+
+Cette liste n'est pas une opinion : c'est la sortie de `pnpm validate --prod`, le contrôle qui
+simule la production. Onze contrôles sur treize passent. Les deux qui échouent, `check-content` et
+`check-legal`, tiennent tous leurs reproches à des champs que vous êtes seul à pouvoir remplir.
+Tant qu'ils sont vides, le site fonctionne et se visite, mais les blocs concernés sont masqués et
+la page des mentions légales est incomplète au regard de la loi.
+
+**1. Identité de l'entreprise** (`content/site.config.json` › `legal`). Huit champs sont vides :
+raison sociale, forme juridique, capital, siège social, numéro au registre du commerce, numéro de
+TVA intracommunautaire, directeur de la publication, médiateur de la consommation. Un site
+marchand doit les afficher. Sans eux, le bloc « Éditeur du site » de `/mentions-legales/` ne
+s'affiche pas.
+
+**2. Hébergeur** (`legal.hebergeur`). Le nom est renseigné, l'adresse et le contact ne le sont pas.
+La loi demande les trois.
+
+**3. Autorisations du mode mandataire** (`legal.autorisations`). Le site propose le mode
+mandataire ; la liste des autorisations est vide, et la mention légale correspondante est donc
+masquée. Si Youdom Care n'exerce pas en mandataire, dites-le : je retire le mode du site.
+
+**4. Tarifs** (`content/tarifs.json`). Aucune prestation n'est renseignée. Toutes les pages
+affichent donc « tarif sur devis » au lieu d'un prix, alors que `docs/00` demande un tarif TTC
+avant avantage fiscal en information principale. C'est le point qui pèse le plus lourd sur la
+conversion.
+
+**5. Engagements** (`content/engagements.json`). E2 est validé depuis le 27 septembre 2026. E1
+(intervenants formés par pathologie), E3 (référent unique, cahier de liaison, points réguliers) et
+E4 (nuits, week-ends, présence 24h/24) portent un texte mais restent non validés : le contrôle
+refuse une promesse écrite sans validation. E5 (délai de rappel) n'a pas de texte. Pour chacun :
+soit vous confirmez ce que Youdom Care fait réellement et je valide, soit je retire la promesse.
+
+**6. Neuf faits à confirmer** (`site.config.json` › `a_confirmer`) : les deux numéros de téléphone,
+l'adresse électronique, le SIRET, le numéro d'agrément services à la personne, l'orthographe exacte
+des voies et le nom commercial de chaque agence, les codes INSEE des agences, les labels détenus,
+et les plages de disponibilité. Ils sont utilisés tels quels par le site : une erreur ici se
+propage partout.
+
+**7. Relecture professionnelle.** Les trente-neuf pages de santé et articles ont `relu_par: null`.
+Elles sont construites et visibles, en `noindex` (D-033), et n'émettent pas de données structurées
+médicales. Elles n'entreront dans les plans de site qu'une fois relues et passées en `publie`.
+
+**8. Documents contractuels.** `/conditions-generales/` annonce des documents au format PDF qui
+n'existent pas encore.
+
+Deux sources externes n'ont pas pu être vérifiées depuis ce poste (connexion coupée par le
+serveur) : les deux pages de l'Urssaf sur le CESU et l'avance immédiate. À rouvrir à la main.
+
 ## Lancement
 
 - **Q-LANCEMENT.** Le site est-il en ligne et indexable ? Répondez « oui » pour débloquer la phase 10 (quartiers de Paris, nouvelles communes, suite du magazine).
