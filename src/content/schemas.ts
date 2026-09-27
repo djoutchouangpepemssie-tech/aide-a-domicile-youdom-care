@@ -1357,7 +1357,22 @@ export const thanksSchema = z.strictObject({
   lectures_h2: text,
   lectures: z.array(z.strictObject({ libelle: text, href: internalPath })).length(2),
   retour_accueil: text,
-  variantes: z.record(slug, z.strictObject({ h1: text, texte: text })),
+  /*
+   * Une variante peut porter ses propres lectures : un candidat à l'embauche n'a rien à faire
+   * d'un lien vers les aides financières des familles (27/09/2026).
+   */
+  variantes: z.record(
+    slug,
+    z.strictObject({
+      h1: text,
+      texte: text,
+      lectures_h2: text.optional(),
+      lectures: z
+        .array(z.strictObject({ libelle: text, href: internalPath }))
+        .length(2)
+        .optional(),
+    }),
+  ),
 });
 export type ThanksContent = z.infer<typeof thanksSchema>;
 

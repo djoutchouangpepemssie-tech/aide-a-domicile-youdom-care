@@ -42,9 +42,20 @@ export function ArticleListPage({
   const t = texts.magazine;
   const cardTexts = { temps_lecture: t.temps_lecture, maj_le: t.maj_le };
   const section = rubrique ? page.rubriques[rubrique] : null;
-  const crumbs = rubrique
+  /*
+   * Pages 2 et suivantes (27/09/2026) : elles répétaient mot pour mot le titre, le chapô, les six
+   * cartes de rubrique et la phrase de promesse de la page 1, si bien que rien ne distinguait la
+   * page 2 de la page 1 hors la balise de titre. Elles n'affichent plus que la suite de la liste,
+   * et leur rang est dit dans le fil d'Ariane comme dans le titre de page.
+   */
+  const paginated = current > 1;
+  const pageLabel = t.pagination.page.replace("{n}", String(current));
+  const base = rubrique
     ? [{ label: page.ariane, href: MAGAZINE_PATH }, { label: rubriqueLabels[rubrique] }]
     : [{ label: page.ariane }];
+  const crumbs = paginated
+    ? [...base.slice(0, -1), { ...base[base.length - 1], href: hrefFor(1) }, { label: pageLabel }]
+    : base;
 
   return (
     <main id="contenu" data-magazine={rubrique ?? "index"} data-page={current}>
@@ -52,14 +63,15 @@ export function ArticleListPage({
         <Breadcrumb texts={texts.fil_ariane} items={crumbs} className="mb-6" />
         <Heading level={1} id="titre">
           {section ? section.h1 : page.h1}
+          {paginated ? ` — ${pageLabel}` : ""}
         </Heading>
-        <Lead className="mt-5">{section ? section.texte : page.chapo}</Lead>
+        {paginated ? null : <Lead className="mt-5">{section ? section.texte : page.chapo}</Lead>}
         {rubrique ? (
           <RubriqueNav label={t.rubriques_h2} current={rubrique} className="mt-8" />
         ) : null}
       </Section>
 
-      {!rubrique ? (
+      {!rubrique && !paginated ? (
         <Section tone="white" aria-labelledby="rubriques" data-section="rubriques">
           <Heading level={2} id="rubriques">
             {t.rubriques_h2}

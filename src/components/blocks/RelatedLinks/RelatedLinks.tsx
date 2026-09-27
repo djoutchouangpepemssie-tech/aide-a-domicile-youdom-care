@@ -48,7 +48,12 @@ export function RelatedLinks({ id, title, links, publics, current, className }: 
       <Reveal
         as="ul"
         variant="stagger"
-        className="m-0 mt-8 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3"
+        /* Le nombre de colonnes suit le nombre de cartes : à trois colonnes pour deux cartes, le
+           bloc laissait un trou d'une colonne sur dix-huit pages (27/09/2026). */
+        className={cn(
+          "m-0 mt-8 grid list-none gap-4 p-0 sm:grid-cols-2",
+          links.length > 2 && "lg:grid-cols-3",
+        )}
       >
         {links.map((link) => {
           const icon = toIconName(link.icone);

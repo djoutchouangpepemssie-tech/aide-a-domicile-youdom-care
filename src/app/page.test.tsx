@@ -126,7 +126,7 @@ describe("Accueil (blocs 1 à 8)", () => {
     );
     await user.click(buttons[0] as HTMLElement);
     expect(
-      within(semaine).getByRole("link", { name: "Je compose ma semaine" }),
+      within(semaine).getByRole("link", { name: "Je décris ma situation" }),
     ).toBeInTheDocument();
 
     const etapes = screen.getByRole("region", { name: "Comment ça commence" });

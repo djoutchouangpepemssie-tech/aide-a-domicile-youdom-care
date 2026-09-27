@@ -424,10 +424,19 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           <Reveal
             as="ul"
             variant="stagger"
-            className="m-0 mt-8 grid list-none gap-6 p-0 md:grid-cols-2"
+            /* Une grille à deux colonnes avec un nombre impair de cartes laissait la dernière
+               seule, à mi-largeur : elle prend la ligne entière (27/09/2026). */
+            className="m-0 mt-8 grid list-none gap-6 p-0 md:grid-cols-2 [&>li:last-child:nth-child(odd)]:md:col-span-2"
           >
             {page.situations.map((situation) => {
               const icon = toIconName(situation.icone);
+              /*
+               * Toutes les cartes d'une même grille se comportent pareil (27/09/2026). Vingt et une
+               * pages n'en avaient aucune de cliquable, quatre en mélangeaient : le visiteur
+               * apprenait qu'une carte mène quelque part, puis se cassait le nez sur sa voisine
+               * identique. Sans `href` propre, la carte mène au formulaire de la page.
+               */
+              const href = situation.href ?? formHref;
               return (
                 <li key={situation.titre} className="max-w-none">
                   <Tilt
@@ -435,19 +444,19 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
                     max={3}
                     className={cn(
                       "relative flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1",
-                      situation.href &&
+                      href &&
                         "transition-[box-shadow,border-color] [transition-duration:var(--duration-base)] hover:border-teal-700 hover:shadow-2 motion-reduce:transition-none",
                     )}
                     data-situation
-                    data-href={situation.href}
+                    data-href={href}
                   >
                     {icon ? (
                       <Icon name={icon} style={{ width: "3rem", height: "3rem" }} data-size="48" />
                     ) : null}
                     <p className={cn("heading-4 m-0 text-teal-900", icon && "mt-4")}>
-                      {situation.href ? (
+                      {href ? (
                         <Link
-                          href={situation.href}
+                          href={href}
                           prefetch={false}
                           className="text-teal-900 no-underline after:absolute after:inset-0 after:rounded-card after:content-['']"
                         >

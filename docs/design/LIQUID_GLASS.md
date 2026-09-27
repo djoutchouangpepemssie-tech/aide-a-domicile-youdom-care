@@ -211,8 +211,23 @@ autorisée au-dessus d'une photo.
 | `scene-nuit` | `ink` `#0f2f38` | **14,15** (blanc) | — | blanc |
 | `scene-neutre` | `sand` `#f4eee4` | **12,26** | **5,64** | **6,27** |
 
+#### Version soutenue des heros (D-037)
+
+`scene-soutenu` pousse `--scene-deep` et `--scene-accent` d'un cran, vers les niveaux 200. Ce sont
+les points les plus soutenus du site ; la contrainte qui borne ce cran est le texte secondaire, qui
+doit rester au-dessus de 4,5:1.
+
+| Hero | `--scene-deep` | Texte courant | Texte secondaire | Liens `teal-800` |
+| --- | --- | --- | --- | --- |
+| canard, aurore | `teal-200` `#a9e4f2` | **10,15** | **4,67** | **5,19** |
+| azur | `azure-200` `#bfdff8` | **10,19** | **4,69** | **5,21** |
+| vert | `green-200` `#b4ebcc` | **10,58** | **4,86** | **5,41** |
+| framboise | `raspberry-200` `#fbccd5` | **9,91** | **4,55** | **5,06** |
+| sable | `sand-deeper` `#e3d7c1` | **9,94** | **4,57** | **5,08** |
+
 Halo clair (`teal-50`, accent de la scène neutre) : texte courant **12,66**, secondaire **5,82**,
-liens `teal-800` **6,47**. La table du contrôle compte 82 couples, dont 48 introduits par D-032.
+liens `teal-800` **6,47**. La table du contrôle compte 97 couples : 48 introduits par D-032, 15 par
+D-037.
 
 Le halo de la scène de nuit (`teal-800`) porte du texte blanc à **7,23**.
 

@@ -4,9 +4,9 @@
     "rappel": "Être rappelé(e)",
     "appel": "J'appelle un conseiller",
     "demande_detaillee": "Je décris ma situation",
-    "planning": "Je compose ma semaine",
+    "planning": "Je décris ma situation",
     "evaluation": "Je demande une évaluation gratuite",
-    "budget": "J'estime mon budget",
+    "budget": "Je demande un devis gratuit",
     "sortie_hopital": "Je prépare un retour à domicile",
     "aidant": "J'ai besoin de relais",
     "enfant": "Je décris les besoins de mon enfant",
@@ -595,8 +595,8 @@
   },
   "professionnels": {
     "modes_h3": "Deux modes d'intervention",
-    "departements_h3": "Huit départements",
-    "agences_h3": "Six agences",
+    "departements_h3": "Nos départements",
+    "agences_h3": "Nos agences",
     "appeler": "Appelez-nous au {téléphone}",
     "fonctionnement_lien": "Comment un accompagnement démarre"
   },

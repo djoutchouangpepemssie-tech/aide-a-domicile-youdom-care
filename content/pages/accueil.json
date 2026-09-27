@@ -243,7 +243,14 @@
     },
     "carte_aides": {
       "titre": "Les aides possibles",
-      "aides": ["APA", "PCH", "AEEH", "caisses de retraite", "CESU", "crédit d'impôt de 50 %"],
+      "aides": [
+        "APA",
+        "PCH",
+        "AEEH",
+        "CESU",
+        "aides après une hospitalisation",
+        "crédit d'impôt de 50 %"
+      ],
       "href": "/tarifs-et-aides/"
     }
   },

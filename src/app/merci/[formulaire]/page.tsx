@@ -72,6 +72,16 @@ export default async function ThanksPage({ params }: ThanksPageProps) {
   const phone = contact.telephone_principal;
   const telHref = phone ? toTelHref(phone) : null;
   const urgency = formulaires.succes_urgence.split("{téléphone}");
+  /*
+   * Le titre et le chapô ne se répètent plus (27/09/2026) : la phrase de succès de docs/01 §7
+   * commence par la même phrase que le titre (« Merci. Votre demande est arrivée. »), et les huit
+   * pages sans variante l'affichaient deux fois de suite.
+   */
+  const title = variant?.h1 ?? page.h1;
+  const rawLead = variant?.texte ?? successText();
+  const lead = rawLead.startsWith(title) ? rawLead.slice(title.length).trim() : rawLead;
+  const lecturesTitle = variant?.lectures_h2 ?? page.lectures_h2;
+  const lectures = variant?.lectures ?? page.lectures;
   const steps = home.etapes.items.map((step) => ({ title: step.titre, text: step.texte }));
 
   return (
@@ -80,9 +90,9 @@ export default async function ThanksPage({ params }: ThanksPageProps) {
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">
           <div>
             <Heading level={1} id="titre">
-              {variant?.h1 ?? page.h1}
+              {title}
             </Heading>
-            <Lead className="mt-5">{variant?.texte ?? successText()}</Lead>
+            <Lead className="mt-5">{lead}</Lead>
             {phone && telHref ? (
               <p className="mt-4">
                 {urgency[0]}
@@ -108,10 +118,10 @@ export default async function ThanksPage({ params }: ThanksPageProps) {
 
       <Section tone={variant ? "white" : "teal"} aria-labelledby="lectures">
         <Heading level={2} id="lectures">
-          {page.lectures_h2}
+          {lecturesTitle}
         </Heading>
         <ul className="m-0 mt-6 grid list-none gap-4 p-0 sm:grid-cols-2">
-          {page.lectures.map((lecture) => (
+          {lectures.map((lecture) => (
             <li key={lecture.href} className="max-w-none">
               <Link
                 href={lecture.href}

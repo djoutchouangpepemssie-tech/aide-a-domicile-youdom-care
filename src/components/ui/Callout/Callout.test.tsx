@@ -66,9 +66,10 @@ describe("Callout", () => {
     const list = within(note).getByRole("list");
     const rows = within(list).getAllByRole("listitem");
     expect(rows).toHaveLength(2);
-    expect(rows[0]).toHaveClass("md:grid-cols-2");
+    // Une seule ligne sur deux nomme son relais : liste simple, pas de tableau troué (27/09/2026).
+    expect(rows[0]).not.toHaveClass("md:grid-cols-2");
     expect(rows[0]).toHaveTextContent("Les soins infirmiers et les actes médicaux.");
-    expect(rows[0]).toHaveTextContent("Qui le fait : → les infirmiers, le SSIAD");
+    expect(rows[0]).toHaveTextContent("→ les infirmiers, le SSIAD");
     expect(rows[1]).not.toHaveTextContent("→");
     // Une icône croix ouverte par item (tracé sans Z), plus celle du titre
     const paths = Array.from(note.querySelectorAll("path"));

@@ -101,6 +101,67 @@ export const contrastPairs: readonly ContrastPair[] = [
   { fg: "comfort:text", bg: "white", expected: 16.54, min: 7, usage: "texte en mode confort" },
   { fg: "comfort:link", bg: "white", expected: 9.92, min: 7, usage: "liens en mode confort" },
 
+  /* ---- Heros soutenus (2026-09-27, D-036) : `scene-soutenu` pousse `--scene-deep` et
+     `--scene-accent` d'un cran, vers les niveaux 200. Ce sont les points les plus soutenus du
+     site : mesurer le texte dessus couvre toute la surface d'un hero. ---- */
+  { fg: "ink", bg: "teal-200", expected: 10.15, min: 7, usage: "hero canard et aurore, texte" },
+  {
+    fg: "ink-soft",
+    bg: "teal-200",
+    expected: 4.67,
+    min: 4.5,
+    usage: "hero canard et aurore, texte secondaire",
+  },
+  {
+    fg: "teal-800",
+    bg: "teal-200",
+    expected: 5.19,
+    min: 4.5,
+    usage: "liens sur un hero canard et aurore",
+  },
+  { fg: "ink", bg: "azure-200", expected: 10.19, min: 7, usage: "hero azur, texte" },
+  {
+    fg: "ink-soft",
+    bg: "azure-200",
+    expected: 4.69,
+    min: 4.5,
+    usage: "hero azur, texte secondaire",
+  },
+  { fg: "teal-800", bg: "azure-200", expected: 5.21, min: 4.5, usage: "liens sur un hero azur" },
+  { fg: "ink", bg: "green-200", expected: 10.58, min: 7, usage: "hero vert, texte" },
+  {
+    fg: "ink-soft",
+    bg: "green-200",
+    expected: 4.86,
+    min: 4.5,
+    usage: "hero vert, texte secondaire",
+  },
+  { fg: "teal-800", bg: "green-200", expected: 5.41, min: 4.5, usage: "liens sur un hero vert" },
+  { fg: "ink", bg: "raspberry-200", expected: 9.91, min: 7, usage: "hero framboise, texte" },
+  {
+    fg: "ink-soft",
+    bg: "raspberry-200",
+    expected: 4.55,
+    min: 4.5,
+    usage: "hero framboise, texte secondaire",
+  },
+  {
+    fg: "teal-800",
+    bg: "raspberry-200",
+    expected: 5.06,
+    min: 4.5,
+    usage: "liens sur un hero framboise",
+  },
+  { fg: "ink", bg: "sand-deeper", expected: 9.94, min: 7, usage: "hero sable, texte" },
+  {
+    fg: "ink-soft",
+    bg: "sand-deeper",
+    expected: 4.57,
+    min: 4.5,
+    usage: "hero sable, texte secondaire",
+  },
+  { fg: "teal-800", bg: "sand-deeper", expected: 5.08, min: 4.5, usage: "liens sur un hero sable" },
+
   /* ---- D-032 : fonds de scène (src/styles/scenes.css) ---- */
   /* Le point le plus soutenu de chaque scène (`--scene-deep`) borne toute la surface : aucune
      couche ne peut être plus sombre. Le texte courant y reste AAA, le texte secondaire AA, les
