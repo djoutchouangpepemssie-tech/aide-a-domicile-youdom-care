@@ -34,7 +34,8 @@ const securityHeaders = [
 ];
 
 // Tant que la phase 9 n'est pas validée, tout est en noindex : c'est Arcel qui passe SITE_INDEXABLE à "true".
-const indexable = process.env.SITE_INDEXABLE === "true";
+// D-035 : indexation ouverte par défaut ; `SITE_INDEXABLE="false"` la referme (prévisualisations).
+const indexable = process.env.SITE_INDEXABLE !== "false";
 const robotsHeaders = indexable ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
 
 const nextConfig: NextConfig = {
