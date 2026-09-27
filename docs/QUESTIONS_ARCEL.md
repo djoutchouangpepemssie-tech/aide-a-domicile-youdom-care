@@ -87,6 +87,8 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 - **Q-CONTENU-12.** Adresses des agences dans les textes locaux : le contrôle des nombres refuse « 61 rue de Lyon » ou « 49-51 quai de Dion-Bouton » dans une zone éditoriale, l'adresse n'étant pas un fait du fichier de données ; les pages écrivent « rue de Lyon », « quai de Dion-Bouton » et le gabarit affiche l'adresse complète. Suffisant ?
 - **Q-CONTENU-13.** Faits absents des bases ouvertes : aucun point d'information recensé à Chaville, Marnes-la-Coquette, Vaucresson, La Garenne-Colombes, Levallois-Perret, et dans quatorze communes du Val-de-Marne (les Espaces autonomie couvrent des secteurs) ; aucun CCAS pour Champs-sur-Marne, Créteil, Villejuif ; aucune consultation mémoire nulle part (pas de jeu ouvert). Les pages le disent (« ne figure pas dans les bases consultées »). Connais-tu les structures réelles à ajouter à la main, avec leur source ?
 
+- **Q-CONTENU-14.** Relecture des pages locales : la source DILA place l'hôtel de ville de Puteaux au 131 rue de la République et la coordination gérontologique au 133 ; la CNSA écrit « Richard-Walace » pour le foyer-logement du boulevard Richard-Wallace. Quelle graphie retenir ? Les communes lointaines (Cergy à 22,6 km de Puteaux, Mantes-la-Jolie à 39,5 km de Versailles, Melun à 33,9 km de Vitry) affichent « Oui, nous intervenons » : confirmer la couverture réelle avant publication, ou retirer ces communes de la vague 1.
+
 ## Technique
 
 - **Q-TECH-1.** Identifiants SMTP de la boîte d'envoi et adresse de réception des demandes (variables d'environnement, jamais dans le dépôt).
