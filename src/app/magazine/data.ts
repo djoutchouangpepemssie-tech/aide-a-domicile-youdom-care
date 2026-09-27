@@ -122,7 +122,8 @@ export function articleMetadata(article: LoadedArticle): Metadata {
     titre: article.meta.seo.titre,
     description: article.meta.seo.description,
     chemin: article.chemin,
-    noindex: article.meta.statut === "a_relire",
+    // D-035 : un article en attente de relecture est indexable comme les autres.
+    noindex: false,
     image: serviceOgImagePath(article.chemin),
   });
 }

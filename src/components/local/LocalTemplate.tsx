@@ -12,7 +12,6 @@ import { Section } from "@/components/layout/Section/Section";
 import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Tilt } from "@/components/motion/Tilt/Tilt";
 import { toIconName } from "@/components/service/service-icons";
-import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon } from "@/components/ui/Icon/Icon";
 import { Lead } from "@/components/ui/Lead/Lead";
@@ -230,11 +229,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
       data-local-code={data.code}
       data-statut={editorial.statut}
     >
-      {editorial.statut === "a_relire" ? (
-        <div className="container-site pt-6">
-          <Callout variant="attention">{t.non_relu}</Callout>
-        </div>
-      ) : null}
+      {/* D-034 : aucun bandeau d'avertissement de relecture n'est affiché. */}
       <div className="container-site pt-6">
         <Breadcrumb texts={texts.fil_ariane} items={[...crumbs, { label: data.nom }]} />
       </div>

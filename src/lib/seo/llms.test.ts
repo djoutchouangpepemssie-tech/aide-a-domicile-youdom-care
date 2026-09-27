@@ -65,11 +65,11 @@ describe("llms.txt", () => {
     expect(chemins.some((c) => c.startsWith("/merci/") || c.startsWith("/styleguide/"))).toBe(
       false,
     );
-    // Aucune page `a_relire` : tant qu'aucune page service n'est relue, les sections sont vides.
+    // D-035 : toutes les pages services construites sont listées, relues ou non.
     const { listMdxFiles, readServiceMeta, SERVICES_DIR } = await import("@/content/service-meta");
     for (const file of await listMdxFiles(SERVICES_DIR)) {
       const { meta } = await readServiceMeta(file);
-      expect(chemins.includes(meta.chemin)).toBe(meta.statut === "publie");
+      expect(chemins.includes(meta.chemin)).toBe(true);
     }
   });
 });

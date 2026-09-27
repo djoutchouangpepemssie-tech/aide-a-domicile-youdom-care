@@ -4,7 +4,6 @@ import { SourcesList, formatFrenchDate } from "@/components/blocks/SourcesList/S
 import { Section } from "@/components/layout/Section/Section";
 import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Button } from "@/components/ui/Button/Button";
-import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
@@ -78,11 +77,7 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
       data-rubrique={meta.rubrique}
       data-statut={meta.statut}
     >
-      {meta.statut === "a_relire" ? (
-        <div className="container-site pt-6 print:hidden">
-          <Callout variant="attention">{t.non_relu}</Callout>
-        </div>
-      ) : null}
+      {/* D-034 : aucun bandeau d'avertissement de relecture n'est affiché. */}
 
       {/* 1. Fil d'Ariane, rubrique, titre — 2. chapô — 3. ligne de confiance */}
       <Section tone="paper" aria-labelledby="titre" className="pt-8!">

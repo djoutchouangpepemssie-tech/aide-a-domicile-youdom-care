@@ -333,11 +333,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
 
   return (
     <main id="contenu" data-service={page.chemin} data-statut={page.statut}>
-      {page.statut === "a_relire" ? (
-        <div className="container-site pt-6">
-          <Callout variant="attention">{t.non_relu}</Callout>
-        </div>
-      ) : null}
+      {/* D-034 : aucun bandeau d'avertissement de relecture n'est affiché. */}
       <div className="container-site pt-6">
         <Breadcrumb texts={texts.fil_ariane} items={crumbs} />
       </div>

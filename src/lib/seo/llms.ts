@@ -89,7 +89,7 @@ export async function buildLlmsInput(): Promise<LlmsInput> {
   const piliers: LlmsPage[] = [];
   for (const file of await listMdxFiles(SERVICES_DIR)) {
     const { meta } = await readServiceMeta(file);
-    if (meta.statut !== "publie") continue;
+    // D-035 : les pages construites sont listées, relues ou non.
     const page = { titre: meta.h1, chemin: meta.chemin, description: meta.description };
     (meta.type === "pilier" ? piliers : services).push(page);
   }

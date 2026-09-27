@@ -10,7 +10,7 @@ import { listFormDefinitions } from "@/content/form-definitions";
 import { lexiqueTermPath, listLexiqueTerms } from "@/content/lexique";
 import { listLiveOffers } from "@/content/offres";
 import { getSiteConfig } from "@/content/loader";
-import { departementCodeOf, listIndexableLocalPages, type LocalPage } from "@/content/local";
+import { departementCodeOf, listBuildableLocalPages, type LocalPage } from "@/content/local";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
 import { latestToolUpdate, listToolPages, TOOLS_PATH, toolPath } from "@/content/tool-pages";
 import { neverIndexedPaths } from "./indexable";
@@ -168,7 +168,7 @@ async function servicesEntries(): Promise<SitemapEntry[]> {
   const entries: SitemapEntry[] = [];
   for (const file of files) {
     const { meta } = await readServiceMeta(file);
-    if (meta.statut !== "publie") continue;
+    // D-035 : toutes les pages construites sont listées, relues ou non.
     entries.push({ path: meta.chemin, lastmod: meta.maj });
   }
   return entries;
@@ -183,7 +183,7 @@ async function lexiqueEntries(): Promise<SitemapEntry[]> {
 /** Segment `local-{departement}` : pages locales publiées du département, datées par `maj`. */
 function localEntries(departement: string): () => Promise<SitemapEntry[]> {
   return async () => {
-    const pages = await listIndexableLocalPages();
+    const pages = await listBuildableLocalPages();
     return pages
       .filter((page: LocalPage) => departementCodeOf(page) === departement)
       .map((page) => ({ path: page.chemin, lastmod: page.editorial.maj }));
@@ -198,7 +198,7 @@ function localEntries(departement: string): () => Promise<SitemapEntry[]> {
  */
 async function magazineEntries(): Promise<SitemapEntry[]> {
   const published = (await listArticleMetas({ warn: () => {} })).filter(
-    (article) => article.meta.statut === "publie",
+    (article) => article.meta.statut !== "brouillon",
   );
   if (published.length === 0) return [];
   const latest = (articles: readonly ArticleMeta[]) =>

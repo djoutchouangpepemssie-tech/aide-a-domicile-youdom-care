@@ -55,7 +55,8 @@ export async function generateMetadata({ params }: LocalRouteProps): Promise<Met
     titre: page.editorial.seo.titre,
     description: page.editorial.seo.description,
     chemin: page.chemin,
-    noindex: page.editorial.statut === "a_relire",
+    // D-035 : les pages locales en attente de relecture sont indexables comme les autres.
+    noindex: false,
     image: serviceOgImagePath(page.chemin),
   });
 }

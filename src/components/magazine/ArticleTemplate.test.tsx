@@ -116,13 +116,11 @@ describe("ArticleTemplate", () => {
     }
   });
 
-  it("affiche le bandeau d'attente et passe en noindex pour un article a_relire", () => {
+  it("n'affiche aucun bandeau d'attente et reste indexable (D-034, D-035)", () => {
     render(<ArticleTemplate data={dataFor(valide, pool)} />);
-    expect(
-      screen.getByText("Cette page attend sa relecture : elle n'est pas encore publiée."),
-    ).toBeInTheDocument();
+    expect(screen.queryByText(/attend sa relecture/)).toBeNull();
     const metadata = articleMetadata(valide);
-    expect(metadata.robots).toEqual({ index: false, follow: false });
+    expect(metadata.robots).toBeUndefined();
     expect(String(metadata.alternates?.canonical)).toBe(
       "https://www.youdom-care.com/magazine/valide/",
     );

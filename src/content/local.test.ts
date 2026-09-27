@@ -134,7 +134,8 @@ describe("content/local : chargement des territoires", () => {
     const pages = await listLocalPages();
     for (const page of pages) expect(page.chemin).toMatch(/^\/aide-a-domicile\//);
     expect((await listBuildableLocalPages()).length).toBeLessThanOrEqual(pages.length);
-  });
+    // Le dépôt contient désormais 131 territoires : la lecture et la validation prennent du temps.
+  }, 30_000);
 
   it("en production, les pages a_relire sont construites mais hors des plans de site (D-033)", async () => {
     process.env.VERCEL_ENV = "production";
@@ -142,9 +143,9 @@ describe("content/local : chargement des territoires", () => {
     expect(pages.length).toBeGreaterThan(0);
     const indexables = await listIndexableLocalPages();
     for (const page of indexables) expect(page.editorial.statut).toBe("publie");
-    // Une page en attente de relecture existe (servie en noindex) sans être indexable.
+    // Une page en attente de relecture est servie sans figurer parmi les pages « publie ».
     expect(pages.length).toBeGreaterThanOrEqual(indexables.length);
-  });
+  }, 30_000);
 
   it("découpe un chemin local en segments", () => {
     expect(localPathSegments("/aide-a-domicile/paris/15e-arrondissement/")).toEqual([

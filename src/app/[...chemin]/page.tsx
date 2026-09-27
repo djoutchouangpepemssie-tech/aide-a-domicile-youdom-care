@@ -54,7 +54,8 @@ export async function generateMetadata({ params }: ServiceRouteProps): Promise<M
     titre: page.meta.titre,
     description: page.meta.description,
     chemin: page.meta.chemin,
-    noindex: page.meta.statut === "a_relire",
+    // D-035 : les pages services et pathologies sont indexables sans attendre la relecture.
+    noindex: false,
     image: serviceOgImagePath(page.meta.chemin),
   });
 }

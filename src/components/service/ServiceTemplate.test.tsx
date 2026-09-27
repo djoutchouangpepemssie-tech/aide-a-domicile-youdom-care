@@ -126,9 +126,10 @@ describe("ServiceTemplate", () => {
     expect(document.getElementById("formulaire")?.tagName).toBe("SECTION");
   });
 
-  it("signale une page non relue, cite auteur et sources, maille pilier, sœurs et commune", () => {
+  it("cite auteur et sources sans bandeau d'attente, maille pilier, sœurs et commune", () => {
     render(<ServiceTemplate data={data()} />);
-    expect(screen.getByText(/attend sa relecture/)).toBeInTheDocument();
+    // D-034 : aucun bandeau d'avertissement ; la carte de relecture suffit.
+    expect(screen.queryByText(/attend sa relecture/)).toBeNull();
     // Carte de relecture (section 13) : auteur, attente de relecture, mise à jour.
     const review = document.querySelector(".sources-review");
     expect(review).not.toBeNull();

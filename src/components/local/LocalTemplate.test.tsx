@@ -214,7 +214,7 @@ describe("LocalTemplate", () => {
     expect(screen.queryByText(/Population/)).not.toBeInTheDocument();
   });
 
-  it("signale une page à relire et titre un département sans code postal", () => {
+  it("titre un département sans code postal, sans bandeau d'attente (D-034)", () => {
     render(
       <LocalTemplate
         data={data({
@@ -231,7 +231,7 @@ describe("LocalTemplate", () => {
         })}
       />,
     );
-    expect(screen.getByText(/attend sa relecture/)).toBeInTheDocument();
+    expect(screen.queryByText(/attend sa relecture/)).toBeNull();
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Aide à domicile dans les Hauts-de-Seine",
     );
