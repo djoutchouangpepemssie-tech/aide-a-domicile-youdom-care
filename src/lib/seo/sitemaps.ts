@@ -1,6 +1,7 @@
 import { getAidPage, listAidPageIds } from "@/content/aid-pages";
 import { listFormDefinitions } from "@/content/form-definitions";
 import { getSiteConfig } from "@/content/loader";
+import { departementCodeOf, listIndexableLocalPages, type LocalPage } from "@/content/local";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
 import { neverIndexedPaths } from "./indexable";
 
@@ -11,11 +12,15 @@ import { neverIndexedPaths } from "./indexable";
  * et refuse tout index manuel à cette adresse (« Conflicting route and metadata »). Chaque segment
  * déclare ici la fonction qui renvoie ses adresses ; un segment vide n'est ni listé dans l'index
  * ni généré. Les segments locaux, magazine, lexique et agences sont prêts et vides tant que leurs
- * contenus n'existent pas (phases 6 à 8).
+ * contenus n'existent pas (phases 6 à 8) ; les segments locaux et `agences` sont alimentés
+ * depuis la phase 6 (pages locales publiées de src/content/local.ts, agences de site.config.json).
  *
  * `lastmod` est toujours une date de contenu, jamais la date du build :
  * - services et pathologies : `maj` de l'en-tête MDX ;
  * - pages détaillées des aides : `maj` de content/aides/{id}.json ;
+ * - pages locales : `maj` de content/local/{code}.json (pages `publie` seulement) ;
+ * - pages d'agences : date déclarée `agencesLastmod` (contenu de site.config.json et
+ *   content/pages/agences.json), à avancer avec le contenu ;
  * - pages dont le JSON n'a pas de champ de date (content/pages, content/formulaires) : date
  *   déclarée dans `declaredLastmod`, à avancer avec le contenu. Le test vérifie que chaque
  *   route statique construite a sa date. La date de modification du fichier n'est pas fiable :
@@ -93,7 +98,12 @@ export const declaredLastmod: Readonly<Record<string, string>> = {
   "/demande/nuit-et-24h/": "2026-09-20",
   "/demande/personne-agee/": "2026-09-20",
   "/demande/relais-aidant/": "2026-09-20",
+  "/aide-a-domicile/": "2026-09-20",
+  "/agences/": "2026-09-20",
 };
+
+/** Date de la dernière révision des pages d'agences (site.config.json > agences, content/pages/agences.json). */
+export const agencesLastmod = "2026-09-20";
 
 /** Segment `pages` : routes statiques (date déclarée) et pages d'aides (`maj` du JSON). */
 async function pagesEntries(): Promise<SitemapEntry[]> {
@@ -130,23 +140,41 @@ async function servicesEntries(): Promise<SitemapEntry[]> {
 /** Segment prêt mais sans contenu pour l'instant. */
 const empty = async (): Promise<SitemapEntry[]> => [];
 
+/** Segment `local-{departement}` : pages locales publiées du département, datées par `maj`. */
+function localEntries(departement: string): () => Promise<SitemapEntry[]> {
+  return async () => {
+    const pages = await listIndexableLocalPages();
+    return pages
+      .filter((page: LocalPage) => departementCodeOf(page) === departement)
+      .map((page) => ({ path: page.chemin, lastmod: page.editorial.maj }));
+  };
+}
+
+/** Segment `agences` : une page par agence réelle de site.config.json. */
+async function agencesEntries(): Promise<SitemapEntry[]> {
+  return getSiteConfig().agences.map((agency) => ({
+    path: `/agences/${agency.id}/`,
+    lastmod: agencesLastmod,
+  }));
+}
+
 export const sitemapSegments: readonly SitemapSegment[] = [
   { id: "pages", entries: pagesEntries },
   { id: "services", entries: servicesEntries },
-  // Référencement local (docs/04 §4), phases 6 et 7 : /aide-a-domicile/{departement}/…
-  { id: "local-paris", entries: empty },
-  { id: "local-seine-et-marne", entries: empty },
-  { id: "local-yvelines", entries: empty },
-  { id: "local-essonne", entries: empty },
-  { id: "local-hauts-de-seine", entries: empty },
-  { id: "local-seine-saint-denis", entries: empty },
-  { id: "local-val-de-marne", entries: empty },
-  { id: "local-val-d-oise", entries: empty },
+  // Référencement local (docs/04 §4), phase 6 : /aide-a-domicile/{departement}/… par département.
+  { id: "local-paris", entries: localEntries("75") },
+  { id: "local-seine-et-marne", entries: localEntries("77") },
+  { id: "local-yvelines", entries: localEntries("78") },
+  { id: "local-essonne", entries: localEntries("91") },
+  { id: "local-hauts-de-seine", entries: localEntries("92") },
+  { id: "local-seine-saint-denis", entries: localEntries("93") },
+  { id: "local-val-de-marne", entries: localEntries("94") },
+  { id: "local-val-d-oise", entries: localEntries("95") },
   // Magazine « Le Fil » et lexique (docs/06), phase 8.
   { id: "magazine", entries: empty },
   { id: "lexique", entries: empty },
-  // Pages d'agences (/agences/{id}/), phase 7.
-  { id: "agences", entries: empty },
+  // Pages d'agences (/agences/{id}/), phase 6.
+  { id: "agences", entries: agencesEntries },
 ];
 
 /** Vrai pour un chemin interne bien formé qui n'est pas dans une zone jamais indexée. */
