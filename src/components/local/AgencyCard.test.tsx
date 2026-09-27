@@ -61,8 +61,13 @@ describe("AgencyCard", () => {
     expect(screen.getByText("Du lundi au vendredi, de 9h à 18h")).toBeInTheDocument();
   });
 
-  it("compose l'adresse, et se limite à la commune sans adresse de voie", () => {
+  it("compose l'adresse, et n'affiche rien sans adresse de voie", () => {
     expect(fullAddress(agency())).toBe("49-51 quai de Dion-Bouton, 92800 Puteaux");
-    expect(fullAddress(agency({ adresse: null }))).toBe("92800 Puteaux");
+    // D-036 : ni voie, ni code postal, ni commune quand l'agence ne publie pas d'adresse.
+    expect(fullAddress(agency({ adresse: null }))).toBeNull();
+    render(<AgencyCard agency={agency({ adresse: null })} texts={texts} />);
+    expect(screen.queryByText("Adresse")).not.toBeInTheDocument();
+    expect(screen.queryByText(/92800/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Puteaux,/)).not.toBeInTheDocument();
   });
 });

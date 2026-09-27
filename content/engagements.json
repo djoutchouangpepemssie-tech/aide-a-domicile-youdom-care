@@ -10,10 +10,10 @@
     },
     {
       "code": "E2",
-      "titre": "Des visages connus, pas un défilé",
-      "texte": "Une petite équipe stable autour de chaque personne, présentée avant de commencer. Si le courant ne passe pas, nous changeons.",
-      "preuve": null,
-      "valide": false
+      "titre": "Si l'intervenant ne convient pas, nous changeons",
+      "texte": "Quand une famille n'est pas à l'aise avec un intervenant, nous changeons.",
+      "preuve": "Confirmé par Arcel le 27 septembre 2026.",
+      "valide": true
     },
     {
       "code": "E3",
@@ -52,8 +52,16 @@
         "valide": true,
         "source": "dépliant Youdom Care"
       },
-      { "moment": "Première semaine", "texte": null, "valide": false },
-      { "moment": "Chaque mois", "texte": null, "valide": false },
+      {
+        "moment": "Première semaine",
+        "texte": null,
+        "valide": false
+      },
+      {
+        "moment": "Chaque mois",
+        "texte": null,
+        "valide": false
+      },
       {
         "moment": "Quand les besoins changent",
         "texte": "À tout moment, vous pouvez modifier ou arrêter l'accompagnement, dans le respect de la réglementation applicable.",

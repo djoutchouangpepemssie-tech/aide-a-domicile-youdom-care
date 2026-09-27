@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Pages /agences/ et /agences/{id}/ (docs/00 §5, docs/04 §2 LocalBusiness, P6.6). Les faits (nom, adresse de voie si elle est publiée, téléphone, horaires) viennent uniquement de content/site.config.json : un champ null n'est pas affiché. Les coordonnées viennent de data/agences.geo.json. `agences` donne la balise titre et la description de chaque agence, par `id` ; une agence sans entrée fait échouer le build. Jetons : {agences} (nombre), {adresse} (adresse postale complète), {lieu} (« dans les Hauts-de-Seine »).",
+  "_lisezmoi": "Pages /agences/ et /agences/{id}/ (docs/00 §5, docs/04 §2 LocalBusiness, P6.6). Les faits (nom, adresse de voie si elle est publiée, téléphone, horaires) viennent uniquement de content/site.config.json : un champ null n'est pas affiché. Les coordonnées viennent de data/agences.geo.json. `agences` donne la balise titre et la description de chaque agence, par `id` ; une agence sans entrée fait échouer le build. Jetons : {agences} (nombre), {adresse} (adresse postale complète), {lieu} (« dans les Hauts-de-Seine »). Quand l'agence ne publie pas d'adresse de voie, c'est `chapo_sans_adresse` qui est utilisé : le site n'affiche alors ni voie, ni code postal, ni commune.",
   "index": {
     "seo": {
       "titre": "Nos six agences Youdom Care à Paris et en Île-de-France",
@@ -15,7 +15,8 @@
     "sur_titre": "Agence",
     "chapo": "Notre point d'accueil {lieu} : {adresse}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle.",
     "rappel_h2": "Être rappelé(e) par cette agence",
-    "rappel_texte": "Deux minutes. Vos coordonnées servent uniquement à vous rappeler."
+    "rappel_texte": "Deux minutes. Vos coordonnées servent uniquement à vous rappeler.",
+    "chapo_sans_adresse": "Notre point d'accueil {lieu}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle."
   },
   "agences": {
     "paris-12": {

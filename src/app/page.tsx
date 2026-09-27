@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Commitments, visibleCommitments } from "@/components/blocks/Commitments/Commitments";
 import { Hero } from "@/components/blocks/Hero/Hero";
 import { HeroSection } from "@/components/blocks/Hero/HeroSection";
@@ -68,7 +69,7 @@ export function generateMetadata(): Metadata {
 
 export default async function Home() {
   const page = getHomePage();
-  const { contact } = getSiteConfig();
+  const { contact, marque } = getSiteConfig();
   const navigation = getNavigation();
   const { boutons, semaine_type, tarifs, recherche_commune, formulaires } = getInterfaceTexts();
   const { engagements } = getCommitments();
@@ -216,6 +217,32 @@ export default async function Home() {
             }
           />
         </HeroSection>
+
+        {/*
+         * Bande de signature (27/09/2026, photo fournie par Arcel) : la photo détourée sur la
+         * scène sable, et la signature de marque de site.config.json. Aucune promesse ici : les
+         * engagements ont leur section plus bas, avec leur garde-fou de validation.
+         */}
+        {page.banniere.signature ? (
+          <Section tone="sand" aria-labelledby="signature">
+            <div className="grid items-center gap-8 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
+              <Image
+                src={page.banniere.signature.photo.src}
+                alt={page.banniere.signature.photo.alt}
+                width={600}
+                height={550}
+                sizes="(min-width: 64rem) 32rem, (min-width: 40rem) 45vw, 90vw"
+                className="mx-auto h-auto w-full max-w-md sm:mx-0"
+              />
+              <p
+                id="signature"
+                className="heading-2 m-0 max-w-prose text-balance text-teal-900 sm:text-left"
+              >
+                {marque.signature}
+              </p>
+            </div>
+          </Section>
+        ) : null}
 
         <Section tone="white" aria-labelledby={SITUATIONS_ID}>
           {journey ? (

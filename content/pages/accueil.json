@@ -66,6 +66,12 @@
       "titre_panneau": "Vous cherchez de l'aide {pour}. Que vivez-vous ?",
       "autre": "Autre chose : je décris ma situation",
       "toutes": "Toutes les situations"
+    },
+    "signature": {
+      "photo": {
+        "src": "/images/heros/accueil-couple-enlace.png",
+        "alt": "Un couple de personnes âgées sourit : la femme enlace l'homme par les épaules, leurs mains jointes devant eux"
+      }
     }
   },
   "situations": {
@@ -149,9 +155,18 @@
     "h2": "Alzheimer, Parkinson, sclérose en plaques : un accompagnement qui évolue avec la maladie",
     "texte": "Une maladie neurodégénérative ne se vit pas de la même façon à l'annonce du diagnostic, trois ans plus tard, ou quand une présence devient nécessaire jour et nuit. Notre accompagnement change avec elle. Et chaque personne reste unique : son histoire, ses goûts et ses habitudes guident tout ce que nous faisons.",
     "stades": [
-      { "titre": "Au début : préserver les habitudes", "icone": "memoire" },
-      { "titre": "Quand la maladie avance : sécuriser et stimuler", "icone": "compagnie" },
-      { "titre": "Quand tout devient difficile : une présence continue", "icone": "24h" }
+      {
+        "titre": "Au début : préserver les habitudes",
+        "icone": "memoire"
+      },
+      {
+        "titre": "Quand la maladie avance : sécuriser et stimuler",
+        "icone": "compagnie"
+      },
+      {
+        "titre": "Quand tout devient difficile : une présence continue",
+        "icone": "24h"
+      }
     ],
     "bouton": "Voir l'accompagnement par maladie",
     "href": "/maladies-neurodegeneratives/",
