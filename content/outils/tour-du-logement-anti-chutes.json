@@ -1,0 +1,265 @@
+{
+  "id": "tour-du-logement-anti-chutes",
+  "seo": {
+    "titre": "Le tour du logement anti-chutes : la liste à imprimer",
+    "description": "Liste de contrôle gratuite, pièce par pièce, pour repérer ce qui fait tomber à la maison : tapis, fils, éclairage, salle de bain, escaliers, chaussures."
+  },
+  "ariane": "Tour du logement anti-chutes",
+  "h1": "Le tour du logement anti-chutes",
+  "sous_titre": "Pièce par pièce, ce qui fait tomber et ce qui se corrige en une heure, souvent sans travaux.",
+  "icone": "maison",
+  "mode_emploi": [
+    "Imprimez la liste et faites le tour du logement avec la personne, une pièce après l'autre.",
+    "Cochez ce qui est en ordre, entourez ce qui reste à faire, et notez la date du prochain tour."
+  ],
+  "maj": "2026-09-27",
+  "sections": [
+    {
+      "h2": "L'entrée et les couloirs",
+      "intro": "Après 65 ans, une personne sur trois tombe au moins une fois par an, rappelle l'Assurance maladie. Le logement y est souvent pour quelque chose.",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Les passages sont dégagés : rien au sol, aucun meuble qui dépasse."
+        },
+        {
+          "type": "case",
+          "texte": "Aucun fil électrique ne traverse un passage ; les câbles sont fixés au mur."
+        },
+        {
+          "type": "case",
+          "texte": "Les tapis sont retirés, ou fixés au sol avec des bords bien plats."
+        },
+        {
+          "type": "case",
+          "texte": "L'éclairage est franc, sans zone d'ombre ni changement brutal de lumière."
+        },
+        {
+          "type": "case",
+          "texte": "Un interrupteur est accessible dès la porte, et une veilleuse éclaire les trajets de nuit."
+        }
+      ]
+    },
+    {
+      "h2": "Le séjour",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Les meubles bas et les objets qui gênent la marche sont déplacés."
+        },
+        {
+          "type": "case",
+          "texte": "Le fauteuil est haut, avec des accoudoirs pour se lever."
+        },
+        {
+          "type": "case",
+          "texte": "Le téléphone est à portée de main depuis le fauteuil."
+        },
+        {
+          "type": "case",
+          "texte": "Le sol n'est pas glissant : pas de cire, pas de parquet trop lustré."
+        }
+      ]
+    },
+    {
+      "h2": "La cuisine",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Les objets de tous les jours sont à hauteur de main, sans escabeau ni chaise."
+        },
+        {
+          "type": "case",
+          "texte": "Le sol est sec ; ce qui est renversé est essuyé tout de suite."
+        },
+        {
+          "type": "case",
+          "texte": "Le tapis de cuisine est retiré."
+        },
+        {
+          "type": "case",
+          "texte": "Une chaise stable permet de s'asseoir pour préparer."
+        }
+      ]
+    },
+    {
+      "h2": "La chambre",
+      "items": [
+        {
+          "type": "case",
+          "texte": "La lampe et le téléphone s'attrapent depuis le lit."
+        },
+        {
+          "type": "case",
+          "texte": "Le lit est à bonne hauteur : assis au bord, les pieds sont à plat au sol."
+        },
+        {
+          "type": "case",
+          "texte": "Le chemin jusqu'aux toilettes est dégagé et éclairé la nuit."
+        },
+        {
+          "type": "case",
+          "texte": "La personne se lève en deux temps : assise d'abord, debout ensuite, sans se presser."
+        }
+      ]
+    },
+    {
+      "h2": "La salle de bain et les toilettes",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Un tapis antidérapant est posé dans la douche ou la baignoire."
+        },
+        {
+          "type": "case",
+          "texte": "Une barre d'appui est fixée au mur, pas un porte-serviettes ni un robinet."
+        },
+        {
+          "type": "case",
+          "texte": "Un siège de douche permet de se laver assis."
+        },
+        {
+          "type": "case",
+          "texte": "Les toilettes sont surélevées, ou équipées d'un rehausseur."
+        },
+        {
+          "type": "case",
+          "texte": "La porte s'ouvre aussi de l'extérieur, en cas de chute."
+        },
+        {
+          "type": "case",
+          "texte": "Savon, serviette et vêtements sont à portée de main."
+        }
+      ]
+    },
+    {
+      "h2": "Les escaliers",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Une main courante solide court sur toute la longueur, des deux côtés si possible."
+        },
+        {
+          "type": "case",
+          "texte": "Un interrupteur en haut et un en bas éclairent toutes les marches."
+        },
+        {
+          "type": "case",
+          "texte": "Les nez de marche sont antidérapants, ou signalés par une bande claire."
+        },
+        {
+          "type": "case",
+          "texte": "Rien n'est entreposé sur les marches."
+        }
+      ]
+    },
+    {
+      "h2": "La personne et ses habitudes",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Les chaussures sont fermées, à talon bas et large ; les chaussons ouverts sont rangés."
+        },
+        {
+          "type": "case",
+          "texte": "Les lunettes sont propres et à jour ; la vue et l'audition ont été contrôlées dans l'année."
+        },
+        {
+          "type": "case",
+          "texte": "Tous les médicaments pris ont été signalés au médecin ou au pharmacien : certains jouent sur l'équilibre.",
+          "precision": "On ne change rien seul. C'est le médecin qui décide, avec le pharmacien."
+        },
+        {
+          "type": "case",
+          "texte": "La personne marche ou bouge chaque jour, même un peu ; elle boit et mange suffisamment."
+        },
+        {
+          "type": "case",
+          "texte": "La canne ou le déambulateur conseillé est vraiment utilisé, et à la bonne hauteur."
+        },
+        {
+          "type": "case",
+          "texte": "Une téléassistance est envisagée si la personne vit seule."
+        }
+      ]
+    },
+    {
+      "h2": "Après une chute, même sans blessure",
+      "items": [
+        {
+          "type": "case",
+          "texte": "Le médecin a été prévenu : une chute a toujours une cause à chercher."
+        },
+        {
+          "type": "champ",
+          "libelle": "Date, lieu et circonstances de la dernière chute",
+          "lignes": 2
+        },
+        {
+          "type": "champ",
+          "libelle": "Ce qui reste à corriger, et qui s'en occupe",
+          "lignes": 3
+        },
+        {
+          "type": "champ",
+          "libelle": "Date du prochain tour du logement"
+        }
+      ]
+    },
+    {
+      "h2": "Qui peut aider",
+      "items": [
+        {
+          "type": "info",
+          "libelle": "Ergothérapeute",
+          "texte": "évalue le logement et conseille les aménagements utiles."
+        },
+        {
+          "type": "info",
+          "libelle": "CICAT",
+          "texte": "centre d'information et de conseil en aides techniques, neutre et gratuit ; annuaire sur pour-les-personnes-agees.gouv.fr."
+        },
+        {
+          "type": "info",
+          "libelle": "MaPrimeAdapt'",
+          "texte": "aide de l'État pour les travaux d'adaptation du logement, avec un accompagnement ; renseignements sur France Rénov'."
+        },
+        {
+          "type": "info",
+          "libelle": "Caisse de retraite",
+          "texte": "peut financer une partie des aides techniques et de la téléassistance."
+        }
+      ]
+    }
+  ],
+  "prudence": [
+    "Cette liste aide à regarder le logement avec un œil neuf. Elle ne remplace ni l'avis du médecin ni la visite d'un ergothérapeute.",
+    "Ne modifiez jamais un médicament vous-même : parlez-en au médecin ou au pharmacien.",
+    "Une chute, même sans blessure, se dit au médecin."
+  ],
+  "sources": [
+    {
+      "libelle": "pour-les-personnes-agees.gouv.fr — Comment prévenir les chutes chez les personnes âgées ?",
+      "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/preserver-son-autonomie-et-sa-sante/comment-prevenir-les-risques-de-chutes-chez-les-personnes-agees",
+      "verifie_le": "2026-04-09",
+      "consulte_le": "2026-09-27"
+    },
+    {
+      "libelle": "pour-les-personnes-agees.gouv.fr — Aménager son logement",
+      "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/amenager-son-logement-et-s-equiper/amenager-son-logement",
+      "verifie_le": "2025-11-20",
+      "consulte_le": "2026-09-27"
+    },
+    {
+      "libelle": "ameli.fr (Assurance maladie) — Comment prévenir les chutes des personnes âgées ?",
+      "href": "https://www.ameli.fr/assure/sante/bons-gestes/seniors/prevenir-chutes-personnes-agees",
+      "verifie_le": "2024-12-24",
+      "consulte_le": "2026-09-27"
+    },
+    {
+      "libelle": "Santé publique France — Prévenir les chutes : un dispositif d'information pour le grand public et les professionnels",
+      "href": "https://www.santepubliquefrance.fr/les-actualites/prevenir-les-chutes-un-dispositif-dinformation-pour-le-grand-public-et-les-professionnels",
+      "consulte_le": "2026-09-27"
+    }
+  ]
+}

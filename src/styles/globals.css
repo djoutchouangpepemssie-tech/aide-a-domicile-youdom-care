@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
 @import "./motion.css";
+@import "./print.css";
 
 /* Expose les jetons à Tailwind v4 sans les dupliquer (docs/02) */
 @theme inline {
