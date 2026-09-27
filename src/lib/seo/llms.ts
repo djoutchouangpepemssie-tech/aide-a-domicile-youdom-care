@@ -5,6 +5,8 @@ import {
   getPricingPage,
   getSiteConfig,
 } from "@/content/loader";
+import { listArticleMetas } from "@/content/article-meta";
+import { lexiqueTermPath, listLexiqueTerms } from "@/content/lexique";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
 import { canonicalUrl } from "./metadata";
 
@@ -13,9 +15,11 @@ import { canonicalUrl } from "./metadata";
  * au format llms.txt (titre, citation, paragraphes, sections de liens). Tout vient de content/ :
  * marque et zones de site.config.json, règle éditoriale de la charte (pages/a-propos.json),
  * piliers et pages services relues (statut `publie` : les pages `a_relire` sont noindex en
- * prévisualisation et absentes en production), pages de fonctionnement. Aucune page noindex,
- * aucun fait listé dans `a_confirmer` (le téléphone n'apparaît qu'une fois confirmé), aucune
- * promesse : les descriptions sont les descriptions moteurs déjà contrôlées.
+ * prévisualisation et absentes en production), pages de fonctionnement, termes du lexique
+ * (docs/06 §6 : la définition en une phrase) et articles du Fil publiés (P9.4 : un article
+ * `a_relire` n'y figure jamais). Aucune page noindex, aucun fait listé dans `a_confirmer` (le
+ * téléphone n'apparaît qu'une fois confirmé), aucune promesse : les descriptions sont les
+ * descriptions moteurs déjà contrôlées.
  */
 
 export interface LlmsPage {
@@ -39,6 +43,10 @@ export interface LlmsInput {
   piliers: LlmsPage[];
   services: LlmsPage[];
   fonctionnement: LlmsPage[];
+  /** Termes du lexique : titre = terme, description = définition en une phrase. */
+  lexique: LlmsPage[];
+  /** Articles du Fil publiés seulement : titre = titre de l'article, description moteur. */
+  magazine: LlmsPage[];
 }
 
 /** Vrai si le fait (« contact.telephone_principal ») ne figure pas dans `a_confirmer`. */
@@ -73,6 +81,8 @@ export function renderLlmsTxt(input: LlmsInput): string {
     ...section("Pour qui ?", input.piliers, input.url),
     ...section("Services et pathologies", input.services, input.url),
     ...section("Fonctionnement", input.fonctionnement, input.url),
+    ...section("Lexique", input.lexique, input.url),
+    ...section("Le Fil, le magazine", input.magazine, input.url),
   ];
   return `${lines.join("\n").trimEnd()}\n`;
 }
@@ -96,6 +106,26 @@ export async function buildLlmsInput(): Promise<LlmsInput> {
   const byPath = (a: LlmsPage, b: LlmsPage) => a.chemin.localeCompare(b.chemin, "fr");
   piliers.sort(byPath);
   services.sort(byPath);
+
+  // Lexique : chaque terme avec sa définition en une phrase, par ordre alphabétique du terme.
+  const collator = new Intl.Collator("fr", { sensitivity: "base" });
+  const lexique: LlmsPage[] = (await listLexiqueTerms())
+    .map((term) => ({
+      titre: term.developpe ? `${term.terme} (${term.developpe})` : term.terme,
+      chemin: lexiqueTermPath(term.slug),
+      description: term.definition,
+    }))
+    .sort((a, b) => collator.compare(a.titre, b.titre));
+
+  // Le Fil : articles publiés seulement, du plus récent au plus ancien.
+  const magazine: LlmsPage[] = (await listArticleMetas({ warn: () => {} }))
+    .filter((article) => article.meta.statut === "publie")
+    .sort((a, b) => (a.meta.publie_le < b.meta.publie_le ? 1 : -1))
+    .map((article) => ({
+      titre: article.meta.titre,
+      chemin: article.chemin,
+      description: article.meta.seo.description,
+    }));
 
   const regle =
     charte_page.principes.find((p) => /soigner/i.test(p.titre)) ?? charte_page.principes[0];
@@ -130,5 +160,7 @@ export async function buildLlmsInput(): Promise<LlmsInput> {
       },
       { titre: callback.h1, chemin: "/etre-rappele/", description: callback.seo.description },
     ],
+    lexique,
+    magazine,
   };
 }

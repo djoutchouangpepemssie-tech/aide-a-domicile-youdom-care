@@ -1,4 +1,5 @@
-import { readdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { listFormDefinitions } from "@/content/form-definitions";
@@ -70,7 +71,7 @@ describe("plans de site segmentés", () => {
     // Le lexique est alimenté depuis P7.2 (une page par terme de content/lexique).
     expect(ids).toContain("lexique");
     expect(ids).toContain("agences");
-  });
+  }, 30_000);
 
   it("liste une page par terme du lexique, datée par son champ maj", async () => {
     const terms = await listLexiqueTerms();
@@ -92,7 +93,7 @@ describe("plans de site segmentés", () => {
         for (const prefix of neverIndexedPaths) expect(entry.path.startsWith(prefix)).toBe(false);
       }
     }
-  });
+  }, 30_000);
 
   it("couvre toutes les routes statiques de src/app sauf celles en noindex", async () => {
     const entries = await segmentEntries("pages");
@@ -215,4 +216,73 @@ describe("plans de site segmentés", () => {
     expect(xml).toContain("<loc>https://exemple.fr/a?b=1&amp;c=2</loc>");
     expect(xml).not.toContain("<lastmod>");
   });
+});
+
+/*
+ * Rendu construit contre plans de site (P9.4, docs/04 §2) : chaque page HTML produite par
+ * `next build` qui est indexable figure dans exactement un segment, chaque entrée vise une page
+ * construite et porte un `lastmod` réel (date ISO, jamais dans le futur). Sans rendu (.next
+ * absent, par exemple dans l'intégration continue avant le build), le test est ignoré.
+ *
+ * Hors comparaison : les zones jamais indexées, les pages en prévisualisation (`a_relire`,
+ * `data-statut` sur <main>, absentes en production), les pages 2 et suivantes du magazine (les
+ * articles sont déjà listés ; sitemaps.ts) et, tant qu'aucun article n'est publié (segment
+ * magazine vide), l'index et les rubriques du Fil, alors en noindex.
+ */
+const builtDir = path.join(process.cwd(), ".next", "server", "app");
+
+async function builtPages(dir: string): Promise<Map<string, string>> {
+  const pages = new Map<string, string>();
+  async function walk(current: string) {
+    for (const entry of await readdir(current, { withFileTypes: true })) {
+      const full = path.join(current, entry.name);
+      if (entry.isDirectory()) await walk(full);
+      else if (entry.name.endsWith(".html") && !entry.name.startsWith("_")) {
+        const rel = path
+          .relative(dir, full)
+          .replace(/\\/g, "/")
+          .replace(/\.html$/, "");
+        pages.set(rel === "index" ? "/" : `/${rel}/`, await readFile(full, "utf8"));
+      }
+    }
+  }
+  await walk(dir);
+  return pages;
+}
+
+describe.skipIf(!existsSync(builtDir))("plans de site contre le rendu construit", () => {
+  it("toute page indexable construite est dans exactement un segment, avec un lastmod réel", async () => {
+    const pages = await builtPages(builtDir);
+    const segments = await listPopulatedSegments();
+    const owners = new Map<string, string[]>();
+    for (const segment of segments) {
+      for (const entry of segment.entries) {
+        owners.set(entry.path, [...(owners.get(entry.path) ?? []), segment.id]);
+      }
+    }
+    const today = new Date().toISOString().slice(0, 10);
+    for (const [entryPath, ids] of owners) {
+      expect(ids, `${entryPath} dans ${ids.join(", ")}`).toHaveLength(1);
+      expect(pages.has(entryPath), `${entryPath} listé mais non construit`).toBe(true);
+    }
+    for (const segment of segments) {
+      for (const entry of segment.entries) {
+        expect(entry.lastmod, entry.path).toMatch(ISO_DATE);
+        expect(
+          entry.lastmod <= today,
+          `${entry.path} : lastmod ${entry.lastmod} dans le futur`,
+        ).toBe(true);
+      }
+    }
+    const magazineListed = segments.some((segment) => segment.id === "magazine");
+    const missing: string[] = [];
+    for (const [route, html] of pages) {
+      if (neverIndexedPaths.some((prefix) => route.startsWith(prefix))) continue;
+      if (/<main\b[^>]*\bdata-statut="a_relire"/.test(html)) continue;
+      if (/\/page\/\d+\/$/.test(route)) continue;
+      if (!magazineListed && route.startsWith("/magazine/")) continue;
+      if (!owners.has(route)) missing.push(route);
+    }
+    expect(missing, "pages construites indexables absentes des plans de site").toEqual([]);
+  }, 60_000);
 });

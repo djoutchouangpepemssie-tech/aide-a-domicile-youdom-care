@@ -52,7 +52,7 @@
   },
   "bandeau": {
     "h2": "Et si cela change ?",
-    "texte": "Si un jour nous ajoutions un outil qui dépose un cookie ou envoie des informations à un tiers, cette page en donnerait la liste et un bandeau vous demanderait votre accord avant tout dépôt, avec un refus aussi simple que l'acceptation."
+    "texte": "Si un jour nous ajoutions un outil qui dépose un cookie ou envoie des informations à un tiers, cette page en donnerait la liste. Un bandeau vous demanderait alors votre accord avant tout dépôt, avec un refus aussi simple que l'acceptation."
   },
   "liens": [
     { "libelle": "Lire la politique de confidentialité", "href": "/politique-de-confidentialite/" },
