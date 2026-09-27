@@ -588,5 +588,56 @@
     "pages_liees_h2": "Sur ce site",
     "voisins_h2": "Termes voisins",
     "retour": "Tout le lexique"
+  },
+  "professionnels": {
+    "modes_h3": "Deux modes d'intervention",
+    "departements_h3": "Huit départements",
+    "agences_h3": "Six agences",
+    "appeler": "Appelez-nous au {téléphone}",
+    "fonctionnement_lien": "Comment un accompagnement démarre"
+  },
+  "recrutement": {
+    "aucune_offre": "Aucune offre publiée pour le moment.",
+    "offre_sur_titre": "Offre d'emploi",
+    "publiee_le": "Publiée le {date}",
+    "valable_jusqu_au": "Candidatures jusqu'au {date}",
+    "contrat": "Contrat",
+    "temps_de_travail": "Temps de travail",
+    "lieu": "Agence de rattachement",
+    "secteur": "Secteur d'intervention",
+    "salaire": "Rémunération",
+    "salaire_fourchette": "de {min} à {max} {unite}",
+    "contrats": { "cdi": "CDI", "cdd": "CDD" },
+    "temps": { "temps-plein": "Temps plein", "temps-partiel": "Temps partiel" },
+    "unites_salaire": {
+      "heure": "€ brut de l'heure",
+      "mois": "€ brut par mois",
+      "an": "€ brut par an"
+    },
+    "missions_h2": "Vos missions",
+    "profil_h2": "Le profil recherché",
+    "toutes_les_offres": "Toutes les offres",
+    "postuler_offre": "Je postule à cette offre",
+    "envoyer": "J'envoie ma candidature",
+    "email_aide": "Pour l'accusé de réception et notre réponse.",
+    "offre_ciblee": "Vous postulez à l'offre « {titre} ».",
+    "offre_inconnue": "Cette offre n'est plus publiée : votre candidature sera lue comme une candidature spontanée.",
+    "cv": {
+      "manquant": "Il manque votre CV. Nous en avons besoin pour lire votre parcours.",
+      "trop_lourd": "Ce fichier dépasse {taille}. Réduisez-le, ou envoyez-le en PDF.",
+      "type_invalide": "Ce format n'est pas accepté. Envoyez votre CV en PDF ou en Word (DOCX).",
+      "choisir": "Choisir un fichier",
+      "choisi": "Fichier choisi : {nom}"
+    },
+    "disponibilites": [
+      "Dès maintenant",
+      "Dans le mois",
+      "Dans deux à trois mois",
+      "Je me renseigne pour plus tard"
+    ],
+    "champs": {
+      "departement": "le département souhaité",
+      "disponibilite": "votre disponibilité"
+    }
   }
 }

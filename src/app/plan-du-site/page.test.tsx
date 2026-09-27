@@ -83,13 +83,16 @@ describe("Plan du site", () => {
       "Accompagnement en vacances",
       "Remplacement d'auxiliaire de vie",
     ]);
-    // Aucun doublon, aucune page jamais indexée, pas le plan lui-même, un groupe légal vide masqué.
+    // Aucun doublon, aucune page jamais indexée, pas le plan lui-même, le groupe légal présent (P8.3).
     expect(new Set(hrefs).size).toBe(hrefs.length);
     for (const href of hrefs) {
       for (const prefix of neverIndexedPaths) expect(href.startsWith(prefix), href).toBe(false);
     }
     expect(hrefs).not.toContain(SITE_MAP_PATH);
-    expect(groups.map((g) => g.id)).not.toContain("legal");
+    expect(groups.map((g) => g.id)).toContain("legal");
+    // La déclaration d'accessibilité (P8.4) ferme le groupe légal.
+    const legal = groups.find((g) => g.id === "legal");
+    expect(legal?.entries.at(-1)).toEqual({ href: "/accessibilite/", label: "Accessibilité" });
   });
 
   it("déclare des routes statiques qui existent, et n'oublie aucune page statique indexable", async () => {

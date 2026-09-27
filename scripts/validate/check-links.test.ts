@@ -3,6 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
+  plannedRoutes,
   builtRoutes,
   checkExternal,
   checkRefs,
@@ -40,17 +41,22 @@ describe("check-links", () => {
   });
 
   it("distingue lien cassé (erreur) et page prévue par le plan (avertissement)", () => {
+    // La page prévue est la première encore listée ; quand le plan est entièrement livré, le lien
+    // devient une erreur comme les autres.
+    const [planned, phase] = Object.entries(plannedRoutes)[0] ?? ["/page-prevue/", null];
     const routes = new Set(["/", "/aidants/"]);
     const refs = [
       { file: "/root/content/a.json", pointer: "nav[0].href", href: "/aidants/" },
-      { file: "/root/content/a.json", pointer: "nav[1].href", href: "/recrutement/" },
+      { file: "/root/content/a.json", pointer: "nav[1].href", href: planned },
       { file: "/root/content/b.mdx", pointer: "corps", href: "/introuvable/" },
     ];
     const report = checkRefs(refs, routes, "/root");
-    expect(report.warnings).toEqual([
-      "content/a.json › nav[1].href : /recrutement/ prévu en phase 8 (fonctionnement et entreprise), pas encore construit",
+    const plannedWarning = `content/a.json › nav[1].href : ${planned} prévu en ${phase}, pas encore construit`;
+    expect(report.warnings).toEqual(phase ? [plannedWarning] : []);
+    expect(report.errors).toEqual([
+      ...(phase ? [] : [`content/a.json › nav[1].href : lien interne cassé → ${planned}`]),
+      "content/b.mdx › corps : lien interne cassé → /introuvable/",
     ]);
-    expect(report.errors).toEqual(["content/b.mdx › corps : lien interne cassé → /introuvable/"]);
   });
 
   it("ouvre chaque source externe une fois : 4xx/5xx en erreur, injoignable en avertissement", async () => {

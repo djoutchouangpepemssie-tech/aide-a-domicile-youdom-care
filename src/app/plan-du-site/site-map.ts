@@ -3,8 +3,11 @@ import { MAGAZINE_PATH, rubriquePath } from "@/content/article-meta";
 import { articleRubriques, rubriqueLabels } from "@/content/article-schema";
 import { articlesOfRubrique, listBuildableArticles } from "@/content/articles";
 import { listFormDefinitions } from "@/content/form-definitions";
+import { listLegalPages } from "@/content/legal";
+import { APPLY_PATH, listLiveOffers, RECRUITMENT_PATH } from "@/content/offres";
 import {
   getAbout,
+  getAccessibilityPage,
   getAgenciesPage,
   getCallbackPage,
   getCaregiverCheckPage,
@@ -14,6 +17,8 @@ import {
   getModesPage,
   getNavigation,
   getPricingPage,
+  getProfessionalsPage,
+  getRecruitmentPage,
   getRegionPage,
   getRequestIndexPage,
   getSiteConfig,
@@ -50,8 +55,16 @@ export interface SiteMapGroup {
   entries: SiteMapEntry[];
 }
 
-/** Pages légales construites (phase 8) : `{ href, label }` à ajouter quand elles existent. */
-export const legalRoutes: readonly SiteMapEntry[] = [];
+/**
+ * Pages légales construites (phase 8) : les quatre pages de P8.3 (content/legal/*.json, dans
+ * l'ordre du pied de page), puis la déclaration d'accessibilité /accessibilite/ (P8.4).
+ */
+export function legalRoutes(): SiteMapEntry[] {
+  return [
+    ...listLegalPages().map((page) => ({ href: page.chemin, label: page.ariane })),
+    { href: "/accessibilite/", label: getAccessibilityPage().ariane },
+  ];
+}
 
 function byOrderThenPath(a: ServicePage, b: ServicePage): number {
   return (
@@ -175,8 +188,11 @@ export async function buildSiteMap(): Promise<SiteMapGroup[]> {
     { href: navigation.contact_href, label: specialForms.contact.ariane },
   ];
 
-  // À propos.
+  // À propos, professionnels, recrutement (docs/03 §9, P8.1 et P8.2) : la candidature et les
+  // offres publiées (aucune aujourd'hui) en retrait du recrutement.
   const about = getAbout();
+  const recruitment = getRecruitmentPage();
+  const liveOffers = await listLiveOffers();
   const entreprise: SiteMapEntry[] = [
     {
       href: "/a-propos/",
@@ -184,6 +200,15 @@ export async function buildSiteMap(): Promise<SiteMapGroup[]> {
       children: [
         { href: "/a-propos/nos-engagements/", label: about.engagements_page.ariane },
         { href: "/a-propos/charte-editoriale/", label: about.charte_page.ariane },
+      ],
+    },
+    { href: "/professionnels/", label: getProfessionalsPage().ariane },
+    {
+      href: RECRUITMENT_PATH,
+      label: recruitment.ariane,
+      children: [
+        { href: APPLY_PATH, label: recruitment.postuler.ariane },
+        ...liveOffers.map((entry) => ({ href: entry.chemin, label: entry.offer.titre })),
       ],
     },
   ];
@@ -270,7 +295,7 @@ export async function buildSiteMap(): Promise<SiteMapGroup[]> {
     { id: "entreprise", title: page.groupes.entreprise, entries: entreprise },
     { id: "magazine", title: page.groupes.magazine, entries: magazine },
     { id: "outils", title: page.groupes.outils, entries: outils },
-    { id: "legal", title: page.groupes.legal, entries: [...legalRoutes] },
+    { id: "legal", title: page.groupes.legal, entries: legalRoutes() },
   ];
   return groups.filter((group) => group.entries.length > 0);
 }

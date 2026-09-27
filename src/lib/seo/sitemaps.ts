@@ -8,6 +8,7 @@ import {
 import { articleRubriques } from "@/content/article-schema";
 import { listFormDefinitions } from "@/content/form-definitions";
 import { lexiqueTermPath, listLexiqueTerms } from "@/content/lexique";
+import { listLiveOffers } from "@/content/offres";
 import { getSiteConfig } from "@/content/loader";
 import { departementCodeOf, listIndexableLocalPages, type LocalPage } from "@/content/local";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "@/content/service-meta";
@@ -110,6 +111,18 @@ export const declaredLastmod: Readonly<Record<string, string>> = {
   "/aide-a-domicile/": "2026-09-20",
   "/agences/": "2026-09-20",
   "/lexique/": "2026-09-27",
+  // Professionnels et recrutement (docs/03 §9, P8.1 et P8.2) : content/pages/professionnels.json,
+  // content/pages/recrutement.json ; les offres publiées s'ajoutent avec leur `publiee_le`.
+  "/professionnels/": "2026-09-27",
+  "/recrutement/": "2026-09-27",
+  "/recrutement/postuler/": "2026-09-27",
+  // Pages légales (docs/07 §2, P8.3) : content/legal/*.json, champ `maj` de chaque fichier.
+  "/mentions-legales/": "2026-09-27",
+  "/politique-de-confidentialite/": "2026-09-27",
+  "/cookies/": "2026-09-27",
+  "/conditions-generales/": "2026-09-27",
+  // Déclaration d'accessibilité (docs/07 §2, P8.4) : champ `date` de content/pages/accessibilite.json.
+  "/accessibilite/": "2026-09-27",
 };
 
 /** Date de la dernière révision des pages d'agences (site.config.json > agences, content/pages/agences.json). */
@@ -139,7 +152,14 @@ async function pagesEntries(): Promise<SitemapEntry[]> {
   const tools = listToolPages().map((tool) => ({ path: toolPath(tool.id), lastmod: tool.maj }));
   const toolsIndex = tools.length > 0 ? [{ path: TOOLS_PATH, lastmod: latestToolUpdate() }] : [];
 
-  return [...declared, ...aids, ...toolsIndex, ...tools];
+  // Offres d'emploi (docs/04 §2 `JobPosting`, P8.2) : publiées et non expirées seulement, datées
+  // par `publiee_le` ; aucune aujourd'hui, le segment n'en liste donc aucune.
+  const offers = (await listLiveOffers()).map((o) => ({
+    path: o.chemin,
+    lastmod: o.offer.publiee_le,
+  }));
+
+  return [...declared, ...aids, ...toolsIndex, ...tools, ...offers];
 }
 
 /** Segment `services` : pages relues seulement ; une page `a_relire` est en noindex. */

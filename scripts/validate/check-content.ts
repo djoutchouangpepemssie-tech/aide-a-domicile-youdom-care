@@ -11,7 +11,14 @@ import {
 import { findSharedSpellings, listLexiqueFiles, readLexiqueTerm } from "../../src/content/lexique";
 import { lexiquePageSchema, type LexiqueTerm } from "../../src/content/lexique-schema";
 import { editorialCharterSchema, magazinePageSchema } from "../../src/content/magazine-schema";
+import { isOfferLive, listOfferFiles, offerSeo, readOffer } from "../../src/content/offres";
 import { readServiceMeta } from "../../src/content/service-meta";
+import {
+  conditionsGeneralesSchema,
+  cookiesSchema,
+  mentionsLegalesSchema,
+  politiqueConfidentialiteSchema,
+} from "../../src/content/legal-schema";
 import { toolPageSchema, toolsPageSchema } from "../../src/content/tools-schema";
 import {
   aboutSchema,
@@ -26,6 +33,9 @@ import {
   aidPageSchema,
   aidsSchema,
   commitmentsSchema,
+  jobOfferSchema,
+  professionalsPageSchema,
+  recruitmentPageSchema,
   homePageSchema,
   howItWorksSchema,
   interfaceSchema,
@@ -36,6 +46,7 @@ import {
   siteConfigSchema,
   weekExamplesSchema,
   type Commitments,
+  type InterfaceTexts,
   type Pricing,
   type SiteConfig,
 } from "../../src/content/schemas";
@@ -62,6 +73,9 @@ const files = {
   "pages/magazine.json": magazinePageSchema,
   "pages/charte-editoriale.json": editorialCharterSchema,
   "pages/lexique.json": lexiquePageSchema,
+  // Professionnels et recrutement (docs/03 §9, P8.1 et P8.2).
+  "pages/professionnels.json": professionalsPageSchema,
+  "pages/recrutement.json": recruitmentPageSchema,
   "emails.json": emailsSchema,
   "formulaires/neuro.json": formDefinitionSchema,
   "formulaires/personne-agee.json": formDefinitionSchema,
@@ -83,6 +97,11 @@ const files = {
   "outils/fiche-de-vie-personne-agee.json": toolPageSchema,
   "outils/tour-du-logement-anti-chutes.json": toolPageSchema,
   "outils/aides-en-un-coup-d-oeil.json": toolPageSchema,
+  // Pages légales (docs/07 §2, P8.3).
+  "legal/mentions-legales.json": mentionsLegalesSchema,
+  "legal/politique-de-confidentialite.json": politiqueConfidentialiteSchema,
+  "legal/cookies.json": cookiesSchema,
+  "legal/conditions-generales.json": conditionsGeneralesSchema,
 } as const;
 
 export interface LoadedContent {
@@ -258,6 +277,57 @@ export async function runContentCheck(ctx: CheckContext): Promise<CheckResult> {
   }
   for (const shared of findSharedSpellings(lexiqueTerms)) {
     errors.push(`content/lexique : graphie partagée par deux termes : ${shared}`);
+  }
+
+  // Offres d'emploi (content/offres/*.json, docs/03 §9, P8.2) : chaque offre chargeable validée
+  // (slug = nom du fichier, agence connue), brouillon ou expirée signalée ; une offre publiée doit
+  // avoir des balises titre et description dans les bornes de docs/01 §8 (écrites ou composées).
+  // Le modèle `_exemple.json` n'est jamais chargé mais doit rester conforme au schéma.
+  const offersDir = path.join(ctx.rootDir, "content", "offres");
+  const siteConfig = parsed["site.config.json"] as SiteConfig | undefined;
+  const interfaceTexts = parsed["interface.json"] as InterfaceTexts | undefined;
+  for (const file of await listOfferFiles(offersDir)) {
+    const relative = path.relative(ctx.rootDir, file).split(path.sep).join("/");
+    try {
+      const offer = await readOffer(file);
+      const agency = siteConfig?.agences.find((a) => a.id === offer.lieu);
+      if (!agency) {
+        errors.push(`${relative} : lieu « ${offer.lieu} » inconnu de site.config.json.`);
+      } else if (interfaceTexts && offer.statut === "publiee") {
+        const seo = offerSeo(offer, agency, interfaceTexts.recrutement);
+        if (seo.titre.length < 50 || seo.titre.length > 60) {
+          errors.push(
+            `${relative} : balise titre hors 50–60 caractères (${seo.titre.length}) : écrire seo.titre.`,
+          );
+        }
+        if (seo.description.length < 140 || seo.description.length > 155) {
+          errors.push(
+            `${relative} : description hors 140–155 caractères (${seo.description.length}) : écrire seo.description.`,
+          );
+        }
+      }
+      if (offer.statut === "brouillon") {
+        warnings.push(`${relative} : statut brouillon, offre jamais construite.`);
+      } else if (!isOfferLive(offer)) {
+        warnings.push(
+          `${relative} : validité dépassée (${offer.valable_jusqu_au}), offre retirée du site.`,
+        );
+      }
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : `${relative} : ${String(error)}`);
+    }
+  }
+  try {
+    const example = await readFile(path.join(offersDir, "_exemple.json"), "utf8");
+    const outcome = jobOfferSchema.safeParse(JSON.parse(example));
+    if (!outcome.success) {
+      errors.push(`offres/_exemple.json :
+${z.prettifyError(outcome.error)}`);
+    }
+  } catch (error) {
+    errors.push(
+      `offres/_exemple.json : illisible (${error instanceof Error ? error.message : String(error)}).`,
+    );
   }
 
   if (errors.length > 0 || !ctx.prod) {

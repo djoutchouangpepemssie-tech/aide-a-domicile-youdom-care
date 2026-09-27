@@ -753,6 +753,51 @@ export const interfaceSchema = z.strictObject({
     voisins_h2: text,
     retour: text,
   }),
+  /** Page Professionnels (docs/03 §9, P8.1) : libellés du gabarit. */
+  professionnels: z.strictObject({
+    modes_h3: text,
+    departements_h3: text,
+    agences_h3: text,
+    /** Contient {téléphone}. */
+    appeler: text.includes("{téléphone}"),
+    fonctionnement_lien: text,
+  }),
+  /** Recrutement (docs/03 §9, P8.2) : offres, page d'offre, formulaire de candidature. */
+  recrutement: z.strictObject({
+    aucune_offre: text,
+    offre_sur_titre: text,
+    publiee_le: text.includes("{date}"),
+    valable_jusqu_au: text.includes("{date}"),
+    contrat: text,
+    temps_de_travail: text,
+    lieu: text,
+    secteur: text,
+    salaire: text,
+    /** Contient {min}, {max} et {unite}. */
+    salaire_fourchette: text.includes("{min}").includes("{max}").includes("{unite}"),
+    contrats: z.strictObject({ cdi: text, cdd: text }),
+    temps: z.strictObject({ "temps-plein": text, "temps-partiel": text }),
+    unites_salaire: z.strictObject({ heure: text, mois: text, an: text }),
+    missions_h2: text,
+    profil_h2: text,
+    toutes_les_offres: text,
+    postuler_offre: text,
+    envoyer: text,
+    email_aide: text,
+    /** Contient {titre}. */
+    offre_ciblee: text.includes("{titre}"),
+    offre_inconnue: text,
+    cv: z.strictObject({
+      manquant: text,
+      /** Contient {taille}. */
+      trop_lourd: text.includes("{taille}"),
+      type_invalide: text,
+      choisir: text,
+      choisi: text.includes("{nom}"),
+    }),
+    disponibilites: z.array(text).min(2).max(8),
+    champs: z.strictObject({ departement: text, disponibilite: text }),
+  }),
 });
 export type InterfaceTexts = z.infer<typeof interfaceSchema>;
 
@@ -1344,6 +1389,99 @@ export const siteMapPageSchema = z.strictObject({
 });
 export type SiteMapPage = z.infer<typeof siteMapPageSchema>;
 
+/* ---------- content/pages/accessibilite.json (docs/07 §2 et §4, P8.4) ---------- */
+
+const accessibilityIssueSchema = z.strictObject({
+  titre: text,
+  texte: text,
+  /** Critère RGAA (ou WCAG quand le RGAA 4.1 ne le couvre pas). */
+  critere: text,
+  etat: z.enum(["corrige", "a_corriger", "a_verifier"]),
+  correction: text,
+});
+export type AccessibilityIssue = z.infer<typeof accessibilityIssueSchema>;
+
+const accessibilityCount = z.number().int().nonnegative();
+
+export const accessibilityPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  /** Contient {site} et {url}. */
+  chapo: text,
+  date: isoDate,
+  /** Contient {date}. */
+  date_libelle: text,
+  etat: z
+    .strictObject({
+      h2: text,
+      statut: z.enum(["non_conforme", "partiellement_conforme", "totalement_conforme"]),
+      /** Contient {url} et {date}. */
+      texte: text,
+      criteres_testes: accessibilityCount,
+      criteres_conformes: accessibilityCount,
+      criteres_non_conformes: accessibilityCount,
+      criteres_non_applicables: accessibilityCount,
+      /** Contient {testes}, {conformes}, {non_conformes} et {non_applicables}. */
+      resultats_libelle: text,
+    })
+    .refine(
+      (etat) =>
+        etat.criteres_conformes + etat.criteres_non_conformes + etat.criteres_non_applicables ===
+        etat.criteres_testes,
+      { message: "conformes + non conformes + non applicables = critères testés" },
+    ),
+  resultats: z.strictObject({
+    h2: text,
+    texte: text,
+    conformes_h3: text,
+    conformes: z.array(text).min(1),
+    detail_h3: text,
+    detail_texte: text,
+  }),
+  non_accessibles: z.strictObject({
+    h2: text,
+    texte: text,
+    etats_libelles: z.strictObject({ corrige: text, a_corriger: text, a_verifier: text }),
+    items: z.array(accessibilityIssueSchema),
+    derogation_h3: text,
+    derogation_texte: text,
+    non_soumis_h3: text,
+    non_soumis_texte: text,
+  }),
+  etablissement: z.strictObject({
+    h2: text,
+    technologies_h3: text,
+    technologies: z.array(text).min(1),
+    environnement_h3: text,
+    environnement: z.array(text).min(1),
+    outils_h3: text,
+    outils: z.array(text).min(1),
+    pages_h3: text,
+    pages: z.array(z.strictObject({ libelle: text, href: internalPath })).min(1),
+  }),
+  contact: z.strictObject({
+    h2: text,
+    texte: text,
+    /** Contient {email}. */
+    email_libelle: text,
+    /** Contient {téléphone}. */
+    telephone_libelle: text,
+  }),
+  recours: z.strictObject({
+    h2: text,
+    texte: text,
+    /** Mention ajoutée (visuellement masquée) aux liens qui quittent le site. */
+    lien_externe: text,
+    items: z.array(z.strictObject({ libelle: text, href: z.url() })).min(1),
+    courrier_libelle: text,
+    courrier: z.array(text).min(1),
+    telephone_libelle: text,
+  }),
+});
+export type AccessibilityPage = z.infer<typeof accessibilityPageSchema>;
+
 /* ---------- content/pages/404.json (docs/04 §2 « Erreurs ») ---------- */
 
 export const notFoundPageSchema = z.strictObject({
@@ -1524,6 +1662,28 @@ export const emailsSchema = z.strictObject({
     nuits: z.strictObject({ calme: text, active: text, inconnu: text }),
     durees: z.strictObject({ jours: text, semaines: text, durable: text }),
   }),
+  /** Candidature (docs/05 §2, P8.2) : alerte à l'équipe avec le CV joint, accusé au candidat. */
+  candidature: z.strictObject({
+    /** Contient {departement}. */
+    objet: text.includes("{departement}"),
+    coordonnees: text,
+    secteur: text,
+    departement: text,
+    commune: text,
+    disponibilite: text,
+    message: text,
+    offre: text,
+    candidature_spontanee: text,
+    cv: text,
+    /** Contient {nom} et {taille}. */
+    cv_joint: text.includes("{nom}").includes("{taille}"),
+    origine: text,
+    consentement: text.includes("{version}"),
+    recu_le: text.includes("{date}"),
+    accuse_objet: text,
+    /** Contient {prénom} et {téléphone}. */
+    accuse_corps: text.includes("{prénom}").includes("{téléphone}"),
+  }),
 });
 export type EmailTexts = z.infer<typeof emailsSchema>;
 export type NavigationItem = z.infer<typeof navigationItemSchema>;
@@ -1574,3 +1734,189 @@ export const agenciesPageSchema = z.strictObject({
   agences: z.record(slug, z.strictObject({ seo: seoFieldsSchema })),
 });
 export type AgenciesPage = z.infer<typeof agenciesPageSchema>;
+
+/* ---------- content/pages/professionnels.json (docs/03 §9, docs/00 §4 principe 9, P8.1) ---------- */
+
+/** Bloc dont la phrase complémentaire dépend d'un engagement (même règle que `gatedItemSchema`). */
+const gatedBlockSchema = z
+  .strictObject({
+    h2: text,
+    texte: text,
+    texte_engagement: text.optional(),
+    engagement: engagementCode.optional(),
+  })
+  .refine((item) => (item.texte_engagement === undefined) === (item.engagement === undefined), {
+    message: "texte_engagement et engagement vont ensemble",
+  });
+
+export const professionalsPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  publics: z.strictObject({
+    h2: text,
+    texte: text,
+    items: z
+      .array(z.strictObject({ titre: text, texte: text }))
+      .min(3)
+      .max(6),
+  }),
+  mise_en_place: z.strictObject({
+    h2: text,
+    texte: text,
+    /** Chemins de pages services de content/services (libellé et lien repris de l'en-tête MDX). */
+    services: z.array(internalPath).min(3).max(10),
+    modes_texte: text,
+    modes_lien: text,
+  }),
+  zones: z.strictObject({
+    h2: text,
+    /** Contient {departements} et {agences} (nombres calculés depuis site.config.json). */
+    texte: text.includes("{departements}").includes("{agences}"),
+  }),
+  /** Délais : la phrase `texte_engagement` est liée à E4 et masquée en production tant qu'il n'est pas validé. */
+  delais: gatedBlockSchema,
+  retour: z.strictObject({
+    h2: text,
+    texte: text,
+    items: z
+      .array(z.strictObject({ titre: text, texte: text }))
+      .min(2)
+      .max(5),
+    ne_faisons_pas: z
+      .array(z.strictObject({ texte: text, relais: text.optional() }))
+      .min(1)
+      .max(4),
+  }),
+  formulaire: z.strictObject({
+    h2: text,
+    texte: text,
+    anonymat: text,
+    href: internalPath,
+  }),
+});
+export type ProfessionalsPage = z.infer<typeof professionalsPageSchema>;
+
+/* ---------- content/pages/recrutement.json (docs/03 §9, docs/00 §3 « le candidat », P8.2) ---------- */
+
+/**
+ * Point de « Ce que nous vous proposons » : entièrement conditionné par un engagement de
+ * content/engagements.json. Rien n'est affiché en production tant que l'engagement n'est pas
+ * validé ; le bloc entier disparaît s'il ne reste aucun point.
+ */
+const recruitmentOfferItemSchema = z.strictObject({
+  titre: text,
+  texte: text,
+  engagement: engagementCode,
+});
+
+export const recruitmentPageSchema = z.strictObject({
+  _lisezmoi: z.string(),
+  seo: seoFieldsSchema,
+  ariane: text,
+  h1: text,
+  chapo: text,
+  metier: z.strictObject({
+    h2: text,
+    texte: text,
+    /** Gestes et missions tels que les pages services du site les décrivent. */
+    missions: z
+      .array(z.strictObject({ titre: text, texte: text }))
+      .min(3)
+      .max(8),
+    publics_h3: text,
+    /** Chemins des pages piliers (libellé repris de l'en-tête MDX). */
+    publics: z.array(internalPath).min(2).max(6),
+    services_h3: text,
+    services: z.array(internalPath).min(2).max(8),
+  }),
+  secteurs: z.strictObject({
+    h2: text,
+    /** Contient {departements} et {agences}. */
+    texte: text.includes("{departements}").includes("{agences}"),
+  }),
+  proposons: z.strictObject({
+    h2: text,
+    /** Toujours affiché : ce qui se discute de vive voix, sans promesse. */
+    texte: text,
+    items: z.array(recruitmentOfferItemSchema).min(1).max(6),
+  }),
+  offres: z.strictObject({
+    h2: text,
+    texte: text,
+    spontanee_h3: text,
+    spontanee_texte: text,
+  }),
+  postuler: z.strictObject({
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    etape: text,
+    offre: text,
+    departement: text,
+    commune: text,
+    commune_aide: text,
+    disponibilite: text,
+    message: text,
+    message_aide: text,
+    cv: text,
+    cv_aide: text,
+    consentement: text,
+    confidentialite: text,
+  }),
+});
+export type RecruitmentPage = z.infer<typeof recruitmentPageSchema>;
+
+/* ---------- content/offres/*.json (docs/03 §9, docs/04 §2 JobPosting, P8.2) ---------- */
+
+export const jobContracts = ["cdi", "cdd"] as const;
+export const jobWorkingTimes = ["temps-plein", "temps-partiel"] as const;
+export const salaryUnits = ["heure", "mois", "an"] as const;
+export const jobOfferStatuses = ["brouillon", "publiee"] as const;
+
+/**
+ * Une offre d'emploi réelle. Le fichier `_exemple.json` documente le format et n'est jamais
+ * chargé (préfixe « _ »). Seules les offres `publiee` et non expirées sont construites ; aucune
+ * offre n'est inventée par la loop : Arcel les rédige.
+ */
+export const jobOfferSchema = z
+  .strictObject({
+    _lisezmoi: z.string().optional(),
+    slug,
+    titre: text,
+    /** Chapô de l'offre, une à trois phrases. */
+    description: text,
+    /**
+     * Balises titre et description moteur ; à défaut, elles sont composées depuis le titre, le
+     * contrat, l'agence et la description (check-content vérifie leurs longueurs, docs/01 §8).
+     */
+    seo: seoFieldsSchema.optional(),
+    contrat: z.enum(jobContracts),
+    temps_de_travail: z.enum(jobWorkingTimes),
+    /** Identifiant d'une agence de site.config.json (adresse du `jobLocation`). */
+    lieu: slug,
+    /** Secteur d'intervention en clair (« Puteaux, Nanterre, Suresnes »). */
+    secteur: text,
+    publiee_le: isoDate,
+    valable_jusqu_au: isoDate,
+    missions: z.array(text).min(1).max(12),
+    profil: z.array(text).min(1).max(12),
+    salaire: z
+      .strictObject({
+        min: z.number().positive(),
+        max: z.number().positive(),
+        unite: z.enum(salaryUnits),
+        devise: z.literal("EUR"),
+      })
+      .refine((s) => s.max >= s.min, { message: "max doit être supérieur ou égal à min" })
+      .optional(),
+    statut: z.enum(jobOfferStatuses),
+  })
+  .refine((offer) => offer.valable_jusqu_au > offer.publiee_le, {
+    message: "valable_jusqu_au doit suivre publiee_le",
+    path: ["valable_jusqu_au"],
+  });
+export type JobOffer = z.infer<typeof jobOfferSchema>;

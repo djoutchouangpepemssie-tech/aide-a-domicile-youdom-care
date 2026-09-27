@@ -2,6 +2,7 @@ import { checkContent } from "./check-content";
 import { checkContrast } from "./check-contrast";
 import { checkCopy } from "./check-copy";
 import { checkFreshness } from "./check-freshness";
+import { checkLegal } from "./check-legal";
 import { checkLinks } from "./check-links";
 import { checkLocalFacts } from "./check-local-facts";
 import { checkLocalNap } from "./check-local-nap";
@@ -21,6 +22,7 @@ export const checks: readonly Check[] = [
   checkCopy,
   checkContrast,
   checkLinks,
+  checkLegal,
   checkSeo,
   checkSchema,
   checkLocalFacts,
