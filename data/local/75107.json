@@ -25,7 +25,7 @@
     "part_90_plus": 2,
     "part_75_plus": 12.6,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "paris-12",
@@ -98,7 +98,7 @@
       "value": "16,9 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -107,7 +107,7 @@
       "value": "12,6 % de la population (75-89 ans : 10,6 % ; 90 ans ou plus : 2 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -116,7 +116,7 @@
       "value": "48 196 habitants (Paris 7e arrondissement)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -128,19 +128,19 @@
       "url": "https://www.paris.fr/lieux/maison-des-aines-et-des-aidants-paris-ouest-7e-15e-et-16e-arrondissements-16339",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/714d945b-8a79-4278-9e46-64660f957810",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
       "type": "ccas",
       "label": "Centre d'Action Sociale de la Ville de Paris (CASVP)",
       "address": "5 Boulevard Diderot, 75012 Paris",
-      "commune_insee": "75056",
+      "commune_insee": "75112",
       "telephone": "01 44 67 16 07",
       "url": "https://www.paris.fr/dossiers/centre-d-action-sociale-de-la-ville-de-paris-casvp-23",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/e65c2592-484b-42bf-a9ea-baba30ed554f",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -152,7 +152,7 @@
       "url": "https://handicap.paris.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/00a066cb-ebf9-4de3-9a14-30dffb30d81a",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -164,7 +164,7 @@
       "url": "https://www.paris.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/41f268a5-fea2-4a0f-aa3a-cd0e69f94a6f",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -172,10 +172,11 @@
       "label": "Foyer-Logement Petites Soeurs des Pauvres",
       "value": "Résidence autonomie — 16 places",
       "address": "62 avenue de Breteuil, 75007 PARIS",
+      "commune_insee": "75107",
       "telephone": "01 45 67 97 05",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -183,10 +184,11 @@
       "label": "Logements Jean Nicot",
       "value": "Résidence autonomie — 55 places",
       "address": "7 rue Jean-Nicot, 75007 PARIS",
+      "commune_insee": "75107",
       "telephone": "01 45 51 71 01",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -194,10 +196,11 @@
       "label": "Logements Malar",
       "value": "Résidence autonomie — 63 places",
       "address": "88 Rue Saint-dominique, 75007 PARIS",
+      "commune_insee": "75107",
       "telephone": "01 45 50 46 11",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -205,10 +208,11 @@
       "label": "Résidence Le Prince",
       "value": "Résidence autonomie — 55 places",
       "address": "109 Rue Saint-dominique, 75007 PARIS",
+      "commune_insee": "75107",
       "telephone": "01 45 55 05 76",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -216,11 +220,12 @@
       "label": "EHPAD COS Jeanne d'Arc",
       "value": "EHPAD · Hébergement temporaire · Unité Alzheimer — 71 places",
       "address": "21 Rue du Général Bertrand, 75007 PARIS",
+      "commune_insee": "75107",
       "telephone": "01 53 86 05 70",
       "url": "https://www.fondationcos.org/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -228,10 +233,11 @@
       "label": "EHPAD ma Maison Breteuil",
       "value": "EHPAD — 48 places",
       "address": "62 avenue de Breteuil, 75007 PARIS",
+      "commune_insee": "75107",
       "telephone": "01 45 67 97 05",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -239,11 +245,12 @@
       "label": "EHPAD Résidence de Sèvres",
       "value": "EHPAD — 47 places",
       "address": "81 Rue Vaneau, 75007 PARIS",
+      "commune_insee": "75107",
       "telephone": "01 40 48 31 00",
       "url": "http://www.residencedesevres.com/",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -255,7 +262,7 @@
       "telephone": "01 45 56 56 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -267,7 +274,7 @@
       "telephone": "01 40 61 11 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -279,7 +286,7 @@
       "telephone": "01 42 22 21 83",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -291,7 +298,7 @@
       "telephone": "01 45 51 86 87",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -314,7 +321,7 @@
       "telephone": "01 42 92 34 32",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -322,11 +329,12 @@
       "label": "APAEAI Jours Heureux",
       "value": "Réseau Unapei — association de parents gestionnaire",
       "address": "20 RUE RIBERA, 75016 PARIS",
+      "commune_insee": "75116",
       "telephone": "01 42 24 91 79",
       "url": "https://www.lesjoursheureux.asso.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -334,6 +342,7 @@
       "label": "APF France handicap — Délégation de Paris",
       "value": "Permanence le mercredi de 14 h à 16 h et le jeudi de 15 h à 17 h ; dd.75@apf.asso.fr",
       "address": "44 rue des Longues Raies, 75013 Paris",
+      "commune_insee": "75113",
       "telephone": "01 53 80 92 97",
       "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
       "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
@@ -372,7 +381,7 @@
       "address": "terre-plein de l'avenue de Saxe entre le n°17et la place de Breteuil",
       "source_url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
       "source_label": "Ville de Paris, opendata.paris.fr — marchés découverts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -382,7 +391,7 @@
       "address": "15 Rue Fabert, 75007 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -392,7 +401,7 @@
       "address": "2 Esplanade Habib Bourguiba, 75007 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -402,7 +411,7 @@
       "address": "2 Avenue de Tourville, 75007 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -412,7 +421,7 @@
       "address": "1 Avenue Anatole France, 75007 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -422,7 +431,7 @@
       "address": "14 Quai Branly, 75007 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -432,7 +441,7 @@
       "address": "16 Esplanade du Souvenir Francais, 75007 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -440,10 +449,11 @@
       "label": "ACTIVITÉS CULTURELLES ET DE LOISIRS DE LA VILLE DE PARIS",
       "value": "Evènements conviviaux, Sorties collectives · Contactez la structure pour en savoir davantage · Certaines activités sont gratuites et d'autres sont payantes selon un tarif adapté au niveau de ressources à faire calculer auprès de l'EPS. Contactez la structure pour en savoir davantage",
       "address": "116 rue de grenelle, 75007, PARIS",
+      "commune_insee": "75107",
       "url": "https://www.paris.fr/pages/loisirs-et-citoyennete-185",
       "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
       "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -451,22 +461,24 @@
       "label": "Club Seniors Malar",
       "value": "Ateliers collectifs, Evènements conviviaux · 1 fois par semaine",
       "address": "88 rue saint-dominique, 75007, PARIS",
+      "commune_insee": "75107",
       "telephone": "01 45 50 46 11",
       "url": "https://www.paris.fr/pages/loisirs-et-citoyennete-185",
       "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
       "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
       "type": "equipement-seniors",
       "label": "MVAC 7",
       "address": "4 rue amélie, 75007, PARIS",
+      "commune_insee": "75107",
       "telephone": "01 53 59 44 90",
       "url": "https://www.paris.fr/lieux/maison-de-la-vie-associative-et-citoyenne-du-7e-arrondissement-3274",
       "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
       "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -478,7 +490,7 @@
       "url": "https://www.mairie07.paris.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/fe2cbdd1-e488-4e0a-a608-390f72eae260",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     }
   ],
@@ -487,47 +499,47 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/communes?codeDepartement=75&type=arrondissement-municipal&fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 75",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2275%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Ville de Paris — marchés découverts",
       "url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Ville de Paris — espaces verts (promenades ouvertes)",
       "url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Ville de Paris — Seniors à Paris, activités de loisirs et citoyenneté",
       "url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",

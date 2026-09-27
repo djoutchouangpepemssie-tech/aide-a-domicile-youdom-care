@@ -25,7 +25,7 @@
     "part_90_plus": 1.1,
     "part_75_plus": 8.5,
     "source_url": "https://www.insee.fr/fr/statistiques/8581696",
-    "collected_at": "2026-09-20"
+    "collected_at": "2026-09-26"
   },
   "agence_proche": {
     "id": "puteaux",
@@ -98,7 +98,7 @@
       "value": "14,4 % de la population",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -107,7 +107,7 @@
       "value": "8,5 % de la population (75-89 ans : 7,4 % ; 90 ans ou plus : 1,1 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -116,7 +116,7 @@
       "value": "35 418 habitants (Paris 8e arrondissement)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -128,19 +128,19 @@
       "url": "https://www.paris.fr/equipements/maison-des-aines-et-des-aidants-paris-nord-ouest-8e-17e-et-18e-arrondissements-16335",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/4053cdae-c81d-48e8-86cd-610fb52c0273",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
       "type": "ccas",
       "label": "Centre d'Action Sociale de la Ville de Paris (CASVP)",
       "address": "5 Boulevard Diderot, 75012 Paris",
-      "commune_insee": "75056",
+      "commune_insee": "75112",
       "telephone": "01 44 67 16 07",
       "url": "https://www.paris.fr/dossiers/centre-d-action-sociale-de-la-ville-de-paris-casvp-23",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/e65c2592-484b-42bf-a9ea-baba30ed554f",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -152,7 +152,7 @@
       "url": "https://handicap.paris.fr",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/00a066cb-ebf9-4de3-9a14-30dffb30d81a",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -164,18 +164,19 @@
       "url": "https://www.paris.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/41f268a5-fea2-4a0f-aa3a-cd0e69f94a6f",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
       "type": "residence-autonomie",
-      "label": "Logements Luneville",
-      "value": "Résidence autonomie — 28 places",
-      "address": "12 rue de luneville, 75008 PARIS",
-      "telephone": "01 45 25 33 67",
+      "label": "Logements Beaucour",
+      "value": "Résidence autonomie — 64 places",
+      "address": "3 avenue Beaucour, 75009 PARIS",
+      "commune_insee": "75108",
+      "telephone": "01 42 81 41 94",
       "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
       "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -187,7 +188,7 @@
       "telephone": "01 42 25 02 59",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -199,7 +200,7 @@
       "telephone": "01 40 08 88 00",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -211,7 +212,7 @@
       "telephone": "01 48 78 05 21",
       "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
       "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -234,7 +235,7 @@
       "telephone": "01 42 92 34 32",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -242,11 +243,12 @@
       "label": "APAEAI Jours Heureux",
       "value": "Réseau Unapei — association de parents gestionnaire",
       "address": "20 RUE RIBERA, 75016 PARIS",
+      "commune_insee": "75116",
       "telephone": "01 42 24 91 79",
       "url": "https://www.lesjoursheureux.asso.fr",
       "source_url": "https://carto.unapei.org/",
       "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": false
     },
     {
@@ -254,6 +256,7 @@
       "label": "APF France handicap — Délégation de Paris",
       "value": "Permanence le mercredi de 14 h à 16 h et le jeudi de 15 h à 17 h ; dd.75@apf.asso.fr",
       "address": "44 rue des Longues Raies, 75013 Paris",
+      "commune_insee": "75113",
       "telephone": "01 53 80 92 97",
       "url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
       "source_url": "https://iledefrance.apf-francehandicap.org/presentation-territoire-75-93",
@@ -292,7 +295,7 @@
       "address": "place de la Madeleine, sur le mail contigu à la chaussée gauche longeant l'Eglise",
       "source_url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
       "source_label": "Ville de Paris, opendata.paris.fr — marchés découverts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -302,7 +305,7 @@
       "address": "Place de la Madeleine sur le mail à droite de l'église au débouché du boulevard de la Madeleine",
       "source_url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
       "source_label": "Ville de Paris, opendata.paris.fr — marchés découverts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -312,7 +315,7 @@
       "address": "Angle des avenues Marigny et Gabriel et contre allée de l'avenue Gabriel",
       "source_url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
       "source_label": "Ville de Paris, opendata.paris.fr — marchés découverts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -322,7 +325,7 @@
       "address": "terre-plein du boulevard des Batignolles, entre les n° 27 et 35, coté 8ème et les n°34 et 48, coté 17ème",
       "source_url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
       "source_label": "Ville de Paris, opendata.paris.fr — marchés découverts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -332,7 +335,7 @@
       "address": "5 Avenue des Champs Elysees, 75008 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -342,7 +345,7 @@
       "address": "1 Place de la Republique Dominicaine, 75008 Paris",
       "source_url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
       "source_label": "Ville de Paris, opendata.paris.fr — espaces verts",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -350,10 +353,11 @@
       "label": "ACTIVITÉS CULTURELLES ET DE LOISIRS DE LA VILLE DE PARIS",
       "value": "Evènements conviviaux, Sorties collectives · Contactez la structure pour en savoir davantage · Certaines activités sont gratuites et d'autres sont payantes selon un tarif adapté au niveau de ressources à faire calculer auprès de l'EPS. Contactez la structure pour en savoir davantage",
       "address": "3 rue de lisbonne, 75008, PARIS",
+      "commune_insee": "75108",
       "url": "https://www.paris.fr/pages/loisirs-et-citoyennete-185",
       "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
       "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -361,22 +365,24 @@
       "label": "Club Seniors Beaucour",
       "value": "Ateliers collectifs, Evènements conviviaux · 1 fois par semaine · Gratuit",
       "address": "3 avenue Beaucour, 75008, PARIS",
+      "commune_insee": "75108",
       "telephone": "01 42 25 33 19",
       "url": "https://www.paris.fr/pages/loisirs-et-citoyennete-185",
       "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
       "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
       "type": "equipement-seniors",
       "label": "MVAC 8",
       "address": "28 rue laure diebold, 75008, PARIS",
+      "commune_insee": "75108",
       "telephone": "01 53 67 83 60",
       "url": "https://mairie08.paris.fr/pages/la-maison-des-associations-du-8e-9136",
       "source_url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
       "source_label": "Ville de Paris, opendata.paris.fr — Seniors à Paris",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     },
     {
@@ -388,7 +394,7 @@
       "url": "https://www.mairie08.paris.fr/",
       "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/94bd581d-8494-4467-b375-55f916d0e079",
       "source_label": "Annuaire de l'administration (DILA), base de données locales",
-      "collected_at": "2026-09-20",
+      "collected_at": "2026-09-26",
       "in_territory": true
     }
   ],
@@ -397,47 +403,47 @@
     {
       "label": "API Découpage administratif (geo.api.gouv.fr)",
       "url": "https://geo.api.gouv.fr/communes?codeDepartement=75&type=arrondissement-municipal&fields=nom,code,codesPostaux,population,centre,surface,codeEpci&format=json",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Insee — recensement de la population (base communale)",
       "url": "https://www.insee.fr/fr/statistiques/8581696",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Annuaire de l'administration (DILA), base de données locales — département 75",
       "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2275%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
       "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Ville de Paris — marchés découverts",
       "url": "https://opendata.paris.fr/explore/dataset/marches-decouverts/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Ville de Paris — espaces verts (promenades ouvertes)",
       "url": "https://opendata.paris.fr/explore/dataset/espaces_verts/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Ville de Paris — Seniors à Paris, activités de loisirs et citoyenneté",
       "url": "https://opendata.paris.fr/explore/dataset/seniors-a-paris-loisirs-et-citoyennete/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
       "url": "https://carto.unapei.org/",
-      "collected_at": "2026-09-20"
+      "collected_at": "2026-09-26"
     },
     {
       "label": "Île-de-France Mobilités — PAM Île-de-France",
