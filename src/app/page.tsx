@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Commitments, visibleCommitments } from "@/components/blocks/Commitments/Commitments";
 import { Hero } from "@/components/blocks/Hero/Hero";
 import { HeroSection } from "@/components/blocks/Hero/HeroSection";
-import { heroPhotoSizes } from "@/components/blocks/Hero/hero-scene";
 import { withParam } from "@/components/blocks/HeroGestures/params";
 import { HeroPicker } from "@/components/blocks/Parcours/HeroPicker";
 import { ParcoursProvider } from "@/components/blocks/Parcours/ParcoursProvider";
@@ -69,7 +68,7 @@ export function generateMetadata(): Metadata {
 
 export default async function Home() {
   const page = getHomePage();
-  const { contact, marque } = getSiteConfig();
+  const { contact } = getSiteConfig();
   const navigation = getNavigation();
   const { boutons, semaine_type, tarifs, recherche_commune, formulaires } = getInterfaceTexts();
   const { engagements } = getCommitments();
@@ -147,7 +146,6 @@ export default async function Home() {
   });
 
   const featuredService = pricing.prestations.find(isDisplayablePrice);
-  const bannerPhoto = page.banniere.photo;
   const neuroPhoto = page.neuro.photo;
   const stepsPhoto = page.etapes.photo;
   const relativesPhoto = page.proches.photo;
@@ -169,7 +167,29 @@ export default async function Home() {
     <main id="contenu">
       <ParcoursProvider>
         {/* Scène « aurore » : canard en haut, halo sable ; le parcours est dans le hero (D-032). */}
-        <HeroSection scene="aurore" aria-label={page.banniere.sur_titre}>
+        <HeroSection
+          scene="aurore"
+          aria-label={page.banniere.sur_titre}
+          background={
+            page.banniere.signature ? (
+              /*
+               * Photo détourée fournie par Arcel, posée en fond de la bannière (27/09/2026) :
+               * ancrée en bas à droite, sous le panneau du parcours, elle ne passe jamais sous le
+               * titre ni sous la promesse. Décorative, donc sans alternative textuelle.
+               */
+              <Image
+                src={page.banniere.signature.photo.src}
+                alt=""
+                aria-hidden="true"
+                width={600}
+                height={550}
+                sizes="(min-width: 80rem) 30rem, (min-width: 40rem) 34vw, 0px"
+                className="absolute top-[14%] right-[3%] h-auto w-[30vw] max-w-[24rem] object-contain xl:top-[10%] xl:max-w-[27rem]"
+                priority={false}
+              />
+            ) : null
+          }
+        >
           <Hero
             surtitle={page.banniere.sur_titre}
             title={page.banniere.h1}
@@ -178,24 +198,15 @@ export default async function Home() {
             secondary={{ label: boutons.demande_detaillee, href: navigation.demande_href }}
             phone={phone}
             reassurance={page.banniere.reassurance}
-            illustration={page.banniere.illustration}
-            thread={
-              bannerPhoto ? { fil: "bras-lies", knot: page.banniere.noeud ?? "50% 78%" } : null
-            }
-            media={
-              bannerPhoto ? (
-                <PhotoFigure
-                  src={bannerPhoto.src}
-                  alt={bannerPhoto.alt}
-                  focal={bannerPhoto.focal}
-                  ratio="4:5"
-                  mobileRatio="16:9"
-                  radius={28}
-                  sizes={heroPhotoSizes}
-                  priority
-                />
-              ) : undefined
-            }
+            /* 27/09/2026 : la photo de fond remplace l'illustration au trait de la bannière. */
+            illustration={null}
+            /*
+             * 27/09/2026 : la photo encadrée de la colonne de droite laisse la place à la photo
+             * détourée posée en fond de la bannière (demande d'Arcel). Deux images dans la même
+             * bannière, plus le panneau du parcours, se masquaient l'une l'autre.
+             */
+            thread={null}
+            media={undefined}
             tint="teal"
             cue={{ label: page.situations.h2, href: `#${SITUATIONS_ID}` }}
             gesture={
@@ -217,32 +228,6 @@ export default async function Home() {
             }
           />
         </HeroSection>
-
-        {/*
-         * Bande de signature (27/09/2026, photo fournie par Arcel) : la photo détourée sur la
-         * scène sable, et la signature de marque de site.config.json. Aucune promesse ici : les
-         * engagements ont leur section plus bas, avec leur garde-fou de validation.
-         */}
-        {page.banniere.signature ? (
-          <Section tone="sand" aria-labelledby="signature">
-            <div className="grid items-center gap-8 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
-              <Image
-                src={page.banniere.signature.photo.src}
-                alt={page.banniere.signature.photo.alt}
-                width={600}
-                height={550}
-                sizes="(min-width: 64rem) 32rem, (min-width: 40rem) 45vw, 90vw"
-                className="mx-auto h-auto w-full max-w-md sm:mx-0"
-              />
-              <p
-                id="signature"
-                className="heading-2 m-0 max-w-prose text-balance text-teal-900 sm:text-left"
-              >
-                {marque.signature}
-              </p>
-            </div>
-          </Section>
-        ) : null}
 
         <Section tone="white" aria-labelledby={SITUATIONS_ID}>
           {journey ? (

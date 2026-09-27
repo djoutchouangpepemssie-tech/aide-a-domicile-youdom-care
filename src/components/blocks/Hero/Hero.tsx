@@ -78,7 +78,11 @@ export interface HeroProps {
   phone: { label: string; href: string } | null;
   reassurance: readonly string[];
   footnote?: { text: string; href: string };
-  illustration?: ThreadIllustrationName;
+  /**
+   * Dessin au trait affiché à droite quand la bannière n'a pas de média. `null` : rien du tout,
+   * pour une bannière qui porte déjà une image de fond (27/09/2026).
+   */
+  illustration?: ThreadIllustrationName | null;
   /** Photo du hero (PhotoFigure 4:5, bande 16:9 sur mobile, rayon 28 px), avec son fil. */
   media?: ReactNode;
   /** Interaction immédiate (choisir sa situation, dire pour qui, chercher sa commune…). */
@@ -180,7 +184,7 @@ export function Hero({
             </HeroThread>
           )}
         </div>
-      ) : (
+      ) : illustration === null ? null : (
         <Thread
           illustration={illustration}
           tone={dark ? "dark" : "light"}
