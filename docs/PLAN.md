@@ -118,25 +118,25 @@ Fin de phase 4b : `pnpm audit`, fusion locale squash dans `main`, étiquette `ph
 
 ## Phase 6 — Référencement local, vague 1 · `phase/06-local`
 
-- [ ] **P6.1 Données : territoires.** Communes, arrondissements, quartiers ; contrôle croisé avec `data/territoires.seed.json`. Réf. `docs/04 §5`.
-- [ ] **P6.2 Données : ressources.** Points d'information locaux, accueils de jour, annuaire de l'administration (CCAS, MDPH, départements), hôpitaux. Chaque fait avec source et date.
-- [ ] **P6.3 Données : démographie, agences géocodées, distances, communes voisines, sélection de la vague 1** (règle de `docs/04 §4`).
-- [ ] **P6.4 Schéma `LocalData` et contrôles locaux** (`check-local-facts`, `check-local-uniqueness`, `check-local-nap`), avec tests sur des pages factices trop proches.
-- [ ] **P6.5 Gabarit de page locale**, `LocalFactsGrid`, page `/aide-a-domicile/` avec carte d'Île-de-France accessible (liste équivalente).
-- [ ] **P6.6 Pages des six agences.**
-- [ ] **P6.7 Paris : pilier.**
-- [ ] **P6.8 Paris : arrondissements 1 à 5.**
-- [ ] **P6.9 Paris : arrondissements 6 à 10.**
-- [ ] **P6.10 Paris : arrondissements 11 à 15.**
-- [ ] **P6.11 Paris : arrondissements 16 à 20.**
-- [ ] **P6.12 Départements : Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne.**
-- [ ] **P6.13 Départements : Seine-et-Marne, Yvelines, Essonne, Val-d'Oise.**
-- [ ] **P6.14 Communes des agences** : Puteaux, Saint-Denis, Vitry-sur-Seine, Serris, Versailles.
-- [ ] **P6.15 Communes de la vague 1 : Hauts-de-Seine.**
-- [ ] **P6.16 Communes de la vague 1 : Seine-Saint-Denis.**
-- [ ] **P6.17 Communes de la vague 1 : Val-de-Marne.**
-- [ ] **P6.18 Communes de la vague 1 : Yvelines et Essonne.**
-- [ ] **P6.19 Communes de la vague 1 : Seine-et-Marne et Val-d'Oise.**
+- [x] (a1c7d23, e1439bb, 1a72ebe) **P6.1 Données : territoires.** Communes, arrondissements, quartiers ; contrôle croisé avec `data/territoires.seed.json`. Réf. `docs/04 §5`.
+- [x] (a1c7d23, e1439bb, 1a72ebe) **P6.2 Données : ressources.** Points d'information locaux, accueils de jour, annuaire de l'administration (CCAS, MDPH, départements), hôpitaux. Chaque fait avec source et date.
+- [x] (a1c7d23, e1439bb, 1a72ebe) **P6.3 Données : démographie, agences géocodées, distances, communes voisines, sélection de la vague 1** (règle de `docs/04 §4`).
+- [x] (64420c4, a1b8687) **P6.4 Schéma `LocalData` et contrôles locaux** (`check-local-facts`, `check-local-uniqueness`, `check-local-nap`), avec tests sur des pages factices trop proches.
+- [x] (11edd5c, 405aa5a) **P6.5 Gabarit de page locale**, `LocalFactsGrid`, page `/aide-a-domicile/` avec carte d'Île-de-France accessible (liste équivalente).
+- [x] (405aa5a) **P6.6 Pages des six agences.**
+- [x] (d9cbb16) **P6.7 Paris : pilier.**
+- [x] (d9cbb16) **P6.8 Paris : arrondissements 1 à 5.**
+- [x] (d9cbb16) **P6.9 Paris : arrondissements 6 à 10.**
+- [x] (9c2aa10) **P6.10 Paris : arrondissements 11 à 15.**
+- [x] (9c2aa10) **P6.11 Paris : arrondissements 16 à 20.**
+- [x] (06865f9) **P6.12 Départements : Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne.**
+- [x] (06865f9) **P6.13 Départements : Seine-et-Marne, Yvelines, Essonne, Val-d'Oise.**
+- [x] (8f94e90) **P6.14 Communes des agences** : Puteaux, Saint-Denis, Vitry-sur-Seine, Serris, Versailles.
+- [x] (f20ef4b) **P6.15 Communes de la vague 1 : Hauts-de-Seine.**
+- [x] (2f45da8) **P6.16 Communes de la vague 1 : Seine-Saint-Denis.**
+- [x] (a4583fa) **P6.17 Communes de la vague 1 : Val-de-Marne.**
+- [x] (185eefd) **P6.18 Communes de la vague 1 : Yvelines et Essonne.**
+- [x] (ae37714) **P6.19 Communes de la vague 1 : Seine-et-Marne et Val-d'Oise.**
 
 Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la page à partir de ses faits ; seuils bloquants respectés ; une page sous les seuils n'est pas créée et le motif est consigné au journal.
 

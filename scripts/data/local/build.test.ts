@@ -1,0 +1,417 @@
+import { readdir, readFile } from "node:fs/promises";
+import path from "node:path";
+import { describe, expect, it } from "vitest";
+import { localDataSchema, localThresholds } from "../../../src/content/local-schema";
+import { addressPlace, buildTerritories, compareWithSeed, locateFacts, normalizePlaceName, parisStreetAddresses, type BuildInputs, type Seed } from "./build";
+import { normalizeAddress } from "./ban";
+import type { CnsaEtablissement } from "./sources/cnsa";
+import type { TerritoryContext } from "./types";
+import type { GeoData } from "./geo-api";
+import type { InseeData } from "./insee";
+import type { AnnuaireData } from "./sources/annuaire";
+import type { CnsaData } from "./sources/cnsa";
+import type { FinessData } from "./sources/finess";
+import type { ParisData } from "./sources/paris";
+import type { UnapeiData } from "./sources/unapei";
+import type { Agency } from "./territoires";
+
+const today = "2026-09-20";
+
+const geo: GeoData = {
+  region: { code: "11", nom: "Île-de-France" },
+  departements: [
+    { code: "75", nom: "Paris", chefLieu: "75056" },
+    { code: "77", nom: "Seine-et-Marne", chefLieu: "77288" },
+    { code: "78", nom: "Yvelines", chefLieu: "78646" },
+    { code: "91", nom: "Essonne", chefLieu: "91228" },
+    { code: "92", nom: "Hauts-de-Seine", chefLieu: "92050" },
+    { code: "93", nom: "Seine-Saint-Denis", chefLieu: "93008" },
+    { code: "94", nom: "Val-de-Marne", chefLieu: "94028" },
+    { code: "95", nom: "Val-d'Oise", chefLieu: "95500" },
+  ],
+  communes: [
+    { code: "75056", nom: "Paris", codes_postaux: ["75001", "75012"], departement: "75", type: "commune", population: 2_100_000, centre: { lat: 48.8589, lng: 2.347 }, superficie_ha: 10536, epci: "200054781" },
+    { code: "75112", nom: "Paris 12e Arrondissement", codes_postaux: ["75012"], departement: "75", type: "arrondissement", population: 140_000, centre: { lat: 48.835, lng: 2.4211 }, superficie_ha: 1632, epci: null },
+    { code: "92062", nom: "Puteaux", codes_postaux: ["92800"], departement: "92", type: "commune", population: 45_000, centre: { lat: 48.884, lng: 2.238 }, superficie_ha: 319, epci: "200054781" },
+    { code: "92050", nom: "Nanterre", codes_postaux: ["92000"], departement: "92", type: "commune", population: 96_000, centre: { lat: 48.896, lng: 2.2071 }, superficie_ha: 1219, epci: "200054781" },
+    { code: "92001", nom: "Lointaine", codes_postaux: ["92999"], departement: "92", type: "commune", population: null, centre: { lat: 48.7, lng: 2.4 }, superficie_ha: 100, epci: null },
+    // Chefs-lieux sans population connue (hors vague 1) : servent au centre des départements.
+    { code: "77288", nom: "Melun", codes_postaux: ["77000"], departement: "77", type: "commune", population: null, centre: { lat: 48.5421, lng: 2.6554 }, superficie_ha: null, epci: null },
+    { code: "78646", nom: "Versailles", codes_postaux: ["78000"], departement: "78", type: "commune", population: null, centre: { lat: 48.8049, lng: 2.1204 }, superficie_ha: null, epci: null },
+    { code: "91228", nom: "Évry-Courcouronnes", codes_postaux: ["91000"], departement: "91", type: "commune", population: null, centre: { lat: 48.6238, lng: 2.4296 }, superficie_ha: null, epci: null },
+    { code: "93008", nom: "Bobigny", codes_postaux: ["93000"], departement: "93", type: "commune", population: null, centre: { lat: 48.9088, lng: 2.4391 }, superficie_ha: null, epci: null },
+    { code: "94028", nom: "Créteil", codes_postaux: ["94000"], departement: "94", type: "commune", population: null, centre: { lat: 48.7771, lng: 2.4531 }, superficie_ha: null, epci: null },
+    { code: "95500", nom: "Pontoise", codes_postaux: ["95300"], departement: "95", type: "commune", population: null, centre: { lat: 49.0508, lng: 2.0953 }, superficie_ha: null, epci: null },
+  ],
+  epcis: new Map([["200054781", "Métropole du Grand Paris"]]),
+  urls: {
+    communes: { "92": "https://geo.api.gouv.fr/departements/92/communes?fields=nom" },
+    arrondissements: "https://geo.api.gouv.fr/communes?codeDepartement=75&type=arrondissement-municipal",
+    departements: "https://geo.api.gouv.fr/departements?codeRegion=11",
+  },
+  collected_at: today,
+};
+
+const agencies: Agency[] = [
+  { id: "puteaux", code_insee: "92062", departement: "92", coordonnees: { lat: 48.88366, lng: 2.248934 } },
+  { id: "paris-12", code_insee: "75112", departement: "75", coordonnees: { lat: 48.850552, lng: 2.370136 } },
+];
+
+const zones = [
+  { code: "75", nom: "Paris", slug: "paris" },
+  { code: "77", nom: "Seine-et-Marne", slug: "seine-et-marne" },
+  { code: "78", nom: "Yvelines", slug: "yvelines" },
+  { code: "91", nom: "Essonne", slug: "essonne" },
+  { code: "92", nom: "Hauts-de-Seine", slug: "hauts-de-seine" },
+  { code: "93", nom: "Seine-Saint-Denis", slug: "seine-saint-denis" },
+  { code: "94", nom: "Val-de-Marne", slug: "val-de-marne" },
+  { code: "95", nom: "Val-d'Oise", slug: "val-d-oise" },
+];
+
+const insee: InseeData = {
+  millesime: "2022",
+  source_url: "https://www.insee.fr/fr/statistiques/8581696",
+  collected_at: today,
+  counts: new Map([
+    ["92062", { population: 44198, pop_60_74: 5605.77, pop_75_89: 2505.53, pop_90_plus: 414.31 }],
+    ["92050", { population: 96000, pop_60_74: 9000, pop_75_89: 4000, pop_90_plus: 500 }],
+    ["75056", { population: 2113705, pop_60_74: 302819, pop_75_89: 154040, pop_90_plus: 24566 }],
+    ["75112", { population: 140000, pop_60_74: 20000, pop_75_89: 9000, pop_90_plus: 1500 }],
+  ]),
+};
+
+const annuaireSource92 = { label: "Annuaire — 92", url: "https://api-lannuaire.service-public.fr/…92", collected_at: today };
+const annuaireSource75 = { label: "Annuaire — 75", url: "https://api-lannuaire.service-public.fr/…75", collected_at: today };
+const annuaire: AnnuaireData = {
+  collected_at: today,
+  sources: [annuaireSource75, annuaireSource92],
+  sourceByDepartement: { "75": annuaireSource75, "92": annuaireSource92 },
+  records: [
+    { nom: "Centre communal d'action sociale (CCAS) - Puteaux", pivot: "ccas", communes: ["92062"], departement: "92", address: "102bis Rue de la République, 92800 Puteaux", telephone: "01 46 92 95 95", url: "https://www.puteaux.fr/", page: "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/ccas-puteaux" },
+    { nom: "Maison départementale des personnes handicapées (MDPH) - Hauts-de-Seine", pivot: "maison_handicapees", communes: ["92026"], departement: "92", page: "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/mdph" },
+    { nom: "Conseil départemental - Hauts-de-Seine", pivot: "cg", communes: ["92050"], departement: "92", page: "https://lannuaire.service-public.gouv.fr/ile-de-france/hauts-de-seine/cd" },
+    { nom: "Point d'information local dédié aux personnes âgées - Paris 11e- 12e- 20e arrondissements", pivot: "clic", communes: ["75112"], departement: "75", page: "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/clic-12" },
+    { nom: "Centre d'Action Sociale de la Ville de Paris (CASVP)", pivot: "ccas", communes: ["75056"], departement: "75", page: "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/casvp" },
+  ],
+};
+
+const cnsa: CnsaData = { points: [], etablissements: [], sources: [], pointsCollectedAt: "", etabCollectedAt: "" };
+const finess: FinessData = { etablissements: [], source: null, collected_at: "" };
+const paris: ParisData = { quartiers: [], marches: [], espacesVerts: [], seniors: [], sources: [], collected: {} };
+const unapei: UnapeiData = { associations: [], source: null, collected_at: "" };
+
+const inputs: BuildInputs = { geo, agencies, zones, insee, annuaire, cnsa, finess, paris, unapei, today };
+
+describe("assemblage des territoires", () => {
+  const result = buildTerritories(inputs);
+  const byCode = new Map(result.files.map((f) => [f.code, f]));
+
+  it("produit la région, les 8 départements, l'arrondissement et les communes de la vague 1 seulement", () => {
+    expect([...byCode.keys()]).toEqual(["75", "75112", "77", "78", "91", "92", "92050", "92062", "93", "94", "95", "idf"]);
+    expect(byCode.has("75056")).toBe(false);
+    expect(byCode.has("92001")).toBe(false);
+  });
+
+  it("écrit des fichiers conformes au schéma LocalData", () => {
+    for (const file of result.files) expect(() => localDataSchema.parse(file)).not.toThrow();
+  });
+
+  it("renseigne identité, démographie, agence et voisins d'une commune", () => {
+    const puteaux = byCode.get("92062");
+    expect(puteaux).toBeDefined();
+    if (!puteaux) return;
+    expect(puteaux.chemin).toBe("/aide-a-domicile/hauts-de-seine/puteaux/");
+    expect(puteaux.slug).toBe("puteaux");
+    expect(puteaux.parent).toBe("92");
+    expect(puteaux.motif_vague).toBe("commune-agence");
+    expect(puteaux.epci).toEqual({ code: "200054781", nom: "Métropole du Grand Paris" });
+    expect(puteaux.demographie?.part_75_plus).toBe(6.6);
+    expect(puteaux.agence_proche?.id).toBe("puteaux");
+    expect(puteaux.communes_voisines?.[0]).toMatchObject({ code: "92050", slug: "nanterre", page: true });
+    expect(puteaux.communes_voisines?.some((n) => n.page === false)).toBe(true);
+    expect(puteaux.communes_voisines?.length).toBeLessThanOrEqual(8);
+    expect(puteaux.facts.map((f) => f.type)).toEqual(
+      expect.arrayContaining(["demographie", "ccas", "mdph", "aide-departementale", "transport-adapte", "association", "autre"]),
+    );
+    expect(puteaux.facts.every((f) => f.source_url.startsWith("http") && /^\d{4}-\d{2}-\d{2}$/.test(f.collected_at))).toBe(true);
+    expect(puteaux.sources.some((s) => s.url.includes("insee.fr"))).toBe(true);
+    // Une seule exportation de l'annuaire (celle du département), pas les huit.
+    expect(puteaux.sources.filter((s) => s.label.startsWith("Annuaire")).map((s) => s.label)).toEqual(["Annuaire — 92"]);
+    // Faits situés dans la commune contre faits départementaux.
+    expect(puteaux.facts.find((f) => f.type === "ccas")?.in_territory).toBe(true);
+    expect(puteaux.facts.find((f) => f.type === "demographie")?.in_territory).toBe(true);
+    expect(puteaux.facts.find((f) => f.type === "mdph")?.in_territory).toBe(false);
+    expect(puteaux.facts.find((f) => f.type === "transport-adapte")?.in_territory).toBe(false);
+  });
+
+  it("nomme et relie l'arrondissement à Paris, avec les services couvrant plusieurs arrondissements", () => {
+    const arr = byCode.get("75112");
+    expect(arr?.nom).toBe("Paris 12e arrondissement");
+    expect(arr?.chemin).toBe("/aide-a-domicile/paris/12e-arrondissement/");
+    expect(arr?.parent).toBe("75");
+    expect(arr?.motif_vague).toBe("commune-agence");
+    expect(arr?.facts.some((f) => f.type === "point-information")).toBe(true);
+    expect(arr?.facts.some((f) => f.type === "ccas" && f.label.includes("CASVP"))).toBe(true);
+  });
+
+  it("agrège la démographie du département et de la région depuis les communes", () => {
+    const dep = byCode.get("92");
+    expect(dep?.chemin).toBe("/aide-a-domicile/hauts-de-seine/");
+    expect(dep?.demographie?.population).toBe(140198);
+    expect(dep?.agence_proche?.id).toBe("puteaux");
+    expect(dep?.facts.some((f) => f.type === "mdph")).toBe(true);
+    const region = byCode.get("idf");
+    expect(region?.chemin).toBe("/aide-a-domicile/");
+    expect(region?.demographie?.population).toBe(140198 + 2113705);
+    expect(region?.agence_proche).toBeUndefined();
+  });
+
+  it("signale les territoires sous les seuils avec les types absents", () => {
+    const report = result.reports.find((r) => r.code === "75112");
+    expect(report?.required).toBe(localThresholds.arrondissement.faits);
+    expect(report?.facts).toBeLessThan(localThresholds.arrondissement.faits);
+    expect(report?.missingTypes).toEqual(expect.arrayContaining(["hopital", "accueil-jour", "marche"]));
+    expect(result.reports.find((r) => r.code === "idf")?.required).toBeNull();
+  });
+});
+
+describe("géocodage BAN des arrondissements de Paris", () => {
+  // Deux arrondissements de vague 1 (9e, 12e) ; le 15e n'a pas de page.
+  const geoParis: GeoData = {
+    ...geo,
+    communes: [
+      ...geo.communes,
+      { code: "75109", nom: "Paris 9e Arrondissement", codes_postaux: ["75009"], departement: "75", type: "arrondissement", population: 60_000, centre: { lat: 48.877, lng: 2.3374 }, superficie_ha: 218, epci: null },
+    ],
+  };
+  const etab = (title: string, street: string, postcode: string, ra = true): CnsaEtablissement => ({
+    title,
+    deptcode: "75",
+    postcode,
+    city: "PARIS",
+    address: `${street}, ${postcode} PARIS`,
+    telephone: "01 40 00 00 00",
+    ehpad: false,
+    ra,
+    esld: false,
+    accueil_jour: !ra,
+    hebergement_temporaire: false,
+    alzheimer: false,
+    capacity: 20,
+  });
+  const cnsaParis: CnsaData = {
+    ...cnsa,
+    etabCollectedAt: today,
+    sources: [{ label: "CNSA", url: "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/", collected_at: today }],
+    etablissements: [
+      // Code postal faux dans la source : la rue Clauzel est dans le 9e (page de vague 1).
+      etab("Logements Clauzel", "7bis rue Clauzel", "75012"),
+      // Code postal faux, arrondissement d'arrivée sans page : retiré seulement.
+      etab("Logements Alleray", "40 rue des Favorites", "75012"),
+      // Bien situé : commune_insee renseigné.
+      etab("Logements Reuilly", "12 rue de Reuilly", "75012"),
+      // BAN muette : reste où il est.
+      etab("Accueil de jour Daumesnil", "200 avenue Daumesnil", "75012", false),
+      // Adresse sans numéro : jamais soumise à la BAN.
+      etab("Logements Bercy", "Cour Saint-Émilion", "75012"),
+    ],
+  };
+  const parisData: ParisData = {
+    ...paris,
+    collected: { espaces_verts: today },
+    sources: [{ label: "Ville de Paris — espaces verts", url: "https://opendata.paris.fr/explore/dataset/espaces_verts/", collected_at: today }],
+    // Parc dont l'entrée publiée est côté 9e selon la BAN : l'arrondissement de la Ville fait foi.
+    espacesVerts: [{ nom_ev: "JARDIN TEST", categorie: "Jardin", type_ev: "Promenades ouvertes", adresse_numero: 18, adresse_typevoie: "Rue", adresse_libellevoie: "du Departement", adresse_codepostal: "75012", surface_totale_reelle: 1000 }],
+  };
+  const parisInputs: BuildInputs = { ...inputs, geo: geoParis, cnsa: cnsaParis, paris: parisData };
+  const first = buildTerritories(parisInputs);
+  const jardinAddress = first.files.find((f) => f.code === "75112")?.facts.find((f) => f.type === "espace-vert")?.address ?? "";
+
+  it("liste une fois chaque adresse de voie des arrondissements, jamais celles des communes", () => {
+    const addresses = parisStreetAddresses(first.files);
+    expect(addresses).toEqual(expect.arrayContaining(["7bis rue Clauzel, 75012 PARIS", "12 rue de Reuilly, 75012 PARIS"]));
+    expect(addresses).not.toContain("Cour Saint-Émilion, 75012 PARIS");
+    expect(jardinAddress).toMatch(/^18 /);
+    expect(addresses).not.toContain(jardinAddress);
+    expect(addresses.some((a) => a.includes("Puteaux") || a.includes("PUTEAUX"))).toBe(false);
+    expect(new Set(addresses.map(normalizeAddress)).size).toBe(addresses.length);
+  });
+
+  it("sans décisions BAN, laisse les faits là où la source les met", () => {
+    const arr12 = first.files.find((f) => f.code === "75112");
+    expect(arr12?.facts.filter((f) => f.type === "residence-autonomie").map((f) => f.label)).toEqual(["Logements Alleray", "Logements Bercy", "Logements Clauzel", "Logements Reuilly"]);
+    expect(first.relocations).toEqual([]);
+    expect(first.undecided).toEqual([]);
+  });
+
+  it("déplace, retire ou confirme les faits selon la décision BAN et le laisse sinon", () => {
+    const ban = new Map<string, string | null>([
+      [normalizeAddress("7bis rue Clauzel, 75012 PARIS"), "75109"],
+      [normalizeAddress("40 rue des Favorites, 75012 PARIS"), "75115"],
+      [normalizeAddress("12 rue de Reuilly, 75012 PARIS"), "75112"],
+      [normalizeAddress("200 avenue Daumesnil, 75012 PARIS"), null],
+      [normalizeAddress(jardinAddress), "75109"],
+    ]);
+    const result = buildTerritories({ ...parisInputs, ban });
+    const arr12 = result.files.find((f) => f.code === "75112");
+    const arr9 = result.files.find((f) => f.code === "75109");
+    expect(arr12?.facts.filter((f) => f.type === "residence-autonomie").map((f) => f.label)).toEqual(["Logements Bercy", "Logements Reuilly"]);
+    expect(arr12?.facts.find((f) => f.label === "Logements Reuilly")).toMatchObject({ commune_insee: "75112", in_territory: true });
+    expect(arr12?.facts.find((f) => f.label === "Logements Bercy")?.commune_insee).toBeUndefined();
+    expect(arr12?.facts.find((f) => f.label === "Accueil de jour Daumesnil")).toMatchObject({ in_territory: true });
+    expect(arr9?.facts.find((f) => f.label === "Logements Clauzel")).toMatchObject({ commune_insee: "75109", in_territory: true, address: "7bis rue Clauzel, 75012 PARIS" });
+    expect(arr9?.sources.some((s) => s.url.includes("data.gouv.fr"))).toBe(true);
+    // Espaces verts et marchés ne sont jamais déplacés.
+    expect(arr12?.facts.find((f) => f.type === "espace-vert")).toMatchObject({ label: "Jardin Test", in_territory: true });
+    expect(arr12?.facts.find((f) => f.type === "espace-vert")?.commune_insee).toBeUndefined();
+    expect(arr9?.facts.some((f) => f.type === "espace-vert")).toBe(false);
+    expect(result.relocations).toEqual([
+      expect.objectContaining({ label: "Logements Alleray", from: "75112", to: "75115", added: false }),
+      expect.objectContaining({ label: "Logements Clauzel", from: "75112", to: "75109", added: true }),
+    ]);
+    // Les faits départementaux (APF, dont l'adresse n'est pas dans les décisions factices) restent aussi non tranchés.
+    expect(result.undecided.filter((u) => u.in_territory).map((u) => u.label)).toEqual(["Accueil de jour Daumesnil"]);
+    // Les communes hors Paris ne sont pas touchées.
+    const puteaux = result.files.find((f) => f.code === "92062");
+    expect(puteaux?.facts).toEqual(first.files.find((f) => f.code === "92062")?.facts);
+    for (const file of result.files) expect(() => localDataSchema.parse(file)).not.toThrow();
+  });
+
+  it("corrige commune_insee d'un fait départemental situé ailleurs sans le retirer", () => {
+    // La MDPH de Paris (adresse du 9e) figure dans le 12e comme fait extérieur : elle y reste.
+    const withMdph: BuildInputs = {
+      ...parisInputs,
+      annuaire: {
+        ...annuaire,
+        records: [
+          ...annuaire.records,
+          { nom: "Maison départementale des personnes handicapées (MDPH) - Paris", pivot: "maison_handicapees", communes: ["75056"], departement: "75", address: "69 rue de la Victoire, 75009 Paris", page: "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/mdph" },
+        ],
+      },
+    };
+    const ban = new Map<string, string | null>([[normalizeAddress("69 rue de la Victoire, 75009 Paris"), "75109"]]);
+    const result = buildTerritories({ ...withMdph, ban });
+    const mdph12 = result.files.find((f) => f.code === "75112")?.facts.find((f) => f.type === "mdph");
+    expect(mdph12).toMatchObject({ commune_insee: "75109", in_territory: false });
+    const mdph9 = result.files.find((f) => f.code === "75109")?.facts.find((f) => f.type === "mdph");
+    expect(mdph9).toMatchObject({ commune_insee: "75109", in_territory: true });
+    expect(result.relocations).toEqual([]);
+  });
+});
+
+describe("contrôle croisé avec le seed", () => {
+  const seed: Seed = {
+    departements: zones.map((z) => ({ ...z, agences: z.code === "92" ? ["puteaux"] : z.code === "75" ? ["paris-12"] : [] })),
+    regle_vague_1: { communes_des_agences: ["92062"] },
+    paris: {
+      code_insee_commune: "75056",
+      arrondissements: [
+        { numero: 12, nom: "12e arrondissement", slug: "12e-arrondissement", code_insee: "75112", codes_postaux: ["75012"], quartiers: [{ numero: 47, nom: "Bercy", slug: "bercy" }] },
+      ],
+    },
+  };
+  const bercy = { numero: 47, nom: "Bercy", slug: "bercy", arrondissement: 12, code_insee_arrondissement: "75112", code_quartier_insee: "7511203", surface_m2: 1, centre: null };
+  // 80 quartiers comme opendata.paris.fr : Bercy plus des quartiers fictifs pour les autres numéros.
+  const quartiers = Array.from({ length: 80 }, (_, i) => {
+    const numero = i + 1;
+    if (numero === 47) return bercy;
+    const arrondissement = Math.ceil(numero / 4);
+    return { numero, nom: `Quartier ${numero}`, slug: `quartier-${numero}`, arrondissement, code_insee_arrondissement: `751${String(arrondissement).padStart(2, "0")}`, code_quartier_insee: `x${numero}`, surface_m2: null, centre: null };
+  });
+
+  it("ne signale rien quand tout concorde", () => {
+    expect(compareWithSeed(seed, geo, zones, agencies, quartiers)).toEqual([]);
+  });
+
+  it("signale un nom, un slug ou un code postal différent de la source officielle", () => {
+    const altered: Seed = JSON.parse(JSON.stringify(seed)) as Seed;
+    altered.departements[4] = { ...altered.departements[4], nom: "Hauts de Seine", slug: "hauts-de-seine", code: "92", agences: ["puteaux"] };
+    const arr = altered.paris.arrondissements[0];
+    if (arr) arr.codes_postaux = ["75012", "75112"];
+    const diffs = compareWithSeed(
+      altered,
+      geo,
+      zones,
+      agencies,
+      quartiers.map((q) => (q.numero === 47 ? { ...q, nom: "Bercy-Village", slug: "bercy-village" } : q)),
+    );
+    expect(diffs.some((d) => d.includes("Hauts de Seine"))).toBe(true);
+    expect(diffs.some((d) => d.includes("codes postaux"))).toBe(true);
+    expect(diffs.some((d) => d.includes("Bercy-Village"))).toBe(true);
+  });
+});
+
+describe("fichiers produits dans data/local", () => {
+  it("sont tous conformes au schéma et aux chemins de docs/04 §4", async () => {
+    const dir = path.join(process.cwd(), "data", "local");
+    let names: string[] = [];
+    try {
+      names = (await readdir(dir)).filter((n) => /^(\d{2,5}|idf)\.json$/.test(n));
+    } catch {
+      names = [];
+    }
+    for (const name of names) {
+      const data = localDataSchema.parse(JSON.parse(await readFile(path.join(dir, name), "utf8")));
+      expect(`${data.code}.json`).toBe(name);
+      expect(data.chemin.startsWith("/aide-a-domicile/")).toBe(true);
+      for (const f of data.facts) expect(f.source_url.startsWith("http")).toBe(true);
+    }
+  });
+});
+
+describe("locateFacts", () => {
+  const base = {
+    type: "ehpad" as const,
+    label: "EHPAD",
+    source_url: "https://example.org/base",
+    collected_at: "2026-09-20",
+  };
+  const chessy: TerritoryContext = {
+    code: "77111",
+    kind: "commune",
+    nom: "Chessy",
+    departement: "77",
+    codes_postaux: ["77700"],
+    centre: null,
+  };
+
+  it("se fie au code postal et à la ville de l'adresse plutôt qu'au code INSEE de la source", () => {
+    const [serris, chessyFact, sansCp, leChesnay] = locateFacts(
+      [
+        { ...base, address: "12 rue du Danube, 77700 SERRIS", commune_insee: "77111" },
+        { ...base, address: "3 place de la Gare, 77700 CHESSY", commune_insee: "77449" },
+        { ...base, address: "Mairie", commune_insee: "77111" },
+        { ...base, address: "1 rue X, 78150 LE CHESNAY", commune_insee: "78158" },
+      ],
+      chessy,
+    );
+    expect(serris?.in_territory).toBe(false);
+    expect(chessyFact?.in_territory).toBe(true);
+    expect(sansCp?.in_territory).toBe(true);
+    expect(leChesnay?.in_territory).toBe(false);
+  });
+
+  it("accepte un nom de commune abrégé et un code postal 750XX ou 751XX pour un arrondissement", () => {
+    const [abrege] = locateFacts(
+      [{ ...base, address: "1 rue X, 78150 LE CHESNAY" }],
+      { code: "78158", kind: "commune", nom: "Le Chesnay-Rocquencourt", codes_postaux: ["78150"], centre: null },
+    );
+    expect(abrege?.in_territory).toBe(true);
+    const [dans, ailleurs] = locateFacts(
+      [
+        { ...base, address: "57 rue de Vaugirard, 75015 PARIS", commune_insee: "75109" },
+        { ...base, address: "7 rue Clauzel, 75009 PARIS", commune_insee: "75115" },
+      ],
+      { code: "75115", kind: "arrondissement", nom: "Paris 15e arrondissement", departement: "75", codes_postaux: ["75015"], arrondissement: 15, centre: null },
+    );
+    expect(dans?.in_territory).toBe(true);
+    expect(ailleurs?.in_territory).toBe(false);
+  });
+
+  it("normalise les noms de lieu et lit une adresse", () => {
+    expect(normalizePlaceName("L'Haÿ-les-Roses")).toBe("l hay les roses");
+    expect(normalizePlaceName("78539 BUC CEDEX")).toBe("78539 buc");
+    expect(addressPlace("133 rue de la République CCAS - Hôtel de ville, 92800 PUTEAUX")).toEqual({ postcode: "92800", city: "puteaux" });
+    expect(addressPlace("Hôtel de ville")).toBeNull();
+  });
+});

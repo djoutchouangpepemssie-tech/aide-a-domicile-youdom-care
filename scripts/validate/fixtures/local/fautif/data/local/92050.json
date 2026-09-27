@@ -1,0 +1,100 @@
+{
+  "_lisezmoi": "Jeu de test : faits fictifs mais complets (source et date) pour les contrôles locaux.",
+  "code": "92050",
+  "kind": "commune",
+  "nom": "Nanterre",
+  "chemin": "/aide-a-domicile/hauts-de-seine/nanterre/",
+  "slug": "nanterre",
+  "departement": "92",
+  "departement_nom": "Hauts-de-Seine",
+  "codes_postaux": ["92000"],
+  "parent": "92",
+  "centre": { "lat": 48.892, "lng": 2.207 },
+  "superficie_ha": 1219,
+  "population": 96807,
+  "demographie": {
+    "millesime": "2021",
+    "population": 96807,
+    "part_60_74": 11.2,
+    "part_75_plus": 6.4,
+    "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-92050",
+    "collected_at": "2026-09-01"
+  },
+  "agence_proche": { "id": "puteaux", "distance_km": 2.6 },
+  "communes_voisines": [
+    { "code": "92062", "nom": "Puteaux", "slug": "puteaux", "distance_km": 2.6, "page": true }
+  ],
+  "vague": 1,
+  "motif_vague": "population",
+  "facts": [
+    {
+      "type": "point-information",
+      "label": "Espace seniors de Nanterre",
+      "address": "88 rue du 8 Mai 1945, 92000 Nanterre",
+      "commune_insee": "92050",
+      "telephone": "01 41 37 00 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/points-informations-locaux-personnes-agees/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "ccas",
+      "label": "CCAS de Nanterre",
+      "address": "88 rue du 8 Mai 1945, 92000 Nanterre",
+      "source_url": "https://lannuaire.service-public.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "mdph",
+      "label": "MDPH des Hauts-de-Seine",
+      "address": "2 rue Rigault, 92000 Nanterre",
+      "source_url": "https://lannuaire.service-public.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "service-apa",
+      "label": "Service APA du département",
+      "value": "Pôle autonomie territorial",
+      "source_url": "https://www.hauts-de-seine.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "hopital",
+      "label": "Hôpital Max Fourestier",
+      "address": "403 avenue de la République, 92000 Nanterre",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "consultation-memoire",
+      "label": "Consultation mémoire de l'hôpital Max Fourestier",
+      "address": "403 avenue de la République, 92000 Nanterre",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "marche",
+      "label": "Marché du centre",
+      "value": "Jeudi et dimanche matin",
+      "source_url": "https://www.nanterre.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "espace-vert",
+      "label": "Parc départemental du Chemin de l'Île",
+      "value": "Allées planes le long de la Seine, bancs réguliers",
+      "source_url": "https://www.hauts-de-seine.fr/",
+      "collected_at": "2026-09-01"
+    },
+    {
+      "type": "relief-deplacements",
+      "label": "Transports en commun",
+      "value": "RER A (trois gares), Transilien L, tramway T1 ; ville plate sauf le mont Valérien",
+      "source_url": "https://www.iledefrance-mobilites.fr/",
+      "collected_at": "2026-09-01"
+    }
+  ],
+  "generated_at": "2026-09-01",
+  "sources": [
+    { "label": "Insee", "url": "https://www.insee.fr/", "collected_at": "2026-09-01" }
+  ]
+}

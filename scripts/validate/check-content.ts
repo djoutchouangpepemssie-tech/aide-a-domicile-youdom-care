@@ -5,6 +5,8 @@ import { z } from "zod";
 import { readServiceMeta } from "../../src/content/service-meta";
 import {
   aboutSchema,
+  agenciesPageSchema,
+  regionPageSchema,
   thanksSchema,
   callbackPageSchema,
   requestIndexSchema,
@@ -45,6 +47,8 @@ const files = {
   "pages/etre-rappele.json": callbackPageSchema,
   "pages/demande.json": requestIndexSchema,
   "pages/formulaires-speciaux.json": specialFormsSchema,
+  "pages/aide-a-domicile.json": regionPageSchema,
+  "pages/agences.json": agenciesPageSchema,
   "emails.json": emailsSchema,
   "formulaires/neuro.json": formDefinitionSchema,
   "formulaires/personne-agee.json": formDefinitionSchema,

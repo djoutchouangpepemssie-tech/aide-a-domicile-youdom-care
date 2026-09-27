@@ -21,7 +21,6 @@ import { result, type Check, type CheckContext, type CheckResult } from "./types
 
 /** Pages annoncées par docs/PLAN.md et pas encore construites (phase entre parenthèses). */
 export const plannedRoutes: Readonly<Record<string, string>> = {
-  "/aide-a-domicile/": "phase 6 (territoires)",
   "/magazine/": "phase 7 (Le Fil)",
   "/lexique/": "phase 7 (Le Fil)",
   "/professionnels/": "phase 8 (fonctionnement et entreprise)",
@@ -32,7 +31,6 @@ export const plannedRoutes: Readonly<Record<string, string>> = {
   "/cookies/": "phase 8 (pages légales)",
   "/conditions-generales/": "phase 8 (pages légales)",
   "/accessibilite/": "phase 8 (pages légales)",
-  "/agences/": "phase 6 (agences, docs/00 §5)",
 };
 
 const internalHref = /^\/(?:[a-z0-9-]+\/)*(?:[a-z0-9-]+\/?)?(?:[?#].*)?$/;

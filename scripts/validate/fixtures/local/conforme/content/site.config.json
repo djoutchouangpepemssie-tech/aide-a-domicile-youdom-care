@@ -1,0 +1,33 @@
+{
+  "_lisezmoi": "Extrait de site.config.json pour les tests des contrôles locaux : seuls contact et agences sont lus.",
+  "contact": {
+    "telephone_principal": "01 84 80 17 03",
+    "telephone_mobile": "06 67 22 45 07"
+  },
+  "agences": [
+    {
+      "id": "paris-12",
+      "nom": "Youdom Care Paris",
+      "adresse": "61 rue de Lyon",
+      "code_postal": "75012",
+      "commune": "Paris",
+      "telephone": null
+    },
+    {
+      "id": "puteaux",
+      "nom": "Youdom Care Hauts-de-Seine",
+      "adresse": "49-51 quai de Dion-Bouton",
+      "code_postal": "92800",
+      "commune": "Puteaux",
+      "telephone": "01 47 00 00 92"
+    },
+    {
+      "id": "versailles",
+      "nom": "Youdom Care Yvelines",
+      "adresse": "35 rue des Chantiers",
+      "code_postal": "78000",
+      "commune": "Versailles",
+      "telephone": null
+    }
+  ]
+}

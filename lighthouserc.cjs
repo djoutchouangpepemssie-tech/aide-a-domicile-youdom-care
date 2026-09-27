@@ -10,7 +10,11 @@ const KO = 1024;
 // Pages services en statut a_relire : noindex voulu (docs/03 §1) tant que la relecture
 // professionnelle manque, ce qui fait échouer le seul audit « is-crawlable » et plafonne la
 // catégorie SEO à 0,69. Elles sortent de cette liste quand elles passent en « publie ».
-const nonIndexees = ["/personnes-agees/", "/services/garde-de-nuit/"];
+// Page locale (phase 6) : a_relire tant qu'Arcel n'a pas relu (docs/04 §4).
+const pageLocale = "/aide-a-domicile/hauts-de-seine/puteaux/";
+const nonIndexees = ["/personnes-agees/", "/services/garde-de-nuit/", pageLocale];
+// Page d'agence (phase 6) : indexable, avec formulaire de rappel.
+const agence = "/agences/puteaux/";
 const nonIndexeesPattern = nonIndexees.map((p) => p.replace(/\//g, "\\/")).join("|");
 
 // Budgets communs (docs/07 §5, D-019, tolérances D-026 après les photos et le mouvement de la
@@ -39,6 +43,7 @@ module.exports = {
         "http://localhost:3102/",
         "http://localhost:3102/etre-rappele/",
         ...nonIndexees.map((p) => `http://localhost:3102${p}`),
+        `http://localhost:3102${agence}`,
       ],
       numberOfRuns: 3,
       settings: {
@@ -76,10 +81,19 @@ module.exports = {
           },
         },
         {
-          matchingUrlPattern: `/etre-rappele/|${nonIndexeesPattern}`,
+          matchingUrlPattern: "/etre-rappele/|\\/personnes-agees\\/|\\/services\\/garde-de-nuit\\/",
           aggregationMethod: "median",
           assertions: {
             "resource-summary:script:size": ["error", { maxNumericValue: 225 * KO }],
+          },
+        },
+        {
+          // Pages locale et agence (phase 6, D-028) : formulaire de rappel, recherche de commune et
+          // semaine type sur la même page ; cible 220 Ko conservée (docs/07 §5, dette DP.1).
+          matchingUrlPattern: `${pageLocale.replace(/\//g, "\\/")}|${agence.replace(/\//g, "\\/")}`,
+          aggregationMethod: "median",
+          assertions: {
+            "resource-summary:script:size": ["error", { maxNumericValue: 235 * KO }],
           },
         },
       ],

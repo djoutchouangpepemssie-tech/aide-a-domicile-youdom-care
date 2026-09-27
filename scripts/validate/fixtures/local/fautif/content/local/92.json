@@ -1,0 +1,29 @@
+{
+  "_lisezmoi": "Jeu de test fautif : page de département sous 600 mots, données avec un fait sans source et moins de 15 faits.",
+  "code": "92",
+  "seo": {
+    "titre": "Aide à domicile dans les Hauts-de-Seine (92) : Youdom Care",
+    "description": "Aide à domicile dans les Hauts-de-Seine : auxiliaires de vie de Puteaux à Antony, aides du département (APA, PCH), ressources sourcées et contacts utiles."
+  },
+  "sous_titre": "Trente-six communes, une agence à Puteaux, des auxiliaires dans tout le département.",
+  "zone_editoriale": "## Vivre à domicile dans les Hauts-de-Seine\n\nLes Hauts-de-Seine forment un département dense et contrasté, des coteaux de Meudon aux quais de Gennevilliers. Les personnes âgées y vivent souvent en appartement, dans des copropriétés anciennes sans ascenseur ou dans des résidences plus récentes bien desservies. Le relief compte : les communes des coteaux demandent des trajets plus longs à pied, celles de la plaine se parcourent facilement.\n\nLe conseil départemental instruit l'allocation personnalisée d'autonomie et la prestation de compensation du handicap ; la MDPH est installée à Nanterre. Notre agence de Puteaux coordonne les interventions dans l'ensemble du département, avec des auxiliaires affectées par secteur pour limiter les temps de trajet et garantir la continuité des passages.",
+  "questions": [
+    {
+      "question": "Quelle agence intervient dans le sud des Hauts-de-Seine ?",
+      "reponse": "L'agence de Puteaux couvre l'ensemble du département. Pour les communes du sud, les auxiliaires sont affectées par secteur afin de limiter les trajets et de garantir des horaires réguliers. Le responsable d'agence organise une première visite à domicile avant toute intervention et reste votre interlocuteur unique."
+    },
+    {
+      "question": "Comment déposer une demande d'APA dans les Hauts-de-Seine ?",
+      "reponse": "La demande se dépose auprès du pôle autonomie territorial de votre secteur ou du CCAS de votre commune. Nous vous aidons à réunir les pièces, fournissons les attestations d'intervention demandées et ajustons le plan d'aide dès que la décision du département arrive."
+    },
+    {
+      "question": "Intervenez-vous la nuit dans le département ?",
+      "reponse": "Oui. Les présences de nuit sont organisées par secteur, avec une auxiliaire formée aux gestes de nuit et un relais téléphonique. La première nuit fait l'objet d'un compte rendu à la famille pour ajuster l'organisation, en particulier pour les personnes atteintes de troubles cognitifs."
+    }
+  ],
+  "semaine_type": "personne-agee-seule",
+  "faits_utilises": [0, 1],
+  "auteur": { "nom": "Équipe Youdom Care", "fonction": "Responsable d'agence" },
+  "statut": "a_relire",
+  "maj": "2026-09-10"
+}
