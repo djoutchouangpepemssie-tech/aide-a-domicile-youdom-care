@@ -177,7 +177,6 @@ export default async function Home() {
             secondary={{ label: boutons.demande_detaillee, href: navigation.demande_href }}
             phone={phone}
             reassurance={page.banniere.reassurance}
-            footnote={{ text: page.banniere.note_astérisque, href: page.banniere.note_href }}
             illustration={page.banniere.illustration}
             thread={
               bannerPhoto ? { fil: "bras-lies", knot: page.banniere.noeud ?? "50% 78%" } : null

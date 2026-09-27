@@ -133,11 +133,12 @@ describe("ServiceTemplate", () => {
     render(<ServiceTemplate data={data()} />);
     // D-034 : aucun bandeau d'avertissement ; la carte de relecture suffit.
     expect(screen.queryByText(/attend sa relecture/)).toBeNull();
-    // Carte de relecture (section 13) : auteur, attente de relecture, mise à jour.
+    // Carte de relecture (section 13) : auteur et mise à jour seulement (D-034).
     const review = document.querySelector(".sources-review");
     expect(review).not.toBeNull();
     expect(review).toHaveTextContent("Écrit par Auteur fictif, rédaction");
-    expect(review).toHaveTextContent("En attente de relecture par un professionnel.");
+    // D-034 : plus aucune mention d'attente de relecture.
+    expect(review).not.toHaveTextContent(/relecture/);
     expect(review).toHaveTextContent("Mise à jour le 20 septembre 2026");
     // « Pages proches » (section 13) : le retour au pilier et la recherche par commune seulement.
     const nav = screen.getByRole("navigation", { name: "Pages proches" });

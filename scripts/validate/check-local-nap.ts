@@ -63,7 +63,8 @@ const napConfigSchema = z.object({
     z.object({
       id: z.string().min(1),
       nom: z.string().min(1),
-      adresse: z.string().min(1),
+      /** D-036 : null quand l'adresse de voie n'est pas publiée (commune seule). */
+      adresse: nullableString,
       code_postal: z.string().regex(/^\d{5}$/),
       commune: z.string().min(1),
       telephone: nullableString.optional(),
@@ -74,10 +75,10 @@ const napConfigSchema = z.object({
 export interface AgencyNap {
   id: string;
   nom: string;
-  /** « 49-51 quai de Dion-Bouton, 92800 Puteaux » */
+  /** « 49-51 quai de Dion-Bouton, 92800 Puteaux », ou « 93200 Saint-Denis » (D-036). */
   display: string;
-  /** Adresse de voie normalisée. */
-  street: string;
+  /** Adresse de voie normalisée ; null quand elle n'est pas publiée (D-036). */
+  street: string | null;
   /** « 92800 puteaux » normalisé. */
   postalCity: string;
   phone: string | null;
@@ -103,8 +104,10 @@ export function toNapConfig(raw: unknown): NapConfig {
     return {
       id: agency.id,
       nom: agency.nom,
-      display: `${agency.adresse}, ${agency.code_postal} ${agency.commune}`,
-      street: normalizeAddress(agency.adresse),
+      display: agency.adresse
+        ? `${agency.adresse}, ${agency.code_postal} ${agency.commune}`
+        : `${agency.code_postal} ${agency.commune}`,
+      street: agency.adresse ? normalizeAddress(agency.adresse) : null,
       postalCity: normalizeAddress(`${agency.code_postal} ${agency.commune}`),
       phone: agency.telephone ? normalizePhone(agency.telephone) : null,
     };
@@ -201,7 +204,9 @@ function auditScope(
   }
 
   for (const street of extractStreetAddresses(text)) {
-    const isAgency = config.agencies.some((a) => addressStartsWith(street.normalized, a.street));
+    const isAgency = config.agencies.some(
+      (a) => a.street !== null && addressStartsWith(street.normalized, a.street),
+    );
     if (isAgency || matchesFact(street.normalized, scope.tolerated.streets)) continue;
     errors.push(`${where} : adresse « ${street.raw} » ${expected}`);
   }
@@ -278,9 +283,16 @@ export function auditPageNap(route: string, html: string, options: PageNapOption
     warnings.push(`${route} : pas d'élément <main>, agence affichée non vérifiable`);
   }
   const mainText = mainHtml === null ? null : extractVisibleText(mainHtml);
+  // Une agence dont l'adresse de voie n'est pas publiée (D-036) est reconnue à son couple code
+  // postal + commune : c'est tout ce que la page en affiche.
   const displayedAgencies = (text: string) => {
     const streets = extractStreetAddresses(text).map((s) => s.normalized);
-    return config.agencies.filter((a) => streets.some((s) => addressStartsWith(s, a.street)));
+    const postalCities = extractPostalCities(text).map((s) => s.normalized);
+    return config.agencies.filter((a) =>
+      a.street !== null
+        ? streets.some((s) => addressStartsWith(s, a.street as string))
+        : postalCities.some((s) => addressStartsWith(s, a.postalCity)),
+    );
   };
 
   const nearestId = page?.data?.agence_proche?.id;

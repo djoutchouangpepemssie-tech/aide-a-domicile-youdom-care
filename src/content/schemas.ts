@@ -45,7 +45,12 @@ const zoneSchema = z.strictObject({
 const agencySchema = z.strictObject({
   id: slug,
   nom: z.string().min(1),
-  adresse: z.string().min(1),
+  /**
+   * Adresse de voie. `null` quand Arcel ne veut pas publier l'adresse d'une agence (D-036) :
+   * le site n'affiche alors ni adresse, ni itinéraire, ni `PostalAddress` de voie, et se limite
+   * à la commune et au code postal.
+   */
+  adresse: nullableString,
   code_postal: z.string().regex(/^\d{5}$/),
   commune: z.string().min(1),
   code_insee: z.string().regex(/^\d{5}$/),
@@ -672,8 +677,6 @@ export const interfaceSchema = z.strictObject({
       telephone: text,
       standard: text,
       horaires: text,
-      itineraire: text,
-      itineraire_externe: text,
       communes_h2: text,
       communes_texte: text,
       communes_aucune: text,
@@ -939,8 +942,9 @@ export const homePageSchema = z.strictObject({
     chapo: text,
     lien_telephone: text.includes("{téléphone}"),
     reassurance: z.array(text).min(1),
-    note_astérisque: text,
-    note_href: internalPath,
+    /** D-036 : mention légale du crédit d'impôt retirée du hero ; champs facultatifs. */
+    note_astérisque: text.optional(),
+    note_href: internalPath.optional(),
     illustration: illustrationName,
     /** Photo du hero (docs/design/CONCEPT.md §3 bloc 1) ; absente : illustration au fil. */
     photo: photoSchema.optional(),

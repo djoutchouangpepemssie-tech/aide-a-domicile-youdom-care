@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 /*
  * Index des agences /agences/ (docs/00 §5, P6.6) : une carte par agence réelle de
- * site.config.json (nom, adresse, téléphone et horaires s'ils sont renseignés, itinéraire),
+ * site.config.json (nom, adresse, téléphone et horaires s'ils sont renseignés),
  * lien vers la carte des territoires. Contenu : content/pages/agences.json > index.
  */
 

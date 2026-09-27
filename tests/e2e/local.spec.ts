@@ -123,7 +123,8 @@ test.describe("Agences (P6.6)", () => {
     await expect(page.getByText("Téléphone de l'agence")).toHaveCount(0);
     await expect(page.getByText("Horaires", { exact: true })).toHaveCount(0);
     await expect(page.locator("[data-agences]").getByText("Standard")).toHaveCount(6);
-    await expect(page.locator("[data-agences] [data-agence-itineraire]")).toHaveCount(6);
+    // D-036 : plus aucun lien d'itinéraire vers un service de carte externe.
+    await expect(page.locator("[data-agences] [data-agence-itineraire]")).toHaveCount(0);
     await expect(
       page
         .locator("[data-agences]")
@@ -132,7 +133,7 @@ test.describe("Agences (P6.6)", () => {
     await expectNoSeriousAxeViolations(page);
   });
 
-  test("/agences/puteaux/ : faits de site.config.json, itinéraire, JSON-LD LocalBusiness, axe", async ({
+  test("/agences/puteaux/ : faits de site.config.json, JSON-LD LocalBusiness, axe", async ({
     page,
   }) => {
     const response = await page.goto("/agences/puteaux/");
@@ -141,11 +142,8 @@ test.describe("Agences (P6.6)", () => {
     await expect(page.locator("main")).toHaveAttribute("data-agence-page", "puteaux");
     await expect(page.getByText("49-51 quai de Dion-Bouton, 92800 Puteaux").first()).toBeVisible();
     await expect(page.locator("[data-agence-horaires]")).toHaveCount(0);
-    const route = page.getByRole("link", { name: /Itinéraire vers l'agence/ });
-    await expect(route).toHaveAttribute(
-      "href",
-      /^https:\/\/www\.openstreetmap\.org\/search\?query=49-51/,
-    );
+    await expect(page.getByRole("link", { name: /Itinéraire/ })).toHaveCount(0);
+    await expect(page.locator('a[href*="openstreetmap"]')).toHaveCount(0);
     await expect(page.getByRole("form")).toBeVisible();
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { fullAddress } from "@/components/local/AgencyCard";
 import type { Agency, NavigationChild } from "@/content/schemas";
 
 /*
@@ -158,12 +159,11 @@ export function Footer({
                   <Link
                     href={`/agences/${agency.id}/`}
                     className="block text-white no-underline hover:underline"
-                    aria-label={`${texts.voir_agence.replace("{nom}", agency.nom)}, ${agency.adresse}, ${agency.code_postal} ${agency.commune}`}
+                    aria-label={`${texts.voir_agence.replace("{nom}", agency.nom)}, ${fullAddress(agency)}`}
                   >
                     <span className="block font-bold">{agency.nom}</span>
-                    <span className="block text-small text-white/85">
-                      {agency.adresse}, {agency.code_postal} {agency.commune}
-                    </span>
+                    {/* D-036 : adresse de voie seulement si elle est publiée. */}
+                    <span className="block text-small text-white/85">{fullAddress(agency)}</span>
                   </Link>
                   {agency.telephone ? (
                     <a

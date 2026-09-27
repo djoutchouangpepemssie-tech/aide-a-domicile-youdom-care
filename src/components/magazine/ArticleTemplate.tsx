@@ -81,7 +81,6 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
   const { meta } = article;
   const t = texts.magazine;
   const rubrique = rubriqueLabels[meta.rubrique];
-  const pendingReview = meta.sante && !meta.relu_par;
   const components = articleMdxComponents(
     { a_retenir: t.a_retenir, attention: t.attention },
     article.headings,
@@ -227,11 +226,8 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
                     date: formatFrenchDate(meta.relu_par.date),
                   })}
                 </li>
-              ) : pendingReview ? (
-                <li className="max-w-none font-bold text-warning" data-relecture="a-venir">
-                  {t.relecture_a_venir}
-                </li>
               ) : null}
+              {/* D-034 : aucune mention « relecture à venir » affichée. */}
               <li className="max-w-none">
                 <time dateTime={meta.publie_le}>
                   {fill(t.publie_le, { date: formatFrenchDate(meta.publie_le) })}

@@ -206,9 +206,13 @@ export const heroWhenTall = "[@media(max-height:42rem)]:hidden";
 /** Bloc que la compaction retire au dernier palier (sur-titre, lien secondaire, téléphone). */
 export const heroWhenRoomy = "[@media(max-height:36rem)]:hidden";
 
-/** Chapô : trois lignes au plus, deux quand la hauteur visible manque. */
-export const heroLeadClamp =
-  "line-clamp-2 [@media(min-width:64rem)_and_(min-height:42.01rem)]:line-clamp-3";
+/**
+ * Chapô : affiché en entier. La troncature à deux ou trois lignes coupait la promesse en plein
+ * milieu et laissait des points de suspension sur presque tous les gabarits (demande du 27/09/2026,
+ * D-036). La hauteur reste tenue par la compaction (`heroWhenTall`, `heroWhenRoomy`) et par
+ * l'échelle typographique, pas en cachant du texte.
+ */
+export const heroLeadClamp = "";
 
 /**
  * Au dernier palier de compaction (36 rem de haut ou moins), l'action principale passe **avant**

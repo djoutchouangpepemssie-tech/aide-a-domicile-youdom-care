@@ -25,6 +25,7 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon } from "@/components/ui/Icon/Icon";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { PhotoFigure } from "@/components/ui/PhotoFigure/PhotoFigure";
+import { fullAddress } from "./AgencyCard";
 import type { LocalData, LocalEditorial, LocalFact } from "@/content/local-schema";
 import type { Agency, Aid, InterfaceTexts, Navigation, WeekExample } from "@/content/schemas";
 import { cn } from "@/lib/cn";
@@ -344,9 +345,8 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                   commune: agency.commune,
                 })}
               </p>
-              <p className="m-0 mt-2">
-                {agency.adresse}, {agency.code_postal} {agency.commune}
-              </p>
+              {/* D-036 : adresse de voie seulement si elle est publiée. */}
+              <p className="m-0 mt-2">{fullAddress(agency)}</p>
               <ul className="m-0 mt-4 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
                 <li className="max-w-none">
                   <Link

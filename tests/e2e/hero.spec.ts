@@ -152,14 +152,16 @@ test.describe("Heros : l'interaction fonctionne au clavier", () => {
     );
   });
 
-  test("page d'agence : l'itinéraire et l'appel sont atteignables au clavier", async ({ page }) => {
+  test("page d'agence : l'appel est atteignable au clavier, sans itinéraire externe", async ({
+    page,
+  }) => {
     await page.goto(AGENCY);
-    const route = page.locator("[data-hero-interaction] [data-agence-itineraire]");
-    await expect(route).toBeVisible();
-    await route.focus();
-    await expect(route).toBeFocused();
-    await expect(route).toHaveAttribute("href", /openstreetmap\.org/);
-    await expect(page.locator('[data-hero-interaction] a[href^="tel:"]')).toHaveCount(1);
+    // D-036 : le panneau du hero ne garde que l'adresse et l'appel.
+    await expect(page.locator("[data-hero-interaction] [data-agence-itineraire]")).toHaveCount(0);
+    const call = page.locator('[data-hero-interaction] a[href^="tel:"]');
+    await expect(call).toHaveCount(1);
+    await call.focus();
+    await expect(call).toBeFocused();
   });
 
   test("article : « L'essentiel » en aperçu mène à la liste complète", async ({ page }) => {

@@ -9,9 +9,7 @@
     "h1": "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",
     "chapo": "Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : chaque situation est unique. Youdom Care construit un accompagnement sur mesure, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.",
     "lien_telephone": "Ou appelez le {téléphone}",
-    "reassurance": ["Évaluation à domicile gratuite", "Sans engagement", "Crédit d'impôt de 50 %*"],
-    "note_astérisque": "* Crédit d'impôt de 50 % des sommes versées, dans les limites et conditions de l'article 199 sexdecies du Code général des impôts. L'avance immédiate est un service de l'Urssaf, soumis à conditions d'éligibilité.",
-    "note_href": "/tarifs-et-aides/credit-d-impot-et-avance-immediate/",
+    "reassurance": ["Évaluation à domicile gratuite", "Sans engagement", "Crédit d'impôt de 50 %"],
     "illustration": "maison",
     "photo": {
       "src": "/images/heros/accueil-hero-fenetre.jpg",

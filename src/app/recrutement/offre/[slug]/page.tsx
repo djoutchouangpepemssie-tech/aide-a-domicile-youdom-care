@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { getInterfaceTexts, getRecruitmentPage, getSiteConfig } from "@/content/loader";
+import { fullAddress } from "@/components/local/AgencyCard";
 import {
   APPLY_PATH,
   getLiveOffer,
@@ -63,7 +64,7 @@ export default async function OfferPage({ params }: OfferRouteProps) {
     },
     {
       label: t.lieu,
-      value: `${agency.nom} · ${agency.adresse}, ${agency.code_postal} ${agency.commune}`,
+      value: `${agency.nom} · ${fullAddress(agency)}`,
     },
     { label: t.secteur, value: offer.secteur },
     ...(offer.salaire ? [{ label: t.salaire, value: formatSalary(offer.salaire, t) }] : []),

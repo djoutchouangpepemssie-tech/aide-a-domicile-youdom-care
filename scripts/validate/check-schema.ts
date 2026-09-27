@@ -14,7 +14,8 @@ import { result, type Check, type CheckContext, type CheckResult } from "./types
  */
 
 export interface AgencyAddress {
-  adresse: string;
+  /** `null` quand l'adresse de voie n'est pas publiée (D-036) : seule la commune est admise. */
+  adresse: string | null;
   code_postal: string;
   commune: string;
 }
