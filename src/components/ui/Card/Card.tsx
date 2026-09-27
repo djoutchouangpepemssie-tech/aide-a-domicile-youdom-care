@@ -12,7 +12,12 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
 
 const paddings = { none: "", md: "p-6", lg: "p-8" } as const;
 
-/** Carte : fond blanc, bordure `line`, rayon 20 px, ombre 1 (docs/02 §4). */
+/**
+ * Carte : verre standard (`glass`), rayon 20 px, élévation 1 (docs/02 §4 amendé par D-032).
+ * Le verre vient de src/styles/glass.css : il devient opaque en mode confort et en mouvement
+ * réduit, et reste opaque à 94 % sans `backdrop-filter`. Pour un fond plein, ajoutez `bg-white`
+ * (les utilitaires Tailwind passent devant la classe de verre).
+ */
 export function Card({
   as = "div",
   interactive = false,
@@ -25,10 +30,10 @@ export function Card({
   return (
     <Tag
       className={cn(
-        "rounded-card border border-line bg-white shadow-1",
+        "glass rounded-card",
         paddings[padding],
         interactive &&
-          "transition-[box-shadow,transform] [transition-duration:var(--duration-base)] [transition-timing-function:var(--ease-out)] hover:-translate-y-0.5 hover:shadow-2 focus-within:shadow-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0",
+          "glass-sheen transition-[box-shadow,transform] [transition-duration:var(--duration-base)] [transition-timing-function:var(--ease-out)] hover:-translate-y-0.5 hover:shadow-2 focus-within:shadow-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0",
         className,
       )}
       {...rest}

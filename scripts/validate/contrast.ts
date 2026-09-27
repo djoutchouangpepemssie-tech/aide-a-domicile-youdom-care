@@ -42,6 +42,20 @@ export function contrastRatio(foreground: string, background: string): number {
   return (light + 0.05) / (dark + 0.05);
 }
 
+/**
+ * Compose une couleur opaque sur une autre (alpha de 0 à 1), comme le navigateur peint une surface
+ * translucide : interpolation linéaire des canaux sRGB encodés, exactement ce que fait
+ * `color-mix(in srgb, <couleur> <alpha>, transparent)` posé sur un fond.
+ */
+export function composite(layer: string, backdrop: string, alpha: number): string {
+  if (alpha < 0 || alpha > 1) throw new Error(`Alpha hors bornes : ${alpha}`);
+  const top = hexToRgb(layer);
+  const bottom = hexToRgb(backdrop);
+  const mix = (a: number, b: number) => Math.round(a * alpha + b * (1 - alpha));
+  const channels = [mix(top.r, bottom.r), mix(top.g, bottom.g), mix(top.b, bottom.b)];
+  return `#${channels.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
+}
+
 export interface ColorTokens {
   /** Jetons `--color-*` du bloc `:root` (valeurs hexadécimales seulement). */
   base: Map<string, string>;
@@ -50,12 +64,27 @@ export interface ColorTokens {
 }
 
 const declaration = /--color-([a-z0-9-]+)\s*:\s*(#[0-9a-f]{3,6})\s*;/gi;
+const glassAlpha = /--glass-alpha-([a-z0-9-]+)\s*:\s*([\d.]+)%\s*;/gi;
 
 function collect(css: string): Map<string, string> {
   const map = new Map<string, string>();
   for (const match of css.matchAll(declaration)) {
     const [, name, hex] = match;
     if (name && hex && !map.has(name)) map.set(name, hex.toLowerCase());
+  }
+  return map;
+}
+
+/**
+ * Lit les opacités du verre de src/styles/glass.css (`--glass-alpha-base: 72%` → `base` → 0,72).
+ * Le contrôle recompose les surfaces de verre à partir de ces valeurs : la feuille reste la seule
+ * source, aucune opacité n'est recopiée dans le contrôle.
+ */
+export function parseGlassAlphas(css: string): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const match of css.matchAll(glassAlpha)) {
+    const [, name, value] = match;
+    if (name && value && !map.has(name)) map.set(name, Number(value) / 100);
   }
   return map;
 }

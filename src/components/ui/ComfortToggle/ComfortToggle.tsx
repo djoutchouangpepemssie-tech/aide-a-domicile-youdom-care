@@ -46,7 +46,8 @@ export function applyComfort(on: boolean) {
   window.dispatchEvent(new CustomEvent(COMFORT_EVENT, { detail: on }));
 }
 
-function subscribe(onChange: () => void) {
+/** S'abonne aux changements du mode confort (utilisé aussi par le styleguide). */
+export function subscribeComfort(onChange: () => void) {
   window.addEventListener(COMFORT_EVENT, onChange);
   window.addEventListener("storage", onChange);
   return () => {
@@ -64,7 +65,7 @@ export function ComfortToggle({
   className,
 }: ComfortToggleProps) {
   // L'état vit sur <html> (posé avant l'hydratation par ComfortScript) : lecture externe.
-  const on = useSyncExternalStore(subscribe, isComfortOn, getServerSnapshot);
+  const on = useSyncExternalStore(subscribeComfort, isComfortOn, getServerSnapshot);
 
   return (
     <button
@@ -77,7 +78,7 @@ export function ComfortToggle({
         compact ? "min-w-12 justify-center px-2" : "px-3",
         tone === "dark"
           ? "border-white/60 text-white hover:bg-white/10 aria-pressed:bg-white aria-pressed:text-teal-900"
-          : "border-teal-700 text-teal-800 hover:bg-teal-50 aria-pressed:bg-teal-800 aria-pressed:text-white",
+          : "glass-quiet border-teal-700 text-teal-800 hover:bg-teal-50 aria-pressed:bg-teal-800 aria-pressed:text-white",
         className,
       )}
     >

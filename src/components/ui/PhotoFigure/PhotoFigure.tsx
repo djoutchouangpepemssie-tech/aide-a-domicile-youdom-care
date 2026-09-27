@@ -11,6 +11,9 @@ import { cn } from "@/lib/cn";
  * `priority`, next/image précharge l'image (`<link rel="preload">`) et la charge sans attendre ;
  * `fetchPriority="high"` est posé ici, sur l'image et sur son préchargement (next/image 16 ne le
  * fait pas seul) : le navigateur la fait passer avant les scripts et les polices.
+ * Liseré de verre (D-032) : `glass-edge` pose un trait lumineux de 1 px en haut du cadre, qui
+ * raccorde la photo aux panneaux de verre posés à côté ou par-dessus. Purement décoratif, il
+ * disparaît à l'impression et ne change aucun contraste.
  * Qualité : 60 pour le hero (`priority`, l'image du LCP : docs/07 §5, mesure Lighthouse du
  * 2026-09-20), 75 ailleurs ; `quality` permet de forcer une valeur. Formats AVIF puis WebP
  * (next.config.ts). Composant serveur : aucun JavaScript côté client au-delà de `next/image`.
@@ -86,7 +89,7 @@ export function PhotoFigure({
   return (
     <div
       className={cn(
-        "photo-figure relative w-full overflow-hidden bg-sand",
+        "photo-figure glass-edge relative w-full overflow-hidden bg-sand",
         ratios,
         radius === 28 ? "rounded-block" : "rounded-card",
         className,

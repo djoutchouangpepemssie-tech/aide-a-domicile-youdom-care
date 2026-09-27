@@ -11,7 +11,7 @@ describe("Callout", () => {
       </Callout>,
     );
     const note = screen.getByRole("note", { name: "À retenir" });
-    expect(note).toHaveClass("bg-tint-teal");
+    expect(note).toHaveClass("glass", "glass-tint-teal");
     expect(note.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
   });
 
@@ -23,10 +23,10 @@ describe("Callout", () => {
         <Callout variant="ne-faisons-pas">c</Callout>
       </>,
     );
-    expect(screen.getByRole("note", { name: "Bon à savoir" })).toHaveClass("bg-tint-green");
-    expect(screen.getByRole("note", { name: "Attention" })).toHaveClass("bg-warning-bg");
+    expect(screen.getByRole("note", { name: "Bon à savoir" })).toHaveClass("glass-tint-green");
+    expect(screen.getByRole("note", { name: "Attention" })).toHaveClass("glass-tint-warning");
     expect(screen.getByRole("note", { name: "Ce que nous ne faisons pas" })).toHaveClass(
-      "bg-tint-raspberry",
+      "glass-tint-framboise",
     );
   });
 
@@ -58,8 +58,8 @@ describe("Callout", () => {
     );
     const note = screen.getByRole("note", { name: "Ce que nous ne faisons pas" });
     expect(note).toHaveAttribute("data-variant", "frontiere");
-    expect(note).toHaveClass("bg-tint-sand", "border-teal-700", "rounded-block");
-    expect(note).not.toHaveClass("bg-tint-raspberry");
+    expect(note).toHaveClass("glass-tint-sable", "border-teal-700", "rounded-block");
+    expect(note).not.toHaveClass("glass-tint-framboise");
     expect(note).toHaveAttribute("data-section", "ne-faisons-pas");
     expect(within(note).getByText("Et avec qui nous travaillons pour cela.")).toBeInTheDocument();
 

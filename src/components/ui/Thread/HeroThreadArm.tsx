@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { cancelScheduledFrame, scheduleFrame } from "@/lib/motion/frame";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
 import { ENTRY_X, ENTRY_Y, withEntry } from "./hero-thread-entry";
 
@@ -92,20 +93,22 @@ export function HeroThreadArm({ heading }: HeroThreadArmProps) {
     const reach = root.querySelector<SVGPathElement>(".hero-thread__reach path");
     const contour = root.querySelector<SVGPathElement>(".hero-thread__fil path");
     const served = contour?.getAttribute("d") ?? "";
-    let frame = 0;
+    // Une mesure par image au plus, groupée avec les autres effets (`lib/motion/frame`) ; `live`
+    // rend inerte ce qui pourrait arriver après le démontage (promesse des polices, redimension).
+    let live = true;
     const measure = () => {
-      frame = 0;
+      if (!live) return;
       const measured = measureReach(root, heading);
       if (measured) reach?.setAttribute("d", measured.d);
       else reach?.removeAttribute("d");
       contour?.setAttribute("d", withEntry(served, measured?.entryY ?? ENTRY_Y));
     };
     const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(measure);
+      if (live) scheduleFrame(measure);
     };
     measure();
     document.fonts?.ready.then(schedule, () => {});
-    window.addEventListener("resize", schedule);
+    window.addEventListener("resize", schedule, { passive: true });
 
     const image = root.querySelector("img");
     let draw = 0;
@@ -125,7 +128,8 @@ export function HeroThreadArm({ heading }: HeroThreadArmProps) {
       }
     }
     return () => {
-      cancelAnimationFrame(frame);
+      live = false;
+      cancelScheduledFrame(measure);
       cancelAnimationFrame(draw);
       window.removeEventListener("resize", schedule);
       image?.removeEventListener("load", start);

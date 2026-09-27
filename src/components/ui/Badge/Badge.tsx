@@ -2,8 +2,9 @@ import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/cn";
 
 /*
- * Pastille : texte encre sur fond teinté, sauf `done` (aplat vert-500 avec texte encre, 6,13 :
- * le repère « fait » de docs/02 §2). Le vert ne porte jamais de texte blanc.
+ * Pastille : texte encre sur verre discret teinté (`glass-quiet` + `glass-tint-*`, D-032), sauf
+ * `done` (aplat vert-500 plein avec texte encre, 6,13 : le repère « fait » de docs/02 §2, un signal
+ * ne passe pas par du verre). Le vert ne porte jamais de texte blanc.
  */
 export type BadgeTone = "neutral" | "teal" | "green" | "done" | "raspberry" | "azure";
 
@@ -12,12 +13,12 @@ export interface BadgeProps extends ComponentPropsWithoutRef<"span"> {
 }
 
 const tones: Record<BadgeTone, string> = {
-  neutral: "bg-sand text-ink",
-  teal: "bg-teal-50 text-ink",
-  green: "bg-green-50 text-ink",
+  neutral: "glass-quiet glass-tint-sable text-ink",
+  teal: "glass-quiet glass-tint-teal text-ink",
+  green: "glass-quiet glass-tint-green text-ink",
   done: "bg-green-500 text-ink",
-  raspberry: "bg-raspberry-50 text-ink",
-  azure: "bg-azure-50 text-ink",
+  raspberry: "glass-quiet glass-tint-framboise text-ink",
+  azure: "glass-quiet glass-tint-azure text-ink",
 };
 
 export function Badge({ tone = "neutral", className, children, ...rest }: BadgeProps) {

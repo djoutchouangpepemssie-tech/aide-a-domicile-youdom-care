@@ -9,6 +9,13 @@ import { cn } from "@/lib/cn";
  * - Libellés : bibliothèque de docs/01 §6 (content/interface.json). Jamais « Envoyer », « Valider »,
  *   « Cliquez ici », « En savoir plus ».
  * - Cible tactile de 48 px, 56 px pour le principal. Rayon 14 px, jamais en pilule complète.
+ *
+ * Verre liquide (D-032, src/styles/glass.css) : le bouton principal garde son aplat framboise et
+ * son sens ; il gagne l'élévation 2 (3 au survol) et un liseré lumineux (`glass-edge`). Il ne
+ * reçoit **pas** de reflet mobile : un voile blanc de 10 % ferait tomber le texte blanc à 4,34.
+ * Le bouton secondaire devient du verre sombre (`glass glass-dark`, teal-900 à 88 %) : son texte
+ * blanc reste à 7,35 au minimum sur n'importe quel fond, photo comprise. Le bouton fantôme devient
+ * du verre discret (`glass-quiet`) et garde son contour de 2 px teal-700.
  */
 
 export type ButtonVariant = "primary" | "secondary" | "outline" | "link";
@@ -39,11 +46,11 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "min-h-14 bg-action text-white shadow-1 hover:bg-action-hover hover:shadow-2 disabled:hover:bg-action aria-disabled:hover:bg-action",
+    "min-h-14 bg-action text-white glass-edge shadow-2 hover:bg-action-hover hover:shadow-3 disabled:hover:bg-action aria-disabled:hover:bg-action",
   secondary:
-    "min-h-12 bg-secondary text-white hover:bg-teal-800 disabled:hover:bg-secondary aria-disabled:hover:bg-secondary",
+    "min-h-12 glass glass-dark glass-edge glass-sheen text-white hover:shadow-3 disabled:hover:shadow-2 aria-disabled:hover:shadow-2",
   outline:
-    "min-h-12 border-2 border-teal-700 bg-transparent text-teal-700 hover:bg-teal-50 disabled:hover:bg-transparent aria-disabled:hover:bg-transparent",
+    "min-h-12 glass-quiet glass-sheen border-2 border-teal-700 text-teal-700 hover:bg-teal-50 hover:text-teal-800 disabled:hover:bg-transparent aria-disabled:hover:bg-transparent",
   link: "min-h-12 px-1 text-link underline decoration-[0.08em] underline-offset-[0.15em] hover:text-teal-800",
 };
 

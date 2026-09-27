@@ -8,6 +8,8 @@ import { cn } from "@/lib/cn";
  * tabulation sur la liste, flèches gauche/droite, Début/Fin pour changer d'onglet, panneau relié
  * par aria-labelledby. Sans JavaScript, tous les panneaux restent lisibles (le premier est
  * affiché ; les autres sont masqués seulement après montage).
+ * Verre liquide (D-032) : l'onglet inactif est une surface de verre, l'onglet actif reste un aplat
+ * teal-800 plein (le choix en cours est un signal : il ne passe pas par du verre).
  */
 
 export interface TabItem {
@@ -53,7 +55,8 @@ export function Tabs({ items, label, className }: TabsProps) {
       <div
         role="tablist"
         aria-label={label}
-        className="flex flex-wrap gap-2 border-b border-line pb-3"
+        className="glass-edge flex flex-wrap gap-2 border-b border-line pb-3"
+        data-edge="bottom"
       >
         {items.map((item, index) => {
           const active = index === selected;
@@ -74,8 +77,8 @@ export function Tabs({ items, label, className }: TabsProps) {
               className={cn(
                 "min-h-12 rounded-button border-2 px-4 font-bold transition-colors [transition-duration:var(--duration-fast)] motion-reduce:transition-none",
                 active
-                  ? "border-teal-800 bg-teal-800 text-white"
-                  : "border-line bg-white text-ink hover:border-teal-700 hover:bg-teal-50",
+                  ? "border-teal-800 bg-teal-800 text-white shadow-2"
+                  : "glass glass-sheen border-line text-ink hover:border-teal-700 hover:bg-teal-50",
               )}
             >
               {item.label}

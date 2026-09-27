@@ -1,6 +1,8 @@
 import { render } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { MOTION_DURATION, MOTION_STAGGER } from "@/lib/motion/grid";
+import { resetSharedObservers } from "@/lib/motion/viewport";
 import {
   RAIL_STEP_MS,
   ThreadConnector,
@@ -15,6 +17,7 @@ function installIntersectionObserver() {
   const observers: { callback: Callback; observe: ReturnType<typeof vi.fn> }[] = [];
   class FakeObserver {
     observe = vi.fn();
+    unobserve = vi.fn();
     disconnect = vi.fn();
     constructor(callback: Callback) {
       observers.push({ callback, observe: this.observe });
@@ -50,9 +53,11 @@ describe("ThreadConnector", () => {
   beforeEach(() => {
     delete document.documentElement.dataset.comfort;
     delete document.documentElement.dataset.motion;
+    resetSharedObservers();
   });
 
   afterEach(() => {
+    resetSharedObservers();
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
   });
@@ -95,7 +100,9 @@ describe("ThreadConnector", () => {
     );
     const path = container.querySelector("path") as SVGPathElement;
     expect(path.style.getPropertyValue("--m-delay")).toBe("260ms");
-    expect(path.style.transitionDuration).toBe("calc(var(--thread-duration, 800ms) * 0.2)");
+    expect(path.style.transitionDuration).toBe(
+      `calc(var(--thread-duration, ${MOTION_DURATION.draw}ms) * 0.2)`,
+    );
   });
 
   it("ThreadKnot : un anneau ouvert, framboise pour le nœud, autour d'un numéro", () => {
@@ -114,11 +121,14 @@ describe("ThreadConnector", () => {
     expect(ring).toHaveAttribute("pathLength", "1");
   });
 
-  it("railItemStyle : délai de 200 ms par jalon, profondeur facultative", () => {
-    expect(RAIL_STEP_MS).toBe(200);
+  it("railItemStyle : délai de 40 ms par jalon (cascade du contrat), profondeur facultative", () => {
+    expect(RAIL_STEP_MS).toBe(MOTION_STAGGER);
+    expect(RAIL_STEP_MS).toBe(40);
     expect(railItemStyle(0)).toEqual({});
-    expect(railItemStyle(2)).toEqual({ "--m-delay": "400ms" });
-    expect(railItemStyle(1, 12)).toEqual({ "--m-delay": "200ms", "--t-depth": "12px" });
+    expect(railItemStyle(2)).toEqual({ "--m-delay": "80ms" });
+    expect(railItemStyle(1, 12)).toEqual({ "--m-delay": "40ms", "--t-depth": "12px" });
+    // Un rail de cinq jalons tient sous les 600 ms du contrat, tracé compris.
+    expect(4 * RAIL_STEP_MS + MOTION_DURATION.draw).toBeLessThanOrEqual(600);
   });
 
   it("ThreadRail : rendu serveur complet, visible, sans attribut d'état", () => {
@@ -146,7 +156,7 @@ describe("ThreadConnector", () => {
     );
     const rail = container.firstElementChild as HTMLElement;
     expect(rail).toHaveAttribute("data-reveal", "pending");
-    observers[0]?.callback([{ isIntersecting: true }]);
+    observers[0]?.callback([{ isIntersecting: true, target: rail }]);
     expect(rail).toHaveAttribute("data-reveal", "in");
     unmount();
 
