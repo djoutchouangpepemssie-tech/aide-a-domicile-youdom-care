@@ -1,0 +1,24 @@
+{
+  "_lisezmoi": "Modèle d'une offre d'emploi (docs/03 §9, docs/04 §2 JobPosting, P8.2). Ce fichier commence par « _ » : il documente le format et n'est jamais chargé par le site. Pour publier une offre réelle, copiez-le sous un nom sans « _ » (le nom du fichier est le slug, en minuscules et tirets), remplissez chaque champ avec des faits vérifiés et passez statut à « publiee ». lieu est l'identifiant d'une agence de content/site.config.json (paris-12, puteaux, saint-denis, vitry-sur-seine, serris, versailles) : c'est son adresse qui sert de lieu de travail. contrat : cdi ou cdd ; temps_de_travail : temps-plein ou temps-partiel. salaire est facultatif : ne l'indiquez que s'il est réel (unite : heure, mois ou an ; devise : EUR). L'offre n'est construite que si statut vaut « publiee » et si valable_jusqu_au n'est pas passé ; elle disparaît alors du site et du plan de site. Aucun chiffre, aucune promesse qui ne soit tenue.",
+  "slug": "exemple-auxiliaire-de-vie-puteaux",
+  "titre": "Auxiliaire de vie à domicile (exemple)",
+  "description": "Une à trois phrases : le poste, les personnes accompagnées, ce qui compte pour l'équipe. Remplacez ce texte.",
+  "contrat": "cdi",
+  "temps_de_travail": "temps-partiel",
+  "lieu": "puteaux",
+  "secteur": "Puteaux, Nanterre, Suresnes",
+  "publiee_le": "2026-01-01",
+  "valable_jusqu_au": "2026-03-31",
+  "missions": [
+    "Aider au lever, à la toilette, à l'habillage et aux repas.",
+    "Accompagner les courses, les sorties et les rendez-vous.",
+    "Transmettre ce qui change à l'équipe et aux proches."
+  ],
+  "profil": [
+    "Expérience auprès de personnes âgées ou en situation de handicap.",
+    "Diplôme du secteur (DEAES, ADVF, bac pro ASSP) apprécié.",
+    "Ponctualité, discrétion, goût du travail en équipe."
+  ],
+  "salaire": { "min": 12, "max": 14, "unite": "heure", "devise": "EUR" },
+  "statut": "brouillon"
+}

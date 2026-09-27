@@ -40,3 +40,5 @@ export {
   type WebPageInput,
 } from "./web-page";
 export { articleJsonLd, type ArticleJsonLdOptions } from "./article";
+export { jobPosting, type JobPostingInput } from "./job-posting";
+export { staticWebPage, type StaticWebPageInput } from "./static-web-page";

@@ -7,8 +7,17 @@ import type { RenderedMail } from "./render";
  * transport n'existe pas et l'envoi échoue proprement (le formulaire garde la saisie).
  */
 
+/** Pièce jointe (CV d'une candidature, P8.2) : le contenu ne transite que vers la boîte de l'équipe. */
+export interface MailAttachment {
+  filename: string;
+  content: Buffer;
+  contentType: string;
+}
+
 export interface Mailer {
-  send(input: { to: string; replyTo?: string } & RenderedMail): Promise<void>;
+  send(
+    input: { to: string; replyTo?: string; attachments?: MailAttachment[] } & RenderedMail,
+  ): Promise<void>;
 }
 
 export interface MailEnv {
@@ -36,7 +45,7 @@ export function mailerFromEnv(env: MailEnv = process.env as MailEnv): Mailer | n
   });
   const from = env.LEADS_FROM;
   return {
-    async send({ to, replyTo, subject, html, text }) {
+    async send({ to, replyTo, subject, html, text, attachments }) {
       await transport.sendMail({
         from,
         to,
@@ -44,6 +53,7 @@ export function mailerFromEnv(env: MailEnv = process.env as MailEnv): Mailer | n
         subject,
         text,
         html,
+        ...(attachments && attachments.length > 0 ? { attachments } : {}),
       });
     },
   };

@@ -1,0 +1,95 @@
+{
+  "_lisezmoi": "Page /professionnels/ (docs/03 §9, docs/00 §4 principe 9, P8.1) pour les prescripteurs : assistantes sociales, médecins, infirmiers coordinateurs, mandataires judiciaires, dispositifs d'appui à la coordination. Les services listés viennent de content/services (chemins), les modes et les zones de content/site.config.json. Le bloc « délais » ne porte aucune promesse : sa phrase complémentaire est liée à l'engagement E4 et masquée en production tant que valide vaut false. Aucun délai, aucun chiffre, aucun label n'est écrit ici.",
+  "seo": {
+    "titre": "Prescripteurs : organiser une aide à domicile avec nous",
+    "description": "Assistantes sociales, médecins, infirmiers coordinateurs, mandataires : ce que Youdom Care met en place à domicile, où, et comment adresser une situation."
+  },
+  "ariane": "Professionnels",
+  "h1": "Professionnels : une réponse claire en un appel",
+  "chapo": "Vous suivez une personne qui a besoin d'aide chez elle. Vous voulez savoir vite ce qui est possible, où, et qui vous répond. Voici comment nous travaillons avec vous.",
+  "publics": {
+    "h2": "À qui s'adresse cette page",
+    "texte": "Aux professionnels qui organisent le quotidien d'une personne : à l'hôpital, au cabinet, dans un service ou une association.",
+    "items": [
+      {
+        "titre": "Assistantes et assistants sociaux",
+        "texte": "À l'hôpital, en clinique ou en service social, vous préparez une sortie ou un maintien à domicile."
+      },
+      {
+        "titre": "Médecins",
+        "texte": "Généralistes, gériatres, neurologues, pédiatres : vous constatez qu'une aide humaine devient nécessaire au domicile."
+      },
+      {
+        "titre": "Infirmiers coordinateurs",
+        "texte": "SSIAD, HAD, centres de santé : vous cherchez une aide qui s'articule avec les soins, sans jamais les remplacer."
+      },
+      {
+        "titre": "Mandataires judiciaires",
+        "texte": "Tuteurs, curateurs, mandataires à la protection des majeurs : vous attendez un interlocuteur clair et un devis lisible."
+      },
+      {
+        "titre": "Dispositifs d'appui à la coordination",
+        "texte": "DAC, CLIC, plateformes de répit : vous orientez des situations complexes et vous voulez un retour."
+      }
+    ]
+  },
+  "mise_en_place": {
+    "h2": "Ce que nous pouvons mettre en place",
+    "texte": "Une aide humaine à domicile, ponctuelle ou régulière, de jour comme de nuit, auprès d'une personne âgée, d'un adulte ou d'un enfant en situation de handicap, d'une personne atteinte d'une maladie neurodégénérative. Nous ne réalisons aucun soin : nous travaillons avec ceux qui les réalisent.",
+    "services": [
+      "/services/sortie-d-hospitalisation/",
+      "/services/garde-de-nuit/",
+      "/services/presence-24h-24/",
+      "/services/garde-malade/",
+      "/personnes-agees/aide-a-l-autonomie/",
+      "/services/remplacement-d-auxiliaire-de-vie/",
+      "/aidants/solutions-de-repit/"
+    ],
+    "modes_texte": "En mode prestataire, Youdom Care est l'employeur de l'intervenant. En mode mandataire, c'est la personne accompagnée, et nous gérons les formalités pour elle. Nous vous aidons à choisir selon la situation.",
+    "modes_lien": "Comparer les deux modes"
+  },
+  "zones": {
+    "h2": "Où nous intervenons",
+    "texte": "Dans les {departements} départements d'Île-de-France, Paris compris, depuis nos {agences} agences."
+  },
+  "delais": {
+    "h2": "Les délais",
+    "texte": "Dès le premier appel, nous vous disons franchement ce qu'il est possible de mettre en place, et à quelle échéance. Si nous ne pouvons pas, nous le disons aussi.",
+    "texte_engagement": "Nuits, week-ends, jours fériés, présence 24h/24, retour d'hôpital à organiser en urgence : nous sommes là quand ça se complique.",
+    "engagement": "E4"
+  },
+  "retour": {
+    "h2": "Ce que nous vous transmettons en retour",
+    "texte": "Vous nous adressez une situation : vous n'êtes pas laissé sans nouvelles.",
+    "items": [
+      {
+        "titre": "Un interlocuteur nommé",
+        "texte": "Un conseiller vous rappelle et reste votre contact pour cette situation."
+      },
+      {
+        "titre": "La suite donnée",
+        "texte": "Avec l'accord de la personne et de ses proches, nous vous disons ce qui a été proposé : évaluation gratuite à domicile, devis, démarrage, ou orientation vers une autre réponse."
+      },
+      {
+        "titre": "Une coordination avec les soins",
+        "texte": "L'aide s'articule avec les infirmiers, le SSIAD, l'HAD ou l'équipe de rééducation déjà en place. Nous ne les remplaçons pas."
+      }
+    ],
+    "ne_faisons_pas": [
+      {
+        "texte": "Les soins infirmiers, les actes médicaux et les décisions médicales",
+        "relais": "les infirmiers libéraux, le SSIAD, l'HAD, les médecins"
+      },
+      {
+        "texte": "L'attribution des aides (APA, PCH)",
+        "relais": "le conseil départemental, la MDPH"
+      }
+    ]
+  },
+  "formulaire": {
+    "h2": "Adresser une situation",
+    "texte": "Un formulaire express, en deux écrans : qui vous êtes, la commune, le type de besoin, l'échéance. Nous vous rappelons.",
+    "anonymat": "Aucune donnée nominative sur la personne accompagnée : ni nom, ni date de naissance, ni diagnostic. Nous en parlerons de vive voix.",
+    "href": "/demande/professionnel/"
+  }
+}

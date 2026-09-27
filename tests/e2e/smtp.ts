@@ -12,6 +12,14 @@ import { SMTPServer } from "smtp-server";
 export const SMTP_PORT = 2525;
 export const MAILS_DIR = path.join(process.cwd(), "tests", "e2e", ".mails");
 
+export interface StoredAttachment {
+  filename: string | null;
+  contentType: string;
+  size: number;
+  /** Quatre premiers octets en hexadécimal (« 25504446 » pour un PDF) : la pièce jointe est intacte. */
+  head: string;
+}
+
 export interface StoredMail {
   from: string;
   to: string[];
@@ -20,6 +28,8 @@ export interface StoredMail {
   html: string;
   replyTo: string | null;
   receivedAt: string;
+  /** Pièces jointes (CV d'une candidature, P8.2) ; vide pour les demandes. */
+  attachments: StoredAttachment[];
 }
 
 export async function clearMails() {
@@ -61,6 +71,12 @@ export async function startSmtp(): Promise<() => Promise<void>> {
               html: typeof parsed.html === "string" ? parsed.html : "",
               replyTo: parsed.replyTo?.text ?? null,
               receivedAt: new Date().toISOString(),
+              attachments: parsed.attachments.map((attachment) => ({
+                filename: attachment.filename ?? null,
+                contentType: attachment.contentType,
+                size: attachment.size,
+                head: attachment.content.subarray(0, 4).toString("hex"),
+              })),
             };
             const name = `${Date.now()}-${String(counter).padStart(4, "0")}.json`;
             await writeFile(path.join(MAILS_DIR, name), JSON.stringify(stored, null, 2));
