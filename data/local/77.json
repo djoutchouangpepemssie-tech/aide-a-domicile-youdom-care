@@ -1,0 +1,460 @@
+{
+  "_lisezmoi": "Fichier produit par `pnpm data:local` (scripts/data/local) à partir des sources ouvertes listées dans `sources` : ne pas modifier à la main (docs/04 §5). Chaque fait porte sa source et sa date de collecte.",
+  "code": "77",
+  "kind": "departement",
+  "nom": "Seine-et-Marne",
+  "chemin": "/aide-a-domicile/seine-et-marne/",
+  "slug": "seine-et-marne",
+  "departement": "77",
+  "departement_nom": "Seine-et-Marne",
+  "parent": "idf",
+  "centre": {
+    "lat": 48.5421,
+    "lng": 2.6552
+  },
+  "population": 1468108,
+  "demographie": {
+    "millesime": "2022",
+    "population": 1452399,
+    "part_60_74": 14,
+    "part_75_89": 5.9,
+    "part_90_plus": 0.8,
+    "part_75_plus": 6.7,
+    "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+    "collected_at": "2026-09-26"
+  },
+  "agence_proche": {
+    "id": "serris",
+    "distance_km": 34.6
+  },
+  "vague": 1,
+  "motif_vague": "departement",
+  "facts": [
+    {
+      "type": "demographie",
+      "label": "Part des 60-74 ans",
+      "value": "14 % de la population",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "demographie",
+      "label": "Part des 75 ans et plus",
+      "value": "6,7 % de la population (75-89 ans : 5,9 % ; 90 ans ou plus : 0,8 %)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "demographie",
+      "label": "Population (2022)",
+      "value": "1 452 399 habitants (Seine-et-Marne)",
+      "source_url": "https://www.insee.fr/fr/statistiques/8581696",
+      "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Chelles",
+      "address": "Centre local d'information et de coordination partage Nord-Ouest 77, 2 avenue Aimé-Auberville, 77500 Chelles",
+      "commune_insee": "77108",
+      "telephone": "01 64 21 75 58",
+      "url": "http://www.clic-partage.com",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/2c1ed6c5-1478-4a14-8b00-79363b2b08ba",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Lagny-sur-Marne",
+      "address": "125 avenue du Maréchal de Lattre de Tassigny, Pôle autonomie territoriale Lagny, 77400 Lagny-sur-Marne",
+      "commune_insee": "77243",
+      "telephone": "01 60 31 52 80",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/afb286ec-a86c-4be4-b501-794cf25c5183",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Melun",
+      "address": "24 rue du Colonel-Picot, 1er étage à droite, Pôle de service Montaigu, 77000 Melun",
+      "commune_insee": "77288",
+      "telephone": "01 64 52 24 48",
+      "url": "https://www.pat-melun.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/e3ce2a76-ab60-44e5-b8be-ba882a2e2044",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Nemours",
+      "address": "15 rue des Chaudins, Point automonie territorial Fontainebleau, Association soutien facil, 77140 Nemours",
+      "commune_insee": "77333",
+      "telephone": "01 64 28 75 25",
+      "url": "https://www.soutien-facil.fr/",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/5ea07592-97a3-4eeb-bda2-70bb11d47fd8",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Provins",
+      "address": "9 rue Denise Marion - Parc du Durteint, Association Sillage, Pôle autonomie territoriale, 77160 Provins",
+      "commune_insee": "77379",
+      "telephone": "01 60 58 00 95",
+      "url": "https://www.pour-les-personnes-agees.gouv.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/2f1b231d-6cb9-4d9a-8b21-be1fc33703c0",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Samoreau",
+      "address": "Centre local d'information et de coordination FACIL, 32 rue Grande, 77210 Samoreau",
+      "commune_insee": "77442",
+      "telephone": "08 00 85 37 00",
+      "url": "http://www.clicfacilrgs.wordpress.com",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/1edc644c-a05f-4077-9eb2-06b6ddbe0c2b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "point-information",
+      "label": "Point d'information local dédié aux personnes âgées - Tournan-en-Brie",
+      "address": "Centre local d'information et de coordination PEPS, 99 rue de Paris, 77220 Tournan-en-Brie",
+      "commune_insee": "77470",
+      "telephone": "01 64 42 18 08",
+      "url": "http://www.clicpeps-tournan.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/fddebda3-9fc1-43cc-8a06-d6dd477486b3",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Avon",
+      "address": "Immeuble de l'Odéon, 44 avenue de Valvins, 77210 Avon",
+      "commune_insee": "77014",
+      "telephone": "01 60 57 01 60",
+      "url": "https://www.plateforme-repit-avon.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/09e456dc-77f6-4d48-ab9e-03d2400d2c1b",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "plateforme-repit",
+      "label": "Plateforme d'accompagnement et de répit pour les aidants de personnes âgées - Tournan-en-Brie",
+      "address": "99 Rue de Paris, Accueil de jour, Etablissement public gérontologique de Tournan, 77220 Tournan-en-Brie",
+      "commune_insee": "77470",
+      "telephone": "01 64 42 18 00",
+      "url": "https://www.epgtournan.fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/5b203683-95d5-4769-8f99-656c4243b1aa",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "mdph",
+      "label": "Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne",
+      "address": "16 rue de l'Aluminium, 77543 Savigny-le-Temple Cedex",
+      "commune_insee": "77445",
+      "telephone": "01 64 19 11 40",
+      "url": "https://mdph77.fr/fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/7a918fcf-41c7-463f-ad22-21d9a96bb088",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "aide-departementale",
+      "label": "Conseil départemental - Seine-et-Marne",
+      "address": "12 rue des Saints-Pères, Hôtel du département, 77000 Melun",
+      "commune_insee": "77288",
+      "telephone": "01 64 14 77 77",
+      "url": "https://www.seine-et-marne.fr/fr",
+      "source_url": "https://lannuaire.service-public.gouv.fr/ile-de-france/seine-et-marne/eb2af874-daae-4c4b-9d39-f4ccf7a4db42",
+      "source_label": "Annuaire de l'administration (DILA), base de données locales",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "accueil-jour",
+      "label": "Accueils de jour recensés",
+      "value": "25 dans le département (Seine-et-Marne)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "residence-autonomie",
+      "label": "Résidences autonomie recensées",
+      "value": "32 dans le département (Seine-et-Marne)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "ehpad",
+      "label": "EHPAD recensés",
+      "value": "117 dans le département (Seine-et-Marne)",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "source_label": "CNSA, data.gouv.fr — établissements pour personnes âgées (publication du 11/11/2020)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "ANNEXE SOINS DE SUITE ET READAPTATION D'ORGEMONT",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 rue D ORGEMONT, 77100 MEAUX",
+      "commune_insee": "77284",
+      "telephone": "01 60 09 87 20",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE MARNE LA VALLEE SITE LAGNY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "31 avenue DU GENERAL LECLERC, 77405 LAGNY SUR MARNE CEDEX",
+      "commune_insee": "77243",
+      "telephone": "01 64 30 70 70",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE MEAUX SITE SAINT FARON",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "6 rue SAINT FIACRE, BP 218, 77100 MEAUX",
+      "commune_insee": "77284",
+      "telephone": "01 64 35 38 38",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DE NEMOURS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "15 rue DES CHAUDINS, BP 98, 77796 NEMOURS CEDEX",
+      "commune_insee": "77333",
+      "telephone": "01 64 45 19 00",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER DU SUD SEINE ET MARNE SITE FONTAINEBLEAU",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "55 boulevard DU MARECHAL JOFFRE, 77305 FONTAINEBLEAU CEDEX",
+      "commune_insee": "77186",
+      "telephone": "01 60 74 10 10",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER LEON BINET DE PROVINS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "route DE CHALAUTRE, BP 212, 77488 PROVINS CEDEX",
+      "commune_insee": "77379",
+      "telephone": "01 64 60 40 94",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER RENE ARBELTIER DE COULOMMIERS",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "4 rue GABRIEL PERI, 77527 COULOMMIERS CEDEX",
+      "commune_insee": "77131",
+      "telephone": "01 64 65 36 30",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "CENTRE HOSPITALIER SUD SEINE ET MARNE SITE MONTEREAU",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "1 rue VICTOR HUGO, 77875 MONTEREAU CEDEX",
+      "commune_insee": "77305",
+      "telephone": "01 64 31 64 31",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GRAND HOSP EST FRANCILIEN MARNE LA VALLEE SITE JOSSIGNY",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "2 cours DE LA GONDOIRE, 77600 JOSSIGNY",
+      "commune_insee": "77237",
+      "telephone": "01 61 10 61 10",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GROUPE HOSTIPALIER SUD IDF - SITE DE BRIE COMTE ROBERT",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "17 rue PETIT DE BEAUVERGER, 77255 BRIE COMTE ROBERT CEDEX",
+      "commune_insee": "77053",
+      "telephone": "01 60 62 62 62",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "GROUPE HOSTIPALIER SUD ILE DE FRANCE - SITE MELUN-SENART",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "270 avenue MARC JACQUET, 77000 MELUN",
+      "commune_insee": "77288",
+      "telephone": "01 81 74 17 17",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "hopital",
+      "label": "HDJ INFANTO JUVENILE ASTROLABE",
+      "value": "Centre Hospitalier (C.H.)",
+      "address": "boulevard MARNE ET GONDOIRE, 77600 BUSSY ST MARTIN",
+      "commune_insee": "77059",
+      "telephone": "01 60 31 56 90",
+      "source_url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "source_label": "FINESS, data.gouv.fr (extraction du 12/05/2026)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "transport-adapte",
+      "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
+      "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "telephone": "0800 00 18 18",
+      "url": "https://pam.iledefrance-mobilites.fr/",
+      "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "source_label": "Île-de-France Mobilités — PAM (pages « éligibilité » et « agences PAM »)",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "ADAPEI 77",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "2 Ter Rue René Cassin, 77000 MELUN",
+      "telephone": "01 60 56 54 77",
+      "url": "https://www.adapei77.org",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "APF France handicap — Délégation de Seine-et-Marne",
+      "value": "Délégation départementale ; contact : dd.77@apf.asso.fr",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "source_label": "APF France handicap Île-de-France — pages « Présentation du territoire »",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "ARAMIS",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "47 RUE THIERS, 77124 VILLENOY",
+      "telephone": "01 64 36 56 40",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "Association Elan 2",
+      "value": "Réseau Unapei — association de parents gestionnaire",
+      "address": "5 RUE DU GROS CAILLOU, 77240 CESSON",
+      "telephone": "01 64 41 09 38",
+      "source_url": "https://carto.unapei.org/",
+      "source_label": "Unapei, carte « Près de chez vous » (carto.unapei.org)",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "type": "association",
+      "label": "France Alzheimer Seine-et-Marne",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "address": "15 rue des Prés, 113 bis, 77310 Saint-Fargeau-Ponthierry",
+      "telephone": "06 38 45 49 83",
+      "url": "https://www.francealzheimer.org/seineetmarne/",
+      "source_url": "https://www.francealzheimer.org/seineetmarne/",
+      "source_label": "France Alzheimer — page « Contactez votre association locale » et page départementale",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "type": "association",
+      "label": "France Parkinson — Comité de Seine-et-Marne (77)",
+      "value": "Comité départemental de bénévoles (Chessy)",
+      "telephone": "07 64 76 29 00",
+      "url": "https://www.franceparkinson.fr/comite-77/",
+      "source_url": "https://www.franceparkinson.fr/les-comites/",
+      "source_label": "France Parkinson — page « Les comités »",
+      "collected_at": "2026-09-20"
+    }
+  ],
+  "generated_at": "2026-09-26",
+  "sources": [
+    {
+      "label": "API Découpage administratif (geo.api.gouv.fr)",
+      "url": "https://geo.api.gouv.fr/departements?codeRegion=11&fields=nom,code,chefLieu",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Insee — recensement de la population (base communale)",
+      "url": "https://www.insee.fr/fr/statistiques/8581696",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Annuaire de l'administration (DILA), base de données locales — département 77",
+      "url": "https://api-lannuaire.service-public.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json?where=startswith(code_insee_commune%2C%2277%22)&select=nom%2Cpivot%2Ccode_insee_commune%2Cadresse%2Ctelephone%2Csite_internet%2Curl_service_public%2Cadresse_courriel%2Cdate_modification",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "CNSA — Etablissements EHPAD, ESLD, résidences autonomie, accueils de jour (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "FINESS — extraction du fichier des établissements (data.gouv.fr)",
+      "url": "https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Unapei — carte des associations et établissements (carto.unapei.org)",
+      "url": "https://carto.unapei.org/",
+      "collected_at": "2026-09-26"
+    },
+    {
+      "label": "Île-de-France Mobilités — PAM Île-de-France",
+      "url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Alzheimer — associations départementales",
+      "url": "https://www.francealzheimer.org/association/qui-sommes-nous/contactez-votre-association-locale/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "France Parkinson — comités",
+      "url": "https://www.franceparkinson.fr/les-comites/",
+      "collected_at": "2026-09-20"
+    },
+    {
+      "label": "APF France handicap Île-de-France — territoires",
+      "url": "https://iledefrance.apf-francehandicap.org/presentation-du-territoire",
+      "collected_at": "2026-09-20"
+    }
+  ]
+}
