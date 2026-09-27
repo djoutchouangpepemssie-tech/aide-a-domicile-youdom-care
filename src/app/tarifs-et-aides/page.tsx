@@ -89,7 +89,7 @@ export default async function PricingPage() {
   const themes = await themeBlocks("/tarifs-et-aides/");
   return (
     // D-032 : scène sable pour les prix et les aides.
-    <main id="contenu" data-scene="sable">
+    <main id="contenu" data-scene="sable" data-famille="aides">
       <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">

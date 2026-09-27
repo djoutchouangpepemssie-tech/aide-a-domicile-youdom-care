@@ -54,7 +54,7 @@ export default async function SiteMapRoute() {
   const groups = await buildSiteMap();
 
   return (
-    <main id="contenu">
+    <main id="contenu" data-famille="entreprise">
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb texts={fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <Heading level={1} id="titre">

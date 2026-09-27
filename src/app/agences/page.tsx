@@ -31,7 +31,7 @@ export default function AgenciesIndexPage() {
   const agencyCount = new Intl.NumberFormat("fr-FR").format(agences.length);
 
   return (
-    <main id="contenu" data-page="agences">
+    <main id="contenu" data-page="agences" data-famille="local">
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb texts={texts.fil_ariane} items={[{ label: index.ariane }]} className="mb-6" />
         <Heading level={1} id="titre">

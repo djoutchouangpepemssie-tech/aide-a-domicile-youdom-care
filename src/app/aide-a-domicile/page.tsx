@@ -44,7 +44,7 @@ export default async function RegionPage() {
 
   const themes = await themeBlocks("/aide-a-domicile/");
   return (
-    <main id="contenu" data-page="aide-a-domicile">
+    <main id="contenu" data-page="aide-a-domicile" data-famille="local">
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb texts={texts.fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <Heading level={1} id="titre">

@@ -51,7 +51,7 @@ export default async function AidDetailPage({ params }: AidPageProps) {
 
   const themes = await themeBlocks(`/tarifs-et-aides/${aide}/`);
   return (
-    <main id="contenu">
+    <main id="contenu" data-famille="aides">
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb
           texts={fil_ariane}

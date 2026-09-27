@@ -73,6 +73,7 @@
   --scene-deep: var(--color-teal-100);
   --scene-accent: var(--color-sand-deep);
   --scene-text: var(--color-text);
+  --scene-photo: url("/images/heros/fonds/fond-aide-a-domicile.jpg");
   --scene-deep-fort: var(--color-teal-200);
   --scene-accent-fort: var(--color-sand-deeper);
 }
@@ -82,11 +83,13 @@
 [data-scene="teal"],
 [data-public="personne-agee"],
 [data-public="transverse"],
-[data-famille="local"] {
+[data-famille="local"],
+[data-famille="fonctionnement"] {
   --scene-base: var(--color-tint-teal);
   --scene-deep: var(--color-teal-100);
   --scene-accent: var(--color-azure-100);
   --scene-text: var(--color-text);
+  --scene-photo: url("/images/heros/fonds/fond-aide-a-domicile.jpg");
   --scene-deep-fort: var(--color-teal-200);
   --scene-accent-fort: var(--color-azure-200);
 }
@@ -95,11 +98,13 @@
 .scene-azure,
 [data-scene="azure"],
 [data-public="neuro"],
-[data-famille="lexique"] {
+[data-famille="lexique"],
+[data-famille="formulaire"] {
   --scene-base: var(--color-tint-azure);
   --scene-deep: var(--color-azure-100);
   --scene-accent: var(--color-teal-100);
   --scene-text: var(--color-text);
+  --scene-photo: url("/images/heros/fonds/fond-premiere-visite.jpg");
   --scene-deep-fort: var(--color-azure-200);
   --scene-accent-fort: var(--color-teal-200);
 }
@@ -113,6 +118,7 @@
   --scene-deep: var(--color-green-100);
   --scene-accent: var(--color-teal-100);
   --scene-text: var(--color-text);
+  --scene-photo: url("/images/heros/fonds/fond-projet-de-vie.webp");
   --scene-deep-fort: var(--color-green-200);
   --scene-accent-fort: var(--color-teal-200);
 }
@@ -120,11 +126,13 @@
 /* Sable posé — adultes en situation de handicap, agences. */
 .scene-sable,
 [data-scene="sable"],
-[data-public="adulte-handicap"] {
+[data-public="adulte-handicap"],
+[data-famille="aides"] {
   --scene-base: var(--color-tint-sand);
   --scene-deep: var(--color-sand-deep);
   --scene-accent: var(--color-teal-100);
   --scene-text: var(--color-text);
+  --scene-photo: url("/images/heros/fonds/fond-auxiliaire-de-vie.jpg");
   --scene-deep-fort: var(--color-sand-deeper);
   --scene-accent-fort: var(--color-teal-200);
 }
@@ -139,6 +147,7 @@
   --scene-deep: var(--color-raspberry-100);
   --scene-accent: var(--color-sand-deep);
   --scene-text: var(--color-text);
+  --scene-photo: url("/images/heros/fonds/fond-repas-partage.jpg");
   --scene-deep-fort: var(--color-raspberry-200);
   --scene-accent-fort: var(--color-sand-deeper);
 }
@@ -151,6 +160,7 @@
   --scene-deep: var(--color-ink);
   --scene-accent: var(--color-teal-800);
   --scene-text: var(--color-footer-text);
+  --scene-photo: url("/images/heros/fonds/fond-presence-nuit.jpg");
 }
 
 /* Neutre — corps d'article, pages légales, grilles de faits : le blanc reste le blanc. */
@@ -268,6 +278,48 @@
     color: var(--color-white);
   }
 
+  /*
+   * Photo de fond de la première section d'une page (27/09/2026, demande d'Arcel : « des images
+   * en fond sur chaque zone héro »). Les cinq gabarits qui passent par `HeroSection` la reçoivent
+   * déjà par le composant ; les soixante-quinze autres pages — index des agences, territoires,
+   * comment ça marche, tarifs, outils, lexique, magazine, formulaires, recrutement — ouvrent sur
+   * une `Section` ordinaire, et n'en avaient aucune. Cette règle la leur donne sans toucher à leur
+   * code : la photo vient de la palette de scène héritée du `main` (`data-famille`, `data-public`),
+   * donc chaque famille de pages garde la sienne.
+   *
+   * Même contrat visuel que les bannières : la photo couvre la section, s'efface complètement sur
+   * sa moitié gauche où vit le texte, et reste sous le contenu. Une page sans palette, ou en
+   * `scene-neutre` (pages légales), n'a pas de `--scene-photo` : elle reste sobre, et c'est voulu.
+   */
+  main > section:first-of-type:not(.hero-section) {
+    position: relative;
+    isolation: isolate;
+  }
+
+  main > section:first-of-type:not(.hero-section)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: var(--scene-photo, none);
+    background-size: cover;
+    background-position: center right;
+    opacity: 0.85;
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 46%,
+      rgba(0, 0, 0, 0.5) 64%,
+      rgba(0, 0, 0, 1) 84%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 46%,
+      rgba(0, 0, 0, 0.5) 64%,
+      rgba(0, 0, 0, 1) 84%
+    );
+    pointer-events: none;
+  }
+
   /* ---- Tout s'aplatit : mouvement réduit, mode confort, simulation du styleguide ---- */
   /* Il ne reste que la couleur de base. En mode confort, les rôles `tint-*` sont blancs
      (tokens.css) : les scènes claires deviennent blanches, la scène de nuit reste sombre. */
@@ -277,7 +329,8 @@
     }
 
     .scene::before,
-    .scene::after {
+    .scene::after,
+    main > section:first-of-type:not(.hero-section)::after {
       display: none;
     }
   }
@@ -289,8 +342,10 @@
 
   :root[data-comfort="on"] .scene::before,
   :root[data-comfort="on"] .scene::after,
+  :root[data-comfort="on"] main > section:first-of-type:not(.hero-section)::after,
   :root[data-motion="reduce"] .scene::before,
-  :root[data-motion="reduce"] .scene::after {
+  :root[data-motion="reduce"] .scene::after,
+  :root[data-motion="reduce"] main > section:first-of-type:not(.hero-section)::after {
     display: none;
   }
 }
@@ -303,7 +358,8 @@
   }
 
   .scene::before,
-  .scene::after {
+  .scene::after,
+  main > section:first-of-type:not(.hero-section)::after {
     display: none;
   }
 }

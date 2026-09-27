@@ -41,7 +41,7 @@ export default async function ApplyPage() {
 
   const groupLinks = await groupCards(APPLY_PATH);
   return (
-    <main id="contenu">
+    <main id="contenu" data-famille="formulaire">
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb
           texts={texts.fil_ariane}

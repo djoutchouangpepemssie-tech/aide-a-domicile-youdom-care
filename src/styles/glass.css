@@ -30,9 +30,9 @@
   --glass-base: var(--glass-base-white);
 
   /* ---- Opacité : trois niveaux, un repli, un état opaque ---- */
-  --glass-alpha-quiet: 82%;
-  --glass-alpha-base: 72%;
-  --glass-alpha-strong: 88%;
+  --glass-alpha-quiet: 74%;
+  --glass-alpha-base: 62%;
+  --glass-alpha-strong: 82%;
   --glass-alpha-dark: 88%;
   /* Sans `backdrop-filter` : 94 % (le brief exige 92 % au moins). */
   --glass-alpha-fallback: 94%;
@@ -46,7 +46,7 @@
   --glass-blur-strong: 20px;
   --glass-blur: var(--glass-blur-base);
   /* La saturation redonne la couleur que le flou éteint ; jamais plus de 1,2. */
-  --glass-saturate: 1.35;
+  --glass-saturate: 1.5;
   --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
 
   /* ---- Bordure lumineuse et liseré (décoratifs : aucun sens ne repose sur eux) ---- */
@@ -83,6 +83,26 @@
     box-shadow: var(--shadow-1);
     /* Un long mot ne déborde jamais d'une surface de verre. */
     overflow-wrap: break-word;
+<<<<<<< HEAD
+=======
+  }
+
+  /*
+   * Le flou d'arrière-plan s'applique à **toutes** les surfaces de verre (27/09/2026, demande
+   * d'Arcel : « je veux un effet liquide glass sur tout mon site »).
+   *
+   * Il avait été réservé aux seules surfaces posées sur quelque chose à flouter — en-tête collant,
+   * barre d'action, verre sombre — pour économiser le rendu de 41 surfaces sur une page locale
+   * (dette DP.2). Arcel l'a redemandé deux fois : sans flou, une carte claire sur un fond coloré
+   * ressemble à une carte ordinaire, et l'effet qu'il a commandé ne se voit pas. Le coût de rendu
+   * est assumé et reste inscrit dans DP.2 ; il se paie au premier affichage, jamais à la lecture.
+   */
+  .glass,
+  .glass-quiet,
+  .glass-strong,
+  .glass-dark,
+  .glass-blur {
+>>>>>>> f83f095 (feat(design): photo de fond sur toutes les pages, verre liquide rétabli partout)
     -webkit-backdrop-filter: var(--glass-filter);
     backdrop-filter: var(--glass-filter);
   }
