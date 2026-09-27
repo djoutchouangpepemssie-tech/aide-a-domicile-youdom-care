@@ -3,7 +3,6 @@ import { evaluate } from "@mdx-js/mdx";
 import type { MDXContent } from "mdx/types";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
-import { isProduction } from "@/lib/env";
 import { rehypeLexique } from "@/lib/mdx/rehype-lexique";
 import { lexiqueLinkTargets } from "./lexique";
 import { listMdxFiles, readServiceMeta, SERVICES_DIR } from "./service-meta";
@@ -54,10 +53,14 @@ export function listServicePages(): Promise<LoadedServicePage[]> {
   return cache;
 }
 
-/** Pages construites : toutes en prévisualisation, seulement les pages relues en production. */
+/**
+ * Pages construites : toutes, y compris en production (D-033). Une page `a_relire` est servie
+ * en `noindex, nofollow`, avec son bandeau de relecture, et reste absente des plans de site et
+ * de `/llms.txt` : le visiteur qui suit un lien du menu trouve la page, les moteurs ne
+ * l'indexent pas avant la relecture professionnelle.
+ */
 export async function listBuildableServicePages(): Promise<LoadedServicePage[]> {
-  const pages = await listServicePages();
-  return isProduction() ? pages.filter((p) => p.meta.statut === "publie") : pages;
+  return listServicePages();
 }
 
 export async function getServicePage(chemin: string): Promise<LoadedServicePage | null> {
