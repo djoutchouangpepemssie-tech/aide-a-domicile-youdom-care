@@ -223,3 +223,34 @@ test.describe("Fondu entre deux pages", () => {
     expect(await page.locator("main").evaluate((main) => main.style.opacity)).toBe("");
   });
 });
+
+/*
+ * Saut de défilement (27/09/2026). Une ancre, la touche « Fin », un `scrollTo` ou une molette
+ * rapide font passer un bloc de dessous le pli à au-dessus sans qu'aucune entrée d'observateur ne
+ * soit émise. Sans le filet de `src/lib/motion/viewport.ts`, le bloc reste à `pending`, donc à
+ * opacité zéro : le visiteur voit une page trouée, définitivement. Rien ne doit rester en attente.
+ */
+test.describe("Saut de défilement", () => {
+  for (const path of pages) {
+    test(`${path} : aucun bloc ne reste invisible après un saut jusqu'en bas`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+      await expect.poll(() => page.locator('[data-reveal="pending"]').count()).toBe(0);
+
+      // Et au retour en haut, plus rien n'est caché non plus.
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await expect(page.locator('[data-reveal="pending"]')).toHaveCount(0);
+      // Le temps que les dernières transitions d'entrée s'achèvent.
+      await expect
+        .poll(() =>
+          page
+            .locator(".m-reveal")
+            .evaluateAll((all) =>
+              all.every((node) => Number(getComputedStyle(node).opacity) > 0.99),
+            ),
+        )
+        .toBe(true);
+    });
+  }
+});

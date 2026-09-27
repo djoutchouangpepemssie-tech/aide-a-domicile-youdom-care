@@ -135,7 +135,10 @@ export function LocalFactsGrid({
     <div
       className={cn(
         "local-facts grid gap-6",
-        !compact && "md:grid-cols-2 xl:grid-cols-3",
+        // Jamais plus de colonnes que de groupes : les pages commune n'en ont que deux, la
+        // troisième colonne restait vide sur les 131 pages (27/09/2026).
+        !compact && "md:grid-cols-2",
+        !compact && groups.length > 2 && "xl:grid-cols-3",
         className,
       )}
       data-local-facts={id}

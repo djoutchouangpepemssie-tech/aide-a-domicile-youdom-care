@@ -30,6 +30,6 @@ describe("Tarifs et aides", () => {
     );
     expect(within(aides).getAllByRole("link", { name: /lien externe/ })).toHaveLength(6);
 
-    expect(screen.getByRole("link", { name: "J'estime mon budget" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Je demande un devis gratuit" })).toBeInTheDocument();
   });
 });

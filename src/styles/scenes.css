@@ -22,23 +22,23 @@
 :root {
   /* ---- Composition (version claire) ---- */
   --scene-angle: 165deg;
-  --scene-gradient-alpha: 46%;
-  --scene-gradient-alpha-mid: 16%;
-  --scene-halo-alpha: 52%;
-  --scene-weave-alpha: 5%;
-  --scene-grain-alpha: 4%;
+  --scene-gradient-alpha: 92%;
+  --scene-gradient-alpha-mid: 54%;
+  --scene-halo-alpha: 88%;
+  --scene-weave-alpha: 7%;
+  --scene-grain-alpha: 5%;
 
   /* ---- Composition (version soutenue : `scene-soutenu`) ---- */
-  --scene-gradient-alpha-fort: 78%;
-  --scene-gradient-alpha-mid-fort: 28%;
-  --scene-halo-alpha-fort: 80%;
-  --scene-weave-alpha-fort: 8%;
-  --scene-grain-alpha-fort: 6%;
+  --scene-gradient-alpha-fort: 100%;
+  --scene-gradient-alpha-mid-fort: 74%;
+  --scene-halo-alpha-fort: 100%;
+  --scene-weave-alpha-fort: 10%;
+  --scene-grain-alpha-fort: 7%;
 
   /* ---- Géométrie ---- */
-  --scene-halo-size: 70% 62%;
-  --scene-halo-1-position: 8% 0%;
-  --scene-halo-2-position: 92% 6%;
+  --scene-halo-size: 88% 80%;
+  --scene-halo-1-position: 4% -6%;
+  --scene-halo-2-position: 96% 8%;
   /* Trame au fil : un trait fin tous les 8 px, dans l'axe du fil. */
   --scene-weave-step: 8px;
   --scene-weave-angle: 115deg;
@@ -52,6 +52,9 @@
   --scene-deep: var(--color-sand);
   --scene-accent: var(--color-teal-50);
   --scene-text: var(--color-text);
+  /* Version soutenue (heros) : un cran plus coloré, mesuré comme les autres. */
+  --scene-deep-fort: var(--scene-deep);
+  --scene-accent-fort: var(--scene-accent);
 }
 
 /*
@@ -66,10 +69,12 @@
 /* Lever de jour — accueil. */
 .scene-aurore,
 [data-scene="aurore"] {
-  --scene-base: var(--color-bg);
+  --scene-base: var(--color-tint-sand);
   --scene-deep: var(--color-teal-100);
   --scene-accent: var(--color-sand-deep);
   --scene-text: var(--color-text);
+  --scene-deep-fort: var(--color-teal-200);
+  --scene-accent-fort: var(--color-sand-deeper);
 }
 
 /* Canard calme — personnes âgées, services transverses, pages locales. */
@@ -82,6 +87,8 @@
   --scene-deep: var(--color-teal-100);
   --scene-accent: var(--color-azure-100);
   --scene-text: var(--color-text);
+  --scene-deep-fort: var(--color-teal-200);
+  --scene-accent-fort: var(--color-azure-200);
 }
 
 /* Azur — maladies neurodégénératives, lexique. */
@@ -93,6 +100,8 @@
   --scene-deep: var(--color-azure-100);
   --scene-accent: var(--color-teal-100);
   --scene-text: var(--color-text);
+  --scene-deep-fort: var(--color-azure-200);
+  --scene-accent-fort: var(--color-teal-200);
 }
 
 /* Vert clair — enfants en situation de handicap, outils. */
@@ -104,6 +113,8 @@
   --scene-deep: var(--color-green-100);
   --scene-accent: var(--color-teal-100);
   --scene-text: var(--color-text);
+  --scene-deep-fort: var(--color-green-200);
+  --scene-accent-fort: var(--color-teal-200);
 }
 
 /* Sable posé — adultes en situation de handicap, agences. */
@@ -114,6 +125,8 @@
   --scene-deep: var(--color-sand-deep);
   --scene-accent: var(--color-teal-100);
   --scene-text: var(--color-text);
+  --scene-deep-fort: var(--color-sand-deeper);
+  --scene-accent-fort: var(--color-teal-200);
 }
 
 /* Chaleur framboise, très pâle (le framboise plein reste la seule couleur d'action) — aidants,
@@ -126,6 +139,8 @@
   --scene-deep: var(--color-raspberry-100);
   --scene-accent: var(--color-sand-deep);
   --scene-text: var(--color-text);
+  --scene-deep-fort: var(--color-raspberry-200);
+  --scene-accent-fort: var(--color-sand-deeper);
 }
 
 /* Nuit — garde de nuit, présence 24 h/24, pages d'entreprise. Texte blanc. */
@@ -146,6 +161,8 @@
   --scene-deep: var(--color-sand);
   --scene-accent: var(--color-teal-50);
   --scene-text: var(--color-text);
+  --scene-deep-fort: var(--color-sand-deep);
+  --scene-accent-fort: var(--color-teal-100);
 }
 
 @layer components {
@@ -154,11 +171,14 @@
     /* Les calques décoratifs restent sous le contenu de la scène et ne s'en échappent pas. */
     isolation: isolate;
     background-color: var(--scene-base);
+    /* Le dégradé couvre toute la scène : `--scene-deep` en haut, `--scene-accent` en bas, sans
+       jamais dépasser ces deux couleurs mesurées (contraste borné, check-contrast.ts). */
     background-image: linear-gradient(
       var(--scene-angle),
       color-mix(in srgb, var(--scene-deep) var(--scene-gradient-alpha), transparent) 0%,
-      color-mix(in srgb, var(--scene-deep) var(--scene-gradient-alpha-mid), transparent) 46%,
-      transparent 78%
+      color-mix(in srgb, var(--scene-deep) var(--scene-gradient-alpha-mid), transparent) 44%,
+      color-mix(in srgb, var(--scene-accent) var(--scene-gradient-alpha-mid), transparent) 74%,
+      color-mix(in srgb, var(--scene-accent) var(--scene-gradient-alpha), transparent) 100%
     );
     color: var(--scene-text);
   }
@@ -173,12 +193,12 @@
       radial-gradient(
         var(--scene-halo-size) at var(--scene-halo-1-position),
         color-mix(in srgb, var(--scene-deep) var(--scene-halo-alpha), transparent),
-        transparent 72%
+        transparent 88%
       ),
       radial-gradient(
         var(--scene-halo-size) at var(--scene-halo-2-position),
         color-mix(in srgb, var(--scene-accent) var(--scene-halo-alpha), transparent),
-        transparent 70%
+        transparent 86%
       ),
       repeating-linear-gradient(
         var(--scene-weave-angle),
@@ -204,6 +224,8 @@
   /* Version soutenue : les mêmes couleurs, plus présentes. Le contraste ne change pas (aucune
      couche ne dépasse `--scene-deep`). */
   .scene-soutenu {
+    --scene-deep: var(--scene-deep-fort);
+    --scene-accent: var(--scene-accent-fort);
     --scene-gradient-alpha: var(--scene-gradient-alpha-fort);
     --scene-gradient-alpha-mid: var(--scene-gradient-alpha-mid-fort);
     --scene-halo-alpha: var(--scene-halo-alpha-fort);

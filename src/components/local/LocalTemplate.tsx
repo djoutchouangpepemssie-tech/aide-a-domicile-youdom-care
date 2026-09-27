@@ -560,9 +560,16 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                       distance: formatDistance(neighbour.distance_km),
                     });
                     return (
+                      /* Une commune sans page ne porte plus la même carte qu'une commune liée
+                         (27/09/2026) : quatre-vingt-onze pages mêlaient des cartes identiques
+                         dont la moitié n'était pas cliquable. Fond sourd, pas d'ombre, et le
+                         nom en texte simple : la différence se voit avant le clic. */
                       <li
                         key={neighbour.code}
-                        className="flex max-w-none items-center justify-between gap-3 rounded-card border border-line bg-white px-4 py-2 shadow-1"
+                        className={cn(
+                          "flex max-w-none items-center justify-between gap-3 rounded-card border border-line px-4 py-2",
+                          href ? "bg-white shadow-1" : "bg-sand",
+                        )}
                         data-voisine={neighbour.code}
                       >
                         {href ? (

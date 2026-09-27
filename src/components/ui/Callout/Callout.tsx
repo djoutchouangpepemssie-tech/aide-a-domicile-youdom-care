@@ -115,7 +115,13 @@ export function Callout({
   const config = defaults[variant];
 
   if (variant === "frontiere") {
-    const twoColumns = items?.some((item) => item.relais) ?? false;
+    /*
+     * Deux colonnes seulement si **chaque** ligne nomme son relais (27/09/2026). Avec `some`, une
+     * seule ligne renseignée imposait la grille à toutes : les autres laissaient une case vide sous
+     * l'en-tête « Qui le fait », soit 43 cases vides sur 25 pages. Une liste simple vaut mieux
+     * qu'un tableau troué.
+     */
+    const twoColumns = (items?.length ?? 0) > 0 && (items?.every((item) => item.relais) ?? false);
     return (
       <aside
         role="note"

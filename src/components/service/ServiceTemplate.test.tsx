@@ -217,13 +217,19 @@ describe("ServiceTemplate", () => {
     expect(simple).toHaveTextContent("Deux.");
   });
 
-  it("fait de la situation qui a une destination une carte-lien, les autres restent des cartes", () => {
+  it("fait de chaque situation une carte-lien : sa destination propre, sinon le formulaire", () => {
     render(<ServiceTemplate data={data()} />);
+    // 27/09/2026 : toutes les cartes d'une même grille se comportent pareil. Une carte sans
+    // destination propre mène au formulaire de la page, au lieu de rester inerte à côté des autres.
     const links = document.querySelectorAll("[data-situation] a");
-    expect(links).toHaveLength(1);
-    expectHref(links[0] as HTMLElement, "/demande/maladie-neurodegenerative/");
-    expect(links[0]).toHaveTextContent("Situation deux");
-    expect(document.querySelectorAll("[data-situation][data-href]")).toHaveLength(1);
+    expect(links).toHaveLength(3);
+    expect(document.querySelectorAll("[data-situation][data-href]")).toHaveLength(3);
+    const own = Array.from(links).find((link) => link.textContent?.includes("Situation deux"));
+    expectHref(own as HTMLElement, "/demande/maladie-neurodegenerative/");
+    const others = Array.from(links).filter((link) => link !== own);
+    for (const link of others) {
+      expectHref(link as HTMLElement, "/demande/maladie-neurodegenerative/");
+    }
   });
 
   it("pose les icônes des situations, des rubriques d'action et du formulaire", () => {

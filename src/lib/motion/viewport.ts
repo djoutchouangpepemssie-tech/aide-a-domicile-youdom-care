@@ -33,6 +33,58 @@ function release(threshold: number, element: Element): void {
   }
 }
 
+/*
+ * Filet de sécurité (27/09/2026). Un `IntersectionObserver` ne voit que ce qui traverse l'écran
+ * entre deux images. Un saut de défilement — ancre, `scrollTo`, molette rapide, retour de
+ * navigation, « Fin » au clavier — fait passer un bloc de dessous le pli à au-dessus sans qu'aucune
+ * entrée ne soit émise : le bloc reste à `pending`, donc invisible **définitivement**. C'est ce qui
+ * laissait huit blocs vides sur l'accueil après un défilement jusqu'en bas. Une passe au défilement
+ * et au redimensionnement révèle donc tout ce qui chevauche l'écran élargi ou l'a déjà dépassé.
+ * Coût : une lecture de rectangle par cible restante, au plus une fois par image, et plus rien dès
+ * que la dernière cible est révélée.
+ */
+let sweepQueued = false;
+
+function sweep(): void {
+  sweepQueued = false;
+  if (registries.size === 0) return;
+  // Aucune marge : la passe ne révèle que ce que l'écran touche déjà ou a dépassé. Anticiper
+  // lancerait des entrées que l'observateur n'aurait pas encore déclenchées, et ferait démarrer
+  // trop tôt les tracés du fil (contrat des 600 ms, tests/e2e/mouvement.spec.ts).
+  const limit = window.innerHeight || document.documentElement.clientHeight;
+  for (const [threshold, registry] of [...registries.entries()]) {
+    for (const [element, enter] of [...registry.targets.entries()]) {
+      const rect = element.getBoundingClientRect();
+      if (rect.top > limit) continue;
+      release(threshold, element);
+      enter();
+    }
+  }
+}
+
+function queueSweep(): void {
+  if (sweepQueued) return;
+  sweepQueued = true;
+  // Onglet caché : `requestAnimationFrame` ne rend jamais la main, la passe se ferait donc attendre
+  // indéfiniment. Rien n'y est visible, mais l'attribut doit être juste au retour.
+  if (typeof document !== "undefined" && document.visibilityState === "hidden") {
+    sweep();
+    return;
+  }
+  requestAnimationFrame(sweep);
+}
+
+let sweepBound = false;
+
+function bindSweep(): void {
+  if (sweepBound || typeof window === "undefined") return;
+  sweepBound = true;
+  window.addEventListener("scroll", queueSweep, { passive: true });
+  window.addEventListener("resize", queueSweep, { passive: true });
+  window.addEventListener("pageshow", queueSweep, { passive: true });
+  document.addEventListener("visibilitychange", queueSweep, { passive: true });
+}
+
 function registryFor(threshold: number): Registry | null {
   if (typeof IntersectionObserver === "undefined") return null;
   const known = registries.get(threshold);
@@ -65,6 +117,9 @@ export function observeOnce(element: Element, threshold: number, onEnter: Enter)
   if (!registry) return () => {};
   registry.targets.set(element, onEnter);
   registry.observer.observe(element);
+  // L'observateur signale de lui-même un élément déjà visible à l'abonnement : la passe n'est
+  // armée que pour les sauts de défilement, elle ne double pas cette première annonce.
+  bindSweep();
   return () => release(threshold, element);
 }
 
@@ -78,6 +133,7 @@ export function resetSharedObservers(): void {
   for (const registry of registries.values()) registry.observer.disconnect();
   registries.clear();
   folds.clear();
+  sweepQueued = false;
 }
 
 const folds = new Map<string, WeakMap<Element, boolean>>();

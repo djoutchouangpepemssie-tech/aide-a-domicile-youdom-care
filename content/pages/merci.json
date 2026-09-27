@@ -21,7 +21,12 @@
   "variantes": {
     "candidature": {
       "h1": "Merci. Votre candidature est arrivée.",
-      "texte": "Nous la lisons avec attention et nous vous répondons."
+      "texte": "Nous la lisons avec attention et nous vous répondons.",
+      "lectures_h2": "En attendant notre réponse",
+      "lectures": [
+        { "libelle": "Travailler chez Youdom Care", "href": "/recrutement/" },
+        { "libelle": "Qui nous sommes", "href": "/a-propos/" }
+      ]
     },
     "contact": {
       "h1": "Merci. Votre message est arrivé.",
