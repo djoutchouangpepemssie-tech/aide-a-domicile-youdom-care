@@ -1,0 +1,19 @@
+{
+  "_lisezmoi": "Page /aide-a-domicile/ (docs/04 §4, P6.5) : carte d'Île-de-France accessible (SVG schématique avec une liste équivalente de liens), recherche par commune (TerritorySearch), liste des agences de site.config.json. Les liens vers les départements n'apparaissent que pour les pages locales construites. Le jeton {agences} est remplacé par le nombre d'agences.",
+  "seo": {
+    "titre": "Aide à domicile en Île-de-France : trouvez votre commune",
+    "description": "Paris et les sept départements d’Île-de-France : tapez votre commune, nous vous disons tout de suite si nous intervenons, avec l’agence la plus proche."
+  },
+  "ariane": "Territoires",
+  "h1": "Aide à domicile à Paris et en Île-de-France",
+  "chapo": "Nous intervenons dans les huit départements d'Île-de-France, depuis six agences. Choisissez votre département sur la carte, ou tapez votre commune : la réponse est immédiate.",
+  "carte_h2": "Votre département",
+  "carte_texte": "Chaque page de département présente les communes où nous intervenons, l'agence la plus proche et les ressources locales, avec leurs sources.",
+  "recherche_h2": "Intervenons-nous près de chez vous ?",
+  "recherche_texte": "Tapez votre commune ou votre code postal : nous vous disons tout de suite si nous venons chez vous, et quelle agence vous suit.",
+  "agences_h2": "Nos agences",
+  "agences_texte": "{agences} agences réelles, de Paris à Versailles. Chacune a son adresse, son itinéraire et la liste des communes qu'elle suit.",
+  "agences_lien": "Toutes les agences",
+  "appel_h2": "Vous préférez nous parler ?",
+  "appel_texte": "Un conseiller vous répond, vous dit qui intervient près de chez vous et vous propose une évaluation à domicile gratuite, sans engagement."
+}

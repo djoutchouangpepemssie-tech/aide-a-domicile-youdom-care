@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/93007.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "93007",
+  "seo": {
+    "titre": "Le Blanc-Mesnil (93150) : aide à domicile, enfants et aînés",
+    "description": "Le Blanc-Mesnil : relais à domicile pour un enfant en situation de handicap ou un parent âgé, soirs, week-ends, nuits. Agence Youdom Care à 8,5 km."
+  },
+  "sous_titre": "Le Blanc-Mesnil réunit deux demandes d'aide à domicile : celle des parents d'un enfant en situation de handicap et celle des enfants d'un parent âgé. Un même métier, deux organisations.",
+  "zone_editoriale": "Les parents d'un enfant en situation de handicap cherchent rarement une « aide à domicile ». Ils cherchent quelqu'un qui connaisse leur enfant, qui tienne le soir et le mercredi, qui ne change pas tous les mois. Au Blanc-Mesnil, la commune dispose d'un « Centre Medico Psychologique Enfants et Adolescents », rue Marcel-Deboff, rattaché à un centre hospitalier. Les familles suivies là savent ce que coûte l'absence de relais. L'auxiliaire de vie apprend l'enfant une fois, à partir de ce que les parents décrivent, puis intervient aux créneaux qui libèrent la famille.\n\n### Le dossier MDPH et la PCH\n\nPour un enfant comme pour un adulte, l'aide humaine se finance en partie par la prestation de compensation du handicap ou l'AEEH. Le dossier se dépose à la Maison départementale des personnes handicapées (MDPH) de Seine-Saint-Denis, à Saint-Denis, rue Proudhon. Des associations départementales accompagnent les familles : la délégation d'APF France handicap à Bobigny, ouverte le lundi et le vendredi de 10 h à 12 h, et les associations de parents du réseau Unapei, dont « AFDAEIM Stains » et « ARPEI Gagny ».\n\n### Les aînés du Blanc-Mesnil\n\nLa ville compte 59 912 habitants ; 5,2 % ont 75 ans ou plus et 11,2 % ont entre 60 et 74 ans. Le Centre communal d'action sociale (CCAS), 76 rue Victor-Hugo, est le premier guichet pour une demande d'APA, instruite ensuite par le Conseil départemental à Bobigny. La « Résidence Maria Valtat », avenue Marcel-Alizard, est la résidence autonomie de la commune ; la « Maison de retraite Gaston Monmousseau », rue Gaston-Monmousseau, son EHPAD. Une personne qui vit en résidence autonomie garde son logement et peut y recevoir une auxiliaire de vie pour la toilette ou les repas.\n\nL'« Hopital Prive de la Seine Saint Denis », avenue Henri-Barbusse, est l'établissement de soins du Blanc-Mesnil. Quand un parent en sort, le retour se prépare : repas des premiers jours, aide au lever, présence la nuit si la famille le souhaite.\n\n### À 8,5 km de l'agence\n\nL'agence Youdom Care Seine-Saint-Denis est à Saint-Denis, à 8,5 km du Blanc-Mesnil à vol d'oiseau. Cette distance n'empêche pas des interventions quotidiennes, mais elle se prépare dans le planning. La même agence couvre Drancy (1,7 km), Le Bourget (2,1 km), Aulnay-sous-Bois et Dugny (2,7 km), Bobigny (3,5 km), Bonneuil-en-France (3,7 km), Bondy (4,2 km) et La Courneuve (4,3 km). Le Blanc-Mesnil fait partie de la Métropole du Grand Paris.\n\nÀ l'échelle du département, France Alzheimer 93 et maladies apparentées écoute les familles depuis Le Raincy, et le comité de Seine-Saint-Denis de France Parkinson réunit des bénévoles à Montreuil. Le PAM Île-de-France transporte à la demande les personnes à mobilité réduite qui remplissent ses conditions d'inscription.\n\nQue la demande concerne un enfant ou un parent, elle commence de la même façon : une visite chez vous, au Blanc-Mesnil, pour écouter et évaluer. Cette visite et le devis qui la suit sont gratuits.",
+  "questions": [
+    {
+      "question": "Quel relais existe au Blanc-Mesnil pour un enfant en situation de handicap ?",
+      "reponse": "Youdom Care accompagne à domicile les enfants autistes, polyhandicapés, avec un handicap moteur ou une déficience intellectuelle, le soir, le mercredi, le week-end ou pendant les vacances. Au Blanc-Mesnil, le « Centre Medico Psychologique Enfants et Adolescents », rue Marcel-Deboff, assure le suivi médical ; nous ne le remplaçons pas, nous le complétons à la maison."
+    },
+    {
+      "question": "Où déposer un dossier MDPH quand on vit au Blanc-Mesnil ?",
+      "reponse": "À la Maison départementale des personnes handicapées (MDPH) de Seine-Saint-Denis, 44 rue Proudhon, immeuble Pulse, à Saint-Denis, ou en ligne. Elle traite les demandes de PCH, d'AEEH et de carte mobilité inclusion pour les habitants du Blanc-Mesnil. Une fois le plan de compensation notifié, les heures d'aide humaine peuvent être réalisées par une auxiliaire de vie en mode prestataire ou mandataire."
+    },
+    {
+      "question": "Quelle est l'agence Youdom Care la plus proche du Blanc-Mesnil ?",
+      "reponse": "L'agence Youdom Care Seine-Saint-Denis, à Saint-Denis, à 8,5 km du Blanc-Mesnil à vol d'oiseau. Elle coordonne aussi les interventions à Drancy, Le Bourget, Aulnay-sous-Bois, Dugny et Bobigny. La distance est prise en compte dans l'organisation des tournées ; elle ne modifie ni le prix de la visite d'évaluation, gratuite, ni celui du devis."
+    },
+    {
+      "question": "Y a-t-il une résidence autonomie au Blanc-Mesnil ?",
+      "reponse": "Oui, la « Résidence Maria Valtat », avenue Marcel-Alizard, compte 79 places. Une résidence autonomie propose des logements indépendants à des personnes âgées autonomes ou peu dépendantes. Une auxiliaire de vie peut y intervenir pour les gestes du quotidien, en accord avec la résidence. L'EHPAD de la commune est la « Maison de retraite Gaston Monmousseau », 9 rue Gaston-Monmousseau."
+    }
+  ],
+  "semaine_type": "tom",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

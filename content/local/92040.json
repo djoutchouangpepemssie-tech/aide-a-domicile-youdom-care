@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92040.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92040",
+  "seo": {
+    "titre": "Aide à domicile à Issy-les-Moulineaux (92130) : guichets",
+    "description": "Auxiliaire de vie à Issy-les-Moulineaux : réseau gérontologique l'Alliance rue du Général-Leclerc, Corentin-Celton, Hôpital Suisse, résidence Le Parc."
+  },
+  "sous_titre": "À Issy-les-Moulineaux, le réseau gérontologique et le CCAS sont dans la même rue : une famille pose ses questions à une seule adresse, ou presque.",
+  "zone_editoriale": "### Rue du Général-Leclerc : deux guichets à quelques numéros\n\nÀ Issy-les-Moulineaux, le « Réseau gérontologique l'Alliance », 53 rue du Général-Leclerc, est le point d'information local dédié aux personnes âgées. Le Centre communal d'action sociale (CCAS) - Issy-les-Moulineaux est au 47 de la même rue, au centre administratif municipal. Une famille qui découvre la perte d'autonomie d'un parent pose donc ses questions à une seule adresse, ou presque.\n\n### Deux établissements de santé dans la commune\n\nL'hôpital Corentin-Celton, site du GHU AP-HP Centre-Université Paris Cité, est un centre hospitalier régional. L'Hôpital Suisse de Paris, 10 rue Minard, est un établissement de soins médicaux. Une sortie d'hospitalisation vers un domicile d'Issy-les-Moulineaux se prépare avec l'équipe du service. L'auxiliaire de vie est là pour le premier repas, la toilette du lendemain, la présence de nuit si elle est nécessaire.\n\n### Résidence autonomie et EHPAD\n\nLa « Résidence Le Parc », 20 rue de l'Abbé-Derry, est une résidence autonomie de 89 places. Quatre EHPAD sont dans la commune. L'« Ehpad Les Neuf Muses », 31-33 boulevard Gallieni, propose de l'hébergement temporaire et une unité Alzheimer. L'« EHPAD Lasserre », 4 rue Séverine, dispose lui aussi d'une unité Alzheimer. Un hébergement temporaire sert de relais quand l'aidant part. L'aide à domicile reprend au retour. Les résidences autonomie et les EHPAD ne sont pas des concurrents de l'aide à domicile. Ce sont des étapes possibles, et une auxiliaire de vie peut intervenir dans les premières.\n\n### Issy-les-Moulineaux en chiffres\n\nLa commune compte 67 695 habitants au recensement de 2022. Les 75 ans et plus représentent 6,8 % de la population, dont 1 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 12 %. Pour une personne plus jeune qui vit avec une maladie de Huntington, les besoins évoluent au fil des mois. L'accompagnement suit ce rythme, sans promesse sur la maladie elle-même.\n\n### Le département, l'agence, les voisins\n\nL'allocation personnalisée d'autonomie dépend du Conseil départemental des Hauts-de-Seine, à Nanterre. La Maison départementale des personnes handicapées est à Courbevoie, 12 avenue Léonard-de-Vinci. « France Alzheimer Hauts-de-Seine » écoute les familles depuis Neuilly-sur-Seine. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite. L'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 6,7 km à vol d'oiseau. Cette distance compte pour un rendez-vous à l'agence, pas pour les interventions, qui ont lieu chez vous. Elle couvre aussi Boulogne-Billancourt, à 2,1 km, et le 15e arrondissement de Paris, à 3 km. Vanves est à 1,8 km. Issy-les-Moulineaux appartient à la Métropole du Grand Paris.\n\nUn parent d'Issy-les-Moulineaux perd pied, ou vous-même avez besoin d'un relais régulier. Décrivez-le simplement. Une première visite d'évaluation gratuite chez vous précède un devis gratuit ; vous choisissez ensuite.",
+  "questions": [
+    {
+      "question": "Quel est le point d'information pour les personnes âgées à Issy-les-Moulineaux ?",
+      "reponse": "Le « Réseau gérontologique l'Alliance », 53 rue du Général-Leclerc, d'après la base de la CNSA. C'est le point d'information local dédié aux personnes âgées d'Issy-les-Moulineaux. Le Centre communal d'action sociale est au 47 de la même rue, au centre administratif municipal. Vous y trouvez une information sur les aides, dont l'allocation personnalisée d'autonomie instruite par le Conseil départemental à Nanterre."
+    },
+    {
+      "question": "Quels hôpitaux se trouvent à Issy-les-Moulineaux ?",
+      "reponse": "Deux établissements sont recensés par FINESS. L'hôpital Corentin-Celton, site du GHU AP-HP Centre-Université Paris Cité, est un centre hospitalier régional. L'Hôpital Suisse de Paris, 10 rue Minard, est un établissement de soins médicaux. Notre service de sortie d'hospitalisation prépare le retour à domicile avec l'équipe du service, si possible avant la date de sortie."
+    },
+    {
+      "question": "Existe-t-il une résidence autonomie à Issy-les-Moulineaux ?",
+      "reponse": "Oui. La « Résidence Le Parc », 20 rue de l'Abbé-Derry, compte 89 places, d'après la base de la CNSA. Une résidence autonomie propose des logements indépendants à des personnes encore autonomes. Une auxiliaire de vie peut y intervenir pour la toilette, les repas, les courses ou une compagnie régulière. Quatre EHPAD complètent l'offre de la commune, dont deux avec unité Alzheimer."
+    },
+    {
+      "question": "L'agence Youdom Care de Puteaux intervient-elle à Issy-les-Moulineaux ?",
+      "reponse": "Oui. L'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 6,7 km à vol d'oiseau d'Issy-les-Moulineaux. C'est l'agence la plus proche, et elle couvre aussi Boulogne-Billancourt. Les interventions ont lieu chez vous ; la distance ne joue que pour un rendez-vous à l'agence. La demande se fait par téléphone ou par le formulaire, puis un conseiller vient pour une première visite d'évaluation gratuite."
+    }
+  ],
+  "semaine_type": "sophie",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 18, 20],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

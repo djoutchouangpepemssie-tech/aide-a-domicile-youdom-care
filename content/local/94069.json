@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94069.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94069",
+  "seo": {
+    "titre": "Aide à domicile à Saint-Maurice (94410) | Youdom Care",
+    "description": "Aide à domicile à Saint-Maurice pour les couples âgés : nuits de repos pour le conjoint, gestes du matin, retour d'hôpital. Première visite gratuite."
+  },
+  "sous_titre": "Vivre à deux à Saint-Maurice quand l'un des deux est malade : l'aide à domicile rend des nuits au conjoint.",
+  "zone_editoriale": "Vivre à deux quand l'un des deux a la maladie d'Alzheimer change la nuit autant que le jour. Le conjoint veille, se lève, ne dort plus, et finit par s'épuiser sans le dire à personne. À Saint-Maurice, l'aide à domicile sert d'abord à cela : rendre des nuits au conjoint et des matinées calmes à la personne malade.\n\nLa commune compte 14 411 habitants en 2022. Les 75 ans et plus représentent 7,7 % de la population, et les 90 ans ou plus 1,5 %. Les 60-74 ans pèsent 13 %. Dans un foyer de deux personnes âgées, l'une aide souvent l'autre ; c'est elle qu'il faut aussi soulager.\n\n### Ce que la commune met à disposition\n\nLe « Centre communal d'action sociale (CCAS) - Saint-Maurice », 55 rue du Maréchal Leclerc, à la mairie, reçoit les demandes d'aide et oriente. À la même adresse, l'EHPAD Le Val d'Osne, 90 places, propose de l'hébergement temporaire et une unité Alzheimer : un séjour court y donne du répit au conjoint. L'EHPAD Les Jardin des acacias, allée des Acacias, compte 53 places. La Résidence de presles, chemin de Presles, est une résidence autonomie de 49 places où l'aide à domicile reste possible. Aucun accueil de jour ni Espace autonomie n'est recensé dans la commune.\n\n### L'hôpital\n\n« Les Hopitaux de Saint Maurice Rgpt Esquirol St Maurice », rue du Val d'Osne, est le seul centre hospitalier recensé à Saint-Maurice. Un retour à domicile après un séjour se prépare avant la sortie : présence, repas, aide à la toilette, rendez-vous de suivi. Youdom Care ne réalise pas de soins infirmiers et travaille avec ceux qui les assurent.\n\n### Les démarches départementales\n\nL'allocation personnalisée d'autonomie relève du Conseil départemental du Val-de-Marne, à Créteil. La Maison départementale des personnes handicapées, à Créteil aussi, instruit la prestation de compensation du handicap. France Alzheimer Val-de-Marne, à Nogent-sur-Marne, à 3,5 km, accueille et écoute les familles sur rendez-vous : c'est une porte utile pour un conjoint. Le Pam Île-de-France assure le transport à la demande des personnes à mobilité réduite.\n\n### L'agence et les voisines\n\nL'agence Youdom Care Val-de-Marne, à Vitry-sur-Seine, est à 4,2 km. Maisons-Alfort est à 1,8 km, Joinville-le-Pont à 1,9 km, le 12e arrondissement de Paris à 2,6 km, Charenton-le-Pont et Alfortville à 2,8 km. Saint-Maurice, 145 hectares, appartient à la Métropole du Grand Paris.\n\nSi vous êtes ce conjoint qui ne dort plus, la première visite d'évaluation est pour vous deux. Elle a lieu chez vous, à Saint-Maurice, elle est gratuite, et le devis qui la suit aussi. Racontez-nous comment se passent vos nuits, et ce que vous voudriez retrouver.",
+  "questions": [
+    {
+      "question": "Comment obtenir des nuits de repos quand on vit avec un conjoint malade à Saint-Maurice ?",
+      "reponse": "Deux voies existent. Une auxiliaire de vie peut assurer une ou plusieurs nuits par semaine à domicile, pendant lesquelles le conjoint dort. L'EHPAD Le Val d'Osne, 55 rue du Maréchal Leclerc, propose de l'hébergement temporaire pour un séjour court. La première visite d'évaluation, gratuite, chez vous à Saint-Maurice, permet de choisir et de combiner ces relais selon votre situation."
+    },
+    {
+      "question": "Y a-t-il un hôpital à Saint-Maurice ?",
+      "reponse": "Oui. « Les Hopitaux de Saint Maurice Rgpt Esquirol St Maurice », 12 rue du Val d'Osne, est le centre hospitalier recensé dans la commune. Pour un retour à domicile après un séjour, prévenez l'agence Youdom Care de Vitry-sur-Seine, à 4,2 km, dès que la date de sortie est connue. La présence des premiers jours et les repas s'organisent avant le retour ; les soins restent aux professionnels de santé."
+    },
+    {
+      "question": "Où s'adresser à Saint-Maurice pour une aide sociale ou l'APA ?",
+      "reponse": "Le « Centre communal d'action sociale (CCAS) - Saint-Maurice », 55 rue du Maréchal Leclerc, reçoit les demandes d'aide et oriente. L'allocation personnalisée d'autonomie est attribuée par le Conseil départemental du Val-de-Marne, à Créteil ; aucun Espace autonomie n'est recensé dans la commune. Pour les familles touchées par la maladie d'Alzheimer, France Alzheimer Val-de-Marne, à Nogent-sur-Marne, reçoit sur rendez-vous."
+    },
+    {
+      "question": "Saint-Maurice dispose-t-elle d'une résidence autonomie ?",
+      "reponse": "Oui, la Résidence de presles, 41 chemin de Presles, compte 49 places. Ses habitants ont un logement indépendant et peuvent faire venir une auxiliaire de vie pour la toilette, le ménage, les repas ou les sorties. La commune compte aussi deux EHPAD : Le Val d'Osne, 90 places, et Les Jardin des acacias, 8 allée des Acacias, 53 places."
+    }
+  ],
+  "semaine_type": "madeleine",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

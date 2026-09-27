@@ -1,0 +1,43 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale du Val-de-Marne, écrite à partir des faits de data/local/94.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94",
+  "seo": {
+    "titre": "Aide à domicile dans le Val-de-Marne : agence de Vitry",
+    "description": "Val-de-Marne : Espaces Autonomie pour l'APA, MDPH à Créteil, répit des aidants, agence Youdom Care de Vitry-sur-Seine. Première visite gratuite."
+  },
+  "sous_titre": "Le Val-de-Marne a découpé son territoire en Espaces Autonomie numérotés par secteur ; l'agence Youdom Care de Vitry-sur-Seine se trouve dans celui du secteur 7.",
+  "zone_editoriale": "Dans le Val-de-Marne, la première question à se poser est : quel est mon secteur ? Le Département a organisé ses points d'information pour les personnes âgées en Espaces Autonomie, anciens CLIC, numérotés par secteur. Fontenay-sous-Bois, 5 rue Jean-Douat, porte le secteur 1. Champigny-sur-Marne, 4 avenue Danielle-Casanova, le secteur 2. Boissy-Saint-Léger, 4 boulevard de la Gare, le secteur 3, avec le centre local d'information et de coordination 3 de Limeil-Brévannes, 48 rue Henri-Barbusse. Créteil, 7-9 voie Félix-Éboué, le secteur 4. Maisons-Alfort, 2 rue Louis-Pergaud, le secteur 5. Chevilly-Larue, 3 rue du Béarn, le secteur 6. Vitry-sur-Seine, 27 avenue Maximilien-Robespierre, le secteur 7. Bry-sur-Marne accueille en plus le centre local d'information et de coordination Rives-de-Marne, 2 rue du 2-Décembre-1870.\n\nCes espaces renseignent sur l'allocation personnalisée d'autonomie (APA) et aident à remplir le dossier. Ils connaissent les accueils de jour du secteur. C'est aussi à eux que s'adresse la demande de révision quand les besoins changent. Le Val-de-Marne en recense 28, avec 53 résidences autonomie et 72 EHPAD.\n\n### Créteil, là où se prennent les décisions\n\nL'APA est attribuée par le Conseil départemental du Val-de-Marne. Son Hôtel du département se trouve 21 avenue du Général-de-Gaulle, à Créteil. La Maison départementale des personnes handicapées est dans la même ville, immeuble Solidarité, 7-9 voie Félix-Éboué. C'est l'adresse de l'Espace Autonomie du secteur 4. Elle instruit la prestation de compensation du handicap (PCH) pour les adultes et les enfants. APF France handicap a sa délégation 34 rue de Brie, à Créteil. L'APOGEI 94, du réseau Unapei, est au 70 avenue du Général-de-Gaulle. Les autres associations de parents Unapei sont l'ADPED 94 à Fresnes et l'ETAI Kremlin-Bicêtre, installée à Villejuif.\n\n### Maladie d'Alzheimer et répit des aidants\n\nFrance Alzheimer Val-de-Marne reçoit les familles sur rendez-vous, 4 rue du Maréchal-Vaillant, à Nogent-sur-Marne. Trois plateformes d'accompagnement et de répit pour les aidants de personnes âgées sont recensées. Saint-Maur-des-Fossés, 3 impasse de l'Abbaye, dans un accueil de jour. Valenton, résidence Les Pastoureaux, 10 avenue Salvador-Allende. Villejuif, accueil de jour Casa Delta 7, 6 rue du Colonel-Marchand. Quand un proche vit avec une maladie de la mémoire, ces lieux permettent à l'aidant de souffler. Une auxiliaire de vie prend le relais à la maison aux mêmes heures, en gardant les repères de la personne. Même heure de lever, même ordre pour la toilette, même place à table : ces repères comptent davantage que le nombre d'heures.\n\n### Hôpitaux du département\n\nLes données recensent notamment le Centre hospitalier intercommunal de Créteil, 40 avenue de Verdun. Le CHI Lucie-et-Raymond-Aubrac est à Villeneuve-Saint-Georges, 40 allée de la Source. Le Charles-Foix Jean-Rostand, groupement hospitalier universitaire Est, se trouve 39 rue Jean-Le-Galleu, à Ivry-sur-Seine. Le Centre hospitalier Les Murets de La Queue-en-Brie est au 17 rue du Général-Leclerc. Il dispose d'un site de soins de suite et réadaptation à Bry-sur-Marne, 2 rue des Pères-Camilliens. Un retour à la maison depuis l'un de ces sites se prépare avant la sortie : présence à l'arrivée, repas, nuit si besoin. L'auxiliaire de vie n'assure pas les soins ; les infirmiers passent séparément.\n\nPAM Île-de-France couvre le Val-de-Marne : transport à la demande pour les personnes à mobilité réduite, réservation gratuite, inscription en ligne ou par courrier. Il faut une carte mobilité inclusion mention invalidité, une carte d'invalidité à 80 % ou plus, ou un classement en GIR 1 à 4.\n\n### Habitants et agence\n\nLe Val-de-Marne compte 1 419 531 habitants au recensement de 2022 : 13,3 % de 60-74 ans, 7,3 % de 75 ans et plus, dont 1 % de 90 ans ou plus. Les demandes vont donc de l'aide ponctuelle aux courses jusqu'à la présence continue pour les plus âgés.\n\nL'agence Youdom Care Val-de-Marne est à Vitry-sur-Seine, avenue Paul-Vaillant-Couturier. Vitry-sur-Seine, Alfortville, Ivry-sur-Seine, Villejuif, Charenton-le-Pont, Maisons-Alfort, Le Kremlin-Bicêtre, Choisy-le-Roi, Thiais, Créteil, Saint-Maurice, Gentilly, Chevilly-Larue, L'Haÿ-les-Roses, Arcueil, Cachan, Saint-Maur-des-Fossés et Champigny-sur-Marne en dépendent et ont chacune leur page. Saint-Mandé et Fontenay-sous-Bois sont plus proches de l'agence de Paris, rue de Lyon. Cette agence couvre aussi une large part de l'Essonne et Noisy-le-Grand, en Seine-Saint-Denis.\n\nRepérez votre secteur, puis appelez-nous ou décrivez la situation dans le formulaire. La visite d'évaluation chez vous ne coûte rien, le devis non plus.",
+  "questions": [
+    {
+      "question": "Quel Espace Autonomie correspond à ma commune dans le Val-de-Marne ?",
+      "reponse": "Le Val-de-Marne compte sept secteurs. Secteur 1 : Fontenay-sous-Bois, rue Jean-Douat. Secteur 2 : Champigny-sur-Marne, avenue Danielle-Casanova. Secteur 3 : Boissy-Saint-Léger, boulevard de la Gare, et Limeil-Brévannes, rue Henri-Barbusse. Secteur 4 : Créteil, voie Félix-Éboué. Secteur 5 : Maisons-Alfort, rue Louis-Pergaud. Secteur 6 : Chevilly-Larue, rue du Béarn. Secteur 7 : Vitry-sur-Seine, avenue Maximilien-Robespierre. Bry-sur-Marne abrite en plus le centre Rives-de-Marne. Appelez celui qui est le plus proche : il confirme votre rattachement."
+    },
+    {
+      "question": "Où se trouve la MDPH du Val-de-Marne ?",
+      "reponse": "La Maison départementale des personnes handicapées du Val-de-Marne est à Créteil, immeuble Solidarité, 7-9 voie Félix-Éboué, à la même adresse que l'Espace Autonomie du secteur 4. Elle instruit la prestation de compensation du handicap, les cartes mobilité inclusion et les orientations, pour les enfants comme pour les adultes. APF France handicap, rue de Brie, et l'APOGEI 94 (avenue du Général-de-Gaulle), toutes deux à Créteil, accompagnent les familles."
+    },
+    {
+      "question": "Quelle aide pour un aidant dans le Val-de-Marne quand un proche a la maladie d'Alzheimer ?",
+      "reponse": "France Alzheimer Val-de-Marne reçoit les familles sur rendez-vous, 4 rue du Maréchal-Vaillant à Nogent-sur-Marne. Trois plateformes d'accompagnement et de répit sont recensées : Saint-Maur-des-Fossés, impasse de l'Abbaye ; Valenton, résidence Les Pastoureaux ; Villejuif, accueil de jour Casa Delta 7. Le département compte 28 accueils de jour. À domicile, une auxiliaire de vie assure la continuité des gestes et des repères pendant les absences de l'aidant."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre le Val-de-Marne ?",
+      "reponse": "L'agence Youdom Care Val-de-Marne est à Vitry-sur-Seine, avenue Paul-Vaillant-Couturier. Elle est la plus proche pour Vitry-sur-Seine, Alfortville, Ivry-sur-Seine, Villejuif, Charenton-le-Pont, Maisons-Alfort, Le Kremlin-Bicêtre, Choisy-le-Roi, Thiais, Créteil, Saint-Maurice, Gentilly, Chevilly-Larue, L'Haÿ-les-Roses, Arcueil, Cachan, Saint-Maur-des-Fossés et Champigny-sur-Marne. Saint-Mandé et Fontenay-sous-Bois dépendent plutôt de l'agence de Paris. La visite d'évaluation est gratuite."
+    },
+    {
+      "question": "Comment demander l'APA dans le Val-de-Marne ?",
+      "reponse": "L'allocation personnalisée d'autonomie est attribuée par le Conseil départemental du Val-de-Marne, 21 avenue du Général-de-Gaulle à Créteil. Le dossier se prépare avec l'Espace Autonomie de votre secteur, qui évalue les besoins à domicile et transmet la demande. Le plan d'aide fixe un nombre d'heures d'aide humaine. Youdom Care peut ensuite les réaliser, en mode prestataire ou mandataire, selon votre choix."
+    }
+  ],
+  "semaine_type": "madeleine",
+  "faits_utilises": [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 27, 28, 29, 30, 31, 32,
+    33, 34, 35, 36, 37
+  ],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

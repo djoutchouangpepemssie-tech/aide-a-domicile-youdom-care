@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92004.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92004",
+  "seo": {
+    "titre": "Aide à domicile à Asnières-sur-Seine (92600) : le relais",
+    "description": "Auxiliaire de vie à Asnières-sur-Seine : deux accueils de jour, de l'hébergement temporaire, le CLIC rue de l'Alma. Un relais pour les aidants."
+  },
+  "sous_titre": "À Asnières-sur-Seine, l'aide à domicile se construit avec les accueils de jour et l'hébergement temporaire de la commune, pour que l'aidant tienne aussi.",
+  "zone_editoriale": "### Souffler quelques heures : les accueils de jour d'Asnières-sur-Seine\n\nQuand on accompagne un parent chaque jour, la première question n'est pas toujours celle de l'aide à domicile. C'est celle du relais. Asnières-sur-Seine compte deux accueils de jour. L'« Accueil de jour les Lilas », 30 rue Auguste-Bailly, dispose de 20 places et d'une unité Alzheimer. La « Résidence Médicis Asnières », 129 rue des Bas, associe un EHPAD et un accueil de jour. Elle a aussi une unité Alzheimer. Une auxiliaire de vie s'articule bien avec ces journées. Elle prépare le départ le matin, elle est là au retour, et la maison garde son rythme.\n\n### Des places d'hébergement temporaire pour un répit plus long\n\nDeux résidences autonomie voisines, rue de la Concorde, accueillent des personnes encore autonomes. Le « Foyer-Logement Communal », 25 rue de la Concorde, propose aussi de l'hébergement temporaire. Le « Foyer-Logement Municipal D'Asnieres » est au 11 de la même rue. L'« EHPAD Résidence Fontaine », rue Hector-Gonsalves-Fontaine, et l'« EHPAD Villa Concorde Maison de Famille » offrent eux aussi de l'hébergement temporaire. Un séjour de ce type permet à un conjoint de partir une semaine. À la maison, l'aide reprend ensuite exactement comme avant.\n\n### À qui parler d'abord\n\nLe « CLIC d'Asnières-sur-Seine », 5-7 rue de l'Alma, est le point d'information local dédié aux personnes âgées. C'est le lieu où poser toutes les questions sur les aides, y compris celles qui concernent l'aidant. Le Centre communal d'action sociale (CCAS) - Asnières-sur-Seine reçoit 14 rue des Parisiens. La demande d'allocation personnalisée d'autonomie est traitée par le Conseil départemental des Hauts-de-Seine, à Nanterre. Pour un adulte ou un enfant en situation de handicap, la Maison départementale des personnes handicapées reçoit à Courbevoie. Elle est au 12 avenue Léonard-de-Vinci. « France Alzheimer Hauts-de-Seine », association départementale, écoute les familles depuis Neuilly-sur-Seine.\n\n### Une grande ville, une part de 75 ans et plus modérée\n\nAvec 91 457 habitants au recensement de 2022, Asnières-sur-Seine figure parmi les communes les plus peuplées du département. Les 75 ans et plus représentent 5,6 % de la population, dont 0,9 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 10,7 %. Ces parts sont modérées. Elles n'empêchent pas qu'un conjoint ou un enfant porte seul, dans bien des foyers, l'organisation du quotidien.\n\n### Hôpitaux et agence : à quelques kilomètres\n\nLes hôpitaux les plus proches sont à Clichy, à 1,7 km à vol d'oiseau. Il s'agit du Centre hospitalier Fondation Roguet, 64 rue Villeneuve, et de l'hôpital Beaujon. Ce dernier, site du GHU AP-HP Nord Université Paris Cité, est au 100 boulevard du Général-Leclerc. L'agence Youdom Care Seine-Saint-Denis, à Saint-Denis, est la plus proche d'Asnières-sur-Seine : 3,8 km. Elle intervient aussi à Gennevilliers, à 1,6 km, à Clichy, à 1,7 km, et à Bois-Colombes, à 1,8 km. La commune fait partie de la Métropole du Grand Paris. Le PAM Île-de-France, transport à la demande pour personnes à mobilité réduite, complète les déplacements vers ces lieux.\n\nSi vous êtes l'aidant d'un proche à Asnières-sur-Seine, parlez-nous d'abord de votre propre fatigue. La première visite d'évaluation, à domicile, est gratuite ; le devis l'est aussi. Elle sert à construire un relais qui tienne dans la durée, quelques heures par semaine ou davantage.",
+  "questions": [
+    {
+      "question": "Y a-t-il un accueil de jour à Asnières-sur-Seine ?",
+      "reponse": "Oui, deux. L'« Accueil de jour les Lilas », 30 rue Auguste-Bailly, compte 20 places et une unité Alzheimer. La « Résidence Médicis Asnières », 129 rue des Bas, réunit un EHPAD et un accueil de jour, avec une unité Alzheimer. Une auxiliaire de vie peut préparer la personne le matin et l'accueillir au retour. Les journées à l'extérieur et les journées à la maison se ressemblent alors."
+    },
+    {
+      "question": "Où trouver le CLIC d'Asnières-sur-Seine ?",
+      "reponse": "Le « CLIC d'Asnières-sur-Seine » se trouve 5-7 rue de l'Alma. C'est le point d'information local dédié aux personnes âgées, aussi appelé centre local d'information et de coordination gérontologique. On y pose ses questions sur les aides et les démarches. Le Centre communal d'action sociale de la ville reçoit 14 rue des Parisiens. Les deux adresses figurent dans la grille des ressources ci-dessus, avec leurs sources."
+    },
+    {
+      "question": "Quelle agence Youdom Care intervient à Asnières-sur-Seine ?",
+      "reponse": "L'agence la plus proche est Youdom Care Seine-Saint-Denis, à Saint-Denis, à 3,8 km à vol d'oiseau. Elle intervient aussi dans les communes voisines, dont Gennevilliers, Clichy, Bois-Colombes et Levallois-Perret. La demande se fait par téléphone ou par le formulaire de cette page. Un conseiller vient ensuite chez vous pour une première visite d'évaluation gratuite, sans frais pour le devis."
+    },
+    {
+      "question": "Un proche aidant peut-il obtenir un répit d'une semaine à Asnières-sur-Seine ?",
+      "reponse": "Plusieurs établissements de la commune proposent de l'hébergement temporaire. C'est le cas du « Foyer-Logement Communal », 25 rue de la Concorde. C'est aussi celui de l'« EHPAD Résidence Fontaine » et de l'« EHPAD Villa Concorde Maison de Famille ». L'autre option est de rester à la maison avec une présence renforcée. Nos services de garde de nuit ou de présence 24h/24 servent à cela. Vous en choisissez la durée."
+    }
+  ],
+  "semaine_type": "gisele",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 17, 18, 19, 23],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

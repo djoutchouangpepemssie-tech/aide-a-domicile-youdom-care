@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92026.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92026",
+  "seo": {
+    "titre": "Aide à domicile à Courbevoie (92400) : la MDPH sur place",
+    "description": "Auxiliaire de vie à Courbevoie : la MDPH des Hauts-de-Seine est dans la commune, quatre accueils de jour, le CLIC Archipel. Agence de Puteaux à 1,7 km."
+  },
+  "sous_titre": "La MDPH des Hauts-de-Seine est à Courbevoie : pour un enfant ou un adulte en situation de handicap, le guichet des droits est dans la commune.",
+  "zone_editoriale": "### La MDPH des Hauts-de-Seine est à Courbevoie\n\nPour un enfant ou un adulte en situation de handicap, Courbevoie a une particularité. La Maison départementale des personnes handicapées des Hauts-de-Seine y est installée, 12 avenue Léonard-de-Vinci, esplanade Mona-Lisa. C'est elle qui reçoit les demandes de prestation de compensation du handicap. Les familles de tout le département s'y rendent ; celles de Courbevoie ont ce guichet chez elles.\n\n### Ce que l'aide à domicile apporte à un enfant ou à un adulte\n\nUne auxiliaire de vie apprend les habitudes de la personne et les respecte. Lever, toilette, repas, transferts, accompagnement à l'école ou au travail, temps de répit pour les parents. La prestation de compensation du handicap sert notamment à financer de l'aide humaine. Nous ne réalisons pas de soins ; nous travaillons avec les professionnels qui les assurent. Pour un enfant autiste, les repères comptent : les mêmes personnes, les mêmes horaires, les mêmes mots. Les parents transmettent ce qui marche, et l'équipe s'y tient. Pour un adulte, c'est lui qui fixe le cadre : lever, sorties, travail, soirées.\n\n### Quatre accueils de jour et un hôpital\n\nCourbevoie compte quatre accueils de jour recensés par la CNSA. Le « Centre d'accueil de jour Alzheimer », 43 rue Henri-Régnault, dispose de 13 places. L'« EHPAD - résidence Ger'Home », 23 rue Jules-Lefèvre, et l'« EHPAD Les Chenets », 51 rue Victor-Hugo, proposent aussi un accueil de jour. L'« EHPAD Villa Borghèse », 8 rue Paul-Napoléon-Roinard, complète la liste. Le Centre hospitalier Rives de Seine, site Courbevoie, est au 30 rue Kilford. Une sortie d'hospitalisation se prépare donc dans la commune.\n\n### S'informer : le CLIC Archipel\n\nLe « CLIC Archipel » est le point d'information local dédié aux personnes âgées. La base de la CNSA l'indique 43 rue Kilford ; l'annuaire de l'administration, 30 avenue Puvis-de-Chavannes. Le Centre communal d'action sociale (CCAS) - Courbevoie est à l'hôtel de ville, 1 place de l'Hôtel-de-Ville. L'allocation personnalisée d'autonomie relève du Conseil départemental des Hauts-de-Seine, à Nanterre.\n\n### Les chiffres et l'agence\n\nCourbevoie compte 81 945 habitants au recensement de 2022. Les 75 ans et plus représentent 7,1 % de la population, dont 1,1 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 12,7 %. L'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 1,7 km. Elle intervient aussi à Neuilly-sur-Seine, à 1,4 km, à La Garenne-Colombes, à 1,5 km, et à Bois-Colombes, à 2,1 km. Courbevoie fait partie de la Métropole du Grand Paris. « France Alzheimer Hauts-de-Seine » accueille les familles depuis Neuilly-sur-Seine.\n\nPour un enfant, un adulte ou un parent âgé de Courbevoie, décrivez-nous la situation telle qu'elle est. La première visite d'évaluation à domicile est gratuite, le devis aussi. Le planning se construit avec vous et se modifie quand votre vie change.",
+  "questions": [
+    {
+      "question": "Où est la MDPH pour les habitants de Courbevoie ?",
+      "reponse": "Dans la commune même. La Maison départementale des personnes handicapées des Hauts-de-Seine est au 12 avenue Léonard-de-Vinci, esplanade Mona-Lisa, à Courbevoie. Elle reçoit les demandes de prestation de compensation du handicap pour tout le département, pour les enfants comme pour les adultes. L'adresse et sa source figurent dans la grille des ressources de cette page."
+    },
+    {
+      "question": "Combien d'accueils de jour y a-t-il à Courbevoie ?",
+      "reponse": "Quatre, d'après la base de la CNSA. Le « Centre d'accueil de jour Alzheimer », 43 rue Henri-Régnault, compte 13 places. L'« EHPAD - résidence Ger'Home », l'« EHPAD Les Chenets » et l'« EHPAD Villa Borghèse » proposent aussi un accueil de jour. Une auxiliaire de vie complète ces journées à la maison, le matin, le soir et les jours sans accueil."
+    },
+    {
+      "question": "Où se trouve le CLIC Archipel de Courbevoie ?",
+      "reponse": "Deux adresses sont publiées pour le « CLIC Archipel », point d'information local dédié aux personnes âgées de Courbevoie. La base de la CNSA indique 43 rue Kilford. L'annuaire de l'administration indique 30 avenue Puvis-de-Chavannes. Appelez avant de vous déplacer. Le Centre communal d'action sociale est à l'hôtel de ville, 1 place de l'Hôtel-de-Ville."
+    },
+    {
+      "question": "L'agence Youdom Care est-elle loin de Courbevoie ?",
+      "reponse": "Non. L'agence Youdom Care des Hauts-de-Seine est à Puteaux, à 1,7 km à vol d'oiseau de Courbevoie. Elle organise les interventions dans la commune et chez ses voisines, Neuilly-sur-Seine, La Garenne-Colombes ou Bois-Colombes. La demande passe par téléphone ou par le formulaire. Un conseiller vient ensuite chez vous pour une première visite d'évaluation gratuite, suivie d'un devis gratuit."
+    }
+  ],
+  "semaine_type": "noe",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 20, 22],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

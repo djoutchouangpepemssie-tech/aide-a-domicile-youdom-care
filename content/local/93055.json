@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/93055.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "93055",
+  "seo": {
+    "titre": "Aide à domicile à Pantin (93500) : Alzheimer, quotidien",
+    "description": "Auxiliaire de vie à Pantin : accueil de jour les Rives, toilette, repas, sorties, nuits. APA et PCH en Seine-Saint-Denis. Agence Youdom Care à 5 km."
+  },
+  "sous_titre": "Pantin dispose d'un accueil de jour Alzheimer rue Régnault : entre ses journées d'accueil, l'aide à domicile prend le relais à la maison.",
+  "zone_editoriale": "Rue Régnault, à Pantin, le « Centre d'accueil de jour les Rives - Groupe VYV » reçoit des personnes atteintes de la maladie d'Alzheimer qui continuent de vivre chez elles. Il compte 18 places. Un accueil de jour n'est pas un établissement d'hébergement : la personne y passe la journée, puis rentre. C'est là que l'aide à domicile intervient, avant et après : aide au lever et au petit-déjeuner, trajet vers l'accueil de jour, retour en fin d'après-midi, dîner, coucher.\n\n### Quand la maison ne suffit plus certains jours\n\nDeux EHPAD de Pantin disposent d'une unité Alzheimer : l'« EHPAD Les Jardins de Pantin », rue Vaucanson, qui propose aussi un hébergement temporaire, et l'« EHPAD Résidence La Seigneurie », rue Kléber. L'hébergement temporaire permet à l'aidant de s'absenter quelques jours ; l'unité Alzheimer est une réponse pour plus tard, si la maison devient impossible. Entre-temps, l'objectif de l'aide à domicile est de sécuriser les moments à risque sans enfermer : toilette, repas, sorties accompagnées, nuit.\n\n### Le CCAS et les démarches\n\nLe Centre communal d'action sociale (CCAS) de Pantin, avenue du Général-Leclerc, aide à préparer un dossier d'allocation personnalisée d'autonomie. Le Conseil départemental de Seine-Saint-Denis, à Bobigny, l'instruit. Pour un adulte ou un enfant en situation de handicap, la Maison départementale des personnes handicapées (MDPH) du département est à Saint-Denis, rue Proudhon.\n\nPantin compte 60 954 habitants ; 4,5 % ont 75 ans ou plus et 11,8 % ont entre 60 et 74 ans. Les personnes âgées y sont peu nombreuses en proportion, ce qui rend la présence régulière d'une auxiliaire de vie d'autant plus utile : quelqu'un passe, remarque un changement, prévient la famille.\n\n### Hôpitaux et voisinage\n\nAucun hôpital n'est recensé dans Pantin même. Les plus proches sont dans le 19e arrondissement de Paris, à 2,1 km : le « GHU APHP Nord Universite Paris Cite site Robert Debre » et le « GHU Paris site Lasalle ». Un retour à domicile depuis l'un de ces établissements se prépare avant la sortie.\n\nL'agence Youdom Care Seine-Saint-Denis, à Saint-Denis, est à 5 km de Pantin à vol d'oiseau. Elle intervient aussi au Pré-Saint-Gervais (1,9 km), à Aubervilliers (2 km), dans le 19e arrondissement et à Drancy (3,8 km). Les Lilas (2,2 km), Bobigny (2,6 km), Romainville (2,8 km) et Noisy-le-Sec (3,7 km) sont les autres voisines. Pantin est membre de la Métropole du Grand Paris.\n\n### Les associations du département\n\nFrance Alzheimer 93 et maladies apparentées, au Raincy, écoute les familles de tout le département. Le comité de Seine-Saint-Denis de France Parkinson est domicilié à Montreuil. La délégation d'APF France handicap tient permanence à Bobigny le lundi et le vendredi de 10 h à 12 h. Le PAM Île-de-France transporte à la demande les personnes à mobilité réduite, y compris vers un accueil de jour.\n\nPour organiser les journées entre l'accueil de jour et la maison, ou simplement pour commencer par quelques heures, demandez une visite d'évaluation à votre domicile de Pantin. Elle est gratuite et le devis qui la suit aussi.",
+  "questions": [
+    {
+      "question": "Y a-t-il un accueil de jour Alzheimer à Pantin ?",
+      "reponse": "Oui : le « Centre d'accueil de jour les Rives - Groupe VYV », 3 bis rue Régnault à Pantin, dispose de 18 places et d'une unité Alzheimer. La personne y passe la journée et rentre chez elle le soir. L'auxiliaire de vie peut assurer le lever, le trajet aller et retour, puis le dîner et le coucher, et intervenir les jours sans accueil."
+    },
+    {
+      "question": "Où demander l'APA quand on habite Pantin ?",
+      "reponse": "Le Centre communal d'action sociale (CCAS) de Pantin, 84 avenue du Général-Leclerc, aide à constituer le dossier. L'allocation personnalisée d'autonomie est instruite par le Conseil départemental de Seine-Saint-Denis, à Bobigny, qui notifie un plan d'aide en heures. Ces heures peuvent être confiées à Youdom Care, en mode prestataire ou mandataire, après une visite d'évaluation gratuite."
+    },
+    {
+      "question": "Quels hôpitaux sont les plus proches de Pantin ?",
+      "reponse": "Les données publiques ne recensent pas d'hôpital dans Pantin. Les plus proches sont dans le 19e arrondissement de Paris, à 2,1 km : le « GHU APHP Nord Universite Paris Cite site Robert Debre », boulevard Sérurier, et le « GHU Paris site Lasalle », rue du Général-Lasalle. Un retour à domicile vers Pantin se prépare avec le service hospitalier avant la date de sortie."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Pantin ?",
+      "reponse": "L'agence Youdom Care Seine-Saint-Denis, à Saint-Denis, à 5 km de Pantin à vol d'oiseau. La même équipe intervient au Pré-Saint-Gervais, à Aubervilliers, dans le 19e arrondissement de Paris et à Drancy. Vous pouvez décrire votre situation dans le formulaire de cette page ou appeler ; une visite gratuite à domicile suit."
+    }
+  ],
+  "semaine_type": "noe",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 16, 17, 18],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

@@ -1,0 +1,58 @@
+{
+  "_lisezmoi": "Pages /agences/ et /agences/{id}/ (docs/00 §5, docs/04 §2 LocalBusiness, P6.6). Les faits (nom, adresse, téléphone, horaires) viennent uniquement de content/site.config.json : un champ null n'est pas affiché. Les coordonnées viennent de data/agences.geo.json. `agences` donne la balise titre et la description de chaque agence, par `id` ; une agence sans entrée fait échouer le build. Jetons : {agences} (nombre), {adresse} (adresse postale complète), {lieu} (« dans les Hauts-de-Seine »).",
+  "index": {
+    "seo": {
+      "titre": "Nos six agences Youdom Care à Paris et en Île-de-France",
+      "description": "Six agences, de Paris à Versailles : adresse, itinéraire et communes suivies par chacune. Appelez le standard ou laissez vos coordonnées, on vous rappelle."
+    },
+    "ariane": "Nos agences",
+    "h1": "Nos agences en Île-de-France",
+    "chapo": "{agences} agences, une par département où nous sommes implantés. Chaque page donne l'adresse, l'itinéraire et les communes que l'agence suit.",
+    "territoires_texte": "Vous cherchez votre commune plutôt qu'une agence ?",
+    "territoires_lien": "Voir la carte des territoires"
+  },
+  "page": {
+    "sur_titre": "Agence",
+    "chapo": "Notre point d'accueil {lieu} se trouve {adresse}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle.",
+    "rappel_h2": "Être rappelé(e) par cette agence",
+    "rappel_texte": "Deux minutes. Vos coordonnées servent uniquement à vous rappeler."
+  },
+  "agences": {
+    "paris-12": {
+      "seo": {
+        "titre": "Agence Youdom Care Paris, rue de Lyon : aide à domicile",
+        "description": "L’agence Youdom Care de Paris, rue de Lyon dans le 12e : adresse, itinéraire, arrondissements suivis et rappel gratuit par un conseiller pour votre aide."
+      }
+    },
+    "puteaux": {
+      "seo": {
+        "titre": "Agence Youdom Care de Puteaux : aide à domicile dans le 92",
+        "description": "L’agence Youdom Care des Hauts-de-Seine, quai de Dion-Bouton à Puteaux : adresse, itinéraire, communes suivies et rappel gratuit pour votre aide."
+      }
+    },
+    "saint-denis": {
+      "seo": {
+        "titre": "Agence Youdom Care de Saint-Denis : aide à domicile en 93",
+        "description": "L’agence Youdom Care de Seine-Saint-Denis, rue Pleyel à Saint-Denis : adresse, itinéraire, communes suivies et rappel gratuit pour votre aide à domicile."
+      }
+    },
+    "vitry-sur-seine": {
+      "seo": {
+        "titre": "Agence Youdom Care de Vitry-sur-Seine : aide à domicile (94)",
+        "description": "L’agence Youdom Care du Val-de-Marne, avenue Paul-Vaillant-Couturier à Vitry-sur-Seine : adresse, itinéraire, communes suivies et rappel gratuit."
+      }
+    },
+    "serris": {
+      "seo": {
+        "titre": "Agence Youdom Care de Serris : aide à domicile dans le 77",
+        "description": "L’agence Youdom Care de Seine-et-Marne, boulevard Michael-Faraday à Serris : adresse, itinéraire, communes suivies et rappel gratuit pour votre aide."
+      }
+    },
+    "versailles": {
+      "seo": {
+        "titre": "Agence Youdom Care de Versailles : aide à domicile en 78",
+        "description": "L’agence Youdom Care des Yvelines, rue des Chantiers à Versailles : adresse, itinéraire, communes suivies et rappel gratuit pour votre aide à domicile."
+      }
+    }
+  }
+}

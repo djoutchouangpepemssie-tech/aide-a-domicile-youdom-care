@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94002.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94002",
+  "seo": {
+    "titre": "Aide à domicile à Alfortville (94140) | Youdom Care",
+    "description": "Aide à domicile à Alfortville : auxiliaires de vie pour la toilette, les repas et les nuits, chez vous ou en résidence autonomie. Première visite gratuite."
+  },
+  "sous_titre": "Trois résidences autonomie, une polyclinique et deux hôpitaux de jour : à Alfortville, l'aide à domicile s'organise autour de ces lieux.",
+  "zone_editoriale": "Trois résidences autonomie se partagent le territoire d'Alfortville : la Résidence de l'union, rue de l'Union, la Résidence Europe, place de l'Europe, et la Résidence Voltaire, rue Voltaire. Chacune propose des logements indépendants à des personnes âgées qui gardent leurs habitudes. Une auxiliaire de vie y travaille comme dans un appartement ordinaire : toilette du matin, repas, courses, accompagnement chez le médecin.\n\nLa commune compte 45 569 habitants en 2022. Les 75 ans et plus forment 7,3 % de la population, dont 0,9 % de 90 ans ou plus. Les 60-74 ans, eux, pèsent 13,2 %. Cette tranche d'âge est aussi celle des conjoints et des enfants qui accompagnent un parent plus âgé.\n\n### Trois établissements de santé dans la commune\n\nAlfortville accueille l'« Hopital de Jour Alfortville Edouard Vaillant », l'« Hopital de Jour Alfortville Leclerc » et la « Polyclinique la Concorde », rue Marcel Bourdarias. Après un séjour ou des soins de jour, le retour à la maison demande souvent une présence : aide au lever, préparation des repas, accompagnement aux rendez-vous de suivi. Youdom Care ne fait pas de soins infirmiers ; l'auxiliaire de vie travaille à côté de l'infirmier libéral ou du service de soins.\n\n### Quand la mémoire s'en va\n\nPour les familles touchées par la maladie d'Alzheimer, deux EHPAD de la commune ont une unité dédiée : l'EHPAD Pôle Raymonde Olivier Valibouse, place du 11-Novembre, et la MAPA, rue Louis-Blanc. L'aide à domicile se situe en amont : rester chez soi le plus longtemps possible, avec des nuits assurées quand le conjoint s'épuise. L'EHPAD - résidence Bonheur le grand âge, impasse Manouchian, complète l'offre d'hébergement.\n\n### Les guichets\n\nLe « Centre communal d'action sociale (CCAS) - Alfortville », 160 rue Paul Vaillant Couturier, est le premier guichet pour les aides de la ville. Les données départementales ne signalent pas d'Espace autonomie dans la commune : pour une demande d'allocation personnalisée d'autonomie, adressez-vous au Conseil départemental du Val-de-Marne, à Créteil. La Maison départementale des personnes handicapées, à Créteil également, instruit la prestation de compensation du handicap.\n\nLe Pam Île-de-France est un transport à la demande régional. Il est ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité et aux personnes âgées classées en GIR 1 à 4. France Alzheimer Val-de-Marne, à Nogent-sur-Marne, accueille les familles sur rendez-vous.\n\n### L'agence à 1,8 km\n\nL'agence Youdom Care Val-de-Marne, à Vitry-sur-Seine, est à 1,8 km. Maisons-Alfort est à 1,5 km, Créteil à 2,6 km, Saint-Maurice à 2,8 km, Charenton-le-Pont à 3,2 km ; l'agence couvre également ces communes. Alfortville appartient à la Métropole du Grand Paris.\n\nPour savoir ce qu'une aide à domicile changerait dans votre logement d'Alfortville, demandez la première visite d'évaluation. Elle est gratuite : vous décrivez votre situation, nous écoutons, puis un devis vous est remis, lui aussi sans frais.",
+  "questions": [
+    {
+      "question": "Existe-t-il un point d'information pour les personnes âgées à Alfortville ?",
+      "reponse": "Les données départementales que nous utilisons ne signalent pas d'Espace autonomie dans la commune. Le premier interlocuteur local est le « Centre communal d'action sociale (CCAS) - Alfortville », 160 rue Paul Vaillant Couturier. Pour l'allocation personnalisée d'autonomie, la demande relève du Conseil départemental du Val-de-Marne, à Créteil. L'agence Youdom Care de Vitry-sur-Seine vous explique aussi les démarches lors de la première visite, gratuite."
+    },
+    {
+      "question": "Quels hôpitaux se trouvent à Alfortville pour organiser un retour à domicile ?",
+      "reponse": "Trois établissements sont recensés dans la commune : « Hopital de Jour Alfortville Edouard Vaillant », rue Edouard Vaillant, « Hopital de Jour Alfortville Leclerc », avenue du Général Leclerc, et « Polyclinique la Concorde », rue Marcel Bourdarias. Si une sortie est prévue, contactez l'agence avant la date pour que la présence des premiers jours soit organisée. Les soins infirmiers restent assurés par les professionnels de santé."
+    },
+    {
+      "question": "Une auxiliaire de vie peut-elle venir dans une résidence autonomie d'Alfortville ?",
+      "reponse": "Oui. La Résidence de l'union, la Résidence Europe et la Résidence Voltaire sont des résidences autonomie : chaque personne y a son propre logement. L'auxiliaire de vie vient pour la toilette, l'entretien du logement, les repas ou les sorties, selon ce qui a été convenu. Signalez votre lieu de vie lors de la demande : la première visite se fait sur place, dans votre appartement."
+    },
+    {
+      "question": "À quelle distance d'Alfortville se trouve l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care Val-de-Marne est à Vitry-sur-Seine, à 1,8 km d'Alfortville. Elle organise les interventions dans la commune et dans les villes voisines, comme Maisons-Alfort, Créteil ou Saint-Maurice. Vous la joignez par téléphone ou par le formulaire de cette page. La première visite d'évaluation chez vous et le devis qui en découle sont gratuits."
+    }
+  ],
+  "semaine_type": "louise",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

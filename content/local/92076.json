@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92076.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92076",
+  "seo": {
+    "titre": "Aide à domicile à Vaucresson (92420) : conjoints aidants",
+    "description": "Auxiliaire de vie à Vaucresson : 16,8 % des habitants ont entre 60 et 74 ans, un accueil de jour Alzheimer, CCAS rue de la Folie. Agence à 5 km."
+  },
+  "sous_titre": "À Vaucresson, 16,8 % des habitants ont entre 60 et 74 ans : l'aide à domicile sert autant à celui qui aide qu'à celui qui est aidé.",
+  "zone_editoriale": "### Un accueil de jour, allée des Lauriers\n\nÀ Vaucresson, l'« EHPAD Korian Hauts de Jardy » est au 1 allée des Lauriers. Il réunit un accueil de jour, de l'hébergement temporaire et une unité Alzheimer. C'est le seul établissement de ce type recensé dans la commune par la CNSA. Pour une personne qui vit avec la maladie d'Alzheimer, l'accueil de jour rythme la semaine. L'auxiliaire de vie assure le reste : le matin avant le départ, le soir après le retour, et les jours sans accueil.\n\n### Les 60 à 74 ans, ceux qui aident\n\nVaucresson compte 8 506 habitants au recensement de 2022. Les 60 à 74 ans représentent 16,8 % de la population. Les 75 ans et plus en forment 10,7 % : 8,7 % ont entre 75 et 89 ans, 2 % ont 90 ans ou plus. Ces deux parts sont élevées. Dans bien des foyers, c'est un conjoint de plus de 60 ans qui accompagne l'autre. L'aide à domicile sert alors autant à celui qui aide qu'à celui qui est aidé. Une aide de quelques heures par semaine, sur la toilette ou les repas, suffit souvent à rendre du souffle. Elle se met en place sans bouleverser la maison.\n\n### Le CCAS et les services du département\n\nLe Centre communal d'action sociale (CCAS) - Vaucresson est au 10 rue de la Folie. Aucun point d'information local dédié aux personnes âgées ne figure à Vaucresson dans les bases consultées. L'allocation personnalisée d'autonomie est instruite par le Conseil départemental des Hauts-de-Seine, 57 rue des Longues Raies à Nanterre. La Maison départementale des personnes handicapées des Hauts-de-Seine est à Courbevoie, 12 avenue Léonard-de-Vinci. « France Alzheimer Hauts-de-Seine » accueille et écoute les familles depuis Neuilly-sur-Seine. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite.\n\n### Deux hôpitaux voisins\n\nL'hôpital Raymond-Poincaré, site du GHU AP-HP Université Paris-Saclay, à Garches, est à 2 km à vol d'oiseau. Le Centre hospitalier des Quatre Villes, 3 place Silly à Saint-Cloud, est à 3 km. Aucun établissement de santé n'est recensé dans Vaucresson même. Un retour d'hospitalisation s'organise donc depuis Garches ou Saint-Cloud, avec l'auxiliaire de vie présente dès le premier soir.\n\n### L'agence de Versailles et les voisines\n\nL'agence la plus proche est Youdom Care Yvelines, à Versailles, à 5 km. Marnes-la-Coquette est à 1,1 km, Garches et Ville-d'Avray à 2 km, La Celle-Saint-Cloud à 2,5 km. Le Chesnay-Rocquencourt est à 3,4 km. Vaucresson appartient à la Métropole du Grand Paris, mais son agence est dans les Yvelines. Cela ne change rien pour l'intervention.\n\nVous accompagnez votre conjoint à Vaucresson et vous voudriez garder des forces pour la suite. Une première visite d'évaluation gratuite, chez vous, permet de décider ensemble ce qui peut être confié. Le devis est gratuit.",
+  "questions": [
+    {
+      "question": "Y a-t-il un accueil de jour à Vaucresson ?",
+      "reponse": "Oui, un. L'« EHPAD Korian Hauts de Jardy », 1 allée des Lauriers, propose un accueil de jour et de l'hébergement temporaire. Il a une unité Alzheimer, d'après la base de la CNSA. La personne y passe la journée ; l'aidant souffle. Une auxiliaire de vie complète ces journées à la maison, avec les mêmes repères. Elle intervient le matin, le soir et les jours sans accueil."
+    },
+    {
+      "question": "Quel est l'hôpital le plus proche de Vaucresson ?",
+      "reponse": "Aucun établissement de santé n'est recensé dans la commune. L'hôpital Raymond-Poincaré, site du GHU AP-HP Université Paris-Saclay, 104 boulevard Raymond-Poincaré à Garches, est à 2 km à vol d'oiseau. Le Centre hospitalier des Quatre Villes, 3 place Silly à Saint-Cloud, est à 3 km. Notre service de sortie d'hospitalisation prépare le retour à Vaucresson avec l'équipe du service."
+    },
+    {
+      "question": "Quelle agence Youdom Care intervient à Vaucresson ?",
+      "reponse": "L'agence Youdom Care Yvelines, à Versailles, à 5 km à vol d'oiseau. Vaucresson est dans les Hauts-de-Seine, mais l'agence de Versailles est la plus proche. Elle intervient aussi à Marnes-la-Coquette, Ville-d'Avray et Le Chesnay-Rocquencourt. La demande se fait par téléphone ou par le formulaire. Un conseiller vient ensuite chez vous pour une première visite d'évaluation gratuite."
+    },
+    {
+      "question": "Où s'informer sur l'APA quand on habite Vaucresson ?",
+      "reponse": "Le Centre communal d'action sociale de Vaucresson, 10 rue de la Folie, est le relais de proximité. L'allocation personnalisée d'autonomie est instruite par le Conseil départemental des Hauts-de-Seine, 57 rue des Longues Raies, à Nanterre. Aucun point d'information local dédié aux personnes âgées n'est recensé dans la commune par les bases consultées. Les adresses et leurs sources figurent dans la grille des ressources."
+    }
+  ],
+  "semaine_type": "madeleine",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 15],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

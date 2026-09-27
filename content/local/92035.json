@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92035.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92035",
+  "seo": {
+    "titre": "Aide à domicile à La Garenne-Colombes (92250) : à 2,6 km",
+    "description": "Auxiliaire de vie à La Garenne-Colombes : agence de Puteaux à 2,6 km, CCAS boulevard de la République, résidence autonomie avenue de Verdun, hôpital privé."
+  },
+  "sous_titre": "La Garenne-Colombes est une petite commune à 2,6 km de l'agence : trajets courts, remplacements simples, et un CCAS comme premier contact.",
+  "zone_editoriale": "L'agence Youdom Care des Hauts-de-Seine est à 2,6 km de La Garenne-Colombes, à Puteaux. Courbevoie est à 1,5 km, Colombes à 1,7 km, Bois-Colombes à 2 km. La commune est petite : 178,12 hectares pour 29 828 habitants au recensement de 2022. Pour une auxiliaire de vie, cela signifie des trajets courts entre deux domiciles. Un remplacement s'organise sans grande logistique.\n\n### Qui vit à La Garenne-Colombes\n\nLes 75 ans et plus représentent 6,6 % de la population, dont 1 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 12,2 %. Pour une personne très âgée qui vit chez elle, la question est rarement celle d'un service en particulier. C'est celle de la continuité : les mêmes gestes, les mêmes heures, une présence qui ne change pas d'un jour à l'autre.\n\n### Peu de guichets dans la commune, un CCAS central\n\nLes bases consultées ne recensent pas de point d'information local dédié aux personnes âgées à La Garenne-Colombes. Le Centre communal d'action sociale (CCAS) - La Garenne-Colombes, 68 boulevard de la République, à la mairie, est le premier contact. Le Conseil départemental des Hauts-de-Seine, à Nanterre, instruit l'allocation personnalisée d'autonomie. La Maison départementale des personnes handicapées est à Courbevoie, commune voisine, 12 avenue Léonard-de-Vinci.\n\n### Une résidence autonomie, deux EHPAD, un hôpital privé\n\nLe « Foyer-Logement Résidence des Champs Philippe », 15 avenue de Verdun-1916, est une résidence autonomie de 74 places. Dans la même avenue, l'« EHPAD Résidence La Tournelle », au numéro 18, propose de l'hébergement temporaire et une unité Alzheimer. L'« EHPAD Orpea La Garenne », 31 rue de l'Aigle, offre les mêmes possibilités. L'Hôpital privé La Montagne Lambert, 67 avenue Foch, est l'établissement de santé de la commune. Un retour à domicile après une intervention s'y prépare avec l'équipe soignante. L'auxiliaire de vie prend le relais à la maison.\n\n### Pour une maladie neurodégénérative\n\nQuand un proche vit avec une maladie à corps de Lewy, une maladie d'Alzheimer ou de Parkinson, les besoins changent souvent. L'accompagnement s'ajuste : présence en journée, aide aux repas, garde de nuit sur les périodes difficiles. « France Alzheimer Hauts-de-Seine », à Neuilly-sur-Seine, écoute les familles. Le « France Parkinson — Comité des Hauts-de-Seine (92) » est un comité départemental de bénévoles. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite. La Garenne-Colombes appartient à la Métropole du Grand Paris.\n\nDepuis Puteaux, un conseiller vient chez vous, à La Garenne-Colombes, pour une première visite d'évaluation gratuite. Le devis qui suit est gratuit et détaillé. Vous gardez la main sur le rythme et sur les horaires. Rien n'oblige à commencer par beaucoup d'heures. Une aide au repas de midi ou une toilette le matin suffit souvent pour démarrer.",
+  "questions": [
+    {
+      "question": "Y a-t-il un CLIC à La Garenne-Colombes ?",
+      "reponse": "Les bases consultées, CNSA et annuaire de l'administration, ne recensent aucun point d'information local pour les personnes âgées à La Garenne-Colombes. Le premier interlocuteur est le Centre communal d'action sociale, 68 boulevard de la République, à la mairie. Pour l'allocation personnalisée d'autonomie, le dossier relève du Conseil départemental des Hauts-de-Seine, à Nanterre."
+    },
+    {
+      "question": "Quelle résidence autonomie existe à La Garenne-Colombes ?",
+      "reponse": "Le « Foyer-Logement Résidence des Champs Philippe », 15 avenue de Verdun-1916, compte 74 places, d'après la base de la CNSA. Une résidence autonomie propose des logements indépendants à des personnes encore autonomes. Une auxiliaire de vie peut y intervenir pour la toilette, les repas, les courses ou une présence. C'est la même chose que dans un appartement de la commune."
+    },
+    {
+      "question": "Quel hôpital se trouve à La Garenne-Colombes ?",
+      "reponse": "L'Hôpital privé La Montagne Lambert, 67 avenue Foch, est le seul établissement de santé recensé dans la commune par FINESS. C'est un établissement de soins pluridisciplinaire. Après un séjour, notre service de sortie d'hospitalisation organise le retour à La Garenne-Colombes : premier repas, toilette, présence de nuit si besoin. Les soins restent aux infirmiers, avec qui nous nous coordonnons."
+    },
+    {
+      "question": "Quelle est l'agence Youdom Care la plus proche de La Garenne-Colombes ?",
+      "reponse": "L'agence Youdom Care des Hauts-de-Seine, à Puteaux, à 2,6 km à vol d'oiseau. Elle intervient aussi à Courbevoie, Colombes, Bois-Colombes et Nanterre. La demande se fait par téléphone ou par le formulaire de cette page. Un conseiller vient ensuite chez vous, à La Garenne-Colombes, pour une première visite d'évaluation gratuite et vous remet un devis gratuit."
+    }
+  ],
+  "semaine_type": "henri",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

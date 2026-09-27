@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/91477.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "91477",
+  "seo": {
+    "titre": "Aide à domicile à Palaiseau (91120) : ce qui existe vraiment",
+    "description": "Aide à domicile à Palaiseau : accueil de jour de l'EHPAD La pie voleuse, CCAS rue de Paris, ressources de l'Essonne. Agence la plus proche à 11,1 km."
+  },
+  "sous_titre": "À Palaiseau, les données recensent peu de structures : un accueil de jour, un hôpital de jour, un CCAS. Nous partons de là, sans inventer le reste.",
+  "zone_editoriale": "### Ce que nous savons de Palaiseau, et ce que nous ne savons pas\n\nCette page est écrite à partir de données ouvertes. À Palaiseau, elles recensent un accueil de jour, un hôpital de jour, un CCAS et une mairie. Elles ne recensent ni résidence autonomie, ni point d'information local dédié aux personnes âgées, ni hôpital de court séjour. Plutôt que d'ajouter des lieux invérifiables, nous vous disons ce qui est là et comment une aide à domicile s'en sert.\n\n### L'accueil de jour de La pie voleuse\n\nL'EHPAD La pie voleuse, avenue de la République, propose un accueil de jour. Pour un proche aidant, c'est un premier relais : des journées où la personne est accompagnée ailleurs, avec d'autres. L'auxiliaire de vie s'occupe du reste : lever et préparation avant le départ, accueil au retour, dîner, coucher, et les jours sans accueil. Cette alternance aide souvent un couple à tenir plus longtemps à la maison.\n\nL'Hôpital de jour Palaiseau, boulevard Bara, est l'établissement de santé recensé dans la commune. Pour une hospitalisation complète, les habitants de Palaiseau dépendent d'établissements situés ailleurs ; le retour à domicile se prépare alors avec le service concerné, et l'agence organise la présence d'une auxiliaire de vie dès le premier jour.\n\n### Le CCAS, rue de Paris\n\nLe Centre communal d'action sociale (CCAS) - Palaiseau se trouve rue de Paris, à la même adresse que la mairie. C'est le premier interlocuteur pour une aide communale et pour l'orientation vers le Département. En l'absence de point d'information dédié dans la commune, son rôle est d'autant plus utile.\n\n### Qui vit à Palaiseau\n\nLa commune comptait 36 067 habitants au recensement de 2022. Les 75 ans et plus représentent 7,2 % de la population, dont 1 % de personnes de 90 ans ou plus. Les 60-74 ans en forment 12,4 %. Une commune de cette composition a des besoins mêlés : des personnes âgées qui veulent rester chez elles, des adultes et des enfants en situation de handicap, des retours d'hospitalisation à organiser.\n\n### Les ressources de l'Essonne\n\nLe Conseil départemental - Essonne, hôtel du département à Évry-Courcouronnes, attribue l'APA et la PCH. La Maison départementale des personnes handicapées (MDPH) - Essonne se trouve rue Henri Rochefort, à Évry. Le PAM Île-de-France, transport à la demande régional, s'adresse aux personnes à mobilité réduite. France Alzheimer Essonne accueille les familles à Corbeil-Essonnes. La délégation de l'Essonne d'APF France handicap est à Sainte-Geneviève-des-Bois, l'ADAPEI de l'Essonne aux Ulis, le comité de l'Essonne de France Parkinson à Ris-Orangis.\n\n### L'agence : Versailles, à 11,1 km\n\nPour Palaiseau, l'agence Youdom Care la plus proche n'est pas celle de l'Essonne, qui n'existe pas, mais celle des Yvelines, à Versailles, à 11,1 km du centre. La distance a été mesurée, pas le département. Elle concerne l'évaluation et le suivi ; l'aide se fait chez vous. Villebon-sur-Yvette est à 2,2 km, Igny à 2,5 km, Vauhallan à 2,7 km, Massy à 3,2 km, Orsay à 3,6 km. Palaiseau appartient à la CA Communauté Paris-Saclay.\n\nPeu de structures recensées ne veut pas dire peu de solutions. La première est une visite gratuite chez vous, à Palaiseau, pour comprendre ce dont vous avez besoin ; elle se demande par le formulaire ou par téléphone.",
+  "questions": [
+    {
+      "question": "Y a-t-il un accueil de jour à Palaiseau ?",
+      "reponse": "Oui : l'EHPAD La pie voleuse, avenue de la République, propose un accueil de jour, pour un total de 87 places selon les données ouvertes. Une auxiliaire de vie Youdom Care assure les matins, les soirs et les jours sans accueil. Cette combinaison permet à la personne de rester chez elle tout en soulageant le proche aidant."
+    },
+    {
+      "question": "Où s'adresser pour les aides quand on habite Palaiseau ?",
+      "reponse": "Au Centre communal d'action sociale (CCAS) - Palaiseau, rue de Paris, à la mairie. Aucun point d'information local dédié aux personnes âgées n'est recensé dans la commune. L'APA et la PCH sont décidées par le Conseil départemental - Essonne, à Évry-Courcouronnes ; les demandes liées au handicap passent par la MDPH de l'Essonne, à Évry."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Palaiseau ?",
+      "reponse": "L'agence Youdom Care Yvelines, à Versailles, à 11,1 km du centre de Palaiseau. Elle est dans un autre département, mais c'est la plus proche de la commune. Elle reçoit votre demande, vient chez vous pour l'évaluation gratuite et organise les interventions. Vous pouvez la joindre par téléphone ou par le formulaire de cette page."
+    },
+    {
+      "question": "Quel hôpital est recensé à Palaiseau ?",
+      "reponse": "Seul l'Hôpital de jour Palaiseau, boulevard Bara, apparaît dans les données pour la commune. Pour une hospitalisation complète, les habitants de Palaiseau dépendent d'établissements situés ailleurs. Quel que soit l'hôpital, prévenez Youdom Care avant la sortie : une auxiliaire de vie peut être présente le premier jour à la maison."
+    }
+  ],
+  "semaine_type": "henri",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92063.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92063",
+  "seo": {
+    "titre": "Aide à domicile à Rueil-Malmaison (92500) : CLIC, Stell",
+    "description": "Auxiliaire de vie à Rueil-Malmaison : le CLIC à la Maison d'autonomie, un accueil de jour, trois résidences autonomie, l'hôpital Stell. Agence à 5,2 km."
+  },
+  "sous_titre": "Rueil-Malmaison est vaste et bien dotée : Maison d'autonomie, accueil de jour Alzheimer, hôpital Stell. L'aide à domicile relie ces lieux à la maison.",
+  "zone_editoriale": "### La Maison d'autonomie, rue d'Estiennes-d'Orves\n\nÀ Rueil-Malmaison, le « CLIC de Rueil-Malmaison » reçoit 10 ter rue d'Estiennes-d'Orves, dans un lieu que l'annuaire de l'administration appelle Maison d'autonomie. C'est le point d'information local dédié aux personnes âgées. Pour une famille qui découvre les troubles de la mémoire d'un parent, c'est le premier endroit où poser des questions. Le Centre communal d'action sociale (CCAS) - Rueil-Malmaison est au 2 place Jean-Jaurès.\n\n### Un accueil de jour avec unité Alzheimer\n\nL'« EHPAD Résidence La Bruyère », 1 rue La Bruyère, réunit un accueil de jour, de l'hébergement temporaire et une unité Alzheimer. Pour une personne qui vit avec la maladie d'Alzheimer, l'accueil de jour structure la semaine. À la maison, l'auxiliaire de vie garde les mêmes repères. Le même ordre pour la toilette, les mêmes mots, les mêmes heures de repas. L'aidant, lui, y gagne des heures pour souffler ou pour ses propres rendez-vous. Deux autres EHPAD ont une unité Alzheimer, l'« EHPAD Cognacq Jay », 16 avenue de Versailles, et l'« EHPAD La Jonchère ». « France Alzheimer Hauts-de-Seine », à Neuilly-sur-Seine, accueille et écoute les familles.\n\n### Une commune étendue\n\nRueil-Malmaison s'étend sur 1 452,83 hectares, pour 80 842 habitants au recensement de 2022. Les 75 ans et plus représentent 8,4 % de la population, dont 1,3 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 13,3 %. Sur un territoire aussi vaste, le lieu d'habitation compte pour organiser les passages, surtout le matin et le soir.\n\n### Trois résidences autonomie, trois établissements de santé\n\nLe « Foyer-Logement Domaine De La Côte Noire » et la « Résidence autonomie Martignon », 42 rue Martignon, accueillent des personnes encore autonomes. La « Résidence Les Tarâtres », 17 rue Thiers, aussi. Le Centre hospitalier départemental Stell, 1 rue Charles-Drot, est un centre hospitalier. La Clinique Les Martinets, 97 avenue Albert-Premier, et la Maison médicale Notre-Dame-du-Lac, 2 rue de Zurich, complètent la liste. Une sortie d'hospitalisation se prépare avec eux, avant le retour.\n\n### Aides et agence\n\nL'allocation personnalisée d'autonomie relève du Conseil départemental des Hauts-de-Seine, à Nanterre. La Maison départementale des personnes handicapées est à Courbevoie, 12 avenue Léonard-de-Vinci. Le PAM Île-de-France assure le transport à la demande des personnes à mobilité réduite. L'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 5,2 km. Suresnes est à 2,8 km, Nanterre à 3,3 km, Vaucresson à 4 km. Rueil-Malmaison appartient à la Métropole du Grand Paris.\n\nQuand la mémoire d'un parent de Rueil-Malmaison flanche, le plus utile est de commencer tôt et petit. Une première visite d'évaluation gratuite, chez lui, permet de fixer quelques heures par semaine. Le devis est gratuit ; le rythme évolue ensuite avec vous.",
+  "questions": [
+    {
+      "question": "Où se trouve la Maison d'autonomie de Rueil-Malmaison ?",
+      "reponse": "Au 10 ter rue d'Estiennes-d'Orves, d'après l'annuaire de l'administration. C'est là que reçoit le « CLIC de Rueil-Malmaison », point d'information local dédié aux personnes âgées. On y pose ses questions sur les aides, les démarches et les services de la ville. Le Centre communal d'action sociale de Rueil-Malmaison est au 2 place Jean-Jaurès. Les deux adresses figurent dans la grille des ressources."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour Alzheimer à Rueil-Malmaison ?",
+      "reponse": "Oui. L'« EHPAD Résidence La Bruyère », 1 rue La Bruyère, propose un accueil de jour, de l'hébergement temporaire et une unité Alzheimer. C'est ce qu'indique la base de la CNSA. C'est le seul accueil de jour recensé dans la commune. Une auxiliaire de vie complète ces journées à la maison, avec les mêmes repères. Elle prend le relais les jours sans accueil."
+    },
+    {
+      "question": "Quels établissements de santé compte Rueil-Malmaison ?",
+      "reponse": "Trois, d'après FINESS. Le Centre hospitalier départemental Stell, 1 rue Charles-Drot. La Clinique Les Martinets, 97 avenue Albert-Premier. La Maison médicale Notre-Dame-du-Lac, 2 rue de Zurich. Après un séjour dans l'un d'eux, notre service de sortie d'hospitalisation organise le retour chez vous. Premier repas, toilette, présence de nuit si besoin, en lien avec les soignants."
+    },
+    {
+      "question": "À quelle distance de Rueil-Malmaison est l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 5,2 km à vol d'oiseau de Rueil-Malmaison. Elle intervient aussi à Suresnes, Nanterre et Vaucresson. La demande se fait par téléphone ou par le formulaire de cette page. Un conseiller vient ensuite chez vous pour une première visite d'évaluation gratuite, puis vous remet un devis gratuit."
+    }
+  ],
+  "semaine_type": "madeleine",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 17, 18, 19, 24, 26],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

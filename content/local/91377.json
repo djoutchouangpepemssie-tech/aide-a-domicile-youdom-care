@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/91377.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "91377",
+  "seo": {
+    "titre": "Aide à domicile à Massy (91300) : résidences autonomie, CLIC",
+    "description": "Aide à domicile à Massy : résidences autonomie Les Hibiscus et Les Pervenches, CLIC La Harpe, accueil de jour Massy-Vilmorin. Agence à 12 km."
+  },
+  "sous_titre": "À Massy, deux résidences autonomie et le CLIC La Harpe structurent l'accompagnement des aînés ; l'aide à domicile s'y glisse sans changer les habitudes.",
+  "zone_editoriale": "### Vivre en résidence autonomie à Massy, avec une aide chez soi\n\nMassy compte deux résidences autonomie : la Résidence Les hibiscus, allée de Biarritz, et la Résidence Les pervenches, rue Jean Rostand. Une résidence autonomie n'est pas un EHPAD. Chacun y a son logement, sa clé, ses horaires. Quand la toilette devient difficile ou que les courses pèsent, l'aide à domicile entre dans ce logement comme dans un appartement de la ville : mêmes gestes, même discrétion. Youdom Care accompagne ainsi des résidents comme des personnes qui vivent dans leur maison.\n\n### Le CLIC La Harpe, rue de Rome\n\nLe Point d'information local dédié aux personnes âgées - Massy est le centre local d'information et de coordination La Harpe, rue de Rome. C'est le lieu où l'on s'informe sur l'APA, les accueils de jour, les aides aux proches, avant de constituer un dossier. Le Centre communal d'action sociale (CCAS) - Massy, avenue du Général de Gaulle, à la mairie, traite les aides communales.\n\n### Accueil de jour, hébergement temporaire, hôpital\n\nL'EHPAD Résidence Massy-Vilmorin, allée du Mail Henry de Vilmorin, propose un accueil de jour et une unité Alzheimer. L'EHPAD La Citadine, avenue Saint-Marc, offre un hébergement temporaire, utile quand un proche aidant s'absente. L'Hôpital privé Jacques Cartier, avenue du Noyer Lambert, est l'établissement de santé recensé dans la commune. Après une intervention là-bas, le retour à la maison se prépare avant la sortie : une auxiliaire de vie présente le premier jour, puis les suivants.\n\n### Qui habite Massy\n\nLa commune comptait 50 597 habitants au recensement de 2022. Les 75 ans et plus représentent 6,2 % de la population, dont 0,8 % de personnes de 90 ans ou plus. Les 60-74 ans en forment 11,2 %. Dans une commune à la population plutôt jeune, l'aide à domicile concerne aussi le handicap d'un enfant ou d'un adulte ; Youdom Care accompagne ces familles aux heures qui sont les leurs.\n\n### Le département de l'Essonne\n\nLe Conseil départemental - Essonne, à Évry-Courcouronnes, attribue l'APA et la PCH. La Maison départementale des personnes handicapées (MDPH) - Essonne est rue Henri Rochefort, à Évry. Le PAM Île-de-France transporte à la demande les personnes à mobilité réduite dans toute la région. France Alzheimer Essonne écoute les familles depuis Corbeil-Essonnes ; l'ADAPEI de l'Essonne est aux Ulis ; la délégation de l'Essonne d'APF France handicap, à Sainte-Geneviève-des-Bois ; le comité de l'Essonne de France Parkinson, à Ris-Orangis.\n\n### L'agence et les voisines\n\nL'agence Youdom Care la plus proche de Massy est celle du Val-de-Marne, à Vitry-sur-Seine, à 12 km du centre. Nous le disons pour que vous sachiez d'où viennent l'évaluation et le suivi ; l'aide, elle, se fait chez vous. Champlan est à 2,1 km, Verrières-le-Buisson à 3 km, Palaiseau à 3,2 km, Antony à 3,4 km, Igny à 3,6 km. Massy appartient à la CA Communauté Paris-Saclay.\n\nQue vous viviez dans une résidence autonomie de Massy ou dans votre maison, la première étape est identique : une visite gratuite chez vous, demandée par le formulaire ou par téléphone, pour dire ce qui pèse et ce qui doit rester tel quel.",
+  "questions": [
+    {
+      "question": "Quelles sont les résidences autonomie de Massy ?",
+      "reponse": "Deux sont recensées : la Résidence Les hibiscus, allée de Biarritz, avec 170 places, et la Résidence Les pervenches, rue Jean Rostand, avec 80 places, selon les données ouvertes. Les résidents y vivent de façon indépendante. Une auxiliaire de vie Youdom Care peut y intervenir pour la toilette, les repas, les courses ou une présence, aux heures convenues."
+    },
+    {
+      "question": "Où s'informer sur les aides aux personnes âgées à Massy ?",
+      "reponse": "Au Point d'information local dédié aux personnes âgées - Massy, c'est-à-dire le CLIC La Harpe, rue de Rome. Il explique l'APA, les accueils de jour et les aides aux proches. Le Centre communal d'action sociale (CCAS) - Massy, avenue du Général de Gaulle, traite les aides communales. L'APA elle-même est décidée par le Conseil départemental - Essonne, à Évry-Courcouronnes."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour à Massy ?",
+      "reponse": "Oui, à l'EHPAD Résidence Massy-Vilmorin, allée du Mail Henry de Vilmorin, qui dispose aussi d'une unité Alzheimer. L'EHPAD La Citadine, avenue Saint-Marc, propose par ailleurs un hébergement temporaire. Youdom Care complète ces relais à la maison : matins, soirs, nuits et jours sans accueil, selon ce dont le proche aidant a besoin."
+    },
+    {
+      "question": "Quelle agence Youdom Care s'occupe de Massy ?",
+      "reponse": "L'agence Youdom Care Val-de-Marne, à Vitry-sur-Seine, à 12 km du centre de Massy. Elle est dans un autre département, mais c'est la plus proche. Elle reçoit votre demande, vient chez vous pour l'évaluation gratuite et organise les interventions. Vous pouvez la joindre par téléphone ou par le formulaire de cette page."
+    }
+  ],
+  "semaine_type": "suzanne",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

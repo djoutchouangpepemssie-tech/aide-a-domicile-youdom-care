@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/94018.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "94018",
+  "seo": {
+    "titre": "Aide à domicile à Charenton-le-Pont (94220) | Youdom Care",
+    "description": "Aide à domicile à Charenton-le-Pont, où les 75 ans et plus sont nombreux : présence dans la durée, nuits, relais des proches. Première visite gratuite."
+  },
+  "sous_titre": "À Charenton-le-Pont, une part élevée de 75 ans et plus : l'aide à domicile s'y pense dans la durée, nuits comprises.",
+  "zone_editoriale": "Les 75 ans et plus représentent 8,6 % de la population de Charenton-le-Pont, et les 90 ans ou plus 1,3 %. Les 60-74 ans pèsent 13,9 %. La commune compte 28 756 habitants en 2022. Ces chiffres ne sont pas anodins pour qui organise une aide à domicile, et ils orientent ce que nous proposons ici.\n\nCe que cela change tient en trois mots : durée, présence, relais. Durée, parce qu'une aide commencée à 80 ans se poursuit souvent des années. Présence, parce que les nuits et les week-ends deviennent difficiles pour un conjoint du même âge. Relais, parce que les enfants, souvent eux-mêmes dans la tranche 60-74 ans, ne peuvent pas tout porter.\n\n### Un accueil de jour, un hébergement temporaire, une résidence autonomie\n\nL'EHPAD Gabrielle d'Estrées, 26 rue Gabriel Péri, réunit un accueil de jour, de l'hébergement temporaire et une unité Alzheimer, pour 68 places. Un proche qui accompagne une personne désorientée y trouve deux formes de répit : la journée ou le séjour court. La Résidence Jeanne d'Albret, 12 rue Paul Eluard, est une résidence autonomie de 40 places ; ses habitants peuvent recevoir une auxiliaire de vie chez eux.\n\n### Les démarches\n\nLe « Centre communal d'action sociale (CCAS) - Charenton-le-Pont », 48 rue de Paris, partage l'adresse de la mairie. Il renseigne sur les aides communales et oriente. Aucun Espace autonomie n'est recensé dans la commune : l'allocation personnalisée d'autonomie se demande auprès du Conseil départemental du Val-de-Marne, à Créteil. La Maison départementale des personnes handicapées, à Créteil également, instruit la prestation de compensation du handicap. France Alzheimer Val-de-Marne, à Nogent-sur-Marne, reçoit les familles sur rendez-vous.\n\n### Après la clinique\n\nLa « Clinique de Bercy », 9 quai de Bercy, est le seul établissement de soins pluridisciplinaire recensé dans la commune. Une sortie se prépare : qui ouvre la porte le premier soir, qui prépare le repas, qui accompagne au rendez-vous de contrôle. Ces questions trouvent leur réponse lors de la première visite, avant la date de sortie si possible. L'auxiliaire de vie fait ces gestes ; les soins infirmiers restent aux infirmiers.\n\n### L'agence et les alentours\n\nL'agence Youdom Care Val-de-Marne, à Vitry-sur-Seine, est à 3,2 km. Paris est tout proche : le 12e arrondissement est à 1,5 km, le 13e à 3 km. Ivry-sur-Seine est à 1,7 km, Saint-Mandé à 2,3 km, Saint-Maurice à 2,8 km. La commune, 185 hectares, appartient à la Métropole du Grand Paris. Le Pam Île-de-France assure le transport à la demande des personnes à mobilité réduite dans toute la région.\n\nVous accompagnez un parent de plus de 85 ans et vous sentez que vous ne tiendrez pas seul ? Parlons-en lors de la première visite d'évaluation, gratuite, à son domicile de Charenton-le-Pont. Le devis qui suit l'est aussi.",
+  "questions": [
+    {
+      "question": "Quelle part des habitants de Charenton-le-Pont a 75 ans et plus ?",
+      "reponse": "Selon le recensement de 2022, 8,6 % des 28 756 habitants de Charenton-le-Pont ont 75 ans et plus, dont 1,3 % ont 90 ans ou plus. Les 60-74 ans représentent 13,9 %. Pour une aide à domicile, cela signifie des accompagnements longs, des nuits et des week-ends à couvrir, et des proches aidants souvent âgés eux-mêmes. La première visite sert à mesurer ce dont vous avez besoin."
+    },
+    {
+      "question": "Où trouver un accueil de jour ou un hébergement temporaire à Charenton-le-Pont ?",
+      "reponse": "À l'EHPAD Gabrielle d'Estrées, 26 rue Gabriel Péri, qui propose les deux, ainsi qu'une unité Alzheimer, pour 68 places. Les admissions relèvent de l'établissement. À la maison, une auxiliaire de vie prend le relais autour de ces journées ou de ces séjours : lever, toilette, repas, présence du soir. L'objectif reste que la personne rentre chez elle et y retrouve ses habitudes."
+    },
+    {
+      "question": "Charenton-le-Pont a-t-il un Espace autonomie ?",
+      "reponse": "Non, les données départementales n'en recensent pas dans la commune. Le « Centre communal d'action sociale (CCAS) - Charenton-le-Pont », 48 rue de Paris, est le point d'entrée local pour les aides et l'orientation. L'allocation personnalisée d'autonomie s'obtient auprès du Conseil départemental du Val-de-Marne, à Créteil. Youdom Care vous explique ces démarches lors de la première visite, qui est gratuite."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Charenton-le-Pont ?",
+      "reponse": "L'agence Youdom Care Val-de-Marne, installée à Vitry-sur-Seine, à 3,2 km. Elle couvre aussi Ivry-sur-Seine, à 1,7 km, Saint-Mandé, Saint-Maurice, Alfortville et Maisons-Alfort. Pour une demande, utilisez le formulaire ou le téléphone indiqués sur cette page ; la visite d'évaluation chez vous ne coûte rien, et le devis non plus."
+    }
+  ],
+  "semaine_type": "suzanne",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

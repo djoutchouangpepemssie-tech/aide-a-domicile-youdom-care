@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/93039.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "93039",
+  "seo": {
+    "titre": "Aide à domicile à L'Île-Saint-Denis (93450) : proximité",
+    "description": "Auxiliaire de vie à L'Île-Saint-Denis : aide au quotidien, présence, compagnie. Résidence Ambroise-Croizat, CCAS, hôpitaux de Saint-Denis. Agence à 3,7 km."
+  },
+  "sous_titre": "L'Île-Saint-Denis est une petite commune où les ressources se trouvent souvent chez la voisine : Épinay, Villeneuve-la-Garenne ou Saint-Denis, toutes à quelques kilomètres.",
+  "zone_editoriale": "Avec 8 682 habitants sur 174,22 hectares, L'Île-Saint-Denis est une petite commune. Cela change deux choses pour l'aide à domicile. D'abord, peu d'équipements y sont recensés et beaucoup se trouvent dans les communes voisines. Ensuite, ces voisines sont très proches : Épinay-sur-Seine à 0,9 km, Villeneuve-la-Garenne à 1,2 km, Villetaneuse à 2,1 km.\n\n### Ce que la commune a chez elle\n\nLa « Résidence Ambroise-Croizat », rue du Bocage, est la résidence autonomie de L'Île-Saint-Denis, avec 79 places. Ses locataires vivent dans un logement indépendant et peuvent recevoir une auxiliaire de vie pour les gestes du quotidien : toilette, habillage, repas, courses. Le Centre communal d'action sociale (CCAS), 6 rue de Verdun, reçoit les demandes d'aide et oriente vers le Conseil départemental pour l'allocation personnalisée d'autonomie.\n\nLes 60-74 ans représentent 12,9 % des habitants, les 75 ans et plus 5,4 %. Pour ces derniers, l'enjeu d'une petite commune est souvent l'isolement : quand les services sont dans une autre commune, sortir devient une expédition. Une auxiliaire de vie accompagne ces sorties, ou les remplace quand elles deviennent trop difficiles, et apporte une compagnie régulière.\n\n### Ce qui se trouve à côté\n\nAucun hôpital n'est recensé à L'Île-Saint-Denis. Le « Centre Hospitalier de St Denis Hopital Delafontaine », à Saint-Denis, est à 3,4 km à vol d'oiseau ; l'« Hopital de Jour G07 GH Eaubonne Montmorency Simone Veil », à Deuil-la-Barre, à 2,7 km. Après un séjour dans l'un ou l'autre, le retour chez soi se prépare avec l'équipe soignante, en installant le nécessaire avant le jour de la sortie.\n\nLa Maison départementale des personnes handicapées (MDPH) de Seine-Saint-Denis se trouve à Saint-Denis, rue Proudhon, à 3,4 km. C'est là que se dépose une demande de prestation de compensation du handicap, pour un adulte comme pour un enfant. Le Conseil départemental, à Bobigny, instruit l'APA.\n\n### Les relais départementaux\n\nFrance Alzheimer 93 et maladies apparentées, au Raincy, propose une écoute aux familles. Le comité de Seine-Saint-Denis de France Parkinson est un comité de bénévoles. La délégation d'APF France handicap reçoit à Bobigny le lundi et le vendredi de 10 h à 12 h. Trois associations de parents du réseau Unapei couvrent le département : « AFDAEIM Stains », « AGECET » et « ARPEI Gagny ». Enfin, le PAM Île-de-France transporte à la demande les personnes à mobilité réduite d'une commune à l'autre, ce qui, ici, est souvent nécessaire.\n\n### L'agence et la Métropole\n\nL'agence Youdom Care Seine-Saint-Denis est à Saint-Denis, à 3,7 km de L'Île-Saint-Denis. Elle couvre aussi Gennevilliers (2,9 km) et Saint-Denis (3,4 km). La commune appartient à la Métropole du Grand Paris.\n\nDans une petite commune, on se connaît ; on hésite parfois à faire entrer quelqu'un de nouveau chez soi. La visite d'évaluation, gratuite, se fait chez vous, à L'Île-Saint-Denis, pour parler de vos habitudes avant toute décision. Le devis est gratuit lui aussi.",
+  "questions": [
+    {
+      "question": "Y a-t-il une résidence autonomie à L'Île-Saint-Denis ?",
+      "reponse": "Oui, la « Résidence Ambroise-Croizat », 1 rue du Bocage, avec 79 places. C'est la seule résidence pour personnes âgées recensée dans la commune. Une résidence autonomie propose des logements indépendants ; une auxiliaire de vie peut y intervenir comme dans n'importe quel appartement, pour la toilette, les repas ou les courses, en accord avec la résidence et selon le plan d'aide APA."
+    },
+    {
+      "question": "Où sont les hôpitaux les plus proches de L'Île-Saint-Denis ?",
+      "reponse": "Aucun hôpital n'est recensé dans L'Île-Saint-Denis. Les plus proches sont l'« Hopital de Jour G07 GH Eaubonne Montmorency Simone Veil », à Deuil-la-Barre, à 2,7 km, et le « Centre Hospitalier de St Denis Hopital Delafontaine », à Saint-Denis, à 3,4 km. Un retour à domicile se prépare avec le service hospitalier : lit, repas, aide au lever, présence de nuit si besoin."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre L'Île-Saint-Denis ?",
+      "reponse": "L'agence Youdom Care Seine-Saint-Denis, à Saint-Denis, à 3,7 km à vol d'oiseau. Elle intervient aussi à Épinay-sur-Seine, Villeneuve-la-Garenne, Villetaneuse et Gennevilliers, toutes situées à moins de 3 km de L'Île-Saint-Denis. La demande se fait par téléphone ou par le formulaire de cette page ; une visite d'évaluation gratuite est ensuite proposée à votre domicile."
+    },
+    {
+      "question": "Comment se déplacer avec le PAM depuis L'Île-Saint-Denis ?",
+      "reponse": "Le PAM Île-de-France est le service régional de transport à la demande pour les personnes à mobilité réduite. Il faut s'inscrire, en ligne ou par courrier ; le service est ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité et aux personnes âgées classées en GIR 1 à 4. Depuis L'Île-Saint-Denis, il permet de rejoindre un rendez-vous médical à Saint-Denis ou ailleurs en Île-de-France."
+    }
+  ],
+  "semaine_type": "sophie",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

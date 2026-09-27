@@ -1,0 +1,40 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92025.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92025",
+  "seo": {
+    "titre": "Aide à domicile à Colombes (92700) : CLIC, hôpitaux, EHPAD",
+    "description": "Auxiliaire de vie à Colombes : le Pipa CLIC et une résidence autonomie rue du Maréchal-Joffre, Louis-Mourier, cinq EHPAD. Agence de Puteaux à 4,2 km."
+  },
+  "sous_titre": "À Colombes, le CLIC et une résidence autonomie partagent la même adresse : un point de départ simple pour organiser l'aide à domicile.",
+  "zone_editoriale": "### Rue du Maréchal-Joffre, une adresse à retenir\n\nÀ Colombes, le « Pipa CLIC » et le « Foyer-Logement Résidence Ambroize-Croizat » partagent la même adresse : 36 rue du Maréchal-Joffre. Le premier est le point d'information local dédié aux personnes âgées. Le second est une résidence autonomie de 50 places. Pour une personne qui cherche à la fois un renseignement et un logement adapté, c'est un seul déplacement. Une auxiliaire de vie intervient dans une résidence autonomie comme dans un appartement ordinaire. Toilette, repas, courses, compagnie : les gestes sont les mêmes.\n\n### Ce que la ville compte d'autre\n\nLe Centre communal d'action sociale (CCAS) - Colombes reçoit 5 rue de la Liberté. Deux établissements hospitaliers sont dans la commune. Le site Louis-Mourier du GHU AP-HP Nord Université Paris Cité, 178 rue des Renouilliers, est un centre hospitalier régional. L'Hôpital de jour Guy-de-Maupassant est au 17 rue Moslard. Cinq EHPAD complètent l'ensemble, dont l'« EHPAD La Tour d'Auvergne », avec hébergement temporaire et unité Alzheimer.\n\n### Le rythme d'une semaine avec une maladie neurologique\n\nPour une personne qui vit avec une maladie de Parkinson, l'aide se cale sur ses heures et ses rendez-vous. Lever et habillage le matin, repas, accompagnement à l'hôpital de jour ou en consultation, présence en soirée. L'auxiliaire de vie ne remplace ni le kinésithérapeute ni l'infirmier. Elle prépare et prolonge leur travail à la maison. Une sortie dans le quartier, une visite, un rendez-vous chez le coiffeur font aussi partie de ces heures.\n\n### La démographie de Colombes\n\nColombes compte 90 692 habitants au recensement de 2022, sur 777,84 hectares. Les 75 ans et plus représentent 6 % de la population, dont 0,8 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 12,1 %. Cette part des 60 à 74 ans est celle des conjoints aidants d'aujourd'hui et des personnes aidées de demain.\n\n### Le département et l'agence\n\nL'allocation personnalisée d'autonomie est instruite par le Conseil départemental des Hauts-de-Seine, à Nanterre. La Maison départementale des personnes handicapées est à Courbevoie, 12 avenue Léonard-de-Vinci. L'« APEI de la Boucle de la Seine », association de parents du réseau Unapei, est domiciliée à Colombes, 1 boulevard Charles-de-Gaulle. Le PAM Île-de-France, transport à la demande, dessert la commune comme toute la région. L'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 4,2 km. Elle couvre aussi La Garenne-Colombes, à 1,7 km, Bois-Colombes, à 1,8 km, et Bezons, à 2,4 km. Colombes appartient à la Métropole du Grand Paris.\n\nVous habitez Colombes et vous voulez savoir ce qu'une auxiliaire de vie changerait pour vous ou pour un proche. La réponse se construit chez vous, lors d'une première visite d'évaluation gratuite. Le devis remis ensuite est gratuit lui aussi.",
+  "questions": [
+    {
+      "question": "Où se trouve le CLIC de Colombes ?",
+      "reponse": "Le « Pipa CLIC » est au 36 rue du Maréchal-Joffre, à Colombes. C'est le point d'information local dédié aux personnes âgées, aussi appelé centre local d'information et de coordination. On y pose ses questions sur les aides, dont l'allocation personnalisée d'autonomie instruite par le Conseil départemental à Nanterre. Le Centre communal d'action sociale de Colombes est au 5 rue de la Liberté."
+    },
+    {
+      "question": "Y a-t-il une résidence autonomie à Colombes ?",
+      "reponse": "Oui, une, d'après la base de la CNSA. Le « Foyer-Logement Résidence Ambroize-Croizat », 36 rue du Maréchal-Joffre, compte 50 places. Il partage son adresse avec le Pipa CLIC. Une résidence autonomie accueille des personnes encore autonomes dans un logement indépendant. Une auxiliaire de vie peut y intervenir pour la toilette, les repas, les courses ou une présence régulière, comme à domicile."
+    },
+    {
+      "question": "Quels sont les hôpitaux de Colombes ?",
+      "reponse": "La commune compte deux établissements recensés par FINESS. Le site Louis-Mourier du GHU AP-HP Nord Université Paris Cité, 178 rue des Renouilliers, est un centre hospitalier régional. L'Hôpital de jour Guy-de-Maupassant se trouve 17 rue Moslard. Une auxiliaire de vie peut accompagner une personne à un rendez-vous dans l'un de ces lieux. Elle peut aussi préparer son retour après un séjour."
+    },
+    {
+      "question": "Quelle association Unapei est installée à Colombes ?",
+      "reponse": "L'« APEI de la Boucle de la Seine », association de parents du réseau Unapei, est domiciliée 1 boulevard Charles-de-Gaulle, à Colombes. Elle s'adresse aux familles d'une personne en situation de handicap intellectuel. Pour les droits, dont la prestation de compensation du handicap, la Maison départementale des personnes handicapées reçoit à Courbevoie. Elle est au 12 avenue Léonard-de-Vinci."
+    },
+    {
+      "question": "À combien de kilomètres de Colombes est l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care des Hauts-de-Seine, à Puteaux, est à 4,2 km à vol d'oiseau de Colombes. Elle organise les interventions dans la commune et chez ses voisines, La Garenne-Colombes, Bois-Colombes, Courbevoie ou Asnières-sur-Seine. La demande se fait par téléphone ou par le formulaire. Un conseiller vient ensuite chez vous pour une première visite d'évaluation gratuite, puis remet un devis gratuit."
+    }
+  ],
+  "semaine_type": "jacques",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 14, 15, 16, 17, 22],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

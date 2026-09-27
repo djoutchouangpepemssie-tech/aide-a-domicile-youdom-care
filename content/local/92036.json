@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/92036.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "92036",
+  "seo": {
+    "titre": "Aide à domicile à Gennevilliers (92230) : semaine ordinaire",
+    "description": "Auxiliaire de vie à Gennevilliers : coordination gérontologique rue Victor-Hugo, résidence autonomie, hôpital Louis-Mourier à 3,2 km, MDPH à Courbevoie."
+  },
+  "sous_titre": "À Gennevilliers, une semaine d'aide à domicile tient parce qu'elle se répète : lever, repas, rendez-vous, relais du week-end.",
+  "zone_editoriale": "### Une semaine ordinaire à Gennevilliers\n\nLe lundi matin, l'auxiliaire de vie aide au lever, à la toilette et au petit-déjeuner. Le mercredi, elle accompagne un rendez-vous à l'hôpital Louis-Mourier, à Colombes, à 3,2 km à vol d'oiseau. Le vendredi, elle accompagne la personne au Centre communal d'action sociale (CCAS) - Gennevilliers, 5 rue des Chevrins. Le week-end, un proche prend le relais ; s'il est absent, une présence se met en place. Une semaine d'aide à domicile n'a rien de spectaculaire. Elle tient parce qu'elle se répète.\n\n### Ce que Gennevilliers offre sur place\n\nLa « Coordination gérontologique », 17 rue Victor-Hugo, est le point d'information local dédié aux personnes âgées. C'est là que l'on comprend les aides et que l'on prépare une demande d'allocation personnalisée d'autonomie. Le Conseil départemental des Hauts-de-Seine, à Nanterre, l'instruit ensuite. Le « Foyer-Logement Résidence Camille Cartier », 10 rue Paul-Verlaine, est une résidence autonomie de 72 places. Trois EHPAD sont dans la commune, dont « La Maison des Cytises », 23 rue Jaffeux, qui propose de l'hébergement temporaire. Aucun hôpital ne figure dans la commune même. Les deux sites les plus proches sont à Colombes : le site Louis-Mourier et l'Hôpital de jour Guy-de-Maupassant.\n\n### Une commune étendue, une population jeune\n\nGennevilliers s'étend sur 1 162,71 hectares, pour 50 874 habitants au recensement de 2022. Les 75 ans et plus représentent 5,3 % de la population, dont 0,6 % de personnes de 90 ans ou plus. Les 60 à 74 ans en forment 11,9 %. Ces parts sont basses. Elles rappellent que l'aide à domicile s'adresse aussi aux enfants et aux adultes en situation de handicap, et à leurs parents. Sur un territoire aussi étendu, le trajet entre deux domiciles compte dans l'organisation d'une journée.\n\n### Handicap : les interlocuteurs\n\nLa Maison départementale des personnes handicapées des Hauts-de-Seine reçoit à Courbevoie, 12 avenue Léonard-de-Vinci. Elle instruit la prestation de compensation du handicap, y compris pour un enfant. L'« APEI de la Boucle de la Seine », association de parents du réseau Unapei, est domiciliée à Colombes. Le PAM Île-de-France, transport à la demande pour personnes à mobilité réduite, couvre les huit départements de la région.\n\n### L'agence et les voisines\n\nL'agence Youdom Care Seine-Saint-Denis, à Saint-Denis, est à 4,5 km de Gennevilliers. Elle intervient aussi à Asnières-sur-Seine, à 1,6 km, à Bois-Colombes, à 2,3 km, et à Villeneuve-la-Garenne, à 2,6 km. L'Île-Saint-Denis est à 2,9 km. Gennevilliers fait partie de la Métropole du Grand Paris. « France Alzheimer Hauts-de-Seine » écoute les familles depuis Neuilly-sur-Seine.\n\nPour un enfant en situation de handicap, un parent âgé ou vous-même, à Gennevilliers, tout commence par une visite chez vous. Elle est gratuite, comme le devis qui en découle. Le planning se règle ensuite semaine par semaine, avec vous.",
+  "questions": [
+    {
+      "question": "Où trouver la coordination gérontologique de Gennevilliers ?",
+      "reponse": "La « Coordination gérontologique » de Gennevilliers est au 17 rue Victor-Hugo. C'est le point d'information local dédié aux personnes âgées. On s'y informe sur les aides et on y prépare une demande d'allocation personnalisée d'autonomie. Le Centre communal d'action sociale de la ville reçoit 5 rue des Chevrins. Les deux adresses et leurs sources figurent dans la grille des ressources de cette page."
+    },
+    {
+      "question": "Quel hôpital est le plus proche de Gennevilliers ?",
+      "reponse": "Aucun hôpital n'est recensé dans la commune par FINESS. Les deux établissements les plus proches sont à Colombes, à 3,2 km à vol d'oiseau. Le site Louis-Mourier du GHU AP-HP Nord Université Paris Cité est au 178 rue des Renouilliers. L'Hôpital de jour Guy-de-Maupassant est au 17 rue Moslard. Notre service de sortie d'hospitalisation prépare le retour à Gennevilliers avec l'équipe du service."
+    },
+    {
+      "question": "Quelle agence Youdom Care intervient à Gennevilliers ?",
+      "reponse": "L'agence Youdom Care Seine-Saint-Denis, à Saint-Denis, à 4,5 km à vol d'oiseau. Elle couvre aussi Asnières-sur-Seine, Bois-Colombes, Villeneuve-la-Garenne et L'Île-Saint-Denis. La demande se fait par téléphone ou par le formulaire de cette page. Un conseiller vient ensuite chez vous, à Gennevilliers, pour une première visite d'évaluation gratuite, et vous remet un devis gratuit."
+    },
+    {
+      "question": "Comment un parent de Gennevilliers obtient-il de l'aide pour son enfant en situation de handicap ?",
+      "reponse": "Les droits, dont la prestation de compensation du handicap, se demandent à la Maison départementale des personnes handicapées. Elle est au 12 avenue Léonard-de-Vinci, à Courbevoie. L'« APEI de la Boucle de la Seine », réseau Unapei, à Colombes, accompagne les familles. Pour l'aide humaine à la maison, notre service pour les enfants en situation de handicap intervient à Gennevilliers. La première visite d'évaluation est gratuite."
+    }
+  ],
+  "semaine_type": "tom",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 18, 20],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

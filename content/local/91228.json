@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/91228.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "91228",
+  "seo": {
+    "titre": "Aide à domicile à Évry-Courcouronnes (91000) : démarches",
+    "description": "Aide à domicile à Évry-Courcouronnes : MDPH et Conseil départemental de l'Essonne sur place, CLIC du Cœur Essonne, accueil de jour. Agence à 18,6 km."
+  },
+  "sous_titre": "Évry-Courcouronnes réunit la MDPH, l'hôtel du département de l'Essonne et le CLIC du Cœur Essonne : toutes les démarches se font sur place.",
+  "zone_editoriale": "### La ville où l'on dépose les dossiers\n\nÉvry-Courcouronnes a une particularité pour ses habitants : les deux institutions qui décident des aides sont dans la commune. La Maison départementale des personnes handicapées (MDPH) - Essonne se trouve rue Henri Rochefort. Le Conseil départemental - Essonne, qui attribue l'APA et la PCH, a son hôtel du département boulevard de France-Georges Pompidou. Pour une famille, cela raccourcit les trajets ; cela ne raccourcit pas les dossiers, et c'est là qu'un accompagnement compte.\n\nLe CLIC du Cœur Essonne, allée des Champs-Élysées, est le Point d'information local dédié aux personnes âgées - Courcouronnes. C'est l'endroit où l'on se fait expliquer l'APA avant de la demander. Le Centre communal d'action sociale (CCAS) - Évry-Courcouronnes, cours Monseigneur Roméro, traite les aides communales.\n\n### Une commune jeune\n\nSur 66 700 habitants au recensement de 2022, 4,6 % ont 75 ans et plus, et 0,4 % ont 90 ans ou plus. Les 60-74 ans représentent 12,4 % de la population. Dans une commune aussi jeune, l'aide à domicile s'adresse souvent à des adultes en situation de handicap qui travaillent, à des enfants avec un trouble du développement, à des personnes qui vivent avec une sclérose en plaques. La MDPH sur place rend ces demandes plus accessibles ; Youdom Care organise ensuite les heures d'aide humaine selon le plan notifié.\n\n### Établissements pour personnes âgées et de santé\n\nL'EHPAD Louise Michel, rue de la Cerisaie à Courcouronnes, propose un accueil de jour, un hébergement temporaire et une unité Alzheimer. La Résidence autonomie Jean-Philippe Rameau, place Salvador-Allende, loge des personnes indépendantes ; une auxiliaire de vie peut y intervenir. Deux autres EHPAD sont recensés : la résidence Médicis, boulevard Decauville, et Les Tisserins, rue Pierre-et-Marie-Curie.\n\nCôté santé, la Clinique de l'Essonne, boulevard des Champs-Élysées, la Clinique du Mousseau, avenue de Mousseau, et l'Hôpital de jour CHSF Évry, cour Blaise Pascal, sont dans la commune. Un retour à domicile depuis l'une de ces cliniques se prépare avant la sortie, avec le service et l'agence.\n\n### Les associations du département\n\nFrance Alzheimer Essonne accueille les familles à Corbeil-Essonnes, à 4,3 km. La délégation de l'Essonne d'APF France handicap est à Sainte-Geneviève-des-Bois ; l'ADAPEI de l'Essonne, aux Ulis ; le comité de l'Essonne de France Parkinson, à Ris-Orangis, à 2,4 km. Le PAM Île-de-France, transport à la demande régional, est ouvert aux personnes à mobilité réduite des huit départements.\n\n### L'agence : Vitry-sur-Seine, à 18,6 km\n\nL'agence Youdom Care la plus proche d'Évry-Courcouronnes est celle du Val-de-Marne, à Vitry-sur-Seine, à 18,6 km du centre. C'est une distance réelle, que nous préférons annoncer. L'auxiliaire de vie, elle, vient à votre domicile, et l'évaluation gratuite se fait chez vous. Ris-Orangis est à 2,4 km, Lisses à 3,9 km, Bondoufle à 4,1 km, Corbeil-Essonnes et Soisy-sur-Seine à 4,3 km. La commune appartient à la CA Grand Paris Sud Seine Essonne Sénart.\n\nUne fois le dossier déposé à la MDPH ou au Département, ou même avant, demandez la visite d'évaluation de Youdom Care à Évry-Courcouronnes. Elle est gratuite et elle vous aide à formuler le besoin heure par heure.",
+  "questions": [
+    {
+      "question": "Où se trouve la MDPH de l'Essonne pour un habitant d'Évry-Courcouronnes ?",
+      "reponse": "Dans la commune même : la Maison départementale des personnes handicapées (MDPH) - Essonne est au 93 rue Henri Rochefort, à Évry. Elle instruit la prestation de compensation du handicap, les cartes et les orientations. Une fois la décision reçue, Youdom Care met en place les heures d'aide humaine avec vous, pour un adulte ou pour un enfant."
+    },
+    {
+      "question": "Où demander l'APA à Évry-Courcouronnes ?",
+      "reponse": "Le Conseil départemental - Essonne, qui attribue l'allocation personnalisée d'autonomie, a son hôtel du département boulevard de France-Georges Pompidou, à Évry-Courcouronnes. Le CLIC du Cœur Essonne, allée des Champs-Élysées, explique la démarche avant le dépôt. Le Centre communal d'action sociale (CCAS) - Évry-Courcouronnes, cours Monseigneur Roméro, aide pour les aides communales."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour à Évry-Courcouronnes ?",
+      "reponse": "Oui : l'EHPAD Louise Michel, rue de la Cerisaie à Courcouronnes, propose un accueil de jour, un hébergement temporaire et une unité Alzheimer, pour 72 places au total selon les données ouvertes. Une auxiliaire de vie Youdom Care assure les matins, les soirs et les jours sans accueil, pour que la personne garde ses repères chez elle."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Évry-Courcouronnes ?",
+      "reponse": "L'agence Youdom Care Val-de-Marne, à Vitry-sur-Seine, à 18,6 km du centre d'Évry-Courcouronnes. C'est la plus proche, même si elle est dans un autre département. Elle reçoit la demande, vient chez vous pour l'évaluation gratuite et organise les interventions. Contactez-la par téléphone ou par le formulaire de cette page."
+    }
+  ],
+  "semaine_type": "tom",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
