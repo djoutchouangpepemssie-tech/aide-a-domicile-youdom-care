@@ -65,12 +65,14 @@ describe("chargeur des articles du Fil", () => {
     for (const article of articles) expect(typeof article.Body).toBe("function");
   });
 
-  it("construit tout hors brouillon en prévisualisation, seulement publie en production", async () => {
+  it("construit tout hors brouillon, en production comme ailleurs (D-033)", async () => {
     const articles = await listArticleMetas({ dir, warn: () => {}, drafts: true });
     const byStatut = Object.fromEntries(articles.map((a) => [a.meta.statut, a]));
     expect(isArticleBuildable(byStatut.brouillon, false)).toBe(false);
+    expect(isArticleBuildable(byStatut.brouillon, true)).toBe(false);
+    // Un article a_relire est servi partout, en noindex, hors des plans de site.
     expect(isArticleBuildable(byStatut.a_relire, false)).toBe(true);
-    expect(isArticleBuildable(byStatut.a_relire, true)).toBe(false);
+    expect(isArticleBuildable(byStatut.a_relire, true)).toBe(true);
     expect(isArticleBuildable(byStatut.publie, true)).toBe(true);
   });
 

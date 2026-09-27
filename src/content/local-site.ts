@@ -2,7 +2,6 @@ import type { AccompagnementLink } from "@/components/local/LocalTemplate";
 import type { BreadcrumbItem } from "@/components/blocks/Breadcrumb/Breadcrumb";
 import type { MapDepartment } from "@/components/local/IdfMap";
 import { fill, localPlace } from "@/components/local/local-texts";
-import { isProduction } from "@/lib/env";
 import { distanceKm } from "@/lib/geo/geo";
 import { departementCodeOf, listBuildableLocalPages, type LocalPage } from "./local";
 import { getInterfaceTexts, getNavigation, getSiteConfig } from "./loader";
@@ -83,7 +82,7 @@ export async function accompagnementLinks(): Promise<AccompagnementLink[]> {
   const pages: ServicePage[] = [];
   for (const file of await listMdxFiles(SERVICES_DIR)) {
     const { meta } = await readServiceMeta(file);
-    if (isProduction() && meta.statut !== "publie") continue;
+    // D-033 : les pages `a_relire` sont construites en production, elles peuvent donc être liées.
     if (meta.type === "pilier" || meta.type === "service") pages.push(meta);
   }
   pages.sort(

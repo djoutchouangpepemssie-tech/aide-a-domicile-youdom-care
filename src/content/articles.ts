@@ -102,10 +102,9 @@ export function listArticles(): Promise<LoadedArticle[]> {
   return cache;
 }
 
-/** Articles construits : tous en prévisualisation, seulement `publie` en production. */
+/** Articles construits : tous sauf les brouillons, en production comme ailleurs (D-033). */
 export async function listBuildableArticles(): Promise<LoadedArticle[]> {
-  const production = isProduction();
-  return (await listArticles()).filter((article) => isArticleBuildable(article, production));
+  return (await listArticles()).filter((article) => isArticleBuildable(article, isProduction()));
 }
 
 /** Articles publiés (plans de site, indexation). */

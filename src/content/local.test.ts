@@ -7,6 +7,7 @@ import {
   agencyCoordinates,
   getAgencyGeo,
   listBuildableLocalPages,
+  listIndexableLocalPages,
   listLocalPages,
   loadLocalTerritories,
   localPathSegments,
@@ -135,10 +136,14 @@ describe("content/local : chargement des territoires", () => {
     expect((await listBuildableLocalPages()).length).toBeLessThanOrEqual(pages.length);
   });
 
-  it("en production, seules les pages publiées sont construites", async () => {
+  it("en production, les pages a_relire sont construites mais hors des plans de site (D-033)", async () => {
     process.env.VERCEL_ENV = "production";
     const pages = await listBuildableLocalPages();
-    for (const page of pages) expect(page.editorial.statut).toBe("publie");
+    expect(pages.length).toBeGreaterThan(0);
+    const indexables = await listIndexableLocalPages();
+    for (const page of indexables) expect(page.editorial.statut).toBe("publie");
+    // Une page en attente de relecture existe (servie en noindex) sans être indexable.
+    expect(pages.length).toBeGreaterThanOrEqual(indexables.length);
   });
 
   it("découpe un chemin local en segments", () => {

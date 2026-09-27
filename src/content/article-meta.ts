@@ -311,9 +311,10 @@ export function sortArticles<T extends ArticleMeta>(articles: readonly T[]): T[]
 }
 
 /** Construit : tout hors brouillon en prévisualisation, seulement `publie` en production. */
-export function isArticleBuildable(article: ArticleMeta, production: boolean): boolean {
-  if (article.meta.statut === "brouillon") return false;
-  return production ? article.meta.statut === "publie" : true;
+export function isArticleBuildable(article: ArticleMeta, _production: boolean): boolean {
+  // D-033 : un brouillon n'est jamais construit ; un article `a_relire` l'est partout, en
+  // `noindex`, avec son bandeau, et hors des plans de site et de `/llms.txt`.
+  return article.meta.statut !== "brouillon";
 }
 
 /* ---------- Auteurs ---------- */

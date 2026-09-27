@@ -3,7 +3,6 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 import agenciesGeoJson from "../../data/agences.geo.json";
-import { isProduction } from "@/lib/env";
 import { getWeekExamples } from "./loader";
 import {
   localDataSchema,
@@ -185,10 +184,12 @@ export function listLocalPages(): Promise<LocalPage[]> {
   return cache;
 }
 
-/** Pages construites : toutes en prévisualisation, seulement les pages publiées en production. */
+/**
+ * Pages construites : toutes, y compris en production (D-033) ; une page `a_relire` est servie
+ * en `noindex` avec son bandeau, et reste hors des plans de site (`listIndexableLocalPages`).
+ */
 export async function listBuildableLocalPages(): Promise<LocalPage[]> {
-  const pages = await listLocalPages();
-  return isProduction() ? pages.filter((page) => page.editorial.statut === "publie") : pages;
+  return listLocalPages();
 }
 
 /** Pages indexables (plans de site) : publiées, quel que soit l'environnement. */
