@@ -49,9 +49,10 @@ export function GestureLinks({
       <p id={questionId} className={gestureQuestion(tone)}>
         {question}
       </p>
+      {/* Clé sur le libellé : plusieurs choix peuvent partager une même destination de repli. */}
       <ul className={gestureList}>
         {choices.map((choice) => (
-          <li key={choice.href} className="max-w-none">
+          <li key={choice.label} className="max-w-none">
             <Link href={choice.href} prefetch={false} className={gestureRow(tone)}>
               {choice.icon ? (
                 <Icon name={choice.icon} size="sm" tone={tone === "sombre" ? "white" : "teal"} />
