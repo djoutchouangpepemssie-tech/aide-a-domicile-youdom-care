@@ -83,6 +83,20 @@
     box-shadow: var(--shadow-1);
     /* Un long mot ne déborde jamais d'une surface de verre. */
     overflow-wrap: break-word;
+  }
+
+  /*
+   * Le flou d'arrière-plan est réservé aux surfaces qui ont vraiment quelque chose à flouter
+   * (dette DP.2, 27/09/2026) : l'en-tête collant et la barre d'action mobile, sous lesquels la page
+   * défile, et le verre sombre, seule surface autorisée au-dessus d'une photo. Une carte posée sur
+   * un fond uni ou sur un dégradé doux garde sa translucidité — on voit toujours la couleur à
+   * travers — mais ne demande plus au navigateur de capturer et flouter son fond : il y avait
+   * jusqu'à 41 de ces surfaces sur une seule page locale, dont 39 sans rien derrière elles.
+   * `glass-blur` remet le flou là où une page en a besoin.
+   */
+  .glass-strong,
+  .glass-dark,
+  .glass-blur {
     -webkit-backdrop-filter: var(--glass-filter);
     backdrop-filter: var(--glass-filter);
   }
