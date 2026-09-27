@@ -1,0 +1,153 @@
+{
+  "_lisezmoi": "Déclaration d'accessibilité /accessibilite/ (docs/07 §2 et §4, P8.4), sur le modèle de déclaration du RGAA 4.1. L'état de conformité et les résultats viennent de docs/AUDIT_ACCESSIBILITE.md : mettez à jour `date`, `etat` et `resultats` à chaque nouvel audit. L'éditeur, le contact et l'adresse du site viennent de site.config.json (marque, contact, legal) ; un champ légal null est masqué. Les jetons {site}, {url}, {email} et {téléphone} sont remplacés par la page. Aucune donnée inventée : la voie de recours reprend les coordonnées publiées par le Défenseur des droits, ouvertes le jour de la rédaction.",
+  "seo": {
+    "titre": "Accessibilité du site Youdom Care : déclaration RGAA 4.1",
+    "description": "État de conformité du site au RGAA 4.1, résultats de l'audit, contenus non accessibles connus et corrections prévues, contact et voie de recours."
+  },
+  "ariane": "Accessibilité",
+  "h1": "Déclaration d'accessibilité",
+  "chapo": "{site} s'engage à rendre son site accessible, conformément à l'article 47 de la loi n° 2005-102 du 11 février 2005. Cette déclaration s'applique au site {url}.",
+  "date": "2026-09-27",
+  "date_libelle": "Cette déclaration a été établie le {date}.",
+  "etat": {
+    "h2": "État de conformité",
+    "statut": "non_conforme",
+    "texte": "Le site {url} est non conforme avec le référentiel général d'amélioration de l'accessibilité (RGAA), version 4.1 : aucun audit complet des 106 critères n'a encore été réalisé. Un audit interne partiel a été mené le {date} sur onze pages représentatives ; ses résultats sont publiés ci-dessous. L'audit complet, par un tiers, est prévu avant l'ouverture du site au public.",
+    "criteres_testes": 52,
+    "criteres_conformes": 46,
+    "criteres_non_conformes": 2,
+    "criteres_non_applicables": 4,
+    "resultats_libelle": "Critères réellement testés : {testes}. Conformes : {conformes}. Non conformes : {non_conformes}. Non applicables : {non_applicables}. Ce décompte ne vaut pas pour l'ensemble du référentiel : un critère non testé n'est compté ni conforme ni non conforme."
+  },
+  "resultats": {
+    "h2": "Résultats des tests",
+    "texte": "L'audit a été réalisé au clavier, avec un analyseur automatique (axe-core) et par revue du code, sur ordinateur et sur un écran de 320 pixels de large, à un agrandissement de 200 %, avec la préférence « réduire les animations » et avec le mode confort de lecture du site.",
+    "conformes_h3": "Ce qui fonctionne",
+    "conformes": [
+      "Toute la navigation se fait au clavier : menus, recherche de commune, onglets, sélecteur de lecteur, exemples de semaine, formulaires, sans piège et dans un ordre logique.",
+      "Le focus est visible partout : un anneau de 3 pixels, jamais supprimé.",
+      "Un lien d'évitement « Aller au contenu » ouvre chaque page.",
+      "Les erreurs de saisie sont annoncées, listées en tête du formulaire et reliées à chaque champ.",
+      "Les pages ont un seul titre principal, des zones header, nav, main et footer, des listes et des tableaux réels.",
+      "Les textes restent lisibles à 200 % et sur 320 pixels de large, sans défilement horizontal.",
+      "Les animations s'arrêtent quand le système demande moins de mouvement, et en mode confort de lecture."
+    ],
+    "detail_h3": "Le détail par critère",
+    "detail_texte": "La liste des critères testés, page par page, est tenue dans le journal d'audit du site. Vous pouvez la demander à l'adresse indiquée plus bas."
+  },
+  "non_accessibles": {
+    "h2": "Contenus non accessibles",
+    "texte": "Les points ci-dessous ont été constatés pendant l'audit. Ceux qui sont déjà corrigés restent listés jusqu'au prochain audit, pour mémoire.",
+    "etats_libelles": {
+      "corrige": "Corrigé",
+      "a_corriger": "À corriger",
+      "a_verifier": "À vérifier"
+    },
+    "items": [
+      {
+        "titre": "Formulaires en plusieurs étapes : focus après une erreur",
+        "texte": "Quand la réponse manquante était un groupe de boutons radio ou de cases à cocher, le focus ne se déplaçait pas vers la première erreur. L'erreur restait annoncée et listée en tête du formulaire.",
+        "critere": "RGAA 11.10",
+        "etat": "corrige",
+        "correction": "Corrigé le 27 septembre 2026 : le focus va au premier bouton ou à la première case du groupe."
+      },
+      {
+        "titre": "Zones de page homonymes",
+        "texte": "Sur les pages de demande, la page « Être rappelé(e) », les articles du magazine et le plan du site, deux zones de page portent parfois le même nom (par exemple deux navigations « Pour qui ? »). Les lecteurs d'écran les distinguent moins facilement.",
+        "critere": "RGAA 12.6",
+        "etat": "a_corriger",
+        "correction": "Correction prévue lors de la revue des gabarits, avant l'ouverture du site."
+      },
+      {
+        "titre": "Cartes des aides : défilement horizontal à 320 pixels",
+        "texte": "Sur les pages qui présentent les aides (tarifs, piliers, pathologies, pages locales), le nom d'un site officiel trop long pour une carte élargissait la page de 13 pixels sur un écran de 320 pixels de large : un défilement horizontal apparaissait.",
+        "critere": "RGAA 10.11",
+        "etat": "corrige",
+        "correction": "Corrigé le 27 septembre 2026 : le nom du site peut se couper, la page ne déborde plus."
+      },
+      {
+        "titre": "Menu mobile : focus derrière le panneau",
+        "texte": "Jusqu'à 1 280 pixels de large, quand le menu était ouvert au clavier, la tabulation pouvait quitter le panneau vers le contenu situé dessous, sans que le menu se ferme : le focus devenait invisible. Le contenu restait atteignable en refermant le menu avec Échap.",
+        "critere": "WCAG 2.2, 2.4.11",
+        "etat": "corrige",
+        "correction": "Corrigé le 27 septembre 2026 : le menu se ferme dès que le focus le quitte, comme les menus déroulants sur ordinateur."
+      },
+      {
+        "titre": "Documents à imprimer (PDF)",
+        "texte": "Les outils à imprimer existent aussi en PDF. Leur balisage n'a pas encore été vérifié avec un lecteur d'écran.",
+        "critere": "RGAA 13.3",
+        "etat": "a_verifier",
+        "correction": "Vérification prévue avec l'audit complet. Chaque outil reste consultable en page web, qui en est la version de référence."
+      }
+    ],
+    "derogation_h3": "Dérogation pour charge disproportionnée",
+    "derogation_texte": "Aucune.",
+    "non_soumis_h3": "Contenus non soumis à l'obligation d'accessibilité",
+    "non_soumis_texte": "Aucun."
+  },
+  "etablissement": {
+    "h2": "Établissement de cette déclaration",
+    "technologies_h3": "Technologies utilisées",
+    "technologies": ["HTML", "CSS", "JavaScript", "SVG", "WAI-ARIA"],
+    "environnement_h3": "Environnement de test",
+    "environnement": [
+      "Chromium 141 sur Windows 11, navigation au clavier, agrandissement à 200 %, fenêtre de 320 pixels de large",
+      "Préférence système « réduire les animations » activée",
+      "Mode confort de lecture du site activé"
+    ],
+    "outils_h3": "Outils utilisés",
+    "outils": [
+      "axe-core 4.13 (analyse automatique, règles WCAG 2.2 niveau AA)",
+      "Playwright 1.63 (parcours automatisés au clavier)",
+      "Inspecteur d'accessibilité du navigateur",
+      "Contrôle des contrastes des couleurs du site (check-contrast)"
+    ],
+    "pages_h3": "Pages du site ayant fait l'objet de la vérification",
+    "pages": [
+      { "libelle": "Accueil", "href": "/" },
+      { "libelle": "Personnes âgées", "href": "/personnes-agees/" },
+      { "libelle": "Maladie d'Alzheimer", "href": "/maladies-neurodegeneratives/alzheimer/" },
+      { "libelle": "Décrire ma situation, personne âgée", "href": "/demande/personne-agee/" },
+      { "libelle": "Être rappelé(e)", "href": "/etre-rappele/" },
+      {
+        "libelle": "Aide à domicile à Puteaux",
+        "href": "/aide-a-domicile/hauts-de-seine/puteaux/"
+      },
+      {
+        "libelle": "Prévenir les chutes : le tour du logement pièce par pièce",
+        "href": "/magazine/prevenir-les-chutes-le-tour-du-logement-piece-par-piece/"
+      },
+      { "libelle": "Tarifs et aides", "href": "/tarifs-et-aides/" },
+      { "libelle": "Lexique", "href": "/lexique/" },
+      {
+        "libelle": "Le tour du logement anti-chutes",
+        "href": "/outils/tour-du-logement-anti-chutes/"
+      },
+      { "libelle": "Plan du site", "href": "/plan-du-site/" }
+    ]
+  },
+  "contact": {
+    "h2": "Retour d'information et contact",
+    "texte": "Si vous n'arrivez pas à lire ou à utiliser un contenu de ce site, écrivez-nous ou appelez-nous. Nous vous répondons et nous vous proposons une autre façon d'obtenir l'information ou le service.",
+    "email_libelle": "Par courriel : {email}",
+    "telephone_libelle": "Par téléphone : {téléphone}"
+  },
+  "recours": {
+    "h2": "Voies de recours",
+    "texte": "Si vous nous avez signalé un défaut d'accessibilité et que vous n'avez pas obtenu de réponse satisfaisante, vous pouvez saisir le Défenseur des droits.",
+    "lien_externe": "lien externe",
+    "items": [
+      {
+        "libelle": "Écrire au Défenseur des droits en ligne",
+        "href": "https://www.defenseurdesdroits.fr/nous-contacter-355"
+      },
+      {
+        "libelle": "Contacter le délégué du Défenseur des droits de votre région",
+        "href": "https://www.defenseurdesdroits.fr/carte-des-delegues"
+      }
+    ],
+    "courrier_libelle": "Par courrier, sans affranchissement :",
+    "courrier": ["Défenseur des droits", "Libre réponse 71120", "75342 Paris CEDEX 07"],
+    "telephone_libelle": "Par téléphone : 09 69 39 00 00 (du lundi au vendredi, de 8 h 30 à 19 h 30, coût d'un appel local)."
+  }
+}

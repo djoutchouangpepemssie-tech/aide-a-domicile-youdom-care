@@ -60,5 +60,23 @@
       "semaines": "Quelques semaines",
       "durable": "Durablement"
     }
+  },
+  "candidature": {
+    "objet": "Nouvelle candidature — {departement}",
+    "coordonnees": "Coordonnées",
+    "secteur": "Secteur souhaité",
+    "departement": "Département",
+    "commune": "Commune",
+    "disponibilite": "Disponibilité",
+    "message": "Message du candidat",
+    "offre": "Offre concernée",
+    "candidature_spontanee": "Candidature spontanée",
+    "cv": "CV",
+    "cv_joint": "{nom} ({taille}), en pièce jointe",
+    "origine": "Page d'origine",
+    "consentement": "Consentement à l'étude de la candidature : oui (version du texte : {version})",
+    "recu_le": "Reçue le {date}",
+    "accuse_objet": "Nous avons bien reçu votre candidature — Youdom Care",
+    "accuse_corps": "Bonjour {prénom}, votre candidature est bien arrivée. Nous la lisons avec attention et nous vous répondons. D'ici là, vous pouvez nous joindre au {téléphone}. À bientôt."
   }
 }

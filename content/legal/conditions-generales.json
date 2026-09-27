@@ -1,0 +1,44 @@
+{
+  "_lisezmoi": "Page /conditions-generales/ (docs/07 §2, P8.3). `documents` liste les PDF fournis par Arcel (Q-LEGAL-3) : { libelle, fichier (sous /documents/), mode (prestataire | mandataire), maj }. Tant que la liste est vide, la page explique que les conditions générales sont remises avec chaque devis et seront publiées ici. La mention légale du mode mandataire vient de content/interface.json > mandataire_notice (formulation à valider par le conseil d'Arcel, Q-LEGAL-3).",
+  "seo": {
+    "titre": "Conditions générales Youdom Care : prestataire et mandataire",
+    "description": "Les conditions générales de Youdom Care en mode prestataire et mandataire : où les trouver, ce qu'elles couvrent, la mention légale du mandat et le devis."
+  },
+  "ariane": "Conditions générales",
+  "h1": "Conditions générales",
+  "chapo": "Un accompagnement à domicile repose sur un contrat clair. Voici où trouver nos conditions générales et ce qu'elles encadrent, selon le mode d'intervention.",
+  "maj": "2026-09-27",
+  "maj_libelle": "Dernière mise à jour : {date}",
+  "documents_h2": "Les documents",
+  "documents": [],
+  "attente": {
+    "paragraphes": [
+      "Nos conditions générales, en mode prestataire et en mode mandataire, vous sont remises avec chaque devis, avant tout engagement. Vous les lisez à votre rythme et posez vos questions à votre agence.",
+      "Elles seront publiées sur cette page, au format PDF accessible, dès que leur version en cours aura été arrêtée."
+    ]
+  },
+  "document_libelle": "{libelle} (mode {mode}, version du {date})",
+  "modes": { "prestataire": "prestataire", "mandataire": "mandataire" },
+  "mandataire": {
+    "h2": "Le mode mandataire, en toute clarté",
+    "paragraphes": [
+      "En mode prestataire, Youdom Care est l'employeur de l'intervenant : nous recrutons, planifions, remplaçons et facturons. En mode mandataire, c'est vous qui êtes l'employeur de la personne qui vient chez vous ; nous vous aidons à la recruter et nous gérons pour vous les démarches administratives.",
+      "La loi nous demande de le rappeler sur chaque prix et chaque devis en mode mandataire :"
+    ]
+  },
+  "devis": {
+    "h2": "Devis et information sur les prix",
+    "paragraphes": [
+      "Avant tout engagement, vous recevez un devis personnalisé et gratuit. Il indique chaque prestation, son mode d'intervention, son prix toutes taxes comprises et hors taxes, et les frais annexes éventuels.",
+      "Les avantages fiscaux, comme le crédit d'impôt, sont indiqués à part et ne se substituent jamais au prix."
+    ]
+  },
+  "liens": [
+    {
+      "libelle": "Comprendre les deux modes d'intervention",
+      "href": "/comment-ca-marche/prestataire-ou-mandataire/"
+    },
+    { "libelle": "Voir les tarifs et les aides", "href": "/tarifs-et-aides/" },
+    { "libelle": "Lire les mentions légales", "href": "/mentions-legales/" }
+  ]
+}

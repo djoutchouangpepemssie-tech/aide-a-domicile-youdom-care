@@ -1,0 +1,171 @@
+{
+  "_lisezmoi": "Page /politique-de-confidentialite/ (docs/07 §2, docs/05 §8, P8.3). Le responsable est l'éditeur tel que renseigné dans content/site.config.json (legal, contact) : chaque champ null est masqué. Les durées de conservation sont les propositions de docs/05 §8, présentées comme des propositions en attente de validation (Q-LEGAL-4) ; la mesure d'audience est décrite d'après src/lib/mesure/README.md. Texte à faire valider par un juriste ou un délégué à la protection des données avant la mise en ligne (docs/07 §8). Le mot « traitement » n'est employé qu'au sens du RGPD, dans les tournures admises par check-copy.",
+  "seo": {
+    "titre": "Politique de confidentialité : vos données chez Youdom Care",
+    "description": "Quelles informations nos formulaires recueillent, pourquoi, qui les reçoit, combien de temps et comment exercer vos droits, données de santé comprises."
+  },
+  "ariane": "Politique de confidentialité",
+  "h1": "Politique de confidentialité",
+  "chapo": "Vous nous confiez des informations personnelles, parfois sur la santé d'un proche. Voici ce que nous en faisons, qui les reçoit et comment vous gardez la main.",
+  "maj": "2026-09-27",
+  "maj_libelle": "Dernière mise à jour : {date}",
+  "responsable": {
+    "h2": "Qui est responsable de vos données",
+    "intro": "Le responsable du traitement est l'éditeur de ce site :",
+    "libelles": {
+      "nom_commercial": "Nom commercial",
+      "raison_sociale": "Raison sociale",
+      "forme_juridique": "Forme juridique",
+      "siege_social": "Siège social",
+      "siret": "SIRET",
+      "email": "Adresse e-mail",
+      "telephone": "Téléphone"
+    }
+  },
+  "principes": {
+    "h2": "Ce que nous nous engageons à faire",
+    "paragraphes": [
+      "Nous ne recueillons que ce qui sert à vous répondre. Les questions sur la santé sont facultatives et posées simplement. Nous vous demandons de ne pas détailler un état de santé dans les champs libres.",
+      "Ce site ne conserve aucune donnée. Ce que vous envoyez part par e-mail vers l'équipe concernée ; le site n'en garde pas de copie. Aucune information personnelle n'apparaît dans les adresses des pages, les objets d'e-mail ni les journaux techniques.",
+      "Nous ne vendons ni ne louons vos données. Nous ne les utilisons pas pour de la publicité."
+    ]
+  },
+  "finalites": {
+    "h2": "Ce que nous recueillons, et pourquoi",
+    "intro": "Chaque formulaire du site ne demande que ce qui est utile à sa finalité. Le tableau ci-dessous les reprend un à un.",
+    "colonnes": {
+      "formulaire": "Formulaire",
+      "donnees": "Informations recueillies",
+      "finalite": "Pourquoi",
+      "base": "Base légale"
+    },
+    "formulaires": [
+      {
+        "libelle": "Demande de rappel",
+        "href": "/etre-rappele/",
+        "donnees": "Prénom, nom, numéro de téléphone, votre commune ou votre code postal, et le moment où vous préférez être rappelé(e).",
+        "finalite": "Vous rappeler au moment que vous avez indiqué.",
+        "base_legale": "Mesures prises à votre demande avant un éventuel contrat (article 6.1.b du RGPD)."
+      },
+      {
+        "libelle": "Demandes détaillées",
+        "href": "/demande/",
+        "donnees": "La situation de la personne à accompagner, ses besoins, le rythme souhaité et le planning, l'urgence, votre commune, vos coordonnées (prénom, nom, téléphone, e-mail facultatif), un message libre. Si vous choisissez d'en parler, des informations sur une maladie ou un handicap.",
+        "finalite": "Préparer un premier échange avec l'agence de votre secteur et, si vous le souhaitez, un devis personnalisé.",
+        "base_legale": "Mesures prises à votre demande avant un éventuel contrat (article 6.1.b) ; pour les informations de santé, votre consentement explicite (article 9.2.a)."
+      },
+      {
+        "libelle": "Sortie d'hospitalisation",
+        "href": "/demande/sortie-d-hospitalisation/",
+        "donnees": "Date de sortie prévue, établissement, commune, besoins pour les premiers jours, votre rôle auprès de la personne, vos coordonnées.",
+        "finalite": "Organiser un accompagnement dès le retour à la maison.",
+        "base_legale": "Mesures prises à votre demande avant un éventuel contrat (article 6.1.b) ; pour les informations de santé, votre consentement explicite (article 9.2.a)."
+      },
+      {
+        "libelle": "Contact d'un professionnel",
+        "href": "/demande/professionnel/",
+        "donnees": "Votre structure, votre fonction, votre téléphone, la commune et le type de besoin de la personne que vous orientez, l'échéance, un message. La personne concernée n'est pas nommée.",
+        "finalite": "Répondre à un professionnel de santé ou du social qui cherche un relais à domicile.",
+        "base_legale": "Notre intérêt légitime à répondre aux professionnels qui nous sollicitent (article 6.1.f)."
+      },
+      {
+        "libelle": "Candidature",
+        "href": "/recrutement/postuler/",
+        "donnees": "Prénom, nom, téléphone, e-mail, département et commune, disponibilités, un message, votre CV (PDF ou DOCX, 5 Mo au plus) et l'offre visée. Aucune information de santé n'est demandée.",
+        "finalite": "Étudier votre candidature et vous recontacter.",
+        "base_legale": "Mesures prises à votre demande avant un éventuel contrat de travail (article 6.1.b), avec votre accord pour l'étude de la candidature."
+      },
+      {
+        "libelle": "Contact",
+        "href": "/contact/",
+        "donnees": "Le sujet de votre message, son contenu, vos coordonnées.",
+        "finalite": "Vous répondre.",
+        "base_legale": "Notre intérêt légitime à répondre à qui nous écrit (article 6.1.f)."
+      }
+    ]
+  },
+  "sante": {
+    "h2": "Les informations de santé",
+    "paragraphes": [
+      "Dire qu'un proche vit avec la maladie d'Alzheimer, un handicap ou une autre pathologie est une donnée de santé au sens de l'article 9 du RGPD. Nous ne la recueillons qu'avec votre consentement explicite : une case dédiée, jamais cochée d'avance, dont le texte et la version sont enregistrés avec votre demande.",
+      "Ces questions sont facultatives. Sans réponse, votre demande est traitée quand même : nous en parlerons de vive voix si c'est utile.",
+      "Aucune information de santé ne circule dans les adresses des pages, les objets d'e-mail, l'accusé de réception, la mesure d'audience ni les journaux du serveur. Vous pouvez retirer votre consentement à tout moment en nous écrivant : nous supprimons alors ces informations."
+    ]
+  },
+  "destinataires": {
+    "h2": "Qui reçoit vos informations",
+    "intro": "Vos informations sont reçues par :",
+    "liste": [
+      "l'équipe de Youdom Care, dans l'agence qui couvre votre secteur ou au service qui traite le sujet (recrutement, professionnels) ;",
+      "le prestataire de messagerie qui achemine nos e-mails, comme tout courrier électronique ;",
+      "l'hébergeur du site, Vercel Inc., société établie aux États-Unis, qui fait transiter techniquement votre demande vers notre messagerie sans en garder de copie ;",
+      "si l'éditeur l'active, un outil de suivi des demandes où la demande est recopiée pour être traitée par l'équipe."
+    ],
+    "fin": "Personne d'autre. Nous ne transmettons rien à des annonceurs ni à des courtiers en données."
+  },
+  "durees": {
+    "h2": "Combien de temps nous les gardons",
+    "paragraphes": [
+      "Le site ne stocke rien : la boîte de réception de l'équipe est le seul lieu de conservation, avec un accès restreint aux personnes qui traitent les demandes.",
+      "Les durées ci-dessous sont celles que nous proposons. Elles sont en cours de validation par notre conseil et seront confirmées ici."
+    ],
+    "propositions_libelle": "Durées proposées, en attente de validation",
+    "propositions": [
+      "Demandes et rappels restés sans suite : suppression au plus tard 12 mois après le dernier échange.",
+      "Personnes qui nous ont contactés sans devenir clientes : 3 ans au plus après le dernier contact.",
+      "Personnes accompagnées : pendant la durée du contrat, puis selon les obligations légales de conservation des pièces contractuelles et comptables.",
+      "Candidatures : la durée sera précisée ici une fois fixée avec notre conseil."
+    ]
+  },
+  "droits": {
+    "h2": "Vos droits",
+    "intro": "Vous pouvez, à tout moment :",
+    "liste": [
+      "accéder aux informations que nous détenons sur vous et en recevoir une copie ;",
+      "les faire corriger si elles sont inexactes ou incomplètes ;",
+      "les faire effacer ;",
+      "demander la limitation de leur utilisation ou vous y opposer ;",
+      "retirer votre consentement pour les informations de santé, sans effet sur ce qui a été fait avant ;",
+      "recevoir vos informations dans un format lisible par une machine (portabilité) ;",
+      "donner des directives sur le sort de vos informations après votre décès."
+    ],
+    "exercice": "Écrivez-nous à {email} en précisant votre demande. Nous pouvons vous demander de justifier de votre identité si un doute existe.",
+    "delai": "Nous vous répondons dans un délai d'un mois, prolongeable de deux mois pour une demande complexe ; nous vous en informons alors."
+  },
+  "reclamation": {
+    "h2": "Réclamation auprès de la CNIL",
+    "texte": "Si vous estimez que vos droits ne sont pas respectés, vous pouvez déposer une réclamation auprès de la Commission nationale de l'informatique et des libertés (CNIL).",
+    "cnil": {
+      "libelle": "Déposer une réclamation sur cnil.fr",
+      "href": "https://www.cnil.fr/fr/plaintes"
+    },
+    "adresse_postale": "CNIL, 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07."
+  },
+  "mesure_audience": {
+    "h2": "Mesure d'audience",
+    "paragraphes": [
+      "Ce site n'utilise aucun cookie ni traceur de mesure d'audience. Quand la mesure est active, il compte de façon anonyme quelques gestes : une étape de formulaire affichée, une demande envoyée, un rappel demandé, un clic sur un numéro de téléphone. Le seul but est de repérer l'étape où les visiteurs abandonnent un formulaire, pour le simplifier.",
+      "Rien de ce que vous saisissez n'est compté. Aucune adresse IP, aucun identifiant, aucune commune, aucune donnée de santé : seul le département de la demande est transmis. Si votre navigateur envoie le signal « Do Not Track » ou « Global Privacy Control », rien n'est compté du tout."
+    ],
+    "lien": { "libelle": "Lire la page sur les cookies", "href": "/cookies/" }
+  },
+  "securite": {
+    "h2": "Sécurité",
+    "paragraphes": [
+      "Le site est servi en HTTPS. Les formulaires sont validés côté serveur, protégés contre les robots et limités en nombre d'envois par adresse ; cette adresse n'est utilisée que sous forme d'empreinte éphémère, jamais conservée. Le serveur n'écrit aucun journal du contenu des demandes.",
+      "La messagerie qui reçoit vos demandes et le futur outil de suivi font l'objet d'un examen à part avec notre conseil, pour les informations de santé."
+    ]
+  },
+  "mineurs": {
+    "h2": "Enfants et personnes protégées",
+    "paragraphes": [
+      "Les demandes qui concernent un enfant ou une personne sous protection juridique sont faites par un parent, un représentant légal ou un proche. Le site ne s'adresse pas directement aux mineurs."
+    ]
+  },
+  "evolution": {
+    "h2": "Mises à jour de cette page",
+    "paragraphes": [
+      "Cette page est mise à jour quand nos pratiques changent : nouvel outil, nouvelle finalité, durées confirmées. La date en haut de page indique la dernière révision."
+    ]
+  }
+}
