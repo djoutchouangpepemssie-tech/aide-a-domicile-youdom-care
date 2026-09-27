@@ -183,8 +183,15 @@ export default async function Home() {
                 aria-hidden="true"
                 width={600}
                 height={550}
-                sizes="(min-width: 80rem) 30rem, (min-width: 40rem) 34vw, 0px"
-                className="absolute top-[14%] right-[3%] h-auto w-[30vw] max-w-[24rem] object-contain xl:top-[10%] xl:max-w-[27rem]"
+                sizes="(min-width: 80rem) 30rem, (min-width: 40rem) 34vw, 62vw"
+                /*
+                 * 27/09/2026 : la photo était masquée sous 40 rem, Arcel ne la voyait donc jamais
+                 * sur téléphone. Posée ensuite en bas de bannière, elle restait hors de l'écran
+                 * d'arrivée (mesuré : haut à 797 px pour une fenêtre de 812). Elle est maintenant
+                 * ancrée en haut à droite, sur 46 % de la largeur et à 45 % d'opacité : elle se
+                 * voit dès l'arrivée, derrière un titre en gras foncé qui reste lisible.
+                 */
+                className="absolute top-0 right-0 h-auto w-[44vw] max-w-[14rem] object-contain opacity-35 sm:top-[14%] sm:right-[3%] sm:w-[30vw] sm:max-w-[24rem] sm:opacity-100 xl:top-[10%] xl:max-w-[27rem]"
                 priority={false}
               />
             ) : null

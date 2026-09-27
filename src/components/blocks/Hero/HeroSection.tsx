@@ -52,7 +52,7 @@ export function HeroSection({
       <div
         aria-hidden="true"
         data-hero-fond=""
-        className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden sm:block"
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       >
         {background}
       </div>
@@ -60,20 +60,24 @@ export function HeroSection({
       <div
         aria-hidden="true"
         data-hero-fond="scene"
-        className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[42%] overflow-hidden sm:block lg:w-[38%]"
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         style={{
           backgroundImage: `url(${defaut.src})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
           /*
-           * Emprise mesurée : la colonne de texte d'une bannière occupe environ 60 % de la largeur
-           * au-dessus de 64 rem. Le fond reste donc dans les 38 % de droite, s'efface sur sa
-           * moitié gauche, et son opacité le tient sous la lecture : le titre et la promesse ne
-           * passent jamais sur la photo, leur contraste mesuré reste celui de la scène.
+           * La photo couvre toute la bannière et se voit franchement à droite (27/09/2026, seconde
+           * demande d'Arcel : le premier réglage, un tiers de largeur à 38 % d'opacité, était trop
+           * discret pour se remarquer). Le masque l'efface complètement sur la moitié gauche, là
+           * où vivent le titre et la promesse : ce texte reste donc sur la couleur de scène, et son
+           * contraste est celui déjà mesuré par check-contrast. Sur mobile, le cadrage descend vers
+           * le bas de l'image et le masque s'efface vers le haut, sous le texte.
            */
-          opacity: 0.38,
-          maskImage: "linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)",
+          backgroundPosition: "center right",
+          opacity: 0.85,
+          maskImage:
+            "linear-gradient(to right, rgba(0,0,0,0) 46%, rgba(0,0,0,0.5) 64%, rgba(0,0,0,1) 84%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, rgba(0,0,0,0) 46%, rgba(0,0,0,0.5) 64%, rgba(0,0,0,1) 84%)",
         }}
       />
     ) : null;

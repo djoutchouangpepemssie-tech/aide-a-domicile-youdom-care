@@ -226,6 +226,13 @@ export function Header({
             width={797}
             height={308}
             priority
+            /*
+             * Servi tel quel (27/09/2026) : le fichier d'origine ne pèse que 12 Ko, et le
+             * recompresser en WebP à la qualité par défaut ajoutait des artefacts très visibles
+             * sur les aplats et les lettres d'un logo. Rien à gagner, beaucoup à perdre.
+             */
+            unoptimized
+            quality={100}
             className={cn(
               "h-auto w-auto transition-[max-height] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
               compact ? "max-h-9" : "max-h-11",
