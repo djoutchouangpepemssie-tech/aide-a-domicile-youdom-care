@@ -67,7 +67,12 @@ export function PriceCard({
       : null;
 
   return (
-    <Card as="article" className={cn("price-card", className)} aria-label={service.libelle}>
+    <Card
+      as="article"
+      className={cn("price-card", className)}
+      aria-label={service.libelle}
+      data-mode={service.mode}
+    >
       <p className="m-0 font-bold">{service.libelle}</p>
       <p className="m-0 text-small text-text-soft">{service.activite}</p>
       <p className="m-0 mt-4">

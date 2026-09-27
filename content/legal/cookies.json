@@ -1,0 +1,61 @@
+{
+  "_lisezmoi": "Page /cookies/ (docs/07 §2, P8.3). Liste réelle des traceurs, d'après src/lib/mesure/README.md : aucun cookie, aucun script tiers, donc aucun bandeau. `traceurs.liste` doit être mise à jour le jour où un traceur est ajouté ; check-legal compare les scripts tiers du rendu à cette page. Les deux réglages locaux (mode confort, formulaire en cours) sont décrits par leurs composants (ComfortToggle, MultiStepForm).",
+  "seo": {
+    "titre": "Cookies : aucun traceur sur le site Youdom Care, et pourquoi",
+    "description": "Ce site ne dépose aucun cookie et ne charge aucun script tiers. Il compte quelques gestes anonymes pour améliorer ses formulaires : rien à accepter."
+  },
+  "ariane": "Cookies",
+  "h1": "Cookies et traceurs : rien à accepter",
+  "chapo": "Vous n'avez vu aucun bandeau en arrivant. Ce n'est pas un oubli : ce site ne dépose aucun cookie et ne charge aucun script tiers.",
+  "maj": "2026-09-27",
+  "maj_libelle": "Dernière mise à jour : {date}",
+  "reponse": {
+    "h2": "La réponse courte",
+    "paragraphes": [
+      "Ce site n'utilise aucun cookie ni traceur de mesure d'audience. Il compte, de façon anonyme et sans identifiant, quelques gestes : une étape de formulaire affichée, une demande envoyée, un clic sur un numéro de téléphone. Le but est d'améliorer nos formulaires.",
+      "Aucune donnée personnelle, aucune adresse IP et aucune donnée de santé ne sont collectées à cette fin. Si votre navigateur envoie le signal « Do Not Track » ou « Global Privacy Control », rien n'est compté."
+    ]
+  },
+  "traceurs": {
+    "h2": "Les cookies et traceurs déposés",
+    "intro": "Cette liste est la liste réelle. Elle est vérifiée à chaque mise en ligne : un script tiers présent sur le site et absent d'ici bloque la publication.",
+    "aucun": "Aucun cookie, aucun traceur, aucun script tiers. La liste est vide.",
+    "colonnes": {
+      "nom": "Nom",
+      "emetteur": "Émetteur",
+      "finalite": "Finalité",
+      "duree": "Durée"
+    },
+    "liste": []
+  },
+  "reglages_locaux": {
+    "h2": "Ce qui reste sur votre appareil",
+    "intro": "Deux réglages sont enregistrés dans votre navigateur, sur votre appareil seulement. Ils ne sont jamais envoyés, ni à nous ni à personne, et vous pouvez les effacer en vidant les données du site dans votre navigateur.",
+    "liste": [
+      {
+        "nom": "Mode confort",
+        "texte": "Votre choix d'affichage en grands caractères et contrastes renforcés, pour le retrouver d'une page à l'autre."
+      },
+      {
+        "nom": "Formulaire en cours",
+        "texte": "Les réponses d'un formulaire que vous n'avez pas encore envoyé, pour ne pas les perdre si vous changez de page. Elles disparaissent quand vous fermez l'onglet."
+      }
+    ]
+  },
+  "mesure": {
+    "h2": "La mesure d'audience, en détail",
+    "paragraphes": [
+      "Quand elle est active, la mesure envoie à notre propre serveur quatre gestes au plus : une étape de formulaire affichée, une demande envoyée, un rappel demandé, un clic sur un numéro de téléphone. Chaque geste part seul, sans identifiant de visiteur ni de session : deux gestes d'une même personne ne peuvent pas être reliés.",
+      "Ce qui est transmis se limite au nom du geste, au nom du formulaire, au numéro de l'étape ou au département de la demande, et au chemin de la page sans paramètre. Jamais la commune, jamais ce que vous avez écrit, jamais votre adresse IP, jamais votre navigateur ni votre écran.",
+      "Cette mesure ne dépose rien sur votre appareil et ne suit personne d'un site à l'autre. Elle relève des outils de mesure d'audience exemptés de consentement selon la CNIL. C'est pourquoi il n'y a pas de bandeau."
+    ]
+  },
+  "bandeau": {
+    "h2": "Et si cela change ?",
+    "texte": "Si un jour nous ajoutions un outil qui dépose un cookie ou envoie des informations à un tiers, cette page en donnerait la liste et un bandeau vous demanderait votre accord avant tout dépôt, avec un refus aussi simple que l'acceptation."
+  },
+  "liens": [
+    { "libelle": "Lire la politique de confidentialité", "href": "/politique-de-confidentialite/" },
+    { "libelle": "Lire les mentions légales", "href": "/mentions-legales/" }
+  ]
+}
