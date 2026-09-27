@@ -41,7 +41,7 @@ function data(overrides: Partial<AgencyTemplateData> = {}): AgencyTemplateData {
 }
 
 describe("AgencyTemplate (P6.6)", () => {
-  it("affiche le nom, l'adresse, l'itinéraire, les communes suivies et le formulaire ; masque les champs nuls", () => {
+  it("affiche le nom, l'adresse, l'itinéraire, les communes suivies et le formulaire ; masque les champs nuls", async () => {
     render(<AgencyTemplate data={data()} />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Youdom Care Hauts-de-Seine",
@@ -54,10 +54,19 @@ describe("AgencyTemplate (P6.6)", () => {
     expect(document.querySelector("[data-agence-horaires]")).toBeNull();
     // Le standard, lui, est connu et proposé.
     expect(screen.getByText("Standard")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Itinéraire vers l'agence/ })).toHaveAttribute(
-      "href",
-      expect.stringMatching(/^https:\/\/www\.openstreetmap\.org\/search\?query=/),
-    );
+    // L'itinéraire est proposé deux fois : dans le panneau du hero (action immédiate, D-032) et
+    // dans l'encart d'agence. Les deux mènent au même plan.
+    const routes = screen.getAllByRole("link", { name: /Itinéraire vers l'agence/ });
+    expect(routes).toHaveLength(2);
+    expect(
+      document.querySelector("[data-hero-interaction] [data-agence-itineraire]"),
+    ).not.toBeNull();
+    for (const route of routes) {
+      expect(route).toHaveAttribute(
+        "href",
+        expect.stringMatching(/^https:\/\/www\.openstreetmap\.org\/search\?query=/),
+      );
+    }
     const communes = document.querySelector("[data-agence-communes]");
     const items = within(communes as HTMLElement).getAllByRole("listitem");
     expect(items.map((item) => item.textContent)).toEqual(["Puteaux0,4 km", "Nanterre3,1 km"]);
@@ -66,9 +75,12 @@ describe("AgencyTemplate (P6.6)", () => {
         .getByRole("link", { name: "Aide à domicile dans les Hauts-de-Seine" })
         .getAttribute("href"),
     ).toMatch(/^\/aide-a-domicile\/hauts-de-seine/);
-    expect(screen.getByRole("form")).toBeInTheDocument();
+    // Formulaire à hydratation différée (D-030) : il arrive après le premier rendu, le temps que
+    // l'`import()` se résolve — délai large parce que Vitest transforme la chaîne de modules du
+    // formulaire à la volée quand aucun autre test du lot ne l'a déjà importée.
+    expect(await screen.findByRole("form", {}, { timeout: 20_000 })).toBeInTheDocument();
     expect(document.body.textContent).not.toMatch(/\bnull\b|\bundefined\b|\{[a-z_]+\}/);
-  });
+  }, 30_000);
 
   it("sans commune suivie ni page de département, dit qu'il n'y a pas encore de page et garde les liens sûrs", () => {
     render(<AgencyTemplate data={data({ communes: [], departementHref: null, phone: null })} />);

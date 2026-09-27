@@ -37,4 +37,15 @@ describe("IdfMap", () => {
     expect(links[1]?.getAttribute("href")).toMatch(/^\/aide-a-domicile\/hauts-de-seine/);
     expect(within(list).getByText("Seine-et-Marne")).toBeInTheDocument();
   });
+
+  it("place la liste équivalente devant la carte sur téléphone (P9.6)", () => {
+    render(<IdfMap departments={departments(["92"])} texts={texts} />);
+    // La carte n'est qu'une image : au doigt, seule la liste est utilisable, donc elle passe
+    // en premier jusqu'à 64 rem (`order-1`), la carte reprenant sa place à partir de là.
+    expect(screen.getByRole("navigation", { name: texts.liste })).toHaveClass(
+      "order-1",
+      "lg:order-2",
+    );
+    expect(screen.getByRole("img", { name: texts.titre })).toHaveClass("order-2", "lg:order-1");
+  });
 });

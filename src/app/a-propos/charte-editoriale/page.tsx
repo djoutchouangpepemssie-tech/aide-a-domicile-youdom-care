@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/blocks/Breadcrumb/Breadcrumb";
 import { Section } from "@/components/layout/Section/Section";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import {
   getAbout,
   getEditorialCharter,
@@ -30,13 +31,14 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function EditorialCharterPage() {
+export default async function EditorialCharterPage() {
   const { a_propos, charte_page: page } = getAbout();
   const { contact } = getSiteConfig();
   const navigation = getNavigation();
   const { fil_ariane } = getInterfaceTexts();
   const { magazine } = getEditorialCharter();
 
+  const groupLinks = await groupCards("/a-propos/charte-editoriale/");
   return (
     <main id="contenu">
       <Section tone="paper" aria-labelledby="titre">
@@ -51,7 +53,7 @@ export default function EditorialCharterPage() {
         <Lead className="mt-5">{page.chapo}</Lead>
       </Section>
 
-      <Section tone="white" aria-label={page.h1}>
+      <Section tone="white" aria-label={page.ariane}>
         <ol className="m-0 grid list-none gap-6 p-0 md:grid-cols-2" data-principes>
           {page.principes.map((principe, index) => (
             <li
@@ -121,6 +123,8 @@ export default function EditorialCharterPage() {
           </Link>
         </p>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

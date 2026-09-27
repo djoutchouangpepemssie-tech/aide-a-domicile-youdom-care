@@ -753,6 +753,16 @@ export const interfaceSchema = z.strictObject({
     voisins_h2: text,
     retour: text,
   }),
+  /**
+   * Blocs de liens calculés (docs/04 §2 « Maillage », P9.4) : « À lire aussi » des pages d'un
+   * même groupe du plan du site, « Sur Le Fil » (articles liés), « Dans le lexique » (termes liés).
+   */
+  maillage: z.strictObject({
+    _lisezmoi: z.string().optional(),
+    a_lire_aussi_h2: text,
+    sur_le_fil_h2: text,
+    dans_le_lexique_h2: text,
+  }),
   /** Page Professionnels (docs/03 §9, P8.1) : libellés du gabarit. */
   professionnels: z.strictObject({
     modes_h3: text,
@@ -1459,6 +1469,8 @@ export const accessibilityPageSchema = z.strictObject({
     outils_h3: text,
     outils: z.array(text).min(1),
     pages_h3: text,
+    /** Phrase d'introduction de la liste (pages vérifiées à la main, puis à l'analyseur). */
+    pages_texte: text,
     pages: z.array(z.strictObject({ libelle: text, href: internalPath })).min(1),
   }),
   contact: z.strictObject({

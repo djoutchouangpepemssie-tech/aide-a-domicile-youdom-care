@@ -28,6 +28,8 @@ const columnClasses = { 1: "", 2: "sm:grid-cols-2", 3: "sm:grid-cols-3" } as con
 /**
  * Choix unique présenté en cartes (« Pour qui cherchez-vous de l'aide ? »). Boutons radio natifs :
  * flèches pour changer de choix, Espace pour cocher, un seul arrêt de tabulation par groupe.
+ * Verre liquide (D-032) : chaque carte est une surface de verre ; la carte cochée devient un aplat
+ * teal-50 plein bordé de 2 px (le choix est un signal, il ne passe pas par du verre).
  */
 export function RadioCards({
   id: givenId,
@@ -71,7 +73,7 @@ export function RadioCards({
                 <label
                   htmlFor={optionId}
                   className={cn(
-                    "flex min-h-14 cursor-pointer items-start gap-3 rounded-card border border-field-border bg-white px-4 py-3 shadow-1",
+                    "glass glass-sheen flex min-h-14 cursor-pointer items-start gap-3 rounded-card border border-field-border px-4 py-3",
                     "transition-[border-color,background-color,box-shadow] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
                     "hover:shadow-2 has-[:checked]:border-2 has-[:checked]:border-teal-700 has-[:checked]:bg-teal-50",
                     "has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-sand has-[:disabled]:shadow-none",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Commitments, visibleCommitments } from "@/components/blocks/Commitments/Commitments";
 import { Hero } from "@/components/blocks/Hero/Hero";
+import { HeroSection } from "@/components/blocks/Hero/HeroSection";
+import { heroPhotoSizes } from "@/components/blocks/Hero/hero-scene";
 import { withParam } from "@/components/blocks/HeroGestures/params";
 import { HeroPicker } from "@/components/blocks/Parcours/HeroPicker";
 import { ParcoursProvider } from "@/components/blocks/Parcours/ParcoursProvider";
@@ -165,7 +167,8 @@ export default async function Home() {
   return (
     <main id="contenu">
       <ParcoursProvider>
-        <Section tone="paper" aria-label={page.banniere.sur_titre}>
+        {/* Scène « aurore » : canard en haut, halo sable ; le parcours est dans le hero (D-032). */}
+        <HeroSection scene="aurore" aria-label={page.banniere.sur_titre}>
           <Hero
             surtitle={page.banniere.sur_titre}
             title={page.banniere.h1}
@@ -188,11 +191,13 @@ export default async function Home() {
                   ratio="4:5"
                   mobileRatio="16:9"
                   radius={28}
-                  sizes={photoSizes.hero}
+                  sizes={heroPhotoSizes}
                   priority
                 />
               ) : undefined
             }
+            tint="teal"
+            cue={{ label: page.situations.h2, href: `#${SITUATIONS_ID}` }}
             gesture={
               journey ? (
                 <HeroPicker
@@ -211,7 +216,7 @@ export default async function Home() {
               ) : undefined
             }
           />
-        </Section>
+        </HeroSection>
 
         <Section tone="white" aria-labelledby={SITUATIONS_ID}>
           {journey ? (
@@ -265,7 +270,9 @@ export default async function Home() {
               : undefined
           }
         >
-          <div className="lg:col-start-2">
+          {/* min-w-0 : la colonne ne s'élargit pas sur un mot long quand l'espacement du texte
+              est forcé (RGAA 10.12) ; le mot se coupe dans sa boîte. */}
+          <div className="min-w-0 lg:col-start-2">
             <Heading level={2} id="neuro">
               {page.neuro.h2}
             </Heading>
@@ -286,7 +293,7 @@ export default async function Home() {
               />
             </Reveal>
           ) : null}
-          <div className="lg:col-start-2">
+          <div className="min-w-0 lg:col-start-2">
             <StageCards
               aria-labelledby="neuro"
               stages={page.neuro.stades.map((stade) => ({
@@ -501,7 +508,10 @@ export default async function Home() {
         <p className="m-0 flex flex-wrap items-center gap-x-3 gap-y-1">
           <strong id="recrutement">{page.recrutement.accroche}</strong>
           <span>{page.recrutement.texte}</span>
-          <Link href={page.recrutement.href} className="font-bold">
+          <Link
+            href={page.recrutement.href}
+            className="inline-flex min-h-11 items-center font-bold"
+          >
             {page.recrutement.lien}
           </Link>
         </p>

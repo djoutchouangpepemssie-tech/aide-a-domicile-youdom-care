@@ -134,7 +134,7 @@ describe("content/local : chargement des territoires", () => {
     const pages = await listLocalPages();
     for (const page of pages) expect(page.chemin).toMatch(/^\/aide-a-domicile\//);
     expect((await listBuildableLocalPages()).length).toBeLessThanOrEqual(pages.length);
-    // Le dépôt contient désormais 131 territoires : la lecture et la validation prennent du temps.
+    // Le dépôt contient 131 territoires : la lecture et la validation prennent du temps.
   }, 30_000);
 
   it("en production, les pages a_relire sont construites mais hors des plans de site (D-033)", async () => {

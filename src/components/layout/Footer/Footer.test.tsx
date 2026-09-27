@@ -71,6 +71,25 @@ describe("Footer", () => {
     expect(footer).toHaveAttribute("data-print", "hide");
   });
 
+  it("donne 44 px de haut à chaque lien de colonne et réserve la place de la barre d'action (P9.6)", () => {
+    render(<Footer {...props} />);
+    const footer = screen.getByRole("contentinfo");
+    for (const name of [
+      "01 84 80 17 03",
+      "contact@youdom-care.com",
+      "Aidants",
+      "Garde de nuit",
+      "Aide à domicile en Paris",
+      "À propos",
+      "Mentions légales",
+    ]) {
+      expect(within(footer).getByRole("link", { name }), name).toHaveClass("min-h-11");
+    }
+    // Marge basse : hauteur de la barre d'action mobile plus l'encoche, retirée à partir de 64 rem.
+    const inner = footer.firstElementChild;
+    expect(inner).toHaveClass("pb-[calc(3rem+4rem+env(safe-area-inset-bottom))]", "lg:pb-12");
+  });
+
   it("n'affiche les labels que s'ils sont détenus, et masque l'e-mail inconnu", () => {
     const { rerender } = render(<Footer {...props} email={null} />);
     expect(screen.queryByText("Labels et adhésions")).not.toBeInTheDocument();

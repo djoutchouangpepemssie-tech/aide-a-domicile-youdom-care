@@ -1,10 +1,13 @@
-import { useId, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { useId, type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 /*
  * Encart (docs/02 §7) : « À retenir », « Bon à savoir », « Attention », « Ce que nous ne faisons pas ».
  * Rôle `note`, titre relié par aria-labelledby, icône au fil décorative (tracé ouvert, jamais rempli).
  * Couples de couleurs : ceux de docs/02 §2 uniquement.
+ * Verre liquide (D-032) : l'encart est une surface de verre teintée (`glass` + `glass-tint-*`,
+ * src/styles/glass.css) dont le fond reste la couleur de la variante ; le trait de gauche porte
+ * toujours le signal. Contrastes mesurés dans docs/design/LIQUID_GLASS.md §5.
  * Variante `frontiere` (docs/design/CONCEPT.md §5 « Rendre "Ce que nous ne faisons pas" élégant ») :
  * une décision, pas un avertissement. Bloc sable de 28 px de rayon, trait du fil vertical de 3 px
  * teal-700 à gauche, titre en Fraunces, sous-titre, liste à deux colonnes à partir de 48 rem
@@ -21,7 +24,9 @@ export interface FrontiereItem {
   relais?: string;
 }
 
-export interface CalloutProps extends Omit<ComponentPropsWithoutRef<"aside">, "title"> {
+/* `ref` accepté comme une propriété ordinaire (React 19) : un formulaire peut déplacer le focus sur
+   l'encart d'alerte de panne d'envoi (audit P8.4 R-4). */
+export interface CalloutProps extends Omit<ComponentProps<"aside">, "title"> {
   variant?: CalloutVariant;
   /** Titre affiché ; par défaut, le libellé du cahier pour la variante. */
   title?: ReactNode;
@@ -38,29 +43,29 @@ export interface CalloutProps extends Omit<ComponentPropsWithoutRef<"aside">, "t
 const defaults: Record<CalloutVariant, { title: string; box: string; heading: string }> = {
   retenir: {
     title: "À retenir",
-    box: "border-teal-700 bg-tint-teal text-ink",
+    box: "glass glass-tint-teal border-teal-700 text-ink",
     heading: "text-teal-900",
   },
   // green-700 sur green-50 ne fait que 4,47 : le titre reste en encre (12,84), la bordure porte le vert.
   "bon-a-savoir": {
     title: "Bon à savoir",
-    box: "border-green-700 bg-tint-green text-ink",
+    box: "glass glass-tint-green border-green-700 text-ink",
     heading: "text-ink",
   },
   attention: {
     title: "Attention",
-    box: "border-warning bg-warning-bg text-warning",
+    box: "glass glass-tint-warning border-warning text-warning",
     heading: "text-warning",
   },
   "ne-faisons-pas": {
     title: "Ce que nous ne faisons pas",
-    box: "border-raspberry-700 bg-tint-raspberry text-ink",
+    box: "glass glass-tint-framboise border-raspberry-700 text-ink",
     heading: "text-raspberry-700",
   },
   // teal-700 sur sable ne fait que 4,47 : le trait le porte, les textes restent en encre ou teal-800.
   frontiere: {
     title: "Ce que nous ne faisons pas",
-    box: "border-teal-700 bg-tint-sand text-ink",
+    box: "glass glass-tint-sable glass-edge border-teal-700 text-ink",
     heading: "text-teal-900",
   },
 };
@@ -176,7 +181,7 @@ export function Callout({
     <aside
       role="note"
       aria-labelledby={id}
-      className={cn("rounded-card border-l-4 px-5 py-4 shadow-1", config.box, className)}
+      className={cn("rounded-card border-l-4 px-5 py-4", config.box, className)}
       {...rest}
     >
       <p id={id} className={cn("flex items-center gap-2 font-bold", config.heading)}>

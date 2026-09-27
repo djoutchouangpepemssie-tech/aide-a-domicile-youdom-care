@@ -37,7 +37,7 @@ export default function RequestIndexPage() {
         <Lead className="mt-5">{page.chapo}</Lead>
       </Section>
 
-      <Section tone="white" aria-label={page.h1}>
+      <Section tone="white" aria-label={page.ariane}>
         <ul className="m-0 grid list-none gap-4 p-0 sm:grid-cols-2">
           {definitions.map((definition) => (
             <li key={definition.id} className="max-w-none">

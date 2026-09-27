@@ -47,7 +47,7 @@ describe("StageCards", () => {
     expect(stageId({ title: "x" }, 4)).toBe("stade-5");
   });
 
-  it("entre à trois profondeurs (0 / 12 / 24 px) avec 200 ms d'écart, en variables CSS", () => {
+  it("entre à trois profondeurs (0 / 12 / 24 px) avec 40 ms d'écart, en variables CSS", () => {
     const { container } = render(<StageCards stages={stages} />);
     const items = Array.from(container.querySelectorAll("li")) as HTMLElement[];
     expect(STAGE_DEPTH_PX).toBe(12);
@@ -58,8 +58,8 @@ describe("StageCards", () => {
     ]);
     expect(items.map((item) => item.style.getPropertyValue("--m-delay"))).toEqual([
       "",
-      "200ms",
-      "400ms",
+      "40ms",
+      "80ms",
     ]);
     expect(items.every((item) => item.classList.contains("t-rail__item"))).toBe(true);
   });

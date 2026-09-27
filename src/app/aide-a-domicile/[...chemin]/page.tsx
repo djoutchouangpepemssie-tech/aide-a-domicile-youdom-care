@@ -17,6 +17,7 @@ import {
   departementHref,
   departementPages,
   localCrumbs,
+  nearbyPages,
   neighbourPaths,
 } from "@/content/local-site";
 import { JsonLd } from "@/lib/jsonld/JsonLd";
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: LocalRouteProps): Promise<Met
     titre: page.editorial.seo.titre,
     description: page.editorial.seo.description,
     chemin: page.chemin,
-    // D-035 : les pages locales en attente de relecture sont indexables comme les autres.
+    // D-035 : les pages en attente de relecture sont indexables comme les autres.
     noindex: false,
     image: serviceOgImagePath(page.chemin),
   });
@@ -93,6 +94,7 @@ export async function buildLocalData(chemin: string): Promise<LocalTemplateData 
     accompagnements: await accompagnementLinks(),
     crumbs: await localCrumbs(page),
     neighbourPaths: await neighbourPaths(page),
+    nearbyPages: await nearbyPages(page),
     departementPages: await departementPages(page),
     departementHref: data.kind === "departement" ? null : await departementHref(departement),
     confidentialiteHref: confidentialiteHref(),

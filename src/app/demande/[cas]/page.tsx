@@ -68,7 +68,8 @@ export default async function RequestPage({ params }: RequestPageProps) {
         <Lead className="mt-5">{definition.chapo}</Lead>
       </Section>
 
-      <Section tone="white" aria-label={definition.h1}>
+      {/* Région nommée par le libellé court, distinct du H1 de la région d'en-tête (RGAA 12.6, R-1). */}
+      <Section tone="white" aria-label={definition.ariane}>
         <div className="max-w-3xl">
           <DetailedForm
             definition={definition}

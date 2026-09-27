@@ -92,6 +92,10 @@ for (const path of pages) {
       page,
       isMobile,
     }) => {
+      // D-032 : la photo du hero, et donc le fil qui la relie au H1, n'apparaissent qu'à partir de
+      // 64 rem de large ; sous cette largeur la scène se compacte (titre, promesse, interaction,
+      // action, repère). Le fil du hero ne peut donc plus être vérifié sur un téléphone.
+      test.skip(isMobile, "photo et fil du hero réservés aux écrans de 64 rem et plus (D-032)");
       const errors = watchConsole(page);
       await page.goto(path);
       await expect(page.locator("html")).toHaveAttribute("data-js", "");
@@ -100,7 +104,7 @@ for (const path of pages) {
       // Le trait du H1 a été mesuré : il commence à gauche (ordinateur) ou au-dessus (mobile).
       const reach = await thread.locator(".hero-thread__reach path").getAttribute("d");
       expect(reach).toMatch(/^M-?[\d.]+ -?[\d.]+H/);
-      // Fin du tracé : contour et nœud complets (1 200 ms au plus).
+      // Fin du tracé : contour et nœud complets (560 ms au plus, contrat du mouvement).
       await expect
         .poll(() => dashOffset(page, ".hero-thread__fil path"), { timeout: 5000 })
         .toBe(0);
@@ -112,7 +116,7 @@ for (const path of pages) {
         // Profondeur : la scène pivote vers la souris puis revient.
         const scene = page.locator(".hero-thread .m-depth");
         const stage = scene.locator(".m-depth__stage");
-        await expect(scene).toHaveAttribute("data-max-deg", "4");
+        await expect(scene).toHaveAttribute("data-max-deg", "2");
         const box = await scene.boundingBox();
         if (!box) throw new Error("scène introuvable");
         await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5);
@@ -120,7 +124,7 @@ for (const path of pages) {
         await expect(stage).toHaveAttribute("data-depth", "active");
         await expect
           .poll(() => stage.evaluate((el) => el.style.getPropertyValue("--ry")))
-          .toMatch(/^3\.[4-7]\d?deg$/);
+          .toMatch(/^1\.[6-9]\d?deg$/);
         await page.mouse.move(0, 0);
         await expect(stage).not.toHaveAttribute("data-depth", /.*/);
 
@@ -136,7 +140,7 @@ for (const path of pages) {
       expect(errors).toEqual([]);
     });
 
-    test("mobile : le bouton framboise du hero est absent, la barre basse le porte", async ({
+    test("mobile : le bouton framboise du hero est visible, la barre basse le double", async ({
       page,
       isMobile,
     }) => {
@@ -145,10 +149,10 @@ for (const path of pages) {
       const hero = page.locator(".hero");
       const primary = hero.locator("[data-hero-primary] a");
       await expect(primary).toHaveCount(1);
-      await expect(primary).toBeHidden();
-      // Le bouton de contour et le téléphone restent visibles.
-      await expect(hero.locator("a.border-2").first()).toBeVisible();
-      await expect(hero.getByRole("link", { name: /^Ou appelez le|^0\d/ })).toBeVisible();
+      // D-032 : on doit pouvoir agir sans défiler, le bouton principal reste donc dans le hero.
+      // Le lien secondaire et le téléphone, eux, attendent 64 rem (la barre basse les porte).
+      await expect(primary).toBeVisible();
+      await expect(hero.locator("a.border-2").first()).toBeHidden();
       const bar = page.getByRole("navigation", { name: "Actions rapides" });
       await expect(bar).toBeVisible();
       await expect(bar.getByRole("link", { name: "Être rappelé(e)" })).toBeVisible();

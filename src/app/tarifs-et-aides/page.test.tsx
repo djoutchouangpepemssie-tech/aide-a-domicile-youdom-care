@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import PricingPage, { generateMetadata } from "./page";
 
 describe("Tarifs et aides", () => {
-  it("a des balises titre et description aux longueurs de docs/01 §8", () => {
+  it("a des balises titre et description aux longueurs de docs/01 §8", async () => {
     const metadata = generateMetadata();
     expect(String(metadata.title).length).toBeGreaterThanOrEqual(50);
     expect(String(metadata.title).length).toBeLessThanOrEqual(60);
@@ -11,8 +11,8 @@ describe("Tarifs et aides", () => {
     expect(String(metadata.description).length).toBeLessThanOrEqual(155);
   });
 
-  it("sans tarif renseigné : aucun prix, le devis gratuit et six cartes d'aides sans montant", () => {
-    render(<PricingPage />);
+  it("sans tarif renseigné : aucun prix, le devis gratuit et six cartes d'aides sans montant", async () => {
+    render(await PricingPage());
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Tarifs et aides : ce que vous paierez vraiment",
     );

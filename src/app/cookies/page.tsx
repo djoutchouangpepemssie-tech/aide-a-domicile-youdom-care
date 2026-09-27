@@ -5,6 +5,7 @@ import { LegalHeader } from "@/components/legal/LegalHeader";
 import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Prose } from "@/components/ui/Prose/Prose";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { COOKIES_PATH, getCookiesPage } from "@/content/legal";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -21,9 +22,10 @@ export function generateMetadata(): Metadata {
   return pageMetadata({ titre: seo.titre, description: seo.description, chemin: COOKIES_PATH });
 }
 
-export default function CookiesPage() {
+export default async function CookiesPage() {
   const page = getCookiesPage();
 
+  const groupLinks = await groupCards(COOKIES_PATH);
   return (
     <main id="contenu">
       <LegalHeader
@@ -137,6 +139,8 @@ export default function CookiesPage() {
           ))}
         </ul>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

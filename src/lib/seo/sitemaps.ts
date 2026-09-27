@@ -162,13 +162,12 @@ async function pagesEntries(): Promise<SitemapEntry[]> {
   return [...declared, ...aids, ...toolsIndex, ...tools, ...offers];
 }
 
-/** Segment `services` : pages relues seulement ; une page `a_relire` est en noindex. */
+/** Segment `services` : toutes les pages construites (D-035), datées par `maj`. */
 async function servicesEntries(): Promise<SitemapEntry[]> {
   const files = await listMdxFiles(SERVICES_DIR);
   const entries: SitemapEntry[] = [];
   for (const file of files) {
     const { meta } = await readServiceMeta(file);
-    // D-035 : toutes les pages construites sont listées, relues ou non.
     entries.push({ path: meta.chemin, lastmod: meta.maj });
   }
   return entries;
@@ -180,7 +179,10 @@ async function lexiqueEntries(): Promise<SitemapEntry[]> {
   return terms.map((term) => ({ path: lexiqueTermPath(term.slug), lastmod: term.maj }));
 }
 
-/** Segment `local-{departement}` : pages locales publiées du département, datées par `maj`. */
+/**
+ * Segment `local-{departement}` : pages locales construites du département, datées par `maj`
+ * (D-035 : les pages en attente de relecture sont listées comme les autres).
+ */
 function localEntries(departement: string): () => Promise<SitemapEntry[]> {
   return async () => {
     const pages = await listBuildableLocalPages();
@@ -191,9 +193,10 @@ function localEntries(departement: string): () => Promise<SitemapEntry[]> {
 }
 
 /**
- * Segment `magazine` (docs/06, P7.1) : articles `publie` datés par `maj_le`, l'index /magazine/
- * et chaque rubrique qui compte au moins un article publié (date : le `maj_le` le plus récent).
- * Vide tant qu'aucun article n'est publié : l'index et les rubriques sont alors en noindex.
+ * Segment `magazine` (docs/06, P7.1) : articles construits datés par `maj_le`, l'index /magazine/
+ * et les six rubriques (date : le `maj_le` le plus récent de la rubrique, à défaut celui du
+ * magazine ; une rubrique encore sans article est construite et indexable, elle est donc listée).
+ * D-035 : un article en attente de relecture est listé ; un brouillon ne l'est jamais.
  * Les pages 2 et suivantes ne sont pas listées : les articles le sont déjà.
  */
 async function magazineEntries(): Promise<SitemapEntry[]> {
@@ -203,12 +206,14 @@ async function magazineEntries(): Promise<SitemapEntry[]> {
   if (published.length === 0) return [];
   const latest = (articles: readonly ArticleMeta[]) =>
     articles.map((a) => a.meta.maj_le).reduce((max, date) => (date > max ? date : max));
-  const entries: SitemapEntry[] = [{ path: MAGAZINE_PATH, lastmod: latest(published) }];
+  const magazineLastmod = latest(published);
+  const entries: SitemapEntry[] = [{ path: MAGAZINE_PATH, lastmod: magazineLastmod }];
   for (const rubrique of articleRubriques) {
     const inRubrique = published.filter((article) => article.meta.rubrique === rubrique);
-    if (inRubrique.length > 0) {
-      entries.push({ path: rubriquePath(rubrique), lastmod: latest(inRubrique) });
-    }
+    entries.push({
+      path: rubriquePath(rubrique),
+      lastmod: inRubrique.length > 0 ? latest(inRubrique) : magazineLastmod,
+    });
   }
   for (const article of published) {
     entries.push({ path: article.chemin, lastmod: article.meta.maj_le });

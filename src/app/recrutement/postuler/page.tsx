@@ -4,6 +4,7 @@ import { CandidatureForm } from "@/components/forms/SpecialForms/CandidatureForm
 import { Section } from "@/components/layout/Section/Section";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import {
   getInterfaceTexts,
   getNavigation,
@@ -38,6 +39,7 @@ export default async function ApplyPage() {
     navigation.pied_de_page.legal.find((l) => /confidentialit/i.test(l.libelle))?.href ??
     "/politique-de-confidentialite/";
 
+  const groupLinks = await groupCards(APPLY_PATH);
   return (
     <main id="contenu">
       <Section tone="paper" aria-labelledby="titre">
@@ -51,7 +53,7 @@ export default async function ApplyPage() {
         </Heading>
         <Lead className="mt-5">{page.postuler.chapo}</Lead>
       </Section>
-      <Section tone="white" aria-label={page.postuler.h1}>
+      <Section tone="white" aria-label={page.postuler.ariane}>
         <div className="max-w-2xl">
           <CandidatureForm
             texts={{
@@ -68,6 +70,8 @@ export default async function ApplyPage() {
           />
         </div>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

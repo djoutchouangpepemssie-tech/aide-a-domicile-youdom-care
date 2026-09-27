@@ -47,7 +47,13 @@ export function FieldShell({
   const labelContent = (
     <>
       {label}
-      {optional ? <span className="ml-2 font-normal text-text-soft">(facultatif)</span> : null}
+      {/* Espace réel avant la mention : le nom accessible se lit « … ? (facultatif) » (P9.2). */}
+      {optional ? (
+        <>
+          {" "}
+          <span className="ml-1 font-normal text-text-soft">(facultatif)</span>
+        </>
+      ) : null}
     </>
   );
   const body = (
@@ -99,8 +105,12 @@ export function FieldShell({
   );
 }
 
-/** Classes communes aux contrôles de saisie : bordure `field-border`, rayon 10 px, cible 48 px. */
+/**
+ * Classes communes aux contrôles de saisie : verre discret (`glass-quiet`, D-032), bordure
+ * `field-border` (3,63 sur le verre posé sur papier : le contour reste perceptible), rayon 10 px,
+ * cible 48 px. Le champ désactivé repasse en sable plein.
+ */
 export const controlClasses =
-  "min-h-12 w-full rounded-field border border-field-border bg-white px-4 py-3 text-ink " +
+  "min-h-12 w-full rounded-field glass-quiet border border-field-border px-4 py-3 text-ink " +
   "placeholder:text-text-soft disabled:cursor-not-allowed disabled:bg-sand disabled:text-text-soft " +
   "aria-invalid:border-2 aria-invalid:border-danger";

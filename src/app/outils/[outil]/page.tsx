@@ -9,6 +9,7 @@ import { ToolSheet } from "@/components/outils/ToolSheet/ToolSheet";
 import { Button } from "@/components/ui/Button/Button";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { getInterfaceTexts, getNavigation, getSiteConfig } from "@/content/loader";
 import {
   getToolPage,
@@ -67,6 +68,7 @@ export default async function ToolRoute({ params }: ToolRouteProps) {
     siteConfig,
   );
 
+  const groupLinks = await groupCards(toolPath(outil));
   return (
     <main id="contenu" data-tool-page>
       <JsonLd data={jsonLd} />
@@ -124,6 +126,8 @@ export default async function ToolRoute({ params }: ToolRouteProps) {
           </Button>
         </div>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} printable={false} />
     </main>
   );
 }

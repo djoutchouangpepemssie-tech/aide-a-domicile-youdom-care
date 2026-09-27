@@ -10,6 +10,9 @@
   --color-ink-soft: #47626b;
 
   --color-teal-50: #e6f5f8;
+  /* Niveau 100 (D-032) : point le plus soutenu des fonds de scène. Texte encre 10,79 (AAA),
+     texte secondaire 4,96, liens en teal-800 5,52 ; teal-700 n'y passe pas (3,93). */
+  --color-teal-100: #c3e7f0;
   --color-teal-500: #0699b0;
   --color-teal-600: #008aa2;
   --color-teal-700: #00788d;
@@ -17,20 +20,24 @@
   --color-teal-900: #0b4753;
 
   --color-green-50: #eaf7ef;
+  --color-green-100: #cdeedb; /* fond de scène soutenu (D-032) */
   --color-green-500: #58be81;
   --color-green-700: #23804a;
 
   --color-raspberry-50: #fdecee;
+  --color-raspberry-100: #fbd8de; /* fond de scène soutenu (D-032) */
   --color-raspberry-500: #ef3f6b;
   --color-raspberry-600: #d42a5b;
   --color-raspberry-700: #b81f4c;
 
   --color-azure-50: #e8f2fa;
+  --color-azure-100: #cbe2f5; /* fond de scène soutenu (D-032) */
   --color-azure-600: #177db2;
   --color-azure-700: #14699a;
 
   --color-paper: #fbf8f3;
   --color-sand: #f4eee4;
+  --color-sand-deep: #e9dfcd; /* fond de scène soutenu (D-032) */
   --color-white: #ffffff;
   --color-line: #d9e3e6;
   --color-field-border: #6f8a92;
@@ -120,6 +127,9 @@
 
   --shadow-1: 0 1px 2px rgba(15, 47, 56, 0.06), 0 4px 12px rgba(15, 47, 56, 0.06);
   --shadow-2: 0 2px 4px rgba(15, 47, 56, 0.06), 0 12px 32px rgba(15, 47, 56, 0.1);
+  /* Troisième niveau (D-032, amendement de docs/02 §4) : panneau de verre détaché, bouton
+     principal au survol. L'ombre se décale et s'élargit ; l'élément ne change pas de taille. */
+  --shadow-3: 0 4px 8px rgba(15, 47, 56, 0.07), 0 24px 56px rgba(15, 47, 56, 0.14);
 
   --touch-min: 3rem; /* 48 px */
   --touch-primary: 3.5rem; /* 56 px : boutons principaux */

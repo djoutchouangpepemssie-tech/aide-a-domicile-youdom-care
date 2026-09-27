@@ -1,0 +1,298 @@
+/*
+ * Verre liquide — jetons et classes utilitaires (D-032, docs/design/BRIEF_LIQUID_GLASS.md §3).
+ * Documentation d'usage, tableau des contrastes et contre-exemples : docs/design/LIQUID_GLASS.md.
+ *
+ * Règles tenues par cette feuille :
+ * - Une surface de verre est toujours lisible sans `backdrop-filter` : le repli passe l'opacité à
+ *   94 % (le brief exige 92 % au moins).
+ * - Mouvement réduit, transparence réduite, mode confort (`data-comfort="on"`) et simulation du
+ *   styleguide (`data-motion="reduce"`) rendent les surfaces **opaques** et retirent flou et reflet.
+ * - Le focus reste visible sur verre : anneau de 3 px teal-800 sur verre clair, blanc sur verre
+ *   sombre (`glass-dark`), jamais masqué (aucune classe ici ne pose `overflow: hidden`).
+ * - Aucune valeur libre : tout vient des jetons de src/styles/tokens.css. Les opacités et les bases
+ *   déclarées dans le bloc `:root` ci-dessous sont relues par scripts/validate/check-contrast.ts,
+ *   qui recompose chaque couple texte / verre et vérifie son rapport.
+ */
+
+:root {
+  /* ---- Bases du verre : la couleur posée par-dessus le fond de page ---- */
+  --glass-base-white: var(--color-white);
+  --glass-base-teal: var(--color-teal-50);
+  --glass-base-green: var(--color-green-50);
+  --glass-base-framboise: var(--color-raspberry-50);
+  --glass-base-azure: var(--color-azure-50);
+  --glass-base-sable: var(--color-sand);
+  --glass-base-warning: var(--color-warning-bg);
+  /* Verre sombre : seule surface de verre autorisée au-dessus d'une photo ou du pied de page. */
+  --glass-base-dark: var(--color-teal-900);
+
+  /* Base de la surface courante ; changée par les classes `glass-tint-*`. */
+  --glass-base: var(--glass-base-white);
+
+  /* ---- Opacité : trois niveaux, un repli, un état opaque ---- */
+  --glass-alpha-quiet: 82%;
+  --glass-alpha-base: 72%;
+  --glass-alpha-strong: 88%;
+  --glass-alpha-dark: 88%;
+  /* Sans `backdrop-filter` : 94 % (le brief exige 92 % au moins). */
+  --glass-alpha-fallback: 94%;
+  /* Mouvement réduit, transparence réduite, mode confort, impression. */
+  --glass-alpha-opaque: 100%;
+  --glass-alpha: var(--glass-alpha-base);
+
+  /* ---- Flou : trois niveaux ---- */
+  --glass-blur-quiet: 6px;
+  --glass-blur-base: 12px;
+  --glass-blur-strong: 20px;
+  --glass-blur: var(--glass-blur-base);
+  /* La saturation redonne la couleur que le flou éteint ; jamais plus de 1,2. */
+  --glass-saturate: 1.15;
+  --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+
+  /* ---- Bordure lumineuse et liseré (décoratifs : aucun sens ne repose sur eux) ---- */
+  --glass-border: color-mix(in srgb, var(--color-white) 50%, var(--color-line));
+  --glass-border-strong: color-mix(in srgb, var(--color-white) 78%, var(--color-line));
+  --glass-border-dark: color-mix(in srgb, var(--color-white) 34%, transparent);
+  --glass-edge-color: color-mix(in srgb, var(--color-white) 78%, transparent);
+
+  /* ---- Reflet : 10 % de blanc au plus ; au-delà, le texte blanc du bouton principal
+     passe sous 4,5:1 (voir docs/design/LIQUID_GLASS.md §5). ---- */
+  --glass-sheen-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+  --glass-sheen-size: 18rem;
+}
+
+/* Mode confort : comme les fonds de section de tokens.css §2, les teintes claires deviennent
+   blanches. Le verre d'alerte (`warning`) et le verre sombre gardent leur couleur : ils portent un
+   signal. Toutes les surfaces deviennent opaques plus bas. */
+:root[data-comfort="on"] {
+  --glass-base-teal: var(--color-white);
+  --glass-base-green: var(--color-white);
+  --glass-base-framboise: var(--color-white);
+  --glass-base-azure: var(--color-white);
+  --glass-base-sable: var(--color-white);
+}
+
+@layer components {
+  /* ---- Les trois niveaux de verre, plus le verre sombre ---- */
+  .glass,
+  .glass-quiet,
+  .glass-strong,
+  .glass-dark {
+    background-color: color-mix(in srgb, var(--glass-base) var(--glass-alpha), transparent);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-1);
+    /* Un long mot ne déborde jamais d'une surface de verre. */
+    overflow-wrap: break-word;
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
+  }
+
+  /* Surface standard : cartes, encarts, panneaux. */
+  .glass {
+    --glass-alpha: var(--glass-alpha-base);
+    --glass-blur: var(--glass-blur-base);
+  }
+
+  /* Verre à peine perceptible : grandes surfaces de texte, champs de formulaire. */
+  .glass-quiet {
+    --glass-alpha: var(--glass-alpha-quiet);
+    --glass-blur: var(--glass-blur-quiet);
+    box-shadow: none;
+  }
+
+  /* Verre dense : en-tête collant, barre d'action mobile, panneau au-dessus d'une photo. */
+  .glass-strong {
+    --glass-alpha: var(--glass-alpha-strong);
+    --glass-blur: var(--glass-blur-strong);
+    border-color: var(--glass-border-strong);
+    box-shadow: var(--shadow-2);
+  }
+
+  /* Verre sombre : texte blanc garanti au-dessus de n'importe quel fond, photo comprise. */
+  .glass-dark {
+    --glass-base: var(--glass-base-dark);
+    --glass-alpha: var(--glass-alpha-dark);
+    --glass-blur: var(--glass-blur-strong);
+    border-color: var(--glass-border-dark);
+    box-shadow: var(--shadow-2);
+    color: var(--color-white);
+  }
+
+  /* ---- Teintes : information, chaleur, action, états ---- */
+  .glass-tint-teal {
+    --glass-base: var(--glass-base-teal);
+  }
+
+  .glass-tint-framboise {
+    --glass-base: var(--glass-base-framboise);
+  }
+
+  .glass-tint-sable {
+    --glass-base: var(--glass-base-sable);
+  }
+
+  .glass-tint-green {
+    --glass-base: var(--glass-base-green);
+  }
+
+  .glass-tint-azure {
+    --glass-base: var(--glass-base-azure);
+  }
+
+  .glass-tint-warning {
+    --glass-base: var(--glass-base-warning);
+  }
+
+  /* ---- Élévation : l'ombre grandit et se décale, l'élément ne change jamais de taille ---- */
+  .depth-1 {
+    box-shadow: var(--shadow-1);
+  }
+
+  .depth-2 {
+    box-shadow: var(--shadow-2);
+  }
+
+  .depth-3 {
+    box-shadow: var(--shadow-3);
+  }
+
+  /* ---- Liseré lumineux d'un bord : haut par défaut, `data-edge="bottom"` pour un en-tête ---- */
+  .glass-edge {
+    position: relative;
+  }
+
+  .glass-edge::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 0;
+    block-size: 1px;
+    /* Transparent aux extrémités : rien ne dépasse d'un coin arrondi. */
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--glass-edge-color) 18%,
+      var(--glass-edge-color) 82%,
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .glass-edge[data-edge="bottom"]::before {
+    inset-block-start: auto;
+    inset-block-end: 0;
+  }
+
+  /* ---- Reflet au survol et au pointeur ---- */
+  /* `--glass-mx` et `--glass-my` peuvent être posées par une île de mouvement (style en ligne) :
+     sans elles, le reflet vient du haut de la surface. Jamais au clavier (survol seulement),
+     jamais au toucher, jamais en mouvement réduit. */
+  .glass-sheen {
+    position: relative;
+  }
+
+  .glass-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      var(--glass-sheen-size) var(--glass-sheen-size) at var(--glass-mx, 50%) var(--glass-my, 0%),
+      var(--glass-sheen-color),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .glass-sheen:hover::after {
+      opacity: 1;
+    }
+  }
+
+  /* ---- Focus visible sur verre : anneau de 3 px, contrasté sur la surface ---- */
+  /* Le verre clair garde l'anneau teal-800 de globals.css (rappelé ici pour qu'aucune couche de
+     verre ne le remplace) ; le verre sombre passe au blanc. */
+  :is(.glass, .glass-quiet, .glass-strong):focus-visible,
+  :is(.glass, .glass-quiet, .glass-strong) :focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .glass-dark:focus-visible,
+  .glass-dark :focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-white);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* ---- Repli sans `backdrop-filter` : fond opaque à 94 % ---- */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    :is(.glass, .glass-quiet, .glass-strong, .glass-dark) {
+      --glass-alpha: var(--glass-alpha-fallback);
+    }
+  }
+
+  /* Simulation du repli dans le styleguide (/styleguide/verre/). */
+  :root[data-glass="fallback"] :is(.glass, .glass-quiet, .glass-strong, .glass-dark) {
+    --glass-alpha: var(--glass-alpha-fallback);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  /* ---- Surfaces opaques : mouvement réduit, transparence réduite, mode confort, simulation ---- */
+  @media (prefers-reduced-motion: reduce) {
+    :is(.glass, .glass-quiet, .glass-strong, .glass-dark) {
+      --glass-alpha: var(--glass-alpha-opaque);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .glass-sheen::after {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    :is(.glass, .glass-quiet, .glass-strong, .glass-dark) {
+      --glass-alpha: var(--glass-alpha-opaque);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+
+  :root[data-comfort="on"] :is(.glass, .glass-quiet, .glass-strong, .glass-dark),
+  :root[data-motion="reduce"] :is(.glass, .glass-quiet, .glass-strong, .glass-dark) {
+    --glass-alpha: var(--glass-alpha-opaque);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  :root[data-comfort="on"] .glass-sheen::after,
+  :root[data-motion="reduce"] .glass-sheen::after {
+    display: none;
+  }
+}
+
+/* ---- Impression : plus de verre, plus de reflet, texte noir sur blanc (docs/02 §9) ---- */
+@media print {
+  .glass,
+  .glass-quiet,
+  .glass-strong,
+  .glass-dark {
+    --glass-alpha: var(--glass-alpha-opaque);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .glass-dark {
+    --glass-base: var(--color-white);
+    color: var(--color-text);
+  }
+
+  .glass-sheen::after,
+  .glass-edge::before {
+    display: none;
+  }
+}

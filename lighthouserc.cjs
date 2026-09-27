@@ -1,6 +1,7 @@
 /*
  * Lighthouse CI (`pnpm lhci`, voir scripts/lhci.ts) : pages témoins, mobile et réseau 4G
- * simulé, budgets bloquants de docs/07 §5 (tolérances de D-026). INP ne se mesure pas en
+ * simulé, budgets bloquants de docs/07 §5 (tolérances de D-026 et D-028 ; cibles JavaScript
+ * rétablies sur les pages avec formulaire par D-030). INP ne se mesure pas en
  * laboratoire : il est suivi en conditions réelles, le temps de blocage total sert de garde-fou
  * ici. Les rapports restent sur le disque (.lighthouseci/, ignoré par git) : rien n'est téléversé.
  */
@@ -79,6 +80,9 @@ module.exports = {
           },
         },
         {
+          // Accueil : 165 Ko mesurés pour une cible de 160 Ko (docs/07 §5) ; l'écart est dans les
+          // îles du gabarit racine (en-tête, barre mobile, confort, fil, mesure), hors dette DP.1 :
+          // tolérance D-026 maintenue (D-030).
           matchingUrlPattern: "http://localhost:3102/$",
           aggregationMethod: "median",
           assertions: {
@@ -86,11 +90,13 @@ module.exports = {
           },
         },
         {
+          // Pages avec formulaire (rappel, services) et article du Fil : cible de docs/07 §5
+          // rétablie (D-030) depuis que le formulaire de la section 12 s'hydrate à la demande.
           matchingUrlPattern:
             "/etre-rappele/|\\/personnes-agees\\/|\\/services\\/garde-de-nuit\\/|\/magazine\/",
           aggregationMethod: "median",
           assertions: {
-            "resource-summary:script:size": ["error", { maxNumericValue: 225 * KO }],
+            "resource-summary:script:size": ["error", { maxNumericValue: 220 * KO }],
           },
         },
         {
@@ -103,12 +109,13 @@ module.exports = {
           },
         },
         {
-          // Pages locale et agence (phase 6, D-028) : formulaire de rappel, recherche de commune et
-          // semaine type sur la même page ; cible 220 Ko conservée (docs/07 §5, dette DP.1).
+          // Pages locale et agence (phase 6, D-028) : le formulaire de rappel et la liste des
+          // communes qu'il préremplit se chargent à l'approche de la section (D-030) ; cible 220 Ko
+          // de docs/07 §5 rétablie.
           matchingUrlPattern: `${pageLocale.replace(/\//g, "\\/")}|${agence.replace(/\//g, "\\/")}`,
           aggregationMethod: "median",
           assertions: {
-            "resource-summary:script:size": ["error", { maxNumericValue: 235 * KO }],
+            "resource-summary:script:size": ["error", { maxNumericValue: 220 * KO }],
           },
         },
       ],

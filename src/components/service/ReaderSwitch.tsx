@@ -1,7 +1,7 @@
 "use client";
 
-import { useId } from "react";
-import { useReader } from "./ReaderContext";
+import { useId, useState } from "react";
+import { useReader, type Reader } from "./ReaderContext";
 
 /*
  * docs/03 §4 : sur le pilier « Personnes âgées », le lecteur est l'enfant adulte (70 %) ou la
@@ -10,6 +10,9 @@ import { useReader } from "./ReaderContext";
  * Le chapô « pour un proche » est rendu côté serveur : sans JavaScript, la page reste lisible.
  * Sous un `ReaderProvider`, l'état est partagé avec la photo du hero (`ReaderPhoto`), qui
  * bascule en même temps que le chapô (docs/design/CONCEPT.md §4).
+ * Le changement de version est annoncé aux lecteurs d'écran par une zone `role="status"`
+ * (« Vous cherchez de l'aide pour vous-même »), vide tant que le visiteur n'a rien changé
+ * (audit P8.4 R-2, RGAA 7.5).
  */
 
 export interface ReaderSwitchProps {
@@ -28,6 +31,12 @@ const pill =
 export function ReaderSwitch({ proche, soi, texts }: ReaderSwitchProps) {
   const { reader, setReader } = useReader();
   const legendId = useId();
+  const [announcement, setAnnouncement] = useState("");
+
+  const choose = (next: Reader) => {
+    setReader(next);
+    setAnnouncement(`${texts.legende} ${texts[next]}`);
+  };
 
   return (
     <>
@@ -43,7 +52,7 @@ export function ReaderSwitch({ proche, soi, texts }: ReaderSwitchProps) {
           type="button"
           className={pill}
           aria-pressed={reader === "proche"}
-          onClick={() => setReader("proche")}
+          onClick={() => choose("proche")}
         >
           {texts.proche}
         </button>
@@ -51,10 +60,13 @@ export function ReaderSwitch({ proche, soi, texts }: ReaderSwitchProps) {
           type="button"
           className={pill}
           aria-pressed={reader === "soi"}
-          onClick={() => setReader("soi")}
+          onClick={() => choose("soi")}
         >
           {texts.soi}
         </button>
+      </span>
+      <span role="status" aria-live="polite" className="sr-only">
+        {announcement}
       </span>
       <span data-reader={reader}>{reader === "proche" ? proche : soi}</span>
     </>

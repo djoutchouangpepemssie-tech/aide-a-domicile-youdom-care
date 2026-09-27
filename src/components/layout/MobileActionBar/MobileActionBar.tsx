@@ -82,7 +82,9 @@ export function MobileActionBar({ phone, callbackHref, requestHref, texts }: Mob
       data-print="hide"
       data-field-active={fieldActive ? "true" : "false"}
       className={cn(
-        "fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 shadow-2 backdrop-blur lg:hidden",
+        // Verre dense et liseré lumineux en haut (D-032 §3) : la barre passe au-dessus du contenu
+        // sans le masquer. Bordures latérales et basse retirées : elle occupe toute la largeur.
+        "glass-strong glass-edge fixed inset-x-0 bottom-0 z-30 border-x-0 border-b-0 border-t border-line lg:hidden",
         "pb-[env(safe-area-inset-bottom)] transition-transform [transition-duration:var(--duration-base)] motion-reduce:transition-none",
         fieldActive && "translate-y-full",
       )}

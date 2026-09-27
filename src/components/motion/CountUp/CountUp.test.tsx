@@ -1,17 +1,25 @@
 import { render } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { CountUp, formatCount } from "./CountUp";
+import { MOTION_MAX_DURATION } from "@/lib/motion/grid";
+import { resetSharedObservers } from "@/lib/motion/viewport";
+import { COUNT_UP_DURATION, CountUp, formatCount } from "./CountUp";
 
-type Callback = (entries: Partial<IntersectionObserverEntry>[]) => void;
+type Entry = Partial<IntersectionObserverEntry>;
+type Callback = (entries: Entry[]) => void;
 
 function installIntersectionObserver() {
-  const observers: { callback: Callback; disconnect: ReturnType<typeof vi.fn> }[] = [];
+  const observers: {
+    callback: Callback;
+    unobserve: ReturnType<typeof vi.fn>;
+    disconnect: ReturnType<typeof vi.fn>;
+  }[] = [];
   class FakeObserver {
     observe = vi.fn();
+    unobserve = vi.fn();
     disconnect = vi.fn();
     constructor(callback: Callback) {
-      observers.push({ callback, disconnect: this.disconnect });
+      observers.push({ callback, unobserve: this.unobserve, disconnect: this.disconnect });
     }
   }
   vi.stubGlobal("IntersectionObserver", FakeObserver);
@@ -50,9 +58,11 @@ describe("CountUp", () => {
   beforeEach(() => {
     delete document.documentElement.dataset.comfort;
     delete document.documentElement.dataset.motion;
+    resetSharedObservers();
   });
 
   afterEach(() => {
+    resetSharedObservers();
     vi.unstubAllGlobals();
   });
 
@@ -81,27 +91,30 @@ describe("CountUp", () => {
     expect(observers).toHaveLength(0);
   });
 
-  it("se compte de 0 à la valeur en 900 ms à l'apparition, une seule fois", () => {
+  it("se compte de 0 à la valeur exacte en 600 ms à l'apparition, une seule fois", () => {
     installMatchMedia(false);
     const observers = installIntersectionObserver();
     const frames = installFrames();
     const { container } = render(<CountUp value={1000} />);
+    const target = container.querySelector(".m-count__digits") as Element;
+    expect(COUNT_UP_DURATION).toBe(MOTION_MAX_DURATION);
     expect(digits(container)).toBe(formatCount(1000));
 
-    observers[0]?.callback([{ isIntersecting: false }]);
+    observers[0]?.callback([{ isIntersecting: false, target }]);
     expect(digits(container)).toBe(formatCount(1000));
 
-    observers[0]?.callback([{ isIntersecting: true }]);
+    observers[0]?.callback([{ isIntersecting: true, target }]);
+    expect(observers[0]?.unobserve).toHaveBeenCalledWith(target);
     expect(observers[0]?.disconnect).toHaveBeenCalled();
     expect(digits(container)).toBe("0");
 
     frames.tick(10_000);
     expect(digits(container)).toBe("0");
-    frames.tick(10_450);
+    frames.tick(10_300);
     const half = Number(digits(container).replace(/\D/g, ""));
     expect(half).toBeGreaterThan(700);
     expect(half).toBeLessThan(1000);
-    frames.tick(10_900);
+    frames.tick(10_600);
     expect(digits(container)).toBe(formatCount(1000));
     expect(frames.pending()).toBe(0);
     expect(container.querySelector(".sr-only")?.textContent).toBe(formatCount(1000));
@@ -112,7 +125,8 @@ describe("CountUp", () => {
     const observers = installIntersectionObserver();
     const frames = installFrames();
     const { container, unmount } = render(<CountUp value={80} />);
-    observers[0]?.callback([{ isIntersecting: true }]);
+    const target = container.querySelector(".m-count__digits") as Element;
+    observers[0]?.callback([{ isIntersecting: true, target }]);
     frames.tick(0);
     frames.tick(100);
     const element = container.querySelector(".m-count__digits");

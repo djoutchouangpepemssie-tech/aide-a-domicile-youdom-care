@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Badge } from "@/components/ui/Badge/Badge";
 import { Button } from "@/components/ui/Button/Button";
 import { Callout } from "@/components/ui/Callout/Callout";
@@ -80,7 +81,14 @@ export default function StyleguidePage() {
       <Heading level={1}>Guide de styles « Le Fil »</Heading>
       <Lead className="mt-4">Vous, chez vous. Nous, à vos côtés.</Lead>
 
-      <nav aria-labelledby="sommaire" className="mt-8 rounded-card border border-line bg-white p-5">
+      <p className="mt-6 text-small">
+        Pages de travail liées : <Link href="/styleguide/verre/">verre et fonds de scène</Link> ·{" "}
+        <Link href="/styleguide/mouvement/">mouvement</Link> ·{" "}
+        <Link href="/styleguide/icones/">icônes</Link> ·{" "}
+        <Link href="/styleguide/blocs/">blocs</Link> · <Link href="/styleguide/rail/">rail</Link>
+      </p>
+
+      <nav aria-labelledby="sommaire" className="glass mt-8 rounded-card p-5">
         <Heading level={2} id="sommaire" visual={4}>
           Sommaire
         </Heading>

@@ -1,14 +1,32 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/blocks/Breadcrumb/Breadcrumb";
-import { RappelForm } from "@/components/forms/RappelForm/RappelForm";
+import { HeroSection } from "@/components/blocks/Hero/HeroSection";
+import { ScrollCue } from "@/components/blocks/Hero/ScrollCue";
+import {
+  heroActionsClass,
+  heroGap,
+  heroGapWide,
+  heroLeadClamp,
+  heroMediaWidth,
+  heroOnlyWide,
+  heroOrderLast,
+  heroOrderPanel,
+  heroPanelClass,
+  heroPhotoSizes,
+  heroTypeScale,
+  heroWhenRoomy,
+  heroWhenTall,
+} from "@/components/blocks/Hero/hero-scene";
+import { LazyRappelForm } from "@/components/forms/DeferredForm/LazyRappelForm";
 import { Section } from "@/components/layout/Section/Section";
 import { Button } from "@/components/ui/Button/Button";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
-import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
+import { PhotoFigure } from "@/components/ui/PhotoFigure/PhotoFigure";
 import type { AgenciesPage, Agency, InterfaceTexts } from "@/content/schemas";
+import { cn } from "@/lib/cn";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
-import { AgencyCard, fullAddress } from "./AgencyCard";
+import { AgencyCard, fullAddress, routeUrl } from "./AgencyCard";
 import { agencyPhoto } from "./local-photos";
 import { fill, formatDistance } from "./local-texts";
 
@@ -66,49 +84,109 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
 
   return (
     <main id="contenu" data-agence-page={agency.id}>
-      <Section tone="paper" aria-labelledby="titre">
+      {/*
+       * Bannière de l'agence (brief docs/design/BRIEF_LIQUID_GLASS.md §4, D-032) : scène sable,
+       * contenu compris et actionnable sans défiler. L'interaction immédiate, c'est l'adresse avec
+       * son itinéraire et l'appel, dans un panneau de verre ; l'action principale reste le rappel.
+       */}
+      <HeroSection scene="sable" aria-labelledby="titre">
         <Breadcrumb
           texts={texts.fil_ariane}
           items={[{ label: indexLabel, href: "/agences/" }, { label: agency.nom }]}
-          className="mb-6"
+          className={cn("mb-4", heroOnlyWide)}
         />
-        <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">
-          <div>
-            <p className="m-0 text-small font-bold tracking-wide text-teal-800 uppercase">
+        <div
+          className={cn(
+            "hero grid w-full grid-cols-1 items-center gap-x-10",
+            "lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]",
+            heroTypeScale,
+          )}
+          data-hero=""
+        >
+          {/* Colonne de texte en flex : l'ordre de la compaction (action avant interaction au dernier
+              palier) s'y applique. */}
+          <div className="flex min-w-0 flex-col">
+            <p
+              className={cn(
+                "m-0 text-small font-bold tracking-wide text-teal-800 uppercase",
+                heroOnlyWide,
+                heroWhenRoomy,
+              )}
+              data-hero-surtitle=""
+            >
               {page.sur_titre}
             </p>
-            <Heading level={1} id="titre" className="mt-3">
+            <Heading level={1} id="titre" className={heroGap}>
               {agency.nom}
             </Heading>
-            <Lead className="mt-5">{fill(page.chapo, { adresse: fullAddress(agency), lieu })}</Lead>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button href="#formulaire">{texts.boutons.rappel}</Button>
+            <Lead className={cn(heroGap, heroLeadClamp)}>
+              {fill(page.chapo, { adresse: fullAddress(agency), lieu })}
+            </Lead>
+            <div
+              className={cn(heroOrderPanel, heroGapWide, heroPanelClass("sable"))}
+              data-hero-interaction=""
+            >
+              <p className="m-0 font-bold">{fullAddress(agency)}</p>
+              <ul className="m-0 mt-2 flex list-none flex-wrap gap-x-6 gap-y-1 p-0">
+                <li className="max-w-none">
+                  <a
+                    href={routeUrl(agency)}
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-12 items-center gap-2 font-bold"
+                    data-agence-itineraire
+                  >
+                    {t.agence.itineraire}
+                    <span className="sr-only"> ({t.agence.itineraire_externe})</span>
+                  </a>
+                </li>
+                {phone && telHref ? (
+                  <li className="max-w-none">
+                    <a
+                      href={telHref}
+                      className="tabular-figures inline-flex min-h-12 items-center font-bold"
+                    >
+                      {fill(t.reponse.appeler, { téléphone: formatFrenchPhone(phone) })}
+                    </a>
+                  </li>
+                ) : null}
+              </ul>
+            </div>
+            <div className={heroActionsClass}>
+              <span data-hero-primary="">
+                <Button href="#formulaire">{texts.boutons.rappel}</Button>
+              </span>
               {phone && telHref ? (
                 <Button
                   href={telHref}
                   variant="link"
-                  className="tabular-figures"
+                  className={cn("tabular-figures", heroWhenRoomy)}
                   data-mesure="agence"
                 >
                   {fill(t.reponse.appeler, { téléphone: formatFrenchPhone(phone) })}
                 </Button>
               ) : null}
             </div>
+            <p className={cn("m-0", heroOrderLast, heroGap)}>
+              <ScrollCue label={t.agence.communes_h2} href="#communes" />
+            </p>
           </div>
-          <PhotoFigure
-            src={agencyPhoto.src}
-            alt={agencyPhoto.alt}
-            focal={agencyPhoto.focal}
-            ratio="4:5"
-            mobileRatio="16:9"
-            radius={28}
-            sizes={photoSizes.hero}
-            priority
-          />
+          <div className={cn(heroOnlyWide, heroWhenTall, heroGapWide, "lg:mt-0", heroMediaWidth)}>
+            <PhotoFigure
+              src={agencyPhoto.src}
+              alt={agencyPhoto.alt}
+              focal={agencyPhoto.focal}
+              ratio="4:5"
+              mobileRatio="16:9"
+              radius={28}
+              sizes={heroPhotoSizes}
+              priority
+            />
+          </div>
         </div>
-      </Section>
+      </HeroSection>
 
-      <Section tone="white" aria-label={agency.nom}>
+      {/* Sans nom de région : le nom de l'agence est déjà celui de la région d'en-tête (RGAA 12.6). */}
+      <Section tone="white">
         <AgencyCard
           agency={agency}
           texts={t.agence}
@@ -193,7 +271,8 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
         </Heading>
         <Lead className="mt-3">{page.rappel_texte}</Lead>
         <div className="mt-8 max-w-3xl">
-          <RappelForm
+          {/* Balisage rendu par le serveur, code chargé à l'approche de la section (D-030). */}
+          <LazyRappelForm
             texts={rappelTexts}
             phone={phone}
             confidentialiteHref={confidentialiteHref}

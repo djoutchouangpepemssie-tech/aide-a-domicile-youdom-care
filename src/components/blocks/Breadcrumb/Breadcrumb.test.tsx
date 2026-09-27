@@ -68,4 +68,12 @@ describe("Breadcrumb", () => {
     expect(script?.textContent).toContain("https://preview.example.org/contact/");
     expect(script?.textContent).not.toContain("youdom-care.com");
   });
+
+  it("donne une cible de 44 px aux liens, même sur un libellé court (P9.6)", () => {
+    render(
+      <Breadcrumb texts={texts} items={[{ label: "APA", href: "/apa/" }, { label: "PCH" }]} />,
+    );
+    const link = screen.getByRole("link", { name: "APA" });
+    expect(link).toHaveClass("min-h-12", "min-w-11");
+  });
 });

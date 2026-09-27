@@ -178,7 +178,7 @@ describe("LocalTemplate", () => {
     );
   });
 
-  it("pose les questions locales, la carte de relecture et le formulaire avec la commune préremplie", () => {
+  it("pose les questions locales, la carte de relecture et le formulaire avec la commune préremplie", async () => {
     render(<LocalTemplate data={data()} />);
     for (const q of localEditorialExemple.questions) {
       expect(screen.getByText(q.question)).toBeInTheDocument();
@@ -188,11 +188,14 @@ describe("LocalTemplate", () => {
     expect(review).toHaveTextContent("Page mise à jour le 20 septembre 2026");
     expect(review).toHaveTextContent("Données locales assemblées le 20 septembre 2026");
     expect(document.querySelector("#formulaire")).toHaveAttribute("data-local-form-insee", "92999");
-    expect(screen.getByRole("form")).toBeInTheDocument();
+    // Formulaire à hydratation différée (D-030) : il arrive après le premier rendu, le temps que
+    // l'`import()` se résolve — délai large parce que Vitest transforme la chaîne de modules du
+    // formulaire à la volée quand aucun autre test du lot ne l'a déjà importée.
+    expect(await screen.findByRole("form", {}, { timeout: 20_000 })).toBeInTheDocument();
     expect(screen.getByRole("navigation", { name: "Fil d’Ariane" })).toHaveTextContent(
       "Hauts-de-Seine",
     );
-  });
+  }, 30_000);
 
   it("n'affiche jamais null ni undefined, et se passe d'agence ou de téléphone inconnus", () => {
     render(

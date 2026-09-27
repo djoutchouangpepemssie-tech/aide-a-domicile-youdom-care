@@ -47,7 +47,7 @@ export default function HospitalDischargePage() {
         </Heading>
         <Lead className="mt-5">{page.chapo}</Lead>
       </Section>
-      <Section tone="white" aria-label={page.h1}>
+      <Section tone="white" aria-label={page.ariane}>
         <div className="max-w-2xl">
           <HospitalDischargeForm
             texts={{

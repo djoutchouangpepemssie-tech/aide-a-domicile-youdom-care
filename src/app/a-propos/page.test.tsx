@@ -16,14 +16,14 @@ function expectSeo(metadata: { title?: unknown; description?: unknown }) {
 describe("À propos", () => {
   afterEach(() => vi.unstubAllEnvs());
 
-  it("les trois pages ont des balises SEO aux longueurs de docs/01 §8", () => {
+  it("les trois pages ont des balises SEO aux longueurs de docs/01 §8", async () => {
     expectSeo(aboutMetadata());
     expectSeo(commitmentsMetadata());
     expectSeo(charterMetadata());
   });
 
-  it("rend le manifeste, les engagements, le territoire et masque histoire et équipe", () => {
-    render(<AboutPage />);
+  it("rend le manifeste, les engagements, le territoire et masque histoire et équipe", async () => {
+    render(await AboutPage());
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Ce que nous croyons");
     const manifeste = screen.getByRole("region", { name: "Notre manifeste" });
     expect(manifeste).toHaveTextContent("Nous croyons que personne ne devrait avoir à choisir");
@@ -43,8 +43,8 @@ describe("À propos", () => {
     );
   });
 
-  it("nos engagements : quatre engagements avec texte en prévisualisation, aucun en production", () => {
-    const { unmount } = render(<CommitmentsPage />);
+  it("nos engagements : quatre engagements avec texte en prévisualisation, aucun en production", async () => {
+    const { unmount } = render(await CommitmentsPage());
     expect(document.querySelectorAll("[data-engagement]")).toHaveLength(4);
     expect(
       screen.getByRole("region", { name: "Le suivi que vous pouvez lire" }),
@@ -52,12 +52,12 @@ describe("À propos", () => {
     unmount();
 
     vi.stubEnv("VERCEL_ENV", "production");
-    render(<CommitmentsPage />);
+    render(await CommitmentsPage());
     expect(document.querySelectorAll("[data-engagement]")).toHaveLength(0);
   });
 
-  it("charte éditoriale : huit principes et un moyen de contact", () => {
-    render(<EditorialCharterPage />);
+  it("charte éditoriale : huit principes et un moyen de contact", async () => {
+    render(await EditorialCharterPage());
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("informer, jamais soigner");
     expect(document.querySelectorAll("[data-principes] > li")).toHaveLength(8);
     expect(screen.getByRole("link", { name: "contact@youdom-care.com" })).toHaveAttribute(

@@ -184,10 +184,14 @@ export function Header({
       onKeyDown={onMobileKeyDown}
       onBlur={onMobileBlur}
       className={cn(
-        "sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur",
-        "transition-[box-shadow] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
-        compact && "shadow-2",
+        // Verre (D-032 §3) : `glass` au repos, `glass-strong` dès que la page défile, liseré
+        // lumineux en bas. Les bordures latérales et haute du verre sont retirées : l'en-tête
+        // occupe toute la largeur, seule la ligne du bas dessine la limite.
+        "glass glass-edge sticky top-0 z-40 border-x-0 border-t-0 border-b border-line",
+        "transition-[box-shadow,background-color] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
+        compact && "glass-strong",
       )}
+      data-edge="bottom"
     >
       <a
         href="#contenu"
@@ -202,11 +206,12 @@ export function Header({
           compact ? "h-16" : "h-20",
         )}
       >
-        {/* Marque en Fraunces à la taille du H4 : la barre est comptée au pixel à 80 rem. */}
+        {/* Marque en Fraunces à la taille du H4 : la barre est comptée au pixel à 80 rem.
+            `min-h-11` : cible de 44 px de haut (WCAG 2.5.8) ; le lien mesurait 21 px (P9.6). */}
         <Link
           href="/"
           aria-label={texts.accueil}
-          className="shrink-0 font-heading text-h4 leading-none font-semibold whitespace-nowrap text-teal-900 no-underline hover:text-teal-700"
+          className="inline-flex min-h-11 shrink-0 items-center font-heading text-h4 leading-none font-semibold whitespace-nowrap text-teal-900 no-underline hover:text-teal-700"
         >
           {brandName}
         </Link>
@@ -328,11 +333,16 @@ export function Header({
         id="menu-mobile"
         hidden={!mobileOpen}
         className={cn(
-          "max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-white",
+          "glass-strong max-h-[calc(100dvh-4rem)] overflow-y-auto border-x-0 border-b-0 border-t border-line",
           menuPanelOnly,
         )}
       >
-        <nav aria-label={texts.navigation_principale} className="container-site py-4">
+        {/* La barre d'action mobile recouvre 4 rem en bas de l'écran : le panneau réserve la
+            place pour que son dernier lien reste atteignable au pouce (D-032 §6). */}
+        <nav
+          aria-label={texts.navigation_principale}
+          className="container-site pt-4 pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-4"
+        >
           <ul className="m-0 flex list-none flex-col gap-1 p-0">
             {navigation.map((item) => (
               <li key={item.id} className="max-w-none">

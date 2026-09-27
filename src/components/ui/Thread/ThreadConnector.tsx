@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 import { Reveal, type RevealProps } from "@/components/motion/Reveal/Reveal";
 import { cn } from "@/lib/cn";
+import { MOTION_DURATION, MOTION_STAGGER, ms } from "@/lib/motion/grid";
 import "./thread-connector.css";
 
 /*
@@ -19,8 +20,12 @@ import "./thread-connector.css";
  *   ou d'une icône ; framboise sur le dernier jalon ou le jalon actif, teal ailleurs.
  */
 
-/** Écart entre deux jalons : le fil atteint le suivant 200 ms plus tard (CONCEPT §3 bloc 3). */
-export const RAIL_STEP_MS = 200;
+/**
+ * Écart entre deux jalons : le fil atteint le suivant 40 ms plus tard. Valeur de la grille du
+ * mouvement (contrat, BRIEF_LIQUID_GLASS §5 : « décalage de 40 ms entre éléments d'une même
+ * liste »), ramenée des 200 ms d'origine pour qu'un rail de cinq jalons tienne sous les 600 ms.
+ */
+export const RAIL_STEP_MS = MOTION_STAGGER;
 
 export type ThreadOrientation = "vertical" | "horizontal" | "responsive";
 export type ThreadBreakpoint = "sm" | "md" | "lg";
@@ -56,8 +61,10 @@ export function ThreadConnector({
   ...rest
 }: ThreadConnectorProps) {
   const vars: Record<string, string> = {};
-  if (delay > 0) vars["--m-delay"] = `${delay}ms`;
-  if (fraction !== 1) vars.transitionDuration = `calc(var(--thread-duration, 800ms) * ${fraction})`;
+  if (delay > 0) vars["--m-delay"] = ms(delay);
+  if (fraction !== 1) {
+    vars.transitionDuration = `calc(var(--thread-duration, ${ms(MOTION_DURATION.draw)}) * ${fraction})`;
+  }
   const paths = orientationClasses[breakpoint];
   const shape = {
     pathLength: 1,
@@ -151,7 +158,7 @@ export function ThreadKnot({
   ...rest
 }: ThreadKnotProps) {
   const vars: Record<string, string> = {};
-  if (delay > 0) vars["--m-delay"] = `${delay}ms`;
+  if (delay > 0) vars["--m-delay"] = ms(delay);
   return (
     <span
       aria-hidden="true"
@@ -193,7 +200,7 @@ export function ThreadRail({ as = "ol", className, ...rest }: ThreadRailProps) {
 /** Style d'un jalon de rail : délai de révélation et profondeur facultative. */
 export function railItemStyle(index: number, depth = 0): CSSProperties {
   const vars: Record<string, string> = {};
-  if (index > 0) vars["--m-delay"] = `${index * RAIL_STEP_MS}ms`;
+  if (index > 0) vars["--m-delay"] = ms(index * RAIL_STEP_MS);
   if (depth > 0) vars["--t-depth"] = `${depth}px`;
   return vars as CSSProperties;
 }

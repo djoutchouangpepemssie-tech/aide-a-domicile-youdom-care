@@ -40,7 +40,9 @@ export default function AgenciesIndexPage() {
         <Lead className="mt-5 max-w-3xl">{index.chapo.replace("{agences}", agencyCount)}</Lead>
       </Section>
 
-      <Section tone="white" aria-label={index.h1}>
+      {/* Sans nom de région : « Nos agences » est déjà celui de la section du pied de page, et le
+          H1 nomme la région d'en-tête (RGAA 12.6, R-1). */}
+      <Section tone="white">
         <Reveal
           as="ul"
           variant="stagger"

@@ -8,6 +8,7 @@ import { DischargeChooser } from "./DischargeChooser";
 import { LifeSheetCard } from "./LifeSheetCard";
 import { NightChooser } from "./NightChooser";
 import { PlanningShortcuts } from "./PlanningShortcuts";
+import { SituationChooser } from "./SituationChooser";
 import { StageChooser, markStage } from "./StageChooser";
 import { stageAnchorId, withParam } from "./params";
 
@@ -264,5 +265,39 @@ describe("LifeSheetCard (« La fiche de vie de votre enfant »)", () => {
       await Promise.resolve();
     });
     expect(card).toHaveAttribute("data-stacked", "true");
+  });
+});
+
+describe("SituationChooser (geste de repli, D-032)", () => {
+  const situations = [
+    { titre: "Elle est tombée deux fois ce mois-ci", href: "/demande/personne-agee/" },
+    { titre: "Il ne mange plus correctement" },
+    { titre: "Je ne peux plus l'aider seul" },
+    { titre: "Quatrième situation, jamais affichée" },
+  ];
+
+  it("pose la question de la section 2 et trois situations, chacune vers sa destination", () => {
+    render(
+      <SituationChooser
+        question="Vous vous reconnaissez ?"
+        situations={situations}
+        fallbackHref="#situations"
+      />,
+    );
+    const group = screen.getByRole("group", { name: "Vous vous reconnaissez ?" });
+    const links = within(group).getAllByRole("link");
+    expect(links).toHaveLength(3);
+    expect(href(links[0] as HTMLElement)).toBe("/demande/personne-agee");
+    // Sans destination propre, la situation mène à la section qui la détaille.
+    expect(links[1]).toHaveAttribute("href", "#situations");
+    expect(links[2]).toHaveAttribute("href", "#situations");
+    expect(group).toHaveAttribute("data-gesture", "situations");
+  });
+
+  it("ne rend rien quand la page n'a aucune situation", () => {
+    const { container } = render(
+      <SituationChooser question="Vous vous reconnaissez ?" situations={[]} fallbackHref="#s" />,
+    );
+    expect(container).toBeEmptyDOMElement();
   });
 });

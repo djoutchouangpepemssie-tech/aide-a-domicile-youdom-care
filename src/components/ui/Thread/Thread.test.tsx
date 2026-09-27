@@ -1,17 +1,25 @@
-import { act, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { MOTION_DURATION } from "@/lib/motion/grid";
+import { resetSharedObservers } from "@/lib/motion/viewport";
 import { threadIllustrationNames, threadIllustrations } from "./illustrations";
 import { Thread } from "./Thread";
 
-type Callback = (entries: Partial<IntersectionObserverEntry>[]) => void;
+type Entry = Partial<IntersectionObserverEntry>;
+type Callback = (entries: Entry[]) => void;
 
 function installIntersectionObserver() {
-  const observers: { callback: Callback; observe: ReturnType<typeof vi.fn> }[] = [];
+  const observers: {
+    callback: Callback;
+    observe: ReturnType<typeof vi.fn>;
+    unobserve: ReturnType<typeof vi.fn>;
+  }[] = [];
   class FakeObserver {
     observe = vi.fn();
+    unobserve = vi.fn();
     disconnect = vi.fn();
     constructor(callback: Callback) {
-      observers.push({ callback, observe: this.observe });
+      observers.push({ callback, observe: this.observe, unobserve: this.unobserve });
     }
   }
   vi.stubGlobal("IntersectionObserver", FakeObserver);
@@ -28,9 +36,11 @@ function installMatchMedia(reduced: boolean) {
 describe("Thread", () => {
   beforeEach(() => {
     delete document.documentElement.dataset.comfort;
+    resetSharedObservers();
   });
 
   afterEach(() => {
+    resetSharedObservers();
     vi.unstubAllGlobals();
   });
 
@@ -74,15 +84,37 @@ describe("Thread", () => {
     expect(svg).toHaveClass("text-white");
   });
 
-  it("se dessine une fois à l'entrée dans l'écran", () => {
+  it("se dessine une fois à l'entrée dans l'écran, en 400 ms, sans état React", () => {
     installMatchMedia(false);
     const observers = installIntersectionObserver();
     const { container } = render(<Thread illustration="lune" />);
-    const svg = container.querySelector("svg");
+    const svg = container.querySelector<SVGSVGElement>("svg");
     expect(svg).toHaveAttribute("data-state", "pending");
+    expect(svg?.style.getPropertyValue("--thread-duration")).toBe(`${MOTION_DURATION.draw}ms`);
     expect(observers[0]?.observe).toHaveBeenCalledWith(svg);
-    act(() => observers[0]?.callback([{ isIntersecting: true }]));
+    observers[0]?.callback([{ isIntersecting: true, target: svg as Element }]);
     expect(svg).toHaveAttribute("data-state", "drawn");
+    expect(observers[0]?.unobserve).toHaveBeenCalledWith(svg);
+  });
+
+  it("ne cache pas une illustration déjà dans l'écran (pas de clignotement)", () => {
+    installMatchMedia(false);
+    const observers = installIntersectionObserver();
+    vi.spyOn(Element.prototype, "getBoundingClientRect").mockReturnValue({
+      top: 40,
+      bottom: 160,
+      left: 0,
+      right: 120,
+      width: 120,
+      height: 120,
+      x: 0,
+      y: 40,
+      toJSON: () => ({}),
+    });
+    const { container } = render(<Thread illustration="maison" />);
+    expect(container.querySelector("svg")).toHaveAttribute("data-state", "idle");
+    expect(observers).toHaveLength(0);
+    vi.restoreAllMocks();
   });
 
   it("est affiché d'emblée avec prefers-reduced-motion ou le mode confort", () => {

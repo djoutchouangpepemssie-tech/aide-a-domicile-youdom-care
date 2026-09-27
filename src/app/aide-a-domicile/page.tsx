@@ -9,6 +9,7 @@ import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Button } from "@/components/ui/Button/Button";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
+import { themeBlocks, ThemeLinksBlock } from "@/components/blocks/RelatedLinks/ThemeLinks";
 import { getInterfaceTexts, getNavigation, getRegionPage, getSiteConfig } from "@/content/loader";
 import { mapDepartments } from "@/content/local-site";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
@@ -41,6 +42,7 @@ export default async function RegionPage() {
   const searchTexts = { ...texts.recherche_commune, hors: texts.formulaires.hors_idf };
   const agencyCount = new Intl.NumberFormat("fr-FR").format(agences.length);
 
+  const themes = await themeBlocks("/aide-a-domicile/");
   return (
     <main id="contenu" data-page="aide-a-domicile">
       <Section tone="paper" aria-labelledby="titre">
@@ -117,6 +119,8 @@ export default async function RegionPage() {
           ) : null}
         </div>
       </Section>
+
+      <ThemeLinksBlock blocks={themes} section="paper" />
     </main>
   );
 }

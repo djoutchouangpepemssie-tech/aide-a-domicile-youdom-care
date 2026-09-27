@@ -6,6 +6,7 @@ import { LegalHeader } from "@/components/legal/LegalHeader";
 import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Prose } from "@/components/ui/Prose/Prose";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import { getPolitiqueConfidentialite, POLITIQUE_CONFIDENTIALITE_PATH } from "@/content/legal";
 import { getSiteConfig } from "@/content/loader";
 import type { LegalEntry } from "@/lib/legal/mentions";
@@ -39,7 +40,7 @@ function Paragraphs({ items }: { items: readonly string[] }) {
   );
 }
 
-export default function PolitiqueConfidentialitePage() {
+export default async function PolitiqueConfidentialitePage() {
   const page = getPolitiqueConfidentialite();
   const { marque, contact, legal } = getSiteConfig();
   const labels = page.responsable.libelles;
@@ -87,6 +88,7 @@ export default function PolitiqueConfidentialitePage() {
 
   const [exerciceBefore, exerciceAfter] = page.droits.exercice.split("{email}");
 
+  const groupLinks = await groupCards("/politique-de-confidentialite/");
   return (
     <main id="contenu">
       <LegalHeader
@@ -139,7 +141,9 @@ export default function PolitiqueConfidentialitePage() {
               {page.finalites.formulaires.map((f) => (
                 <tr key={f.href} className="border-b border-line align-top">
                   <th scope="row" className="p-3 font-bold">
-                    <Link href={f.href}>{f.libelle}</Link>
+                    <Link href={f.href} className="inline-flex min-h-11 items-center">
+                      {f.libelle}
+                    </Link>
                   </th>
                   <td className="p-3">{f.donnees}</td>
                   <td className="p-3">{f.finalite}</td>
@@ -220,7 +224,11 @@ export default function PolitiqueConfidentialitePage() {
         </Heading>
         <p className="mt-3">{page.reclamation.texte}</p>
         <p className="mt-3">
-          <a href={page.reclamation.cnil.href} rel="noopener" className="font-bold">
+          <a
+            href={page.reclamation.cnil.href}
+            rel="noopener"
+            className="inline-flex min-h-11 items-center font-bold"
+          >
             {page.reclamation.cnil.libelle}
           </a>
         </p>
@@ -233,7 +241,10 @@ export default function PolitiqueConfidentialitePage() {
         </Heading>
         <Paragraphs items={page.mesure_audience.paragraphes} />
         <p className="mt-4">
-          <Link href={page.mesure_audience.lien.href} className="font-bold">
+          <Link
+            href={page.mesure_audience.lien.href}
+            className="inline-flex min-h-11 items-center font-bold"
+          >
             {page.mesure_audience.lien.libelle}
           </Link>
         </p>
@@ -259,6 +270,8 @@ export default function PolitiqueConfidentialitePage() {
         </Heading>
         <Paragraphs items={page.evolution.paragraphes} />
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

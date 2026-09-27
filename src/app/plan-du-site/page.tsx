@@ -33,8 +33,8 @@ function EntryList({ entries, nested = false }: { entries: SiteMapEntry[]; neste
             prefetch={false}
             className={
               nested
-                ? "inline-flex min-h-12 items-center"
-                : "inline-flex min-h-12 items-center font-bold"
+                ? "inline-flex min-h-12 min-w-11 items-center"
+                : "inline-flex min-h-12 min-w-11 items-center font-bold"
             }
           >
             {entry.label}
@@ -65,8 +65,14 @@ export default async function SiteMapRoute() {
 
       <Section tone="white" aria-label={page.ariane}>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3" data-plan-du-site>
+          {/* Nom préfixé (« Plan du site : Pour qui ? ») : le pied de page a ses propres navigations
+              « Pour qui ? » et « Nos services » (RGAA 12.6, audit P8.4 R-1). */}
           {groups.map((group) => (
-            <nav key={group.id} aria-labelledby={`groupe-${group.id}`} data-groupe={group.id}>
+            <nav
+              key={group.id}
+              aria-label={`${page.ariane} : ${group.title}`}
+              data-groupe={group.id}
+            >
               <Heading level={2} id={`groupe-${group.id}`} visual={3}>
                 {group.title}
               </Heading>

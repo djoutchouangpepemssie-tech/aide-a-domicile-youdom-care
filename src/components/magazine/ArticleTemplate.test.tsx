@@ -68,11 +68,15 @@ describe("ArticleTemplate", () => {
     expect(body?.querySelector('[data-encart="attention"]')).toHaveTextContent("Attention");
     // 7. demain : trois actions
     expect(container.querySelectorAll("[data-demain] li")).toHaveLength(3);
-    // 8. un seul encart d'appel, un seul bouton framboise sur la page
+    // 8. un seul encart d'appel ; deux boutons framboise sur la page, jamais sur le même écran :
+    // celui du hero (D-032 : on doit pouvoir agir sans défiler) et celui de l'encart de fin, qui
+    // portent le même libellé et la même destination.
     expect(container.querySelectorAll('[data-encart="appel"]')).toHaveLength(1);
     const primary = container.querySelectorAll("a.bg-action, button.bg-action");
-    expect(primary).toHaveLength(1);
-    expect(primary[0]).toHaveTextContent("Être rappelé(e)");
+    expect(primary).toHaveLength(2);
+    expect(container.querySelectorAll("[data-hero-primary] a.bg-action")).toHaveLength(1);
+    expect(container.querySelectorAll('[data-encart="appel"] a.bg-action')).toHaveLength(1);
+    for (const button of primary) expect(button).toHaveTextContent("Être rappelé(e)");
     // 9. sources numérotées
     const sources = screen.getByRole("region", { name: "Sources" });
     expect(sources.querySelector("ol")).not.toBeNull();

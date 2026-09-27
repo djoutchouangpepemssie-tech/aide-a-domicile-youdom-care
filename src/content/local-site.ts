@@ -2,6 +2,7 @@ import type { AccompagnementLink } from "@/components/local/LocalTemplate";
 import type { BreadcrumbItem } from "@/components/blocks/Breadcrumb/Breadcrumb";
 import type { MapDepartment } from "@/components/local/IdfMap";
 import { fill, localPlace } from "@/components/local/local-texts";
+import { distanceKm } from "@/lib/geo/geo";
 import { departementCodeOf, listBuildableLocalPages, type LocalPage } from "./local";
 import { getInterfaceTexts, getNavigation, getSiteConfig } from "./loader";
 import type { Agency, SiteConfig } from "./schemas";
@@ -163,4 +164,73 @@ export function confidentialiteHref(): string {
     getNavigation().pied_de_page.legal.find((l) => /confidentialit/i.test(l.libelle))?.href ??
     "/politique-de-confidentialite/"
   );
+}
+
+export interface NearbyPage {
+  code: string;
+  nom: string;
+  chemin: string;
+  distance_km: number;
+}
+
+/** Pages liées par proximité que chaque commune ou arrondissement doit au moins compter. */
+export const NEARBY_PAGES = 3;
+
+/**
+ * Pages construites les plus proches d'une commune ou d'un arrondissement, hors ses voisines
+ * déclarées (P9.4, docs/04 §2 « au moins trois liens contextuels ») : quand moins de
+ * `NEARBY_PAGES` voisines de `communes_voisines` ont une page, les pages du même département
+ * les plus proches par la distance entre centres complètent la liste ; le lien est rendu
+ * réciproque (si A cite B, B cite A), ce qui garantit à chaque page au moins ce nombre de liens
+ * entrants depuis son voisinage. Les distances viennent des centres des territoires (haversine),
+ * à une décimale comme les voisines déclarées. Une page de département ou sans centre : rien.
+ */
+export async function nearbyPages(page: LocalPage): Promise<NearbyPage[]> {
+  if (page.data.kind === "departement") return [];
+  const pages = (await listBuildableLocalPages()).filter(
+    (p) => p.data.kind !== "departement" && departementCodeOf(p) === departementCodeOf(page),
+  );
+  const byCode = new Map(pages.map((p) => [p.data.code, p] as const));
+  const linked = new Map<string, Set<string>>();
+  const link = (a: string, b: string) => {
+    linked.set(a, (linked.get(a) ?? new Set()).add(b));
+    linked.set(b, (linked.get(b) ?? new Set()).add(a));
+  };
+  for (const current of pages) {
+    if (!current.data.centre) continue;
+    const declared = new Set((current.data.communes_voisines ?? []).map((n) => n.code));
+    const alreadyLinked = [...declared].filter((code) => byCode.has(code)).length;
+    const needed = NEARBY_PAGES - alreadyLinked;
+    if (needed <= 0) continue;
+    const centre = current.data.centre;
+    pages
+      .filter(
+        (p) => p.data.code !== current.data.code && !declared.has(p.data.code) && p.data.centre,
+      )
+      .map((p) => ({
+        code: p.data.code,
+        km: p.data.centre ? distanceKm(centre, p.data.centre) : 0,
+      }))
+      .sort((a, b) => a.km - b.km || a.code.localeCompare(b.code))
+      .slice(0, needed)
+      .forEach((near) => link(current.data.code, near.code));
+  }
+  const centre = page.data.centre;
+  if (!centre) return [];
+  const declared = new Set((page.data.communes_voisines ?? []).map((n) => n.code));
+  return [...(linked.get(page.data.code) ?? [])]
+    .filter((code) => !declared.has(code))
+    .flatMap((code) => {
+      const target = byCode.get(code);
+      if (!target?.data.centre) return [];
+      return [
+        {
+          code,
+          nom: target.data.nom,
+          chemin: target.chemin,
+          distance_km: Math.round(distanceKm(centre, target.data.centre) * 10) / 10,
+        },
+      ];
+    })
+    .sort((a, b) => a.distance_km - b.distance_km || a.nom.localeCompare(b.nom, "fr"));
 }

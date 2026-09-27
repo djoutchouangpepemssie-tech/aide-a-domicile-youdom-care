@@ -40,4 +40,16 @@ describe("ReaderSwitch (docs/03 §4)", () => {
     );
     expect(screen.getByText("Texte proche.")).toBeInTheDocument();
   });
+
+  it("annonce la version affichée dans une zone de statut, vide au départ (audit P8.4 R-2)", async () => {
+    const user = userEvent.setup();
+    render(<ReaderSwitch proche="Texte proche." soi="Texte soi." texts={texts} />);
+    const status = screen.getByRole("status");
+    expect(status).toHaveAttribute("aria-live", "polite");
+    expect(status).toHaveTextContent("");
+    await user.click(screen.getByRole("button", { name: texts.soi }));
+    expect(status).toHaveTextContent("Vous cherchez de l’aide pour vous-même");
+    await user.click(screen.getByRole("button", { name: texts.proche }));
+    expect(status).toHaveTextContent("Vous cherchez de l’aide pour un proche");
+  });
 });

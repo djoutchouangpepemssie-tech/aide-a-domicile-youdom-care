@@ -1,13 +1,17 @@
 /*
  * Le fil du hero (HeroThread, docs/design/CONCEPT.md §6 `fil-hero`). Trois couches dans la scène
  * de HeroDepth (photo, fil à 24 px, nœud à 48 px) et, hors de la scène, le trait qui part du H1.
- * Tracé une fois, 1 200 ms (`--thread-hero-duration`) : le trait du H1 (30 %), le contour (55 %),
- * le nœud (15 %). Sans JavaScript, tout est visible ; avec (`html[data-js]`, MotionScript), le
- * fil est caché tant que l'île n'a pas posé `data-state="drawn"` au chargement de la photo, sauf
- * en mouvement réduit, en mode confort et sous la simulation : affiché d'emblée, sans transition.
+ * Tracé une fois, en une seule séquence de 560 ms (`--thread-hero-duration`, ramené de 1 200 ms par
+ * le contrat du mouvement, BRIEF_LIQUID_GLASS §5 : « le hero apparaît en une seule séquence de
+ * moins de 600 ms ») : le trait du H1 (30 %), le contour (55 %), le nœud (15 %). Sans JavaScript,
+ * tout est visible ; avec (`html[data-js]`, MotionScript), le fil est caché tant que l'île n'a pas
+ * posé `data-state="drawn"` au chargement de la photo, sauf en mouvement réduit, en mode confort et
+ * sous la simulation : affiché d'emblée, sans transition (`transition: none` plus bas, quelle que
+ * soit la durée héritée).
  */
 
 .hero-thread {
+  --thread-hero-duration: 560ms;
   position: relative;
 }
 
@@ -59,18 +63,18 @@
 
 .hero-thread[data-state="drawn"] path {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset calc(var(--thread-hero-duration, 1200ms) * 0.55)
-    var(--ease-out, ease-out) calc(var(--thread-hero-duration, 1200ms) * 0.3);
+  transition: stroke-dashoffset calc(var(--thread-hero-duration, 560ms) * 0.55)
+    var(--ease-out, ease-out) calc(var(--thread-hero-duration, 560ms) * 0.3);
 }
 
 .hero-thread[data-state="drawn"] .hero-thread__reach path {
-  transition-duration: calc(var(--thread-hero-duration, 1200ms) * 0.3);
+  transition-duration: calc(var(--thread-hero-duration, 560ms) * 0.3);
   transition-delay: 0ms;
 }
 
 .hero-thread[data-state="drawn"] .hero-thread__knot path {
-  transition-duration: calc(var(--thread-hero-duration, 1200ms) * 0.15);
-  transition-delay: calc(var(--thread-hero-duration, 1200ms) * 0.85);
+  transition-duration: calc(var(--thread-hero-duration, 560ms) * 0.15);
+  transition-delay: calc(var(--thread-hero-duration, 560ms) * 0.85);
 }
 
 @media (prefers-reduced-motion: reduce) {

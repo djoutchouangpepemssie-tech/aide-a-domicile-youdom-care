@@ -16,7 +16,7 @@
   "sections": [
     {
       "h2": "L'entrée et les couloirs",
-      "intro": "Après 65 ans, une personne sur trois tombe au moins une fois par an, rappelle l'Assurance maladie. Le logement y est souvent pour quelque chose.",
+      "intro": "Après 65 ans, une personne sur trois tombe au moins une fois par an, rappelle l'Assurance Maladie. Le logement y est souvent pour quelque chose.",
       "items": [
         {
           "type": "case",
@@ -251,7 +251,7 @@
       "consulte_le": "2026-09-27"
     },
     {
-      "libelle": "ameli.fr (Assurance maladie) — Comment prévenir les chutes des personnes âgées ?",
+      "libelle": "ameli.fr (Assurance Maladie) — Comment prévenir les chutes des personnes âgées ?",
       "href": "https://www.ameli.fr/assure/sante/bons-gestes/seniors/prevenir-chutes-personnes-agees",
       "verifie_le": "2024-12-24",
       "consulte_le": "2026-09-27"

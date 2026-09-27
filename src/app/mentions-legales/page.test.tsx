@@ -19,15 +19,15 @@ function expectSeo(metadata: { title?: unknown; description?: unknown }) {
 const forbidden = /à compl[ée]ter|\bnull\b|\bundefined\b|\{[a-z_]+\}/i;
 
 describe("Pages légales (P8.3)", () => {
-  it("les quatre pages ont des balises SEO aux longueurs de docs/01 §8 et des canoniques distinctes", () => {
+  it("les quatre pages ont des balises SEO aux longueurs de docs/01 §8 et des canoniques distinctes", async () => {
     const all = [mentionsMetadata(), politiqueMetadata(), cookiesMetadata(), conditionsMetadata()];
     for (const metadata of all) expectSeo(metadata);
     expect(new Set(all.map((m) => String(m.alternates?.canonical))).size).toBe(4);
     expect(String(all[0]?.alternates?.canonical)).toMatch(/\/mentions-legales\/$/);
   });
 
-  it("mentions légales : champs renseignés affichés, champs null masqués, crédits et licences", () => {
-    const { container } = render(<MentionsLegalesPage />);
+  it("mentions légales : champs renseignés affichés, champs null masqués, crédits et licences", async () => {
+    const { container } = render(await MentionsLegalesPage());
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(container.textContent).not.toMatch(forbidden);
     expect(container.querySelector("[data-maj] time")).toHaveAttribute("dateTime", "2026-09-27");
@@ -76,8 +76,8 @@ describe("Pages légales (P8.3)", () => {
     );
   });
 
-  it("politique de confidentialité : responsable sans champ null, six formulaires, contact et CNIL", () => {
-    const { container } = render(<PolitiquePage />);
+  it("politique de confidentialité : responsable sans champ null, six formulaires, contact et CNIL", async () => {
+    const { container } = render(await PolitiquePage());
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(container.textContent).not.toMatch(forbidden);
     const responsable = screen.getByRole("region", { name: "Qui est responsable de vos données" });
@@ -104,8 +104,8 @@ describe("Pages légales (P8.3)", () => {
     );
   });
 
-  it("cookies : aucun traceur listé, deux réglages locaux, pas de tableau", () => {
-    const { container } = render(<CookiesPage />);
+  it("cookies : aucun traceur listé, deux réglages locaux, pas de tableau", async () => {
+    const { container } = render(await CookiesPage());
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(container.textContent).not.toMatch(forbidden);
     expect(container.querySelector('[data-traceurs="0"]')).not.toBeNull();
@@ -114,8 +114,8 @@ describe("Pages légales (P8.3)", () => {
     expect(container.textContent).toContain("Do Not Track");
   });
 
-  it("conditions générales : aucun document, texte d'attente et mention mandataire repérable", () => {
-    const { container } = render(<ConditionsGeneralesPage />);
+  it("conditions générales : aucun document, texte d'attente et mention mandataire repérable", async () => {
+    const { container } = render(await ConditionsGeneralesPage());
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(container.textContent).not.toMatch(forbidden);
     expect(container.querySelector('[data-documents="0"]')).not.toBeNull();

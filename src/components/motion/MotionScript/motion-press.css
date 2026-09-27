@@ -1,0 +1,37 @@
+/*
+ * Pression d'un bouton (contrat du mouvement, BRIEF_LIQUID_GLASS §5, micro-interactions) : la
+ * surface s'enfonce à 95 % pendant 100 ms, puis revient. `transform` seul, aucune mise en page
+ * touchée, aucun `will-change`.
+ *
+ * Classe d'adhésion : `m-press`. Le design system la pose sur ses surfaces pressables (bouton,
+ * carte cliquable, jalon) — c'est la contrepartie de `glass-sheen`, dont le mouvement vient de ce
+ * livrable et le style du design system. Cette feuille est chargée par `MotionScript`, monté une
+ * fois dans le layout : la règle est disponible sur toutes les pages (environ 200 octets).
+ *
+ * Rien au clavier seul (`:active` ne se déclenche pas au focus), rien en mouvement réduit, en mode
+ * confort ni sous la simulation du styleguide.
+ */
+
+.m-press {
+  transition: transform var(--duration-press, 100ms) var(--ease-out, ease-out);
+}
+
+.m-press:active {
+  transform: scale(var(--press-scale, 0.95));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m-press,
+  .m-press:active {
+    transform: none;
+    transition: none;
+  }
+}
+
+:root[data-comfort="on"] .m-press,
+:root[data-comfort="on"] .m-press:active,
+:root[data-motion="reduce"] .m-press,
+:root[data-motion="reduce"] .m-press:active {
+  transform: none;
+  transition: none;
+}

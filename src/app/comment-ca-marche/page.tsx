@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Thread } from "@/components/ui/Thread/Thread";
+import { themeBlocks, ThemeLinksBlock } from "@/components/blocks/RelatedLinks/ThemeLinks";
 import {
   getCommitments,
   getHomePage,
@@ -38,7 +39,7 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function HowItWorksPage() {
+export default async function HowItWorksPage() {
   const page = getHowItWorksPage();
   const home = getHomePage();
   const { contact, disponibilite } = getSiteConfig();
@@ -90,9 +91,11 @@ export default function HowItWorksPage() {
       ),
     }));
 
+  const themes = await themeBlocks("/comment-ca-marche/");
   return (
-    <main id="contenu">
-      <Section tone="paper" aria-labelledby="titre">
+    // D-032 : scène teal pour les pages de fonctionnement.
+    <main id="contenu" data-scene="teal">
+      <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: crumbLabel }]} className="mb-6" />
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">
           <div>
@@ -167,6 +170,8 @@ export default function HowItWorksPage() {
           </Button>
         </div>
       </Section>
+
+      <ThemeLinksBlock blocks={themes} section="paper" />
     </main>
   );
 }

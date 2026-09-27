@@ -51,12 +51,18 @@ function useHydrated(): boolean {
   );
 }
 
-/* Rangées de 56 px au moins, de même hauteur sur une ligne de la grille (`h-full`). */
+/*
+ * Rangées de 56 px au moins, de même hauteur sur une ligne de la grille (`h-full`). Dans le hero
+ * (brief docs/design/BRIEF_LIQUID_GLASS.md §4), la hauteur visible commande : dès 42 rem de haut
+ * les rangées descendent à 44 px (cible tactile tenue), le chevron s'efface et l'icône rapetisse,
+ * pour que la question et les choix restent dans la fenêtre avec l'action et le repère.
+ */
 const rowClass =
   "flex h-full min-h-14 w-full items-center gap-3 rounded-button border border-line bg-white px-4 py-2 " +
   "text-left text-small leading-snug font-bold text-teal-900 no-underline shadow-1 " +
   "transition-[background-color,border-color,box-shadow] [transition-duration:var(--duration-base)] [transition-timing-function:var(--ease-out)] " +
-  "hover:border-teal-700 hover:bg-teal-50 motion-reduce:transition-none";
+  "hover:border-teal-700 hover:bg-teal-50 motion-reduce:transition-none " +
+  "max-lg:min-h-11 max-lg:gap-2 max-lg:px-3";
 
 const pressedClass = "aria-pressed:border-teal-700 aria-pressed:bg-teal-50";
 
@@ -72,7 +78,7 @@ function Chevron() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="ml-auto shrink-0 text-teal-700"
+      className="ml-auto shrink-0 text-teal-700 max-lg:hidden"
     >
       <path d="m9 6 6 6-6 6" />
     </svg>
@@ -106,14 +112,19 @@ export function HeroPicker({ question, choices, panelTitleId, className }: HeroP
       className={cn("hero-picker", className)}
       data-hydrated={hydrated ? "true" : undefined}
     >
-      <p id={questionId} className="m-0 font-bold text-teal-900">
+      <p id={questionId} className="m-0 font-bold text-teal-900 max-lg:text-small">
         {question}
       </p>
-      <ul className="m-0 mt-3 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-2">
+      <ul
+        className={cn(
+          "m-0 mt-3 grid list-none grid-cols-1 gap-3 p-0 min-[22rem]:grid-cols-2",
+          "max-lg:mt-2 max-lg:gap-2",
+        )}
+      >
         {choices.map((choice) => {
           const content = (
             <>
-              <Icon name={choice.icone} size="lg" className="shrink-0" />
+              <Icon name={choice.icone} size="lg" className="shrink-0 max-lg:size-6" />
               <span>{choice.libelle}</span>
               <Chevron />
             </>

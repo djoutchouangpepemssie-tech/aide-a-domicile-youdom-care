@@ -147,7 +147,7 @@ export function LexiqueIndex({ groups, texts, lettresNom, className }: LexiqueIn
                   <Link
                     href={`/lexique/${term.slug}/`}
                     prefetch={false}
-                    className="text-h4 font-bold text-teal-900"
+                    className="inline-flex min-h-11 items-center text-h4 font-bold text-teal-900"
                   >
                     {term.terme}
                   </Link>

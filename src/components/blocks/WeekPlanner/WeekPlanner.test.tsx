@@ -86,4 +86,19 @@ describe("WeekPlanner (lecture)", () => {
     // 7 en-têtes de colonne + 7 titres de jour dans la liste mobile
     expect(days).toHaveLength(14);
   });
+
+  it("réserve le tableau à 64 rem et garde la liste par jour en dessous (P9.6)", () => {
+    const { container } = render(<WeekPlanner title="Exemple" entries={entries} texts={texts} />);
+    // Le tableau demande 750 à 900 px : à 48 rem il faisait défiler la page horizontalement.
+    const wrapper = screen.getByRole("table").parentElement as HTMLElement;
+    expect(wrapper).toHaveClass("hidden", "lg:block", "overflow-x-auto");
+    expect(wrapper).toHaveAttribute("tabindex", "0");
+    // La liste par jour reste rendue, cachée seulement à partir de 64 rem.
+    const list = Array.from(container.querySelectorAll("div")).find((node) =>
+      node.classList.contains("lg:hidden"),
+    );
+    expect(list).toBeDefined();
+    expect(list).toHaveTextContent("Lundi");
+    expect(list).toHaveTextContent("Dimanche");
+  });
 });

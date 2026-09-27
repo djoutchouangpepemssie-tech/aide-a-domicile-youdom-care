@@ -1,6 +1,6 @@
 # Audit d'accessibilité (P8.4) — RGAA 4.1, WCAG 2.2 AA
 
-Date : 27 septembre 2026. Auditeur : équipe du site (audit interne, avant l'audit complet par un tiers prévu avant l'ouverture). Version auditée : branche `phase/08-complements`, build de production servi par `pnpm start`.
+Date : 27 septembre 2026. Auditeur : équipe du site (audit interne, avant l'audit complet par un tiers prévu avant l'ouverture). Version auditée : branche `phase/08-complements`, build de production servi par `pnpm start`. Étendu le même jour à tous les gabarits en phase 9 (§7, branche `phase/09-qualite`).
 
 Ce document est la source de la déclaration d'accessibilité (`content/pages/accessibilite.json`, page `/accessibilite/`). Il est mis à jour à chaque audit ; la déclaration reprend l'état de conformité, le décompte des critères et la liste des contenus non accessibles.
 
@@ -93,7 +93,7 @@ C : conforme sur les pages du périmètre. NC : non conforme. NA : non applicabl
 | 10.7 Focus visible | C | Anneau 3 px partout |
 | 10.8 Contenus cachés | C | `hidden`, `inert` sur le rail replié |
 | 10.11 Redistribution à 320 px | **NC → corrigé** | Débordement de 13 px sur les cartes des aides (NC-2) |
-| 10.12 Espacement du texte | C (réserve) | 2 à 5 px de débordement sans perte de contenu |
+| 10.12 Espacement du texte | C (réserve levée en phase 9) | 2 à 5 px de débordement sans perte de contenu ; phase 9 : 2 à 15 px relevés sur six gabarits, corrigés, 0 px sur les douze gabarits contrôlés |
 | 10.13, 10.14 Contenus additionnels | C | Panneaux au clic, atteignables au clavier |
 | 11.1, 11.2 Étiquettes | C | `label` visibles, légendes de groupe, mention « (facultatif) » |
 | 11.5, 11.6, 11.7 Regroupements | C | `fieldset`/`legend` pour chaque groupe |
@@ -102,7 +102,7 @@ C : conforme sur les pages du périmètre. NC : non conforme. NA : non applicabl
 | 11.11 Suggestion de correction | C | Messages « Il manque… Nous en avons besoin pour… » |
 | 11.13 Autocomplétion | C | `autocomplete` sur prénom, nom, téléphone, courriel |
 | 12.1, 12.2 Navigation | C | Menu, plan du site, fil d'Ariane, cohérents |
-| 12.6 Zones de regroupement | C (réserve) | Repères présents ; régions et navigations homonymes sur quatre gabarits (R-1) |
+| 12.6 Zones de regroupement | C (réserve levée en phase 9) | Repères présents ; régions et navigations homonymes sur quatre gabarits (R-1), corrigées ; axe `landmark-unique` sans violation sur les 45 gabarits |
 | 12.7 Lien d'évitement | C | Premier élément, visible au focus, fonctionnel |
 | 12.8, 12.9 Ordre et pièges | C | Ordre logique, aucun piège |
 | 12.10 Raccourcis clavier | NA | Aucun raccourci à une touche |
@@ -114,7 +114,7 @@ C : conforme sur les pages du périmètre. NC : non conforme. NA : non applicabl
 | 13.10 Gestes complexes | NA | Aucun |
 | 13.11 Actions au pointeur | C | Activation au relâchement, annulable |
 
-Décompte : 52 critères testés, 46 conformes, 2 non conformes (tous deux corrigés le jour même), 4 non applicables. Non testés : thèmes 2 (cadres, aucun), 4 (multimédia, aucun), 8.1, 8.2, 8.7, 8.8 (validité du code, langue des passages), 8.10, 5.1 à 5.5, 5.8, 6.x hors 6.1 et 6.2, 7.2, 9.4, 10.1 à 10.3, 10.5, 10.6, 10.9, 10.10, 11.3, 11.4, 11.8, 11.12, 12.3 à 12.5, 13.2 à 13.6, 13.12. **Absence d'audit complet : l'état de conformité retenu est « non conforme »**, avec publication du décompte partiel.
+Décompte (phase 8) : 52 critères testés, 46 conformes, 2 non conformes (tous deux corrigés le jour même), 4 non applicables ; porté à 60 testés, 50 conformes, 8 non applicables en phase 9 (§7.4). Non testés : thèmes 2 (cadres, aucun), 4 (multimédia, aucun), 8.1, 8.2, 8.7, 8.8 (validité du code, langue des passages), 8.10, 5.1 à 5.5, 5.8, 6.x hors 6.1 et 6.2, 7.2, 9.4, 10.1 à 10.3, 10.5, 10.6, 10.9, 10.10, 11.3, 11.4, 11.8, 11.12, 12.3 à 12.5, 13.2 à 13.6, 13.12. **Absence d'audit complet : l'état de conformité retenu est « non conforme »**, avec publication du décompte partiel.
 
 ## 5. Non-conformités et réserves
 
@@ -123,14 +123,68 @@ Décompte : 52 critères testés, 46 conformes, 2 non conformes (tous deux corri
 | NC-1 | Sérieuse | `/demande/*` (étape 1 « Pour qui ? », toute étape dont l'erreur porte sur un groupe) | `MultiStepForm` | RGAA 11.10 | **Faite** : `check()` vise le premier contrôle du groupe quand l'identifiant est porté par le `fieldset` ; repli sur le résumé d'erreurs (`tabIndex=-1`). Test unitaire ajouté ; parcours `gabarits-axe.spec.ts`. |
 | NC-2 | Moyenne | Tarifs, piliers, pathologies, pages locales | `AidCard` (lien « site officiel ») | RGAA 10.11 | **Faite** : `overflow-wrap: anywhere` sur le lien ; le nom `monparcourshandicap.gouv.fr` peut se couper, la grille ne déborde plus. |
 | NC-3 | Moyenne (WCAG 2.2 2.4.11, hors RGAA 4.1) | Toutes les pages jusqu'à 1 280 px | `Header` (menu mobile) | WCAG 2.4.11 | **Faite** : le menu se ferme quand le focus quitte l'en-tête (`onBlur`), comme le menu ordinateur. Test unitaire ajouté. |
-| R-1 | Mineure (axe `landmark-unique`, modérée) | `/demande/*`, `/etre-rappele/`, articles, `/plan-du-site/` | Gabarits de page (`section aria-labelledby="titre"` doublée par le formulaire ou l'article de même nom) ; `nav` du plan du site homonymes de celles du pied de page | RGAA 12.6 (recommandation) | **À faire** : nommer distinctement la région d'en-tête et le formulaire, préfixer les navigations du plan (« Plan du site : Pour qui ? ») et adapter le test du plan. Gabarits partagés avec les autres chantiers de la phase 8. |
-| R-2 | Mineure | Pilier personnes âgées | `ReaderSwitch` | RGAA 7.5 (recommandation) | **À faire** : annoncer le changement de version (« Version pour vous-même affichée ») dans une zone `aria-live` polie, ou déplacer le focus sur le chapô. |
-| R-3 | Mineure (WCAG 2.5.8) | Toutes | `Footer` (liens légaux, 22 px de haut) | WCAG 2.5.8 | **À faire** : `min-h-12` sur les liens légaux du pied de page. Conforme aujourd'hui par l'espacement (axe `target-size` sans violation). |
-| R-4 | Mineure | `/demande/*` | `MultiStepForm` (panne d'envoi) | Bonne pratique | **À faire** : déplacer le focus sur l'alerte de panne d'envoi (aujourd'hui annoncée par `role="alert"`, focus inchangé). |
+| R-1 | Mineure (axe `landmark-unique`, modérée) | `/demande/*`, `/etre-rappele/`, articles, `/plan-du-site/` (et, relevé en phase 9 : contact, postuler, professionnel, sortie d'hospitalisation, index des demandes, agences, page d'agence, pages d'aide, charte, engagements, carte régionale) | Gabarits de page (`section aria-labelledby="titre"` doublée par la section de corps nommée du même H1) ; `nav` du plan du site homonymes de celles du pied de page ; section « Nos agences » du pied de page homonyme de celle de la carte régionale | RGAA 12.6 (recommandation) | **Faite (phase 9)** : la section de corps est nommée par le libellé court du fil d'Ariane (`ariane`, distinct du H1) ou n'est plus une région quand elle n'a pas de titre propre (article, page d'agence, index des agences) ; navigations du plan nommées « Plan du site : Pour qui ? » ; bloc des agences du pied de page en `nav`. Tests unitaires du plan adaptés ; contrôle des doublons dans `tous-gabarits-axe.spec.ts`. |
+| R-2 | Mineure | Pilier personnes âgées | `ReaderSwitch` | RGAA 7.5 (recommandation) | **Faite (phase 9)** : zone `role="status"` (`aria-live="polite"`, masquée visuellement), vide au chargement, qui reçoit « Vous cherchez de l'aide pour vous-même » ou « … pour un proche » à chaque bascule. Test unitaire et parcours. |
+| R-3 | Mineure (WCAG 2.5.8) | Toutes | `Footer` (liens légaux, 22 px de haut) | WCAG 2.5.8 | **Faite (phase 9)** : liens légaux en `inline-flex min-h-11` (44 px) ; le retrait du padding de la ligne compense la hauteur ajoutée, le dessin ne bouge que d'un pixel. Parcours : hauteur mesurée ≥ 44 px. |
+| R-4 | Mineure | `/demande/*` | `MultiStepForm` (panne d'envoi) | Bonne pratique | **Faite (phase 9)** : l'encart d'alerte (`Callout`, `role="alert"`, `tabIndex=-1`) reçoit le focus dès que l'envoi échoue ; `Callout` accepte désormais `ref`. Test unitaire et parcours (route `/api/lead/` en 503, rien n'est envoyé). |
 | R-5 | À vérifier | `/outils/*` (PDF) | Documents imprimables | RGAA 13.3 | **À faire** : vérifier le balisage des PDF avec un lecteur d'écran ; la page web reste la version de référence. |
 | R-6 | À vérifier | Toutes | Lecteur d'écran | — | **À faire** : passe NVDA + Firefox et VoiceOver + Safari (annonces des zones `aria-live`, lecture des cartes radio, du tableau de semaine). |
 
 ## 6. Suites
 
 - Audit complet des 106 critères par un tiers avant l'ouverture, puis mise à jour de `content/pages/accessibilite.json` (`etat`, décompte, `non_accessibles`) et de ce document.
-- Contrôle continu : `tests/e2e/gabarits-axe.spec.ts` (pages témoins de docs/07 §4, formulaire à chaque étape et en erreur, seuil 0 violation critique ou sérieuse) et `tests/e2e/accessibilite.spec.ts` (déclaration, pied de page, plan du site, lien d'évitement).
+- Contrôle continu : `tests/e2e/gabarits-axe.spec.ts` (pages témoins de docs/07 §4, formulaire à chaque étape et en erreur, seuil 0 violation critique ou sérieuse), `tests/e2e/tous-gabarits-axe.spec.ts` (tous les gabarits, §7) et `tests/e2e/accessibilite.spec.ts` (déclaration, pied de page, plan du site, lien d'évitement).
+
+## 7. Phase 9 (P9.2) : tous les gabarits
+
+Date : 27 septembre 2026, branche `phase/09-qualite`, build de production (`pnpm build` puis `pnpm start`), Chromium 141 piloté par Playwright 1.63, axe-core 4.13 (règles `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`, `wcag22aa`, `best-practice`), projets « mobile » (Pixel 7) et « ordinateur » (1 280 px).
+
+### 7.1 Parcours `tests/e2e/tous-gabarits-axe.spec.ts`
+
+Une page par gabarit, 45 pages, chacune analysée sur mobile et sur ordinateur (un seul H1, statut 200, ou 404 pour la page introuvable) : accueil ; piliers personnes âgées (sélecteur de lecteur) et aidants ; pathologie (Alzheimer) ; sous-page de pilier (aide à l'autonomie) ; page service (garde-malade) ; « Où en êtes-vous ? » ; index des formulaires ; merci (demande détaillée et rappel) ; carte régionale, département (Hauts-de-Seine), commune (Puteaux), arrondissement (Paris 12e) ; agences (index et page) ; magazine (index, page 2, rubrique, article) ; lexique (index, terme) ; outils (index, outil) ; tarifs et aides et page d'aide (APA) ; comment ça marche ; prestataire ou mandataire ; à propos, engagements, charte éditoriale ; professionnels ; recrutement ; quatre pages légales ; déclaration d'accessibilité ; plan du site ; 404 ; styleguide et ses quatre sous-pages. La page « postuler » et les formulaires sont couverts par la suite des formulaires. Aucune fiche d'auteur ni offre d'emploi n'est construite aujourd'hui : ces deux gabarits ne sont pas couverts.
+
+Formulaires, à chaque étape et en état d'erreur (soumission vide, aucune demande envoyée) : les six formulaires détaillés (`/demande/personne-agee/`, `maladie-neurodegenerative`, `adulte-handicap`, `enfant-handicap`, `relais-aidant`, `nuit-et-24h`), cinq étapes chacun, erreurs aux étapes 1, 4 et 5 ; rappel ; professionnel (deux étapes, chacune en erreur) ; sortie d'hospitalisation (quatre étapes, erreur de commune et coordonnées vides) ; contact ; candidature.
+
+Seuil : 0 violation critique ou sérieuse, bloquant. Les violations modérées et mineures sont consignées en annotations du rapport (`axe-moderate`, `axe-minor`, par page et par sélecteur), sans faire échouer le parcours. Le parcours vérifie aussi R-1 (doublons de repères visibles, nom « Plan du site : Pour qui ? »), R-2 (zone de statut), R-3 (hauteur des liens légaux ≥ 44 px), R-4 (focus sur l'alerte de panne) et 10.12 (espacement du texte forcé à 320 px sur douze gabarits, 0 px de débordement exigé).
+
+### 7.2 Résultats
+
+| Contrôle | Résultat |
+| --- | --- |
+| axe, 45 gabarits × 2 fenêtres | 0 violation critique ou sérieuse partout |
+| axe, formulaires (environ 80 analyses) | 0 violation critique ou sérieuse |
+| Violations modérées avant correction | 1 : `landmark-unique` sur `/aide-a-domicile/` (section « Nos agences » homonyme de celle du pied de page) ; corrigée |
+| Violations modérées après correction | 0 |
+| Violations mineures | 0 |
+| Espacement du texte à 320 px, avant correction | 5 px (accueil, section « Alzheimer, Parkinson… » : colonne dilatée par les cartes de stades), 2 px (piliers et pages de services : cartes « À lire aussi »), 15 px (professionnels : « Professionnels » dans le H1 dilate la colonne) |
+| Espacement du texte à 320 px, après correction | 0 px sur les douze gabarits contrôlés |
+
+Corrections de la phase 9, par critère :
+
+- RGAA 12.6 (R-1) : voir §5. Fichiers : pages `demande/[cas]`, `demande`, `demande/professionnel`, `demande/sortie-d-hospitalisation`, `etre-rappele`, `contact`, `recrutement/postuler`, `tarifs-et-aides/[aide]`, `a-propos/charte-editoriale`, `a-propos/nos-engagements`, `agences`, `plan-du-site` ; `AgencyTemplate`, `ArticleTemplate`, `Footer`.
+- RGAA 7.5 (R-2) : `ReaderSwitch`, zone de statut.
+- WCAG 2.5.8 (R-3) : `Footer`, liens légaux de 44 px.
+- Bonne pratique (R-4) : `MultiStepForm` et `Callout` (`ref`), focus sur l'alerte.
+- RGAA 10.12 : `min-w-0` sur les colonnes et cartes concernées (`page.tsx` de l'accueil, `StageCards`, page professionnels, éléments de liste des cartes « À lire aussi » de `RelatedLinks`) ; le mot long se coupe dans sa boîte (`overflow-wrap: break-word` du `body`) au lieu d'élargir la page.
+- RGAA 6.1 (relevé à l'arbre d'accessibilité) : `LocalFactsGrid`, les liens « Site officiel » (jusqu'à treize par page locale) portent désormais le nom du lieu dans leur nom accessible (« Site officiel : CCAS de Puteaux (lien externe) »).
+- RGAA 11.1 (relevé à l'arbre d'accessibilité) : `FieldShell`, un espace réel sépare l'étiquette de la mention « (facultatif) » (le nom se lisait « …rappelé(e) ?(facultatif) »).
+
+### 7.3 Arbre d'accessibilité (à défaut de lecteur d'écran)
+
+Relu sur trois gabarits avec l'instantané ARIA de Playwright (`ariaSnapshot`), plus l'en-tête et le pied de page.
+
+- Formulaire personne âgée, étape 1 en erreur : `main` › région « Décrire votre situation : aide à domicile d'une personne âgée » (fil d'Ariane, H1, chapô) › région « Personne âgée » › `form` « Pour qui cherchez-vous de l'aide ? » : paragraphe et `progressbar` « Étape 1 sur 5 », `alert` avec la liste des erreurs (lien vers le groupe), H2 de l'étape, `radiogroup` « Pour qui ? » marqué `invalid` avec le message d'erreur, boutons « Retour » (désactivé) et « Continuer », phrase de conservation. Rien de douteux ; ordre de lecture conforme à l'écran.
+- Page locale Puteaux : région d'en-tête nommée par le sur-titre « Hauts-de-Seine » (le H1 « Aide à domicile à Puteaux (92800) » serait un meilleur nom : à revoir avec le chantier des gabarits locaux), régions par bloc, sous-régions par type de ressource, `complementary` « Nous joindre » (rail), `form` du rappel. Noms douteux : treize liens identiques « Site officiel (lien externe) » (corrigé, voir 7.2) ; « Quand préférez-vous être rappelé(e) ?(facultatif) » (corrigé) ; deux liens « Combien ? » vers deux pages d'aide différentes (cartes APA et PCH : le nom de l'aide est dans la carte, pas dans le lien ; à surveiller).
+- Article « Prévenir les chutes » : région du titre, région « L'essentiel », `navigation` « Sommaire », H2 du corps hors région (voulu), région « Et concrètement, demain ? », `complementary` nommé par le titre de l'encart, régions « Sources », « À lire ensuite », « Partager cet article » (deux boutons, zone `status` vide pour la copie du lien). Rien de douteux.
+- En-tête : « Aller au contenu », « Youdom Care, accueil », `navigation` « Navigation principale » (boutons « Pour qui ? », « Nos services » affiché « Services », liens), « Confort de lecture », « Appeler le 01 84 80 17 03 », « Être rappelé(e) ». Les noms accessibles contiennent le texte visible (WCAG 2.5.3).
+- Pied de page : `contentinfo`, région « Nous joindre », navigations « Pour qui ? », « Nos services », « Territoires », « Nos agences », « Youdom Care », « Pied de page ». Libellé à revoir côté contenu : « Aide à domicile en Paris » (`pied_de_page.aide_a_domicile_en` avec le nom du département), signalé à la relecture de voix, hors périmètre de ce chantier.
+
+### 7.4 Décompte et restes
+
+Critères ajoutés au décompte, vérifiés à l'occasion de ce passage : 10.9 (information par la forme ou la position : états portés par `aria-pressed`, `aria-current`, texte) C ; 11.3 (étiquettes cohérentes d'un formulaire à l'autre : « Votre prénom », « Votre nom », « Votre téléphone », « Votre commune ou votre code postal ») C ; 12.3 (plan du site pertinent : toutes les pages construites, vérifié par `maillage.spec.ts`) C ; 12.4 (plan du site atteignable de chaque page par le pied de page) C ; 11.12 (données financières ou juridiques) NA ; 12.5 (moteur de recherche) NA ; 13.2 (ouverture de fenêtre sans action : aucune) NA ; 13.12 (mouvement de l'appareil) NA. Décompte : 60 critères testés, 50 conformes, 2 non conformes (corrigés), 8 non applicables. L'état retenu reste « non conforme » faute d'audit complet.
+
+Restes :
+
+- R-5 (PDF des outils, RGAA 13.3) et R-6 (lecteur d'écran réel : NVDA + Firefox, VoiceOver + Safari) : inchangés, prévus avec l'audit complet.
+- Nom de la région d'en-tête des pages locales (sur-titre plutôt que H1) ; liens « Combien ? » des cartes d'aides ; libellé « Aide à domicile en Paris » du pied de page.
+- Gabarits non construits, donc non audités : fiche d'auteur du magazine, offre d'emploi.

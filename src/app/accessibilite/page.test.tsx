@@ -5,7 +5,7 @@ import siteConfig from "../../../content/site.config.json";
 import AccessibilityPage, { ACCESSIBILITY_PATH, generateMetadata } from "./page";
 
 describe("Déclaration d'accessibilité (P8.4)", () => {
-  it("a des balises titre et description dans les longueurs de docs/01 §8, canonique sur /accessibilite/, indexable", () => {
+  it("a des balises titre et description dans les longueurs de docs/01 §8, canonique sur /accessibilite/, indexable", async () => {
     const metadata = generateMetadata();
     const title = String(metadata.title);
     expect(title.length).toBeGreaterThanOrEqual(50);
@@ -16,8 +16,8 @@ describe("Déclaration d'accessibilité (P8.4)", () => {
     expect(ACCESSIBILITY_PATH).toBe("/accessibilite/");
   });
 
-  it("suit le modèle RGAA : éditeur, état de conformité honnête, résultats, contenus non accessibles, établissement, contact, recours", () => {
-    render(<AccessibilityPage />);
+  it("suit le modèle RGAA : éditeur, état de conformité honnête, résultats, contenus non accessibles, établissement, contact, recours", async () => {
+    render(await AccessibilityPage());
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Déclaration d'accessibilité",

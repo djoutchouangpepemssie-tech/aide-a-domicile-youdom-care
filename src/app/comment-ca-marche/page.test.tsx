@@ -5,7 +5,7 @@ import HowItWorksPage, { generateMetadata } from "./page";
 describe("Comment ça marche", () => {
   afterEach(() => vi.unstubAllEnvs());
 
-  it("a des balises titre et description dans les longueurs de docs/01 §8", () => {
+  it("a des balises titre et description dans les longueurs de docs/01 §8", async () => {
     const metadata = generateMetadata();
     const title = String(metadata.title);
     expect(title.length).toBeGreaterThanOrEqual(50);
@@ -14,8 +14,8 @@ describe("Comment ça marche", () => {
     expect(String(metadata.description).length).toBeLessThanOrEqual(155);
   });
 
-  it("rend le fil d'Ariane, les quatre étapes, le suivi, les recours, la FAQ et l'appel", () => {
-    render(<HowItWorksPage />);
+  it("rend le fil d'Ariane, les quatre étapes, le suivi, les recours, la FAQ et l'appel", async () => {
+    render(await HowItWorksPage());
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Comment ça marche");
     expect(
       screen.getByRole("navigation", { name: "Fil d’Ariane" }).querySelector("[aria-current=page]"),
@@ -43,9 +43,9 @@ describe("Comment ça marche", () => {
     expect(screen.getByRole("link", { name: "Être rappelé(e)" })).toBeInTheDocument();
   });
 
-  it("masque en production les phrases liées à un engagement non validé", () => {
+  it("masque en production les phrases liées à un engagement non validé", async () => {
     vi.stubEnv("VERCEL_ENV", "production");
-    render(<HowItWorksPage />);
+    render(await HowItWorksPage());
     expect(screen.queryByText(/Si le courant ne passe pas/)).not.toBeInTheDocument();
     expect(screen.getByText("Dites-le à votre référent, sans détour.")).toBeInTheDocument();
   });

@@ -14,6 +14,8 @@ const input: LlmsInput = {
   fonctionnement: [
     { titre: "Comment ça marche", chemin: "/comment-ca-marche", description: "Quatre étapes." },
   ],
+  lexique: [],
+  magazine: [],
 };
 
 describe("llms.txt", () => {
@@ -71,5 +73,36 @@ describe("llms.txt", () => {
       const { meta } = await readServiceMeta(file);
       expect(chemins.includes(meta.chemin)).toBe(true);
     }
+    // Lexique : un terme par page, avec sa définition en une phrase (docs/04 §2, P9.4).
+    const { listLexiqueTerms } = await import("@/content/lexique");
+    const terms = await listLexiqueTerms();
+    expect(built.lexique).toHaveLength(terms.length);
+    for (const page of built.lexique) {
+      expect(page.chemin).toMatch(/^\/lexique\/[a-z0-9-]+\/$/);
+      expect(page.description.trim().length).toBeGreaterThan(0);
+      expect(page.titre.trim().length).toBeGreaterThan(0);
+    }
+    // Le Fil : tout article construit (D-035), jamais un brouillon.
+    const { listArticleMetas } = await import("@/content/article-meta");
+    const articles = await listArticleMetas({ warn: () => {} });
+    for (const article of articles) {
+      expect(built.magazine.some((p) => p.chemin === article.chemin)).toBe(
+        article.meta.statut !== "brouillon",
+      );
+    }
+  });
+
+  it("rend les sections Lexique et Le Fil quand elles ont des pages", () => {
+    const text = renderLlmsTxt({
+      ...input,
+      lexique: [{ titre: "APA", chemin: "/lexique/apa/", description: "Une allocation." }],
+      magazine: [{ titre: "Un article", chemin: "/magazine/un-article/", description: "Résumé." }],
+    });
+    expect(text).toContain(
+      "## Lexique\n\n- [APA](https://exemple.test/lexique/apa/): Une allocation.",
+    );
+    expect(text).toContain(
+      "## Le Fil, le magazine\n\n- [Un article](https://exemple.test/magazine/un-article/): Résumé.",
+    );
   });
 });

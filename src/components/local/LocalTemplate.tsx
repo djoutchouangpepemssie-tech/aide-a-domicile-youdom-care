@@ -4,10 +4,19 @@ import { Breadcrumb, type BreadcrumbItem } from "@/components/blocks/Breadcrumb/
 import { SiteConversionRail } from "@/components/blocks/ConversionRail/SiteConversionRail";
 import { FAQ } from "@/components/blocks/FAQ/FAQ";
 import { Hero } from "@/components/blocks/Hero/Hero";
+import { HeroSection } from "@/components/blocks/Hero/HeroSection";
+import {
+  heroOnlyWide,
+  heroPhotoSizes,
+  heroWhenRoomy,
+  sceneByTerritory,
+  sceneTint,
+} from "@/components/blocks/Hero/hero-scene";
+import { TerritorySearch } from "@/components/blocks/TerritorySearch/TerritorySearch";
 import { formatFrenchDate } from "@/components/blocks/SourcesList/SourcesList";
 import { WeekPlanner } from "@/components/blocks/WeekPlanner/WeekPlanner";
 import { WeekStory } from "@/components/blocks/WeekStory/WeekStory";
-import { RappelForm } from "@/components/forms/RappelForm/RappelForm";
+import { LazyRappelForm } from "@/components/forms/DeferredForm/LazyRappelForm";
 import { Section } from "@/components/layout/Section/Section";
 import { Reveal } from "@/components/motion/Reveal/Reveal";
 import { Tilt } from "@/components/motion/Tilt/Tilt";
@@ -15,7 +24,7 @@ import { toIconName } from "@/components/service/service-icons";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon } from "@/components/ui/Icon/Icon";
 import { Lead } from "@/components/ui/Lead/Lead";
-import { PhotoFigure, photoSizes } from "@/components/ui/PhotoFigure/PhotoFigure";
+import { PhotoFigure } from "@/components/ui/PhotoFigure/PhotoFigure";
 import type { LocalData, LocalEditorial, LocalFact } from "@/content/local-schema";
 import type { Agency, Aid, InterfaceTexts, Navigation, WeekExample } from "@/content/schemas";
 import { cn } from "@/lib/cn";
@@ -84,6 +93,11 @@ export interface LocalTemplateData {
   departementHref: string | null;
   /** Page de département : pages de communes et d'arrondissements construites, par nom. */
   departementPages?: readonly { href: string; label: string }[];
+  /**
+   * Pages construites les plus proches hors voisines déclarées (`nearbyPages`, P9.4), rendues
+   * dans la liste des voisines à leur rang de distance.
+   */
+  nearbyPages?: readonly { code: string; nom: string; chemin: string; distance_km: number }[];
   confidentialiteHref: string;
   tarifsHref: string;
   reassurance: readonly string[];
@@ -181,10 +195,54 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
   const distance =
     distanceKm !== null && roundedDistance(distanceKm) !== null ? formatDistance(distanceKm) : null;
   const departementPages: readonly { href: string; label: string }[] = page.departementPages ?? [];
-  const neighbours = [...(data.communes_voisines ?? [])].sort(
-    (a, b) => a.distance_km - b.distance_km,
-  );
+  // Voisines déclarées (lien seulement si leur page est construite), puis les pages proches
+  // calculées (`nearbyPages`, toujours construites) à leur rang de distance.
+  const declared = data.communes_voisines ?? [];
+  const neighbours = [
+    ...declared.map((n) => ({
+      code: n.code,
+      nom: n.nom,
+      distance_km: n.distance_km,
+      href: neighbourPaths[n.code],
+    })),
+    ...(page.nearbyPages ?? [])
+      .filter((n) => !declared.some((v) => v.code === n.code))
+      .map((n) => ({ code: n.code, nom: n.nom, distance_km: n.distance_km, href: n.chemin })),
+  ].sort((a, b) => a.distance_km - b.distance_km);
   const insee = formInsee(data);
+  /*
+   * Scène du territoire (D-032) : la teinte vient du code du département, ou du code de la
+   * commune à défaut — deux territoires voisins ne se ressemblent donc pas, et une page garde
+   * toujours sa couleur.
+   */
+  const heroScene = sceneByTerritory(data.departement ?? data.code);
+  const searchTexts = { ...texts.recherche_commune, hors: texts.formulaires.hors_idf };
+  /*
+   * Interaction immédiate du hero (brief docs/design/BRIEF_LIQUID_GLASS.md §4) : la réponse est
+   * déjà là — « Oui, nous intervenons à … » et l'agence réelle la plus proche avec sa distance
+   * arrondie — et la recherche de commune permet d'en vérifier une autre, au clavier. Aucun fait
+   * nouveau : les textes sont ceux de content/interface.json, l'agence celle du pipeline.
+   */
+  const heroAnswer = (
+    <div data-local-reponse-hero="">
+      <p className="heading-4 m-0 text-teal-900">{fill(t.reponse.oui, { lieu })}</p>
+      {agency ? (
+        <p className={cn("m-0 mt-1 text-small", heroWhenRoomy)}>
+          {fill(agencyResponse(data, agency, distance, t), {
+            agence: agency.nom,
+            distance: distance ?? "",
+            lieu,
+            commune: agency.commune,
+          })}
+        </p>
+      ) : null}
+      <TerritorySearch
+        className="mt-3"
+        texts={searchTexts}
+        agencies={agency ? { [agency.id]: agency.nom } : {}}
+      />
+    </div>
+  );
   const rappelTexts = {
     ...texts.formulaires,
     ...texts.formulaires.rappel,
@@ -229,13 +287,14 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
       data-local-code={data.code}
       data-statut={editorial.statut}
     >
-      {/* D-034 : aucun bandeau d'avertissement de relecture n'est affiché. */}
-      <div className="container-site pt-6">
-        <Breadcrumb texts={texts.fil_ariane} items={[...crumbs, { label: data.nom }]} />
-      </div>
-
-      {/* 1. Bannière locale */}
-      <Section tone="paper" aria-label={surtitle} className="pt-8!">
+      {/* D-034 : pas de bandeau d'avertissement visible ; la page reste `noindex` (D-033). */}
+      {/* 1. Bannière locale : scène du territoire, réponse immédiate et recherche dans le hero. */}
+      <HeroSection scene={heroScene} aria-label={surtitle}>
+        <Breadcrumb
+          texts={texts.fil_ariane}
+          items={[...crumbs, { label: data.nom }]}
+          className={cn("mb-4", heroOnlyWide)}
+        />
         <Hero
           surtitle={surtitle}
           title={h1}
@@ -244,6 +303,9 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           secondary={{ label: texts.boutons.demande_detaillee, href: navigation.demande_href }}
           phone={phone && telHref ? { label: formatFrenchPhone(phone), href: telHref } : null}
           reassurance={reassurance}
+          tint={sceneTint(heroScene)}
+          cue={{ label: fill(t.vivre_h2, { lieu }), href: "#vivre" }}
+          gesture={heroAnswer}
           media={
             <PhotoFigure
               src={photo.src}
@@ -252,13 +314,13 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
               ratio="4:5"
               mobileRatio="16:9"
               radius={28}
-              sizes={photoSizes.hero}
+              sizes={heroPhotoSizes}
               priority
             />
           }
           thread={{ fil: "generique", knot: photo.focal ?? "50% 50%" }}
         />
-      </Section>
+      </HeroSection>
 
       <div className="relative" data-rail-zone>
         {/* 2. Réponse immédiate */}
@@ -493,7 +555,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                   data-local-voisines
                 >
                   {neighbours.map((neighbour) => {
-                    const href = neighbourPaths[neighbour.code];
+                    const { href } = neighbour;
                     const distanceLabel = fill(t.voisines_distance, {
                       distance: formatDistance(neighbour.distance_km),
                     });
@@ -570,7 +632,8 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
         </div>
       </div>
 
-      {/* 10. Formulaire avec la commune préremplie */}
+      {/* 10. Formulaire avec la commune préremplie : balisage rendu par le serveur, code (et
+          liste des communes) chargé à l'approche de la section (DeferredForm, D-030). */}
       <Section
         tone="white"
         id="formulaire"
@@ -583,7 +646,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
         </Heading>
         <Lead className="mt-3">{t.formulaire_texte}</Lead>
         <div className="mt-8 max-w-3xl">
-          <RappelForm
+          <LazyRappelForm
             texts={rappelTexts}
             phone={phone}
             confidentialiteHref={confidentialiteHref}

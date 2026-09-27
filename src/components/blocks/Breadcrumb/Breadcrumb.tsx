@@ -66,7 +66,12 @@ export function Breadcrumb({ items, texts, className, siteUrl }: BreadcrumbProps
                   {item.label}
                 </span>
               ) : (
-                <Link href={item.href} className="inline-flex min-h-12 items-center text-link">
+                // `min-w-11` : un libellé court (« APA », « Le Fil ») garde une cible de 44 px
+                // de large (WCAG 2.5.8, P9.6).
+                <Link
+                  href={item.href}
+                  className="inline-flex min-h-12 min-w-11 items-center text-link"
+                >
                   {item.label}
                 </Link>
               )}

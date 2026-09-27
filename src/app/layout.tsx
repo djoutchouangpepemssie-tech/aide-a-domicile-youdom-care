@@ -53,7 +53,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${atkinson.variable}`}
       suppressHydrationWarning
     >
-      <body className="pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
+      {/* La place de la barre d'action mobile est réservée par le pied de page lui-même (P9.6) :
+          le fond teal descend ainsi jusqu'au bas du document, sans bande de papier dessous. */}
+      <body>
         <ComfortScript />
         <MotionScript />
         <SiteHeader />

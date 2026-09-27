@@ -11,6 +11,7 @@ import { Icon } from "@/components/ui/Icon/Icon";
 import type { IconName } from "@/components/ui/Icon/icons";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Thread } from "@/components/ui/Thread/Thread";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import {
   getCommitments,
   getInterfaceTexts,
@@ -100,10 +101,12 @@ export default async function RecruitmentPage() {
     </ul>
   );
 
+  const groupLinks = await groupCards("/recrutement/");
   return (
-    <main id="contenu">
+    // D-032 : scène de la famille « entreprise ».
+    <main id="contenu" data-famille="entreprise">
       <JsonLd data={jsonLd} />
-      <Section tone="paper" aria-labelledby="titre">
+      <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: crumbLabel }]} className="mb-6" />
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">
           <div>
@@ -175,7 +178,10 @@ export default async function RecruitmentPage() {
         <ul className="m-0 mt-6 grid list-none gap-2 p-0 sm:grid-cols-2 lg:grid-cols-3">
           {agences.map((agency) => (
             <li key={agency.id} className="max-w-none">
-              <Link href={`/agences/${agency.id}/`} className="font-bold">
+              <Link
+                href={`/agences/${agency.id}/`}
+                className="inline-flex min-h-11 items-center font-bold"
+              >
                 {agency.nom}
               </Link>
               <span className="text-text-soft">
@@ -226,6 +232,8 @@ export default async function RecruitmentPage() {
           </div>
         </div>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

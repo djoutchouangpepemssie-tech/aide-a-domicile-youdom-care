@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
+@import "./glass.css";
+@import "./scenes.css";
 @import "./motion.css";
 @import "./print.css";
 
@@ -9,23 +11,28 @@
   --color-ink: var(--color-ink);
   --color-ink-soft: var(--color-ink-soft);
   --color-teal-50: var(--color-teal-50);
+  --color-teal-100: var(--color-teal-100);
   --color-teal-500: var(--color-teal-500);
   --color-teal-600: var(--color-teal-600);
   --color-teal-700: var(--color-teal-700);
   --color-teal-800: var(--color-teal-800);
   --color-teal-900: var(--color-teal-900);
   --color-green-50: var(--color-green-50);
+  --color-green-100: var(--color-green-100);
   --color-green-500: var(--color-green-500);
   --color-green-700: var(--color-green-700);
   --color-raspberry-50: var(--color-raspberry-50);
+  --color-raspberry-100: var(--color-raspberry-100);
   --color-raspberry-500: var(--color-raspberry-500);
   --color-raspberry-600: var(--color-raspberry-600);
   --color-raspberry-700: var(--color-raspberry-700);
   --color-azure-50: var(--color-azure-50);
+  --color-azure-100: var(--color-azure-100);
   --color-azure-600: var(--color-azure-600);
   --color-azure-700: var(--color-azure-700);
   --color-paper: var(--color-paper);
   --color-sand: var(--color-sand);
+  --color-sand-deep: var(--color-sand-deep);
   --color-white: var(--color-white);
   --color-line: var(--color-line);
   --color-field-border: var(--color-field-border);
@@ -83,6 +90,7 @@
   --shadow-*: initial;
   --shadow-1: var(--shadow-1);
   --shadow-2: var(--shadow-2);
+  --shadow-3: var(--shadow-3);
 
   --ease-out: var(--ease-out);
 }

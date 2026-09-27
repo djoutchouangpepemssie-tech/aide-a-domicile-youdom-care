@@ -33,6 +33,7 @@ export interface CheckboxGroupProps extends Omit<
 /**
  * Cases à cocher groupées dans un `fieldset` avec `legend` (docs/05 §4 : « Plusieurs choix
  * possibles »). Chaque case est une cible de 48 px ; aide et erreur sont reliées au groupe.
+ * Verre liquide (D-032) : verre discret au repos, aplat teal-50 plein quand la case est cochée.
  */
 export function CheckboxGroup({
   id: givenId,
@@ -84,7 +85,7 @@ export function CheckboxGroup({
                 <label
                   htmlFor={optionId}
                   className={cn(
-                    "flex min-h-12 cursor-pointer items-start gap-3 rounded-field border border-field-border bg-white px-4 py-3",
+                    "glass-quiet flex min-h-12 cursor-pointer items-start gap-3 rounded-field border border-field-border px-4 py-3",
                     "has-[:checked]:border-teal-700 has-[:checked]:bg-teal-50 has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-sand",
                     "has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus",
                   )}

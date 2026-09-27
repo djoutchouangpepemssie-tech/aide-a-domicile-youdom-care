@@ -42,7 +42,12 @@ export interface FooterProps {
   comfortSlot?: ReactNode;
 }
 
-const linkClass = "text-white no-underline hover:underline";
+/*
+ * Chaque lien du pied de page est une cible de 44 px de haut (WCAG 2.5.8, audit P9.6 : les liens
+ * des colonnes mesuraient 22 px). La hauteur remplace l'écart vertical de la liste (`gap`), le
+ * dessin ne change donc presque pas.
+ */
+const linkClass = "inline-flex min-h-11 items-center text-white no-underline hover:underline";
 
 function LinkColumn({
   title,
@@ -58,7 +63,7 @@ function LinkColumn({
       <h2 id={id} className="heading-4 text-white">
         {title}
       </h2>
-      <ul className="m-0 mt-3 flex list-none flex-col gap-2 p-0">
+      <ul className="m-0 mt-2 flex list-none flex-col p-0">
         {links.map((link) => (
           <li key={link.href} className="max-w-none">
             <Link href={link.href} className={linkClass}>
@@ -96,8 +101,10 @@ export function Footer({
   ];
 
   return (
+    // La barre d'action mobile recouvre 4 rem en bas de l'écran jusqu'à 64 rem : le pied réserve
+    // la place, sinon sa dernière ligne (mentions légales) reste inatteignable (D-032 §6).
     <footer className="mt-16 bg-footer-bg text-footer-text" data-print="hide">
-      <div className="container-site py-12">
+      <div className="container-site pt-12 pb-[calc(3rem+4rem+env(safe-area-inset-bottom))] lg:pb-12">
         <div className="flex flex-col gap-4 border-b border-white/20 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="heading-3 text-white">{brandName}</p>
@@ -111,7 +118,7 @@ export function Footer({
             <h2 id="pied-joindre" className="heading-4 text-white">
               {texts.nous_joindre}
             </h2>
-            <ul className="m-0 mt-3 flex list-none flex-col gap-2 p-0">
+            <ul className="m-0 mt-2 flex list-none flex-col p-0">
               {phones.map((phone) => (
                 <li key={phone.href} className="max-w-none">
                   <a
@@ -138,8 +145,10 @@ export function Footer({
           <LinkColumn id="pied-territoires" title={texts.territoires} links={territories} />
         </div>
 
+        {/* `nav`, comme les autres colonnes de liens : une région « Nos agences » ferait doublon avec
+            celle de la carte régionale (axe landmark-unique, RGAA 12.6). */}
         {agencies.length > 0 ? (
-          <section aria-labelledby="pied-agences" className="mt-10 border-t border-white/20 pt-8">
+          <nav aria-labelledby="pied-agences" className="mt-10 border-t border-white/20 pt-8">
             <h2 id="pied-agences" className="heading-4 text-white">
               {texts.nos_agences}
             </h2>
@@ -148,7 +157,7 @@ export function Footer({
                 <li key={agency.id} className="max-w-none">
                   <Link
                     href={`/agences/${agency.id}/`}
-                    className={`block ${linkClass}`}
+                    className="block text-white no-underline hover:underline"
                     aria-label={`${texts.voir_agence.replace("{nom}", agency.nom)}, ${agency.adresse}, ${agency.code_postal} ${agency.commune}`}
                   >
                     <span className="block font-bold">{agency.nom}</span>
@@ -160,7 +169,7 @@ export function Footer({
                     <a
                       href={`tel:${agency.telephone.replace(/\s/g, "")}`}
                       data-mesure="pied-de-page"
-                      className={`tabular-figures mt-1 block text-small ${linkClass}`}
+                      className={`tabular-figures mt-1 text-small ${linkClass}`}
                     >
                       {agency.telephone}
                     </a>
@@ -168,7 +177,7 @@ export function Footer({
                 </li>
               ))}
             </ul>
-          </section>
+          </nav>
         ) : null}
 
         <div className="mt-10 grid gap-10 border-t border-white/20 pt-8 lg:grid-cols-[1fr_auto]">
@@ -192,14 +201,16 @@ export function Footer({
           ) : null}
         </div>
 
+        {/* Liens légaux : cible de 44 px de haut (WCAG 2.5.8, audit P8.4 R-3) ; le retrait du
+            padding compense la hauteur ajoutée, la ligne garde sa place dans le dessin. */}
         <nav
           aria-label={texts.navigation_pied}
-          className="mt-10 flex flex-col gap-3 border-t border-white/20 pt-6 text-small sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
+          className="mt-10 flex flex-col gap-3 border-t border-white/20 pt-3 text-small sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
         >
-          <ul className="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0">
+          <ul className="m-0 flex list-none flex-wrap gap-x-4 gap-y-0 p-0">
             {legal.map((link) => (
               <li key={link.href} className="max-w-none">
-                <Link href={link.href} className={linkClass}>
+                <Link href={link.href} className={`inline-flex min-h-11 items-center ${linkClass}`}>
                   {link.libelle}
                 </Link>
               </li>

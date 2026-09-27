@@ -212,6 +212,10 @@ describe("MultiStepForm", () => {
     });
     const alert = await screen.findByText(/L'envoi n'a pas abouti/);
     expect(alert).toBeInTheDocument();
+    // Audit P8.4 R-4 : l'alerte reçoit le focus, sans entrer dans l'ordre de tabulation.
+    const callout = alert.closest('[role="alert"]');
+    expect(callout).toHaveAttribute("tabindex", "-1");
+    await waitFor(() => expect(callout).toHaveFocus());
     expect(screen.getByRole("link", { name: /01.84.80.17.03/ })).toHaveAttribute(
       "href",
       "tel:+33184801703",

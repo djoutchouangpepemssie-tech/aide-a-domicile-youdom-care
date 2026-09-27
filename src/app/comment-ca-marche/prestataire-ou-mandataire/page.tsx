@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/Card/Card";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Thread } from "@/components/ui/Thread/Thread";
+import { themeBlocks, ThemeLinksBlock } from "@/components/blocks/RelatedLinks/ThemeLinks";
 import { getInterfaceTexts, getModesPage, getNavigation, getSiteConfig } from "@/content/loader";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -26,7 +27,7 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function ModesPage() {
+export default async function ModesPage() {
   const page = getModesPage();
   const { modes_intervention } = getSiteConfig();
   const navigation = getNavigation();
@@ -38,6 +39,7 @@ export default function ModesPage() {
 
   const choices = [page.question.non, page.question.oui];
 
+  const themes = await themeBlocks("/comment-ca-marche/prestataire-ou-mandataire/");
   return (
     <main id="contenu">
       <Section tone="paper" aria-labelledby="titre">
@@ -101,7 +103,10 @@ export default function ModesPage() {
           <MandataireNotice texts={mandataire_notice} className="mt-6 max-w-3xl" />
         ) : null}
         <p className="m-0 mt-6">
-          <Link href={page.liens.tarifs.href} className="font-bold">
+          <Link
+            href={page.liens.tarifs.href}
+            className="inline-flex min-h-11 items-center font-bold"
+          >
             {page.liens.tarifs.libelle}
           </Link>
         </p>
@@ -139,6 +144,8 @@ export default function ModesPage() {
           </Button>
         </div>
       </Section>
+
+      <ThemeLinksBlock blocks={themes} section="paper" />
     </main>
   );
 }

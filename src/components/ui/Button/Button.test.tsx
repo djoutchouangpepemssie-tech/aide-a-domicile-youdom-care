@@ -23,7 +23,7 @@ describe("Button", () => {
     const link = screen.getByRole("link", { name: "Je décris ma situation" });
     // Hors du routeur Next (jsdom), Link normalise la barre finale : on tolère les deux formes.
     expect(link).toHaveAttribute("href", expect.stringMatching(/^\/demande\/?$/));
-    expect(link).toHaveClass("bg-secondary");
+    expect(link).toHaveClass("glass", "glass-dark", "text-white");
   });
 
   it("applique les variantes contour et lien", () => {
@@ -33,7 +33,10 @@ describe("Button", () => {
         <Button variant="link">Lien</Button>
       </>,
     );
-    expect(screen.getByRole("button", { name: "Contour" })).toHaveClass("border-teal-700");
+    expect(screen.getByRole("button", { name: "Contour" })).toHaveClass(
+      "border-teal-700",
+      "glass-quiet",
+    );
     expect(screen.getByRole("button", { name: "Lien" })).toHaveClass("underline");
   });
 

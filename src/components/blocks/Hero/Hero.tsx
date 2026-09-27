@@ -9,14 +9,40 @@ import { Thread } from "@/components/ui/Thread/Thread";
 import type { HeroThreadFil } from "@/components/ui/Thread/hero-threads";
 import type { ThreadIllustrationName } from "@/components/ui/Thread/illustrations";
 import { cn } from "@/lib/cn";
+import {
+  heroActionsClass,
+  heroGap,
+  heroGapWide,
+  heroLeadClamp,
+  heroMediaWidth,
+  heroOnlyWide,
+  heroOrderLast,
+  heroOrderPanel,
+  heroRows,
+  heroLeadPanelClass,
+  heroPanelClass,
+  heroTypeScale,
+  heroWhenRoomy,
+  heroWhenTall,
+  type GlassTint,
+} from "./hero-scene";
+import { ScrollCue } from "./ScrollCue";
 
 /*
- * Bannière (docs/02 §7 Hero, docs/01 §4 bloc 1, docs/design/CONCEPT.md §3 et §4) : sur-titre,
- * H1 (quatre lignes au plus sur mobile), chapô, geste d'entrée facultatif, deux boutons, lien
- * téléphone, ligne de réassurance, et un média : photo 4:5 (`media`) ou illustration au fil.
- * Un seul bouton framboise : le principal. Sur mobile (< 64 rem), il est masqué (`hidden
- * lg:contents` sur son enveloppe) : la barre mobile porte déjà « Rappel » et « Ma demande »
- * (docs/design/CONCEPT.md §3 bloc 1, §4) ; le bouton de contour et le téléphone restent visibles.
+ * Bannière (docs/02 §7 Hero, docs/01 §4 bloc 1, docs/design/CONCEPT.md §3 et §4, brief
+ * docs/design/BRIEF_LIQUID_GLASS.md §4, décision D-032) : une scène utile, pas une affiche.
+ *
+ * Ce que le visiteur a sous les yeux à l'arrivée, sans défiler : le sur-titre (où je suis), le H1
+ * (ce que le site fait pour lui), une phrase de promesse, **une interaction immédiate** dans un
+ * panneau de verre (choix de situation, « pour qui ? », recherche de commune, aperçu d'article),
+ * **une action principale** framboise, un lien secondaire, le téléphone, et un repère qui dit ce
+ * qu'on trouve plus bas. La hauteur de la scène et la compaction sont dans `hero-scene.ts` ; la
+ * section colorée est `HeroSection`.
+ *
+ * Compaction (hauteur visible, donc aussi zoom à 200 %) : à 42 rem de haut la photo, la
+ * réassurance et la note se retirent et les titres rapetissent ; à 36 rem le sur-titre part, le
+ * chapô tient sur deux lignes et le lien secondaire cède la place — il reste le titre, une phrase,
+ * l'interaction, l'action, le téléphone et le repère. Tout en CSS : aucun décalage (CLS 0).
  *
  * Profondeur et fil (docs/design/CONCEPT.md §2, §4, §6) : autour du média, `HeroDepth` fait
  * pivoter la photo, le fil et le nœud vers le pointeur (`depth`, 4° par défaut, 2 pour les
@@ -24,13 +50,12 @@ import { cn } from "@/lib/cn";
  * dernier mot du H1 et pose son nœud sur la photo (`thread`, géométrie `generique` par défaut,
  * `null` pour s'en passer). Les deux ne s'activent qu'avec `media`.
  *
- * Ordre mobile : sur-titre, H1, photo en bande 16:9 juste sous le H1, chapô, geste, boutons,
- * téléphone, réassurance, note. Ordinateur : grille 3fr / 2fr, la photo occupe la colonne de
- * droite (rayon 28 px, posé par le média). Sans `media`, l'illustration au fil garde sa place
- * d'origine : après le texte sur mobile, à droite sur ordinateur.
+ * Ordre mobile : sur-titre, H1, photo en bande 16:9, chapô, interaction, actions, téléphone,
+ * réassurance, note, repère. Ordinateur : grille 3fr / 2fr, la photo occupe la colonne de droite
+ * (largeur plafonnée pour que la scène tienne dans la hauteur visible), le tout centré.
  *
- * Ton `sombre` (garde de nuit, présence 24h/24) : fond teal-900 posé par la section parente,
- * texte blanc (contraste 10,3), textes secondaires teal-50 (9,2), fil blanc, contour blanc.
+ * Ton `sombre` (garde de nuit, présence 24h/24) : scène teal-900 posée par `HeroSection`, texte
+ * blanc (contraste 8,9), textes secondaires teal-50, fil blanc, contour blanc, verre dense.
  */
 
 export type HeroTone = "clair" | "sombre";
@@ -56,8 +81,17 @@ export interface HeroProps {
   illustration?: ThreadIllustrationName;
   /** Photo du hero (PhotoFigure 4:5, bande 16:9 sur mobile, rayon 28 px), avec son fil. */
   media?: ReactNode;
-  /** Geste d'entrée (choisir sa situation, bascule de lecteur…), sous le chapô. */
+  /** Interaction immédiate (choisir sa situation, dire pour qui, chercher sa commune…). */
   gesture?: ReactNode;
+  /**
+   * Où vit l'interaction immédiate : dans son panneau de verre (`gesture`, par défaut) ou dans le
+   * chapô (`lead`, quand le sélecteur « pour vous / pour un proche » y bascule le texte et la photo).
+   */
+  interaction?: "gesture" | "lead";
+  /** Teinte du verre du panneau, selon le public de la page (`hero-scene.ts`). */
+  tint?: GlassTint;
+  /** Repère de défilement : le titre de la section suivante et son ancre. */
+  cue?: { label: string; href: string };
   tone?: HeroTone;
   /**
    * Rotation maximale de la scène vers le pointeur, en degrés (HeroDepth) : 4 par défaut,
@@ -71,10 +105,6 @@ export interface HeroProps {
   thread?: HeroThreadSpec | null;
 }
 
-/* Colonne de gauche sur ordinateur ; le média occupe la colonne de droite sur toutes les lignes. */
-const column = "lg:col-start-1";
-const mediaCell = "lg:col-start-2 lg:row-start-1 lg:row-span-8 lg:self-center";
-
 export function Hero({
   surtitle,
   title,
@@ -87,6 +117,9 @@ export function Hero({
   illustration = "maison",
   media,
   gesture,
+  interaction = "gesture",
+  tint = "teal",
+  cue,
   tone = "clair",
   depth = 4,
   thread,
@@ -98,25 +131,42 @@ export function Hero({
   return (
     <div
       className={cn(
-        "hero grid grid-cols-1 gap-x-10 gap-y-0 lg:grid-cols-[3fr_2fr] lg:grid-rows-[repeat(8,auto)]",
+        "hero grid w-full grid-cols-1 gap-x-10 gap-y-0",
+        "lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:grid-rows-[repeat(10,auto)]",
+        heroTypeScale,
         dark && "text-white",
       )}
       data-tone={tone}
+      data-hero=""
     >
       <p
         className={cn(
-          column,
+          heroRows.surtitle,
+          heroOnlyWide,
+          heroWhenRoomy,
           "m-0 text-small font-bold tracking-wide uppercase",
           dark ? "text-teal-50" : "text-teal-800",
         )}
+        data-hero-surtitle=""
       >
         {surtitle}
       </p>
-      <Heading level={1} className={cn(column, "mt-3")}>
+      <Heading level={1} className={cn(heroRows.title, heroGap)}>
         {title}
       </Heading>
       {media ? (
-        <div className={cn(mediaCell, "hero-media relative mt-6 lg:mt-0")}>
+        <div
+          className={cn(
+            heroRows.media,
+            // La photo n'apparaît qu'à partir de 64 rem, dans la colonne de droite, largeur
+            // plafonnée : au-delà, la scène ne tiendrait plus dans la hauteur visible.
+            heroOnlyWide,
+            heroWhenTall,
+            "hero-media relative lg:mt-0",
+            heroMediaWidth,
+            heroGapWide,
+          )}
+        >
           {thread === null ? (
             <HeroDepth maxDeg={depth}>{media}</HeroDepth>
           ) : (
@@ -135,42 +185,76 @@ export function Hero({
           illustration={illustration}
           tone={dark ? "dark" : "light"}
           className={cn(
-            mediaCell,
+            heroRows.media,
+            heroOnlyWide,
+            heroWhenTall,
             "order-last mx-auto mt-10 w-full max-w-sm lg:order-none lg:mt-0 lg:max-w-none",
           )}
         />
       )}
-      <Lead className={cn(column, "mt-5")}>{lead}</Lead>
-      {gesture ? <div className={cn(column, "hero-gesture mt-6")}>{gesture}</div> : null}
-      <div className={cn(column, "mt-8 flex flex-wrap items-center gap-4")}>
-        {/* Mobile : la barre basse porte déjà le rappel et la demande ; le principal attend 64 rem. */}
-        <span className="hidden lg:contents" data-hero-primary="">
+      <div
+        className={cn(
+          heroRows.lead,
+          heroGap,
+          // Le chapô ne passe sur un panneau de verre que lorsqu'il porte l'interaction ; il passe
+          // alors aussi derrière l'action au dernier palier, comme les autres panneaux.
+          interaction === "lead" && cn(heroLeadPanelClass(dark), heroOrderPanel),
+        )}
+        data-hero-interaction={interaction === "lead" ? "" : undefined}
+      >
+        {/* Chapô borné à deux ou trois lignes, sauf quand il porte le sélecteur de lecteur : le
+            recadrage d'un texte multiligne ne doit pas toucher aux boutons qui y vivent. */}
+        <Lead className={interaction === "lead" ? undefined : heroLeadClamp}>{lead}</Lead>
+      </div>
+      {gesture ? (
+        <div
+          className={cn(heroRows.panel, heroOrderPanel, heroGapWide, "lg:mt-6")}
+          data-hero-interaction={interaction === "gesture" ? "" : undefined}
+        >
+          <div className={heroPanelClass(tint, dark)}>{gesture}</div>
+        </div>
+      ) : null}
+      <div className={cn(heroRows.actions, heroActionsClass)}>
+        <span data-hero-primary="">
           <Button href={primary.href}>{primary.label}</Button>
         </span>
-        <Button
-          href={secondary.href}
-          variant="outline"
-          className={dark ? "border-white text-white hover:bg-white/10" : undefined}
-        >
-          {secondary.label}
-        </Button>
-      </div>
-      {phone ? (
-        <p className={cn(column, "m-0 mt-4")}>
+        {/* Lien secondaire : à partir de 64 rem. Sous cette largeur, la barre d'action mobile porte
+            déjà « Ma demande », et la hauteur visible d'un téléphone ne peut pas tout porter. */}
+        <span className={cn(heroOnlyWide, heroWhenRoomy)} data-hero-secondary="">
+          <Button
+            href={secondary.href}
+            variant="outline"
+            className={dark ? "border-white text-white hover:bg-white/10" : undefined}
+          >
+            {secondary.label}
+          </Button>
+        </span>
+        {/* Téléphone : à partir de 64 rem, où l'en-tête ne porte pas encore « Appeler ». Sous cette
+            largeur, la barre d'action mobile le porte en permanence. */}
+        {phone ? (
           <Link
             href={phone.href}
-            className={cn("tabular-figures inline-flex min-h-12 items-center font-bold", link)}
+            className={cn(
+              "tabular-figures inline-flex min-h-12 items-center font-bold",
+              heroOnlyWide,
+              heroWhenRoomy,
+              link,
+            )}
           >
             {phone.label}
           </Link>
-        </p>
-      ) : null}
+        ) : null}
+      </div>
       <ul
         className={cn(
-          column,
-          "m-0 mt-6 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-small",
+          heroRows.reassurance,
+          heroOnlyWide,
+          heroWhenTall,
+          "m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-small",
+          heroGap,
           soft,
         )}
+        data-hero-reassurance=""
       >
         {reassurance.map((item) => (
           <li key={item} className="flex max-w-none items-center gap-2">
@@ -193,10 +277,17 @@ export function Hero({
         ))}
       </ul>
       {footnote ? (
-        <p className={cn(column, "m-0 mt-2 text-small", soft)}>
+        <p
+          className={cn(heroRows.footnote, heroOnlyWide, heroWhenTall, "m-0 mt-2 text-small", soft)}
+        >
           <Link href={footnote.href} className={link}>
             {footnote.text}
           </Link>
+        </p>
+      ) : null}
+      {cue ? (
+        <p className={cn(heroRows.cue, heroOrderLast, "m-0", heroGap)}>
+          <ScrollCue label={cue.label} href={cue.href} tone={tone} />
         </p>
       ) : null}
     </div>

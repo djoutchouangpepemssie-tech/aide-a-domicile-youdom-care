@@ -47,7 +47,8 @@ export default function CallbackPage() {
         <Lead className="mt-5">{page.chapo}</Lead>
       </Section>
 
-      <Section tone="white" aria-label={page.h1}>
+      {/* Région nommée par le libellé court, distinct du H1 de la région d'en-tête (RGAA 12.6, R-1). */}
+      <Section tone="white" aria-label={page.ariane}>
         <div className="max-w-2xl">
           <MotiveNotice messages={page.motifs} className="mb-8" />
           <RappelForm

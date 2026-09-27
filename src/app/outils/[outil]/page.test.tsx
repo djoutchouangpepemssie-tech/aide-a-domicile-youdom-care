@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { listToolIds } from "@/content/tool-pages";
 import ToolRoute, { generateMetadata, generateStaticParams } from "./page";
@@ -40,9 +40,11 @@ describe("/outils/{slug}/", () => {
     ).toHaveTextContent("Tour du logement anti-chutes");
     // next/link rend l'adresse sans barre finale dans les tests (trailingSlash s'applique au build).
     const bare = (href: string | null) => (href ?? "").replace(/\/$/, "");
-    expect(bare(screen.getByRole("link", { name: "Outils à imprimer" }).getAttribute("href"))).toBe(
-      "/outils",
-    );
+    // Le fil d'Ariane mène à l'index ; le bloc « À lire aussi » (P9.4) le lie aussi, avec les autres outils.
+    const crumbs = screen.getByRole("navigation", { name: "Fil d’Ariane" });
+    expect(
+      bare(within(crumbs).getByRole("link", { name: "Outils à imprimer" }).getAttribute("href")),
+    ).toBe("/outils");
     expect(bare(screen.getByRole("link", { name: "Tous les outils" }).getAttribute("href"))).toBe(
       "/outils",
     );

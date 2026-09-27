@@ -4,7 +4,7 @@ import { listToolIds } from "@/content/tool-pages";
 import ToolsIndexPage, { generateMetadata } from "./page";
 
 describe("/outils/", () => {
-  it("a des balises titre et description aux longueurs de docs/01 §8 et une canonique", () => {
+  it("a des balises titre et description aux longueurs de docs/01 §8 et une canonique", async () => {
     const metadata = generateMetadata();
     expect(String(metadata.title).length).toBeGreaterThanOrEqual(50);
     expect(String(metadata.title).length).toBeLessThanOrEqual(60);
@@ -13,8 +13,8 @@ describe("/outils/", () => {
     expect(metadata.alternates?.canonical).toBe("https://www.youdom-care.com/outils/");
   });
 
-  it("liste les cinq outils avec un lien vers la page et un vers le PDF, sans demander d'e-mail", () => {
-    const { container } = render(<ToolsIndexPage />);
+  it("liste les cinq outils avec un lien vers la page et un vers le PDF, sans demander d'e-mail", async () => {
+    const { container } = render(await ToolsIndexPage());
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     const list = screen.getByRole("region", { name: "Les cinq outils" });
     const items = within(list).getAllByRole("listitem");

@@ -6,7 +6,7 @@ import { Heading } from "@/components/ui/Heading/Heading";
 import { Icon } from "@/components/ui/Icon/Icon";
 import type { ServicePublic } from "@/content/service-schema";
 import { cn } from "@/lib/cn";
-import type { RelatedLink } from "@/lib/seo/related";
+import type { RelatedCard } from "@/lib/seo/related";
 
 /*
  * Bloc « À lire aussi » (docs/04 §2 « Maillage », docs/design/CONCEPT.md §5 « cartes
@@ -15,6 +15,8 @@ import type { RelatedLink } from "@/lib/seo/related";
  * souris (`Tilt`) et révélées l'une après l'autre au défilement (`Reveal`, rien de caché sans
  * JavaScript). Sous le titre d'une carte, le nom du public quand il diffère de celui de la page
  * courante (« Nos services », « Aidants »), pour situer le lien. Sans lien, rien n'est rendu.
+ * Les cartes sont des `RelatedCard` : celles des pages services (`RelatedLink`) portent un
+ * public et un type ; celles des blocs thématiques (articles, lexique, groupe du plan) non.
  */
 
 export const RELATED_LINKS_TILT = 3;
@@ -23,7 +25,7 @@ export interface RelatedLinksProps {
   /** Identifiant du titre : cible de `aria-labelledby` de la section qui l'entoure. */
   id: string;
   title: string;
-  links: readonly RelatedLink[];
+  links: readonly RelatedCard[];
   /** Libellés des publics (`interface.service.publics`). */
   publics?: Partial<Record<ServicePublic, string>>;
   /** Public de la page courante : son nom n'est pas répété sous les cartes. */
@@ -51,9 +53,12 @@ export function RelatedLinks({ id, title, links, publics, current, className }: 
         {links.map((link) => {
           const icon = toIconName(link.icone);
           const group =
-            link.public !== current && link.type !== "pilier" ? publics?.[link.public] : undefined;
+            link.public !== undefined && link.public !== current && link.type !== "pilier"
+              ? publics?.[link.public]
+              : undefined;
+          // min-w-0 : la colonne ne s'élargit pas sur un mot long sous espacement du texte forcé (RGAA 10.12).
           return (
-            <li key={link.href} className="max-w-none">
+            <li key={link.href} className="min-w-0 max-w-none">
               <Tilt as="article" max={RELATED_LINKS_TILT} className="h-full">
                 <Link href={link.href} prefetch={false} className={card} data-tier={link.tier}>
                   {icon ? <Icon name={icon} /> : null}

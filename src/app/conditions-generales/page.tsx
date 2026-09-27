@@ -5,6 +5,7 @@ import { Section } from "@/components/layout/Section/Section";
 import { LegalHeader } from "@/components/legal/LegalHeader";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Prose } from "@/components/ui/Prose/Prose";
+import { groupCards, GroupLinksBlock } from "@/components/blocks/RelatedLinks/GroupLinks";
 import {
   CONDITIONS_GENERALES_PATH,
   formatLegalDate,
@@ -30,12 +31,13 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function ConditionsGeneralesPage() {
+export default async function ConditionsGeneralesPage() {
   const page = getConditionsGenerales();
   const { modes_intervention } = getSiteConfig();
   const { mandataire_notice } = getInterfaceTexts();
   const hasMandataire = modes_intervention.includes("mandataire");
 
+  const groupLinks = await groupCards("/conditions-generales/");
   return (
     <main id="contenu">
       <LegalHeader
@@ -109,6 +111,8 @@ export default function ConditionsGeneralesPage() {
           ))}
         </ul>
       </Section>
+
+      <GroupLinksBlock links={groupLinks} />
     </main>
   );
 }

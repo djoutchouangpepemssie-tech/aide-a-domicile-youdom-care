@@ -9,6 +9,7 @@ import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Thread } from "@/components/ui/Thread/Thread";
+import { themeBlocks, ThemeLinksBlock } from "@/components/blocks/RelatedLinks/ThemeLinks";
 import {
   getAids,
   getInterfaceTexts,
@@ -43,7 +44,7 @@ export function generateMetadata(): Metadata {
 
 const frenchDate = new Intl.DateTimeFormat("fr-FR", { dateStyle: "long" });
 
-export default function PricingPage() {
+export default async function PricingPage() {
   const page = getPricingPage();
   const pricing = getPricing();
   const { aides } = getAids();
@@ -85,9 +86,11 @@ export default function PricingPage() {
       .map((f) => ({ ...f, prestation: s.libelle })),
   );
 
+  const themes = await themeBlocks("/tarifs-et-aides/");
   return (
-    <main id="contenu">
-      <Section tone="paper" aria-labelledby="titre">
+    // D-032 : scène sable pour les prix et les aides.
+    <main id="contenu" data-scene="sable">
+      <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">
           <div>
@@ -114,8 +117,41 @@ export default function PricingPage() {
               )}
             </p>
           ) : null}
+          {/* Sous 48 rem, le tableau de cinq colonnes ne tient pas au doigt : la même
+              information est rendue en une carte par prestation (D-032 §6, P9.6). Au-delà, le
+              tableau réel dans une zone défilante au clavier. */}
+          <ul className="m-0 mt-8 grid list-none gap-4 p-0 md:hidden" data-block="tarifs-liste">
+            {rows.map((item) => (
+              <li
+                key={item.id}
+                className="max-w-none rounded-card border border-line bg-white p-4 shadow-1"
+                data-mode={item.mode}
+              >
+                <p className="m-0 font-bold">{item.libelle}</p>
+                {item.activite ? (
+                  <p className="m-0 text-small text-text-soft">{item.activite}</p>
+                ) : null}
+                <p className="tabular-figures m-0 mt-2">
+                  <span className="figure text-h4">{formatEuro(item.prix_ttc)}</span>{" "}
+                  <span className="text-small text-text-soft">
+                    {tarifs.par_unite.replace("{unite}", tarifs.unites[item.unite])}
+                  </span>
+                </p>
+                <dl className="m-0 mt-2 grid gap-x-3 gap-y-1 text-small [grid-template-columns:max-content_1fr]">
+                  <dt className="m-0 text-text-soft">{page.tarifs.colonnes.mode}</dt>
+                  <dd className="m-0">{tarifs.modes[item.mode]}</dd>
+                  <dt className="m-0 text-text-soft">{page.tarifs.colonnes.prix_ht}</dt>
+                  <dd className="tabular-figures m-0">{formatEuro(item.prix_ht)}</dd>
+                  <dt className="m-0 text-text-soft">{page.tarifs.colonnes.apres_credit}</dt>
+                  <dd className="tabular-figures m-0">
+                    {formatEuro(afterTaxCredit(item.prix_ttc, rate))}
+                  </dd>
+                </dl>
+              </li>
+            ))}
+          </ul>
           <div
-            className="mt-8 overflow-x-auto focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-focus"
+            className="mt-8 hidden overflow-x-auto focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-focus md:block"
             tabIndex={0}
             role="region"
             aria-label={page.tarifs.h2}
@@ -360,6 +396,8 @@ export default function PricingPage() {
           </Button>
         </div>
       </Section>
+
+      <ThemeLinksBlock blocks={themes} section="paper" />
     </main>
   );
 }

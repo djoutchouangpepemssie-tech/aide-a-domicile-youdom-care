@@ -179,7 +179,10 @@ export function LexiqueTemplate({ data }: { data: LexiqueTemplateData }) {
             ) : null}
 
             <p className="m-0 mt-10">
-              <Link href={LEXIQUE_INDEX_HREF} className="font-bold">
+              <Link
+                href={LEXIQUE_INDEX_HREF}
+                className="inline-flex min-h-11 items-center font-bold"
+              >
                 {texts.retour}
               </Link>
             </p>

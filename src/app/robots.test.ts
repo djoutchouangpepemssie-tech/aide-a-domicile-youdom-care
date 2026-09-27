@@ -9,7 +9,8 @@ describe("robots.txt", () => {
 
   it("n'interdit tout que si SITE_INDEXABLE vaut « false » (D-035)", () => {
     vi.stubEnv("SITE_INDEXABLE", "false");
-    expect(robots().rules).toEqual({ userAgent: "*", disallow: "/" });
+    expect(robots()).toEqual({ rules: { userAgent: "*", disallow: "/" } });
+
     expect(robots().sitemap).toBeUndefined();
 
     // Sans variable, le site est ouvert : c'est le défaut depuis D-035.
@@ -17,7 +18,7 @@ describe("robots.txt", () => {
     expect(robots().sitemap).toBeDefined();
   });
 
-  it("ouvre le site sauf les chemins techniques une fois SITE_INDEXABLE à « true »", () => {
+  it("ouvre le site sauf les chemins techniques", () => {
     vi.stubEnv("SITE_INDEXABLE", "true");
     const result = robots();
     expect(result.rules).toEqual({

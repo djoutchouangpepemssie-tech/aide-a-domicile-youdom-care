@@ -64,7 +64,8 @@ export function ArticleCard({
         {rubriqueHref ? (
           <Link
             href={rubriqueHref}
-            className="relative z-10 self-start text-small font-bold text-teal-800 no-underline hover:underline"
+            // Cible de 44 px (WCAG 2.5.8, P9.6) : le lien de rubrique mesurait 24 px de haut.
+            className="relative z-10 inline-flex min-h-11 items-center self-start text-small font-bold text-teal-800 no-underline hover:underline"
           >
             {rubrique}
           </Link>

@@ -10,6 +10,7 @@ import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Lead } from "@/components/ui/Lead/Lead";
 import { Prose } from "@/components/ui/Prose/Prose";
+import { themeBlocks, ThemeLinksBlock } from "@/components/blocks/RelatedLinks/ThemeLinks";
 import { getAidPage, listAidPageIds } from "@/content/aid-pages";
 import { getInterfaceTexts, getNavigation, getPricingPage } from "@/content/loader";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -48,6 +49,7 @@ export default async function AidDetailPage({ params }: AidPageProps) {
   const navigation = getNavigation();
   const { boutons, fil_ariane, page_aide, aides: aidTexts } = getInterfaceTexts();
 
+  const themes = await themeBlocks(`/tarifs-et-aides/${aide}/`);
   return (
     <main id="contenu">
       <Section tone="paper" aria-labelledby="titre">
@@ -65,7 +67,7 @@ export default async function AidDetailPage({ params }: AidPageProps) {
         </p>
       </Section>
 
-      <Section tone="white" aria-label={page.h1}>
+      <Section tone="white" aria-label={page.ariane}>
         <Callout variant="attention" className="max-w-3xl">
           <p>{page_aide.avertissement}</p>
         </Callout>
@@ -144,7 +146,7 @@ export default async function AidDetailPage({ params }: AidPageProps) {
           texts={{ ...page_aide, lien_externe: aidTexts.lien_externe }}
         />
         <p className="m-0 mt-8">
-          <Link href="/tarifs-et-aides/" className="font-bold">
+          <Link href="/tarifs-et-aides/" className="inline-flex min-h-11 items-center font-bold">
             {page_aide.retour}
           </Link>
         </p>
@@ -162,6 +164,8 @@ export default async function AidDetailPage({ params }: AidPageProps) {
           </Button>
         </div>
       </Section>
+
+      <ThemeLinksBlock blocks={themes} section="paper" />
     </main>
   );
 }
