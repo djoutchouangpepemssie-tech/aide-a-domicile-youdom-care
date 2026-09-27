@@ -114,7 +114,11 @@ export function Footer({
             <ul className="m-0 mt-3 flex list-none flex-col gap-2 p-0">
               {phones.map((phone) => (
                 <li key={phone.href} className="max-w-none">
-                  <a href={phone.href} className={`tabular-figures ${linkClass}`}>
+                  <a
+                    href={phone.href}
+                    data-mesure="pied-de-page"
+                    className={`tabular-figures ${linkClass}`}
+                  >
                     {phone.display}
                   </a>
                 </li>
@@ -155,6 +159,7 @@ export function Footer({
                   {agency.telephone ? (
                     <a
                       href={`tel:${agency.telephone.replace(/\s/g, "")}`}
+                      data-mesure="pied-de-page"
                       className={`tabular-figures mt-1 block text-small ${linkClass}`}
                     >
                       {agency.telephone}

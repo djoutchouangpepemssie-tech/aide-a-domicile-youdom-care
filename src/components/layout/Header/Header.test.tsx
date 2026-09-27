@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { Header, type HeaderProps } from "./Header";
@@ -94,6 +94,28 @@ describe("Header", () => {
     expect(panel).not.toHaveAttribute("hidden");
     expect(within(panel as HTMLElement).getByText("Pour qui ?")).toBeInTheDocument();
     await userEvent.keyboard("{Escape}");
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("ferme le menu mobile quand la tabulation en sort vers la page (focus non masqué)", async () => {
+    render(
+      <>
+        <Header {...props} />
+        <button type="button">Contenu de la page</button>
+      </>,
+    );
+    const toggle = screen.getByRole("button", { name: "Menu" });
+    await userEvent.click(toggle);
+    const panel = document.getElementById("menu-mobile") as HTMLElement;
+    const links = within(panel).getAllByRole("link");
+    const last = links[links.length - 1] as HTMLElement;
+    last.focus();
+    // Le focus passe à un lien du panneau : le menu reste ouvert.
+    fireEvent.focusOut(toggle, { relatedTarget: last });
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    // Le focus quitte l'en-tête : le menu se ferme.
+    const outside = screen.getByRole("button", { name: "Contenu de la page" });
+    fireEvent.focusOut(last, { relatedTarget: outside });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
   });
 

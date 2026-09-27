@@ -86,6 +86,7 @@ export function AgencyCard({
             <dd className="m-0">
               <a
                 href={telHref}
+                data-mesure="agence"
                 className="tabular-figures inline-flex min-h-11 items-center font-bold"
               >
                 {formatFrenchPhone(phone)}

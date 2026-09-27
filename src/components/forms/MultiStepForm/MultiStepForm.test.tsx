@@ -6,6 +6,8 @@ import { clearStored, MultiStepForm, storageKey, type FormStep } from "./MultiSt
 
 const push = vi.fn();
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
+const { track } = vi.hoisted(() => ({ track: vi.fn() }));
+vi.mock("@/lib/mesure/client", () => ({ track }));
 
 interface Demo {
   prenom: string;
@@ -90,6 +92,61 @@ describe("MultiStepForm", () => {
     expect(screen.getByText("Étape 1 sur 2")).toBeInTheDocument();
   });
 
+  it("met le focus sur le premier contrôle d'un groupe en erreur (le fieldset porte l'identifiant)", () => {
+    const groupSteps: FormStep<Demo>[] = [
+      {
+        id: "groupe",
+        title: "Pour qui cherchez-vous de l'aide ?",
+        render: ({ value, setValue, errors, fieldId }) => (
+          <fieldset
+            id={fieldId("choix")}
+            aria-describedby={errors["choix"] ? `${fieldId("choix")}-erreur` : undefined}
+          >
+            <legend>Pour qui ?</legend>
+            <label>
+              <input
+                type="radio"
+                name="choix"
+                checked={value.prenom === "moi"}
+                onChange={() => setValue({ ...value, prenom: "moi" })}
+              />
+              Moi-même
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="choix"
+                checked={value.prenom === "parent"}
+                onChange={() => setValue({ ...value, prenom: "parent" })}
+              />
+              Mon père ou ma mère
+            </label>
+            {errors["choix"] ? <p id={`${fieldId("choix")}-erreur`}>{errors["choix"]}</p> : null}
+          </fieldset>
+        ),
+        validate: (value): Record<string, string> =>
+          value.prenom ? {} : { choix: "Il manque pour qui vous cherchez de l'aide." },
+      },
+      ...steps.slice(1),
+    ];
+    render(
+      <MultiStepForm<Demo>
+        form="rappel"
+        steps={groupSteps}
+        initialValue={{ prenom: "", telephone: "" }}
+        texts={texts}
+        onSubmit={vi.fn(async () => {})}
+        successHref="/merci/rappel/"
+        phone={null}
+      />,
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Continuer" }));
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "Il manque pour qui vous cherchez de l'aide.",
+    );
+    expect(screen.getByRole("radio", { name: "Moi-même" })).toHaveFocus();
+  });
+
   it("avance, revient, conserve les réponses sur l'appareil et les efface après l'envoi", async () => {
     const onSubmit = renderForm();
     fireEvent.change(screen.getByLabelText("Votre prénom"), { target: { value: "Claire" } });
@@ -126,6 +183,22 @@ describe("MultiStepForm", () => {
     expect(screen.getByLabelText("Votre prénom")).toHaveValue("Paul");
     clearStored("rappel");
     expect(window.sessionStorage.getItem(storageKey("rappel"))).toBeNull();
+  });
+
+  it("compte chaque étape affichée une seule fois, même après la reprise d'une saisie (D-029)", async () => {
+    track.mockClear();
+    window.sessionStorage.setItem(
+      storageKey("rappel"),
+      JSON.stringify({ step: 1, value: { prenom: "Paul", telephone: "" } }),
+    );
+    renderForm();
+    expect(await screen.findByText("Étape 2 sur 2")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Retour" }));
+    // Pas d'étape 1 fantôme pendant le montage : l'étape reprise, puis celle où l'on revient.
+    expect(track.mock.calls).toEqual([
+      ["demande_etape_vue", { formulaire: "rappel", etape: 2 }],
+      ["demande_etape_vue", { formulaire: "rappel", etape: 1 }],
+    ]);
   });
 
   it("garde les réponses à l'écran et propose le téléphone quand l'envoi échoue", async () => {

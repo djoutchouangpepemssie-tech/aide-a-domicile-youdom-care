@@ -2,6 +2,7 @@ import type { CommuneRecord } from "@/lib/geo/geo";
 import type { IdfDepartment, LeadForm, Urgency } from "./forms";
 import { idfDepartments } from "./forms";
 import { leadPayloadSchema, type LeadContact, type LeadPayload, type LeadPlanning } from "./schema";
+import { track } from "@/lib/mesure/client";
 import type { SubmitMeta } from "@/components/forms/MultiStepForm/MultiStepForm";
 
 /*
@@ -98,4 +99,13 @@ export async function sendLead(lead: LeadPayload, meta: SubmitMeta): Promise<voi
     body: JSON.stringify(body),
   });
   if (!response.ok) throw new Error(`api/lead : ${response.status}`);
+  // Mesure (docs/05 §9) : le formulaire et le département, jamais la commune ni la saisie.
+  if (lead.form === "rappel") {
+    track("rappel_envoye", {});
+  } else {
+    track("demande_envoyee", {
+      formulaire: lead.form,
+      ...(lead.commune ? { departement: lead.commune.departement } : {}),
+    });
+  }
 }

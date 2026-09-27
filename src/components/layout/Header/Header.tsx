@@ -168,12 +168,21 @@ export function Header({
     }
   };
 
+  // Le panneau du menu recouvre le contenu : quand la tabulation en sort vers la page, il se
+  // ferme, sinon le focus se retrouve derrière lui, invisible (audit P8.4, WCAG 2.2 2.4.11).
+  const onMobileBlur = (event: React.FocusEvent<HTMLElement>) => {
+    const next = event.relatedTarget;
+    if (!mobileOpen || !(next instanceof Node) || event.currentTarget.contains(next)) return;
+    setMobileOpen(false);
+  };
+
   const phoneLabel = phone ? texts.appeler.replace("{téléphone}", phone.display) : null;
 
   return (
     <header
       data-compact={compact ? "true" : "false"}
       onKeyDown={onMobileKeyDown}
+      onBlur={onMobileBlur}
       className={cn(
         "sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur",
         "transition-[box-shadow] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
@@ -286,6 +295,7 @@ export function Header({
             <a
               href={phone.href}
               aria-label={phoneLabel}
+              data-mesure="en-tete"
               className="tabular-figures hidden min-h-12 items-center gap-1.5 rounded-button px-2 text-small font-bold whitespace-nowrap text-teal-800 no-underline hover:bg-teal-50 md:inline-flex"
             >
               <PhoneIcon />
@@ -381,6 +391,7 @@ export function Header({
             {phone && phoneLabel ? (
               <a
                 href={phone.href}
+                data-mesure="en-tete"
                 className="tabular-figures inline-flex min-h-12 items-center gap-2 rounded-button px-3 font-bold text-teal-800 no-underline hover:bg-teal-50"
               >
                 <PhoneIcon />

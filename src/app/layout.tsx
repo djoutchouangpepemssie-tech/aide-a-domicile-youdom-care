@@ -4,6 +4,7 @@ import { ComfortScript } from "@/components/layout/ComfortScript/ComfortScript";
 import { SiteFooter } from "@/components/layout/SiteFooter/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader/SiteHeader";
 import { SiteMobileActionBar } from "@/components/layout/SiteMobileActionBar/SiteMobileActionBar";
+import { AppelClicListener } from "@/components/mesure/AppelClicListener/AppelClicListener";
 import { MotionScript } from "@/components/motion/MotionScript/MotionScript";
 import { PageThread } from "@/components/motion/PageThread/PageThread";
 import { getSiteConfig } from "@/content/loader";
@@ -61,6 +62,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <SiteFooter />
         <SiteMobileActionBar />
+        {/* Mesure des clics sur les numéros de téléphone (D-029) : aucun rendu, aucun cookie. */}
+        <AppelClicListener />
       </body>
     </html>
   );

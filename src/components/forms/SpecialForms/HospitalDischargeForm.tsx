@@ -81,7 +81,11 @@ export function HospitalDischargeForm({
         <>
           <Callout variant="attention" title={page.bandeau_titre}>
             {banner[0]}
-            {phone && telHref ? <a href={telHref}>{formatFrenchPhone(phone)}</a> : null}
+            {phone && telHref ? (
+              <a href={telHref} data-mesure="formulaire">
+                {formatFrenchPhone(phone)}
+              </a>
+            ) : null}
             {banner[1]}
           </Callout>
           <TextField

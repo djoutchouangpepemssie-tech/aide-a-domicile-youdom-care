@@ -127,6 +127,7 @@ export function ConversionRail({
           <a
             href={phone.href}
             aria-label={phoneLabel}
+            data-mesure="rail"
             className="figure tabular-figures mt-2 inline-flex min-h-12 items-center gap-2 text-[1.75rem] leading-none whitespace-nowrap text-teal-900 no-underline hover:text-teal-700"
           >
             <PhoneIcon />
