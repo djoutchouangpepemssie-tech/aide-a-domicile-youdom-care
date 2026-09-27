@@ -9,11 +9,137 @@ import { normalizeName } from "../../../src/lib/geo/geo";
 
 const httpUrl = z.string().url().startsWith("http");
 
-/** Adresse http valide ou undefined (les annuaires contiennent des liens mal formés). */
+/*
+ * Liens officiels des sources. Les annuaires (CNSA, DILA, Ville de Paris) contiennent des liens
+ * abîmés : barre oblique perdue après le domaine (« www.puteaux.frvie-sociale/ccas »), adresse
+ * électronique saisie à la place d'un site (« www.logementseniors@paris.fr »), hôte sans domaine
+ * de premier niveau. `analyzeUrl` répare ce qui peut l'être et écarte le reste ; `cleanUrl` n'en
+ * garde que le résultat.
+ */
+
+/** Domaines de premier niveau pouvant être suivis d'un chemin collé (« frvie-sociale »). */
+const GLUED_TLDS = ["paris", "info", "com", "org", "net", "fr", "eu"] as const;
+
+/** Domaines de premier niveau admis pour un lien officiel (français, européens, génériques). */
+const PLAUSIBLE_TLDS: ReadonlySet<string> = new Set([
+  ...GLUED_TLDS,
+  "gouv",
+  "io",
+  "co",
+  "be",
+  "ch",
+  "lu",
+  "de",
+  "es",
+  "it",
+  "pt",
+  "nl",
+  "uk",
+  "ie",
+  "us",
+  "ca",
+  "re",
+  "nc",
+  "pf",
+  "yt",
+  "gp",
+  "mq",
+  "gf",
+  "pm",
+  "wf",
+  "tf",
+  "bzh",
+  "alsace",
+  "corsica",
+  "eus",
+  "edu",
+  "int",
+  "biz",
+  "mobi",
+  "pro",
+  "app",
+  "dev",
+  "site",
+  "online",
+  "health",
+  "care",
+  "team",
+  "link",
+  "tv",
+  "me",
+  "xyz",
+  "coop",
+  "eco",
+  "ngo",
+  "ong",
+  "asso",
+  "cat",
+  "company",
+  "community",
+  "network",
+  "organic",
+]);
+
+export type UrlAction = "absent" | "conservee" | "reparee" | "supprimee";
+
+export interface UrlAnalysis {
+  /** Lien conservé ou réparé ; absent si la valeur est vide ou irrécupérable. */
+  url?: string;
+  action: UrlAction;
+  original: string;
+}
+
+/**
+ * Analyse pure d'un lien venu d'une source :
+ * - vide → `absent` ;
+ * - contient « @ », sans schéma http(s), illisible par `new URL()`, hôte sans domaine de premier
+ *   niveau plausible → `supprimee` ;
+ * - dernier segment de l'hôte formé d'un domaine connu suivi d'autres caractères
+ *   (« www.puteaux.frvie-sociale ») → `reparee`, la barre oblique manquante est rétablie
+ *   (« www.puteaux.fr/vie-sociale ») ;
+ * - sinon → `conservee`, telle quelle.
+ */
+export function analyzeUrl(value: string | null | undefined): UrlAnalysis {
+  const original = value?.trim() ?? "";
+  if (original.length === 0) return { action: "absent", original };
+  const removed: UrlAnalysis = { action: "supprimee", original };
+  if (original.includes("@") || !/^https?:\/\//i.test(original)) return removed;
+  let parsed: URL;
+  try {
+    parsed = new URL(original);
+  } catch {
+    return removed;
+  }
+  const labels = parsed.hostname.split(".");
+  const last = labels.at(-1) ?? "";
+  if (labels.length < 2 || labels.some((l) => l.length === 0)) return removed;
+  if (PLAUSIBLE_TLDS.has(last)) {
+    return httpUrl.safeParse(original).success ? { url: original, action: "conservee", original } : removed;
+  }
+  const tld = GLUED_TLDS.find((t) => last.startsWith(t) && last.length > t.length);
+  if (!tld) return removed;
+  const glued = last.slice(tld.length);
+  if (!/^[a-z0-9][a-z0-9._~-]*$/i.test(glued)) return removed;
+  const host = [...labels.slice(0, -1), tld].join(".");
+  const port = parsed.port ? `:${parsed.port}` : "";
+  const path = parsed.pathname === "/" && !original.endsWith("/") ? "" : parsed.pathname;
+  const repaired = `${parsed.protocol}//${host}${port}/${glued}${path}${parsed.search}${parsed.hash}`;
+  return httpUrl.safeParse(repaired).success ? { url: repaired, action: "reparee", original } : removed;
+}
+
+type UrlObserver = (analysis: UrlAnalysis) => void;
+let urlObserver: UrlObserver | null = null;
+
+/** Journal des liens réparés et supprimés (pipeline) : `null` retire l'observateur. */
+export function observeUrlCleaning(observer: UrlObserver | null): void {
+  urlObserver = observer;
+}
+
+/** Adresse http valide (réparée si besoin) ou undefined ; voir `analyzeUrl`. */
 export function cleanUrl(value: string | null | undefined): string | undefined {
-  if (!value) return undefined;
-  const trimmed = value.trim();
-  return httpUrl.safeParse(trimmed).success ? trimmed : undefined;
+  const analysis = analyzeUrl(value);
+  if (urlObserver && analysis.action !== "absent") urlObserver(analysis);
+  return analysis.url;
 }
 
 export function cleanText(value: string | null | undefined): string | undefined {

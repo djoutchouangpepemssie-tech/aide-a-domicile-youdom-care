@@ -2,7 +2,7 @@ import { deflateRawSync } from "node:zlib";
 import { describe, expect, it } from "vitest";
 import { distanceKm } from "../../../src/lib/geo/geo";
 import { parseCsv, parseCsvRecords } from "./csv";
-import { cleanUrl, dedupeFacts, fact, formatPhone, sortFacts } from "./facts";
+import { analyzeUrl, cleanUrl, dedupeFacts, fact, formatPhone, sortFacts } from "./facts";
 import { computeShares, parseInseeCsv, sumCounts } from "./insee";
 import {
   arrondissementName,
@@ -191,8 +191,50 @@ describe("faits", () => {
     const f = fact({ type: "ccas", label: "CCAS", address: "1 rue A, 92800 Puteaux", url: "https://puteaux.fr/", ...base });
     expect(f.url).toBe("https://puteaux.fr/");
     expect(() => fact({ type: "ccas", label: "CCAS", url: "www.puteaux.frvie", ...base })).toThrow();
-    expect(cleanUrl("http://www.puteaux.frvie-sociale/ccas")).toBe("http://www.puteaux.frvie-sociale/ccas");
     expect(cleanUrl("www.adapei77.org")).toBeUndefined();
+  });
+
+  it("répare la barre oblique perdue après le domaine d'un lien officiel", () => {
+    expect(cleanUrl("http://www.puteaux.frvie-sociale/ccas/les-4-poles-du-ccas")).toBe("http://www.puteaux.fr/vie-sociale/ccas/les-4-poles-du-ccas");
+    expect(cleanUrl("http://www.hauts-de-seine.frsolidarites/personnes-agees")).toBe("http://www.hauts-de-seine.fr/solidarites/personnes-agees");
+    expect(cleanUrl("http://www.lesabondances.frplateforme-des-aidants")).toBe("http://www.lesabondances.fr/plateforme-des-aidants");
+    expect(cleanUrl("https://association.orgagenda?mois=9#haut")).toBe("https://association.org/agenda?mois=9#haut");
+    expect(cleanUrl("https://ville.parisseniors/")).toBe("https://ville.paris/seniors/");
+    expect(analyzeUrl("http://www.puteaux.frvie-sociale/ccas")).toMatchObject({ action: "reparee", url: "http://www.puteaux.fr/vie-sociale/ccas" });
+  });
+
+  it("garde tel quel un lien valide, y compris gouv.fr et les domaines longs réels", () => {
+    for (const url of [
+      "https://www.paris.fr/pages/loisirs-185",
+      "http://www.logementseniors-paris.fr",
+      "https://www.service-public.gouv.fr/",
+      "https://www.ville.paris/",
+      "https://exemple.company/page",
+      "https://Exemple.FR/Page?x=1",
+    ]) {
+      expect(cleanUrl(` ${url} `)).toBe(url);
+      expect(analyzeUrl(url).action).toBe("conservee");
+    }
+  });
+
+  it("supprime les adresses électroniques, les hôtes sans domaine plausible et les liens illisibles", () => {
+    for (const url of [
+      "http://www.logementseniors@paris.fr",
+      "mailto:ccas@ville.fr",
+      "http://www.puteaux",
+      "http://localhost/x",
+      "http://www.mairie.fr solidarites",
+      "http://ville.xxinconnu/page",
+      "ftp://www.ville.fr/",
+      "www.adapei77.org",
+      "n/a",
+    ]) {
+      expect(cleanUrl(url)).toBeUndefined();
+      expect(analyzeUrl(url).action).toBe("supprimee");
+    }
+    expect(analyzeUrl("   ").action).toBe("absent");
+    expect(analyzeUrl(null).action).toBe("absent");
+    expect(cleanUrl(undefined)).toBeUndefined();
   });
 
   it("dédoublonne sur l'adresse normalisée et trie par type puis libellé", () => {

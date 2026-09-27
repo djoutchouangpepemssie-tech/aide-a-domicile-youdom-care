@@ -118,6 +118,13 @@ export class SourceCache {
     }
   }
 
+  /** Consigne une source gérée hors de ce cache (géocodage BAN, ban.ts) pour data/raw/README.md. */
+  addRecord(record: SourceRecord): void {
+    const existing = this.records.findIndex((r) => r.id === record.id);
+    if (existing >= 0) this.records[existing] = record;
+    else this.records.push(record);
+  }
+
   /** Comme `fetch`, mais renvoie null au lieu de lever : la source est notée injoignable. */
   async tryFetch(spec: SourceSpec): Promise<CachedFile | null> {
     try {
@@ -186,6 +193,24 @@ export function renderRawReadme(records: readonly SourceRecord[], today: string)
     "réutilise le fichier le plus récent de chaque source.",
     "",
     "Une entrée par source : libellé (identifiant du fichier), adresse, licence, date de collecte, taille, état.",
+    "",
+    "## Géocodage des faits parisiens (Base Adresse Nationale)",
+    "",
+    "Les faits des arrondissements de Paris dont l'adresse est une adresse de voie (numéro puis voie) sont",
+    "soumis à l'API Adresse de la Base Adresse Nationale (`https://api-adresse.data.gouv.fr/search/?q=<adresse>&limit=1`,",
+    "Licence Ouverte / Open Licence 2.0, Etalab ; appels espacés, ~50 requêtes/s au plus). La requête est le",
+    "numéro et la voie suivis de « Paris », sans le code postal (donnée suspecte qui biaise la BAN). Si le score du",
+    "premier résultat est ≥ 0,6, que la BAN a reconnu le numéro (`type: housenumber`), que la voie renvoyée",
+    "correspond à l'adresse demandée et que `citycode` est un arrondissement (751xx), ce code remplace",
+    "`commune_insee` du fait, qui est rattaché à cet arrondissement",
+    "(retiré de l'arrondissement d'origine s'il n'est pas le bon, ajouté au bon s'il a une page de vague 1) ;",
+    "sinon le fait reste où il est. Motif : la source CNSA rattache des résidences autonomie du CASVP au",
+    "mauvais arrondissement (« 7bis rue Clauzel, 75015 » est dans le 9e). Hors Paris, le code postal et la",
+    "ville de l'adresse suffisent (`locateFacts`), la BAN n'est pas appelée. Les réponses sont mises en cache",
+    "dans `ban-<date>.json` (une entrée par adresse normalisée, réutilisée en `--offline`) ; l'entrée",
+    "`ban-adresses-paris` ci-dessous donne la date de collecte. Règle détaillée : scripts/data/local/ban.ts.",
+    "",
+    "## Sources",
     "",
   ];
   const sorted = [...records].sort((a, b) => a.id.localeCompare(b.id));

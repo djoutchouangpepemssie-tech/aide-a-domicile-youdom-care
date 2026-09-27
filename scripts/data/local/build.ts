@@ -6,6 +6,7 @@ import {
   type TerritoryKind,
 } from "../../../src/content/local-schema";
 import type { LatLng } from "../../../src/lib/geo/geo";
+import { isStreetAddress, normalizeAddress, type BanLookup } from "./ban";
 import { countByType, dedupeFacts, fact, sortFacts } from "./facts";
 import { type DepartementCode, type GeoData, IDF_DEPARTEMENTS, PARIS_COMMUNE } from "./geo-api";
 import { computeShares, sumCounts, type AgeCounts, type InseeData } from "./insee";
@@ -57,6 +58,8 @@ export interface BuildInputs {
   finess: FinessData;
   paris: ParisData;
   unapei: UnapeiData;
+  /** Décisions de la Base Adresse Nationale par adresse normalisée (ban.ts) ; absent : pas de géocodage. */
+  ban?: BanLookup;
   today: string;
 }
 
@@ -74,9 +77,41 @@ export interface TerritoryReport {
   missingTypes: string[];
 }
 
+/** Fait parisien déplacé d'un arrondissement à un autre sur décision de la BAN. */
+export interface Relocation {
+  label: string;
+  type: LocalFact["type"];
+  address: string;
+  from: string;
+  to: string;
+  /** Faux si l'arrondissement d'arrivée n'a pas de page de vague 1 (le fait est seulement retiré). */
+  added: boolean;
+}
+
+/** Fait parisien avec adresse de voie pour lequel la BAN n'a pas tranché. */
+export interface UndecidedFact {
+  label: string;
+  type: LocalFact["type"];
+  address: string;
+  code: string;
+  in_territory: boolean;
+}
+
 export interface BuildResult {
   files: LocalData[];
   reports: TerritoryReport[];
+  relocations: Relocation[];
+  undecided: UndecidedFact[];
+}
+
+type Draft = Omit<LocalData, "facts" | "sources"> & { facts: LocalFact[]; sources: SourceRef[] };
+
+/** Commune ou arrondissement assemblé mais pas encore validé : les faits parisiens peuvent encore bouger. */
+export interface PendingTerritory {
+  ctx: TerritoryContext;
+  motif: WaveMotif;
+  draft: Omit<Draft, "sources">;
+  baseSources: SourceRef[];
 }
 
 const LISEZMOI =
@@ -143,7 +178,7 @@ export function buildTerritories(inputs: BuildInputs): BuildResult {
   const files: LocalData[] = [];
   const reports: TerritoryReport[] = [];
 
-  const finish = (draft: Omit<LocalData, "facts" | "sources"> & { facts: LocalFact[]; sources: SourceRef[] }, motif?: WaveMotif) => {
+  const finish = (draft: Draft, motif?: WaveMotif) => {
     const facts = sortFacts(dedupeFacts(draft.facts));
     const sources = dedupeSources(draft.sources);
     const data = localDataSchema.parse({ ...draft, facts, sources });
@@ -182,7 +217,9 @@ export function buildTerritories(inputs: BuildInputs): BuildResult {
     return refs;
   };
 
-  // Communes et arrondissements de la vague 1.
+  // Communes et arrondissements de la vague 1 : assemblés puis, pour Paris, corrigés par la BAN
+  // (relocateParisFacts) avant validation.
+  const pending: PendingTerritory[] = [];
   for (const c of geo.communes) {
     const motif = wave.get(c.code);
     if (!motif || c.code === PARIS_COMMUNE) continue;
@@ -226,8 +263,11 @@ export function buildTerritories(inputs: BuildInputs): BuildResult {
       distance_km: n.distance_km,
       page: wave.has(n.code),
     }));
-    finish(
-      {
+    pending.push({
+      ctx,
+      motif,
+      baseSources: [geoSource(c.departement, ctx.kind)],
+      draft: {
         _lisezmoi: LISEZMOI,
         code: c.code,
         kind: ctx.kind,
@@ -248,11 +288,13 @@ export function buildTerritories(inputs: BuildInputs): BuildResult {
         vague: 1,
         motif_vague: motif,
         facts: locateFacts(facts, ctx),
-        sources: sourcesFor(facts, [geoSource(c.departement, ctx.kind)], c.departement),
         generated_at: today,
       },
-      motif,
-    );
+    });
+  }
+  const { relocations, undecided } = relocateParisFacts(pending, inputs.ban);
+  for (const p of pending) {
+    finish({ ...p.draft, sources: sourcesFor(p.draft.facts, p.baseSources, p.ctx.departement) }, p.motif);
   }
 
   // Départements.
@@ -321,7 +363,89 @@ export function buildTerritories(inputs: BuildInputs): BuildResult {
 
   files.sort((a, b) => a.code.localeCompare(b.code));
   reports.sort((a, b) => a.code.localeCompare(b.code));
-  return { files, reports };
+  return { files, reports, relocations, undecided };
+}
+
+/**
+ * Types jamais soumis à la BAN : lieux étendus (parcs, marchés) dont l'adresse publiée est une
+ * entrée ou un tronçon, souvent en limite d'arrondissement (le jardin d'Éole, 18e, a son entrée
+ * rue du Département côté 19e) ; l'arrondissement donné par la Ville de Paris fait foi.
+ */
+const BAN_EXCLUDED_TYPES: ReadonlySet<LocalFact["type"]> = new Set(["espace-vert", "marche"]);
+
+/** Fait d'arrondissement dont l'adresse de voie est soumise à la BAN (ban.ts). */
+function banCandidate(f: LocalFact): f is LocalFact & { address: string } {
+  return f.address !== undefined && !BAN_EXCLUDED_TYPES.has(f.type) && isStreetAddress(f.address);
+}
+
+/** Adresses de voie des faits des arrondissements de Paris (une par adresse normalisée), à géocoder. */
+export function parisStreetAddresses(files: readonly LocalData[]): string[] {
+  const seen = new Map<string, string>();
+  for (const file of files) {
+    if (file.kind !== "arrondissement") continue;
+    for (const f of file.facts) {
+      if (!banCandidate(f)) continue;
+      const key = normalizeAddress(f.address);
+      if (!seen.has(key)) seen.set(key, f.address);
+    }
+  }
+  return [...seen.values()];
+}
+
+/**
+ * Applique aux arrondissements de Paris les décisions de la Base Adresse Nationale (règle et
+ * motif dans ban.ts). Pour chaque fait à adresse de voie tranché par la BAN :
+ * - situé dans l'arrondissement du fichier : `commune_insee` prend ce code, `in_territory` vrai ;
+ * - situé ailleurs alors que le fichier le présentait comme sur place (`in_territory` vrai, c'est
+ *   le cas des résidences autonomie CNSA au mauvais code postal) : retiré, et ajouté à
+ *   l'arrondissement d'arrivée s'il a une page de vague 1 ;
+ * - situé ailleurs et déjà présenté comme extérieur (MDPH, associations départementales…) :
+ *   conservé, `commune_insee` corrigé.
+ * Les faits non tranchés restent où ils sont. Les communes hors Paris ne sont pas touchées.
+ */
+export function relocateParisFacts(
+  pending: PendingTerritory[],
+  ban: BanLookup | undefined,
+): { relocations: Relocation[]; undecided: UndecidedFact[] } {
+  const relocations: Relocation[] = [];
+  const undecided: UndecidedFact[] = [];
+  if (!ban) return { relocations, undecided };
+  const arrondissements = pending.filter((p) => p.ctx.kind === "arrondissement" && p.ctx.departement === "75");
+  const byCode = new Map(arrondissements.map((p) => [p.ctx.code, p]));
+  const incoming = new Map<string, LocalFact[]>();
+  for (const p of arrondissements) {
+    const kept: LocalFact[] = [];
+    for (const f of p.draft.facts) {
+      if (!banCandidate(f)) {
+        kept.push(f);
+        continue;
+      }
+      const target = ban.get(normalizeAddress(f.address));
+      if (target === undefined || target === null) {
+        undecided.push({ label: f.label, type: f.type, address: f.address, code: p.ctx.code, in_territory: f.in_territory === true });
+        kept.push(f);
+        continue;
+      }
+      if (target === p.ctx.code) {
+        kept.push({ ...f, commune_insee: target, in_territory: true });
+        continue;
+      }
+      if (f.in_territory !== true) {
+        kept.push({ ...f, commune_insee: target });
+        continue;
+      }
+      const list = incoming.get(target) ?? [];
+      list.push({ ...f, commune_insee: target, in_territory: true });
+      incoming.set(target, list);
+      relocations.push({ label: f.label, type: f.type, address: f.address, from: p.ctx.code, to: target, added: byCode.has(target) });
+    }
+    p.draft.facts = kept;
+  }
+  for (const [code, facts] of incoming) {
+    const dest = byCode.get(code);
+    if (dest) dest.draft.facts.push(...facts);
+  }
+  return { relocations, undecided };
 }
 
 const TERRITORY_BOUND_TYPES: ReadonlySet<LocalFact["type"]> = new Set(["demographie", "marche", "espace-vert", "equipement-seniors"]);

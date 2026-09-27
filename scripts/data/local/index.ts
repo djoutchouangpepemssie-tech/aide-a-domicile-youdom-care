@@ -2,8 +2,10 @@ import { mkdir, readdir, readFile, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 import { localThresholds, type TerritoryKind } from "../../../src/content/local-schema";
-import { buildTerritories, compareWithSeed, type BuildResult, type Seed, type Zone } from "./build";
+import { geocodeAddresses, type BanOutcome } from "./ban";
+import { buildTerritories, compareWithSeed, parisStreetAddresses, type BuildResult, type Seed, type Zone } from "./build";
 import { renderRawReadme, SourceCache } from "./cache";
+import { observeUrlCleaning, type UrlAnalysis } from "./facts";
 import { loadGeoData } from "./geo-api";
 import { loadInsee } from "./insee";
 import { arrondissementPath } from "./slug";
@@ -22,6 +24,8 @@ import type { Agency } from "./territoires";
  *   --date=AAAA-MM-JJ          fixe la date de génération (par défaut : aujourd'hui)
  * Sorties : data/local/{code}.json (vague 1), data/local/_quartiers-paris.json (vague 2, liste
  * seulement), data/raw/README.md (sources, dates, licences, état).
+ * Les faits des arrondissements de Paris sont géocodés par la Base Adresse Nationale (ban.ts) :
+ * un premier assemblage fournit les adresses, le second applique les décisions.
  */
 
 const siteConfigSchema = z.looseObject({
@@ -61,7 +65,26 @@ async function readJson<T>(file: string): Promise<T> {
   return JSON.parse(await readFile(file, "utf8")) as T;
 }
 
+/** Liens réparés (original → réparé) et supprimés à la lecture des sources, sans doublon. */
+export interface UrlCleaningLog {
+  repaired: Map<string, string>;
+  removed: Set<string>;
+}
+
 export async function runPipeline(rootDir: string, options: Options): Promise<BuildResult> {
+  const urlLog: UrlCleaningLog = { repaired: new Map(), removed: new Set() };
+  observeUrlCleaning((a: UrlAnalysis) => {
+    if (a.action === "reparee" && a.url) urlLog.repaired.set(a.original, a.url);
+    else if (a.action === "supprimee") urlLog.removed.add(a.original);
+  });
+  try {
+    return await runPipelineWithLog(rootDir, options, urlLog);
+  } finally {
+    observeUrlCleaning(null);
+  }
+}
+
+async function runPipelineWithLog(rootDir: string, options: Options, urlLog: UrlCleaningLog): Promise<BuildResult> {
   const rawDir = path.join(rootDir, "data", "raw");
   const outDir = path.join(rootDir, "data", "local");
   const cache = new SourceCache(rawDir, { offline: options.offline, today: options.today });
@@ -94,7 +117,12 @@ export async function runPipeline(rootDir: string, options: Options): Promise<Bu
   const manualFailures = options.offline ? [] : await checkManualSources();
   for (const failure of manualFailures) console.warn(`source manuelle à revérifier : ${failure}`);
 
-  const result = buildTerritories({ geo, agencies, zones, insee, annuaire, cnsa, finess, paris, unapei, today: options.today });
+  const inputs = { geo, agencies, zones, insee, annuaire, cnsa, finess, paris, unapei, today: options.today };
+  // Premier assemblage : adresses de voie des arrondissements de Paris à soumettre à la BAN.
+  const addresses = parisStreetAddresses(buildTerritories(inputs).files);
+  const ban = await geocodeAddresses(rawDir, addresses, { offline: options.offline, today: options.today });
+  cache.addRecord(ban.record);
+  const result = buildTerritories({ ...inputs, ban: ban.lookup });
 
   // Écriture : les fichiers de territoires absents de la vague 1 sont retirés.
   await mkdir(outDir, { recursive: true });
@@ -144,7 +172,53 @@ export async function runPipeline(rootDir: string, options: Options): Promise<Bu
   const seedDiffs = compareWithSeed(seed, geo, zones, agencies, paris.quartiers);
 
   printReport(result, seedDiffs, cache, manualFailures);
+  printUrlReport(urlLog, result);
+  printBanReport(result, ban, addresses.length);
   return result;
+}
+
+function printUrlReport(urlLog: UrlCleaningLog, result: BuildResult) {
+  const inFacts = new Set<string>();
+  for (const file of result.files) for (const f of file.facts) if (f.url) inFacts.add(f.url);
+  const repairedUsed = [...urlLog.repaired.values()].filter((u) => inFacts.has(u)).length;
+  console.log("");
+  console.log(
+    `Liens officiels des sources (facts.ts, cleanUrl) : ${urlLog.repaired.size} réparé(s) (dont ${repairedUsed} présents dans les fichiers produits), ${urlLog.removed.size} supprimé(s), sur l'ensemble des lignes lues.`,
+  );
+  for (const [from, to] of [...urlLog.repaired].slice(0, 5)) console.log(`  réparé   : ${from} → ${to}`);
+  for (const from of [...urlLog.removed].slice(0, 5)) console.log(`  supprimé : ${from}`);
+}
+
+function printBanReport(result: BuildResult, ban: BanOutcome, requested: number) {
+  const decided = [...ban.lookup.values()].filter((v) => v !== null).length;
+  console.log("");
+  console.log(
+    `Géocodage BAN des faits parisiens (ban.ts) : ${requested} adresse(s) de voie demandée(s), ${ban.fetched} géocodée(s) lors de cette exécution, ${ban.lookup.size} en cache dont ${decided} tranchée(s), ${ban.missing.length} sans réponse${ban.record.error ? ` (${ban.record.error})` : ""}.`,
+  );
+  if (result.relocations.length === 0) console.log("  Aucun fait déplacé.");
+  else {
+    console.log(`  Faits déplacés (${result.relocations.length}) — libellé : arrondissement d'origine → arrivée :`);
+    for (const r of result.relocations) {
+      console.log(`    ${r.label} (${r.type}, ${r.address}) : ${r.from} → ${r.to}${r.added ? "" : " (sans page de vague 1 : retiré seulement)"}`);
+    }
+  }
+  const seen = new Set<string>();
+  const undecided = result.undecided.filter((u) => {
+    if (seen.has(u.address)) return false;
+    seen.add(u.address);
+    return true;
+  });
+  if (undecided.length > 0) {
+    console.log(`  Adresses non tranchées par la BAN (${undecided.length}, le fait reste où il est) :`);
+    for (const u of undecided) console.log(`    ${u.label} (${u.type}, ${u.code}${u.in_territory ? "" : ", extérieur"}) : ${u.address}`);
+  }
+  const types = ["residence-autonomie", "accueil-jour", "ehpad", "equipement-seniors"] as const;
+  console.log("  Faits par arrondissement (situés sur place) :");
+  for (const file of result.files) {
+    if (file.kind !== "arrondissement") continue;
+    const counts = types.map((t) => `${t} ${file.facts.filter((f) => f.type === t && f.in_territory === true).length}`);
+    console.log(`    ${file.code} ${file.nom} : ${counts.join(", ")}`);
+  }
 }
 
 function printReport(result: BuildResult, seedDiffs: string[], cache: SourceCache, manualFailures: string[]) {

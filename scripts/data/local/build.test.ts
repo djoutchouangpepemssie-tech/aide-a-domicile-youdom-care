@@ -2,7 +2,9 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { localDataSchema, localThresholds } from "../../../src/content/local-schema";
-import { addressPlace, buildTerritories, compareWithSeed, locateFacts, normalizePlaceName, type BuildInputs, type Seed } from "./build";
+import { addressPlace, buildTerritories, compareWithSeed, locateFacts, normalizePlaceName, parisStreetAddresses, type BuildInputs, type Seed } from "./build";
+import { normalizeAddress } from "./ban";
+import type { CnsaEtablissement } from "./sources/cnsa";
 import type { TerritoryContext } from "./types";
 import type { GeoData } from "./geo-api";
 import type { InseeData } from "./insee";
@@ -170,6 +172,130 @@ describe("assemblage des territoires", () => {
     expect(report?.facts).toBeLessThan(localThresholds.arrondissement.faits);
     expect(report?.missingTypes).toEqual(expect.arrayContaining(["hopital", "accueil-jour", "marche"]));
     expect(result.reports.find((r) => r.code === "idf")?.required).toBeNull();
+  });
+});
+
+describe("géocodage BAN des arrondissements de Paris", () => {
+  // Deux arrondissements de vague 1 (9e, 12e) ; le 15e n'a pas de page.
+  const geoParis: GeoData = {
+    ...geo,
+    communes: [
+      ...geo.communes,
+      { code: "75109", nom: "Paris 9e Arrondissement", codes_postaux: ["75009"], departement: "75", type: "arrondissement", population: 60_000, centre: { lat: 48.877, lng: 2.3374 }, superficie_ha: 218, epci: null },
+    ],
+  };
+  const etab = (title: string, street: string, postcode: string, ra = true): CnsaEtablissement => ({
+    title,
+    deptcode: "75",
+    postcode,
+    city: "PARIS",
+    address: `${street}, ${postcode} PARIS`,
+    telephone: "01 40 00 00 00",
+    ehpad: false,
+    ra,
+    esld: false,
+    accueil_jour: !ra,
+    hebergement_temporaire: false,
+    alzheimer: false,
+    capacity: 20,
+  });
+  const cnsaParis: CnsaData = {
+    ...cnsa,
+    etabCollectedAt: today,
+    sources: [{ label: "CNSA", url: "https://www.data.gouv.fr/fr/datasets/etablissements-ehpad-esld-residences-autonomie-accueils-de-jour/", collected_at: today }],
+    etablissements: [
+      // Code postal faux dans la source : la rue Clauzel est dans le 9e (page de vague 1).
+      etab("Logements Clauzel", "7bis rue Clauzel", "75012"),
+      // Code postal faux, arrondissement d'arrivée sans page : retiré seulement.
+      etab("Logements Alleray", "40 rue des Favorites", "75012"),
+      // Bien situé : commune_insee renseigné.
+      etab("Logements Reuilly", "12 rue de Reuilly", "75012"),
+      // BAN muette : reste où il est.
+      etab("Accueil de jour Daumesnil", "200 avenue Daumesnil", "75012", false),
+      // Adresse sans numéro : jamais soumise à la BAN.
+      etab("Logements Bercy", "Cour Saint-Émilion", "75012"),
+    ],
+  };
+  const parisData: ParisData = {
+    ...paris,
+    collected: { espaces_verts: today },
+    sources: [{ label: "Ville de Paris — espaces verts", url: "https://opendata.paris.fr/explore/dataset/espaces_verts/", collected_at: today }],
+    // Parc dont l'entrée publiée est côté 9e selon la BAN : l'arrondissement de la Ville fait foi.
+    espacesVerts: [{ nom_ev: "JARDIN TEST", categorie: "Jardin", type_ev: "Promenades ouvertes", adresse_numero: 18, adresse_typevoie: "Rue", adresse_libellevoie: "du Departement", adresse_codepostal: "75012", surface_totale_reelle: 1000 }],
+  };
+  const parisInputs: BuildInputs = { ...inputs, geo: geoParis, cnsa: cnsaParis, paris: parisData };
+  const first = buildTerritories(parisInputs);
+  const jardinAddress = first.files.find((f) => f.code === "75112")?.facts.find((f) => f.type === "espace-vert")?.address ?? "";
+
+  it("liste une fois chaque adresse de voie des arrondissements, jamais celles des communes", () => {
+    const addresses = parisStreetAddresses(first.files);
+    expect(addresses).toEqual(expect.arrayContaining(["7bis rue Clauzel, 75012 PARIS", "12 rue de Reuilly, 75012 PARIS"]));
+    expect(addresses).not.toContain("Cour Saint-Émilion, 75012 PARIS");
+    expect(jardinAddress).toMatch(/^18 /);
+    expect(addresses).not.toContain(jardinAddress);
+    expect(addresses.some((a) => a.includes("Puteaux") || a.includes("PUTEAUX"))).toBe(false);
+    expect(new Set(addresses.map(normalizeAddress)).size).toBe(addresses.length);
+  });
+
+  it("sans décisions BAN, laisse les faits là où la source les met", () => {
+    const arr12 = first.files.find((f) => f.code === "75112");
+    expect(arr12?.facts.filter((f) => f.type === "residence-autonomie").map((f) => f.label)).toEqual(["Logements Alleray", "Logements Bercy", "Logements Clauzel", "Logements Reuilly"]);
+    expect(first.relocations).toEqual([]);
+    expect(first.undecided).toEqual([]);
+  });
+
+  it("déplace, retire ou confirme les faits selon la décision BAN et le laisse sinon", () => {
+    const ban = new Map<string, string | null>([
+      [normalizeAddress("7bis rue Clauzel, 75012 PARIS"), "75109"],
+      [normalizeAddress("40 rue des Favorites, 75012 PARIS"), "75115"],
+      [normalizeAddress("12 rue de Reuilly, 75012 PARIS"), "75112"],
+      [normalizeAddress("200 avenue Daumesnil, 75012 PARIS"), null],
+      [normalizeAddress(jardinAddress), "75109"],
+    ]);
+    const result = buildTerritories({ ...parisInputs, ban });
+    const arr12 = result.files.find((f) => f.code === "75112");
+    const arr9 = result.files.find((f) => f.code === "75109");
+    expect(arr12?.facts.filter((f) => f.type === "residence-autonomie").map((f) => f.label)).toEqual(["Logements Bercy", "Logements Reuilly"]);
+    expect(arr12?.facts.find((f) => f.label === "Logements Reuilly")).toMatchObject({ commune_insee: "75112", in_territory: true });
+    expect(arr12?.facts.find((f) => f.label === "Logements Bercy")?.commune_insee).toBeUndefined();
+    expect(arr12?.facts.find((f) => f.label === "Accueil de jour Daumesnil")).toMatchObject({ in_territory: true });
+    expect(arr9?.facts.find((f) => f.label === "Logements Clauzel")).toMatchObject({ commune_insee: "75109", in_territory: true, address: "7bis rue Clauzel, 75012 PARIS" });
+    expect(arr9?.sources.some((s) => s.url.includes("data.gouv.fr"))).toBe(true);
+    // Espaces verts et marchés ne sont jamais déplacés.
+    expect(arr12?.facts.find((f) => f.type === "espace-vert")).toMatchObject({ label: "Jardin Test", in_territory: true });
+    expect(arr12?.facts.find((f) => f.type === "espace-vert")?.commune_insee).toBeUndefined();
+    expect(arr9?.facts.some((f) => f.type === "espace-vert")).toBe(false);
+    expect(result.relocations).toEqual([
+      expect.objectContaining({ label: "Logements Alleray", from: "75112", to: "75115", added: false }),
+      expect.objectContaining({ label: "Logements Clauzel", from: "75112", to: "75109", added: true }),
+    ]);
+    // Les faits départementaux (APF, dont l'adresse n'est pas dans les décisions factices) restent aussi non tranchés.
+    expect(result.undecided.filter((u) => u.in_territory).map((u) => u.label)).toEqual(["Accueil de jour Daumesnil"]);
+    // Les communes hors Paris ne sont pas touchées.
+    const puteaux = result.files.find((f) => f.code === "92062");
+    expect(puteaux?.facts).toEqual(first.files.find((f) => f.code === "92062")?.facts);
+    for (const file of result.files) expect(() => localDataSchema.parse(file)).not.toThrow();
+  });
+
+  it("corrige commune_insee d'un fait départemental situé ailleurs sans le retirer", () => {
+    // La MDPH de Paris (adresse du 9e) figure dans le 12e comme fait extérieur : elle y reste.
+    const withMdph: BuildInputs = {
+      ...parisInputs,
+      annuaire: {
+        ...annuaire,
+        records: [
+          ...annuaire.records,
+          { nom: "Maison départementale des personnes handicapées (MDPH) - Paris", pivot: "maison_handicapees", communes: ["75056"], departement: "75", address: "69 rue de la Victoire, 75009 Paris", page: "https://lannuaire.service-public.gouv.fr/ile-de-france/paris/mdph" },
+        ],
+      },
+    };
+    const ban = new Map<string, string | null>([[normalizeAddress("69 rue de la Victoire, 75009 Paris"), "75109"]]);
+    const result = buildTerritories({ ...withMdph, ban });
+    const mdph12 = result.files.find((f) => f.code === "75112")?.facts.find((f) => f.type === "mdph");
+    expect(mdph12).toMatchObject({ commune_insee: "75109", in_territory: false });
+    const mdph9 = result.files.find((f) => f.code === "75109")?.facts.find((f) => f.type === "mdph");
+    expect(mdph9).toMatchObject({ commune_insee: "75109", in_territory: true });
+    expect(result.relocations).toEqual([]);
   });
 });
 
