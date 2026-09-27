@@ -12,7 +12,11 @@ const KO = 1024;
 // catégorie SEO à 0,69. Elles sortent de cette liste quand elles passent en « publie ».
 // Page locale (phase 6) : a_relire tant qu'Arcel n'a pas relu (docs/04 §4).
 const pageLocale = "/aide-a-domicile/hauts-de-seine/puteaux/";
-const nonIndexees = ["/personnes-agees/", "/services/garde-de-nuit/", pageLocale];
+// Article du Fil (phase 7) : a_relire tant qu'aucun auteur réel ni relecteur (docs/06 §4).
+const article = "/magazine/prevenir-les-chutes-le-tour-du-logement-piece-par-piece/";
+const nonIndexees = ["/personnes-agees/", "/services/garde-de-nuit/", pageLocale, article];
+// Page du lexique (phase 7) : indexable, sans formulaire.
+const lexique = "/lexique/apa/";
 // Page d'agence (phase 6) : indexable, avec formulaire de rappel.
 const agence = "/agences/puteaux/";
 const nonIndexeesPattern = nonIndexees.map((p) => p.replace(/\//g, "\\/")).join("|");
@@ -44,6 +48,7 @@ module.exports = {
         "http://localhost:3102/etre-rappele/",
         ...nonIndexees.map((p) => `http://localhost:3102${p}`),
         `http://localhost:3102${agence}`,
+        `http://localhost:3102${lexique}`,
       ],
       numberOfRuns: 3,
       settings: {
@@ -81,10 +86,20 @@ module.exports = {
           },
         },
         {
-          matchingUrlPattern: "/etre-rappele/|\\/personnes-agees\\/|\\/services\\/garde-de-nuit\\/",
+          matchingUrlPattern:
+            "/etre-rappele/|\\/personnes-agees\\/|\\/services\\/garde-de-nuit\\/|\/magazine\/",
           aggregationMethod: "median",
           assertions: {
             "resource-summary:script:size": ["error", { maxNumericValue: 225 * KO }],
+          },
+        },
+        {
+          // Page du lexique (phase 7) : page de contenu sans formulaire ; 172 Ko mesurés (trois
+          // îles de page pour 8 Ko de plus que l'accueil), tolérance 175 Ko (D-028), cible 160 Ko.
+          matchingUrlPattern: "\/lexique\/",
+          aggregationMethod: "median",
+          assertions: {
+            "resource-summary:script:size": ["error", { maxNumericValue: 175 * KO }],
           },
         },
         {

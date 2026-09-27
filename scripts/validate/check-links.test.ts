@@ -43,12 +43,12 @@ describe("check-links", () => {
     const routes = new Set(["/", "/aidants/"]);
     const refs = [
       { file: "/root/content/a.json", pointer: "nav[0].href", href: "/aidants/" },
-      { file: "/root/content/a.json", pointer: "nav[1].href", href: "/magazine/" },
+      { file: "/root/content/a.json", pointer: "nav[1].href", href: "/recrutement/" },
       { file: "/root/content/b.mdx", pointer: "corps", href: "/introuvable/" },
     ];
     const report = checkRefs(refs, routes, "/root");
     expect(report.warnings).toEqual([
-      "content/a.json › nav[1].href : /magazine/ prévu en phase 7 (Le Fil), pas encore construit",
+      "content/a.json › nav[1].href : /recrutement/ prévu en phase 8 (fonctionnement et entreprise), pas encore construit",
     ]);
     expect(report.errors).toEqual(["content/b.mdx › corps : lien interne cassé → /introuvable/"]);
   });

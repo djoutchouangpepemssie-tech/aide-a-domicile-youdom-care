@@ -1,0 +1,371 @@
+/*
+ * Feuille d'impression (docs/02 §9, docs/06 §7, P7.7). Deux parties :
+ * 1. règles communes à toutes les pages imprimées : l'en-tête collant, le fil conducteur et la
+ *    barre d'actions mobile disparaissent (le pied de page et le rail portent déjà
+ *    `data-print="hide"`, voir globals.css) ;
+ * 2. le document d'un outil (`.tool-sheet`, src/components/outils/ToolSheet) : à l'écran une
+ *    feuille blanche aux couleurs du site ; à l'impression et dans le PDF (scripts/pdf/outils.ts)
+ *    une page A4 nommée `outil`, deux colonnes, cases en vrai carré, lignes à remplir à la main,
+ *    titres qui ne se séparent pas de leur contenu. Une page ou deux au plus par outil.
+ * Les couleurs viennent des jetons (tokens.css) ; `printBackground` du PDF garde les aplats.
+ */
+
+@media print {
+  body > header,
+  header[data-compact],
+  .m-pthread,
+  [data-tool-actions] {
+    display: none !important;
+  }
+
+  /* Page d'un outil : le document seul, bord à bord dans la zone imprimable. */
+  [data-tool-page] > section {
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  [data-tool-page] .container-site {
+    max-width: none;
+    padding: 0;
+  }
+}
+
+/* ---------- Le document d'un outil, à l'écran ---------- */
+
+@layer components {
+  .tool-sheet {
+    max-width: 52rem;
+    margin-inline: auto;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-block);
+    box-shadow: var(--shadow-1);
+    color: var(--color-text);
+  }
+
+  .tool-sheet__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--text-small);
+    font-weight: 700;
+    color: var(--color-teal-800);
+    text-transform: none;
+  }
+
+  .tool-sheet__title {
+    margin-block-start: var(--space-3);
+    color: var(--color-teal-900);
+  }
+
+  .tool-sheet__subtitle {
+    margin-block-start: var(--space-3);
+    font-size: var(--text-lead);
+    line-height: var(--leading-lead);
+    color: var(--color-text-soft);
+    text-wrap: pretty;
+  }
+
+  .tool-sheet__howto {
+    margin-block-start: var(--space-6);
+    padding: var(--space-4) var(--space-6);
+    border-inline-start: 3px solid var(--color-teal-700);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    background: var(--color-tint-teal);
+  }
+
+  .tool-sheet__howto-title {
+    margin: 0 0 var(--space-1);
+    color: var(--color-teal-900);
+  }
+
+  .tool-sheet__body {
+    margin-block-start: var(--space-8);
+  }
+
+  .tool-section + .tool-section {
+    margin-block-start: var(--space-8);
+  }
+
+  .tool-section__title {
+    padding-block-end: var(--space-2);
+    border-block-end: 2px solid var(--color-teal-700);
+    color: var(--color-teal-900);
+  }
+
+  .tool-section__intro {
+    margin: var(--space-3) 0 0;
+    font-size: var(--text-small);
+    color: var(--color-text-soft);
+    max-width: none;
+  }
+
+  .tool-list {
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .tool-item {
+    max-width: none;
+    break-inside: avoid;
+  }
+
+  .tool-item--case {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .tool-box {
+    flex: none;
+    display: inline-block;
+    inline-size: 1.375rem;
+    block-size: 1.375rem;
+    margin-block-start: 0.2em;
+    border: 2px solid var(--color-field-border);
+    border-radius: 4px;
+    background: var(--color-white);
+  }
+
+  .tool-item__body {
+    display: block;
+  }
+
+  .tool-item__precision {
+    display: block;
+    margin-block-start: var(--space-1);
+    font-size: var(--text-small);
+    color: var(--color-text-soft);
+  }
+
+  .tool-item__label {
+    display: block;
+    font-weight: 700;
+    color: var(--color-teal-900);
+  }
+
+  .tool-item--info .tool-item__label::after {
+    content: " : ";
+  }
+
+  .tool-item--info .tool-item__label,
+  .tool-item--info .tool-item__body {
+    display: inline;
+  }
+
+  .tool-lines {
+    display: grid;
+    gap: 0;
+  }
+
+  .tool-line {
+    display: block;
+    block-size: 2.25rem;
+    border-block-end: 1px solid var(--color-field-border);
+  }
+
+  /* Champ d'une ligne : le libellé et la ligne côte à côte ; la ligne passe dessous si le
+     libellé est long (jamais de débordement hors de la colonne). */
+  .tool-item--champ-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--space-3);
+  }
+
+  .tool-item--champ-inline .tool-item__label {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .tool-item--champ-inline .tool-lines {
+    flex: 1 1 8rem;
+    min-inline-size: 8rem;
+  }
+
+  .tool-item--champ-inline .tool-line {
+    block-size: 1.5rem;
+  }
+
+  .tool-sheet__prudence,
+  .tool-sheet__sources {
+    margin-block-start: var(--space-8);
+  }
+
+  .tool-sheet__foot {
+    margin-block-start: var(--space-8);
+    padding-block-start: var(--space-4);
+    border-block-start: 1px solid var(--color-line);
+    font-size: var(--text-small);
+    color: var(--color-text-soft);
+  }
+}
+
+/* ---------- Le document d'un outil, imprimé (A4) ---------- */
+
+@page outil {
+  size: A4;
+  margin: 12mm 13mm 14mm;
+}
+
+@media print {
+  /* La page nommée s'applique dès `main` : posée sur la feuille seule, elle laisserait une
+     première page blanche (les sections vides qui la précèdent ouvrent la page par défaut). */
+  [data-tool-page] {
+    page: outil;
+  }
+
+  .tool-sheet {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #ffffff;
+    color: #000000;
+    font-size: 9.5pt;
+    line-height: 1.35;
+  }
+
+  .tool-sheet__brand {
+    font-size: 8.5pt;
+    color: var(--color-teal-800);
+  }
+
+  .tool-sheet__title {
+    margin-block-start: 2mm;
+    font-size: 18pt;
+    line-height: 1.1;
+    color: var(--color-teal-900);
+  }
+
+  .tool-sheet__subtitle {
+    margin-block-start: 1.5mm;
+    font-size: 10.5pt;
+    line-height: 1.3;
+    color: #333333;
+  }
+
+  .tool-sheet__howto {
+    margin-block-start: 4mm;
+    padding: 2.5mm 4mm;
+    border-radius: 0 3mm 3mm 0;
+    background: var(--color-teal-50);
+    break-inside: avoid;
+  }
+
+  .tool-sheet__howto-title {
+    font-size: 9.5pt;
+  }
+
+  /* Deux colonnes : un outil tient sur une page ou deux. */
+  .tool-sheet__body {
+    margin-block-start: 4mm;
+    column-count: 2;
+    column-gap: 8mm;
+    column-fill: balance;
+  }
+
+  .tool-section {
+    break-inside: auto;
+  }
+
+  .tool-section + .tool-section {
+    margin-block-start: 3.5mm;
+  }
+
+  .tool-section__title {
+    font-size: 11pt;
+    line-height: 1.2;
+    padding-block-end: 0.8mm;
+    border-block-end: 0.5mm solid var(--color-teal-700);
+    break-after: avoid;
+  }
+
+  .tool-section__intro {
+    margin-block-start: 1mm;
+    font-size: 8.5pt;
+    color: #333333;
+    break-after: avoid;
+  }
+
+  .tool-list {
+    margin-block-start: 1.5mm;
+    gap: 1.4mm;
+  }
+
+  .tool-item--case {
+    gap: 2.2mm;
+  }
+
+  .tool-box {
+    inline-size: 4mm;
+    block-size: 4mm;
+    margin-block-start: 0.4mm;
+    border: 0.4mm solid #000000;
+    border-radius: 0.6mm;
+    background: #ffffff;
+  }
+
+  .tool-item__precision {
+    margin-block-start: 0.3mm;
+    font-size: 8pt;
+    color: #333333;
+  }
+
+  .tool-item__label {
+    font-size: 9pt;
+    color: var(--color-teal-900);
+  }
+
+  .tool-line {
+    block-size: 6.2mm;
+    border-block-end: 0.25mm solid #555555;
+  }
+
+  .tool-item--champ-inline .tool-line {
+    block-size: 4.6mm;
+  }
+
+  .tool-sheet__prudence {
+    margin-block-start: 4mm;
+    padding: 2.5mm 4mm;
+    font-size: 8.5pt;
+    break-inside: avoid;
+  }
+
+  .tool-sheet__sources {
+    margin-block-start: 4mm;
+    font-size: 8pt;
+    break-inside: avoid;
+  }
+
+  .tool-sheet__sources .sources-list ul {
+    display: block;
+  }
+
+  .tool-sheet__sources .sources-list li + li {
+    margin-block-start: 1mm;
+  }
+
+  .tool-sheet__sources a::after {
+    content: " (" attr(href) ")";
+    font-size: 7.5pt;
+    word-break: break-all;
+  }
+
+  .tool-sheet__foot {
+    margin-block-start: 4mm;
+    padding-block-start: 1.5mm;
+    border-block-start: 0.25mm solid var(--color-line);
+    font-size: 8pt;
+    color: #333333;
+    break-inside: avoid;
+  }
+}

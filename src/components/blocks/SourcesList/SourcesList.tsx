@@ -50,16 +50,25 @@ export function SourcesList({
   sources,
   texts,
   review,
+  ordered = false,
   className,
 }: {
   sources: readonly Source[];
   texts: SourcesListTexts;
   review?: SourcesReview;
+  /** Liste numérotée (sources d’un article, docs/06 §3) plutôt qu’une liste sans puces. */
+  ordered?: boolean;
   className?: string;
 }) {
+  const List = ordered ? "ol" : "ul";
   return (
     <div className={cn("sources-list", className)}>
-      <ul className="m-0 grid list-none gap-4 p-0 md:grid-cols-2 md:gap-x-8">
+      <List
+        className={cn(
+          "m-0 grid gap-4 md:grid-cols-2 md:gap-x-8",
+          ordered ? "list-decimal pl-6 marker:font-bold marker:text-teal-800" : "list-none p-0",
+        )}
+      >
         {sources.map((source) => (
           <li key={source.href} className="max-w-none">
             <a href={source.href} rel="noopener noreferrer" className="font-bold">
@@ -80,7 +89,7 @@ export function SourcesList({
             </span>
           </li>
         ))}
-      </ul>
+      </List>
       {review ? (
         <div className="sources-review mt-8 flex max-w-2xl items-start gap-4 rounded-card border border-line bg-white p-5 shadow-1">
           <Icon name="mains" size="lg" className="mt-0.5" />

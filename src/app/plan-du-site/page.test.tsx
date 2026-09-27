@@ -104,6 +104,8 @@ describe("Plan du site", () => {
         /^\/tarifs-et-aides\/[a-z0-9-]+\/$/.test(href) ||
         /^\/demande\/[a-z0-9-]+\/$/.test(href) ||
         /^\/agences\/[a-z0-9-]+\/$/.test(href) ||
+        /^\/outils\/[a-z0-9-]+\/$/.test(href) ||
+        /^\/magazine\/(?:[a-z0-9-]+\/)+$/.test(href) ||
         /^\/aide-a-domicile\/(?:[a-z0-9-]+\/)+$/.test(href);
       expect(known, `${href} n'existe pas dans src/app`).toBe(true);
     }

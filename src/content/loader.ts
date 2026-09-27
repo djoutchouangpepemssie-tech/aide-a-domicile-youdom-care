@@ -21,6 +21,16 @@ import weekExamplesJson from "../../content/semaines-types.json";
 import pricingJson from "../../content/tarifs.json";
 import regionPageJson from "../../content/pages/aide-a-domicile.json";
 import agenciesPageJson from "../../content/pages/agences.json";
+import lexiquePageJson from "../../content/pages/lexique.json";
+import { lexiquePageSchema, type LexiquePage } from "./lexique-schema";
+import magazinePageJson from "../../content/pages/magazine.json";
+import editorialCharterJson from "../../content/pages/charte-editoriale.json";
+import {
+  editorialCharterSchema,
+  magazinePageSchema,
+  type EditorialCharterContent,
+  type MagazinePageContent,
+} from "./magazine-schema";
 import {
   aboutSchema,
   thanksSchema,
@@ -233,6 +243,34 @@ export function getAgenciesPage(): AgenciesPage {
   return agenciesPage;
 }
 
+let magazinePage: MagazinePageContent | undefined;
+
+/** Index et rubriques du magazine « Le Fil » (docs/06 §2, P7.1). */
+export function getMagazinePage(): MagazinePageContent {
+  magazinePage ??= parseContent(magazinePageSchema, magazinePageJson, "pages/magazine.json");
+  return magazinePage;
+}
+
+let editorialCharter: EditorialCharterContent | undefined;
+
+/** Section « Le Fil » de la charte éditoriale (docs/06 §4). */
+export function getEditorialCharter(): EditorialCharterContent {
+  editorialCharter ??= parseContent(
+    editorialCharterSchema,
+    editorialCharterJson,
+    "pages/charte-editoriale.json",
+  );
+  return editorialCharter;
+}
+
+let lexiquePage: LexiquePage | undefined;
+
+/** Index du lexique /lexique/ (docs/06 §6, P7.2) ; les termes sont dans src/content/lexique.ts. */
+export function getLexiquePage(): LexiquePage {
+  lexiquePage ??= parseContent(lexiquePageSchema, lexiquePageJson, "pages/lexique.json");
+  return lexiquePage;
+}
+
 export function getSiteConfig(): SiteConfig {
   siteConfig ??= parseContent(siteConfigSchema, siteConfigJson, "site.config.json");
   return siteConfig;
@@ -278,5 +316,8 @@ export function loadAllContent() {
     emails: getEmailTexts(),
     regionPage: getRegionPage(),
     agenciesPage: getAgenciesPage(),
+    magazinePage: getMagazinePage(),
+    editorialCharter: getEditorialCharter(),
+    lexiquePage: getLexiquePage(),
   };
 }

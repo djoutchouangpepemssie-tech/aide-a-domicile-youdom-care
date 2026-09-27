@@ -144,13 +144,13 @@ Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la
 
 ## Phase 7 — Magazine et lexique · `phase/07-magazine`
 
-- [ ] **P7.1 Gabarit d'article, rubriques, pagination, fiche auteur.** Réf. `docs/06 §2–4`.
-- [ ] **P7.2 Lexique : gabarit et 20 premiers termes.**
-- [ ] **P7.3 Articles ★ n° 1, 2, 3.**
-- [ ] **P7.4 Articles ★ n° 7, 9, 12.**
-- [ ] **P7.5 Articles ★ n° 14, 16, 21.**
-- [ ] **P7.6 Articles ★ n° 22, 26, 27, 29.**
-- [ ] **P7.7 Outils à imprimer** (cinq documents, PDF balisés) et feuilles d'impression.
+- [x] (87df6c4) **P7.1 Gabarit d'article, rubriques, pagination, fiche auteur.** Réf. `docs/06 §2–4`.
+- [x] (d285325) **P7.2 Lexique : gabarit et 20 premiers termes.**
+- [x] (acf284f) **P7.3 Articles ★ n° 1, 2, 3.**
+- [x] (fd6ac77) **P7.4 Articles ★ n° 7, 9, 12.**
+- [x] (937af6f) **P7.5 Articles ★ n° 14, 16, 21.**
+- [x] (4701f8d) **P7.6 Articles ★ n° 22, 26, 27, 29.**
+- [x] (cd8cc51) **P7.7 Outils à imprimer** (cinq documents, PDF balisés) et feuilles d'impression.
 
 **Point de validation 7** : chaque article a ses sources vérifiées, son « essentiel », ses trois actions, un seul encart d'appel ; tous en `statut: a_relire`.
 

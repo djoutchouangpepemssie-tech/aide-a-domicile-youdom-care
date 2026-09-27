@@ -1,4 +1,12 @@
 export { breadcrumbList, type BreadcrumbListItem } from "./breadcrumb-list";
+export {
+  definedTerm,
+  definedTermSet,
+  lexiqueTermJsonLd,
+  lexiqueWebPage,
+  type DefinedTermInput,
+  type DefinedTermSetInput,
+} from "./defined-term";
 export { faqPage, type FaqItem } from "./faq-page";
 export {
   agencyPath,
@@ -31,3 +39,4 @@ export {
   webPage,
   type WebPageInput,
 } from "./web-page";
+export { articleJsonLd, type ArticleJsonLdOptions } from "./article";
