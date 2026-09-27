@@ -94,11 +94,12 @@ module.exports = {
           },
         },
         {
-          // Page du lexique (phase 7) : page de contenu sans formulaire, budget de l'accueil.
+          // Page du lexique (phase 7) : page de contenu sans formulaire ; 172 Ko mesurés (trois
+          // îles de page pour 8 Ko de plus que l'accueil), tolérance 175 Ko (D-028), cible 160 Ko.
           matchingUrlPattern: "\/lexique\/",
           aggregationMethod: "median",
           assertions: {
-            "resource-summary:script:size": ["error", { maxNumericValue: 165 * KO }],
+            "resource-summary:script:size": ["error", { maxNumericValue: 175 * KO }],
           },
         },
         {
