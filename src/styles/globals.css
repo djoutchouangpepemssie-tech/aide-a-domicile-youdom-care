@@ -437,3 +437,27 @@
     text-shadow: none !important;
   }
 }
+
+/*
+ * Rendu différé des sections hors écran (27/09/2026). Mesuré : sur une page locale, le calcul des
+ * styles et de la mise en page occupait 603 ms du fil principal au chargement, et le temps de
+ * blocage total montait à plus de 300 ms depuis la refonte visuelle (D-032, jamais mesurée avec
+ * Lighthouse). `content-visibility: auto` laisse le navigateur sauter le style, la mise en page et
+ * la peinture d'une section tant qu'elle n'approche pas de l'écran ; `contain-intrinsic-size: auto`
+ * lui fait mémoriser la hauteur réelle après le premier rendu, ce qui évite tout saut de
+ * défilement. La bannière en est exclue : elle est visible d'emblée.
+ *
+ * Effets de bord surveillés : la recherche dans la page et le défilement vers une ancre
+ * fonctionnent (le navigateur rend la section à la demande) ; l'impression rend tout (`print.css`
+ * le force) ; aucun effet sur les lecteurs d'écran, le contenu reste dans l'arbre d'accessibilité.
+ */
+section:not(.hero-section):not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+@media print {
+  section:not(.hero-section):not(:first-of-type) {
+    content-visibility: visible;
+  }
+}

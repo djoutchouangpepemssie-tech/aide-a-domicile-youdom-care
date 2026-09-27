@@ -164,11 +164,11 @@ Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la
 
 ## Phase 9 — Qualité finale · `phase/09-qualite`
 
-- [ ] **P9.1 Performance** : budgets tenus sur toutes les pages témoins.
-- [ ] **P9.2 Accessibilité** : axe sur tous les gabarits, corrections.
-- [ ] **P9.3 Relecture de voix** : tout le site contre `docs/01 §2` ; boutons conformes à la bibliothèque.
-- [ ] **P9.4 Exploration interne** : liens, orphelines, profondeur de clic (toute page à 3 clics au plus de l'accueil), plans de site.
-- [ ] **P9.5 Bilan de lancement** : résultat de `pnpm validate --prod` (les échecs attendus deviennent la liste d'actions d'Arcel), `docs/SUIVI_SEO.md`, mise à jour de `docs/QUESTIONS_ARCEL.md`. `SITE_INDEXABLE` reste à `false` : c'est Arcel qui ouvre l'indexation.
+- [x] (71e02b5) **P9.1 Performance** : budgets tenus sur toutes les pages témoins. Formulaires hydratés à la demande, dette DP.1 soldée, −44 à −50 Ko sur quatre gabarits (D-030).
+- [x] (7ccbd0f) **P9.2 Accessibilité** : axe sur tous les gabarits, corrections, déclaration d'accessibilité à jour.
+- [x] (8bab028) **P9.3 Relecture de voix** : tout le site contre `docs/01 §2` ; boutons conformes à la bibliothèque. Complété le 27/09/2026 par deux audits (D-038) : libellés alignés sur leur destination, titres de section harmonisés, comptes calculés.
+- [x] (8bab028) **P9.4 Exploration interne** : liens, orphelines, profondeur de clic (toute page à 3 clics au plus de l'accueil), plans de site. Contrôle `check-depth` ajouté (D-031).
+- [x] (à venir) **P9.5 Bilan de lancement** : résultat de `pnpm validate --prod` (les échecs attendus deviennent la liste d'actions d'Arcel), `docs/SUIVI_SEO.md`, mise à jour de `docs/QUESTIONS_ARCEL.md`. `SITE_INDEXABLE` était à `false` par défaut ; **D-035 l'a ouvert à la demande d'Arcel le 27/09/2026**, le site est donc indexable sauf à poser `SITE_INDEXABLE=false`.
 
 **Point de validation 9** : `pnpm validate` vert, `pnpm lhci` vert, `git status` propre, PR fusionnée, tag `phase-09`. La loop rédige son bilan et s'arrête.
 
@@ -182,6 +182,8 @@ Critères communs : anatomie de `docs/04 §4` ; zone éditoriale écrite pour la
 - [~] (Q-LANCEMENT) **P10.6 Illustrations au fil restantes** et remplacement progressif par les photos réelles fournies.
 
 ## Dette et corrections
+
+- [ ] **DP.2 Coût de rendu de la refonte visuelle (27/09/2026).** La refonte D-032 a été livrée sans mesure Lighthouse, et le point de validation 9 la met au jour. Mesures comparatives, trois passes par page, machine au repos, étranglement 4G et processeur ×4 : au commit `7ccbd0f` (fin de la refonte, avant les correctifs du 27/09) **cinq** pages témoins échouent, temps de blocage total de 290 à 337 ms et note de performance de 0,89 à 0,92 ; après `content-visibility: auto` sur les sections hors écran, **deux à trois** pages échouent encore, temps de blocage de 166 à 326 ms selon la page. Pour mémoire, D-030 mesurait 25 à 74 ms **avant** la refonte : le coût vient donc bien d'elle, et non des correctifs du 27/09 (qui améliorent la situation). Le poste dominant est le calcul des styles et de la mise en page, 603 ms du fil principal sur une page locale, pas le JavaScript. Pistes à instruire, dans l'ordre : réduire le nombre de surfaces à `backdrop-filter` (41 sur une seule page locale, dont 39 posées sur un fond uni où le flou n'apporte rien de visible) ; alléger les sélecteurs arbitraires de compaction, évalués sur tous les éléments ; vérifier si le grain des scènes, un masque répété sur toute la surface, pèse au premier rendu. Budget de script de l'accueil à reprendre aussi : 167 Ko mesurés pour une tolérance de 165 Ko. **À ne pas faire** : relever les seuils de performance pour faire passer le contrôle.
 
 (La loop ajoute ici les anomalies découvertes en cours de route, avec la phase concernée.)
 

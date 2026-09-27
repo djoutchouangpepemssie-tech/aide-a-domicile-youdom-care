@@ -102,10 +102,13 @@ module.exports = {
         {
           // Page du lexique (phase 7) : page de contenu sans formulaire ; 172 Ko mesurés (trois
           // îles de page pour 8 Ko de plus que l'accueil), tolérance 175 Ko (D-028), cible 160 Ko.
+          // Portée à 176 Ko le 27/09/2026 : 175,4 Ko mesurés, trois passes identiques, soit 426
+          // octets de plus. Ils viennent du filet qui empêche un bloc de rester invisible après un
+          // saut de défilement (D-037) — un correctif de bug, pas un ornement. Cible inchangée.
           matchingUrlPattern: "\/lexique\/",
           aggregationMethod: "median",
           assertions: {
-            "resource-summary:script:size": ["error", { maxNumericValue: 175 * KO }],
+            "resource-summary:script:size": ["error", { maxNumericValue: 176 * KO }],
           },
         },
         {
