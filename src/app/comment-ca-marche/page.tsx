@@ -94,7 +94,7 @@ export default async function HowItWorksPage() {
   const themes = await themeBlocks("/comment-ca-marche/");
   return (
     // D-032 : scène teal pour les pages de fonctionnement.
-    <main id="contenu" data-scene="teal">
+    <main id="contenu" data-scene="teal" data-famille="fonctionnement">
       <Section tone="paper" aria-labelledby="titre" className="scene scene-soutenu">
         <Breadcrumb texts={fil_ariane} items={[{ label: crumbLabel }]} className="mb-6" />
         <div className="grid items-center gap-10 lg:grid-cols-[3fr_2fr]">

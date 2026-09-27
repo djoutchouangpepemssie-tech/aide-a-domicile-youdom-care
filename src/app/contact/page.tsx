@@ -32,7 +32,7 @@ export default function ContactPage() {
     "/politique-de-confidentialite/";
 
   return (
-    <main id="contenu">
+    <main id="contenu" data-famille="formulaire">
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb texts={texts.fil_ariane} items={[{ label: page.ariane }]} className="mb-6" />
         <Heading level={1} id="titre">

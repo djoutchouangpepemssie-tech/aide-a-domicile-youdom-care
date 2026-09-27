@@ -58,7 +58,12 @@ export function ArticleListPage({
     : base;
 
   return (
-    <main id="contenu" data-magazine={rubrique ?? "index"} data-page={current}>
+    <main
+      id="contenu"
+      data-famille="magazine"
+      data-magazine={rubrique ?? "index"}
+      data-page={current}
+    >
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb texts={texts.fil_ariane} items={crumbs} className="mb-6" />
         <Heading level={1} id="titre">

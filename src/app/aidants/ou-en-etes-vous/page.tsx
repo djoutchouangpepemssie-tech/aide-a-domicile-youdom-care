@@ -32,7 +32,7 @@ export default function CaregiverCheckPage() {
   ];
 
   return (
-    <main id="contenu">
+    <main id="contenu" data-famille="outils">
       <div className="container-site pt-6">
         <Breadcrumb texts={texts.fil_ariane} items={crumbs} />
       </div>

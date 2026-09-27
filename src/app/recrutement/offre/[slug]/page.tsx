@@ -71,7 +71,7 @@ export default async function OfferPage({ params }: OfferRouteProps) {
   ];
 
   return (
-    <main id="contenu">
+    <main id="contenu" data-famille="entreprise">
       <JsonLd data={jsonLd} />
       <Section tone="paper" aria-labelledby="titre">
         <Breadcrumb
