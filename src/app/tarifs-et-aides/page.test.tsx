@@ -28,7 +28,9 @@ describe("Tarifs et aides", () => {
     expect(within(aides).getAllByRole("link", { name: "Tout savoir sur cette aide" })).toHaveLength(
       6,
     );
-    expect(within(aides).getAllByRole("link", { name: /lien externe/ })).toHaveLength(6);
+    // 27/09/2026 : les cartes d'aides nomment leur source officielle sans lien sortant.
+    expect(within(aides).queryAllByRole("link", { name: /lien externe/ })).toHaveLength(0);
+    expect(aides.querySelectorAll('a[href^="http"]')).toHaveLength(0);
 
     expect(screen.getByRole("link", { name: "Je demande un devis gratuit" })).toBeInTheDocument();
   });

@@ -33,8 +33,8 @@
     "collected_at": "2026-09-26"
   },
   "agence_proche": {
-    "id": "vitry-sur-seine",
-    "distance_km": 7
+    "id": "paris-12",
+    "distance_km": 10.6
   },
   "communes_voisines": [
     {

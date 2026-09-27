@@ -197,14 +197,20 @@ export interface FactsAudit {
   stats: FactsStats;
 }
 
-function thresholdsOf(kind: TerritoryKind) {
-  return kind === "region" ? null : localThresholds[kind];
+function thresholdsOf(kind: TerritoryKind, motsMin?: Partial<Record<string, number>>) {
+  if (kind === "region") return null;
+  const base = localThresholds[kind];
+  const surcharge = motsMin?.[kind];
+  return surcharge === undefined ? base : { ...base, mots: surcharge };
 }
 
 const fmt = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
 
-/** Contrôle une page locale déjà lue ; les erreurs de lecture sont reprises telles quelles. */
-export function auditFacts(page: LocalPage): FactsAudit {
+/**
+ * Contrôle une page locale déjà lue ; les erreurs de lecture sont reprises telles quelles.
+ * `motsMin` remplace le seuil de mots du type de territoire ; réservé aux tests des contrôles.
+ */
+export function auditFacts(page: LocalPage, motsMin?: Partial<Record<string, number>>): FactsAudit {
   const errors = [...page.errors];
   const warnings: string[] = [];
   const stats: FactsStats = {
@@ -231,7 +237,7 @@ export function auditFacts(page: LocalPage): FactsAudit {
   }
   if (!data || !editorial) return { errors, warnings, stats };
 
-  const thresholds = thresholdsOf(data.kind);
+  const thresholds = thresholdsOf(data.kind, motsMin);
   stats.inTerritory = data.facts.filter((fact) => fact.in_territory === true).length;
   if (thresholds) {
     stats.factsThreshold = thresholds.faits;
@@ -303,7 +309,7 @@ export async function runLocalFactsCheck(ctx: CheckContext): Promise<CheckResult
   const errors: string[] = [];
   const warnings = [...corpus.warnings];
   for (const page of corpus.pages) {
-    const audit = auditFacts(page);
+    const audit = auditFacts(page, ctx.motsMin);
     errors.push(...audit.errors);
     warnings.push(...audit.warnings);
   }

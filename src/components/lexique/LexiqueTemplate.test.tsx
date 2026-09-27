@@ -73,16 +73,16 @@ describe("LexiqueTemplate", () => {
     expect(screen.getByText("Explication compilée.")).toBeInTheDocument();
   });
 
-  it("montre « Pour qui ? », le texte officiel daté et signalé externe, les pages liées et les voisins", () => {
+  it("montre « Pour qui ? », la source officielle datée sans lien, les pages liées et les voisins", () => {
     render(<LexiqueTemplate data={data()} />);
     expect(screen.getByRole("region", { name: "Pour qui ?" })).toHaveTextContent(
       "Les personnes de 60 ans et plus.",
     );
     const official = screen.getByRole("region", { name: "Le texte officiel" });
-    const link = within(official).getByRole("link", { name: /service-public/ });
-    expect(link).toHaveAttribute("href", term.lien_officiel.href);
-    expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    expect(link).toHaveTextContent("lien externe");
+    // 27/09/2026, demande d'Arcel : la source officielle est nommée et datée, sans lien sortant.
+    expect(within(official).queryByRole("link")).toBeNull();
+    expect(official.querySelector('a[href^="http"]')).toBeNull();
+    expect(official).toHaveTextContent(term.lien_officiel.libelle);
     expect(official).toHaveTextContent("vérifiée le 1 juin 2026");
     expect(official).toHaveTextContent("consultée le 27 septembre 2026");
 

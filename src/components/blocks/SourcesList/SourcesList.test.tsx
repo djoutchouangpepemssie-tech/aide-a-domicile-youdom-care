@@ -27,15 +27,14 @@ describe("SourcesList", () => {
     expect(sourceDomain("pas une adresse")).toBe("pas une adresse");
   });
 
-  it("liste les sources avec domaine en pastille, dates tabulaires et lien externe signalé", () => {
+  it("liste les sources avec leur libellé, leur domaine en pastille et leurs dates, sans lien", () => {
     const { container } = render(<SourcesList texts={texts} sources={sources} />);
     expect(container.firstElementChild).toHaveClass("sources-list");
     expect(container.querySelector("ul")).toHaveClass("md:grid-cols-2");
-    const links = screen.getAllByRole("link");
-    expect(links).toHaveLength(2);
-    expect(links[0]).toHaveAccessibleName(/APA.*lien externe/);
-    expect(links[0]).toHaveAttribute("rel", "noopener noreferrer");
-    expect(links[0]).toHaveTextContent("↗");
+    // 27/09/2026, demande d'Arcel : plus aucun lien sortant. Le libellé reste, en texte.
+    expect(screen.queryAllByRole("link")).toHaveLength(0);
+    expect(container.querySelector('a[href^="http"]')).toBeNull();
+    expect(container).toHaveTextContent("APA");
     const pills = Array.from(container.querySelectorAll(".bg-teal-50"));
     expect(pills.map((pill) => pill.textContent)).toEqual(["service-public.gouv.fr", "urssaf.fr"]);
     expect(pills[0]).toHaveClass("text-teal-800");

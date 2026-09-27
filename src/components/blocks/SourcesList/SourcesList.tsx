@@ -71,16 +71,12 @@ export function SourcesList({
       >
         {sources.map((source) => (
           <li key={source.href} className="max-w-none">
-            {/* Cible de 44 px de haut (WCAG 2.5.8, P9.6) : le libellé mesurait 22 px. */}
-            <a
-              href={source.href}
-              rel="noopener noreferrer"
-              className="inline-flex min-h-11 flex-wrap items-center font-bold"
-            >
-              {source.libelle}
-              <span aria-hidden="true"> ↗</span>
-              <span className="sr-only"> ({texts.lien_externe})</span>
-            </a>
+            {/*
+             * 27/09/2026, demande d'Arcel : plus aucun lien sortant vers un service public. La
+             * source garde son libellé, son domaine et ses dates — un lecteur sait d'où vient
+             * l'information et peut la retrouver — mais le site ne l'envoie plus ailleurs.
+             */}
+            <span className="flex flex-wrap items-center font-bold">{source.libelle}</span>
             <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-text-soft">
               <span className="rounded-full bg-teal-50 px-2.5 py-0.5 font-bold text-teal-800">
                 {sourceDomain(source.href)}

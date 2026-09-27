@@ -37,15 +37,12 @@ import {
   aidFactTypes,
   fill,
   formInsee,
-  formatDistance,
   formatInteger,
   formatPercent,
   lifeFactTypes,
   localPlace,
   localTitle,
   type LocalTexts,
-  resourceFactTypes,
-  roundedDistance,
 } from "./local-texts";
 
 /*
@@ -81,6 +78,12 @@ export interface LocalTemplateData {
   phone: string | null;
   /** Agence la plus proche (`data.agence_proche.id` résolu dans site.config.json) ; null si inconnue. */
   agency: Agency | null;
+  /**
+   * Couverture régionale (`site.config.json` › `couverture.phrase`), confirmée par Arcel le
+   * 27/09/2026 : les auxiliaires de vie interviennent dans toute l'Île-de-France. Affichée sous la
+   * réponse, à la place de la distance jusqu'à l'agence, qui laissait croire à une limite.
+   */
+  coverage: string | null;
   weekExample: WeekExample | null;
   /** Aides du département à présenter (APA, PCH), depuis content/aides.json. */
   aids: readonly Aid[];
@@ -106,13 +109,13 @@ export interface LocalTemplateData {
 
 /**
  * Gabarit de la réponse immédiate (docs/04 §4, anatomie 2) : agence installée dans le territoire,
- * agence du département (sans distance depuis un centroïde qui n'a pas de sens), agence la plus
- * proche avec sa distance à une décimale, ou « à moins d'un kilomètre ».
+ * agence du département, ou agence qui coordonne. Aucune distance n'est affichée depuis le
+ * 27/09/2026 : Arcel a confirmé que les auxiliaires de vie interviennent dans toute
+ * l'Île-de-France, et un kilométrage laisserait croire à une limite.
  */
 export function agencyResponse(
   data: Pick<LocalData, "kind" | "code">,
   agency: Pick<Agency, "code_insee" | "departement">,
-  distance: string | null,
   t: LocalTexts,
 ): string {
   if (data.kind === "departement") {
@@ -121,7 +124,7 @@ export function agencyResponse(
       : t.reponse.agence_hors_departement;
   }
   if (agency.code_insee === data.code) return t.reponse.agence_ici;
-  return distance ? t.reponse.agence : t.reponse.agence_proche;
+  return t.reponse.agence;
 }
 
 /** Colonne du rail : 17,5 rem (280 px) + 3 rem d'écart, réservés à droite des sections 2 à 9. */
@@ -172,6 +175,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
     navigation,
     phone,
     agency,
+    coverage,
     weekExample,
     aids,
     accompagnements,
@@ -191,10 +195,6 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
     data.kind === "commune" || data.kind === "arrondissement" || data.kind === "quartier"
       ? (data.departement_nom ?? t.sur_titre)
       : t.sur_titre;
-  // Distance à l'agence : une décimale comme dans les textes (« 5,7 km »), rien sous un kilomètre.
-  const distanceKm = data.agence_proche?.distance_km ?? null;
-  const distance =
-    distanceKm !== null && roundedDistance(distanceKm) !== null ? formatDistance(distanceKm) : null;
   const departementPages: readonly { href: string; label: string }[] = page.departementPages ?? [];
   // Voisines déclarées (lien seulement si leur page est construite), puis les pages proches
   // calculées (`nearbyPages`, toujours construites) à leur rang de distance.
@@ -229,9 +229,8 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
       <p className="heading-4 m-0 text-teal-900">{fill(t.reponse.oui, { lieu })}</p>
       {agency ? (
         <p className={cn("m-0 mt-1 text-small", heroWhenRoomy)}>
-          {fill(agencyResponse(data, agency, distance, t), {
+          {fill(agencyResponse(data, agency, t), {
             agence: agency.nom,
-            distance: distance ?? "",
             lieu,
             commune: agency.commune,
           })}
@@ -330,7 +329,6 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           aria-labelledby="reponse"
           className={withRail}
           data-local-agence={agency?.id}
-          data-local-distance={distance ?? undefined}
         >
           <Heading level={2} id="reponse">
             {fill(t.reponse.oui, { lieu })}
@@ -338,13 +336,13 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           {agency ? (
             <div className="mt-6 max-w-2xl rounded-card border border-line bg-white p-6 shadow-1">
               <p className="m-0 text-lead">
-                {fill(agencyResponse(data, agency, distance, t), {
+                {fill(agencyResponse(data, agency, t), {
                   agence: agency.nom,
-                  distance: distance ?? "",
                   lieu,
                   commune: agency.commune,
                 })}
               </p>
+              {coverage ? <p className="m-0 mt-2">{coverage}</p> : null}
               {/* D-036 : rien du tout quand l'agence ne publie pas d'adresse de voie. */}
               {fullAddress(agency) ? <p className="m-0 mt-2">{fullAddress(agency)}</p> : null}
               <ul className="m-0 mt-4 flex list-none flex-wrap gap-x-6 gap-y-2 p-0">
@@ -414,20 +412,14 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           />
         </Section>
 
-        {/* 4. Les ressources près de chez vous */}
-        <Section tone="white" aria-labelledby="ressources" className={withRail}>
-          <Heading level={2} id="ressources">
-            {t.ressources_h2}
-          </Heading>
-          <Lead className="mt-3">{t.ressources_texte}</Lead>
-          <LocalFactsGrid
-            id="ressources"
-            className="mt-8"
-            facts={data.facts}
-            types={resourceFactTypes}
-            texts={t.faits}
-          />
-        </Section>
+        {/*
+         * 4. « Les ressources près de chez vous » a été retiré le 27/09/2026, à la demande
+         * d'Arcel : une page locale ne publie plus l'annuaire des hôpitaux, accueils de jour et
+         * guichets de la commune, avec leurs adresses, leurs numéros et leurs liens. Ces lieux
+         * peuvent être nommés dans la zone éditoriale, là où ils éclairent une difficulté réelle
+         * de la ville, mais sans coordonnées. Les faits restent dans `data/local` : ils nourrissent
+         * les repères et les aides, et gardent la traçabilité des sources.
+         */}
 
         {/* 5. Nos accompagnements à … */}
         <Section tone="teal" aria-labelledby="accompagnements" className={withRail}>
@@ -556,9 +548,6 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                 >
                   {neighbours.map((neighbour) => {
                     const { href } = neighbour;
-                    const distanceLabel = fill(t.voisines_distance, {
-                      distance: formatDistance(neighbour.distance_km),
-                    });
                     return (
                       /* Une commune sans page ne porte plus la même carte qu'une commune liée
                          (27/09/2026) : quatre-vingt-onze pages mêlaient des cartes identiques
@@ -583,9 +572,6 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                         ) : (
                           <span className="inline-flex min-h-11 items-center">{neighbour.nom}</span>
                         )}
-                        <span className="tabular-figures text-small text-text-soft">
-                          {distanceLabel}
-                        </span>
                       </li>
                     );
                   })}

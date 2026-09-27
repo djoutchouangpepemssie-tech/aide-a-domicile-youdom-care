@@ -34,7 +34,7 @@ describe("À propos", () => {
     expect(screen.queryByRole("region", { name: /histoire/i })).not.toBeInTheDocument();
     expect(screen.queryByRole("region", { name: /équipe/i })).not.toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Où nous intervenons" })).toHaveTextContent(
-      "6 agences",
+      "2 agences",
     );
     expect(screen.queryByText("Labels et adhésions")).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Lire notre charte éditoriale" })).toHaveAttribute(

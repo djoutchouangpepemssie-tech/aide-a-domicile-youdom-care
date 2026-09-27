@@ -21,46 +21,6 @@
       },
       "adresse_trouvee": "51 Quai de Dion Bouton 92800 Puteaux",
       "score": 0.816
-    },
-    {
-      "id": "saint-denis",
-      "requete": "5-7-9 rue Pleyel 93200 Saint-Denis",
-      "coordonnees": {
-        "lat": 48.917605,
-        "lng": 2.345769
-      },
-      "adresse_trouvee": "Rue Pleyel 93200 Saint-Denis",
-      "score": 0.735
-    },
-    {
-      "id": "vitry-sur-seine",
-      "requete": "86 avenue Paul-Vaillant-Couturier 94400 Vitry-sur-Seine",
-      "coordonnees": {
-        "lat": 48.794765,
-        "lng": 2.396935
-      },
-      "adresse_trouvee": "86 Avenue Paul Vaillant Couturier 94400 Vitry-sur-Seine",
-      "score": 0.979
-    },
-    {
-      "id": "serris",
-      "requete": "1 boulevard Michael-Faraday 77700 Serris",
-      "coordonnees": {
-        "lat": 48.83988,
-        "lng": 2.790961
-      },
-      "adresse_trouvee": "1 Boulevard Michael Faraday 77700 Serris",
-      "score": 0.957
-    },
-    {
-      "id": "versailles",
-      "requete": "35 rue des Chantiers 78000 Versailles",
-      "coordonnees": {
-        "lat": 48.795923,
-        "lng": 2.138577
-      },
-      "adresse_trouvee": "35 Rue des Chantiers 78000 Versailles",
-      "score": 0.976
     }
   ]
 }

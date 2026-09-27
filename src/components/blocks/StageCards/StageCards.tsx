@@ -48,43 +48,61 @@ export function stageId(stage: Stage, index: number, ids?: readonly string[]): s
 
 export function StageCards({ stages, ids, active, className, ...rest }: StageCardsProps) {
   return (
-    <ThreadRail
-      as="ol"
-      className={cn("stage-cards m-0 grid list-none gap-6 p-0 md:grid-cols-3 md:gap-8", className)}
-      {...rest}
-    >
-      {stages.map((stage, index) => {
-        const last = index === stages.length - 1;
-        const isActive = active === index;
-        return (
-          <li
-            key={stage.title}
-            id={stageId(stage, index, ids)}
-            data-active={isActive ? "true" : undefined}
-            className="t-rail__item relative min-w-0 max-w-none"
-            style={railItemStyle(index, index * STAGE_DEPTH_PX)}
-          >
-            {!last ? (
-              <ThreadConnector
-                orientation="responsive"
-                delay={index * RAIL_STEP_MS + 60}
-                fraction={0.2}
-                className="absolute top-full left-[calc(2.75rem+1px)] h-6 w-0.5 -translate-x-1/2 md:top-[calc(2.75rem+1px)] md:left-full md:h-0.5 md:w-8 md:translate-x-0 md:-translate-y-1/2"
-              />
-            ) : null}
-            <article className="t-rail__card flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1">
-              <p className="m-0 flex items-center gap-3">
-                <ThreadKnot size={40} tone={last ? "raspberry" : "teal"}>
-                  {stage.icone ? <Icon name={stage.icone} size="sm" tone="ink" /> : index + 1}
-                </ThreadKnot>
-                {/* min-w-0 : un mot long se coupe dans la carte sous espacement du texte forcé (RGAA 10.12). */}
-                <span className="heading-4 min-w-0">{stage.title}</span>
-              </p>
-              {stage.text ? <div className="mt-3 [&_p]:m-0 [&_p+p]:mt-2">{stage.text}</div> : null}
-            </article>
-          </li>
-        );
-      })}
-    </ThreadRail>
+    // Le conteneur de référence doit être un ANCÊTRE : un élément ne répond pas à sa propre
+    // requête de conteneur.
+    <div className={cn("@container", className)}>
+      <ThreadRail
+        as="ol"
+        /*
+         * 27/09/2026 : le nombre de colonnes suit la largeur du bloc (`@container`), pas celle de
+         * l'écran. Posées dans une demi-page à côté d'une photo, les trois cartes tombaient à 218 px
+         * et leurs titres se coupaient. Elles s'empilent maintenant tant que le bloc ne fait pas
+         * 48 rem.
+         */
+        className="stage-cards m-0 grid list-none gap-6 p-0 @3xl:grid-cols-3 @3xl:gap-8"
+        {...rest}
+      >
+        {stages.map((stage, index) => {
+          const last = index === stages.length - 1;
+          const isActive = active === index;
+          return (
+            <li
+              key={stage.title}
+              id={stageId(stage, index, ids)}
+              data-active={isActive ? "true" : undefined}
+              className="t-rail__item relative min-w-0 max-w-none"
+              style={railItemStyle(index, index * STAGE_DEPTH_PX)}
+            >
+              {!last ? (
+                <ThreadConnector
+                  orientation="responsive"
+                  breakpoint="container"
+                  delay={index * RAIL_STEP_MS + 60}
+                  fraction={0.2}
+                  className="absolute top-full left-[calc(2.75rem+1px)] h-6 w-0.5 -translate-x-1/2 @3xl:top-[calc(2.75rem+1px)] @3xl:left-full @3xl:h-0.5 @3xl:w-8 @3xl:translate-x-0 @3xl:-translate-y-1/2"
+                />
+              ) : null}
+              <article className="t-rail__card flex h-full flex-col rounded-card border border-line bg-white p-6 shadow-1">
+                {/*
+                 * 27/09/2026 : l'icône est au-dessus du titre, plus à côté. Sur trois colonnes, un
+                 * nœud de 40 px et un écart de 12 px ne laissaient au titre qu'une colonne très
+                 * étroite : « Au début : préserver les habitudes » s'étalait sur six lignes et se
+                 * coupait en plein mot. Le titre prend maintenant toute la largeur de la carte.
+                 */}
+                <p className="m-0 flex flex-col items-start gap-3">
+                  <ThreadKnot size={40} tone={last ? "raspberry" : "teal"}>
+                    {stage.icone ? <Icon name={stage.icone} size="sm" tone="ink" /> : index + 1}
+                  </ThreadKnot>
+                  <span className="heading-4 text-balance">{stage.title}</span>
+                </p>
+                {stage.text ? (
+                  <div className="mt-3 [&_p]:m-0 [&_p+p]:mt-2">{stage.text}</div>
+                ) : null}
+              </article>
+            </li>
+          );
+        })}
+      </ThreadRail>
+    </div>
   );
 }

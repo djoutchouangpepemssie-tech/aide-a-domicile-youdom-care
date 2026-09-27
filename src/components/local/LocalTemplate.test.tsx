@@ -30,6 +30,7 @@ function data(overrides: Partial<LocalTemplateData> = {}): LocalTemplateData {
     navigation: getNavigation(),
     phone: "01 84 80 17 03",
     agency: config.agences.find((a) => a.id === "puteaux") ?? null,
+    coverage: config.couverture?.phrase ?? null,
     weekExample: getWeekExamples().exemples.find((e) => e.id === "suzanne") ?? null,
     aids: getAids().aides.filter((aid) => aid.id === "apa" || aid.id === "pch"),
     accompagnements: [
@@ -62,7 +63,6 @@ describe("LocalTemplate", () => {
     expect(headings).toEqual([
       "Oui, nous intervenons à Exempleville.",
       "Vivre à domicile à Exempleville",
-      "Les ressources près de chez vous",
       "Nos accompagnements à Exempleville",
       "Un exemple de semaine",
       "Les aides du département",
@@ -70,7 +70,7 @@ describe("LocalTemplate", () => {
       "Questions locales",
       "Être rappelé(e)",
     ]);
-    // Bloc 1 (bannière) + neuf H2 = dix blocs ; le sous-titre rédigé est dans la bannière.
+    // 27/09/2026 : « Les ressources près de chez vous » est retiré ; il reste huit H2.
     expect(screen.getByText(localEditorialExemple.sous_titre)).toBeInTheDocument();
     expect(document.querySelector("main")).toHaveAttribute(
       "data-local",
@@ -80,14 +80,17 @@ describe("LocalTemplate", () => {
     expect(screen.queryByText(/attend sa relecture/)).not.toBeInTheDocument();
   });
 
-  it("répond avec l'agence réelle la plus proche, la distance arrondie et le téléphone principal", () => {
+  it("nomme l'agence qui coordonne, dit la couverture régionale, sans distance", () => {
     render(<LocalTemplate data={data()} />);
     const block = document.querySelector('[data-local-agence="puteaux"]');
     expect(block).not.toBeNull();
-    expect(block).toHaveAttribute("data-local-distance", "2,4");
+    // 27/09/2026 : plus de distance dans la phrase. Arcel a confirmé que les auxiliaires de vie
+    // interviennent dans toute l'Île-de-France : une distance laisserait croire à une limite.
     expect(block).toHaveTextContent(
-      "Votre agence la plus proche : Youdom Care Hauts-de-Seine, à 2,4 km à vol d'oiseau.",
+      "Vos interventions sont coordonnées par Youdom Care Hauts-de-Seine.",
     );
+    expect(block).not.toHaveTextContent("à vol d'oiseau");
+    expect(block).toHaveTextContent("toute l'Île-de-France");
     expect(block).toHaveTextContent("49-51 quai de Dion-Bouton, 92800 Puteaux");
     const link = within(block as HTMLElement).getByRole("link", {
       name: "Voir l'agence Youdom Care Hauts-de-Seine",
@@ -102,17 +105,15 @@ describe("LocalTemplate", () => {
     render(<LocalTemplate data={data()} />);
     const grids = document.querySelectorAll("[data-local-facts]");
     const ids = [...grids].map((grid) => grid.getAttribute("data-local-facts"));
-    expect(ids).toEqual(["reperes", "ressources", "aides"]);
+    expect(ids).toEqual(["reperes", "aides"]);
     // Repères : démographie (population + parts) et faits « vie locale ».
     const reperes = document.querySelector('[data-local-facts="reperes"]');
     expect(reperes).toHaveTextContent("Population (recensement 2022) : 45 210 habitants");
     expect(reperes).toHaveTextContent("Part des 75 ans et plus : 8,4 %");
     expect(reperes).toHaveTextContent("Marché du centre : mardi et samedi matin");
-    // Ressources : point d'information, CCAS, accueil de jour, hôpital, PAM ; pas les aides.
-    const ressources = document.querySelector('[data-local-facts="ressources"]');
-    expect(ressources).toHaveAttribute("data-local-facts-count", "5");
-    expect(ressources).toHaveTextContent("Point d'information seniors d'Exempleville");
-    expect(ressources).not.toHaveTextContent("MDPH des Hauts-de-Seine");
+    // 27/09/2026 : le bloc « ressources » n'existe plus ; les lieux ne sont plus annuaire.
+    expect(document.querySelector('[data-local-facts="ressources"]')).toBeNull();
+    expect(screen.queryByText("Point d'information seniors d'Exempleville")).toBeNull();
     const aides = document.querySelector('[data-local-facts="aides"]');
     expect(aides).toHaveAttribute("data-local-facts-count", "3");
     expect(aides).toHaveTextContent("MDPH des Hauts-de-Seine");
@@ -120,17 +121,13 @@ describe("LocalTemplate", () => {
     const rows = document.querySelectorAll("[data-fact-type]");
     const sources = document.querySelectorAll("[data-fact-source]");
     expect(rows.length).toBe(sources.length);
-    // Cinq lignes démographiques calculées remplacent les faits `demographie` du pipeline.
-    expect(rows.length).toBe(
-      localDataExemple.facts.filter((fact) => fact.type !== "demographie").length + 5,
-    );
     for (const source of sources) {
       expect(source.textContent).toMatch(/^Source : .+, consulté le 20 septembre 2026$/);
-      expect(source.querySelector("a")).toHaveAttribute("href", expect.stringMatching(/^https:/));
+      // 27/09/2026 : la source est nommée et datée, sans lien sortant.
+      expect(source.querySelector("a")).toBeNull();
     }
-    expect(screen.getByText("CNSA, points d'information locaux")).toBeInTheDocument();
-    // Lien officiel signalé comme externe.
-    expect(screen.getAllByRole("link", { name: /Site officiel.*lien externe/ }).length).toBe(6);
+    // Plus aucun lien « Site officiel », ni adresse, ni téléphone de tiers.
+    expect(screen.queryAllByRole("link", { name: /Site officiel/ }).length).toBe(0);
   });
 
   it("rend la zone éditoriale en Markdown sûr sous « Vivre à domicile »", () => {
@@ -163,7 +160,8 @@ describe("LocalTemplate", () => {
       "92997",
       "75116",
     ]);
-    expect(items[0]).toHaveTextContent("1,8 km");
+    // 27/09/2026 : aucun kilométrage affiché nulle part sur le site.
+    expect(items[0]).not.toHaveTextContent("km");
     expectHref(
       within(items[0] as HTMLElement).getByRole("link", { name: "Voisine-la-Proche" }),
       "/aide-a-domicile/hauts-de-seine/voisine-la-proche/",
@@ -317,9 +315,17 @@ describe("LocalTemplate sur les données réelles du pipeline", () => {
         if (other.id !== agency?.id) expect(text).not.toContain(other.adresse);
       }
       expect(main?.querySelectorAll("[data-local-facts]").length).toBeGreaterThanOrEqual(1);
+      /*
+       * 27/09/2026 : le bloc « ressources » a été retiré, la page n'affiche donc plus tous les
+       * faits collectés — seulement les repères de vie et les aides. Ce qui doit rester vrai :
+       * chaque fait affiché porte sa source datée, et aucun n'est publié sans elle.
+       */
       const shown = [...(main?.querySelectorAll("[data-fact-type]") ?? [])].length;
-      expect(shown).toBeGreaterThanOrEqual(real.facts.length);
+      expect(shown).toBeGreaterThanOrEqual(1);
       expect(main?.querySelectorAll("[data-fact-source]").length).toBe(shown);
+      // Et plus aucune coordonnée de tiers : ni lien sortant, ni numéro autre que celui du site.
+      expect(main?.querySelectorAll('[data-local-facts] a[href^="http"]').length).toBe(0);
+      expect(main?.querySelectorAll('[data-local-facts] a[href^="tel:"]').length).toBe(0);
       expect(text).not.toMatch(/null|undefined|{[a-z_]+}/);
     });
   }

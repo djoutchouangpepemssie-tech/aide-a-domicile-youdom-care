@@ -32,8 +32,8 @@
     "collected_at": "2026-09-26"
   },
   "agence_proche": {
-    "id": "saint-denis",
-    "distance_km": 3.4
+    "id": "puteaux",
+    "distance_km": 4.6
   },
   "communes_voisines": [
     {

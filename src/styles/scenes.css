@@ -257,6 +257,17 @@
     color: var(--color-link-on-sand);
   }
 
+  /*
+   * Fil d'Ariane sur la scène de nuit (27/09/2026). Ses classes utilitaires `text-link` et
+   * `text-ink` l'emportaient par spécificité sur la règle de couleur ci-dessus : mesuré à 1,37
+   * pour la page courante et 2,00 pour ses liens, sur le fond teal-900. Il devient blanc, sauf
+   * dans un panneau de verre clair, où les règles précédentes s'appliquent déjà.
+   */
+  .scene-nuit .breadcrumb :is(a, span),
+  [data-scene="nuit"] .breadcrumb :is(a, span) {
+    color: var(--color-white);
+  }
+
   /* ---- Tout s'aplatit : mouvement réduit, mode confort, simulation du styleguide ---- */
   /* Il ne reste que la couleur de base. En mode confort, les rôles `tint-*` sont blancs
      (tokens.css) : les scènes claires deviennent blanches, la scène de nuit reste sombre. */

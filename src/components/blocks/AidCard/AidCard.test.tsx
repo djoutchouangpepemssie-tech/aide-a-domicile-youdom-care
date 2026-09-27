@@ -4,7 +4,7 @@ import interfaceJson from "../../../../content/interface.json";
 import { AidCard } from "./AidCard";
 
 describe("AidCard", () => {
-  it("présente pour qui, combien, comment et un lien officiel signalé comme externe", () => {
+  it("présente pour qui, combien, comment, et nomme la source sans lien sortant", () => {
     render(
       <AidCard
         name="Crédit d’impôt"
@@ -24,9 +24,12 @@ describe("AidCard", () => {
         .getAllByRole("term")
         .map((t) => t.textContent),
     ).toEqual(["Pour qui ?", "Combien ?", "Comment la demander ?"]);
-    const link = within(article).getByRole("link", { name: /impots\.gouv\.fr/ });
-    expect(link).toHaveAttribute("href", "https://www.impots.gouv.fr/");
-    expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    expect(link).toHaveAccessibleName(/impots\.gouv\.fr\s*\(site officiel, lien externe\)/);
+    /*
+     * 27/09/2026, demande d'Arcel : plus aucun lien sortant vers un service public. Le nom de la
+     * source reste affiché, pour que le lecteur sache d'où vient l'information.
+     */
+    expect(within(article).getByText("impots.gouv.fr")).toBeInTheDocument();
+    expect(within(article).queryByRole("link", { name: /impots\.gouv\.fr/ })).toBeNull();
+    expect(article.querySelector('a[href^="http"]')).toBeNull();
   });
 });

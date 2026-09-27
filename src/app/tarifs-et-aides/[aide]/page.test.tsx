@@ -56,10 +56,9 @@ describe("Pages par aide", () => {
     ).toHaveLength(3);
 
     const sources = screen.getByRole("region", { name: "Sources officielles" });
-    expect(within(sources).getByRole("link", { name: /F10009|APA/ })).toHaveAttribute(
-      "href",
-      "https://www.service-public.gouv.fr/particuliers/vosdroits/F10009",
-    );
+    // 27/09/2026 : les sources officielles sont nommées et datées, sans lien sortant.
+    expect(sources.querySelector('a[href^="https://www.service-public"]')).toBeNull();
+    expect(within(sources).getAllByText(/service-public\.gouv\.fr/).length).toBeGreaterThan(0);
     expect(within(sources).getByText(/vérifiée le 1 juin 2026/)).toBeInTheDocument();
     expect(within(sources).getByRole("link", { name: "Toutes les aides" })).toBeInTheDocument();
   });

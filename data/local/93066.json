@@ -34,8 +34,8 @@
     "collected_at": "2026-09-26"
   },
   "agence_proche": {
-    "id": "saint-denis",
-    "distance_km": 2.7
+    "id": "paris-12",
+    "distance_km": 9.7
   },
   "communes_voisines": [
     {
