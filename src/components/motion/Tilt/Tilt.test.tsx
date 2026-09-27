@@ -1,9 +1,10 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { FINE_POINTER_QUERY } from "@/lib/motion/pointer-tilt";
+import { resetFrames } from "@/lib/motion/frame";
+import { FINE_POINTER_QUERY, MOTION_TILT_MAX_DEGREES } from "@/lib/motion/grid";
 import { REDUCED_MOTION_QUERY } from "@/lib/motion/reduced-motion";
-import { Tilt } from "./Tilt";
+import { Tilt, TILT_MAX_DEGREES } from "./Tilt";
 
 /** `matchMedia` de test : pointeur fin ou non, mouvement réduit ou non. */
 function installMatchMedia({ fine = true, reduced = false } = {}) {
@@ -48,6 +49,8 @@ function placeCard(element: Element) {
 async function enter(element: Element, pointerType = "mouse") {
   fireEvent.pointerEnter(element, { pointerType });
   await act(async () => {
+    // Le moteur est chargé à la demande : on attend le même module que l'île.
+    await import("@/lib/motion/pointer");
     await Promise.resolve();
     await Promise.resolve();
   });
@@ -62,10 +65,12 @@ describe("Tilt", () => {
   beforeEach(() => {
     delete document.documentElement.dataset.comfort;
     delete document.documentElement.dataset.motion;
+    resetFrames();
     installFrames();
   });
 
   afterEach(() => {
+    resetFrames();
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
   });
@@ -81,8 +86,10 @@ describe("Tilt", () => {
     expect(html).toContain("Lien");
   });
 
-  it("charge le moteur au premier survol, s'incline vers la souris, 6° au plus, et revient", async () => {
+  it("charge le moteur au premier survol, s'incline vers la souris, 2° au plus, et revient", async () => {
     installMatchMedia();
+    expect(TILT_MAX_DEGREES).toBe(MOTION_TILT_MAX_DEGREES);
+    expect(TILT_MAX_DEGREES).toBe(2);
     render(
       <Tilt data-testid="carte">
         <button type="button">Action</button>
@@ -101,36 +108,56 @@ describe("Tilt", () => {
     expect(queue).toHaveLength(1); // deux mouvements, une seule image demandée
     flush(); // coin haut droit
     expect(card.dataset.tilt).toBe("active");
-    expect(card.style.transform).toBe("perspective(800px) rotateX(6.00deg) rotateY(6.00deg)");
+    expect(card.style.transform).toBe("perspective(800px) rotateX(2.00deg) rotateY(2.00deg)");
+    expect(card.style.willChange).toBe("transform");
 
     move(card, 100, 200); // coin bas gauche
-    expect(card.style.transform).toBe("perspective(800px) rotateX(-6.00deg) rotateY(-6.00deg)");
+    expect(card.style.transform).toBe("perspective(800px) rotateX(-2.00deg) rotateY(-2.00deg)");
 
     move(card, 900, -500); // hors de la carte : borné
-    expect(card.style.transform).toBe("perspective(800px) rotateX(6.00deg) rotateY(6.00deg)");
+    expect(card.style.transform).toBe("perspective(800px) rotateX(2.00deg) rotateY(2.00deg)");
 
     fireEvent.pointerLeave(card);
     expect(card.dataset.tilt).toBeUndefined();
     expect(card.style.transform).toBe("");
+    // `will-change` seulement pendant l'interaction (budget, BRIEF_LIQUID_GLASS §2).
+    expect(card.style.willChange).toBe("");
     expect(screen.getByRole("button", { name: "Action" })).toBeVisible();
   });
 
-  it("respecte une limite plus basse et l'ignore au-delà de 6°", async () => {
+  it("respecte une limite plus basse et l'ignore au-delà de 2°", async () => {
     installMatchMedia();
-    const { rerender } = render(<Tilt data-testid="carte" max={3} />);
+    const { rerender } = render(<Tilt data-testid="carte" max={1} />);
     const card = screen.getByTestId("carte");
     placeCard(card);
     await enter(card);
     move(card, 300, 100);
-    expect(card.style.transform).toBe("perspective(800px) rotateX(3.00deg) rotateY(3.00deg)");
+    expect(card.style.transform).toBe("perspective(800px) rotateX(1.00deg) rotateY(1.00deg)");
     rerender(<Tilt data-testid="carte" max={45} />);
-    // Le moteur posé au premier survol garde sa limite ; une nouvelle carte plafonne à 6°.
+    // Le moteur posé au premier survol garde sa limite ; une nouvelle carte plafonne à 2°.
     const { getByTestId } = render(<Tilt data-testid="autre" max={45} />);
     const other = getByTestId("autre");
     placeCard(other);
     await enter(other);
     move(other, 300, 100);
-    expect(other.style.transform).toBe("perspective(800px) rotateX(6.00deg) rotateY(6.00deg)");
+    expect(other.style.transform).toBe("perspective(800px) rotateX(2.00deg) rotateY(2.00deg)");
+  });
+
+  it("le focus au clavier remet la carte à plat", async () => {
+    installMatchMedia();
+    render(
+      <Tilt data-testid="carte">
+        <a href="#contenu">Lien</a>
+      </Tilt>,
+    );
+    const card = screen.getByTestId("carte");
+    placeCard(card);
+    await enter(card);
+    move(card, 300, 100);
+    expect(card.dataset.tilt).toBe("active");
+    screen.getByRole("link").focus();
+    expect(card.dataset.tilt).toBeUndefined();
+    expect(card.style.transform).toBe("");
   });
 
   it("ne réagit ni au toucher, ni au stylet, ni sans pointeur fin, ni en mouvement réduit, ni au clavier", async () => {

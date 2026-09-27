@@ -7,7 +7,8 @@ import "./hero-scene.css";
  * bibliothèque, aucun JavaScript, composant serveur. Deux objets :
  * - `maison` : une maison en volumes (murs paper et sable, toit teal, porte framboise : le nœud) ;
  * - `fil` : le Fil en trois couches, trois arcs ouverts (jamais fermés, docs/02 §1) et un nœud.
- * Rotation lente (12 s) ou respiration (8 s) par `animation` CSS ; immobile en mouvement réduit,
+ * L'objet se pose en une seule séquence de 560 ms (`animation` CSS, jamais de boucle : contrat du
+ * mouvement, BRIEF_LIQUID_GLASS §5), puis ne bouge plus ; immobile d'emblée en mouvement réduit,
  * en mode confort et sans prise en charge des transformations 3D (la pose fixe reste lisible).
  * Décoratif : `aria-hidden="true"`, jamais porteur d'une information absente du texte.
  */

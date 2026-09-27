@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties } from "react";
+import { cancelScheduledFrame, scheduleFrame } from "@/lib/motion/frame";
 import { PAGE_THREAD_QUERY } from "@/lib/motion/page-thread";
 
 /*
@@ -59,23 +60,27 @@ export function PageThreadEngine({ root, headings }: PageThreadEngineProps) {
 
   useEffect(() => {
     const wide = window.matchMedia(PAGE_THREAD_QUERY);
-    let frame = 0;
+    // Une mesure par image au plus, groupée avec les autres effets de défilement et de pointeur
+    // (`lib/motion/frame`) : jamais de lecture de mise en page dans une boucle d'événements.
+    let live = true;
     const measure = () => {
-      frame = 0;
+      if (!live) return;
       setLayout(wide.matches ? measurePage(root, headings) : null);
     };
     const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(measure);
+      if (live) scheduleFrame(measure);
     };
     const observer =
       typeof ResizeObserver === "undefined" ? undefined : new ResizeObserver(schedule);
     observer?.observe(document.body);
-    window.addEventListener("resize", schedule);
+    window.addEventListener("resize", schedule, { passive: true });
     wide.addEventListener?.("change", schedule);
+    // Le chargement des polices peut arriver après le démontage : `live` garde la promesse inerte.
     document.fonts?.ready.then(schedule, () => {});
     schedule();
     return () => {
-      cancelAnimationFrame(frame);
+      live = false;
+      cancelScheduledFrame(measure);
       observer?.disconnect();
       window.removeEventListener("resize", schedule);
       wide.removeEventListener?.("change", schedule);

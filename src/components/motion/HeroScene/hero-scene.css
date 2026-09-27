@@ -1,8 +1,10 @@
 /*
  * HeroScene (objet 3D en CSS pur, motion.css pour les règles communes) : chargée avec le
  * composant seulement (styleguide aujourd'hui), pas dans le CSS global de chaque page.
- * Tout est neutralisé sous `prefers-reduced-motion: reduce`, en mode confort et sous la
- * simulation du styleguide : pose fixe `rotateY(-32deg)`, aucune animation.
+ * Aucune animation infinie (contrat du mouvement, BRIEF_LIQUID_GLASS §5) : l'objet se pose en une
+ * seule séquence de 560 ms à l'arrivée, puis ne bouge plus. Tout est neutralisé sous
+ * `prefers-reduced-motion: reduce`, en mode confort et sous la simulation du styleguide : la pose
+ * fixe `rotateY(-32deg)` est celle de l'état final, aucune animation.
  */
 
 @layer components {
@@ -34,8 +36,10 @@
     transform: rotateX(-20deg);
   }
 
+  /* Une seule séquence : l'objet tourne jusqu'à sa pose et s'arrête (jamais de boucle). */
   .m-scene__stage {
-    animation: m-turn var(--m-scene-duration, 12s) linear infinite;
+    transform: rotateY(-32deg);
+    animation: m-scene-settle var(--m-scene-duration, 560ms) var(--ease-out) both;
   }
 
   .m-scene__face {
@@ -180,50 +184,25 @@
     background: var(--color-raspberry-500);
   }
 
-  .m-scene--fil .m-scene__tilt {
-    animation: m-breathe var(--m-scene-breath, 8s) var(--ease-out) infinite alternate;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .m-scene__stage,
-    .m-scene--fil .m-scene__tilt {
+    .m-scene__stage {
       animation: none;
     }
-
-    .m-scene__stage {
-      transform: rotateY(-32deg);
-    }
-  }
-
-  :root[data-comfort="on"] .m-scene__stage,
-  :root[data-motion="reduce"] .m-scene__stage,
-  :root[data-comfort="on"] .m-scene--fil .m-scene__tilt,
-  :root[data-motion="reduce"] .m-scene--fil .m-scene__tilt {
-    animation: none;
   }
 
   :root[data-comfort="on"] .m-scene__stage,
   :root[data-motion="reduce"] .m-scene__stage {
-    transform: rotateY(-32deg);
+    animation: none;
   }
 }
 
-@keyframes m-turn {
+/* Pose de l'objet : un quart de tour jusqu'à sa position finale, une seule fois. */
+@keyframes m-scene-settle {
   from {
+    transform: rotateY(-62deg);
+  }
+
+  to {
     transform: rotateY(-32deg);
-  }
-
-  to {
-    transform: rotateY(328deg);
-  }
-}
-
-@keyframes m-breathe {
-  from {
-    transform: rotateX(-20deg) scale(0.97);
-  }
-
-  to {
-    transform: rotateX(-20deg) scale(1.03);
   }
 }

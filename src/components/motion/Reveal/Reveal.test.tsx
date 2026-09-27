@@ -1,18 +1,33 @@
 import { render } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { MOTION_DURATION, MOTION_STAGGER } from "@/lib/motion/grid";
+import { resetSharedObservers, sharedObserverCount } from "@/lib/motion/viewport";
 import { Reveal } from "./Reveal";
 
-type Callback = (entries: Partial<IntersectionObserverEntry>[]) => void;
+type Entry = Partial<IntersectionObserverEntry>;
+type Callback = (entries: Entry[]) => void;
 
 function installIntersectionObserver() {
-  const observers: { callback: Callback; observe: ReturnType<typeof vi.fn>; options?: unknown }[] =
-    [];
+  const observers: {
+    callback: Callback;
+    observe: ReturnType<typeof vi.fn>;
+    unobserve: ReturnType<typeof vi.fn>;
+    disconnect: ReturnType<typeof vi.fn>;
+    options?: unknown;
+  }[] = [];
   class FakeObserver {
     observe = vi.fn();
+    unobserve = vi.fn();
     disconnect = vi.fn();
     constructor(callback: Callback, options?: unknown) {
-      observers.push({ callback, observe: this.observe, options });
+      observers.push({
+        callback,
+        observe: this.observe,
+        unobserve: this.unobserve,
+        disconnect: this.disconnect,
+        options,
+      });
     }
   }
   vi.stubGlobal("IntersectionObserver", FakeObserver);
@@ -48,9 +63,11 @@ describe("Reveal", () => {
   beforeEach(() => {
     delete document.documentElement.dataset.comfort;
     delete document.documentElement.dataset.motion;
+    resetSharedObservers();
   });
 
   afterEach(() => {
+    resetSharedObservers();
     vi.unstubAllGlobals();
     vi.restoreAllMocks();
   });
@@ -117,11 +134,40 @@ describe("Reveal", () => {
     expect(observers[0]?.options).toEqual({ threshold: 0.4 });
     expect(observers[0]?.observe).toHaveBeenCalledWith(element);
 
-    observers[0]?.callback([{ isIntersecting: false }]);
+    observers[0]?.callback([{ isIntersecting: false, target: element }]);
     expect(element).toHaveAttribute("data-reveal", "pending");
-    observers[0]?.callback([{ isIntersecting: true }]);
+    observers[0]?.callback([{ isIntersecting: true, target: element }]);
+    expect(element).toHaveAttribute("data-reveal", "in");
+    // Une seule fois : l'élément est retiré, l'observateur détruit faute de cible.
+    expect(observers[0]?.unobserve).toHaveBeenCalledWith(element);
+    expect(observers[0]?.disconnect).toHaveBeenCalled();
+    expect(sharedObserverCount()).toBe(0);
+    observers[0]?.callback([{ isIntersecting: true, target: element }]);
     expect(element).toHaveAttribute("data-reveal", "in");
     unmount();
+  });
+
+  it("partage un seul observateur entre les blocs de même seuil", () => {
+    installMatchMedia(false);
+    const observers = installIntersectionObserver();
+    placeBelowFold();
+    const { container } = render(
+      <>
+        <Reveal>
+          <p>Un</p>
+        </Reveal>
+        <Reveal>
+          <p>Deux</p>
+        </Reveal>
+        <Reveal threshold={0.6}>
+          <p>Trois</p>
+        </Reveal>
+      </>,
+    );
+    expect(container.querySelectorAll('[data-reveal="pending"]')).toHaveLength(3);
+    // Deux seuils (0,15 et 0,6), deux observateurs pour trois blocs.
+    expect(observers).toHaveLength(2);
+    expect(sharedObserverCount()).toBe(2);
   });
 
   it("numérote les enfants pour la variante stagger et accepte une autre balise", () => {
@@ -142,7 +188,17 @@ describe("Reveal", () => {
     expect(items.map((item) => item.style.getPropertyValue("--m-i"))).toEqual(["0", "1", "2"]);
   });
 
-  it("pose pathLength=1 sur les formes d'un SVG pour la variante draw", () => {
+  it("cascade de 40 ms par défaut (contrat du mouvement)", () => {
+    expect(MOTION_STAGGER).toBe(40);
+    const html = renderToString(
+      <Reveal as="ol" variant="stagger">
+        <li>Un</li>
+      </Reveal>,
+    );
+    expect(html).toContain("--m-stagger:40ms");
+  });
+
+  it("pose pathLength=1 et la durée du tracé sur les formes d'un SVG pour la variante draw", () => {
     installMatchMedia(false);
     installIntersectionObserver();
     placeBelowFold();
@@ -161,5 +217,7 @@ describe("Reveal", () => {
       "2",
       "1",
     ]);
+    const figure = container.firstElementChild as HTMLElement;
+    expect(figure.style.getPropertyValue("--thread-duration")).toBe(`${MOTION_DURATION.draw}ms`);
   });
 });

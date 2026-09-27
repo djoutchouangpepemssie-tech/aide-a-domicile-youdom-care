@@ -8,27 +8,28 @@ import {
   type PointerEvent,
 } from "react";
 import { cn } from "@/lib/cn";
-import { FINE_POINTER_QUERY } from "@/lib/motion/pointer-tilt";
+import { FINE_POINTER_QUERY, MOTION_TILT_MAX_DEGREES } from "@/lib/motion/grid";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
 
 /*
- * Carte qui s'incline légèrement vers le pointeur (docs/design/BRIEF_EXPERIENCE.md §3) :
- * perspective 800 px, 6° au maximum, retour en 200 ms (CSS). Île minuscule : un gestionnaire
- * `pointerenter` ; au premier survol d'une souris avec un pointeur fin et le mouvement permis,
- * elle charge le moteur commun (`lib/motion/pointer-tilt`, partagé avec `HeroDepth`) qui pose le
- * style en ligne au rythme de `requestAnimationFrame`. Rien au toucher, au stylet, au clavier
- * (le focus ne déclenche rien), ni en mouvement réduit. Le transform ne capture aucun
- * événement : les liens et boutons à l'intérieur restent cliquables et lisibles. Aucun état
- * React. Rendu serveur inchangé : `class="m-tilt"`, aucun style.
+ * Carte qui s'incline légèrement vers le pointeur (docs/design/BRIEF_LIQUID_GLASS.md §5) :
+ * perspective 800 px, 2° au maximum, suivi et retour au rythme du pointeur (CSS). Île minuscule :
+ * un gestionnaire `pointerenter` ; au premier survol d'une souris avec un pointeur fin et le
+ * mouvement permis, elle charge le moteur commun (`lib/motion/pointer`, partagé avec `HeroDepth`
+ * et `Sheen`) qui pose le style en ligne au rythme d'une image groupée. Rien au toucher, au
+ * stylet, au clavier (le focus remet la carte à plat), ni en mouvement réduit. `will-change` n'est
+ * posé que pendant l'interaction, puis retiré. Le transform ne capture aucun événement : les liens
+ * et boutons à l'intérieur restent cliquables et lisibles. Aucun état React. Rendu serveur
+ * inchangé : `class="m-tilt"`, aucun style.
  */
 
 export interface TiltProps extends ComponentPropsWithoutRef<"div"> {
   as?: "div" | "article" | "li" | "section";
-  /** Inclinaison maximale en degrés, plafonnée à 6. */
+  /** Inclinaison maximale en degrés, plafonnée par la grille du mouvement (2°). */
   max?: number;
 }
 
-export const TILT_MAX_DEGREES = 6;
+export const TILT_MAX_DEGREES = MOTION_TILT_MAX_DEGREES;
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
@@ -63,17 +64,19 @@ export function Tilt({
     }
     loading.current = true;
     const element = event.currentTarget;
-    void import("@/lib/motion/pointer-tilt").then(({ attachPointerTilt }) => {
+    void import("@/lib/motion/pointer").then(({ attachPointerTilt }) => {
       if (!element.isConnected) return;
       detach.current = attachPointerTilt(element, {
         limit,
         apply: (rotateX, rotateY) => {
           element.dataset.tilt = "active";
+          element.style.willChange = "transform";
           element.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         },
         reset: () => {
           delete element.dataset.tilt;
           element.style.transform = "";
+          element.style.willChange = "";
         },
       });
     });
