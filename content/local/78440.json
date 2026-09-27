@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78440.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78440",
+  "seo": {
+    "titre": "Aide à domicile aux Mureaux (78130) : personnes et handicap",
+    "description": "Aide à domicile aux Mureaux, où 6,5 % des habitants ont 75 ans et plus. Hôpital intercommunal, résidence Anne de Bretagne, CCAS. Agence à 27 km."
+  },
+  "sous_titre": "Aux Mureaux, la population est plutôt jeune et l'hôpital intercommunal est dans la commune ; l'agence Youdom Care de Versailles est à 27 km.",
+  "zone_editoriale": "### Une commune jeune, des besoins qui ne sont pas que ceux de l'âge\n\nAux Mureaux, 6,5 % des habitants ont 75 ans et plus, et 0,6 % ont 90 ans ou plus. Les 60-74 ans représentent 12,6 % des 34 151 habitants recensés en 2022. Ces parts sont faibles. Elles rappellent que l'aide à domicile ne concerne pas seulement les personnes âgées : un adulte en situation de handicap, un enfant avec un trouble du développement, une personne qui vit avec une sclérose en plaques ou une maladie de Parkinson ont aussi besoin d'un relais à la maison.\n\nPour ces situations, Youdom Care met en place une aide humaine aux heures utiles : le matin avant le travail ou l'école, le soir, la nuit, ou en continu. La demande de reconnaissance et de compensation passe par la Maison départementale des personnes handicapées (MDPH) - Yvelines, domiciliée à Buc.\n\n### L'hôpital est ici\n\nLe Centre hospitalier intercommunal de Meulan Les Mureaux, rue Baptiste Marcet, se trouve dans la commune. C'est un point d'appui pour les habitants des Mureaux comme pour ceux de Meulan-en-Yvelines, à 1,9 km. Une hospitalisation se termine toujours par un retour quelque part ; quand c'est le domicile, la première semaine est la plus fragile. Une auxiliaire de vie présente dès le premier jour aide à s'installer, à manger, à se déplacer dans le logement et à suivre les consignes de sortie. Les soins infirmiers restent aux soignants.\n\n### Résidence autonomie et CCAS\n\nLe Foyer-Logement Résidence Anne de Bretagne, allée de Bretagne, est la résidence autonomie recensée aux Mureaux. Les résidents y gardent leur logement et leur rythme ; une aide à domicile peut y intervenir. Le Centre communal d'action sociale (CCAS) - Les Mureaux, place de la Libération, à la mairie, reçoit les demandes d'aide communale et oriente vers les dispositifs départementaux.\n\nLes données ouvertes ne recensent aux Mureaux ni accueil de jour, ni EHPAD, ni point d'information dédié aux personnes âgées. Nous préférons le dire plutôt que d'en inventer.\n\n### Loin de l'agence, pas loin de l'aide\n\nL'agence Youdom Care Yvelines est à Versailles, à 27 km du centre des Mureaux. C'est une vraie distance, et vous avez le droit de la connaître avant d'appeler. Elle concerne l'agence, pas l'intervention : l'auxiliaire de vie vient chez vous, et l'évaluation gratuite se fait à votre domicile. Au premier contact, l'agence vous dira sans détour ce qu'elle peut organiser aux Mureaux.\n\n### Le département et la région\n\nLe Conseil départemental - Yvelines, à Versailles, attribue l'APA et la PCH. Le PAM Île-de-France, service de transport à la demande, est ouvert aux personnes à mobilité réduite de toute la région. France Alzheimer Yvelines écoute les familles depuis Versailles ; France Parkinson a un comité départemental à Élancourt ; l'ADAPEI 78 réunit des parents de personnes en situation de handicap intellectuel.\n\nLes Mureaux appartiennent à la CU Grand Paris Seine et Oise. Chapet est à 3 km, Hardricourt à 3,1 km, Mézy-sur-Seine à 3,5 km, Bouafle à 3,6 km, Flins-sur-Seine à 3,7 km.\n\nQue la personne concernée ait huit ans ou quatre-vingts, la démarche est la même : vous décrivez la situation par le formulaire ou par téléphone, quelqu'un vient chez vous gratuitement, et vous décidez ensuite.",
+  "questions": [
+    {
+      "question": "Quel hôpital se trouve aux Mureaux ?",
+      "reponse": "Le Centre hospitalier intercommunal de Meulan Les Mureaux, rue Baptiste Marcet, est dans la commune. Si un proche y est hospitalisé et doit rentrer chez lui, prévenez Youdom Care dès que la date de sortie est connue. Une auxiliaire de vie peut être présente le premier jour pour l'installation, les repas et les déplacements dans le logement."
+    },
+    {
+      "question": "Youdom Care vient-elle aux Mureaux malgré la distance de l'agence ?",
+      "reponse": "L'agence Youdom Care Yvelines est à Versailles, à 27 km du centre des Mureaux. Ce qui compte pour vous, c'est l'auxiliaire de vie qui vient à votre domicile, pas l'adresse de l'agence. Avant de vous engager, posez la question franchement par téléphone ou par le formulaire : l'agence vous répondra sur ce qu'elle peut mettre en place dans la commune."
+    },
+    {
+      "question": "Comment obtenir une aide humaine pour un enfant handicapé aux Mureaux ?",
+      "reponse": "La demande se dépose auprès de la Maison départementale des personnes handicapées (MDPH) - Yvelines, domiciliée à Buc. Selon la décision, l'aide humaine peut être financée par la PCH ou par l'AEEH et ses compléments. Youdom Care organise ensuite les interventions aux heures de la famille, avec des intervenants qui apprennent les habitudes de l'enfant. Le CCAS des Mureaux, place de la Libération, peut vous orienter."
+    },
+    {
+      "question": "Y a-t-il une résidence autonomie aux Mureaux ?",
+      "reponse": "Oui, le Foyer-Logement Résidence Anne de Bretagne, allée de Bretagne, avec 74 places selon les données ouvertes. Une résidence autonomie n'est pas un EHPAD : chacun garde son logement et son indépendance. Une auxiliaire de vie Youdom Care peut y intervenir pour la toilette, les repas, les courses ou une présence, aux heures convenues."
+    }
+  ],
+  "semaine_type": "claire",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78498.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78498",
+  "seo": {
+    "titre": "Aide à domicile à Poissy (78300) : Alzheimer, Parkinson",
+    "description": "Aide à domicile à Poissy, personnes âgées et maladies neurodégénératives. Trois EHPAD avec unité Alzheimer, hôpital intercommunal, CCAS. Agence à 16,5 km."
+  },
+  "sous_titre": "À Poissy, trois EHPAD disposent d'une unité Alzheimer et le centre hospitalier intercommunal est dans la ville ; l'aide à domicile complète ces ressources.",
+  "zone_editoriale": "### Rester chez soi avec une maladie de la mémoire, à Poissy\n\nTrois EHPAD de Poissy disposent d'une unité Alzheimer : l'EHPAD Hervieux, rue du Beauregard, l'EHPAD Jardins d'Eleusis, rue Saint-Barthélemy, et l'EHPAD Korian l'Île de Migneaux, rue de Villiers. Cette présence dit quelque chose des besoins de la commune. Elle dit aussi qu'entre le domicile et l'établissement, il existe un temps long où la personne vit chez elle avec des troubles de la mémoire, et où un conjoint ou un enfant s'organise seul.\n\nL'aide à domicile intervient dans ce temps-là. L'auxiliaire de vie garde les habitudes : même heure de lever, mêmes gestes pour la toilette, repas pris à table, promenade à la même heure. Pour une maladie de Parkinson, elle veille à l'heure des médicaments et sécurise les déplacements. Youdom Care informe et accompagne ; les questions médicales restent celles de vos soignants.\n\n### Les hôpitaux de la commune\n\nLe Centre hospitalier intercommunal Poissy Saint-Germain, site de Poissy, rue du Champ Gaillard, et la Clinique Saint Louis, rue Basset, sont dans la ville. Un retour à domicile après l'un ou l'autre s'anticipe : présence d'une auxiliaire de vie le jour de la sortie, aide aux repas et à la toilette les jours suivants, accompagnement aux consultations de suivi.\n\n### Résidence autonomie et CCAS\n\nLe Foyer-Logement Résidence Les ursulines, avenue des Ursulines, est la résidence autonomie recensée à Poissy. Une aide à domicile peut y intervenir comme dans tout logement. Le Centre communal d'action sociale (CCAS) - Poissy, boulevard Louis Lemelle, est l'interlocuteur communal pour les aides et l'orientation ; la mairie se trouve place de la République.\n\n### La commune en chiffres\n\nPoissy comptait 40 792 habitants au recensement de 2022. Les 75 ans et plus représentent 8,6 % de la population, dont 1,1 % de personnes de 90 ans ou plus. Les 60-74 ans en forment 12,8 %.\n\n### Les relais du département des Yvelines\n\nL'APA et la PCH sont attribuées par le Conseil départemental - Yvelines, hôtel du département à Versailles. La Maison départementale des personnes handicapées (MDPH) - Yvelines est domiciliée à Buc. Le PAM Île-de-France propose un transport à la demande aux personnes à mobilité réduite dans les huit départements. France Alzheimer Yvelines, association départementale, accueille les familles place Royale à Versailles. Le comité des Yvelines de France Parkinson réunit des bénévoles à Élancourt. L'ADAPEI 78 et l'APEI de Versailles et Des Communes Environnantes s'adressent aux parents de personnes en situation de handicap intellectuel.\n\n### L'agence et les alentours\n\nL'agence Youdom Care Yvelines est à Versailles, à 16,5 km du centre de Poissy. C'est une distance qu'il faut connaître : l'agence évalue, planifie et suit, mais l'aide se passe chez vous, avec une auxiliaire de vie qui vient à Poissy. Villennes-sur-Seine, Carrières-sous-Poissy et Aigremont sont à 2,5 km, Chambourcy à 3 km, Orgeval à 4,1 km. Poissy appartient à la CU Grand Paris Seine et Oise.\n\nSi un diagnostic vient de tomber, ou si le quotidien avec un proche devient difficile, parlez-en à l'agence. La visite d'évaluation chez vous est gratuite et se demande par le formulaire ou par téléphone.",
+  "questions": [
+    {
+      "question": "Quels EHPAD de Poissy ont une unité Alzheimer ?",
+      "reponse": "Trois selon les données ouvertes : l'EHPAD Hervieux, rue du Beauregard, l'EHPAD Jardins d'Eleusis, rue Saint-Barthélemy, et l'EHPAD Korian l'Île de Migneaux, rue de Villiers. Avant une entrée en établissement, et souvent à la place, l'aide à domicile permet de rester chez soi avec des repères stables. Youdom Care accompagne les personnes atteintes de la maladie d'Alzheimer à leur domicile."
+    },
+    {
+      "question": "Quel hôpital pour un habitant de Poissy ?",
+      "reponse": "Le Centre hospitalier intercommunal Poissy Saint-Germain, site de Poissy, rue du Champ Gaillard, et la Clinique Saint Louis, rue Basset, sont dans la commune. Pour un retour à domicile, prévenez Youdom Care dès que la sortie est programmée : une auxiliaire de vie peut être présente le premier jour et les suivants, sans réaliser de soins infirmiers."
+    },
+    {
+      "question": "Où demander l'APA à Poissy ?",
+      "reponse": "L'allocation personnalisée d'autonomie est décidée par le Conseil départemental - Yvelines, à Versailles. Le Centre communal d'action sociale (CCAS) - Poissy, boulevard Louis Lemelle, aide à constituer le dossier et renseigne sur les aides communales. L'évaluation à domicile de Youdom Care, gratuite, peut nourrir le plan d'aide avec un besoin précisé heure par heure."
+    },
+    {
+      "question": "À quelle distance de Poissy est l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care Yvelines, à Versailles, est à 16,5 km du centre de Poissy. L'intervention, elle, se fait à votre domicile, et la première visite d'évaluation aussi. Vous pouvez joindre l'agence par téléphone ou par le formulaire de cette page pour savoir ce qu'elle organise à Poissy."
+    }
+  ],
+  "semaine_type": "jacques",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

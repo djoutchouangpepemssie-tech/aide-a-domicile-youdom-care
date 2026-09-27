@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78158.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78158",
+  "seo": {
+    "titre": "Aide à domicile au Chesnay-Rocquencourt (78150) : Yvelines",
+    "description": "Au Chesnay-Rocquencourt, 13,9 % des habitants ont 75 ans et plus. Pôle autonomie, hôpital Mignot, résidence autonomie : l'aide à domicile chez vous."
+  },
+  "sous_titre": "Au Chesnay-Rocquencourt, 13,9 % des habitants ont 75 ans et plus ; l'agence Youdom Care de Versailles est à 3,9 km.",
+  "zone_editoriale": "### Une commune où l'on vieillit chez soi\n\nAu Chesnay-Rocquencourt, 13,9 % des habitants ont 75 ans et plus. Les 75-89 ans forment 12 % de la population, les 90 ans et plus 2 %. Les 60-74 ans en représentent 17,1 %. Sur 31 064 habitants au recensement de 2022, cela fait beaucoup de personnes qui souhaitent rester dans leur appartement ou leur maison. Cela fait aussi beaucoup de conjoints et d'enfants qui portent l'organisation du quotidien.\n\nPour une auxiliaire de vie, cette démographie signifie des interventions régulières plutôt que ponctuelles : aide au lever et à la toilette, préparation des repas, courses, présence l'après-midi, parfois une nuit pour qu'un conjoint dorme.\n\n### Le pôle autonomie est dans la commune\n\nLe Pôle autonomie territorial - Grand Versailles se trouve rue Dutartre, au Chesnay. C'est le lieu où l'on pose ses premières questions sur l'APA, l'adaptation du logement ou les aides aux proches. Le Centre communal d'action sociale (CCAS) - Le Chesnay-Rocquencourt, rue Pottier, à la mairie, traite les aides communales et sait vers qui renvoyer.\n\n### Hôpitaux et établissements\n\nLe Centre hospitalier de Versailles André Mignot, rue de Versailles, est dans la commune, ainsi que l'Hôpital privé de Parly II, rue Moxouris. Un retour à domicile depuis l'une de ces adresses se prépare avant la sortie, pas après. La Résidence autonomie Les Chênes Verts, rue Pierre Chaulin, loge des personnes encore autonomes ; une auxiliaire de vie peut y intervenir. Trois EHPAD sont recensés : Hameau du Roy, qui propose aussi un hébergement temporaire, Les Chênes d'or et Les Lys, à Rocquencourt.\n\nL'hébergement temporaire mérite une explication. Il permet à un proche aidant de partir quelques jours, ou de faire face à une hospitalisation. Youdom Care propose l'inverse : rester chez soi pendant que le proche s'absente, avec une présence de jour, de nuit ou en continu.\n\n### Au niveau du département\n\nLe Conseil départemental - Yvelines, place André-Mignot à Versailles, décide de l'APA et de la PCH. La Maison départementale des personnes handicapées (MDPH) - Yvelines est domiciliée à Buc. Le PAM Île-de-France transporte à la demande les personnes à mobilité réduite dans toute la région. France Alzheimer Yvelines reçoit les familles place Royale à Versailles ; France Parkinson a un comité départemental à Élancourt.\n\n### Depuis Versailles\n\nL'agence Youdom Care Yvelines, à Versailles, est à 3,9 km du centre du Chesnay-Rocquencourt. Versailles est à 2,7 km, Vaucresson à 3,4 km, Marnes-la-Coquette à 3,7 km, Ville-d'Avray à 4,3 km. La commune appartient à la CA Versailles Grand Parc (CAVGP).\n\nPour commencer, vous n'avez rien à préparer. Décrivez la situation par le formulaire ou appelez : une visite gratuite au domicile permet de dire ce dont vous avez besoin, puis un devis vous est remis sans frais.",
+  "questions": [
+    {
+      "question": "Quel est le point d'information pour les personnes âgées au Chesnay-Rocquencourt ?",
+      "reponse": "Le Pôle autonomie territorial - Grand Versailles, rue Dutartre au Chesnay, est le point d'information local pour les personnes âgées et leurs proches. On y parle de l'APA, de l'adaptation du logement, des aides aux aidants et des solutions de répit. Le Centre communal d'action sociale (CCAS) - Le Chesnay-Rocquencourt, rue Pottier, complète cet accueil pour les aides communales."
+    },
+    {
+      "question": "Quels hôpitaux se trouvent au Chesnay-Rocquencourt ?",
+      "reponse": "Deux établissements sont recensés dans la commune : le Centre hospitalier de Versailles André Mignot, rue de Versailles, et l'Hôpital privé de Parly II, rue Moxouris. Si un proche y est hospitalisé, la page « Sortie d'hospitalisation » de ce site décrit comment préparer les premiers jours à la maison avec une auxiliaire de vie, dès l'annonce de la date de sortie."
+    },
+    {
+      "question": "Existe-t-il une résidence autonomie au Chesnay-Rocquencourt ?",
+      "reponse": "Oui. La Résidence autonomie Les Chênes Verts, rue Pierre Chaulin, compte 84 places selon les données ouvertes. Elle s'adresse à des personnes qui vivent de façon autonome mais souhaitent un cadre plus sûr. Une aide à domicile peut y intervenir comme dans un logement ordinaire, pour la toilette, les repas ou les sorties."
+    },
+    {
+      "question": "À quelle distance du Chesnay-Rocquencourt se trouve l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care Yvelines est à Versailles, à 3,9 km du centre du Chesnay-Rocquencourt. Elle reçoit les demandes des habitants de la commune et vient sur place pour la première évaluation, gratuite. Vous pouvez la contacter par téléphone ou par le formulaire présent sur cette page."
+    }
+  ],
+  "semaine_type": "louise",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 17, 18, 19],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

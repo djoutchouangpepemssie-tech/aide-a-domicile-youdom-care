@@ -1,0 +1,32 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78343.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78343",
+  "seo": {
+    "titre": "Aide à domicile aux Loges-en-Josas (78350) : Yvelines",
+    "description": "Aux Loges-en-Josas, 1 655 habitants, un CCAS Grande Rue et des relais à Jouy-en-Josas et Versailles. L'agence Youdom Care est à 3,8 km du centre."
+  },
+  "sous_titre": "Les Loges-en-Josas comptent 1 655 habitants : ici, l'aide à domicile s'organise avec les ressources des communes voisines et une agence à 3,8 km.",
+  "zone_editoriale": "### Une petite commune, des besoins réels\n\nLes Loges-en-Josas comptaient 1 655 habitants au recensement de 2022. Dans une commune de cette taille, une seule situation compte : un parent qui ne sort plus, un conjoint qui a besoin d'aide pour la toilette, un enfant en situation de handicap dont les parents travaillent. Les 75 ans et plus représentent 10,3 % des habitants, dont 1 % ont 90 ans ou plus. Les 60-74 ans forment 14,4 % de la population.\n\nCe que change une petite commune pour une aide à domicile : moins de structures sur place, donc plus d'importance donnée à la régularité de l'intervenante et à ce qu'elle peut faire elle-même. Courses, repas, toilette, accompagnement aux rendez-vous, compagnie : tout se passe au domicile ou à partir du domicile.\n\n### Sur place : le CCAS, Grande Rue\n\nLe Centre communal d'action sociale (CCAS) - Les Loges-en-Josas se trouve Grande Rue, à la mairie. C'est l'endroit où poser une première question sur les aides et l'orientation vers le Département. Les données ouvertes ne recensent ni résidence autonomie, ni EHPAD, ni hôpital dans la commune même.\n\n### À côté : Jouy-en-Josas et Versailles\n\nL'EHPAD Résidence Juliette Victor, rue des Fonds à Jouy-en-Josas, propose un accueil de jour et une unité Alzheimer. Jouy-en-Josas est à 1,5 km : pour un habitant des Loges, c'est l'accueil de jour le plus proche relevé dans les données. Une auxiliaire de vie peut s'occuper des trajets et des matins qui précèdent.\n\nCôté hôpital, le Centre hospitalier de Versailles Hôpital Richaud et l'Hôpital de jour Bleuler, tous deux à Versailles, sont à 5 km à vol d'oiseau. Une sortie d'hospitalisation vers Les Loges-en-Josas se prépare avec le service hospitalier et l'agence, pour que quelqu'un soit là dès le retour.\n\n### Les ressources du département des Yvelines\n\nLe Conseil départemental - Yvelines, hôtel du département à Versailles, attribue l'APA et la PCH. La Maison départementale des personnes handicapées (MDPH) - Yvelines a son adresse à Buc, à 1,8 km. Le PAM Île-de-France transporte à la demande les personnes à mobilité réduite. France Alzheimer Yvelines reçoit les familles à Versailles ; le comité des Yvelines de France Parkinson est à Élancourt. L'ADAPEI 78 et l'APEI de Versailles et Des Communes Environnantes accompagnent les parents de personnes en situation de handicap intellectuel.\n\n### L'agence Youdom Care Yvelines\n\nElle est à Versailles, à 3,8 km du centre des Loges-en-Josas. Buc est à 1,8 km, Toussus-le-Noble à 2,2 km, Saclay à 3,5 km, Vélizy-Villacoublay à 4,7 km. La commune fait partie de la CA Versailles Grand Parc (CAVGP).\n\nPour savoir si une aide à domicile est possible dans votre cas, le plus simple est d'en parler. La première visite chez vous, aux Loges-en-Josas, ne coûte rien ; elle se demande par le formulaire ou par téléphone.",
+  "questions": [
+    {
+      "question": "Où se renseigner sur les aides quand on habite Les Loges-en-Josas ?",
+      "reponse": "Le Centre communal d'action sociale (CCAS) - Les Loges-en-Josas, Grande Rue, à la mairie, est l'interlocuteur communal. Pour l'allocation personnalisée d'autonomie et la prestation de compensation du handicap, la décision revient au Conseil départemental - Yvelines, à Versailles. Youdom Care peut vous expliquer comment l'évaluation à domicile s'inscrit dans ces démarches."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour près des Loges-en-Josas ?",
+      "reponse": "Pas dans la commune, mais à 1,5 km : l'EHPAD Résidence Juliette Victor, rue des Fonds à Jouy-en-Josas, propose un accueil de jour avec une unité Alzheimer. Une auxiliaire de vie peut préparer la personne le matin et l'accueillir au retour, pour que la journée à l'extérieur et la soirée à la maison se suivent sans rupture."
+    },
+    {
+      "question": "Quelle agence Youdom Care intervient aux Loges-en-Josas ?",
+      "reponse": "L'agence Youdom Care Yvelines, à Versailles, est à 3,8 km du centre des Loges-en-Josas. C'est elle qui vient évaluer la situation à domicile, gratuitement, et qui organise les interventions. Contactez-la par téléphone ou par le formulaire de cette page ; la demande peut venir de la personne concernée ou d'un proche."
+    }
+  ],
+  "semaine_type": "henri",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

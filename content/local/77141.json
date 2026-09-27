@@ -1,0 +1,32 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77141.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77141",
+  "seo": {
+    "titre": "Aide à domicile à Coutevroult (77580) : un village couvert",
+    "description": "Auxiliaire de vie à Coutevroult, village de 1 191 habitants à 4,2 km de l'agence de Serris. CCAS rue de la Brosse, EHPAD de Crécy, APA. Devis gratuit."
+  },
+  "sous_titre": "Coutevroult relève de Coulommiers Pays de Brie, mais se trouve à quelques kilomètres de notre agence de Serris.",
+  "zone_editoriale": "Coutevroult a une particularité administrative parmi les communes de cette page. Elle appartient à la communauté d'agglomération Coulommiers Pays de Brie. Pour l'aide à domicile, ce rattachement ne change rien : l'agence Youdom Care Seine-et-Marne, à Serris, est à 4,2 km à vol d'oiseau.\n\n### Un village de 1 191 habitants\n\nAu recensement de 2022, Coutevroult compte 1 191 habitants pour un territoire de 720 hectares. Les 60 à 74 ans représentent 10,9 % de la population. Les 75 ans et plus sont 4,1 %, dont 0,6 % de 90 ans ou plus.\n\nUne petite commune n'a pas les mêmes équipements qu'une ville. Une aide régulière pour le ménage, les courses ou la toilette s'y organise pourtant de la même façon. L'auxiliaire de vie vient chez vous, aux heures convenues, sans que vous ayez à vous déplacer.\n\n### Les interlocuteurs d'un habitant de Coutevroult\n\nLe Centre communal d'action sociale (CCAS) - Coutevroult se trouve au 15 rue de la Brosse, à la mairie. C'est le lieu où déposer une demande d'aide sociale ou obtenir une orientation.\n\nLes établissements pour personnes âgées référencés sont deux EHPAD hors de la commune. L'EHPAD de Crecy, 18 rue de la Chapelle à Crécy-la-Chapelle, et l'EHPAD Le Château de Chantemerle, à Maisoncelles-en-Brie, avec une unité Alzheimer. Aucun accueil de jour n'apparaît dans les données pour Coutevroult.\n\nEn l'absence d'accueil de jour référencé, le répit des proches passe surtout par l'aide à domicile. Une présence de quelques heures, à jour fixe, permet à l'aidant de souffler. Le week-end ou le soir, un relais ponctuel peut aussi se prévoir.\n\n### Les hôpitaux et le département\n\nLe « Grand Hosp Est Francilien Marne la Vallee site Jossigny » est à 6,5 km à vol d'oiseau. Le « Centre Hospitalier de Marne la Vallee site Lagny » est à 10,5 km. Un retour d'hospitalisation vers Coutevroult se prépare avec le service hospitalier avant la sortie.\n\nL'allocation personnalisée d'autonomie et la prestation de compensation du handicap dépendent du Conseil départemental - Seine-et-Marne, à Melun. La Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne est à Savigny-le-Temple. Le PAM Île-de-France, transport à la demande, dessert la commune comme toute la région pour les personnes éligibles.\n\nFrance Alzheimer Seine-et-Marne, association départementale, écoute et accueille les familles.\n\n### Les communes autour\n\nVilliers-sur-Morin est à 1,7 km, Bailly-Romainvilliers à 2,1 km, Saint-Germain-sur-Morin à 2,5 km, Magny-le-Hongre à 2,6 km. Couilly-Pont-aux-Dames, Voulangis, Montry et Serris se situent entre 3,5 et 4,3 km. Les pages de Bailly-Romainvilliers, Magny-le-Hongre et Serris décrivent leurs propres ressources.\n\nUne première visite à Coutevroult se demande par le formulaire ou par téléphone. Elle est gratuite et se conclut par un devis écrit.",
+  "questions": [
+    {
+      "question": "Coutevroult est-elle couverte par l'agence Youdom Care de Serris ?",
+      "reponse": "Oui. L'agence Youdom Care Seine-et-Marne, à Serris, est à 4,2 km à vol d'oiseau de Coutevroult. La commune appartient à une autre intercommunalité, Coulommiers Pays de Brie, mais cela n'a pas d'incidence sur l'aide à domicile. La visite d'évaluation se fait chez vous, gratuitement, et un devis vous est remis ensuite."
+    },
+    {
+      "question": "Y a-t-il un EHPAD ou un accueil de jour près de Coutevroult ?",
+      "reponse": "Deux EHPAD sont référencés. L'EHPAD de Crecy se trouve 18 rue de la Chapelle à Crécy-la-Chapelle. L'EHPAD Le Château de Chantemerle, 13 rue de Crécy à Maisoncelles-en-Brie, comprend une unité Alzheimer. Aucun accueil de jour n'est référencé pour Coutevroult dans les données. Le répit des proches s'organise alors avec une aide à domicile à jours fixes."
+    },
+    {
+      "question": "Qui contacter à Coutevroult pour une demande d'APA ?",
+      "reponse": "Le Centre communal d'action sociale (CCAS) - Coutevroult, 15 rue de la Brosse, à la mairie, aide à préparer le dossier. La demande est ensuite instruite par le Conseil départemental - Seine-et-Marne, 12 rue des Saints-Pères à Melun. L'allocation personnalisée d'autonomie peut financer une partie des heures d'aide à domicile, selon le plan d'aide établi après évaluation."
+    }
+  ],
+  "semaine_type": "sophie",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 17, 18],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

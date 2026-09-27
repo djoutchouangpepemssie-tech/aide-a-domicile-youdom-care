@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78586.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78586",
+  "seo": {
+    "titre": "Aide à domicile à Sartrouville (78500) : semaine ordinaire",
+    "description": "Aide à domicile à Sartrouville, semaine après semaine : accueil de jour des Oiseaux, résidences Debenedetti et de l'Union, CCAS. Agence à 8,1 km."
+  },
+  "sous_titre": "Sartrouville compte 51 570 habitants ; voici à quoi ressemble une semaine d'aide à domicile dans la commune, avec ses ressources réelles.",
+  "zone_editoriale": "### Une semaine ordinaire à Sartrouville\n\nLe lundi matin, l'auxiliaire de vie arrive pour le lever, la toilette et le petit-déjeuner. Elle note ce qui a changé depuis vendredi. Le mardi, c'est une journée d'accueil de jour à l'EHPAD Les Oiseaux, rue du Lieutenant-Rousselot : elle prépare la personne, l'accompagne, et sera là au retour. Le mercredi, courses et repas. Le jeudi, un rendez-vous de suivi, avec le trajet aller et retour. Le vendredi, ménage léger, compagnie, et préparation du week-end pour que la famille prenne le relais sans angoisse.\n\nCe rythme n'est pas un modèle imposé. Il se construit avec vous lors de la première visite, gratuite, et se modifie quand la vie change.\n\n### Ce que la commune met à disposition\n\nL'EHPAD Les Oiseaux propose l'accueil de jour mentionné plus haut. Deux résidences autonomie sont recensées : le Foyer-Logement Résidence Debenedetti, avenue de la République, et le Foyer-Logement RPA de l'union, rue de Tocqueville. Dans ces résidences, une aide à domicile intervient comme dans un appartement ordinaire.\n\nL'EHPAD Stéphanie, rue Bordin, propose un hébergement temporaire : utile quand un proche aidant doit s'absenter ou se faire opérer. L'EHPAD Résidence Médicis, avenue Jean-Jaurès, dispose d'une unité Alzheimer ; la Résidence Mon Repos, rue du Président Roosevelt, complète la liste des établissements.\n\nLe Centre communal d'action sociale (CCAS) - Sartrouville, rue Henri Dunant, est le guichet communal des aides ; la mairie est rue Buffon.\n\n### Pas d'hôpital dans la commune\n\nLes données ne recensent aucun hôpital à Sartrouville. Le plus proche relevé est le Centre hospitalier de Nanterre Hôpital Max Fourestier, avenue de la République à Nanterre, à 4,9 km à vol d'oiseau. Un retour à la maison après une hospitalisation se prépare avant la sortie, avec le service et avec l'agence.\n\n### Les habitants\n\nSartrouville comptait 51 570 habitants au recensement de 2022. Les 75 ans et plus représentent 7,3 % de la population ; 1 % des habitants ont 90 ans ou plus. Les 60-74 ans en forment 13,8 %. L'aide à domicile concerne aussi des enfants et des adultes en situation de handicap, pour lesquels la semaine type est différente : matins d'école, soirées, week-ends.\n\n### Département et région\n\nLe Conseil départemental - Yvelines, à Versailles, attribue l'APA et la PCH ; la Maison départementale des personnes handicapées (MDPH) - Yvelines est domiciliée à Buc. Le PAM Île-de-France transporte à la demande les personnes à mobilité réduite dans toute la région. France Alzheimer Yvelines écoute les familles depuis Versailles, France Parkinson depuis son comité d'Élancourt. L'ADAPEI 78 et l'APEI de Versailles et Des Communes Environnantes réunissent des parents de personnes en situation de handicap intellectuel.\n\n### L'agence : Puteaux, à 8,1 km\n\nL'agence Youdom Care la plus proche de Sartrouville est celle des Hauts-de-Seine, à Puteaux, à 8,1 km du centre. Houilles est à 1,5 km, Maisons-Laffitte à 2,1 km, Carrières-sur-Seine à 2,8 km, Bezons et Montesson à 3,3 km. Sartrouville fait partie de la CA Saint Germain Boucles de Seine.\n\nPour que cette semaine ordinaire devienne la vôtre, il suffit d'un premier échange. Le formulaire ou un appel suffisent ; la visite à domicile qui suit ne coûte rien.",
+  "questions": [
+    {
+      "question": "Existe-t-il un accueil de jour à Sartrouville ?",
+      "reponse": "Oui : l'EHPAD Les Oiseaux, rue du Lieutenant-Rousselot, propose un accueil de jour. Une auxiliaire de vie Youdom Care peut préparer la personne le matin, l'accompagner et l'accueillir au retour, puis assurer les jours sans accueil. Cette combinaison soulage un proche aidant tout en gardant la personne chez elle le soir et la nuit."
+    },
+    {
+      "question": "Quelles résidences autonomie sont recensées à Sartrouville ?",
+      "reponse": "Deux : le Foyer-Logement Résidence Debenedetti, avenue de la République, et le Foyer-Logement RPA de l'union, rue de Tocqueville. Les résidents y vivent de façon indépendante, dans leur logement. Une aide à domicile peut y intervenir pour la toilette, les repas, les courses ou une présence, comme dans n'importe quel appartement de la commune."
+    },
+    {
+      "question": "Quel hôpital est le plus proche de Sartrouville ?",
+      "reponse": "Aucun hôpital n'est recensé dans la commune. Le plus proche relevé est le Centre hospitalier de Nanterre Hôpital Max Fourestier, avenue de la République à Nanterre, à 4,9 km à vol d'oiseau. Pour un retour à domicile à Sartrouville, prévenez Youdom Care avant la sortie afin qu'une auxiliaire de vie soit présente dès le premier jour."
+    },
+    {
+      "question": "L'agence Youdom Care de Sartrouville est-elle dans les Yvelines ?",
+      "reponse": "Non : l'agence la plus proche est Youdom Care Hauts-de-Seine, à Puteaux, à 8,1 km du centre de Sartrouville. La distance a été préférée au découpage départemental. Cette agence reçoit votre demande, vient chez vous pour l'évaluation gratuite et suit les interventions. Vous la joignez par téléphone ou par le formulaire de cette page."
+    }
+  ],
+  "semaine_type": "ines",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

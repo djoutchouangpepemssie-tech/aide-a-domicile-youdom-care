@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78640.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78640",
+  "seo": {
+    "titre": "Aide à domicile à Vélizy-Villacoublay (78140) : Yvelines",
+    "description": "Aide à domicile à Vélizy-Villacoublay, à 4,4 km de l'agence Youdom Care de Versailles. Résidence autonomie Madeleine Wagner, CCAS, hôpitaux voisins."
+  },
+  "sous_titre": "Vélizy-Villacoublay est à 4,4 km de l'agence Youdom Care de Versailles ; la résidence autonomie Madeleine Wagner et le CCAS sont dans la commune.",
+  "zone_editoriale": "### À 4,4 km de l'agence\n\nVélizy-Villacoublay se trouve à 4,4 km de l'agence Youdom Care Yvelines, installée à Versailles. Pour vous, cela signifie une évaluation à domicile facile à organiser et un suivi de proximité. La visite d'évaluation est gratuite ; le devis qui en découle aussi.\n\n### Ce que les données disent de la commune\n\nVélizy-Villacoublay comptait 22 481 habitants au recensement de 2022. Les 75 ans et plus représentent 9,1 % de la population, dont 1 % de personnes de 90 ans ou plus. Les 60-74 ans en forment 12,9 %. Quand l'un des deux membres d'un couple perd en autonomie, l'autre devient peu à peu l'aidant principal ; l'aide à domicile le soutient autant que la personne aidée.\n\n### Une résidence autonomie et un CCAS\n\nLa Résidence autonomie Madeleine Wagner, place Bernard Dautier, est le seul établissement pour personnes âgées relevé à Vélizy-Villacoublay dans les données ouvertes. Une résidence autonomie n'est pas une maison de retraite : chacun y garde son logement et ses habitudes. Une auxiliaire de vie peut y intervenir pour la toilette, les repas ou une présence en soirée, exactement comme dans un pavillon ou un appartement de la ville.\n\nLe Centre communal d'action sociale (CCAS) - Vélizy-Villacoublay, avenue du Capitaine Tarron, est l'interlocuteur communal pour les aides et l'orientation. La mairie se trouve place de l'Hôtel-de-Ville.\n\nAucun accueil de jour, aucun EHPAD et aucun hôpital ne sont recensés dans la commune même. Nous le disons plutôt que de remplir la page avec des lieux qui n'existent pas.\n\n### Les hôpitaux les plus proches\n\nL'Hôpital de jour de Versailles, avenue du Général Leclerc à Viroflay, est à 2,6 km à vol d'oiseau. Le site Antoine Béclère du GHU AP-HP Université Paris Saclay, à Clamart, est à 4,3 km. Un retour à domicile après une hospitalisation dans l'un de ces établissements se prépare avant la sortie ; l'auxiliaire de vie peut être là le premier jour et les suivants.\n\n### Les relais départementaux\n\nLe Conseil départemental - Yvelines, hôtel du département à Versailles, décide de l'APA et de la PCH. La Maison départementale des personnes handicapées (MDPH) - Yvelines a son adresse postale à Buc. Le PAM Île-de-France assure un transport à la demande pour les personnes à mobilité réduite dans toute la région. L'APEI de Vélizy, rue Eugène Janneton, est dans la commune : elle réunit des parents de personnes en situation de handicap intellectuel. France Alzheimer Yvelines accueille les familles place Royale à Versailles ; France Parkinson a un comité départemental à Élancourt.\n\n### Les communes voisines\n\nViroflay est à 2,6 km, Chaville à 2,8 km, Bièvres et Meudon à 3,2 km, Jouy-en-Josas à 3,3 km, Clamart et Sèvres à 4,3 km. Vélizy-Villacoublay fait partie de la CA Versailles Grand Parc (CAVGP).\n\nSi vous cherchez une aide pour vous-même ou pour votre conjoint, commencez par une conversation. Un appel ou le formulaire suffisent ; la visite à Vélizy-Villacoublay qui suit est gratuite et vous laisse libre de décider.",
+  "questions": [
+    {
+      "question": "Quelle est l'agence Youdom Care la plus proche de Vélizy-Villacoublay ?",
+      "reponse": "L'agence Youdom Care Yvelines, à Versailles, à 4,4 km du centre de Vélizy-Villacoublay. C'est elle qui reçoit votre demande, vient à votre domicile pour l'évaluation gratuite et organise ensuite les interventions. Vous la joignez par téléphone ou par le formulaire de cette page, pour vous ou pour un proche."
+    },
+    {
+      "question": "Y a-t-il une résidence autonomie à Vélizy-Villacoublay ?",
+      "reponse": "Oui, la Résidence autonomie Madeleine Wagner, place Bernard Dautier, avec 88 places selon les données ouvertes. Les résidents y vivent de façon indépendante. Une auxiliaire de vie Youdom Care peut y intervenir aux heures convenues, pour la toilette, les repas, les courses ou simplement une présence, comme dans tout autre logement de la commune."
+    },
+    {
+      "question": "Quels hôpitaux sont proches de Vélizy-Villacoublay ?",
+      "reponse": "Aucun hôpital n'est recensé dans la commune. L'Hôpital de jour de Versailles, à Viroflay, est à 2,6 km à vol d'oiseau, et le site Antoine Béclère du GHU AP-HP Université Paris Saclay, à Clamart, à 4,3 km. Pour un retour à domicile, prévenez Youdom Care avant la sortie afin d'organiser la présence d'une auxiliaire de vie."
+    },
+    {
+      "question": "Où s'adresser pour un adulte handicapé à Vélizy-Villacoublay ?",
+      "reponse": "La demande de prestation de compensation du handicap se dépose à la Maison départementale des personnes handicapées (MDPH) - Yvelines, domiciliée à Buc. Le CCAS de Vélizy-Villacoublay, avenue du Capitaine Tarron, oriente en amont. Pour le handicap intellectuel, l'APEI de Vélizy, rue Eugène Janneton, réunit des parents. Youdom Care construit ensuite le planning avec la personne."
+    }
+  ],
+  "semaine_type": "paul",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 14, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

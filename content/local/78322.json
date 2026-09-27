@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78322.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78322",
+  "seo": {
+    "titre": "Aide à domicile à Jouy-en-Josas (78350) : répit et relais",
+    "description": "Aide à domicile à Jouy-en-Josas : accueil de jour de la Résidence Juliette Victor, hôpitaux de Versailles et Viroflay, agence Youdom Care à 3,8 km."
+  },
+  "sous_titre": "À Jouy-en-Josas, un accueil de jour avec unité Alzheimer existe rue des Fonds ; l'agence Youdom Care de Versailles est à 3,8 km.",
+  "zone_editoriale": "### Partir de l'accueil de jour\n\nL'EHPAD Résidence Juliette Victor, rue des Fonds à Jouy-en-Josas, propose un accueil de jour et une unité Alzheimer. Pour un proche aidant, c'est souvent le premier relais trouvé : quelques journées par semaine où la personne est occupée ailleurs. L'aide à domicile prend le reste : le lever, l'habillage et le départ le matin, l'accueil au retour, le dîner, parfois la nuit. Les deux ensemble tiennent mieux que chacun seul.\n\nYoudom Care propose aussi le remplacement d'un aidant qui part quelques jours, une présence de nuit, ou un accompagnement en vacances avec l'auxiliaire de vie habituelle. Ces solutions existent parce que tenir dans la durée n'est pas abandonner.\n\n### Les habitants de Jouy-en-Josas\n\nLa commune comptait 7 985 habitants au recensement de 2022. Les 75 ans et plus représentent 8,8 % de la population : 7,6 % de 75-89 ans et 1,2 % de personnes de 90 ans ou plus. Les 60-74 ans forment 11,4 % des habitants. Derrière ces pourcentages, il y a des personnes précises, et des familles qui cherchent comment s'organiser.\n\n### Peu de ressources recensées sur place\n\nLes données ouvertes utilisées pour cette page ne relèvent à Jouy-en-Josas ni résidence autonomie, ni point d'information dédié, ni hôpital. Nous ne les inventons pas. La mairie, avenue Jean-Jaurès, reste le premier interlocuteur communal pour une orientation.\n\nPour les soins hospitaliers, deux établissements sont proches : l'Hôpital de jour de Versailles, avenue du Général Leclerc à Viroflay, à 4,1 km à vol d'oiseau, et le Centre hospitalier de Versailles Hôpital Richaud, boulevard de la Reine, à 5,3 km. Lorsqu'une hospitalisation se termine, l'auxiliaire de vie peut être là le jour du retour, puis les jours suivants.\n\n### Les appuis départementaux et associatifs\n\nLe Conseil départemental - Yvelines, à Versailles, instruit l'allocation personnalisée d'autonomie et la prestation de compensation du handicap. La Maison départementale des personnes handicapées (MDPH) - Yvelines a son adresse à Buc, commune voisine à 2,8 km. Le PAM Île-de-France, transport à la demande régional, s'adresse aux personnes à mobilité réduite. France Alzheimer Yvelines écoute les familles place Royale à Versailles. L'APEI de Vélizy, rue Eugène Janneton, et l'APEI de Versailles et Des Communes Environnantes réunissent des parents de personnes en situation de handicap intellectuel ; France Parkinson a un comité départemental à Élancourt.\n\n### L'agence et les communes voisines\n\nL'agence Youdom Care Yvelines, à Versailles, se trouve à 3,8 km du centre de Jouy-en-Josas. Les Loges-en-Josas sont à 1,5 km, Buc à 2,8 km, Vélizy-Villacoublay à 3,3 km, Viroflay à 4,1 km. Jouy-en-Josas fait partie de la CA Versailles Grand Parc (CAVGP).\n\nQuand un proche fatigue, le bon moment pour demander de l'aide est maintenant, pas après l'épuisement. La visite d'évaluation à domicile est gratuite ; elle se demande par le formulaire ou par téléphone, et elle n'oblige à rien.",
+  "questions": [
+    {
+      "question": "Y a-t-il un accueil de jour à Jouy-en-Josas pour une personne atteinte d'Alzheimer ?",
+      "reponse": "Oui. L'EHPAD Résidence Juliette Victor, rue des Fonds, propose un accueil de jour avec une unité Alzheimer, pour un total de 95 places selon les données ouvertes. Pour les journées sans accueil et pour les matins et soirs, une auxiliaire de vie Youdom Care assure la continuité des habitudes à la maison. Les conditions d'admission se demandent à l'établissement."
+    },
+    {
+      "question": "Quels hôpitaux sont proches de Jouy-en-Josas ?",
+      "reponse": "Aucun hôpital n'est recensé dans la commune. Les deux plus proches dans les données sont l'Hôpital de jour de Versailles, à Viroflay, à 4,1 km à vol d'oiseau, et le Centre hospitalier de Versailles Hôpital Richaud, boulevard de la Reine, à 5,3 km. Pour un retour à domicile, prévenez Youdom Care avant la sortie afin que l'auxiliaire de vie soit présente le premier jour."
+    },
+    {
+      "question": "Quelle est l'agence Youdom Care la plus proche de Jouy-en-Josas ?",
+      "reponse": "C'est l'agence Youdom Care Yvelines, à Versailles, à 3,8 km du centre de Jouy-en-Josas. Elle reçoit votre demande, vient chez vous pour l'évaluation gratuite et organise le planning des interventions. Vous la joignez par téléphone ou par le formulaire de cette page, pour vous-même ou pour un proche."
+    },
+    {
+      "question": "Où s'adresser pour la MDPH quand on habite Jouy-en-Josas ?",
+      "reponse": "La Maison départementale des personnes handicapées (MDPH) - Yvelines a son adresse postale à Buc, commune voisine située à 2,8 km de Jouy-en-Josas. Elle instruit la prestation de compensation du handicap et les cartes. Une fois la décision reçue, Youdom Care met en place les heures d'aide humaine avec vous, pour un adulte ou pour un enfant."
+    }
+  ],
+  "semaine_type": "gisele",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

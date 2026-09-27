@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77237.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77237",
+  "seo": {
+    "titre": "Aide à domicile à Jossigny (77600) : de l'hôpital à chez soi",
+    "description": "Auxiliaire de vie à Jossigny : le centre hospitalier de Marne-la-Vallée est dans la commune, l'agence Youdom Care à 2,3 km. Retour d'hospitalisation."
+  },
+  "sous_titre": "Jossigny accueille le centre hospitalier de Marne-la-Vallée : la sortie d'hospitalisation y est une question de voisinage.",
+  "zone_editoriale": "Le « Grand Hosp Est Francilien Marne la Vallee site Jossigny », 2 cours de la Gondoire, est situé dans la commune de Jossigny. À la même adresse se trouve l'« Institut de Cancerologie de Seine et Marne ». Pour les habitants, l'hôpital n'est pas un lieu lointain : c'est un voisin.\n\n### Sortir de l'hôpital et rentrer chez soi\n\nLa sortie se décide souvent vite. L'aide à domicile doit alors être prête le jour du retour : quelqu'un pour ouvrir la porte, remplir le réfrigérateur, préparer le premier repas. Les jours suivants, l'auxiliaire de vie aide au lever, à la toilette et aux déplacements dans la maison.\n\nElle ne réalise pas de soins infirmiers. Elle s'organise avec l'infirmier, le kinésithérapeute et le médecin, et prévient la famille si quelque chose change. Un retour préparé rassure la personne comme sa famille.\n\n### Un village où les aînés pèsent\n\nJossigny compte 639 habitants au recensement de 2022. Les 75 ans et plus représentent 8,6 % de la population, les 60 à 74 ans 16,9 %. Les 90 ans ou plus sont 0,3 %.\n\nCes deux parts sont élevées pour le secteur. Dans une commune de cette taille, cela signifie des besoins de présence, de courses et de gestes du quotidien concentrés sur quelques foyers. Le Centre communal d'action sociale (CCAS) - Jossigny, à la mairie, place de la Mairie, est le premier relais pour une demande d'aide sociale.\n\n### Accueil de jour et établissements\n\nL'accueil de jour référencé est celui de l'EHPAD COS Fontenelle, allée de Fontenelle à Chanteloup-en-Brie, à 3,7 km, avec une unité Alzheimer. L'EHPAD Le Château des Cèdres, à Conches-sur-Gondoire, et l'EHPAD Les Jardins de Bussy, à Bussy-Saint-Georges, sont les deux EHPAD référencés.\n\nUne personne qui fréquente l'accueil de jour rentre chez elle le soir. L'auxiliaire de vie assure la jonction : préparation le matin, retour, repas.\n\n### Le département depuis Jossigny\n\nL'allocation personnalisée d'autonomie est instruite par le Conseil départemental - Seine-et-Marne, à Melun. La Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne, à Savigny-le-Temple, reçoit les demandes liées au handicap. Le PAM Île-de-France, transport régional à la demande, dessert Jossigny pour les personnes à mobilité réduite éligibles.\n\nFrance Alzheimer Seine-et-Marne accueille et écoute les familles du département. Les associations du réseau Unapei, comme l'ADAPEI 77 à Melun, s'adressent aux familles concernées par une déficience intellectuelle.\n\n### À 2,3 km de l'agence\n\nL'agence Youdom Care Seine-et-Marne est à Serris, à 2,3 km à vol d'oiseau de Jossigny. Jossigny appartient à la communauté d'agglomération Marne et Gondoire et s'étend sur 962 hectares.\n\nSerris est à 2,5 km, Villeneuve-Saint-Denis à 2,8 km, Chanteloup-en-Brie à 3,7 km, Bussy-Saint-Georges à 4 km. Montévrain, Bailly-Romainvilliers, Guermantes et Ferrières-en-Brie sont entre 4,4 et 4,5 km.\n\nUne hospitalisation est prévue ou vient de se terminer ? Écrivez-nous ; la visite d'évaluation à Jossigny est gratuite et peut se faire dès le retour à la maison.",
+  "questions": [
+    {
+      "question": "Comment préparer un retour d'hospitalisation à Jossigny ?",
+      "reponse": "Le « Grand Hosp Est Francilien Marne la Vallee site Jossigny », 2 cours de la Gondoire, est dans la commune. Dès que la date de sortie est connue, contactez-nous. L'évaluation à domicile est gratuite et fixe les horaires de présence, les courses et les repas des premiers jours. L'auxiliaire de vie peut être présente le jour même du retour."
+    },
+    {
+      "question": "Où se trouve le CCAS de Jossigny ?",
+      "reponse": "Le Centre communal d'action sociale (CCAS) - Jossigny est à la mairie, place de la Mairie. Dans une commune de 639 habitants, c'est l'interlocuteur de proximité pour une demande d'aide sociale ou une orientation vers le département. L'allocation personnalisée d'autonomie relève ensuite du Conseil départemental - Seine-et-Marne, 12 rue des Saints-Pères à Melun."
+    },
+    {
+      "question": "Quel accueil de jour pour un habitant de Jossigny ?",
+      "reponse": "L'accueil de jour référencé est celui de l'EHPAD COS Fontenelle, allée de Fontenelle à Chanteloup-en-Brie, à 3,7 km de Jossigny. Il comprend une unité Alzheimer. Une auxiliaire de vie peut préparer votre proche le matin, assurer le trajet et le retrouver le soir. Les modalités d'admission sont à demander directement à l'établissement."
+    },
+    {
+      "question": "Jossigny est-elle proche de l'agence Youdom Care ?",
+      "reponse": "Oui, l'agence Youdom Care Seine-et-Marne est à Serris, à 2,3 km à vol d'oiseau de Jossigny. La première visite se fait chez vous, gratuitement, puis un devis vous est remis. Les coordonnées de l'agence figurent en haut de cette page ; le formulaire permet aussi de décrire votre situation."
+    }
+  ],
+  "semaine_type": "bernard",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 18, 19],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

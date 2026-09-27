@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/77510.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "77510",
+  "seo": {
+    "titre": "Aide à domicile à Villeneuve-Saint-Denis (77174) : présence",
+    "description": "Auxiliaire de vie à Villeneuve-Saint-Denis : les 75 ans et plus sont 10,1 % des habitants. Présence jour et nuit, CCAS rue de la Guette, agence à 3 km."
+  },
+  "sous_titre": "À Villeneuve-Saint-Denis, le grand âge est bien présent : la question de la présence, y compris la nuit, se pose vite.",
+  "zone_editoriale": "À Villeneuve-Saint-Denis, les 75 ans et plus représentent 10,1 % de la population. Les 90 ans ou plus en forment 2,2 %. La commune compte 1 383 habitants au recensement de 2022, et les 60 à 74 ans sont 9,3 %.\n\nCes parts sont élevées. Elles signifient qu'une part notable des foyers de la commune compte une personne très âgée.\n\n### Quand la présence devient la question\n\nÀ 90 ans, l'aide ne se limite plus au ménage. Il faut quelqu'un au lever, pour la toilette et l'habillage, au repas de midi, puis au coucher. La nuit, une chute ou une désorientation inquiète la famille.\n\nUne présence de nuit ou une présence continue, jour et nuit, s'organise alors avec plusieurs intervenants qui se relaient. Elle permet à la personne de rester dans sa maison de Villeneuve-Saint-Denis. Elle permet aussi aux enfants de dormir.\n\nCette organisation se construit pas à pas, à partir de quelques heures par jour. La première visite d'évaluation sert à en poser le cadre.\n\n### Les ressources de la commune\n\nLe Centre communal d'action sociale (CCAS) - Villeneuve-Saint-Denis se trouve rue de la Guette. Il aide à constituer les dossiers d'aide sociale et oriente vers le Conseil départemental - Seine-et-Marne, à Melun, pour l'allocation personnalisée d'autonomie.\n\nL'EHPAD La Guette est situé dans la commune. C'est l'établissement pour personnes âgées référencé ; aucun accueil de jour n'apparaît dans les données. Pour une famille, l'EHPAD est une possibilité à connaître, que l'aide à domicile peut précéder longtemps.\n\n### Les hôpitaux\n\nLe « Grand Hosp Est Francilien Marne la Vallee site Jossigny » est à 2,8 km à vol d'oiseau, à Jossigny. L'« HDJ Infanto Juvenile Astrolabe », hôpital de jour pour enfants et adolescents, est à 9,2 km, à Bussy-Saint-Martin. Après une hospitalisation, la présence à domicile se met en place avant la sortie.\n\n### Le département\n\nLa Maison départementale des personnes handicapées (MDPH) - Seine-et-Marne, à Savigny-le-Temple, instruit les demandes liées au handicap. Le PAM Île-de-France, transport à la demande de la région, est ouvert notamment aux personnes âgées classées en GIR 1 à 4. France Alzheimer Seine-et-Marne accueille et écoute les familles du département.\n\n### À 3 km de l'agence\n\nL'agence Youdom Care Seine-et-Marne est à Serris, à 3 km à vol d'oiseau de Villeneuve-Saint-Denis. La commune appartient à la communauté d'agglomération Val d'Europe Agglomération et couvre 741 hectares.\n\nJossigny est à 2,8 km, Villeneuve-le-Comte à 3,4 km, Serris à 3,7 km, Favières à 3,8 km. Bailly-Romainvilliers, Neufmoutiers-en-Brie, Coutevroult et Magny-le-Hongre se situent entre 4,1 et 6,4 km.\n\nQuand une présence continue devient nécessaire pour un parent de Villeneuve-Saint-Denis, la visite d'évaluation est le premier pas. Elle est gratuite et se fait chez lui.",
+  "questions": [
+    {
+      "question": "Une présence de nuit est-elle possible à Villeneuve-Saint-Denis ?",
+      "reponse": "Oui. Une présence de nuit, ou une présence continue jour et nuit, s'organise avec plusieurs auxiliaires de vie qui se relaient. À Villeneuve-Saint-Denis, les 90 ans ou plus représentent 2,2 % des habitants : la question se pose donc dans plusieurs foyers. La première visite d'évaluation, gratuite, définit le rythme des relais et ce que chaque intervenant fait la nuit."
+    },
+    {
+      "question": "Où se trouve le CCAS de Villeneuve-Saint-Denis ?",
+      "reponse": "Le Centre communal d'action sociale (CCAS) - Villeneuve-Saint-Denis est rue de la Guette. Il aide à constituer un dossier d'allocation personnalisée d'autonomie, instruit ensuite par le Conseil départemental - Seine-et-Marne, 12 rue des Saints-Pères à Melun. L'APA peut financer une partie des heures d'aide à domicile, selon le degré d'autonomie évalué et les ressources."
+    },
+    {
+      "question": "Y a-t-il un EHPAD à Villeneuve-Saint-Denis ?",
+      "reponse": "Oui, l'EHPAD La Guette est situé dans la commune. C'est l'établissement pour personnes âgées référencé dans les données ; aucun accueil de jour n'y figure. Une aide à domicile régulière peut précéder longtemps une entrée en établissement, ou l'éviter, selon la situation de la personne et de sa famille. Les conditions d'admission sont à demander à l'établissement."
+    },
+    {
+      "question": "Quelle agence Youdom Care pour Villeneuve-Saint-Denis ?",
+      "reponse": "L'agence Youdom Care Seine-et-Marne, à Serris, à 3 km à vol d'oiseau. Elle organise la première visite d'évaluation, gratuite, au domicile de la personne, puis remet un devis. Ses coordonnées figurent en haut de cette page. Le formulaire permet aussi de décrire la situation, en indiquant si une présence de nuit est envisagée."
+    }
+  ],
+  "semaine_type": "louise",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 14, 16, 17],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

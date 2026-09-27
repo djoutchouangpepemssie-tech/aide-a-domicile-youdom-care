@@ -1,0 +1,38 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78551.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78551",
+  "seo": {
+    "titre": "Aide à domicile à Saint-Germain-en-Laye (78100) : Yvelines",
+    "description": "Aide à domicile à Saint-Germain-en-Laye : pôle autonomie rue Armagis, accueils de jour Etape 3A et Jardins de Cybèle, résidence Berlioz. Agence à 11,8 km."
+  },
+  "sous_titre": "À Saint-Germain-en-Laye, les démarches commencent au Pôle autonomie territorial de la rue Armagis ; l'aide à domicile prend le relais chez vous.",
+  "zone_editoriale": "### Par où commencer à Saint-Germain-en-Laye\n\nLa première question des familles est rarement « quelle aide ? » mais « à qui parler ? ». À Saint-Germain-en-Laye, la réponse est le Pôle autonomie territorial - Boucle de Seine Antenne Ouest, rue Armagis. On y expose sa situation, on y apprend ce qu'est l'APA, ce que finance la PCH, quels relais existent pour un proche fatigué. Le Centre communal d'action sociale (CCAS) - Saint-Germain-en-Laye, rue Léon Desoyer, traite les aides communales. La mairie est rue de Pontoise ; une mairie déléguée existe à Fourqueux, place de la Grille.\n\n### Deux accueils de jour et une résidence autonomie\n\nL'Accueil de jour Etape 3A, rue de Tourville, est un accueil de jour avec unité Alzheimer, de petite taille. L'EHPAD Les Jardins de Cybèle Résidence Les Coteaux, rue de l'Aurore, propose lui aussi un accueil de jour. Pour un conjoint qui s'occupe d'une personne atteinte de la maladie d'Alzheimer, ces journées sont une respiration. L'aide à domicile s'y ajoute : lever et préparation le matin, retour et dîner le soir, présence les autres jours.\n\nLa Résidence autonomie Berlioz, rue Franz-Schubert, loge des personnes indépendantes. Une auxiliaire de vie peut y intervenir. Trois EHPAD sont par ailleurs recensés : Korian Parc des Dames, Ropital-Anquetin et la Maison de retraite les Augustines.\n\n### Les établissements de santé\n\nLe Centre hospitalier intercommunal Poissy Saint-Germain, site de Saint-Germain, rue Armagis, la Clinique Saint Germain, rue Baronne Gérard, et le Centre de radiothérapie Anne d'Autriche, rue Maurice Larget, sont dans la commune, ainsi qu'un hôpital de jour de psychiatrie, rue Gallieni. Un retour à domicile depuis l'un de ces lieux se prépare avec le service et l'agence ; Youdom Care ne fait pas de soins infirmiers et travaille avec ceux qui les font.\n\n### La population\n\nSaint-Germain-en-Laye comptait 45 286 habitants au recensement de 2022. Les 75 ans et plus représentent 9,5 % de la population, dont 1,5 % ont 90 ans ou plus. Les 60-74 ans en forment 14,1 %.\n\n### Le département et la région\n\nLe Conseil départemental - Yvelines, à Versailles, décide de l'APA et de la PCH. La Maison départementale des personnes handicapées (MDPH) - Yvelines est domiciliée à Buc. Le PAM Île-de-France est le transport à la demande régional des personnes à mobilité réduite. France Alzheimer Yvelines accueille les familles à Versailles ; France Parkinson a un comité départemental à Élancourt ; l'ADAPEI 78 et l'APEI de Versailles et Des Communes Environnantes réunissent des parents.\n\n### L'agence la plus proche est à Puteaux\n\nPour Saint-Germain-en-Laye, l'agence Youdom Care la plus proche est celle des Hauts-de-Seine, à Puteaux, à 11,8 km du centre. Ce n'est pas l'agence des Yvelines, et c'est normal : la carte des distances prime sur celle des départements. Le Mesnil-le-Roi est à 1,5 km, Montesson à 2,7 km, Maisons-Laffitte à 4,1 km, Le Pecq à 4,3 km, Le Vésinet à 4,7 km. La commune appartient à la CA Saint Germain Boucles de Seine.\n\nVous pouvez commencer par le pôle autonomie, ou par nous : dans les deux cas, la visite d'évaluation à votre domicile de Saint-Germain-en-Laye est gratuite. Elle se demande par le formulaire ou par téléphone.",
+  "questions": [
+    {
+      "question": "Quel est le point d'information pour les personnes âgées à Saint-Germain-en-Laye ?",
+      "reponse": "Le Pôle autonomie territorial - Boucle de Seine Antenne Ouest, rue Armagis, à Saint-Germain-en-Laye. Il informe sur l'APA, la PCH, les aides aux proches, les accueils de jour et les établissements. Le Centre communal d'action sociale (CCAS) - Saint-Germain-en-Laye, rue Léon Desoyer, complète ce guichet pour les aides communales et l'orientation."
+    },
+    {
+      "question": "Y a-t-il des accueils de jour à Saint-Germain-en-Laye ?",
+      "reponse": "Deux sont recensés : l'Accueil de jour Etape 3A, rue de Tourville, avec unité Alzheimer et 10 places, et l'accueil de jour de l'EHPAD Les Jardins de Cybèle Résidence Les Coteaux, rue de l'Aurore. Une auxiliaire de vie Youdom Care assure les matins, les soirs et les jours sans accueil, pour que la personne garde ses repères à la maison."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre Saint-Germain-en-Laye ?",
+      "reponse": "L'agence Youdom Care Hauts-de-Seine, à Puteaux, à 11,8 km du centre de Saint-Germain-en-Laye. C'est elle qui reçoit votre demande, vient chez vous pour l'évaluation gratuite et organise les interventions. Contactez-la par téléphone ou par le formulaire de cette page, pour vous-même ou pour un proche."
+    },
+    {
+      "question": "Quels hôpitaux à Saint-Germain-en-Laye pour préparer une sortie ?",
+      "reponse": "Le Centre hospitalier intercommunal Poissy Saint-Germain, site de Saint-Germain, rue Armagis, et la Clinique Saint Germain, rue Baronne Gérard, sont dans la commune. Dès que la date de sortie est connue, prévenez Youdom Care : une auxiliaire de vie peut être là le premier jour, pour l'installation, les repas et les déplacements dans le logement."
+    }
+  ],
+  "semaine_type": "veronique",
+  "faits_utilises": [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 24, 25
+  ],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

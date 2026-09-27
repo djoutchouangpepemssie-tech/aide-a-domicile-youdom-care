@@ -1,0 +1,36 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/78621.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "78621",
+  "seo": {
+    "titre": "Aide à domicile à Trappes (78190) : enfants, adultes, aînés",
+    "description": "Aide à domicile à Trappes, où 3,8 % des habitants ont 75 ans et plus : handicap, enfants, retours d'hôpital. Pôle autonomie sur place, agence à 10,7 km."
+  },
+  "sous_titre": "À Trappes, seuls 3,8 % des habitants ont 75 ans et plus : l'aide à domicile y concerne d'abord les familles, le handicap et les retours d'hôpital.",
+  "zone_editoriale": "### Trappes n'est pas une commune de personnes âgées\n\nÀ Trappes, 3,8 % des habitants ont 75 ans et plus, et 0,4 % ont 90 ans ou plus. Les 60-74 ans représentent 10,6 % des 34 276 habitants recensés en 2022. Ce sont des parts basses. Pour une entreprise d'aide à domicile, cela change l'ordre des demandes : un enfant autiste dont les parents travaillent, un adulte en fauteuil qui veut organiser lui-même ses journées, une mère qui rentre de l'hôpital avec des enfants à la maison, un grand-parent qui vit chez ses enfants.\n\nYoudom Care accompagne ces situations avec des auxiliaires de vie qui interviennent aux heures de la famille : lever et départ à l'école, retour, soirée, week-end, nuit. Pour un adulte en situation de handicap, le planning est construit avec lui et reste modifiable. La personne décide, l'intervenante suit.\n\n### Le pôle autonomie est dans la commune\n\nLe Pôle autonomie territorial - St Quentin, rue Roger Hennequin, est le lieu où l'on s'informe sur l'APA, la PCH, les cartes et les aides aux proches. C'est une chance pour les habitants de Trappes : la première démarche se fait sans quitter la commune. La mairie, place de la République, oriente également ; aucun CCAS distinct n'apparaît dans les données ouvertes.\n\nLa Maison départementale des personnes handicapées (MDPH) - Yvelines, qui décide de la PCH et des cartes, a son adresse postale à Buc. Le Conseil départemental - Yvelines, à Versailles, verse l'APA et la PCH.\n\n### Sur place : une résidence autonomie et deux hôpitaux\n\nLa Résidence autonomie Jean Fourcassa, rue Victor Jara, loge des personnes âgées indépendantes ; une aide à domicile peut y intervenir. L'Hôpital privé de l'Ouest parisien, avenue Castiglione del Lago, et l'Hôpital de jour Trappes, rue Pierre Sémard, sont recensés dans la commune. Quand une hospitalisation se termine, prévenir l'agence avant la sortie permet d'avoir quelqu'un à la maison le premier jour.\n\nLes données ne recensent à Trappes ni accueil de jour, ni EHPAD. Pour un accueil de jour, il faut chercher dans les communes voisines.\n\n### Les associations départementales\n\nL'ADAPEI 78 et l'APEI de Versailles et Des Communes Environnantes réunissent des parents de personnes en situation de handicap intellectuel ; l'APEI de Vélizy également. France Alzheimer Yvelines écoute les familles depuis Versailles. Le comité des Yvelines de France Parkinson est à Élancourt, à 2,6 km de Trappes. Le PAM Île-de-France, transport à la demande régional, est ouvert aux titulaires d'une carte mobilité inclusion mention invalidité et à d'autres personnes à mobilité réduite.\n\n### L'agence et les voisines\n\nL'agence Youdom Care Yvelines est à Versailles, à 10,7 km du centre de Trappes. Montigny-le-Bretonneux est à 2,2 km, Élancourt à 2,6 km, La Verrière et Voisins-le-Bretonneux à 4 km, Bois-d'Arcy à 4,1 km. Trappes appartient à la CA de Saint Quentin en Yvelines.\n\nUn enfant, un adulte, un parent : dites-nous qui a besoin d'aide et à quelles heures. La visite à votre domicile de Trappes est gratuite, sans engagement, et se demande par le formulaire ou par téléphone.",
+  "questions": [
+    {
+      "question": "Où se renseigner sur les aides quand on habite Trappes ?",
+      "reponse": "Au Pôle autonomie territorial - St Quentin, rue Roger Hennequin, à Trappes. On y explique l'APA, la PCH, les cartes mobilité inclusion et les aides aux proches, puis on oriente vers la Maison départementale des personnes handicapées (MDPH) - Yvelines, à Buc, ou vers le Conseil départemental - Yvelines, à Versailles, selon la demande."
+    },
+    {
+      "question": "Youdom Care aide-t-elle les enfants en situation de handicap à Trappes ?",
+      "reponse": "Oui. Les auxiliaires de vie interviennent aux heures de la famille : préparation du matin, retour d'école, soirée, week-end. Les intervenants apprennent les habitudes de l'enfant et restent les mêmes autant que possible. Le financement passe souvent par la PCH ou l'AEEH, décidées après un dossier à la MDPH des Yvelines. La première visite d'évaluation à Trappes est gratuite."
+    },
+    {
+      "question": "Quels hôpitaux sont recensés à Trappes ?",
+      "reponse": "L'Hôpital privé de l'Ouest parisien, avenue Castiglione del Lago, et l'Hôpital de jour Trappes, rue Pierre Sémard. Pour un retour à domicile après une hospitalisation, contactez Youdom Care dès que la date de sortie est connue : une auxiliaire de vie peut être présente le premier jour pour l'installation, les repas et les déplacements."
+    },
+    {
+      "question": "À quelle distance de Trappes se trouve l'agence Youdom Care ?",
+      "reponse": "L'agence Youdom Care Yvelines est à Versailles, à 10,7 km du centre de Trappes. Elle reçoit les demandes, se déplace pour l'évaluation gratuite et organise les interventions à domicile. Vous pouvez la joindre par téléphone ou remplir le formulaire de cette page ; la demande peut concerner un enfant, un adulte ou une personne âgée."
+    }
+  ],
+  "semaine_type": "noe",
+  "faits_utilises": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}

@@ -1,0 +1,38 @@
+{
+  "_lisezmoi": "Partie éditoriale de la page locale, écrite à partir des faits de data/local/75116.json uniquement (docs/04 §4). À relire par Arcel avant publication.",
+  "code": "75116",
+  "seo": {
+    "titre": "Aide à domicile Paris 16e (75016) : présence et grand âge",
+    "description": "Dans le 16e arrondissement, 12 % des habitants ont 75 ans ou plus. Présence de nuit, gestes du quotidien, accueil de jour Jean Colin : l'aide à domicile."
+  },
+  "sous_titre": "Le 16e arrondissement compte 12 % de 75 ans et plus : l'aide à domicile y est d'abord une question de présence.",
+  "zone_editoriale": "Douze pour cent. C'est la part des 75 ans et plus dans la population du 16e arrondissement, selon le recensement de 2022. Sur 159 733 habitants, 10 % ont entre 75 et 89 ans et 2 % ont 90 ans ou plus. Les 60-74 ans ajoutent 16,3 %. Ces chiffres font du grand âge la première question de l'aide à domicile dans le 16e.\n\n### Ce que 2 % de 90 ans et plus veulent dire\n\nAprès 90 ans, la question n'est plus seulement celle des courses ou du ménage. Elle devient celle de la présence : la nuit, les week-ends, les moments où une chute ou une désorientation ne peut pas attendre. L'aide à domicile prend alors la forme d'une présence longue, parfois continue, en relais des proches. Les 75-89 ans, eux, ont surtout besoin d'aide pour les gestes du quotidien et pour sortir : toilette, repas, accompagnement à pied. Entre ces deux âges, le besoin évolue ; l'aide doit suivre sans rupture, avec les mêmes repères.\n\n### Des lieux pour sortir encore\n\nLe 16e arrondissement est riche en jardins recensés : Jardin du Ranelagh, chaussée de la Muette, Jardins du Trocadero, Jardin de l'Avenue Foch, Jardin des Serres d'Auteuil, Jardin du Pre Catelan et Jardin de l'Hopital Sainte-Perine, rue Mirabeau. Le Marché Auteuil se tient place Jean-Lorrain le mercredi et le samedi, le Marché President Wilson les mêmes jours avenue du Président-Wilson, le Marché Point du Jour le mardi, le jeudi et le dimanche avenue de Versailles. Pour un rendez-vous ou une sortie hors de portée à pied, le PAM Île-de-France transporte sur réservation les personnes à mobilité réduite. Le Club Seniors Lauriston et le Club Seniors Mozart ouvrent gratuitement leurs ateliers tous les jours.\n\n### Quand la mémoire faiblit\n\nL'Accueil de jour Docteur Jean Colin, avenue Théophile-Gautier, dispose d'une unité Alzheimer et de 20 places. C'est le seul accueil de jour recensé dans le 16e. Une auxiliaire de vie prépare la personne le matin, l'y conduit et la retrouve en fin de journée. Six EHPAD sont recensés, dont l'EHPAD Résidence Trocadéro, qui propose de l'hébergement temporaire, utile pour un répit de l'aidant. Plusieurs résidences autonomie figurent dans les données, dont le Foyer-Logement Résidence Lamartine, avenue Victor-Hugo, et la Retraite Dosne.\n\n### Démarches et relais parisiens\n\nLe point d'information local dédié aux personnes âgées des 7e, 15e et 16e arrondissements est installé 24 boulevard de Grenelle, dans le 15e, à la Maison des Aînés et des Aidants Paris Ouest. L'APA est attribuée par le Conseil de Paris, la PCH et la reconnaissance du handicap par la MDPH de Paris, rue de la Victoire. Le Centre d'Action Sociale de la Ville de Paris (CASVP) traite les aides municipales. Dans l'arrondissement, l'association APAEAI Jours Heureux, rue Ribera, est une association de parents du réseau Unapei. Six cliniques et hôpitaux sont recensés dans le 16e, dont la Clinique de la Muette, rue Nicolo, et la Clinique du Trocadéro, rue de la Tour.\n\n### L'agence de Puteaux, à 3,1 km\n\nPour le 16e, l'agence de référence est Youdom Care Hauts-de-Seine, à Puteaux, à 3,1 km. Boulogne-Billancourt est à 2,6 km, le 15e arrondissement à 2,8 km, Neuilly-sur-Seine à 3,2 km. Si votre parent a passé 90 ans et vit seul, ne laissez pas la question de la nuit sans réponse : demandez la visite d'évaluation, elle est gratuite, et le devis aussi.",
+  "questions": [
+    {
+      "question": "Quelle part des habitants du 16e arrondissement a 75 ans ou plus ?",
+      "reponse": "Selon l'Insee, 12 % des 159 733 habitants du 16e arrondissement ont 75 ans ou plus au recensement de 2022 : 10 % ont entre 75 et 89 ans, 2 % ont 90 ans ou plus. Les 60-74 ans représentent 16,3 %. Concrètement, les demandes d'aide à domicile y portent souvent sur la présence, de nuit comme de jour, et sur les gestes du quotidien : se lever, se laver, manger."
+    },
+    {
+      "question": "Y a-t-il un accueil de jour Alzheimer à Paris 16e ?",
+      "reponse": "Oui, un seul est recensé : l'Accueil de jour Docteur Jean Colin, 49 avenue Théophile-Gautier, avec une unité Alzheimer et 20 places. Pour un répit plus long, l'EHPAD Résidence Trocadéro, rue du Bouquet-de-Longchamp, propose de l'hébergement temporaire. Une auxiliaire de vie assure les matins et les soirs autour de ces journées, et les autres jours de la semaine à la maison."
+    },
+    {
+      "question": "Quelle agence Youdom Care couvre le 16e arrondissement ?",
+      "reponse": "L'agence la plus proche est Youdom Care Hauts-de-Seine, à Puteaux, à 3,1 km du 16e. Paris fait partie des zones d'intervention, comme les Hauts-de-Seine. La demande se fait par téléphone ou par le formulaire de cette page ; une visite d'évaluation gratuite est ensuite organisée au domicile de votre proche, puis un devis, gratuit lui aussi, vous est remis."
+    },
+    {
+      "question": "Où s'informer pour une personne âgée quand on habite Paris 16e ?",
+      "reponse": "Le point d'information local dédié aux personnes âgées des 7e, 15e et 16e arrondissements est à la Maison des Aînés et des Aidants Paris Ouest, 24 boulevard de Grenelle, dans le 15e. Pour l'APA, la décision revient au Conseil de Paris ; pour la PCH et le handicap, à la MDPH de Paris, 69 rue de la Victoire. Le CASVP, 5 boulevard Diderot, instruit les aides municipales."
+    }
+  ],
+  "semaine_type": "louise",
+  "faits_utilises": [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 17, 22, 24, 26, 28, 32, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46
+  ],
+  "auteur": {
+    "nom": "Équipe éditoriale Youdom Care",
+    "fonction": "rédaction, avec l'aide d'un outil d'écriture sous sa responsabilité"
+  },
+  "statut": "a_relire",
+  "maj": "2026-09-27"
+}
