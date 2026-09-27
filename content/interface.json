@@ -34,7 +34,7 @@
     "labels": "Labels et adhésions",
     "navigation_pied": "Pied de page",
     "toutes_les_agences": "Toutes les agences",
-    "aide_a_domicile_en": "Aide à domicile en {territoire}",
+    "aide_a_domicile_en": "Aide à domicile · {territoire}",
     "voir_agence": "Voir l’agence {nom}"
   },
   "confort": {
@@ -588,6 +588,12 @@
     "pages_liees_h2": "Sur ce site",
     "voisins_h2": "Termes voisins",
     "retour": "Tout le lexique"
+  },
+  "maillage": {
+    "_lisezmoi": "Blocs de liens calculés (docs/04 §2 « Maillage », P9.4) : « À lire aussi » des pages d'un même groupe du plan du site (entreprise, légal, outils), « Sur Le Fil » (articles dont piliers_lies cite la page) et « Dans le lexique » (termes dont pages_liees cite la page). Les libellés des cartes viennent des contenus liés.",
+    "a_lire_aussi_h2": "À lire aussi",
+    "sur_le_fil_h2": "Sur Le Fil",
+    "dans_le_lexique_h2": "Dans le lexique"
   },
   "professionnels": {
     "modes_h3": "Deux modes d'intervention",

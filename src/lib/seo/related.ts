@@ -192,3 +192,72 @@ export function relatedLinks(
   }
   return ordered.filter((link) => kept.has(link.href));
 }
+
+/*
+ * Maillage thématique hors pages services (P9.4, docs/04 §2 « blocs À lire aussi calculés par
+ * thème »). Deux calculs purs, sans texte : les libellés viennent des contenus liés.
+ *
+ * - `themeLinks` : les éléments (articles du Fil, termes du lexique) qui déclarent la page
+ *   courante parmi leurs pages liées (`piliers_lies`, `pages_liees`) ; du plus récent au plus
+ *   ancien quand ils sont datés, sinon par libellé ; `THEME_MAX` au plus, pour laisser une
+ *   place à la carte de l'index (« Le Fil », « Lexique »).
+ * - `siblingLinks` : les autres pages du même groupe du plan du site (entreprise, légal,
+ *   outils…), dans l'ordre du plan, jamais la page elle-même.
+ */
+
+/** Carte-lien générique du bloc `RelatedLinks` ; `RelatedLink` en est un cas particulier. */
+export interface RelatedCard {
+  href: string;
+  label: string;
+  icone?: string;
+  public?: ServicePublic;
+  type?: ServicePage["type"];
+  /** Palier ou thème qui a retenu le lien (`data-tier`). */
+  tier: string;
+}
+
+export interface ThemeCandidate {
+  href: string;
+  label: string;
+  /** Pages du site auxquelles l'élément se rattache (chemins internes). */
+  pages: readonly string[];
+  /** Date ISO (AAAA-MM-JJ) : tri du plus récent au plus ancien ; sans date, par libellé. */
+  date?: string;
+}
+
+/** Cartes d'un bloc thématique, hors la carte d'index. */
+export const THEME_MAX = 5;
+
+const frCollator = new Intl.Collator("fr", { sensitivity: "base" });
+
+export function themeLinks(
+  chemin: string,
+  candidates: readonly ThemeCandidate[],
+  tier: string,
+  max = THEME_MAX,
+): RelatedCard[] {
+  return candidates
+    .filter((candidate) => candidate.href !== chemin && candidate.pages.includes(chemin))
+    .sort((a, b) => {
+      if (a.date && b.date && a.date !== b.date) return a.date < b.date ? 1 : -1;
+      return frCollator.compare(a.label, b.label) || a.href.localeCompare(b.href, "fr");
+    })
+    .slice(0, Math.max(0, max))
+    .map(({ href, label }) => ({ href, label, tier }));
+}
+
+export function siblingLinks(
+  chemin: string,
+  group: readonly { href: string; label: string }[],
+  max = RELATED_MAX,
+): RelatedCard[] {
+  const seen = new Set<string>([chemin]);
+  const out: RelatedCard[] = [];
+  for (const entry of group) {
+    if (seen.has(entry.href)) continue;
+    seen.add(entry.href);
+    out.push({ href: entry.href, label: entry.label, tier: "groupe" });
+    if (out.length >= max) break;
+  }
+  return out;
+}

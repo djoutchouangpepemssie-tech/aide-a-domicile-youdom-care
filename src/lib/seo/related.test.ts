@@ -7,6 +7,8 @@ import {
   RELATED_MIN,
   relatedCandidates,
   relatedLinks,
+  siblingLinks,
+  themeLinks,
   transverseByPublic,
   type RelatedSource,
 } from "./related";
@@ -199,4 +201,68 @@ describe("relatedLinks (pages réelles)", () => {
       expect(services.has(cited), cited).toBe(true);
     }
   }, 60_000);
+});
+
+describe("themeLinks et siblingLinks (P9.4)", () => {
+  it("retient les éléments qui citent la page, du plus récent au plus ancien, sans la page elle-même, cinq au plus", () => {
+    const candidates = [
+      { href: "/magazine/a/", label: "A", pages: ["/aidants/"], date: "2026-01-01" },
+      { href: "/magazine/b/", label: "B", pages: ["/aidants/", "/x/"], date: "2026-03-01" },
+      { href: "/magazine/c/", label: "C", pages: ["/x/"], date: "2026-02-01" },
+      { href: "/aidants/", label: "Soi", pages: ["/aidants/"], date: "2026-02-01" },
+      { href: "/magazine/d/", label: "D", pages: ["/aidants/"], date: "2026-02-01" },
+      { href: "/magazine/e/", label: "E", pages: ["/aidants/"], date: "2026-02-02" },
+      { href: "/magazine/f/", label: "F", pages: ["/aidants/"], date: "2026-02-03" },
+      { href: "/magazine/g/", label: "G", pages: ["/aidants/"], date: "2026-02-04" },
+    ];
+    const links = themeLinks("/aidants/", candidates, "fil");
+    expect(links.map((l) => l.href)).toEqual([
+      "/magazine/b/",
+      "/magazine/g/",
+      "/magazine/f/",
+      "/magazine/e/",
+      "/magazine/d/",
+    ]);
+    expect(links[0]).toEqual({ href: "/magazine/b/", label: "B", tier: "fil" });
+    expect(themeLinks("/x/", candidates, "fil")).toHaveLength(2);
+    expect(themeLinks("/rien/", candidates, "fil")).toEqual([]);
+  });
+
+  it("trie par libellé (collation française) les éléments sans date", () => {
+    const terms = [
+      { href: "/lexique/pch/", label: "PCH", pages: ["/p/"] },
+      { href: "/lexique/apa/", label: "APA", pages: ["/p/"] },
+      { href: "/lexique/esa/", label: "ESA", pages: ["/p/"] },
+      { href: "/lexique/etat/", label: "État", pages: ["/p/"] },
+    ];
+    expect(themeLinks("/p/", terms, "lexique").map((l) => l.label)).toEqual([
+      "APA",
+      "ESA",
+      "État",
+      "PCH",
+    ]);
+  });
+
+  it("siblingLinks : les autres pages du groupe, dans l'ordre, dédoublonnées, six au plus", () => {
+    const group = [
+      { href: "/a-propos/", label: "À propos" },
+      { href: "/a-propos/nos-engagements/", label: "Nos engagements" },
+      { href: "/a-propos/", label: "Doublon" },
+      { href: "/professionnels/", label: "Professionnels" },
+      { href: "/recrutement/", label: "Recrutement" },
+      { href: "/recrutement/postuler/", label: "Postuler" },
+      { href: "/contact/", label: "Contact" },
+      { href: "/x/", label: "X" },
+      { href: "/y/", label: "Y" },
+    ];
+    const links = siblingLinks("/a-propos/", group);
+    expect(links).toHaveLength(6);
+    expect(links.map((l) => l.href)).not.toContain("/a-propos/");
+    expect(links[0]).toEqual({
+      href: "/a-propos/nos-engagements/",
+      label: "Nos engagements",
+      tier: "groupe",
+    });
+    expect(siblingLinks("/seule/", [{ href: "/seule/", label: "Seule" }])).toEqual([]);
+  });
 });
