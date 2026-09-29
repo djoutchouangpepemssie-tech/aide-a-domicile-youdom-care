@@ -465,6 +465,8 @@ export const interfaceSchema = z.strictObject({
     etape_situation: text,
     etape_besoins: text,
     choix_ouvert: text,
+    /** Aide posée sous chaque question à choix multiple (29/09/2026). */
+    plusieurs_reponses: text,
     etape_planning: text,
     raccourcis: z.array(text).length(5),
     estimation: text.includes("{h}"),
@@ -1558,11 +1560,29 @@ export type NotFoundPage = z.infer<typeof notFoundPageSchema>;
 
 /* ---------- content/formulaires/*.json (docs/05 §5) ---------- */
 
+/*
+ * Choix d'une question de situation. La forme courte est une chaîne ; la forme longue ajoute une
+ * précision sous le libellé (développer un sigle : « ULIS » seul ne dit rien à un parent qui
+ * découvre le vocabulaire) et, pour les questions à choix multiple, le caractère exclusif d'un
+ * choix comme « Aucune » — le cocher décoche les autres (29/09/2026).
+ */
+const situationOptionSchema = z.union([
+  text,
+  z.strictObject({
+    label: text,
+    aide: text.optional(),
+    exclusif: z.literal(true).optional(),
+  }),
+]);
+export type SituationOption = z.infer<typeof situationOptionSchema>;
+
 const situationQuestionSchema = z.strictObject({
   id: z.string().regex(/^[a-z][a-z0-9_]{0,39}$/, "identifiant simple (clé de situation)"),
   question: text,
+  /** Précision sous la question, quand l'intitulé seul laisserait un doute. */
+  aide: text.optional(),
   type: z.enum(["choix", "choix_multiple"]),
-  options: z.array(text).min(2).max(12),
+  options: z.array(situationOptionSchema).min(2).max(12),
 });
 
 export const formDefinitionSchema = z.strictObject({

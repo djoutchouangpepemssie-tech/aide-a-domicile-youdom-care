@@ -9,6 +9,12 @@ export interface ChoiceOption {
   label: string;
   /** Précision courte sous le libellé. */
   description?: string;
+  /**
+   * Choix qui exclut les autres (« Aucune »). Dans un groupe de cases, le cocher décoche tout le
+   * reste, et cocher un autre choix le décoche : sans cela, « Aucune aide technique » pouvait
+   * cohabiter avec « Fauteuil roulant » (29/09/2026).
+   */
+  exclusive?: boolean;
   disabled?: boolean;
 }
 
@@ -56,15 +62,25 @@ export function CheckboxGroup({
   const generated = useId();
   const id = givenId ?? generated;
 
+  const exclusives = new Set(options.filter((o) => o.exclusive).map((o) => o.value));
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!onChange) return;
-    const form = event.currentTarget.form;
+    const changed = event.currentTarget;
+    const form = changed.form;
     const checked = form
       ? Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map(
           (input) => input.value,
         )
       : [];
-    onChange(checked);
+    if (!changed.checked || exclusives.size === 0) {
+      onChange(checked);
+      return;
+    }
+    // Un choix exclusif chasse les autres ; un autre choix chasse les exclusifs.
+    onChange(
+      exclusives.has(changed.value) ? [changed.value] : checked.filter((v) => !exclusives.has(v)),
+    );
   };
 
   return (

@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Formulaire « personne âgée » (docs/05 §2 et §5). Questions et choix du cahier ; toutes les questions de situation sont facultatives et reçoivent d'office le choix « Je préfère en parler ». Réponses = données de santé : consentement explicite à la dernière étape (docs/05 §8).",
+  "_lisezmoi": "Formulaire « personne âgée » (docs/05 §2 et §5). Questions et choix du cahier. Les questions à choix unique reçoivent d'office « Je préfère en parler » ; celles à choix multiple annoncent « Plusieurs réponses possibles », et un choix « Aucune » y décoche les autres (D-048, 29/09/2026). Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
   "id": "personne-agee",
   "slug": "personne-agee",
   "seo": {
@@ -24,20 +24,23 @@
     },
     {
       "id": "evenement",
-      "question": "Un événement récent ?",
+      "question": "Un événement récent a-t-il changé la situation ?",
       "type": "choix",
       "options": ["Une chute", "Une hospitalisation", "Un veuvage", "Aucun"]
     },
     {
       "id": "aide_en_place",
-      "question": "Une aide est-elle déjà en place ?",
+      "question": "Qui intervient déjà auprès d'elle ?",
       "type": "choix_multiple",
       "options": [
         "Une aide à domicile",
         "Un infirmier",
         "Un portage de repas",
         "La famille ou des voisins",
-        "Aucune"
+        {
+          "label": "Personne pour l'instant",
+          "exclusif": true
+        }
       ]
     }
   ],

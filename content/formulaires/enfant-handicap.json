@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Formulaire « enfant en situation de handicap » (docs/05 §2 et §5), pour les parents. Questions et choix du cahier ; toutes les questions de situation reçoivent d'office « Je préfère en parler ». Réponses = données de santé : consentement explicite à la dernière étape.",
+  "_lisezmoi": "Formulaire « enfant en situation de handicap » (docs/05 §2 et §5), pour les parents. Questions et choix du cahier ; les sigles AESH, ULIS, IME et SESSAD sont développés sous chaque choix, et le tout-petit pas encore scolarisé a sa réponse. Les questions à choix unique reçoivent d'office « Je préfère en parler » ; celles à choix multiple annoncent « Plusieurs réponses possibles », et un choix « Aucune » y décoche les autres (D-048, 29/09/2026). Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
   "id": "enfant-handicap",
   "slug": "enfant-handicap",
   "seo": {
@@ -18,7 +18,7 @@
     },
     {
       "id": "situation",
-      "question": "Sa situation, en quelques mots",
+      "question": "De quel handicap s'agit-il ?",
       "type": "choix",
       "options": [
         "Autisme, TSA",
@@ -32,13 +32,32 @@
     },
     {
       "id": "scolarite",
-      "question": "Sa scolarité",
+      "question": "Où votre enfant passe-t-il ses journées ?",
       "type": "choix",
-      "options": ["École avec AESH", "ULIS", "IME", "SESSAD", "À domicile"]
+      "options": [
+        "Crèche, ou pas encore scolarisé",
+        {
+          "label": "École avec AESH",
+          "aide": "Accompagnant d'élève en situation de handicap."
+        },
+        {
+          "label": "ULIS",
+          "aide": "Unité localisée pour l'inclusion scolaire."
+        },
+        {
+          "label": "IME",
+          "aide": "Institut médico-éducatif."
+        },
+        {
+          "label": "SESSAD",
+          "aide": "Service d'éducation spéciale et de soins à domicile."
+        },
+        "À domicile"
+      ]
     },
     {
       "id": "communication",
-      "question": "Comment communique-t-il ?",
+      "question": "Comment votre enfant communique-t-il ?",
       "type": "choix_multiple",
       "options": [
         "Par la parole",
@@ -50,9 +69,10 @@
     },
     {
       "id": "aide_financiere",
-      "question": "AEEH ou PCH ?",
+      "question": "Une aide financière est-elle en place ?",
       "type": "choix",
-      "options": ["Obtenue", "En cours", "Pas encore"]
+      "options": ["Obtenue", "En cours", "Pas encore"],
+      "aide": "L'AEEH est l'allocation d'éducation de l'enfant handicapé, la PCH la prestation de compensation du handicap."
     }
   ],
   "besoins": [
