@@ -17,7 +17,7 @@ describe("check-copy", () => {
     ]);
     expect(findForbiddenWords("Pour ralentir la maladie")).toEqual(["ralentir la maladie"]);
     expect(findForbiddenWords("Un traitement adapté")).toEqual(["traitement"]);
-    expect(findForbiddenWords("Résultat garanti")).toEqual(["garanti"]);
+    expect(findForbiddenWords("Résultat garanti")).toEqual(["garantir"]);
     expect(findForbiddenWords("Le n°1 de l'aide à domicile")).toEqual(["n°1"]);
     expect(findForbiddenWords("Le numéro 1 en Île-de-France")).toEqual(["n°1"]);
     expect(findForbiddenWords("Leader du secteur")).toEqual(["leader"]);
@@ -25,6 +25,25 @@ describe("check-copy", () => {
     expect(findForbiddenWords("Unique en France")).toEqual(["unique en France"]);
     expect(findForbiddenWords("Nos patients")).toEqual(["patient"]);
     expect(findForbiddenWords("Un placement en établissement")).toEqual(["placement / placer"]);
+  });
+
+  /*
+   * Familles ajoutées après l'audit des textes rendus du 29/09/2026 : « ce que nous
+   * garantissons » était passé deux fois, et deux pages locales comparaient des prix alors que
+   * le site n'en publie aucun.
+   */
+  it("détecte les familles ajoutées par l'audit des textes", () => {
+    expect(findForbiddenWords("Ce que nous garantissons")).toEqual(["garantir"]);
+    expect(findForbiddenWords("Deux heures ne coûtent pas cher")).toEqual([
+      "prix présenté comme bas",
+    ]);
+    expect(findForbiddenWords("Une formule moins chère")).toEqual(["prix présenté comme bas"]);
+    expect(findForbiddenWords("Un acteur incontournable")).toEqual(["supériorité invérifiable"]);
+    expect(findForbiddenWords("Offre limitée, ne tardez pas")).toEqual(["urgence commerciale"]);
+    expect(findForbiddenWords("100 % de satisfaction")).toEqual(["satisfaction chiffrée"]);
+    // Formes voisines qui doivent passer : le médecin traitant, un déplacement sur place.
+    expect(findForbiddenWords("Le médecin traitant et la place du marché")).toEqual([]);
+    expect(findForbiddenWords("Un logement cher à chauffer")).toEqual([]);
   });
 
   it("laisse passer les mots proches, les citations et la mention légale", () => {
@@ -37,7 +56,7 @@ describe("check-copy", () => {
         "Attention, dans le cadre d'un contrat de placement de travailleurs, le consommateur est l'employeur.",
       ),
     ).toEqual([]);
-    expect(findForbiddenWords("Une garantie n'est pas un mot autorisé")).toEqual(["garanti"]);
+    expect(findForbiddenWords("Une garantie n'est pas un mot autorisé")).toEqual(["garantir"]);
   });
 
   it("repère une phrase de plus de 30 mots", () => {

@@ -19,7 +19,15 @@ export const forbiddenWords: readonly { label: string; regex: RegExp }[] = [
   { label: "guérir / guérison", regex: word("guérir|guéri[es]*|guérisons?") },
   { label: "ralentir la maladie", regex: word("ralenti[rt]\\s+(?:la|sa|cette|leur)\\s+maladie") },
   { label: "traitement", regex: word("traitements?") },
-  { label: "garanti", regex: word("garanti[es]*") },
+  /*
+   * « garanti » était seul sur la liste : « ce que nous garantissons » est passé deux fois dans
+   * des pages locales (audit des textes du 29/09/2026). Toutes les formes du verbe y sont
+   * maintenant, sens positif comme négatif — promettre un résultat n'est jamais juste ici.
+   */
+  {
+    label: "garantir",
+    regex: word("garanti[es]*|garantir|garantit|garantissons|garantissez|garantissent"),
+  },
   { label: "n°1", regex: /(?<!\p{L})(?:n\s?°\s?1|numéro\s+(?:1|un))(?![\p{L}\d])/iu },
   { label: "leader", regex: word("leaders?") },
   { label: "meilleur", regex: word("meilleure?s?") },
@@ -32,6 +40,31 @@ export const forbiddenWords: readonly { label: string; regex: RegExp }[] = [
    * formes du placement sont interdites, et le participe garde son accent.
    */
   { label: "placement / placer", regex: word("placements?|placer|placée?s?|placés?") },
+  /*
+   * Ajoutées le 29/09/2026 après l'audit des textes rendus (`pnpm audit:textes`). Chacune est
+   * apparue au moins une fois, ou pourrait apparaître, et aucune ne peut être juste ici : le
+   * site ne publie aucun prix comparatif (content/tarifs.json est vide), aucune supériorité
+   * mesurée, aucune offre limitée dans le temps, et aucun avis collecté.
+   */
+  // Motifs écrits en littéraux : `word()` prend une chaîne, où « \s » demanderait « \\s ».
+  {
+    label: "prix présenté comme bas",
+    regex:
+      /(?<!\p{L})(?:(?:pas|moins)\s+(?:chers?|chères?)|prix\s+cassés?|imbattables?)(?!\p{L})/iu,
+  },
+  {
+    label: "supériorité invérifiable",
+    regex: /(?<!\p{L})(?:incontournables?|inégalées?|inégalables?|sans\s+équivalent)(?!\p{L})/iu,
+  },
+  {
+    label: "urgence commerciale",
+    regex:
+      /(?<!\p{L})(?:offres?\s+limitées?|dernière\s+chance|places?\s+limitées?|ne\s+tardez\s+pas|profitez-en\s+vite)(?!\p{L})/iu,
+  },
+  {
+    label: "satisfaction chiffrée",
+    regex: /100\s*%\s*(?:de\s+)?(?:satisfaction|satisfaits?|réussite)/iu,
+  },
 ];
 
 /**
