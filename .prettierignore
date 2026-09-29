@@ -20,3 +20,6 @@ data/
 # MDX du magazine : Prettier fusionne les listes placées dans <ARetenir> et <Attention> (phase 7)
 content/magazine/*.mdx
 tests/fixtures/magazine/*.mdx
+
+# Rapport généré par `pnpm audit:textes` : son format vient du script, pas de Prettier.
+docs/AUDIT_TEXTES.md
