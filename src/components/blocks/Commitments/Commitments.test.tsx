@@ -43,6 +43,21 @@ describe("Commitments", () => {
     expect(screen.getAllByRole("listitem")).toHaveLength(1);
   });
 
+  it("n'ouvre pas de colonne vide quand un seul engagement est validé", () => {
+    /*
+     * 29/09/2026 : en production, seul E2 est validé aujourd'hui. La grille à quatre colonnes
+     * laissait la carte seule à gauche avec trois colonnes vides — le « petit bug » signalé par
+     * Arcel sur « Ce qui change avec Youdom Care ».
+     */
+    vi.stubEnv("VERCEL_ENV", "production");
+    const { container } = render(<Commitments items={items} commitments={commitments} />);
+    const liste = container.querySelector(".commitments");
+    expect(container.querySelectorAll("[data-engagement]")).toHaveLength(1);
+    expect(liste).not.toHaveClass("lg:grid-cols-4");
+    expect(liste).not.toHaveClass("sm:grid-cols-2");
+    expect(liste).toHaveClass("max-w-xl");
+  });
+
   it("ne rend rien s'il n'y a plus d'engagement affichable", () => {
     const { container } = render(<Commitments items={items} commitments={[]} />);
     expect(container).not.toBeEmptyDOMElement();

@@ -52,8 +52,18 @@ export function Commitments({ items, commitments, className, ...rest }: Commitme
   return (
     <ThreadRail
       as="ol"
+      /*
+       * Le nombre de colonnes suit le nombre d'engagements réellement affichés (29/09/2026). En
+       * production, seuls les engagements validés apparaissent : il n'y en a qu'un aujourd'hui, et
+       * la grille à quatre colonnes laissait une carte seule à gauche avec trois colonnes vides à
+       * côté — c'est le « petit bug » signalé par Arcel sur « Ce qui change avec Youdom Care ».
+       */
       className={cn(
-        "commitments m-0 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8",
+        "commitments m-0 grid list-none gap-6 p-0 lg:gap-8",
+        shown.length > 1 && "sm:grid-cols-2",
+        shown.length === 3 && "lg:grid-cols-3",
+        shown.length >= 4 && "lg:grid-cols-4",
+        shown.length === 1 && "max-w-xl",
         className,
       )}
       {...rest}
