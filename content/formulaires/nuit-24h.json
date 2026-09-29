@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Formulaire « nuit et 24h/24 » (docs/05 §2 et §5) : pour qui, nuits calmes ou actives, combien de nuits, 24h/24 temporaire ou durable, grille préréglée sur les nuits (planning_initial). Les besoins reprennent les services du dépliant (garde de nuit, présence 24h/24, garde-malade). Réponses = données de santé : consentement explicite à la dernière étape.",
+  "_lisezmoi": "Formulaire « nuit et 24h/24 » (docs/05 §2 et §5) : pour qui, nuits calmes ou actives, 24h/24 temporaire ou durable, grille préréglée sur les nuits (planning_initial). Le nombre de nuits n'est plus demandé deux fois : la grille du planning le dit, et plus précisément (D-048). Les besoins reprennent les services du dépliant. Les questions à choix unique reçoivent d'office « Je préfère en parler » ; celles à choix multiple annoncent « Plusieurs réponses possibles », et un choix « Aucune » y décoche les autres (D-048, 29/09/2026). Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
   "id": "nuit-24h",
   "slug": "nuit-et-24h",
   "seo": {
@@ -22,14 +22,8 @@
       ]
     },
     {
-      "id": "combien",
-      "question": "Combien de nuits par semaine ?",
-      "type": "choix",
-      "options": ["Une ou deux", "Trois ou quatre", "Toutes les nuits"]
-    },
-    {
       "id": "continu",
-      "question": "Une présence 24h/24 ?",
+      "question": "Faut-il une présence 24h/24 ?",
       "type": "choix",
       "options": [
         "Non, seulement des nuits",

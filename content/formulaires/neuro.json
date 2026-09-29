@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Formulaire « maladie neurodégénérative » (docs/05 §2 et §5). Les questions et les choix sont ceux du cahier ; toutes les questions de situation sont facultatives et reçoivent d'office le choix « Je préfère en parler ». Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
+  "_lisezmoi": "Formulaire « maladie neurodégénérative » (docs/05 §2 et §5). Questions et choix du cahier ; le sigle ESA est développé sous le choix. Les questions à choix unique reçoivent d'office « Je préfère en parler » ; celles à choix multiple annoncent « Plusieurs réponses possibles », et un choix « Aucune » y décoche les autres (D-048, 29/09/2026). Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
   "id": "neuro",
   "slug": "maladie-neurodegenerative",
   "seo": {
@@ -18,7 +18,7 @@
         "Alzheimer ou apparentée",
         "Parkinson",
         "Sclérose en plaques",
-        "Corps de Lewy",
+        "Maladie à corps de Lewy",
         "Dégénérescence fronto-temporale",
         "Charcot (SLA)",
         "Huntington",
@@ -28,7 +28,7 @@
     },
     {
       "id": "autonomie",
-      "question": "Où en est la personne, en mots simples ?",
+      "question": "Au quotidien, où en est la personne ?",
       "type": "choix",
       "options": [
         "Autonome avec quelques rappels",
@@ -38,7 +38,7 @@
     },
     {
       "id": "ce_qui_pese",
-      "question": "Qu'est-ce qui pèse le plus aujourd'hui ?",
+      "question": "Qu'est-ce qui pèse aujourd'hui ?",
       "type": "choix_multiple",
       "options": [
         "La désorientation",
@@ -58,21 +58,29 @@
     },
     {
       "id": "professionnels",
-      "question": "Des professionnels sont déjà présents ?",
+      "question": "Quels professionnels interviennent déjà ?",
       "type": "choix_multiple",
       "options": [
         "Infirmier",
         "Kinésithérapeute",
         "Orthophoniste",
         "Accueil de jour",
-        "Équipe Alzheimer"
+        {
+          "label": "Équipe Alzheimer",
+          "aide": "ESA : équipe spécialisée qui intervient à domicile, sur prescription médicale."
+        },
+        {
+          "label": "Aucun pour l'instant",
+          "exclusif": true
+        }
       ]
     },
     {
       "id": "aide_financiere",
-      "question": "APA ou PCH ?",
+      "question": "Une aide financière est-elle en place ?",
       "type": "choix",
-      "options": ["Obtenue", "En cours", "Pas encore", "Je ne sais pas"]
+      "options": ["Obtenue", "En cours", "Pas encore", "Je ne sais pas"],
+      "aide": "L'APA est l'allocation personnalisée d'autonomie, la PCH la prestation de compensation du handicap."
     }
   ],
   "besoins": [

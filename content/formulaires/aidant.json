@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Formulaire « relais d'un aidant » (docs/05 §2 et §5) : qui aidez-vous, depuis combien de temps, ce dont vous avez besoin ; besoins de la personne aidée, simplifiés. Toutes les questions de situation reçoivent d'office « Je préfère en parler ». Réponses = données de santé : consentement explicite à la dernière étape.",
+  "_lisezmoi": "Formulaire « relais d'un aidant » (docs/05 §2 et §5) : qui aidez-vous, depuis combien de temps, quelle durée de relais vous aiderait ; besoins de la personne aidée, simplifiés. Les questions à choix unique reçoivent d'office « Je préfère en parler » ; celles à choix multiple annoncent « Plusieurs réponses possibles », et un choix « Aucune » y décoche les autres (D-048, 29/09/2026). Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
   "id": "aidant",
   "slug": "relais-aidant",
   "seo": {
@@ -24,7 +24,7 @@
     },
     {
       "id": "besoin_relais",
-      "question": "De quel relais avez-vous besoin ?",
+      "question": "Quelle durée de relais vous aiderait ?",
       "type": "choix_multiple",
       "options": [
         "Quelques heures par semaine",

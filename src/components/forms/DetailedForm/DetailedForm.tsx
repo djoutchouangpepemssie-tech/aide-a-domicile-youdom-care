@@ -16,7 +16,8 @@ import { RadioCards } from "@/components/ui/RadioCards/RadioCards";
 import { Select } from "@/components/ui/Select/Select";
 import { Textarea } from "@/components/ui/Textarea/Textarea";
 import { TextField } from "@/components/ui/TextField/TextField";
-import type { FormDefinition } from "@/content/schemas";
+import type { ChoiceOption } from "@/components/ui/CheckboxGroup/CheckboxGroup";
+import type { FormDefinition, SituationOption } from "@/content/schemas";
 import { cn } from "@/lib/cn";
 import type { CommuneRecord } from "@/lib/geo/geo";
 import { buildLead, currentSourcePage, sendLead } from "@/lib/lead/client";
@@ -42,6 +43,7 @@ export interface DetailedFormTexts extends MultiStepFormTexts {
   etape_pour_qui: string;
   etape_situation: string;
   etape_besoins: string;
+  plusieurs_reponses: string;
   etape_planning: string;
   etape_coordonnees: string;
   etape_titres: {
@@ -179,6 +181,20 @@ export function cleanSituation(
   return Object.keys(out).length > 0 ? out : undefined;
 }
 
+/**
+ * Choix d'une question de situation, forme courte (chaîne) ou longue (libellé, précision, choix
+ * exclusif). La précision développe les sigles ; l'exclusivité sert aux choix « Aucune » (D-048).
+ */
+export function toChoiceOption(option: SituationOption): ChoiceOption {
+  if (typeof option === "string") return { value: option, label: option };
+  return {
+    value: option.label,
+    label: option.label,
+    ...(option.aide ? { description: option.aide } : {}),
+    ...(option.exclusif ? { exclusive: true } : {}),
+  };
+}
+
 const checkboxLabel = cn(
   "flex min-h-12 cursor-pointer items-start gap-3 rounded-field border border-field-border bg-white px-4 py-3",
   "has-[:checked]:border-teal-700 has-[:checked]:bg-teal-50",
@@ -228,11 +244,12 @@ export function DetailedForm({
                 id={fieldId(question.id)}
                 name={question.id}
                 legend={question.question}
+                {...(question.aide ? { hint: question.aide } : {})}
                 optional
-                options={[...question.options, texts.choix_parler].map((label) => ({
-                  value: label,
-                  label,
-                }))}
+                options={[
+                  ...question.options.map(toChoiceOption),
+                  { value: texts.choix_parler, label: texts.choix_parler },
+                ]}
                 value={
                   typeof value.situation[question.id] === "string"
                     ? (value.situation[question.id] as string)
@@ -248,8 +265,13 @@ export function DetailedForm({
                 id={fieldId(question.id)}
                 name={question.id}
                 legend={question.question}
+                hint={
+                  question.aide
+                    ? `${question.aide} ${texts.plusieurs_reponses}`
+                    : texts.plusieurs_reponses
+                }
                 optional
-                options={question.options.map((label) => ({ value: label, label }))}
+                options={question.options.map(toChoiceOption)}
                 value={
                   Array.isArray(value.situation[question.id])
                     ? (value.situation[question.id] as string[])

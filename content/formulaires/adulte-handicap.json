@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Formulaire « adulte en situation de handicap » (docs/05 §2 et §5). Questions et choix du cahier ; la question sur les heures de PCH, facultative, est posée par tranches. Toutes les questions de situation reçoivent d'office « Je préfère en parler ». Réponses = données de santé : consentement explicite à la dernière étape.",
+  "_lisezmoi": "Formulaire « adulte en situation de handicap » (docs/05 §2 et §5). Questions et choix du cahier ; les heures de PCH sont demandées par tranches, et les modes prestataire et mandataire sont expliqués sous chaque choix. Les questions à choix unique reçoivent d'office « Je préfère en parler » ; celles à choix multiple annoncent « Plusieurs réponses possibles », et un choix « Aucune » y décoche les autres (D-048, 29/09/2026). Les réponses sont des données de santé : consentement explicite à la dernière étape (docs/05 §8).",
   "id": "adulte-handicap",
   "slug": "adulte-handicap",
   "seo": {
@@ -25,19 +25,22 @@
     },
     {
       "id": "aides_techniques",
-      "question": "Des aides techniques sont utilisées ?",
+      "question": "Quelles aides techniques sont utilisées ?",
       "type": "choix_multiple",
       "options": [
         "Fauteuil roulant",
         "Lève-personne",
         "Lit médicalisé",
         "Aide à la communication",
-        "Aucune"
+        {
+          "label": "Aucune",
+          "exclusif": true
+        }
       ]
     },
     {
       "id": "pch_heures",
-      "question": "La PCH aide humaine : combien d'heures accordées par mois ?",
+      "question": "Combien d'heures d'aide humaine sont accordées par mois ?",
       "type": "choix",
       "options": [
         "Moins de 30 heures",
@@ -45,13 +48,27 @@
         "Plus de 100 heures",
         "Pas de PCH",
         "Je ne sais pas"
-      ]
+      ],
+      "aide": "La PCH est la prestation de compensation du handicap."
     },
     {
       "id": "mode",
-      "question": "Quel mode souhaitez-vous ?",
+      "question": "Prestataire ou mandataire : que préférez-vous ?",
       "type": "choix",
-      "options": ["Prestataire", "Mandataire", "À comparer ensemble"]
+      "options": [
+        {
+          "label": "Prestataire",
+          "aide": "Nous sommes l'employeur de l'intervenant ; vous payez les heures réalisées."
+        },
+        {
+          "label": "Mandataire",
+          "aide": "Vous êtes l'employeur ; nous recrutons et gérons l'administratif pour vous."
+        },
+        {
+          "label": "À comparer ensemble",
+          "aide": "Nous vous expliquons les deux au téléphone, sans engagement."
+        }
+      ]
     }
   ],
   "besoins": [
