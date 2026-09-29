@@ -199,6 +199,7 @@ export function DetailedForm({
     {
       id: "pour-qui",
       title: texts.etape_pour_qui,
+      shortTitle: texts.etape_titres.pour_qui,
       validate: (value): Record<string, string> =>
         value.pourQui ? {} : { pourQui: missing(texts.champs.pour_qui) },
       render: ({ value, setValue, errors, fieldId }) => (
@@ -206,6 +207,7 @@ export function DetailedForm({
           id={fieldId("pourQui")}
           name="pour_qui"
           legend={texts.etape_titres.pour_qui}
+          legendHidden
           error={errors["pourQui"]}
           options={texts.pour_qui_options.map((label) => ({ value: label, label }))}
           value={value.pourQui}
@@ -216,6 +218,7 @@ export function DetailedForm({
     {
       id: "situation",
       title: texts.etape_situation,
+      shortTitle: texts.etape_titres.situation,
       render: ({ value, setValue, fieldId }) => (
         <>
           {definition.situation.map((question) =>
@@ -264,11 +267,13 @@ export function DetailedForm({
     {
       id: "besoins",
       title: texts.etape_besoins,
+      shortTitle: texts.etape_titres.besoins,
       render: ({ value, setValue, fieldId }) => (
         <CheckboxGroup
           id={fieldId("besoins")}
           name="besoins"
           legend={texts.etape_titres.besoins}
+          legendHidden
           optional
           options={[...definition.besoins, texts.choix_ouvert].map((label) => ({
             value: label,
@@ -282,6 +287,7 @@ export function DetailedForm({
     {
       id: "planning",
       title: texts.etape_titres.planning,
+      shortTitle: texts.etape_titres.planning,
       hint: texts.etape_planning,
       validate: (value) => {
         const errors: Record<string, string> = {};
@@ -303,6 +309,7 @@ export function DetailedForm({
     {
       id: "coordonnees",
       title: texts.etape_coordonnees,
+      shortTitle: texts.etape_titres.coordonnees,
       validate: (value) => validateCoordinates(value, texts),
       render: ({ value, setValue, errors, fieldId }) => (
         <>

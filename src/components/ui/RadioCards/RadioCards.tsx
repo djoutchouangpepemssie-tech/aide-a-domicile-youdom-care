@@ -12,6 +12,8 @@ export interface RadioCardsProps extends Omit<
   id?: string;
   name: string;
   legend: ReactNode;
+  /** Légende gardée pour les lecteurs d'écran, retirée de l'affichage. */
+  legendHidden?: boolean;
   hint?: ReactNode;
   error?: ReactNode;
   optional?: boolean;
@@ -35,6 +37,7 @@ export function RadioCards({
   id: givenId,
   name,
   legend,
+  legendHidden,
   hint,
   error,
   optional,
@@ -60,7 +63,15 @@ export function RadioCards({
       disabled={disabled}
       {...rest}
     >
-      <FieldShell id={id} as="legend" label={legend} hint={hint} error={error} optional={optional}>
+      <FieldShell
+        id={id}
+        as="legend"
+        label={legend}
+        labelHidden={legendHidden}
+        hint={hint}
+        error={error}
+        optional={optional}
+      >
         <ul className={cn("m-0 grid list-none gap-3 p-0", columnClasses[columns])}>
           {options.map((option) => {
             const optionId = `${id}-${option.value}`;

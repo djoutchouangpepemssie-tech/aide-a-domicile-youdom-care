@@ -11,7 +11,8 @@ import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 
 /*
  * Coque multi-étapes des formulaires (docs/05 §3 et §6) : barre de progression « Étape 2 sur 5 »,
- * bouton « Retour » toujours présent, une question principale par écran, réponses conservées
+ * action principale en tête et bouton « Retour » à partir de la deuxième étape, une question
+ * principale par écran, réponses conservées
  * sur l'appareil (sessionStorage) jusqu'à l'envoi puis effacées, résumé d'erreurs en tête lié
  * aux champs, focus sur la première erreur, panne d'envoi sans perte de saisie avec le
  * téléphone proposé. Champ piège invisible et horodatage de début pour la route api/lead
@@ -32,6 +33,8 @@ export interface FormStep<T> {
   id: string;
   /** Question principale de l'écran (docs/01 §7). */
   title: string;
+  /** Nom court pour la progression ; à défaut, le titre est repris. */
+  shortTitle?: string;
   hint?: string;
   render: (ctx: StepContext<T>) => ReactNode;
   /** Erreurs par champ ; objet vide si l'étape est valide. */
@@ -229,20 +232,39 @@ export function MultiStepForm<T>({
       data-form={form}
       data-step={step.id}
     >
-      <div>
+      {/*
+       * Progression (29/09/2026). L'élément natif était dessiné par le système : barre verte
+       * sur Windows, hors de la palette, et rien n'indiquait ce que contenait l'étape en cours ni
+       * ce qui restait à faire. Elle devient une suite de segments aux couleurs de la marque, où
+       * chaque étape porte son nom : on voit où on en est, ce qui est fait, et ce qui vient.
+       * La valeur reste annoncée aux lecteurs d'écran par `role="progressbar"`.
+       */}
+      <div className="grid gap-2">
         <p id={`${id}-progression`} className="m-0 text-small font-bold text-teal-900">
           {texts.etape_sur.replace("{n}", String(state.step + 1)).replace("{total}", String(total))}
+          <span className="font-normal text-text-soft"> · {step.shortTitle ?? step.title}</span>
         </p>
-        {/* Élément natif : la largeur suit la valeur sans style calculé en ligne. */}
-        <progress
+        <ol
+          className="m-0 flex list-none gap-1.5 p-0"
+          role="progressbar"
           aria-labelledby={`${id}-progression`}
           aria-valuemin={1}
           aria-valuemax={total}
           aria-valuenow={state.step + 1}
-          value={state.step + 1}
-          max={total}
-          className="mt-2 h-2 w-full overflow-hidden rounded-full accent-teal-700"
-        />
+        >
+          {steps.map((s, i) => (
+            <li
+              key={s.id}
+              className={cn(
+                "h-2 flex-1 rounded-full transition-colors [transition-duration:var(--duration-base)] motion-reduce:transition-none",
+                i < state.step && "bg-teal-500",
+                i === state.step && "bg-teal-700",
+                i > state.step && "bg-line",
+              )}
+              aria-hidden="true"
+            />
+          ))}
+        </ol>
       </div>
 
       {errorEntries.length > 0 ? (
@@ -308,18 +330,25 @@ export function MultiStepForm<T>({
         </Callout>
       ) : null}
 
+      {/*
+       * L'action principale vient en premier, le retour n'apparaît qu'à partir de la deuxième
+       * étape (29/09/2026). Un bouton « Retour » grisé en tête du premier écran n'aide personne :
+       * il occupe la place de l'action attendue et laisse croire qu'on a raté quelque chose.
+       */}
       <div className="flex flex-wrap items-center gap-4">
-        <Button
-          type="button"
-          variant="outline"
-          disabled={state.step === 0 || status === "sending"}
-          onClick={() => goTo(Math.max(0, state.step - 1))}
-        >
-          {texts.retour}
-        </Button>
         <Button type="submit" disabled={status === "sending"}>
           {status === "sending" ? texts.envoi_en_cours : isLast ? texts.envoyer : texts.suivant}
         </Button>
+        {state.step > 0 ? (
+          <Button
+            type="button"
+            variant="outline"
+            disabled={status === "sending"}
+            onClick={() => goTo(Math.max(0, state.step - 1))}
+          >
+            {texts.retour}
+          </Button>
+        ) : null}
       </div>
 
       <p className="m-0 text-small text-text-soft">{texts.conservation}</p>

@@ -20,6 +20,8 @@ export interface CheckboxGroupProps extends Omit<
   /** Nom commun des cases (une valeur par case cochée à l'envoi). */
   name: string;
   legend: ReactNode;
+  /** Légende gardée pour les lecteurs d'écran, retirée de l'affichage. */
+  legendHidden?: boolean;
   hint?: ReactNode;
   error?: ReactNode;
   optional?: boolean;
@@ -39,6 +41,7 @@ export function CheckboxGroup({
   id: givenId,
   name,
   legend,
+  legendHidden,
   hint,
   error,
   optional,
@@ -72,7 +75,15 @@ export function CheckboxGroup({
       disabled={disabled}
       {...rest}
     >
-      <FieldShell id={id} as="legend" label={legend} hint={hint} error={error} optional={optional}>
+      <FieldShell
+        id={id}
+        as="legend"
+        label={legend}
+        labelHidden={legendHidden}
+        hint={hint}
+        error={error}
+        optional={optional}
+      >
         <ul className="m-0 grid list-none gap-2 p-0 sm:grid-cols-2">
           {options.map((option) => {
             const optionId = `${id}-${option.value}`;
