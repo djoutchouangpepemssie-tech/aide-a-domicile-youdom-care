@@ -18,6 +18,8 @@ export interface FieldShellProps {
   optional?: boolean;
   /** Rend l'étiquette comme un `legend` (groupes) plutôt qu'un `label`. */
   as?: "label" | "legend";
+  /** Légende conservée pour les lecteurs d'écran mais retirée de l'affichage (`as="legend"`). */
+  labelHidden?: boolean;
   className?: string;
   children: ReactNode;
 }
@@ -39,6 +41,7 @@ export function FieldShell({
   hint,
   error,
   optional = false,
+  labelHidden = false,
   as = "label",
   className,
   children,
@@ -89,7 +92,14 @@ export function FieldShell({
   if (as === "legend") {
     return (
       <>
-        <legend className="mb-2 p-0 font-bold">{labelContent}</legend>
+        {/*
+         * `labelHidden` garde la légende pour les lecteurs d'écran et la retire de l'affichage :
+         * sur un écran d'étape dont le titre pose déjà la question, la répéter juste en dessous
+         * n'apporte rien et brouille la lecture (29/09/2026).
+         */}
+        <legend className={cn("mb-2 p-0 font-bold", labelHidden && "sr-only")}>
+          {labelContent}
+        </legend>
         <div className={cn("flex flex-col gap-2", className)}>{body}</div>
       </>
     );

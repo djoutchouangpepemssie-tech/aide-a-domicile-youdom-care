@@ -80,7 +80,8 @@ describe("MultiStepForm", () => {
     renderForm();
     expect(screen.getByText("Étape 1 sur 2")).toBeInTheDocument();
     expect(screen.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "1");
-    expect(screen.getByRole("button", { name: "Retour" })).toBeDisabled();
+    // 29/09/2026 : pas de bouton « Retour » sur le premier écran, où il n'a rien à faire.
+    expect(screen.queryByRole("button", { name: "Retour" })).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Continuer" }));
     const alert = screen.getByRole("alert");
     expect(alert).toHaveTextContent("Il manque quelques informations");
