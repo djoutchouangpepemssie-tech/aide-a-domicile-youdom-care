@@ -99,6 +99,8 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 ## Technique
 
 - **Q-TECH-1.** Identifiants SMTP de la boîte d'envoi et adresse de réception des demandes (variables d'environnement, jamais dans le dépôt).
+  Répondu en partie le 2026-10-04 : Arcel retient **Resend**, en SMTP — aucun changement de code, le transport existant s'y connecte (D-050). L'hôte `smtp.resend.com`, le port 465 et l'identifiant `resend` sont inscrits dans `.env.example` : ce ne sont pas des secrets.
+  **Reste à faire par Arcel**, la loop ne touchant ni au DNS ni aux secrets : vérifier le domaine dans Resend (SPF, DKIM, puis DMARC), créer la clé d'API, la poser dans `SMTP_PASS` sur Vercel avec `LEADS_TO` et `LEADS_FROM`, puis redéployer. Marche à suivre complète dans `docs/MESSAGERIE_RESEND.md`.
 - **Q-TECH-2.** Outil de mesure d'audience souhaité (Plausible, Matomo, aucun). Reformulée le 2026-09-27 en Q-TECH-8 ci-dessous, après la mise en place d'une mesure de première partie sans cookie (D-029) : c'est à Q-TECH-8 qu'il faut répondre.
 - **Q-TECH-3.** Dépôt GitHub et projet Vercel reliés ? (pour les prévisualisations par branche) — Répondu le 2026-09-20 : dépôt `https://github.com/djoutchouangpepemssie-tech/Youdom-care` (D-025). Reste à relier le projet Vercel.
   Note de la loop (2026-09-20) : le dépôt est pour l'instant local (aucun remote) et `gh auth status` échoue sur cette machine (jeton `GH_TOKEN` invalide). Tant que ce n'est pas réglé, la loop fusionnera les fins de phase en local (squash sur `main` + tag) et ouvrira les PR a posteriori.
