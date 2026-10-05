@@ -89,6 +89,14 @@ contenu.
 
 ---
 
+## Les candidatures passent par la même configuration
+
+`/recrutement/postuler/` utilise les mêmes six variables : rien de plus à régler. La candidature
+part à `LEADS_TO` avec le CV en pièce jointe (PDF ou DOCX, **4 Mo au plus** — la limite tient à la
+taille de corps de requête qu'accepte une fonction Vercel, 4,5 Mo), et le candidat reçoit un accusé
+de réception sans détail. Resend compte la pièce jointe dans la taille du message : au-delà de
+40 Mo il refuse, ce qui ne peut pas arriver avec un plafond à 4 Mo.
+
 ## Ce qui part, et où
 
 | Message | Destinataire | Contenu |
@@ -102,8 +110,10 @@ contenu.
 - **Champ piège** : un champ invisible qu'un robot remplit et pas un humain. La demande est alors
   acceptée en apparence et jetée, pour ne rien apprendre au robot.
 - **Délai minimum de remplissage** : un formulaire envoyé trop vite est refusé.
-- **Limite d'envois** : cinq demandes par adresse IP et par dix minutes. Ajustable avec
-  `LEAD_RATE_LIMIT`.
+- **Limite d'envois** : cinq demandes par adresse et par dix minutes (`LEAD_RATE_LIMIT`). À
+  connaître avant de s'y fier : le compteur vit en mémoire du processus, donc sur des fonctions
+  serveur sans état chaque instance a le sien, et la clé est une adresse transmise par en-tête. Il
+  décourage un envoi répété à la main, **il n'arrête pas un robot** (`docs/PLAN.md`, DC.3).
 - **Anti-robots renforcé, optionnel** : `TURNSTILE_SITE_KEY` et `TURNSTILE_SECRET_KEY` activent la
   vérification Cloudflare Turnstile. Inutile tant que le volume reste modeste.
 
