@@ -20,9 +20,13 @@ const agences = siteConfig.agences;
  * et le gabarit reste couvert par ses tests unitaires (tests/fixtures/local-exemple.ts).
  */
 
+/*
+ * H2 attendus sur une page locale. « Les ressources près de chez vous » a été retiré le
+ * 27/09/2026 à la demande d'Arcel (LocalTemplate.tsx, et le test unitaire du gabarit qui compte
+ * huit H2) ; ce parcours l'exigeait encore (docs/AUDIT_GLOBAL.md §10).
+ */
 const localSections = [
   "Vivre à domicile",
-  "Les ressources près de chez vous",
   "Nos accompagnements",
   "Les aides du département",
   "Questions locales",

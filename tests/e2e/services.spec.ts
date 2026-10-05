@@ -131,15 +131,22 @@ test.describe("Pages services (P4)", () => {
     await expect(
       page.getByText("Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas."),
     ).toHaveCount(1);
-    // Section 2 : l'aidant épuisé mène à l'espace Aidants, la sortie d'hôpital au formulaire
-    // express (relecture 4b) ; les autres situations restent des cartes.
+    // Section 2 : depuis le 27/09/2026, **toutes** les cartes d'une même grille se comportent
+    // pareil — une carte sans destination propre mène au formulaire de la page au lieu de rester
+    // inerte à côté des autres. Ce parcours attendait encore les deux seules cartes qui avaient
+    // un lien, et le test unitaire de ServiceTemplate dit déjà la nouvelle règle
+    // (docs/AUDIT_GLOBAL.md §10).
+    const situations = page.locator("[data-situation]");
     const situationLinks = page.locator("[data-situation] a");
-    await expect(situationLinks).toHaveCount(2);
-    await expect(situationLinks.first()).toHaveAttribute("href", "/aidants/");
-    await expect(situationLinks.last()).toHaveAttribute(
-      "href",
-      "/demande/sortie-d-hospitalisation/",
+    await expect(situationLinks).toHaveCount(await situations.count());
+    const hrefs = await situationLinks.evaluateAll((links) =>
+      links.map((link) => link.getAttribute("href")),
     );
+    // Les deux destinations propres de la page (content/services/personnes-agees.mdx)…
+    expect(hrefs).toContain("/aidants/");
+    expect(hrefs).toContain("/demande/sortie-d-hospitalisation/");
+    // …et les autres mènent au formulaire de la page, jamais nulle part.
+    for (const href of hrefs) expect(href).toBeTruthy();
     // Section 4 : les stades portent leurs icônes selon le public.
     await expect(page.locator('#stade-1 [data-icon="lever"]')).toHaveCount(1);
     await expect(page.locator('#stade-3 [data-icon="nuit"]')).toHaveCount(1);

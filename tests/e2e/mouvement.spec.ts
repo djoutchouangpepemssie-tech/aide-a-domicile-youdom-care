@@ -187,7 +187,16 @@ test.describe("Fondu entre deux pages", () => {
     await link.waitFor();
     await Promise.all([page.waitForURL((url) => url.pathname !== "/"), link.click()]);
 
-    // Pendant le fondu : seule l'opacité de `main` est animée, l'en-tête est intact.
+    /*
+     * Pendant le fondu : seule l'opacité de `main` est animée, et le fondu ne touche pas
+     * l'en-tête. Ce parcours exigeait **zéro** animation sur l'en-tête, ce qui comptait aussi
+     * ses propres transitions de compaction (fond, ombre, hauteur, logo — 200 ms,
+     * `--duration-base`), relancées à l'arrivée sur la nouvelle page parce que le défilement
+     * repart de zéro. Mesuré : quatre transitions CSS, toutes de compaction, aucune d'opacité.
+     * Ce qu'il faut vérifier est donc que rien dans l'en-tête ne joue le fondu
+     * (docs/AUDIT_GLOBAL.md §10).
+     */
+    const compaction = ["background-color", "box-shadow", "height", "max-height"];
     const during = await page.evaluate(() => {
       const main = document.querySelector("main");
       const header = document.querySelector("header");
@@ -198,10 +207,16 @@ test.describe("Fondu entre deux pages", () => {
             (animation.effect as KeyframeEffect | null)?.getKeyframes()[0] ?? {},
           ),
         })),
-        header: (header?.getAnimations() ?? []).length,
+        header: (header?.getAnimations({ subtree: true }) ?? []).map((animation) => ({
+          property: (animation as unknown as { transitionProperty?: string }).transitionProperty,
+          duration: Number(animation.effect?.getComputedTiming().duration ?? 0),
+        })),
       };
     });
-    expect(during.header).toBe(0);
+    for (const animation of during.header) {
+      expect(compaction, `en-tête : ${animation.property}`).toContain(animation.property);
+      expect(animation.duration, `en-tête : ${animation.property}`).toBeLessThanOrEqual(600);
+    }
     for (const animation of during.main) {
       expect(animation.duration).toBeLessThanOrEqual(600);
     }

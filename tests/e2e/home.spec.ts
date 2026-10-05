@@ -6,14 +6,21 @@ import { expectNoSeriousAxeViolations } from "./axe";
 test.describe("Accueil (P2.1)", () => {
   test("blocs 1 à 4 : textes de docs/01, six situations, engagements, neuro, axe", async ({
     page,
+    isMobile,
   }) => {
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",
     );
-    await expect(
-      page.getByText("Aide et accompagnement à domicile · Paris et Île-de-France"),
-    ).toBeVisible();
+    // Le surtitre est `max-lg:hidden` par conception (Hero.tsx, et son test unitaire) : sous
+    // 64 rem, la hauteur visible va au titre et à l'action. Ce parcours l'exigeait visible sur
+    // mobile aussi, donc à tort (docs/AUDIT_GLOBAL.md §10).
+    const surtitre = page.getByText("Aide et accompagnement à domicile · Paris et Île-de-France");
+    if (isMobile) {
+      await expect(surtitre).toBeHidden();
+    } else {
+      await expect(surtitre).toBeVisible();
+    }
 
     const situations = page.getByRole("region", { name: "Que vivez-vous en ce moment ?" });
     await expect(situations.locator(".situation-card")).toHaveCount(6);

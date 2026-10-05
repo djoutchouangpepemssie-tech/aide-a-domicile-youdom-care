@@ -42,6 +42,13 @@ test.describe("Magazine « Le Fil » (P7.1)", () => {
     expect(response?.status()).toBe(200);
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
+    /*
+     * Reste rouge volontairement sous 64 rem (DP.5) : le fil d'Ariane de l'article est placé
+     * dans un conteneur `heroOnlyWide` (`max-lg:hidden`) depuis la compaction du 27/09/2026, donc
+     * absent sur téléphone — alors que `docs/00 §5` l'exige sur toutes les pages sauf l'accueil.
+     * Ce parcours dit la règle écrite ; on ne le réécrit pas pour épouser l'écart
+     * (docs/AUDIT_GLOBAL.md §10).
+     */
     await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
     await expect(page.locator("[data-confiance]")).toBeVisible();
     await expect(page.getByRole("region", { name: "L'essentiel" })).toBeVisible();
@@ -56,9 +63,22 @@ test.describe("Magazine « Le Fil » (P7.1)", () => {
       await expect(page.locator(`[data-article-body] h2${anchor}`)).toHaveCount(1);
     }
     await expect(page.locator("[data-demain] li")).toHaveCount(3);
+    // docs/06 §8 : un seul encart d'appel contextuel.
     await expect(page.locator('[data-encart="appel"]')).toHaveCount(1);
-    // Un seul bouton framboise dans le contenu (l'en-tête et la barre mobile ont le leur).
-    await expect(page.locator("#contenu a.bg-action, #contenu button.bg-action")).toHaveCount(1);
+    /*
+     * Deux boutons framboise dans le contenu, et seulement deux : l'action du hero
+     * (`[data-hero-primary]`, invariant du design system que hero.spec vérifie sur tous les
+     * gabarits) et celui de l'encart. Ce parcours n'en attendait qu'un, d'avant que le hero
+     * d'article porte une action, et échouait depuis (docs/AUDIT_GLOBAL.md §10). La règle
+     * utile est qu'aucun troisième n'apparaisse dans le corps de l'article.
+     */
+    const actions = page.locator("#contenu a.bg-action, #contenu button.bg-action");
+    await expect(actions).toHaveCount(2);
+    await expect(page.locator("[data-hero-primary] a.bg-action")).toHaveCount(1);
+    await expect(page.locator('[data-encart="appel"] a.bg-action')).toHaveCount(1);
+    await expect(
+      page.locator("[data-article-body] a.bg-action, [data-article-body] button.bg-action"),
+    ).toHaveCount(0);
     await expect(page.getByRole("region", { name: "Sources" }).locator("ol li")).not.toHaveCount(0);
     const share = page.getByRole("region", { name: "Partager cet article" });
     await expect(share.getByRole("link", { name: "Envoyer par e-mail" })).toHaveAttribute(
@@ -70,6 +90,9 @@ test.describe("Magazine « Le Fil » (P7.1)", () => {
     // JSON-LD Article présent.
     const jsonLd = await page.locator('script[type="application/ld+json"]').allTextContents();
     expect(jsonLd.some((block) => block.includes('"@type":"Article"'))).toBe(true);
+    // Le fil d'Ariane visuel disparaît sous 64 rem (compaction du 27/09) : le BreadcrumbList,
+    // lui, reste là quelle que soit la largeur, pour les moteurs et les assistants.
+    expect(jsonLd.some((block) => block.includes('"@type":"BreadcrumbList"'))).toBe(true);
     await expectNoSeriousAxeViolations(page);
   });
 

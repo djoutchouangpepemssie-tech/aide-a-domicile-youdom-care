@@ -7,7 +7,17 @@ import { expectNoSeriousAxeViolations } from "./axe";
  * témoins : l'accueil et /personnes-agees/ (photo qui suit le sélecteur de lecteur).
  */
 
-const pages = ["/", "/personnes-agees/"] as const;
+/*
+ * Pages témoins, et si leur hero porte un fil. Le 27/09/2026, la bannière de l'accueil est
+ * passée à une photo de fond (`illustration={null}`, aucune photo dans la colonne média) :
+ * `HeroThread` n'y est plus monté, donc `.hero-thread` n'existe pas sur « / ». Ce parcours
+ * l'exigeait encore et échouait depuis — ce n'était pas un écart de navigateur
+ * (docs/AUDIT_GLOBAL.md §10).
+ */
+const pages = [
+  { path: "/", fil: false },
+  { path: "/personnes-agees/", fil: true },
+] as const;
 
 /**
  * Collecte les erreurs de console et les exceptions de page. Les 404 de préchargement des entrées
@@ -30,7 +40,7 @@ const dashOffset = (page: Page, selector: string) =>
     .first()
     .evaluate((path) => Number.parseFloat(getComputedStyle(path).strokeDashoffset));
 
-for (const path of pages) {
+for (const { path, fil } of pages) {
   test.describe(`Mouvement et profondeur sur ${path}`, () => {
     test("en mouvement réduit : tout est visible, immobile, fil complet, axe", async ({
       page,
@@ -41,21 +51,24 @@ for (const path of pages) {
       await page.goto(path);
 
       const thread = page.locator(".hero-thread");
-      await expect(thread).toHaveCount(1);
-      await expect(thread).toHaveAttribute("data-state", "idle");
-      await expect(thread.locator("svg[aria-hidden=true]")).toHaveCount(3);
-      expect(await dashOffset(page, ".hero-thread__fil path")).toBe(0);
-      expect(await dashOffset(page, ".hero-thread__knot path")).toBe(0);
+      await expect(thread).toHaveCount(fil ? 1 : 0);
+      if (fil) {
+        await expect(thread).toHaveAttribute("data-state", "idle");
+        await expect(thread.locator("svg[aria-hidden=true]")).toHaveCount(3);
+        expect(await dashOffset(page, ".hero-thread__fil path")).toBe(0);
+        expect(await dashOffset(page, ".hero-thread__knot path")).toBe(0);
 
-      // Aucune transformation ni perspective sur la scène, même la souris dessus.
-      const scene = page.locator(".hero-thread .m-depth");
-      const stage = scene.locator(".m-depth__stage");
-      if (!isMobile) {
-        const box = await scene.boundingBox();
-        if (box) await page.mouse.move(box.x + box.width * 0.9, box.y + box.height * 0.1);
+        // Aucune transformation ni perspective sur la scène, même la souris dessus.
+        const scene = page.locator(".hero-thread .m-depth");
+        const stage = scene.locator(".m-depth__stage");
+        if (!isMobile) {
+          const box = await scene.boundingBox();
+          if (box) await page.mouse.move(box.x + box.width * 0.9, box.y + box.height * 0.1);
+        }
+        await expect(stage).toHaveCSS("transform", "none");
+        await expect(scene).toHaveCSS("perspective", "none");
       }
-      await expect(stage).toHaveCSS("transform", "none");
-      await expect(scene).toHaveCSS("perspective", "none");
+      // Jamais de profondeur armée en mouvement réduit, fil ou pas.
       await expect(page.locator(".m-depth__stage[data-depth]")).toHaveCount(0);
 
       if (!isMobile) {
@@ -96,6 +109,7 @@ for (const path of pages) {
       // 64 rem de large ; sous cette largeur la scène se compacte (titre, promesse, interaction,
       // action, repère). Le fil du hero ne peut donc plus être vérifié sur un téléphone.
       test.skip(isMobile, "photo et fil du hero réservés aux écrans de 64 rem et plus (D-032)");
+      test.skip(!fil, "bannière à photo de fond depuis le 27/09/2026 : pas de fil de hero");
       const errors = watchConsole(page);
       await page.goto(path);
       await expect(page.locator("html")).toHaveAttribute("data-js", "");

@@ -536,13 +536,43 @@ remplir le formulaire doit viser juste du premier coup.
   390×844 (551 px pour 508 disponibles sur l'accueil ; jusqu'à 988 px pour 784). Le hero était
   conçu pour montrer le titre **et** l'action sans défiler ; la refonte D-032 l'a épaissi. C'est le
   même poste de coût que DP.2, et le design reste à réviser par Arcel (`docs/02 §2`, §4, §5).
-- **DP.4 — le tracé du hero** (`.hero-thread` n'atteint pas l'état « drawn », une animation remonte
-  `sur path.[object SVGAnimatedString]`). À confirmer sur la CI avant d'y toucher : l'écart peut
-  venir de la version de navigateur disponible ici.
+- **DP.4 — le contrat du mouvement.** Deux conflits mesurés, pas un écart de navigateur comme je
+  l'avais d'abord supposé. 1) `motion.css` donne aux blocs `.m-reveal` 360 ms (`--duration-slow`)
+  plus 60 ms par rang (`--m-stagger`) : le total franchit le plafond de 600 ms dès le **cinquième**
+  élément d'un groupe, et le parcours a mesuré 640 ms sur l'accueil. 2) `--thread-duration: 800ms`
+  est documenté « entre 600 et 900 ms » dans `tokens.css` et contredit le même plafond. Les deux
+  règles ne peuvent pas tenir ensemble : c'est un arbitrage de jetons, donc Arcel (`docs/02 §5`).
+- **DP.5 — la compaction masque sur téléphone deux éléments exigés.** Le gabarit d'article place le
+  fil d'Ariane et la ligne de confiance (auteur, date, temps de lecture) dans des conteneurs
+  `max-lg:hidden`. Vérifié sur le rendu : le DOM d'un article ne contient qu'**un seul** bloc
+  `data-confiance`, dans la colonne photo masquée, et aucune carte `sources-review` ne les
+  rattrape. Or `docs/00 §5` exige le fil d'Ariane partout sauf l'accueil, et `docs/06 §3` fait de
+  la ligne de confiance le bloc 3 d'un article. Sur téléphone, un article n'affiche donc ni son
+  auteur, ni sa date, ni sa place dans le site — sur un sujet de santé, pour un public qui lit
+  surtout sur téléphone.
+
+**Deux corrections que j'ai dû défaire.** J'avais d'abord rendu le parcours du fil d'Ariane
+tolérant à son absence sur mobile, et attribué l'écart du fil de hero à la version de navigateur.
+Les deux étaient faux : la première réécrivait un test pour qu'il épouse un comportement qui
+contredit `docs/00 §5`, la seconde était une hypothèse que la mesure a démentie. Le parcours du
+fil d'Ariane reste donc rouge, et DP.4 porte des chiffres au lieu d'une supposition.
 
 Dans les deux cas, la consigne du projet s'applique telle quelle : **on ne relève pas un seuil
 pour faire passer un contrôle**. Ces échecs restent rouges, nommés et chiffrés dans `docs/PLAN.md`,
 plutôt que neutralisés.
+
+### Bilan chiffré de la passe
+
+| | Avant | Après |
+| --- | --- | --- |
+| Parcours en échec | **97** | **18** |
+| Parcours verts | 575 | **653** |
+| Familles d'attentes périmées | 9 | 0 |
+
+Les 18 qui restent sont les trois chantiers nommés ci-dessus, et seulement eux : 16 pour le hero
+sous la ligne de flottaison (DP.3), 1 pour le contrat du mouvement (DP.4), 1 pour les éléments
+masqués sur téléphone (DP.5). Aucun n'est un test périmé ; tous attendent un arbitrage de design
+qui appartient à Arcel. Ils restent rouges, nommés et chiffrés.
 
 ### Ce que cette passe dit de la CI
 
