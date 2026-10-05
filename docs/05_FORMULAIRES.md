@@ -22,7 +22,7 @@
 | `sortie-hospitalisation` | `/demande/sortie-d-hospitalisation/` | Proches, soignants | Page du service (parcours express, 4 questions) |
 | `nuit-24h` | `/demande/nuit-et-24h/` | Tous | Garde de nuit, présence 24h/24, garde-malade |
 | `professionnel` | `/demande/professionnel/` | Prescripteurs | Page Professionnels. **Aucune donnée nominative de la personne à accompagner** |
-| `candidature` | `/recrutement/postuler/` | Candidats | Recrutement (CV en pièce jointe, 5 Mo au plus, PDF ou DOCX) |
+| `candidature` | `/recrutement/postuler/` | Candidats | Recrutement (CV en pièce jointe, 4 Mo au plus, PDF ou DOCX) |
 | `contact` | `/contact/` | Autres demandes | Pied de page |
 
 Toutes les pages locales ouvrent le formulaire adapté avec la commune préremplie (`?commune=92062`, code INSEE : jamais de donnée de santé dans l'URL).

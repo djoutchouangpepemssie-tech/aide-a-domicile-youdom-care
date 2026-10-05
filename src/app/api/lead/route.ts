@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCommitments, getEmailTexts, getInterfaceTexts, getSiteConfig } from "@/content/loader";
 import { isProduction } from "@/lib/env";
-import { clientIp, originAllowed } from "@/lib/http/request";
+import { clientIp, originAllowed, readTextLimited } from "@/lib/http/request";
 import {
   createRateLimiter,
   handleLead,
@@ -37,12 +37,9 @@ export async function POST(request: Request) {
   if (!originAllowed(request)) {
     return NextResponse.json({ ok: false, erreur: "origine refusée" }, { status: 403 });
   }
-  const length = Number(request.headers.get("content-length") ?? "0");
-  if (length > MAX_BODY_BYTES) {
-    return NextResponse.json({ ok: false, erreur: "demande trop volumineuse" }, { status: 413 });
-  }
-  const raw = await request.text();
-  if (raw.length > MAX_BODY_BYTES) {
+  // Lecture bornée : le corps n'entre en mémoire que jusqu'au plafond, même sans content-length.
+  const raw = await readTextLimited(request, MAX_BODY_BYTES);
+  if (raw === null) {
     return NextResponse.json({ ok: false, erreur: "demande trop volumineuse" }, { status: 413 });
   }
   let input: unknown;

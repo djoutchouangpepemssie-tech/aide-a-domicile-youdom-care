@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { expectNoSeriousAxeViolations } from "./axe";
+import { expectIndexable } from "./indexable";
 
 const sections = [
   "Vous vous reconnaissez ?",
@@ -59,8 +60,8 @@ test.describe("Pages services (P4)", () => {
       const response = await page.goto(chemin);
       expect(response?.status()).toBe(200);
       await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
-      // D-034 et D-035 : aucun bandeau d'attente, et la page est indexable.
-      await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+      // D-034 et D-035 : aucun bandeau d'attente, et la page n'est pas fermée pour elle-même.
+      await expectIndexable(page);
       await expect(page.getByText(/attend sa relecture/)).toHaveCount(0);
       for (const title of sections) {
         await expect(
@@ -89,10 +90,14 @@ test.describe("Pages services (P4)", () => {
       await expect(frontiere).toContainText(
         "Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas.",
       );
+      // D-034 : plus aucun bandeau ni mention d'attente de relecture. La carte nomme qui a
+      // écrit et quand la page a été mise à jour, rien de plus. Ce parcours exigeait encore
+      // « En attente de relecture par un professionnel. », ce que D-034 a retiré et ce que le
+      // test unitaire de ServiceTemplate interdit déjà (docs/AUDIT_GLOBAL.md §10).
       const review = page.locator(".sources-review");
       await expect(review).toContainText("Écrit par");
-      await expect(review).toContainText("En attente de relecture par un professionnel.");
       await expect(review).toContainText("Mise à jour le");
+      await expect(review).not.toContainText("En attente de relecture");
       await expectNoSeriousAxeViolations(page);
     });
   }
@@ -109,11 +114,18 @@ test.describe("Pages services (P4)", () => {
     await expect(
       frontiere.getByText(/les professionnels de santé et le service de soins/),
     ).toBeVisible();
-    if (isMobile) {
-      await expect(frontiere.getByText("Qui le fait", { exact: true })).toBeHidden();
-    } else {
-      await expect(frontiere.getByText("Qui le fait", { exact: true })).toBeVisible();
+    // Deux colonnes seulement si **chaque** ligne nomme son relais (règle du 27/09/2026) : sur
+    // cette page elles ne le font pas toutes, donc l'en-tête n'existe pas. Le parcours lisait
+    // l'ancienne règle et exigeait l'en-tête quoi qu'il arrive.
+    const deuxColonnes = (await frontiere.getAttribute("data-colonnes")) === "deux";
+    const enTete = frontiere.getByText("Qui le fait", { exact: true });
+    if (deuxColonnes && !isMobile) {
+      await expect(enTete).toBeVisible();
       await expect(frontiere.getByText("Nous ne faisons pas", { exact: true })).toBeVisible();
+    } else if (deuxColonnes) {
+      await expect(enTete).toBeHidden();
+    } else {
+      await expect(enTete).toHaveCount(0);
     }
     // La ligne de fin n'est portée que par l'encart : le corps MDX ne la répète pas.
     await expect(

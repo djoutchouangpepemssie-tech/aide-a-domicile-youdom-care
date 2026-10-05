@@ -333,6 +333,34 @@ export function auditPageNap(route: string, html: string, options: PageNapOption
   return { errors, warnings };
 }
 
+/**
+ * Agences citées par les communes (`data/idf-communes.json`).
+ *
+ * Ce champ nomme au visiteur « votre agence la plus proche » et part dans la demande
+ * (`agenceProche` du LeadPayload), où l'e-mail de l'équipe le reprend. Il a pointé pendant huit
+ * jours vers quatre agences retirées de la configuration, pour 1120 des 1285 communes : le site
+ * annonçait une agence qui n'existe pas, ce que le garde-fou « aucun fait inventé » interdit
+ * (docs/AUDIT_GLOBAL.md §9, D-054). Un simple comptage l'aurait vu ; il est ici.
+ */
+export function auditCommuneAgencies(
+  communes: readonly { code: string; nom: string; agence?: string | null }[],
+  config: NapConfig,
+): NapReport {
+  const known = new Set(config.agencies.map((a) => a.id));
+  const unknown = new Map<string, number>();
+  for (const commune of communes) {
+    const id = commune.agence;
+    if (id && !known.has(id)) unknown.set(id, (unknown.get(id) ?? 0) + 1);
+  }
+  const errors = [...unknown]
+    .sort((a, b) => b[1] - a[1])
+    .map(
+      ([id, count]) =>
+        `data/idf-communes.json : ${count} commune(s) pointent vers l'agence « ${id} », absente de site.config.json (relancez \`pnpm data:communes\`)`,
+    );
+  return { errors, warnings: [] };
+}
+
 /** Cohérence des données, avec ou sans rendu. */
 export function auditNapData(pages: readonly LocalPage[], config: NapConfig): NapReport {
   const errors: string[] = [];
@@ -422,6 +450,27 @@ export async function runLocalNapCheck(ctx: CheckContext): Promise<CheckResult> 
   const dataReport = auditNapData(corpus.pages, config);
   errors.push(...dataReport.errors);
   warnings.push(...dataReport.warnings);
+
+  // Agences citées par les communes : indépendant des pages locales et du rendu. Un fichier
+  // absent n'est pas une anomalie (fixtures de test, dépôt partiel) ; un fichier présent mais
+  // illisible en est une.
+  const communesFile = path.join(ctx.rootDir, "data", "idf-communes.json");
+  let communesPresent = true;
+  try {
+    await stat(communesFile);
+  } catch {
+    communesPresent = false;
+  }
+  if (communesPresent) {
+    try {
+      const raw = JSON.parse(await readFile(communesFile, "utf8")) as {
+        communes?: { code: string; nom: string; agence?: string | null }[];
+      };
+      errors.push(...auditCommuneAgencies(raw.communes ?? [], config).errors);
+    } catch {
+      warnings.push("data/idf-communes.json illisible : agences des communes non vérifiées");
+    }
+  }
 
   const outputDir = path.join(ctx.rootDir, ".next", "server", "app");
   let rendered = false;

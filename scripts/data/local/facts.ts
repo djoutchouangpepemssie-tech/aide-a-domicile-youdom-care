@@ -233,15 +233,47 @@ export function countByType(facts: readonly LocalFact[]): Record<string, number>
   return counts;
 }
 
-/** « 01 46 92 92 92 » ou « +33146929595 » → format lisible ; conserve la source si inconnu. */
+/**
+ * Numéro court français : secours et services sociaux (115, 119…), numéros à quatre chiffres
+ * (3975 la Ville de Paris, 3994 le Val-de-Marne), services d'intérêt général à six chiffres
+ * (116 117, 118 712). Ils n'ont pas de forme en paires.
+ */
+const shortNumber = /^(?:1\d{2}|10\d{2}|3\d{3}|11[68]\d{3})$/;
+
+/** Premier numéro français reconnaissable dans un texte, même noyé dans une phrase. */
+const embeddedNumber = /(?:\+33|0033)[\s.-]?[1-9](?:[\s.-]?\d{2}){4}|(?<!\d)0[1-9](?:[\s.-]?\d{2}){4}(?!\d)/;
+
+/** Dix chiffres nationaux en paires : « 0146929292 » → « 01 46 92 92 92 ». */
+function inPairs(national: string): string {
+  return national.replace(/(\d{2})(?=\d)/g, "$1 ").trim();
+}
+
+/**
+ * « 01 46 92 92 92 » ou « +33146929595 » → format lisible.
+ *
+ * Les sources ouvertes mêlent parfois de la prose au numéro (« 01 45 54 04 80 Tél selon le
+ * tableau CASVP 01 45 54 85 93 », « 01 41 23 86 30 (ou 86 31) ») : le premier numéro reconnu est
+ * conservé, le reste est jeté. Si rien d'exploitable ne subsiste, le champ reste vide : mieux
+ * vaut aucun téléphone qu'une phrase présentée comme un numéro sur une page locale
+ * (docs/AUDIT_GLOBAL.md, Q-3).
+ */
 export function formatPhone(value: string | null | undefined): string | undefined {
   const raw = cleanText(value);
   if (!raw) return undefined;
   const digits = raw.replace(/[^\d+]/g, "");
-  const national = digits.startsWith("+33") ? `0${digits.slice(3)}` : digits;
-  // Numéros géographiques et mobiles (01 à 07, 09) : paires ; numéros spéciaux (08) : forme de la source.
-  if (/^0[1-79]\d{8}$/.test(national)) {
-    return national.replace(/(\d{2})(?=\d)/g, "$1 ").trim();
+  // Indicatif international, avec ou sans « + » ni « 00 » : « +33 1 45 … », « 331 45 … ».
+  const national = /^(?:\+33|0033|33)[1-9]\d{8}$/.test(digits)
+    ? `0${digits.replace(/^(?:\+33|0033|33)/, "")}`
+    : digits;
+  // Numéros géographiques et mobiles (01 à 07, 09) : paires.
+  if (/^0[1-79]\d{8}$/.test(national)) return inPairs(national);
+  // Numéros spéciaux (08) : forme de la source, qui groupe par trois.
+  if (/^08\d{8}$/.test(national)) return raw;
+  if (shortNumber.test(national)) return national;
+  const embedded = embeddedNumber.exec(raw)?.[0];
+  if (embedded) {
+    const found = embedded.replace(/[^\d+]/g, "");
+    return inPairs(found.startsWith("+33") ? `0${found.slice(3)}` : found.replace(/^0033/, "0"));
   }
-  return raw;
+  return undefined;
 }

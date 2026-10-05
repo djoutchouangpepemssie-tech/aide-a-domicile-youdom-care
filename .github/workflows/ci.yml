@@ -41,6 +41,18 @@ jobs:
       - name: Types Next.js (next-env.d.ts)
         run: pnpm exec next typegen
 
+      - name: Audit des dépendances (bloquant au niveau critique)
+        # docs/07 §6. Un avis « critical » arrête la CI : c'est exactement ce qui avait manqué pour
+        # l'avis GHSA-vcvr-r3jv-pc5j sur next 16.3.5, resté invisible jusqu'à l'audit du 05/10.
+        run: pnpm audit --audit-level critical
+
+      - name: Avis de dépendances restants (informatif)
+        # Les avis « high » et « moderate » sont affichés sans bloquer : les trois qui restent sont
+        # dans l'outillage de développement et n'ont aucune version corrigée publiée (DC.2). Cette
+        # étape devient bloquante dès qu'ils le sont.
+        run: pnpm audit --audit-level moderate
+        continue-on-error: true
+
       - name: Lint
         run: pnpm lint
 

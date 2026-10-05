@@ -1,4 +1,6 @@
 import { expect, test } from "@playwright/test";
+import siteConfig from "../../content/site.config.json";
+import communes from "../../data/idf-communes.json";
 import { expectNoSeriousAxeViolations } from "./axe";
 
 test.describe("Accueil (P2.1)", () => {
@@ -83,8 +85,13 @@ test.describe("Accueil (P2.3)", () => {
     await expect(options.first()).toContainText("Vitry-sur-Seine");
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("Enter");
+    // L'agence la plus proche vient des données (data/idf-communes.json, recalculé le 05/10/2026
+    // après le passage à deux agences) : la nommer en dur avait figé « Youdom Care Val-de-Marne »,
+    // une agence retirée depuis (docs/AUDIT_GLOBAL.md §9).
+    const vitry = communes.communes.find((c) => c.nom === "Vitry-sur-Seine");
+    const agenceVitry = siteConfig.agences.find((a) => a.id === vitry?.agence);
     await expect(page.locator("[data-result=oui]")).toHaveText(
-      "Oui, nous intervenons à Vitry-sur-Seine. Votre agence la plus proche : Youdom Care Val-de-Marne.",
+      `Oui, nous intervenons à Vitry-sur-Seine. Votre agence la plus proche : ${agenceVitry?.nom}.`,
     );
 
     await input.fill("Marseille");

@@ -102,7 +102,7 @@
     "message": "Un mot sur vous",
     "message_aide": "Facultatif. Votre expérience, vos diplômes, ce qui compte pour vous. Aucune information de santé.",
     "cv": "Votre CV",
-    "cv_aide": "PDF ou Word (DOCX), 5 Mo au plus.",
+    "cv_aide": "PDF ou Word (DOCX), 4 Mo au plus.",
     "consentement": "J'accepte que Youdom Care utilise ces informations et mon CV pour étudier ma candidature et me recontacter.",
     "confidentialite": "Politique de confidentialité"
   }

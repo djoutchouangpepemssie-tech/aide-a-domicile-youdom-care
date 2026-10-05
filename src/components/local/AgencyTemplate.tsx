@@ -207,10 +207,14 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
                 key={commune.code}
                 className="flex max-w-none items-center justify-between gap-3 rounded-card border border-line bg-white px-4 py-2 shadow-1"
               >
+                {/* `min-w-11` autant que `min-h-11` : la cible de 44 px de WCAG 2.5.8 a deux
+                    dimensions, et un nom de commune court (« Buc ») ne mesurait que 29 px de
+                    large (docs/AUDIT_GLOBAL.md §9, DP.4). Même correction que P9.6 sur le logo
+                    et que R-3 sur les liens du pied de page. */}
                 <Link
                   href={commune.chemin}
                   prefetch={false}
-                  className="inline-flex min-h-11 items-center font-bold"
+                  className="inline-flex min-h-11 min-w-11 items-center font-bold"
                 >
                   {commune.nom}
                 </Link>

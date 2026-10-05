@@ -33,6 +33,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# clé IndexNow : `prebuild` écrit public/<clé>.txt, qui ne doit jamais entrer dans le dépôt
+# (.env.example, docs/04 §2). Les fichiers texte voulus sous public/ s'ajoutent en exception.
+/public/*.txt
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -44,3 +48,5 @@ next-env.d.ts
 /.lighthouseci/
 /.next-dev-*.log
 /tests/e2e/.mails/
+# configuration Playwright jetable d'un poste (exécutable du navigateur local)
+/.pw-audit.config.ts

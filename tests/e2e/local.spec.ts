@@ -1,7 +1,16 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
+import siteConfig from "../../content/site.config.json";
 import { expectNoSeriousAxeViolations } from "./axe";
+import { expectIndexable } from "./indexable";
+
+/*
+ * Nombre d'agences lu dans la configuration, et non codé en dur : il est passé de six à deux le
+ * 27/09/2026 (commit 97e8051) et les parcours avaient gardé « 6 », ce qui les faisait échouer
+ * (docs/AUDIT_GLOBAL.md §9).
+ */
+const agences = siteConfig.agences;
 
 /*
  * Référencement local (P6.5, P6.6) : carte régionale, index et page d'agence, et, quand le
@@ -95,12 +104,12 @@ test.describe("Carte régionale /aide-a-domicile/ (P6.5)", () => {
       "Oui, nous intervenons à Puteaux.",
     );
 
-    await expect(page.locator("[data-agences] [data-agence]")).toHaveCount(6);
+    await expect(page.locator("[data-agences] [data-agence]")).toHaveCount(agences.length);
     await expect(
       page.locator("[data-agences]").getByRole("link", { name: /Voir l'agence Youdom Care Paris/ }),
     ).toHaveAttribute("href", "/agences/paris-12/");
-    // D-035 : la carte régionale est indexable.
-    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    // D-035 : la carte régionale n'est pas fermée pour elle-même.
+    await expectIndexable(page);
     await expectNoSeriousAxeViolations(page);
   });
 
@@ -111,25 +120,27 @@ test.describe("Carte régionale /aide-a-domicile/ (P6.5)", () => {
 });
 
 test.describe("Agences (P6.6)", () => {
-  test("/agences/ : six cartes d'agences réelles, sans champ inventé, axe", async ({ page }) => {
+  test("/agences/ : une carte par agence réelle, sans champ inventé, axe", async ({ page }) => {
     const response = await page.goto("/agences/");
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       "Nos agences en Île-de-France",
     );
     const cards = page.locator("[data-agences] [data-agence]");
-    await expect(cards).toHaveCount(6);
+    await expect(cards).toHaveCount(agences.length);
     // Téléphone et horaires des agences sont null : jamais affichés ; le standard, oui.
     await expect(page.getByText("Téléphone de l'agence")).toHaveCount(0);
     await expect(page.getByText("Horaires", { exact: true })).toHaveCount(0);
-    await expect(page.locator("[data-agences]").getByText("Standard")).toHaveCount(6);
+    await expect(page.locator("[data-agences]").getByText("Standard")).toHaveCount(agences.length);
     // D-036 : plus aucun lien d'itinéraire vers un service de carte externe.
     await expect(page.locator("[data-agences] [data-agence-itineraire]")).toHaveCount(0);
-    await expect(
-      page
-        .locator("[data-agences]")
-        .getByRole("link", { name: "Voir l'agence Youdom Care Yvelines" }),
-    ).toHaveAttribute("href", "/agences/versailles/");
+    // Chaque agence publiée a son lien ; la liste suit la configuration (plus de « Yvelines »
+    // codé en dur depuis le passage à deux agences).
+    for (const agence of agences) {
+      await expect(
+        page.locator("[data-agences]").getByRole("link", { name: `Voir l'agence ${agence.nom}` }),
+      ).toHaveAttribute("href", `/agences/${agence.id}/`);
+    }
     await expectNoSeriousAxeViolations(page);
   });
 
@@ -202,9 +213,9 @@ test.describe("Page locale (P6.5, données réelles du dépôt)", () => {
     );
     await expect(page.locator("[data-local-editorial]")).toBeVisible();
     await expect(page.getByRole("form")).toBeVisible();
-    // D-034 et D-035 : aucun bandeau d'attente, page indexable quel que soit le statut.
+    // D-034 et D-035 : aucun bandeau d'attente, page non fermée quel que soit le statut.
     await expect(page.getByText(/attend sa relecture/)).toHaveCount(0);
-    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    await expectIndexable(page);
     const { blocks, nodes } = await jsonLdNodes(page);
     expect(nodes.map((node) => node["@type"])).toEqual(
       expect.arrayContaining(["BreadcrumbList", "WebPage", "FAQPage"]),

@@ -30,7 +30,7 @@ import {
 } from "./shared";
 
 /*
- * Candidature (docs/05 §2 : « CV en pièce jointe, 5 Mo au plus, PDF ou DOCX », P8.2) : un écran,
+ * Candidature (docs/05 §2 : « CV en pièce jointe, 4 Mo au plus, PDF ou DOCX », P8.2) : un écran,
  * deux minutes. Coordonnées (e-mail obligatoire : il reçoit l'accusé et la réponse), département
  * souhaité, commune facultative, disponibilité, mot facultatif sans information de santé, CV,
  * consentement à l'étude de la candidature avec lien vers la politique de confidentialité. Le

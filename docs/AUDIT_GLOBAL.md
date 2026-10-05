@@ -10,10 +10,14 @@ accessibilité, performance. Réalisé sur la branche `claude/wonderful-ramanuja
 traitement serveur, des schémas Zod, du rendu des e-mails, du transport SMTP, de la
 configuration Next, de la CI et des scripts d'outillage.
 
-**Ce qui n'a pas pu être exécuté** : `pnpm test:e2e` et `pnpm lhci` (le réseau sortant est
-coupé dans l'environnement d'audit : `curl` vers `service-public.gouv.fr` renvoie `000`).
-Les constats de performance reprennent donc les mesures déjà consignées dans `docs/PLAN.md`
-(DP.2) et ne sont pas des mesures neuves.
+**Ce qui n'a pas pu être exécuté** : `pnpm lhci`, qui demande un réseau sortant ouvert. Les
+constats de performance reprennent donc les mesures déjà consignées dans `docs/PLAN.md` (DP.2) et
+ne sont pas des mesures neuves. Les parcours Playwright, d'abord jugés inexécutables, l'étaient en
+pointant le chromium présent dans l'environnement : ils ont tourné en entier (§9).
+
+> **Suites données.** Ce document reste le relevé daté du 5 octobre. Les correctifs appliqués le
+> même jour sont consignés au §9, qui dit pour chaque constat s'il est corrigé, encore ouvert, ou
+> hors de portée du code. Les décisions prises au passage sont D-050bis à D-053.
 
 ---
 
@@ -401,3 +405,150 @@ contrôle » est la bonne et doit tenir.
 12. Refus explicite des requêtes sans `content-length` sur `/api/candidature` (S-4).
 13. Nettoyer les 25 téléphones non normalisés des fiches locales (Q-3).
 14. Reprendre DP.2 : les 39 `backdrop-filter` inutiles d'abord (§7).
+
+---
+
+## 9. Suites données le 5 octobre 2026
+
+Relevé de ce qui a été corrigé le jour même, de ce qui reste ouvert, et de ce qui n'appartient pas
+au code. Chaîne complète après correctifs : `lint` ✔, `typecheck` ✔, **936 tests unitaires** verts
+(dix de plus), `build` ✔, `validate` **13/13** ✔, `pnpm audit` de huit avis à **quatre**, et la
+suite Playwright exécutée en entier.
+
+### Corrigé
+
+| Constat | Correctif |
+| --- | --- |
+| **S-1** `next@16.3.5`, RCE dans `next/og` | `next` et `eslint-config-next` en **16.3.8**. L'avis critique disparaît de `pnpm audit`. |
+| **S-4** corps lus en mémoire avant d'être bornés | `readBodyLimited` / `readTextLimited` (`src/lib/http/request.ts`) : lecture du flux morceau par morceau, arrêt et annulation au plafond, comptage en **octets** et non en caractères. Les trois routes y passent, `api/candidature` comprise (le multipart est analysé depuis le corps déjà borné). Le plafond ne dépend plus de l'en-tête `content-length`, qu'une requête découpée peut omettre. D-051. |
+| **S-5** CV de 5 Mo au-delà de la limite de 4,5 Mo de l'hébergeur | `CV_MAX_BYTES` à **4 Mo**, corps multipart à 4,375 Mo. Texte d'aide, message d'erreur, politique de confidentialité, `docs/05 §2` et le parcours Playwright alignés. D-051. |
+| **S-6** la CSP réelle contredisait `docs/07 §6` | `docs/07 §6` réécrit : la CSP est décrite telle qu'elle est, `'unsafe-inline'` compris, avec la raison (D-013) et ce qui tient le risque résiduel. |
+| **S-3** le contrôle d'origine était compté comme une protection | `docs/07 §6` le requalifie explicitement : hygiène, pas sécurité, et interdiction de s'en servir pour alléger la limitation de débit. |
+| **S-7** clé IndexNow non ignorée par git | `/public/*.txt` dans `.gitignore`. Vérifié par `git check-ignore`. |
+| **S-8** pas d'audit de dépendances en CI | Étape `pnpm audit --audit-level high` ajoutée au *workflow*, en `continue-on-error` — les trois avis qui restent n'ont aucune version corrigée publiée, une étape bloquante rendrait la CI définitivement rouge. Le commentaire du *workflow* dit à quelle condition elle redevient bloquante. |
+| **S-8** `overrides` absents de `pnpm-workspace.yaml` | Le diagnostic de DC.2 était faux : l'emplacement était bon, c'est `pnpm install` qui court-circuite (« Already up to date ») sans écrire la section `overrides` dans le fichier de verrouillage. `pnpm install --no-frozen-lockfile` l'applique. `tmp` (`^0.2.7`) et `basic-ftp` (`^6.2.2`) sont donc corrigés : **huit avis → quatre**. D-050bis. |
+| **S-9** injection d'en-tête SMTP (déjà neutralisée par nodemailer) | `sanitizeSubject` ajouté aux deux objets d'e-mail : la garantie ne dépend plus du comportement d'une dépendance. Test dédié. |
+| **Q-1** `pnpm typecheck` échouait sur un clone neuf | `"pretypecheck": "next typegen"` dans `package.json`. La chaîne de `CLAUDE.md` passe désormais sur un dépôt fraîchement installé. |
+| **Q-2** `check-links` rendait bloquant un 403 de filtrage | Seuls **404 et 410** restent des erreurs ; 401, 403, 429 et 5xx rejoignent les avertissements « à vérifier à la main ». `pnpm validate` passe de 12/13 à **13/13**, et les 138 sources filtrées restent visibles en avertissement. D-052. |
+| **Q-3** 25 fiches locales au téléphone non normalisé | Deux causes séparées. Les numéros **courts** français (3975, 3994, 115, 116 117) sont reconnus par `normalizePhone` et `formatPhone` : ce sont de vrais numéros, les vingt avertissements « 3994 » disparaissent sans assouplir le contrôle. La **prose** reprise des données ouvertes (« 01 45 54 04 80 Tél selon le tableau CASVP… ») est réduite au premier numéro reconnu, et vidée si rien n'est exploitable — un champ téléphone contient un téléphone ou rien. Corrigé dans le pipeline **et** dans les cinq champs déjà publiés. D-053. |
+
+### Encore ouvert, et pourquoi
+
+- **S-2 limitation de débit (élevée)** : non corrigeable ici. Rendre le compteur réel suppose un
+  magasin partagé (Vercel KV, Upstash, Edge Config), une limitation au bord, ou une clé Turnstile —
+  trois leviers qui engagent l'hébergeur et le budget, donc Arcel. Le code dit maintenant
+  franchement ce que le compteur vaut (`createRateLimiter`), `docs/07 §6` ne le présente plus comme
+  une protection suffisante, et la tâche est ouverte en **DC.3**, avant l'ouverture au public.
+- **§3 données de santé par e-mail (critique, juridique)** : Q-LEGAL-4, décision d'Arcel et de son
+  conseil. Rien dans le code ne peut la trancher.
+- **§4 mentions légales** : neuf champs à fournir (Q-ID-2, Q-LEGAL-1, Q-LEGAL-5). Le mécanisme de
+  masquage fonctionne, il manque les faits.
+- **§6 accessibilité** : R-5 (balisage des PDF) et R-6 (passe NVDA/VoiceOver), plus l'audit tiers
+  des 106 critères. Demande un lecteur d'écran réel et un auditeur, pas un correctif.
+- **§7 performance (DP.2)** : chantier à part entière — 39 surfaces `backdrop-filter` inutiles,
+  sélecteurs de compaction, grain des scènes. Le mêler aux correctifs de sécurité aurait brouillé
+  les deux ; `pnpm lhci` ne tourne pas ici pour mesurer l'effet.
+- **Avertissements de maillage** : `/magazine/page/2/` et `/plan-du-site/` à un lien entrant
+  contextuel pour trois conseillés. Laissés tels quels : ajouter des liens pour satisfaire un
+  compteur, c'est exactement le remplissage que le projet s'interdit. Le minimum est « conseillé »,
+  pas exigé, et le contrôle le signale sans échouer.
+- **`a_relire`** : pages services et articles du Fil, en attente de relecture professionnelle
+  (Q-CONTENU-7, Q-CONTENU-15). Construits et en `noindex`, conformément à D-037.
+
+### Parcours Playwright : exécutés, et une régression attrapée
+
+L'environnement d'audit ne fournit que `chromium-1194` là où Playwright 1.63 réclame
+`chrome-headless-shell-1243` ; en pointant l'exécutable présent, toute la suite tourne. Elle a
+immédiatement attrapé ce que les tests unitaires avaient laissé passer : le parcours de candidature
+attendait encore « Ce fichier dépasse 5 Mo » après l'abaissement du plafond. Corrigé, puis
+vérifié — la candidature complète, CV joint compris, passe par le nouveau chemin de lecture bornée
+et arrive dans la boîte simulée.
+
+À retenir pour la CI : les parcours sont la seule couche qui ait vu cette régression. Ils ne sont
+pas un supplément.
+
+---
+
+## 10. Seconde passe : la suite Playwright, et ce qu'elle a révélé
+
+L'environnement d'audit ne fournit que `chromium-1194` là où Playwright 1.63 réclame
+`chrome-headless-shell-1243` ; en pointant l'exécutable présent, toute la suite tourne. Premier
+verdict, sur un build fait comme celui de la CI (`SITE_INDEXABLE=false`) : **97 échecs sur 672**.
+Aucun ne venait des correctifs du §9 — un seul y était lié, l'attente « dépasse 5 Mo » du parcours
+de candidature, corrigée aussitôt.
+
+### Le défaut qui masquait tous les autres
+
+Deux groupes de parcours s'excluaient mutuellement : `config.spec.ts` exigeait le `noindex`
+global, donc un build `SITE_INDEXABLE=false` — celui de la CI ; `services.spec.ts` et
+`local.spec.ts` exigeaient l'absence de balise `robots`, donc l'inverse. Depuis **D-035**, qui a
+ouvert l'indexation par défaut, la suite ne pouvait être verte **dans aucune des deux
+configurations**. Un échec permanent n'alerte plus personne : c'est ainsi que le reste a pu
+s'accumuler derrière, phase après phase. Corrigé par un module partagé
+(`tests/e2e/indexable.ts`) qui exprime l'intention — « cette page n'est pas fermée pour
+elle-même » — et la vérifie dans les deux réglages. D-055.
+
+### Le constat le plus sérieux : 1120 communes annonçaient une agence inexistante
+
+En remontant la piste d'un parcours qui attendait « Youdom Care Val-de-Marne » : le 27/09/2026, le
+réseau est passé de **six agences à deux**. `content/site.config.json` et `data/agences.geo.json`
+ont suivi ; `data/idf-communes.json` non. **1120 des 1285 communes** d'Île-de-France pointaient
+encore vers `serris`, `versailles`, `vitry-sur-seine` ou `saint-denis`.
+
+Ce champ n'est pas décoratif : il nomme au visiteur « votre agence la plus proche » sur l'accueil
+et les pages locales, et il part dans la demande (`agenceProche`), où l'e-mail de l'équipe le
+reprend — avec un repli qui imprime l'identifiant brut, donc « serris » en clair. Pendant huit
+jours, le site a annoncé à 87 % des communes une agence qui n'existe pas. C'est exactement ce que
+le garde-fou « aucun fait inventé » interdit, et rien ne le voyait : le schéma de la demande ne
+valide que la **forme** du slug.
+
+Corrigé en recalculant le champ avec la fonction du pipeline lui-même (`nearest`, distance à vol
+d'oiseau) depuis les coordonnées déjà versionnées — 797 communes sur Paris 12, 488 sur Puteaux,
+rien d'inventé, `pnpm data:communes` donne le même résultat. Et verrouillé : `auditCommuneAgencies`
+fait désormais échouer `pnpm validate` en comptant les communes concernées. D-054.
+
+### Les autres dérives corrigées
+
+Toutes de la même famille — un parcours qui a figé une valeur que le site a depuis changée :
+
+| Parcours | Valeur figée | Corrigé en |
+| --- | --- | --- |
+| `local.spec.ts`, `professionnels.spec.ts`, `home.spec.ts` | six agences, et « Youdom Care Val-de-Marne » nommée en dur | lisant `content/site.config.json` et `data/idf-communes.json` |
+| `lexique.spec.ts`, `blocks.spec.ts` | liens sortants vers `service-public.gouv.fr` et `impots.gouv.fr`, retirés le 27/09 à la demande d'Arcel | vérifiant que la source est **nommée** et **n'est plus** un lien |
+| `seo.spec.ts` | segment de plan de site du magazine attendu *absent*, alors que « Le Fil » a des articles depuis la phase 7 | vérifiant qu'il est présent |
+| `recrutement.spec.ts` | « dépasse 5 Mo » | alignant sur les 4 Mo de D-051 |
+| `services.spec.ts` | « En attente de relecture par un professionnel. » sur les 25 pages services, que **D-034 a retirée** — le parcours contredisait la décision *et* le test unitaire de `ServiceTemplate`, qui vérifie déjà son absence | vérifiant que la carte nomme l'auteur et la date, et **pas** l'attente |
+| `services.spec.ts` | en-tête des deux colonnes de l'encart frontière exigé sur `/personnes-agees/`, alors que la règle du 27/09 ne l'affiche que si **chaque** ligne nomme son relais | exposant la règle sur le composant (`data-colonnes`) et en la lisant au lieu de la supposer |
+
+**Règle qui en sort** : un parcours ne code plus en dur un fait qui vit dans `content/` ou
+`data/`, il le lit. Les trois corrections de nombre d'agences venaient de la même cause et
+auraient toutes été évitées.
+
+Deux cibles tactiles sous les 44 px de WCAG 2.5.8 ont été corrigées au passage, sur le modèle de
+ce que R-3 avait fait pour le pied de page : le lien d'une commune au nom court sur une page
+d'agence (29 px de large → `min-w-11`) et les liens du résumé d'erreurs d'un formulaire (22 px de
+haut → `min-h-11`) — ce dernier étant précisément l'endroit où une personne qui vient d'échouer à
+remplir le formulaire doit viser juste du premier coup.
+
+### Ce qui reste ouvert, et pourquoi je n'y touche pas
+
+- **DP.3 — l'action du hero passe sous la ligne de flottaison** sur cinq gabarits, à 320×568 et à
+  390×844 (551 px pour 508 disponibles sur l'accueil ; jusqu'à 988 px pour 784). Le hero était
+  conçu pour montrer le titre **et** l'action sans défiler ; la refonte D-032 l'a épaissi. C'est le
+  même poste de coût que DP.2, et le design reste à réviser par Arcel (`docs/02 §2`, §4, §5).
+- **DP.4 — le tracé du hero** (`.hero-thread` n'atteint pas l'état « drawn », une animation remonte
+  `sur path.[object SVGAnimatedString]`). À confirmer sur la CI avant d'y toucher : l'écart peut
+  venir de la version de navigateur disponible ici.
+
+Dans les deux cas, la consigne du projet s'applique telle quelle : **on ne relève pas un seuil
+pour faire passer un contrôle**. Ces échecs restent rouges, nommés et chiffrés dans `docs/PLAN.md`,
+plutôt que neutralisés.
+
+### Ce que cette passe dit de la CI
+
+Les parcours sont la seule couche qui ait vu tout cela : 938 tests unitaires et 13 contrôles de
+contenu passaient pendant que le site annonçait de fausses agences à 87 % de son territoire. Un
+`pnpm test:e2e` rouge en permanence, pour une raison de configuration que personne ne relisait,
+a coûté plusieurs semaines de dérive silencieuse. La leçon n'est pas « ajouter des tests » : c'est
+qu'un contrôle qui échoue toujours ne contrôle plus rien, et qu'il faut le réparer le jour où il
+rougit.

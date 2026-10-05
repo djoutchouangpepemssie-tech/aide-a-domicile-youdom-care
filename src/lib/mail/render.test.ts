@@ -2,7 +2,13 @@ import { describe, expect, it } from "vitest";
 import emailsJson from "../../../content/emails.json";
 import interfaceJson from "../../../content/interface.json";
 import type { LeadPayload } from "@/lib/lead/schema";
-import { escapeHtml, renderAcknowledgement, renderTeamEmail, teamSubject } from "./render";
+import {
+  escapeHtml,
+  renderAcknowledgement,
+  renderTeamEmail,
+  sanitizeSubject,
+  teamSubject,
+} from "./render";
 
 const ctx = {
   emails: emailsJson,
@@ -47,6 +53,24 @@ describe("e-mails de la demande", () => {
     };
     expect(teamSubject(contact, ctx)).toBe("Nouvelle demande — Contact — Dans la semaine");
     expect(teamSubject(lead, ctx)).not.toMatch(/Alzheimer|nuit/i);
+  });
+
+  it("assainit l'objet : un retour chariot dans un champ libre n'ouvre pas d'en-tête", () => {
+    // `commune.nom` est un champ libre de 80 caractères et entre dans l'objet : un saut de ligne
+    // y terminerait l'en-tête `Subject` (docs/AUDIT_GLOBAL.md, S-9).
+    const injecte: LeadPayload = {
+      ...lead,
+      commune: {
+        insee: "92062",
+        nom: "Puteaux\r\nBcc: ailleurs@example.org",
+        codePostal: "92800",
+        departement: "92",
+      },
+    };
+    const subject = teamSubject(injecte, ctx);
+    expect(subject).not.toMatch(/[\r\n]/);
+    expect(subject).toContain("Puteaux Bcc: ailleurs@example.org");
+    expect(sanitizeSubject("a\u0000b\tc   d \n")).toBe("a b c d");
   });
 
   it("rend l'alerte lisible : coordonnées avec lien tel:, planning en tableau, JSON repliable, HTML échappé", () => {

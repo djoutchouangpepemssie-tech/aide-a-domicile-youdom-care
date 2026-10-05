@@ -127,6 +127,11 @@ export function Callout({
         role="note"
         aria-labelledby={id}
         data-variant="frontiere"
+        /* Repère de test : la règle du 27/09/2026 (deux colonnes seulement si chaque ligne nomme
+           son relais) n'était observable que par les classes. Les parcours exigeaient l'en-tête
+           des colonnes sur une page où toutes les lignes n'ont pas de relais, donc à tort
+           (docs/AUDIT_GLOBAL.md §10). */
+        data-colonnes={twoColumns ? "deux" : "une"}
         className={cn(
           "callout-frontiere rounded-block border-l-[3px] px-5 py-5 sm:px-8 sm:py-7",
           config.box,

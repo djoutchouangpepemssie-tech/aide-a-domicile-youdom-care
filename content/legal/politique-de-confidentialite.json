@@ -71,7 +71,7 @@
       {
         "libelle": "Candidature",
         "href": "/recrutement/postuler/",
-        "donnees": "Prénom, nom, téléphone, e-mail, département et commune, disponibilités, un message, votre CV (PDF ou DOCX, 5 Mo au plus) et l'offre visée. Aucune information de santé n'est demandée.",
+        "donnees": "Prénom, nom, téléphone, e-mail, département et commune, disponibilités, un message, votre CV (PDF ou DOCX, 4 Mo au plus) et l'offre visée. Aucune information de santé n'est demandée.",
         "finalite": "Étudier votre candidature et vous recontacter.",
         "base_legale": "Mesures prises à votre demande avant un éventuel contrat de travail (article 6.1.b), avec votre accord pour l'étude de la candidature."
       },

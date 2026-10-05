@@ -2,3 +2,15 @@ allowBuilds:
   esbuild: true
   sharp: false
   unrs-resolver: false
+
+# Dépendances transitives de `@lhci/cli` (outillage de développement seulement, jamais exécuté par
+# le site) remontées par `pnpm audit`. Seules les corrections disponibles dans la même version
+# majeure sont forcées : `tmp` (traversée de répertoire, GHSA-ph9p-34f9-6g65) et `basic-ftp`
+# (déni de service). `extract-zip` et `braces` n'ont aucune version corrigée publiée, et `uuid`
+# exigerait un saut de la 8 à la 11 dans `@lhci/cli` : voir DC.2.
+# Attention : après une modification ici, `pnpm install` seul répond « Already up to date » sans
+# rien appliquer ; il faut `pnpm install --no-frozen-lockfile` jusqu'à voir la section `overrides`
+# dans pnpm-lock.yaml (DC.2).
+overrides:
+  tmp: ^0.2.7
+  basic-ftp: ^6.2.2

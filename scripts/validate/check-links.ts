@@ -88,11 +88,23 @@ export function extractSourceUrls(raw: string, isJson: boolean): string[] {
 }
 
 export interface ExternalReport {
-  /** Réponses 4xx/5xx : la source n'existe plus à cette adresse. */
+  /** 404 et 410 : la source n'existe plus à cette adresse, le lien est à corriger. */
   errors: string[];
-  /** Connexion refusée ou délai dépassé : injoignable depuis ce poste, à vérifier à la main. */
+  /**
+   * Adresses à vérifier à la main sans que le contrôle échoue : connexion refusée, délai dépassé,
+   * et réponses qui disent « filtré » plutôt que « disparu » (401, 403, 429, 5xx).
+   */
   warnings: string[];
 }
+
+/**
+ * Codes de réponse qui prouvent la disparition d'une page. Tout le reste (401, 403, 429, 5xx) est
+ * un refus de nous répondre, pas un lien mort : plusieurs sources publiques (service-public.gouv.fr,
+ * santepubliquefrance.fr, pour-les-personnes-agees.gouv.fr) filtrent les agents non-navigateurs et
+ * répondent 403 à ce contrôle alors que leurs pages sont en ligne. Les traiter en erreur rendrait
+ * la CI rouge au hasard de l'adresse du poste qui l'exécute.
+ */
+const goneStatuses = new Set([404, 410]);
 
 /** Ouvre chaque adresse une fois (GET, 10 s, redirections suivies). */
 export async function checkExternal(
@@ -116,7 +128,13 @@ export async function checkExternal(
           headers: { "user-agent": "Mozilla/5.0 (compatible; YoudomCare-check-links/1.0)" },
           signal: AbortSignal.timeout(10_000),
         });
-        if (response.status >= 400) failures.push(`${url} → HTTP ${response.status}`);
+        if (goneStatuses.has(response.status)) {
+          failures.push(`${url} → HTTP ${response.status}`);
+        } else if (response.status >= 400) {
+          unreachable.push(
+            `${url} → HTTP ${response.status} (refus de répondre, pas une page disparue), à vérifier à la main`,
+          );
+        }
       } catch (error) {
         const cause = error instanceof Error && error.cause instanceof Error ? error.cause : null;
         const reason = cause?.message ?? (error instanceof Error ? error.name : "erreur");

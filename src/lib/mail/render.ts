@@ -29,6 +29,19 @@ export interface RenderContext {
   agencies: Record<string, string>;
 }
 
+/**
+ * Objet d'e-mail assaini : un retour chariot dans un champ libre (le nom d'une commune, par
+ * exemple) terminerait l'en-tête `Subject` et laisserait injecter les suivants. `nodemailer`
+ * neutralise déjà le cas, mais la garantie ne doit pas dépendre d'une dépendance : les sauts de
+ * ligne et les caractères de commande deviennent une espace, les espaces sont repliées.
+ */
+export function sanitizeSubject(value: string): string {
+  return value
+    .replace(/[\u0000-\u001f\u007f]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function escapeHtml(value: string): string {
   return value
     .replaceAll("&", "&amp;")
@@ -149,12 +162,13 @@ export function teamSubject(lead: LeadPayload, ctx: RenderContext): string {
   const t = ctx.emails.equipe;
   const urgency = ctx.interfaceTexts.planning.debuts[lead.urgence];
   const form = t.formulaires[lead.form];
-  return lead.commune
+  const subject = lead.commune
     ? t.objet
         .replace("{formulaire}", form)
         .replace("{commune}", lead.commune.nom)
         .replace("{urgence}", urgency)
     : t.objet_sans_commune.replace("{formulaire}", form).replace("{urgence}", urgency);
+  return sanitizeSubject(subject);
 }
 
 export function renderTeamEmail(lead: LeadPayload, ctx: RenderContext): RenderedMail {

@@ -3,16 +3,23 @@ import { idfDepartments } from "@/lib/lead/forms";
 import { normalizeFrenchPhone } from "@/lib/lead/schema";
 
 /*
- * Candidature (docs/05 §2 : « CV en pièce jointe, 5 Mo au plus, PDF ou DOCX », P8.2). Schéma
+ * Candidature (docs/05 §2 : « CV en pièce jointe, 4 Mo au plus, PDF ou DOCX », P8.2). Schéma
  * partagé par le formulaire /recrutement/postuler/ et la route api/candidature, en `zod/mini`
  * comme le LeadPayload (D-022). Aucune donnée de santé n'est demandée ; le consentement porte sur
  * l'étude de la candidature (RGPD) et doit être coché. Le fichier est contrôlé à part : taille,
  * type MIME, extension et signature (les premiers octets), pour refuser un fichier renommé.
  */
 
-export const CV_MAX_BYTES = 5 * 1024 * 1024;
-/** Corps multipart accepté par la route : le CV plus les champs, avec une marge. */
-export const CANDIDATURE_MAX_BODY_BYTES = 6 * 1024 * 1024;
+/*
+ * Plafond du CV : 4 Mo. La limite n'est pas un choix de confort mais une contrainte de
+ * l'hébergeur — une fonction serveur Vercel refuse un corps de requête au-delà de 4,5 Mo, et le
+ * refus vient de la plateforme, avant la route : un CV plus lourd faisait perdre sa saisie au
+ * candidat sans message compréhensible (docs/AUDIT_GLOBAL.md, S-5). Le corps multipart accepté
+ * (CV + champs) reste donc sous 4,5 Mo.
+ */
+export const CV_MAX_BYTES = 4 * 1024 * 1024;
+/** Corps multipart accepté par la route : le CV plus les champs, sous la limite de l'hébergeur. */
+export const CANDIDATURE_MAX_BODY_BYTES = 4 * 1024 * 1024 + 384 * 1024;
 export const CANDIDATURE_MAX_MESSAGE = 600;
 export const CANDIDATURE_CONSENT_VERSION = "2026-09";
 

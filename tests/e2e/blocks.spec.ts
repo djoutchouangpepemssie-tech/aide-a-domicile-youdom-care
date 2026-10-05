@@ -37,8 +37,12 @@ test.describe("Blocs de contenu (P1.9b)", () => {
     const situation = page.locator(".situation-card").first();
     await expect(situation.getByRole("link")).toHaveCount(1);
     await expect(situation.getByText("« Un diagnostic vient de tomber »")).toBeVisible();
-    const aidLink = page.getByRole("link", { name: /impots\.gouv\.fr/ });
-    await expect(aidLink).toHaveAttribute("rel", "noopener noreferrer");
+    // Depuis le 27/09/2026 (commit 97e8051, demande d'Arcel), la carte d'aide n'envoie plus vers
+    // un service public : le nom de la source reste affiché, en texte, et n'est plus un lien.
+    // L'attente d'un lien `rel="noopener noreferrer"` est restée en place et faisait échouer ce
+    // parcours depuis (docs/AUDIT_GLOBAL.md §9).
+    await expect(page.getByText("impots.gouv.fr")).toBeVisible();
+    await expect(page.getByRole("link", { name: /impots\.gouv\.fr/ })).toHaveCount(0);
     await expect(page.locator(".stage-cards li")).toHaveCount(3);
   });
 });

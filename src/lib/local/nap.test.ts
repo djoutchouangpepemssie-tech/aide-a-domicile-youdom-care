@@ -21,6 +21,11 @@ describe("téléphones", () => {
     expect(normalizePhone("0033184801703")).toBe("0184801703");
     expect(normalizePhone("918 366 600 00016")).toBeNull();
     expect(normalizePhone("12 34")).toBeNull();
+    // Numéros courts des ressources publiques : de vrais numéros (docs/AUDIT_GLOBAL.md, Q-3).
+    expect(normalizePhone("3994")).toBe("3994");
+    expect(normalizePhone("39 75")).toBe("3975");
+    expect(normalizePhone("115")).toBe("115");
+    expect(normalizePhone("116 117")).toBe("116117");
   });
 
   it("relève les numéros du texte et des liens tel:, dédoublonnés", () => {

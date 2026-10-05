@@ -148,12 +148,13 @@ test("le navigateur refuse un fichier renommé, un fichier trop lourd, et exige 
   await form.getByRole("button", { name: "J'envoie ma candidature" }).click();
   await expect(form.getByRole("alert")).toContainText("Ce format n'est pas accepté");
 
-  const heavy = Buffer.concat([PDF, Buffer.alloc(5 * 1024 * 1024)]);
+  // Plafond aligné sur la limite de corps de requête de l'hébergeur (D-051) : 4 Mo.
+  const heavy = Buffer.concat([PDF, Buffer.alloc(4 * 1024 * 1024)]);
   await form
     .getByLabel("Votre CV")
     .setInputFiles({ name: "cv.pdf", mimeType: "application/pdf", buffer: heavy });
   await form.getByRole("button", { name: "J'envoie ma candidature" }).click();
-  await expect(form.getByRole("alert")).toContainText("Ce fichier dépasse 5 Mo");
+  await expect(form.getByRole("alert")).toContainText("Ce fichier dépasse 4 Mo");
   await expect(form.getByLabel("Votre prénom")).toHaveValue("Claire");
   await expectNoSeriousAxeViolations(page);
 });

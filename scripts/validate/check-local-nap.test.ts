@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { loadLocalPages } from "./check-local-facts";
 import {
   agencyIdOf,
+  auditCommuneAgencies,
   auditNapData,
   auditPageNap,
   loadNapConfig,
@@ -108,6 +109,36 @@ describe("check-local-nap", () => {
     expect(report.warnings).toEqual([
       "data/local/92062.json : facts[0].telephone « 12 34 » n'est pas un numéro français",
     ]);
+  });
+
+  it("compte les communes qui pointent vers une agence absente de la configuration", async () => {
+    // Le cas réel du 05/10/2026 : 1120 communes citaient encore quatre agences retirées
+    // (docs/AUDIT_GLOBAL.md §9, D-054).
+    const { config } = await scan(conforme);
+    const report = auditCommuneAgencies(
+      [
+        { code: "92062", nom: "Puteaux", agence: "puteaux" },
+        { code: "94081", nom: "Vitry-sur-Seine", agence: "vitry-sur-seine" },
+        { code: "77291", nom: "Serris", agence: "serris" },
+        { code: "77258", nom: "Montévrain", agence: "serris" },
+        { code: "75101", nom: "Paris 1er", agence: null },
+      ],
+      config,
+    );
+    expect(report.errors).toEqual([
+      "data/idf-communes.json : 2 commune(s) pointent vers l'agence « serris », absente de site.config.json (relancez `pnpm data:communes`)",
+      "data/idf-communes.json : 1 commune(s) pointent vers l'agence « vitry-sur-seine », absente de site.config.json (relancez `pnpm data:communes`)",
+    ]);
+    expect(report.warnings).toEqual([]);
+  });
+
+  it("ne signale rien quand toutes les agences citées existent", async () => {
+    const { config } = await scan(conforme);
+    const report = auditCommuneAgencies(
+      [{ code: "92062", nom: "Puteaux", agence: "puteaux" }],
+      config,
+    );
+    expect(report.errors).toEqual([]);
   });
 
   it("lit l'id d'agence dans la route", () => {

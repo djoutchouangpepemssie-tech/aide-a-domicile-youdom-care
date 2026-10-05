@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { siteIndexable } from "./indexable";
 
 test.describe("Configuration Next (P0.8)", () => {
   test("les en-têtes de sécurité de docs/07 §6 sont présents", async ({ request }) => {
@@ -15,13 +16,29 @@ test.describe("Configuration Next (P0.8)", () => {
     expect(headers["x-powered-by"]).toBeUndefined();
   });
 
-  test("le site est en noindex tant que SITE_INDEXABLE n'est pas « true »", async ({ request }) => {
+  /*
+   * D-035 a inversé la règle : l'indexation est ouverte par défaut et `SITE_INDEXABLE="false"`
+   * la referme. Le titre et l'attente de ce parcours ont gardé l'ancienne règle (« noindex tant
+   * que ce n'est pas "true" »), ce qui le rendait incompatible avec les parcours qui vérifient
+   * qu'une page est indexable : la suite ne pouvait être verte dans aucune des deux
+   * configurations (docs/AUDIT_GLOBAL.md §9). Les deux états sont désormais vérifiés.
+   */
+  test("l'indexation suit SITE_INDEXABLE : fermée à « false », ouverte sinon", async ({
+    request,
+  }) => {
     const home = await request.get("/");
-    expect(home.headers()["x-robots-tag"]).toBe("noindex, nofollow");
-
     const robots = await request.get("/robots.txt");
     expect(robots.status()).toBe(200);
-    expect(await robots.text()).toMatch(/User-Agent: \*\s+Disallow: \//i);
+    const body = await robots.text();
+
+    if (siteIndexable) {
+      expect(home.headers()["x-robots-tag"]).toBeUndefined();
+      expect(body).toMatch(/User-Agent: \*\s+Allow: \//i);
+      expect(body).toContain("Sitemap:");
+      return;
+    }
+    expect(home.headers()["x-robots-tag"]).toBe("noindex, nofollow");
+    expect(body).toMatch(/User-Agent: \*\s+Disallow: \//i);
   });
 
   test("les URL se terminent par une barre oblique", async ({ request }) => {

@@ -71,7 +71,17 @@ Seuil bloquant : 0 violation axe « critique » ou « sérieuse » sur les pages
 
 ## 6. Sécurité
 
-En-têtes : `Content-Security-Policy` stricte (aucun script en ligne non signé), `Strict-Transport-Security`, `X-Content-Type-Options`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` minimale, `frame-ancestors 'none'`. Route `api/lead` : méthode POST seulement, contrôle d'origine, validation Zod stricte, taille limitée, limitation de débit, aucune journalisation du contenu. Dépendances auditées (`pnpm audit`) à chaque fin de phase. Secrets uniquement en variables d'environnement.
+**En-têtes** (`next.config.ts`) : `Content-Security-Policy`, `Strict-Transport-Security` (deux ans, sous-domaines, `preload`), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY` doublé par `frame-ancestors 'none'`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` minimale, `Cross-Origin-Opener-Policy: same-origin`, et `poweredByHeader: false`.
+
+La CSP ferme tout sauf l'origine du site — aucun script, aucune feuille, aucune police, aucune image, aucune connexion de tiers — mais **autorise les scripts et les styles en ligne** (`script-src 'self' 'unsafe-inline'`). Ce n'est pas un oubli : le site est rendu statiquement, un *nonce* imposerait un rendu dynamique sur toutes les pages, et les scripts en ligne que Next produit varient d'une page à l'autre, ce qui exclut aussi une politique par empreintes (D-013). Le risque résiduel est tenu par ailleurs : aucun script tiers n'est chargé, aucun HTML fourni par un visiteur n'est rendu, et les trois seuls `dangerouslySetInnerHTML` du dépôt reçoivent soit une constante (`ComfortScript`, `MotionScript`), soit du JSON-LD passé par `serializeJsonLd`, qui échappe `<`, `>` et `&`.
+
+**Routes de première partie** (`api/lead`, `api/candidature`, `api/mesure`) : méthode POST seulement (les autres reçoivent 405 de Next), validation Zod stricte en objets fermés, corps **borné à la lecture** (`readBodyLimited` : la lecture s'arrête au plafond, sans dépendre de l'en-tête `content-length`, qu'une requête découpée en morceaux peut omettre), limitation de débit par adresse, aucune journalisation du contenu. Le CV d'une candidature est contrôlé par extension, type MIME **et** signature, et sa taille reste sous la limite de corps de requête de l'hébergeur (4 Mo pour le fichier, 4,5 Mo chez Vercel).
+
+Le **contrôle d'origine** de ces routes (`originAllowed`) relève de l'hygiène, pas de la sécurité : un navigateur ne peut pas falsifier `Origin`, donc il écarte un CSRF naïf — qui n'a de toute façon aucune cible ici, faute de session, de cookie et d'action authentifiée —, mais un client non-navigateur choisit librement ses en-têtes et le franchit sans effort. Il ne doit donc jamais servir d'argument pour alléger la limitation de débit ou l'anti-robots.
+
+**Limitation de débit** : cinq envois par adresse et par dix minutes. Le compteur actuel vit en mémoire du processus : sur des fonctions serveur sans état, il ne tient que par instance, et la clé provient d'un en-tête transmis par l'hébergeur. Il décourage un envoi répété à la main, pas un robot. Un compteur partagé ou une limitation au bord, et l'activation de Cloudflare Turnstile (`TURNSTILE_SECRET_KEY`), sont exigés avant l'ouverture des formulaires au public (`docs/PLAN.md`, DC.3).
+
+**Dépendances** auditées (`pnpm audit`) à chaque fin de phase et à chaque exécution de la CI. **Secrets** uniquement en variables d'environnement, jamais dans le dépôt.
 
 ## 7. Les contrôles (`pnpm validate`)
 

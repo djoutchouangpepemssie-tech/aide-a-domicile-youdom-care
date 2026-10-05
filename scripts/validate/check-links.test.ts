@@ -59,12 +59,16 @@ describe("check-links", () => {
     ]);
   });
 
-  it("ouvre chaque source externe une fois : 4xx/5xx en erreur, injoignable en avertissement", async () => {
+  it("ouvre chaque source externe une fois : 404 et 410 en erreur, refus et panne en avertissement", async () => {
     const calls: string[] = [];
     const fake = (async (input: string | URL | Request) => {
       const url = String(input);
       calls.push(url);
       if (url.includes("absente")) return new Response("", { status: 404 });
+      if (url.includes("partie")) return new Response("", { status: 410 });
+      if (url.includes("filtre")) return new Response("", { status: 403 });
+      if (url.includes("trop-vite")) return new Response("", { status: 429 });
+      if (url.includes("en-panne")) return new Response("", { status: 503 });
       if (url.includes("bloque"))
         throw new TypeError("fetch failed", { cause: new Error("ECONNRESET") });
       return new Response("ok", { status: 200 });
@@ -74,15 +78,27 @@ describe("check-links", () => {
         "https://ok.example/",
         "https://ok.example/",
         "https://absente.example/",
+        "https://partie.example/",
+        "https://filtre.example/",
+        "https://trop-vite.example/",
+        "https://en-panne.example/",
         "https://bloque.example/",
       ],
       fake,
       2,
     );
-    expect(calls).toHaveLength(3);
-    expect(report.errors).toEqual(["https://absente.example/ → HTTP 404"]);
+    expect(calls).toHaveLength(7);
+    expect(report.errors).toEqual([
+      "https://absente.example/ → HTTP 404",
+      "https://partie.example/ → HTTP 410",
+    ]);
+    // Un 403, un 429 ou un 5xx dit « je refuse de répondre », pas « la page n'existe plus » :
+    // plusieurs sources publiques filtrent les agents non-navigateurs (docs/AUDIT_GLOBAL.md, Q-2).
     expect(report.warnings).toEqual([
       "https://bloque.example/ → injoignable depuis ce poste (ECONNRESET), à vérifier à la main",
+      "https://en-panne.example/ → HTTP 503 (refus de répondre, pas une page disparue), à vérifier à la main",
+      "https://filtre.example/ → HTTP 403 (refus de répondre, pas une page disparue), à vérifier à la main",
+      "https://trop-vite.example/ → HTTP 429 (refus de répondre, pas une page disparue), à vérifier à la main",
     ]);
   });
 

@@ -27,7 +27,20 @@ const eslintConfig = defineConfig([
     rules: { "no-console": "off" },
   },
   prettier,
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "coverage/**"]),
+  // Sorties d'outils, jamais du code du projet : le rapport HTML de Playwright embarque son
+  // propre JavaScript minifié, qui faisait remonter des milliers d'erreurs dès qu'on lançait les
+  // parcours en local (la CI ne le voyait pas, son lint passe avant Playwright).
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "coverage/**",
+    "test-results/**",
+    "test-results-*/**",
+    "playwright-report/**",
+    ".lighthouseci/**",
+  ]),
 ]);
 
 export default eslintConfig;

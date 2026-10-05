@@ -34,6 +34,16 @@ export interface RateLimiter {
   allow(key: string, now: number): boolean;
 }
 
+/**
+ * Compteur glissant par clé, **en mémoire du processus**.
+ *
+ * Limite à connaître avant de s'y fier : sur des fonctions serveur sans état, chaque instance a
+ * son propre compteur et les instances se multiplient avec la charge ; la clé est de plus
+ * l'adresse transmise par l'hébergeur, donc un en-tête. Ce compteur décourage un envoi répété à
+ * la main ; il n'arrête pas un robot. Un compteur partagé ou une limitation au bord, et
+ * l'activation de Turnstile, restent nécessaires avant l'ouverture des formulaires au public
+ * (docs/07 §6, docs/PLAN.md DC.3).
+ */
 export function createRateLimiter(max = 5, windowMs = 10 * 60 * 1000): RateLimiter {
   const hits = new Map<string, number[]>();
   return {

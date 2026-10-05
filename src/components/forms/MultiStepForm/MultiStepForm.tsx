@@ -275,10 +275,16 @@ export function MultiStepForm<T>({
           className="rounded-card border-2 border-danger bg-danger-bg p-4"
         >
           <p className="m-0 font-bold">{texts.erreurs_titre}</p>
+          {/* `min-h-11` sur chaque lien : cible de 44 px de WCAG 2.5.8. Les liens du résumé
+              mesuraient 22 px de haut, et c'est précisément ici qu'une personne qui vient
+              d'échouer à remplir le formulaire doit viser juste du premier coup
+              (docs/AUDIT_GLOBAL.md §9, DP.4). */}
           <ul className="m-0 mt-2 list-disc pl-5">
             {errorEntries.map(([field, message]) => (
               <li key={field} className="max-w-none">
-                <a href={`#${fieldId(field)}`}>{message}</a>
+                <a href={`#${fieldId(field)}`} className="inline-flex min-h-11 items-center">
+                  {message}
+                </a>
               </li>
             ))}
           </ul>

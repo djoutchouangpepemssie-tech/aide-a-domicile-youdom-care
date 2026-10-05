@@ -1,5 +1,5 @@
 import type { EmailTexts, InterfaceTexts } from "@/content/schemas";
-import { escapeHtml, type RenderedMail } from "@/lib/mail/render";
+import { escapeHtml, sanitizeSubject, type RenderedMail } from "@/lib/mail/render";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { formatFileSize, type CandidaturePayload } from "./schema";
 
@@ -39,7 +39,7 @@ export function candidatureSubject(
   ctx: CandidatureRenderContext,
 ): string {
   const departement = ctx.departements[candidature.departement] ?? candidature.departement;
-  return ctx.emails.candidature.objet.replace("{departement}", departement);
+  return sanitizeSubject(ctx.emails.candidature.objet.replace("{departement}", departement));
 }
 
 export function renderCandidatureTeamEmail(

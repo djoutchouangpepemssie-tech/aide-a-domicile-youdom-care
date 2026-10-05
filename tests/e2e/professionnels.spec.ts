@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import siteConfig from "../../content/site.config.json";
 import { expectNoSeriousAxeViolations } from "./axe";
 
 /*
@@ -34,8 +35,11 @@ test.describe("Professionnels (P8.1)", () => {
   test("zones, services et retour sans chiffre inventé", async ({ page }) => {
     await page.goto("/professionnels/");
     const zones = page.getByRole("region", { name: "Où nous intervenons" });
+    // Les deux nombres viennent de la configuration : c'est précisément ce que ce parcours
+    // vérifie (« sans chiffre inventé »). Les coder en dur les avait rendus faux au passage de
+    // six à deux agences, le 27/09/2026 (docs/AUDIT_GLOBAL.md §9).
     await expect(zones).toContainText(
-      "Dans les 8 départements d'Île-de-France, Paris compris, depuis nos 6 agences.",
+      `Dans les ${siteConfig.zones.length} départements d'Île-de-France, Paris compris, depuis nos ${siteConfig.agences.length} agences.`,
     );
     await expect(zones.getByRole("link", { name: "Youdom Care Hauts-de-Seine" })).toHaveAttribute(
       "href",

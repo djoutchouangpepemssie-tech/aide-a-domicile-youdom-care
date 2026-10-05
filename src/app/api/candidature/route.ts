@@ -7,18 +7,18 @@ import {
   type CandidatureFile,
   type CandidatureServerEnv,
 } from "@/lib/candidature/server";
-import { clientIp, originAllowed } from "@/lib/http/request";
+import { clientIp, originAllowed, readBodyLimited } from "@/lib/http/request";
 import { createRateLimiter } from "@/lib/lead/server";
 import { mailerFromEnv } from "@/lib/mail/transport";
 import { formatFrenchPhone } from "@/lib/phone";
 
 /*
  * POST /api/candidature (docs/05 §2 et §6 à §8, docs/07 §6) : méthode POST seulement (les autres
- * reçoivent 405 de Next), contrôle d'origine, corps `multipart/form-data` de 6 Mo au plus (le CV
- * de 5 Mo et les champs), puis traitement par src/lib/candidature/server.ts : validation Zod,
- * contrôle du CV (taille, type MIME, extension, signature), anti-robots, e-mail à l'équipe avec
- * le CV joint, accusé de réception. Rien n'est stocké, rien du contenu n'est journalisé ; sans
- * messagerie configurée, 503.
+ * reçoivent 405 de Next), contrôle d'origine, corps `multipart/form-data` borné à la lecture (le
+ * CV de 4 Mo et les champs, sous la limite de 4,5 Mo de l'hébergeur), puis traitement par
+ * src/lib/candidature/server.ts : validation Zod, contrôle du CV (taille, type MIME, extension,
+ * signature), anti-robots, e-mail à l'équipe avec le CV joint, accusé de réception. Rien n'est
+ * stocké, rien du contenu n'est journalisé ; sans messagerie configurée, 503.
  */
 
 export const runtime = "nodejs";
@@ -55,15 +55,19 @@ export async function POST(request: Request) {
   if (!originAllowed(request)) {
     return NextResponse.json({ ok: false, erreur: "origine refusée" }, { status: 403 });
   }
-  const length = Number(request.headers.get("content-length") ?? "0");
-  if (length > CANDIDATURE_MAX_BODY_BYTES) return tooLarge();
-  if (!(request.headers.get("content-type") ?? "").startsWith("multipart/form-data")) {
-    return invalid();
-  }
+  const contentType = request.headers.get("content-type") ?? "";
+  if (!contentType.startsWith("multipart/form-data")) return invalid();
+
+  // Lecture bornée avant toute analyse : `request.formData()` décoderait tout le corps en mémoire,
+  // et le plafond `content-length` se contournait avec une requête découpée en morceaux.
+  const raw = await readBodyLimited(request, CANDIDATURE_MAX_BODY_BYTES);
+  if (raw === null) return tooLarge();
 
   let form: FormData;
   try {
-    form = await request.formData();
+    form = await new Response(new Blob([raw]), {
+      headers: { "content-type": contentType },
+    }).formData();
   } catch {
     return invalid();
   }

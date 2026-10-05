@@ -45,12 +45,26 @@ const phonePattern =
 
 const telHrefPattern = /href=["']tel:([^"']+)["']/gi;
 
-/** Dix chiffres nationaux (`0184801703`) ; null si ce n'est pas un numéro français. */
+/**
+ * Numéro court français : secours et services sociaux (115, 119…), numéros à quatre chiffres
+ * (3975 la Ville de Paris, 3994 le Val-de-Marne), services d'intérêt général à six chiffres
+ * (116 117, 118 712). Les ressources publiques des pages locales en citent (docs/AUDIT_GLOBAL.md,
+ * Q-3) : ce sont de vrais numéros, pas des données douteuses. `phonePattern` ne les relève pas
+ * dans le texte visible — ils sont trop proches d'un nombre quelconque — mais un lien `tel:` ou
+ * un champ `telephone` de donnée doit être reconnu.
+ */
+const shortNumberPattern = /^(?:1\d{2}|10\d{2}|3\d{3}|11[68]\d{3})$/;
+
+/**
+ * Dix chiffres nationaux (`0184801703`), ou un numéro court tel quel (`3994`) ; null si ce n'est
+ * pas un numéro français.
+ */
 export function normalizePhone(display: string): string | null {
   const digits = display.replace(/\D/g, "");
   if (digits.length === 10 && digits.startsWith("0")) return digits;
   if (digits.length === 11 && digits.startsWith("33")) return `0${digits.slice(2)}`;
   if (digits.length === 13 && digits.startsWith("0033")) return `0${digits.slice(4)}`;
+  if (shortNumberPattern.test(digits)) return digits;
   return null;
 }
 

@@ -42,10 +42,11 @@ test.describe("Lexique (P7.2)", () => {
     await expect(page.locator("[data-definition]")).toContainText("L'APA est une aide");
     await expect(page.getByText(/Définition mise à jour le \d+ \w+ 2026/)).toBeVisible();
     const official = page.getByRole("region", { name: "Le texte officiel" });
-    await expect(official.getByRole("link", { name: /service-public/ })).toHaveAttribute(
-      "href",
-      /service-public\.gouv\.fr/,
-    );
+    // Depuis le 27/09/2026 (demande d'Arcel), le site n'envoie plus vers un service public : la
+    // source est nommée, datée, mais n'est plus un lien. L'attente d'un `href` est restée en place
+    // et faisait échouer ce parcours depuis (docs/AUDIT_GLOBAL.md §9).
+    await expect(official).toContainText("service-public.gouv.fr");
+    await expect(official.getByRole("link", { name: /service-public/ })).toHaveCount(0);
     await expect(official).toContainText(/consultée le \d+ \w+ 2026/);
     await expect(
       page.getByRole("navigation", { name: "Sur ce site" }).getByRole("link"),

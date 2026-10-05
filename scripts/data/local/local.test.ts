@@ -247,9 +247,26 @@ describe("faits", () => {
 
   it("met en forme les téléphones français et garde les autres tels quels", () => {
     expect(formatPhone("+33146929595")).toBe("01 46 92 95 95");
+    // Indicatif international sans « + » ni « 00 », tel que certaines sources l'écrivent.
+    expect(formatPhone("331 45 77 63 40")).toBe("01 45 77 63 40");
+    expect(formatPhone("0033146929595")).toBe("01 46 92 95 95");
     expect(formatPhone("0146929292")).toBe("01 46 92 92 92");
     expect(formatPhone("0 809 361 212")).toBe("0 809 361 212");
     expect(formatPhone("")).toBeUndefined();
+    // Numéros courts : conservés tels quels, sans mise en paires.
+    expect(formatPhone("3994")).toBe("3994");
+    expect(formatPhone("39 75")).toBe("3975");
+    expect(formatPhone("115")).toBe("115");
+    expect(formatPhone("116 117")).toBe("116117");
+    // Prose mêlée au numéro dans la source ouverte : le premier numéro reconnu est conservé.
+    expect(formatPhone("01 45 54 04 80 Tél selon le tableau CASVP 01 45 54 85 93")).toBe(
+      "01 45 54 04 80",
+    );
+    expect(formatPhone("01 41 23 86 30 (ou 86 31)")).toBe("01 41 23 86 30");
+    expect(formatPhone("01 42 03 53 70 selon tableau 01 42 03 53 71")).toBe("01 42 03 53 70");
+    // Rien d'exploitable : champ vide plutôt qu'une phrase présentée comme un numéro.
+    expect(formatPhone("0 39 75")).toBeUndefined();
+    expect(formatPhone("sur rendez-vous")).toBeUndefined();
   });
 
   it("lit les arrondissements cités dans un libellé parisien", () => {

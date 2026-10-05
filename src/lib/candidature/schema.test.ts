@@ -12,7 +12,7 @@ import {
 const pdfHead = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
 const zipHead = new Uint8Array([0x50, 0x4b, 0x03, 0x04]);
 
-describe("contrôle du CV (docs/05 §2 : PDF ou DOCX, 5 Mo au plus)", () => {
+describe("contrôle du CV (docs/05 §2 : PDF ou DOCX, 4 Mo au plus)", () => {
   it("accepte un PDF et un DOCX cohérents (nom, type, signature)", () => {
     expect(
       checkCvFile({ name: "CV Claire.pdf", type: "application/pdf", size: 120_000, head: pdfHead }),
@@ -39,7 +39,7 @@ describe("contrôle du CV (docs/05 §2 : PDF ou DOCX, 5 Mo au plus)", () => {
     ).toBe("manquant");
   });
 
-  it("refuse un fichier de plus de 5 Mo", () => {
+  it("refuse un fichier de plus de 4 Mo", () => {
     const check = checkCvFile({
       name: "cv.pdf",
       type: "application/pdf",

@@ -38,7 +38,11 @@ test.describe("SEO technique", () => {
     expect(body).toContain("<sitemapindex");
     expect(body).toContain(`<loc>${SITE}/sitemap/pages.xml</loc>`);
     expect(body).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
-    expect(body).not.toContain("/sitemap/magazine.xml");
+    // Le segment du magazine n'existait pas quand ce parcours a été écrit : il était attendu
+    // absent. Depuis la phase 7, « Le Fil » a des articles, donc le segment est peuplé et doit
+    // figurer dans l'index. Ce qui compte est l'invariant « aucun segment vide »
+    // (docs/AUDIT_GLOBAL.md §9).
+    expect(body).toContain(`<loc>${SITE}/sitemap/magazine.xml</loc>`);
   });
 
   test("le segment pages liste les adresses indexables, absolues, avec barre finale", async ({
