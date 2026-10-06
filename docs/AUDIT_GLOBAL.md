@@ -365,18 +365,36 @@ handicap et de leurs aidants, c'est un jalon et pas une formalité.
 
 ## 7. Performance
 
-Dette ouverte et déjà instruite dans `docs/PLAN.md` (DP.2), que je ne peux pas re-mesurer ici :
-après la refonte visuelle D-032 et le correctif `content-visibility: auto`, **deux à trois pages
-témoins** restent hors budget, avec un temps de blocage total de 166 à 326 ms pour une tolérance
-de 200 ms, et le budget de script de l'accueil à 167 Ko pour 165 Ko tolérés. Le poste dominant est
-le calcul des styles et de la mise en page (603 ms de fil principal sur une page locale), pas le
-JavaScript.
+Dette ouverte et déjà instruite dans `docs/PLAN.md` (DP.2), que je ne peux pas re-mesurer ici
+(`pnpm lhci` demande un réseau sortant ouvert). Les derniers chiffres consignés — **deux à trois
+pages témoins** hors budget, temps de blocage de 166 à 326 ms pour 200 ms tolérés, budget de script
+de l'accueil à 167 Ko pour 165 — **ne décrivent plus le site d'aujourd'hui** : les deux atténuations
+qui les ont produits ont été défaites depuis : `content-visibility: auto` pour un effet de bord sur
+la hauteur du document (D-045, 27/09), et la réduction du flou à la demande d'Arcel (D-046, 28/09). La première chose à faire sur
+cette dette est donc une **mesure neuve**, avant de choisir un levier sur des nombres périmés.
 
-Les trois pistes identifiées sont les bonnes, dans cet ordre : réduire les surfaces à
-`backdrop-filter` (**41** sur une seule page locale, dont 39 posées sur un fond uni où le flou
-n'apporte rien de visible), alléger les sélecteurs arbitraires de compaction, vérifier le coût du
-grain des scènes au premier rendu. La consigne « ne pas relever les seuils pour faire passer le
-contrôle » est la bonne et doit tenir.
+**La première piste est déjà close, et pas par oubli.** Elle a été tentée : D-041 (27/09) a réservé
+le flou d'arrière-plan aux deux seules surfaces sous lesquelles la page défile, et le gain était
+réel et mesuré — l'article et la page d'agence sortaient de l'échec, la page locale passait de
+0,88–0,92 à 0,94–0,97, son temps de blocage de 292–432 ms à 146–254 ms. **Le lendemain, D-046 l'a
+défaite** : Arcel a redemandé deux fois l'effet de verre, parce que sans flou une carte claire sur
+fond coloré ressemble à une carte ordinaire et que l'effet commandé ne se voit pas. `.glass` et
+`.glass-quiet` ont retrouvé leur `backdrop-filter` — vérifié dans `src/styles/glass.css`, les
+quatre classes de verre le déclarent aujourd'hui.
+
+Le gain de performance a donc été **rendu volontairement, par une décision de commanditaire**.
+Reproposer cette piste, c'est rouvrir un arbitrage déjà tranché. Il faut le dire comme tel à Arcel
+plutôt que le présenter comme une optimisation oubliée : l'effet qu'il veut coûte ce qu'il coûte, et
+le budget de performance ne peut pas être tenu **et** l'effet rendu pleinement visible.
+
+**Ce qui reste comme levier**, et que D-041 a mis au jour en mesurant sans le flou : l'évaluation
+des scripts, **608 ms sur l'accueil dont 539 ms pour le bundle principal**, c'est-à-dire
+l'hydratation de React. La suite se joue donc sur le nombre d'îles clientes de l'accueil
+(fournisseur de parcours, sélecteur, révélations, compteurs, inclinaisons, recherche de commune,
+planificateur, mesure, mode confort, barre mobile), et non plus sur le CSS. Restent aussi, de
+moindre portée : les sélecteurs arbitraires de compaction, et le grain des scènes au premier rendu.
+
+La consigne « ne pas relever les seuils pour faire passer le contrôle » est la bonne et doit tenir.
 
 ---
 
@@ -404,7 +422,8 @@ contrôle » est la bonne et doit tenir.
     d'origine (S-3) ; retirer de DC.2 la mention d'`overrides` inexistants (S-8).
 12. Refus explicite des requêtes sans `content-length` sur `/api/candidature` (S-4).
 13. Nettoyer les 25 téléphones non normalisés des fiches locales (Q-3).
-14. Reprendre DP.2 : les 39 `backdrop-filter` inutiles d'abord (§7).
+14. Reprendre DP.2 par le JavaScript de l'accueil, **pas** par le CSS : la piste du flou a été
+    tentée, mesurée, puis défaite à la demande d'Arcel (§7).
 
 ---
 
@@ -445,9 +464,10 @@ suite Playwright exécutée en entier.
   masquage fonctionne, il manque les faits.
 - **§6 accessibilité** : R-5 (balisage des PDF) et R-6 (passe NVDA/VoiceOver), plus l'audit tiers
   des 106 critères. Demande un lecteur d'écran réel et un auditeur, pas un correctif.
-- **§7 performance (DP.2)** : chantier à part entière — 39 surfaces `backdrop-filter` inutiles,
-  sélecteurs de compaction, grain des scènes. Le mêler aux correctifs de sécurité aurait brouillé
-  les deux ; `pnpm lhci` ne tourne pas ici pour mesurer l'effet.
+- **§7 performance (DP.2)** : chantier à part entière, et dont la première piste est close par une
+  décision d'Arcel, non par négligence — reste l'hydratation de React sur l'accueil (539 ms). Le
+  mêler aux correctifs de sécurité aurait brouillé les deux ; `pnpm lhci` ne tourne pas ici pour
+  mesurer l'effet.
 - **Avertissements de maillage** : `/magazine/page/2/` et `/plan-du-site/` à un lien entrant
   contextuel pour trois conseillés. Laissés tels quels : ajouter des liens pour satisfaire un
   compteur, c'est exactement le remplissage que le projet s'interdit. Le minimum est « conseillé »,
@@ -534,8 +554,9 @@ remplir le formulaire doit viser juste du premier coup.
 
 - **DP.3 — l'action du hero passe sous la ligne de flottaison** sur cinq gabarits, à 320×568 et à
   390×844 (551 px pour 508 disponibles sur l'accueil ; jusqu'à 988 px pour 784). Le hero était
-  conçu pour montrer le titre **et** l'action sans défiler ; la refonte D-032 l'a épaissi. C'est le
-  même poste de coût que DP.2, et le design reste à réviser par Arcel (`docs/02 §2`, §4, §5).
+  conçu pour montrer le titre **et** l'action sans défiler ; la refonte D-032 l'a épaissi. Même
+  origine que DP.2 — l'épaisseur visuelle voulue par le commanditaire — et le design reste à
+  réviser par Arcel (`docs/02 §2`, §4, §5).
 - **DP.4 — le contrat du mouvement.** Deux conflits mesurés, pas un écart de navigateur comme je
   l'avais d'abord supposé. 1) `motion.css` donne aux blocs `.m-reveal` 360 ms (`--duration-slow`)
   plus 60 ms par rang (`--m-stagger`) : le total franchit le plafond de 600 ms dès le **cinquième**
