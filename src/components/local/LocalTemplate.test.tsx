@@ -108,8 +108,27 @@ describe("LocalTemplate", () => {
     expect(ids).toEqual(["reperes", "aides"]);
     // Repères : démographie (population + parts) et faits « vie locale ».
     const reperes = document.querySelector('[data-local-facts="reperes"]');
-    expect(reperes).toHaveTextContent("Population (recensement 2022) : 45 210 habitants");
-    expect(reperes).toHaveTextContent("Part des 75 ans et plus : 8,4 %");
+    /*
+     * Un repère démographique mène par son **nombre**, l'intitulé vient ensuite (D-062) : la
+     * forme « intitulé : valeur » ne vaut plus que pour les faits dont l'information est un nom.
+     * On vérifie donc la présence des deux morceaux et leur ordre, plutôt qu'une chaîne collée —
+     * sinon le test interdirait toute mise en forme du chiffre.
+     */
+    const figures = [...(reperes?.querySelectorAll("[data-fact-figure]") ?? [])];
+    expect(figures.length).toBeGreaterThanOrEqual(2);
+    const population = figures.find((row) =>
+      row.textContent?.includes("Population (recensement 2022)"),
+    );
+    // Le séparateur de milliers est une espace **fine insécable** (U+202F), pas une espace
+    // ordinaire : échappée explicitement, sinon l'assertion dépend d'un caractère invisible.
+    const population_value = "45\u202f210 habitants";
+    expect(population?.textContent).toContain(population_value);
+    expect(population?.textContent?.indexOf(population_value)).toBeLessThan(
+      population?.textContent?.indexOf("Population (recensement 2022)") ?? -1,
+    );
+    expect(reperes).toHaveTextContent("Part des 75 ans et plus");
+    expect(reperes).toHaveTextContent("8,4 %");
+    // Un fait dont l'information est un nom garde la forme « intitulé : valeur ».
     expect(reperes).toHaveTextContent("Marché du centre : mardi et samedi matin");
     // 27/09/2026 : le bloc « ressources » n'existe plus ; les lieux ne sont plus annuaire.
     expect(document.querySelector('[data-local-facts="ressources"]')).toBeNull();

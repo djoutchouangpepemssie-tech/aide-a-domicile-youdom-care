@@ -577,3 +577,35 @@ l'ordre du texte, en liste compacte repliable sur plusieurs lignes.
 une classe utilitaire inexistante, et le texte serait simplement sorti sans style. Repéré en
 comptant les occurrences de chaque classe dans la feuille produite. **À faire chaque fois qu'on
 écrit une classe de design system de mémoire.**
+
+## D-062 — Les repères démographiques mènent par le nombre (09/10/2026)
+
+**Suite de D-060 et D-061.** Le bloc « Repères chiffrés » rendait chaque fait sous la forme
+`intitulé : valeur`, l'intitulé en gras coloré et la valeur en texte ordinaire. Pour un EHPAD ou un
+CCAS, c'est juste : l'information est le **nom**. Pour la démographie, c'est l'inverse —
+l'information est le **nombre**, et une page de chiffres se lisait comme une liste d'intitulés.
+
+**Décision.** Pour le seul type `demographie` : la valeur passe en tête, en grand et en semi-gras,
+l'intitulé dessous, la source en retrait. Et les repères démographiques se posent en **grille de
+deux colonnes** dès trois faits, y compris en mode serré — c'est précisément là qu'ils vivent.
+Les autres groupes gardent une colonne : leurs entrées sont des noms d'établissements, parfois
+longs, qui ne se comparent pas d'un coup d'œil.
+
+**Ce que je n'ai pas fait, et pourquoi.** L'idée première était des tuiles chiffrées au sens
+strict — un grand nombre isolé, son unité, son libellé. Impossible sans abîmer les données :
+`LocalFact.value` est du **texte libre** (« 44 198 habitants (Puteaux) », « 6,6 % de la population
+(75-89 ans : 5,7 % ; 90 ans ou plus : 0,9 %) ») et aucun champ numérique n'existe dans le schéma.
+En extraire un nombre par expression régulière finirait par afficher un chiffre faux sur une vraie
+commune. Pour de vraies tuiles, il faut que le pipeline produise une valeur numérique et son unité
+séparément — ce qui demande de le relancer, donc l'accès réseau aux sources ouvertes.
+
+**Pas de graphique.** Cinq repères démographiques ne sont pas une série : la forme juste est le
+chiffre lui-même, pas une courbe ni un histogramme. Les nombres gardent les formes
+proportionnelles de la police — l'alignement tabulaire ne sert qu'en colonne de nombres et fait
+paraître lâche un nombre isolé en grand corps.
+
+**Le test a été réécrit sur l'intention, pas sur la forme** : il vérifiait la chaîne collée
+« intitulé : valeur », ce qui interdisait toute mise en forme du chiffre. Il vérifie désormais que
+les deux morceaux sont présents **et dans le bon ordre**. Au passage, le séparateur de milliers est
+une espace fine insécable (U+202F) : échappée explicitement dans le test, comme le numéro de
+téléphone des e-mails — une assertion ne doit jamais dépendre d'un caractère invisible.

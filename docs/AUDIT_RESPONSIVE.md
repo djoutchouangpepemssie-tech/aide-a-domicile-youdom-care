@@ -12,18 +12,18 @@ aucune barre de défilement horizontale, aucun contenu hors écran.
 
 | Gabarit | Largeur | Dépasse de |
 | --- | --- | --- |
-| Accueil | 320 px | 41 px |
+| Accueil | 320 px | 38 px |
 | Accueil | 360 px | 153 px |
-| Accueil | 390 px | 35 px |
-| Service | 320 px | 70 px |
+| Accueil | 390 px | 33 px |
+| Service | 320 px | 67 px |
 | Service | 360 px | 176 px |
-| Service | 390 px | 103 px |
-| Service | 414 px | 34 px |
-| Pathologie | 320 px | 67 px |
-| Pathologie | 360 px | 151 px |
-| Pathologie | 390 px | 68 px |
+| Service | 390 px | 101 px |
+| Service | 414 px | 32 px |
+| Pathologie | 320 px | 69 px |
+| Pathologie | 360 px | 153 px |
+| Pathologie | 390 px | 70 px |
 | Article | 320 px | 40 px |
 | Article | 360 px | 144 px |
-| Article | 390 px | 58 px |
+| Article | 390 px | 57 px |
 | Article | 414 px | 19 px |
 

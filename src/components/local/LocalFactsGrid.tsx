@@ -24,7 +24,10 @@ export interface LocalFactsGridProps {
   id: string;
   /** Niveau des titres de groupe (3 sous un H2). */
   headingLevel?: HeadingLevel;
-  /** Une seule colonne, lignes serrées (repères de la zone éditoriale). */
+  /**
+   * Lignes serrées et marge intérieure réduite (repères de la zone éditoriale). Une seule
+   * colonne, **sauf** pour le groupe démographique : voir la grille de chiffres plus bas.
+   */
   compact?: boolean;
   className?: string;
 }
@@ -50,6 +53,34 @@ function FactRow({ fact, texts }: { fact: LocalFact; texts: LocalTexts["faits"] 
   const [before, after] = texts.source
     .split("{source}")
     .map((part) => fill(part, { date: formatFrenchDate(fact.collected_at) }));
+  /*
+   * Hiérarchie inversée pour les seuls repères démographiques (D-062). Partout ailleurs
+   * l'information est le **nom** — un EHPAD, un CCAS, une association — et l'étiquette porte donc
+   * l'emphase. Pour la démographie, l'information est le **nombre** : « 44 198 habitants »,
+   * « 12,7 % de la population ». L'étiquette en gras coloré et la valeur en texte ordinaire
+   * mettaient l'accent à l'envers, et une page de chiffres se lisait comme une liste d'intitulés.
+   *
+   * Les chiffres gardent les formes proportionnelles de la police (pas de `tabular-nums`) :
+   * l'alignement tabulaire n'a de sens qu'en colonne de nombres, et il fait paraître lâche un
+   * nombre isolé en grand corps.
+   *
+   * Aucune extraction de nombre n'est tentée : `value` est du texte libre et peut contenir une
+   * phrase entière. On change l'emphase, jamais le contenu.
+   */
+  const isFigure = fact.type === "demographie" && Boolean(fact.value);
+  if (isFigure) {
+    return (
+      <li className="max-w-none" data-fact-type={fact.type} data-fact-figure="">
+        <p className="m-0 text-h4 leading-tight font-semibold text-teal-900">{fact.value}</p>
+        <p className="m-0 mt-1 font-medium text-ink">{displayLabel(fact.label)}</p>
+        <p className="m-0 mt-1 text-small text-text-soft" data-fact-source>
+          {before}
+          {sourceLabel}
+          {after}
+        </p>
+      </li>
+    );
+  }
   return (
     <li className="max-w-none" data-fact-type={fact.type}>
       <p className="m-0 font-bold text-teal-900">
@@ -103,7 +134,24 @@ export function LocalFactsGrid({
           <Heading level={headingLevel} visual={4} id={`faits-${id}-${group.type}`}>
             {texts.types[group.type]}
           </Heading>
-          <ul className={cn("m-0 mt-3 grid list-none p-0", compact ? "gap-3" : "gap-4")}>
+          {/*
+            Les repères démographiques se posent en grille de chiffres : empilés sur une colonne,
+            cinq nombres se lisent comme une liste d'intitulés, pas comme un tableau de bord
+            (D-062). Les autres groupes gardent une colonne — leurs entrées sont des noms
+            d'établissements, parfois longs, qui ne se comparent pas d'un coup d'œil.
+          */}
+          <ul
+            className={cn(
+              "m-0 mt-3 grid list-none p-0",
+              compact ? "gap-3" : "gap-4",
+              // La grille de chiffres vaut aussi en mode serré : c'est précisément là que vivent
+              // les repères démographiques de la page. Le mode serré garde ses lignes rapprochées
+              // et sa marge intérieure réduite, il ne force plus une colonne unique pour eux.
+              group.type === "demographie" &&
+                group.facts.length > 2 &&
+                cn("sm:grid-cols-2 sm:gap-x-8", !compact && "xl:grid-cols-3"),
+            )}
+          >
             {group.facts.map((fact, index) => (
               <FactRow key={`${fact.label}-${index}`} fact={fact} texts={texts} />
             ))}

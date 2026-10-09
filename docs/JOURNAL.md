@@ -1030,3 +1030,24 @@ personne ne l'aurait remarqué avant de regarder la page de près.
 Repéré en comptant les occurrences de chaque classe dans la feuille de style produite par le build.
 C'est une vérification de cinq secondes qui mérite de devenir un réflexe : **toute classe de design
 system écrite de mémoire doit être comptée dans le CSS produit.**
+
+## Les chiffres des pages locales ressemblent enfin à des chiffres — 9 octobre 2026
+
+Suite du travail de design (D-062). Le bloc « Repères chiffrés » affichait `intitulé : valeur`,
+l'intitulé en gras coloré. Pour un EHPAD c'est juste — l'information est le nom. Pour la
+démographie, l'accent était à l'envers : « 44 198 habitants » passait après son étiquette. Les
+repères démographiques mènent maintenant par le nombre et se posent en deux colonnes.
+
+**Ce que j'ai renoncé à faire, et c'est le plus instructif.** Je voulais de vraies tuiles
+chiffrées — grand nombre, unité, libellé. En ouvrant les données : `value` est du texte libre,
+« 6,6 % de la population (75-89 ans : 5,7 % ; 90 ans ou plus : 0,9 %) ». Aucun champ numérique
+dans le schéma. En extraire un nombre par expression régulière aurait marché sur Puteaux et fini
+par afficher un chiffre faux sur une autre commune. J'ai arrêté là plutôt que de bricoler : de
+vraies tuiles demandent que le pipeline produise la valeur et l'unité séparément.
+
+**Et deux pièges déjà rencontrés, retrouvés le même jour.** Le test échouait sur une chaîne collée
+« intitulé : valeur » — une assertion écrite sur la forme, pas sur l'intention, qui interdisait
+toute mise en forme du chiffre. Réécrite : les deux morceaux présents, et dans le bon ordre. Puis
+elle a échoué de nouveau, parce que le séparateur de milliers de « 45 210 » est une espace **fine
+insécable**. Exactement le même caractère invisible que le numéro de téléphone des e-mails ce
+matin. Échappé explicitement cette fois, sans attendre.
