@@ -108,7 +108,17 @@
   --weight-figure: 560; /* chiffres importants en Fraunces 560 */
 
   --font-soft-h1: "SOFT" 50;
-  --measure: 66ch; /* longueur de ligne cible : 60 à 72 caractères */
+  /*
+   * Longueur de ligne cible : 60 à 72 caractères (docs/02 §3).
+   *
+   * La valeur était 66ch, par analogie directe avec la cible — mais `1ch` est la largeur du
+   * chiffre « 0 », et dans Atkinson Hyperlegible les chiffres sont nettement plus larges qu'une
+   * lettre moyenne. Mesuré le 09/10/2026 sur cinq paragraphes d'une page locale : 66ch rendait
+   * **81 caractères par ligne**, soit un cinquième au-dessus de la cible annoncée. 55ch ramène la
+   * ligne dans la fourchette. À revérifier si la police de texte change, le rapport entre `ch` et
+   * la largeur moyenne d'une lettre lui étant propre.
+   */
+  --measure: 55ch;
 
   /* ---- §4 Espaces, formes, profondeur ---- */
   --space-1: 0.25rem; /* 4 */

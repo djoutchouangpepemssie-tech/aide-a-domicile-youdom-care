@@ -972,3 +972,42 @@ pages locales à 360 px corrigées, écarts restants réduits de moitié à deux
 pas la version de Chromium que Playwright 1.63 attend. Contourné par une configuration jetable
 pointant le navigateur installé, le temps de vérifier `hero.spec.ts` : 21 parcours verts, 8 en
 échec, tous sur DP.3 — dont un à un pixel près.
+
+## Pages locales : les images, la mesure, et un faux procès — 9 octobre 2026
+
+Arcel a signalé quatre choses sur les pages locales. Vérifiées une par une, elles ne disaient pas
+toutes la même chose.
+
+**« Paris ne commence qu'au 8e » — un vrai défaut, mais pas celui qu'on croit.** Les vingt
+arrondissements existent et sont tous listés. Ils étaient simplement triés par ordre alphabétique
+du nom : « Paris 10e » passe avant « Paris 1er ». La liste affichait 10e, 11e … 19e, **1er**, 20e,
+2e, 3e … Le 1er en onzième position : n'importe qui croit qu'il en manque. Collation numérique,
+test de garantie, corrigé.
+
+**« Les images n'ont rien à voir avec l'aide à domicile » — juste** (D-059). C'étaient des pièces
+vides : balcon, table, fauteuil, banc. Remplacées par des scènes d'accompagnement déjà présentes
+dans le dépôt. La règle « aucun visage » des pages locales était plus stricte que ce que les
+crédits exigent réellement — ce qui est interdit, c'est de nommer ces personnes ou de les
+présenter comme salariées, pas de les montrer.
+
+**« Le contenu n'est pas original » — faux, et c'est important de le dire.** La page de Puteaux
+parle de l'agence quai de Dion-Bouton, de 44 198 habitants au recensement 2022, du Foyer-Logement
+Richard-Wallace et de ses 75 places, de l'EHPAD Résidence Voltaire, du Centre hospitalier Rives de
+Seine. C'est du contenu local, sourcé, écrit pour cette commune. Le reproche portait en réalité sur
+la **présentation**, et là il est fondé.
+
+**« Le design n'est pas pris au sérieux » — fondé, et mesurable** (D-060). 1 270 mots en sept
+sous-sections, posés à plat sur le fond de scène. Et une découverte en mesurant : le jeton
+`--measure` visait « 60 à 72 caractères » en commentaire et en rendait **81**, parce que `1ch`
+est la largeur du « 0 » et que les chiffres d'Atkinson Hyperlegible sont larges. Ramené à 70. Le
+jeton étant global, toutes les pages de texte long en profitent.
+
+**« Il manque des communes » — vrai, mais c'est une stratégie, pas un oubli.** 131 pages sur
+1 285 communes. `docs/04 §4` prévoit trois vagues, la deuxième (193 communes de plus de 20 000
+habitants) étant conditionnée à l'indexation de la première. Publier d'un coup des centaines de
+pages locales minces est le moyen le plus sûr de se faire déclasser.
+
+**Leçon de méthode, deux fois dans la même séance.** J'ai annoncé « 96 caractères par ligne » en
+mesurant le conteneur au lieu du paragraphe, puis « 86 » avec une heuristique de largeur moyenne.
+Le compte réel — caractères divisés par nombre de lignes rendues — donnait 81. Trois chiffres pour
+une seule grandeur, dont deux faux. Quand on peut compter, il faut compter.

@@ -498,3 +498,57 @@ décisions de commanditaire. Détaillées dans `docs/PLAN.md`, DP.3, avec une re
 premier débordement horizontal. Il mesure avec les sélecteurs et la règle de hauteur visible de
 `tests/e2e/hero.spec.ts` — la barre d'action fixe comprise — pour que ses chiffres et ceux des
 parcours parlent de la même chose. Aucune dépendance ajoutée : il utilise le Playwright déjà là.
+
+## D-059 — Les bannières des pages locales montrent l'accompagnement, plus des pièces vides (09/10/2026)
+
+**Constat d'Arcel** : « les images du hero n'ont rien à voir avec l'aide à domicile, elles sont
+toutes génériques ». Vérifié, et juste : les bannières locales tiraient de la photothèque
+d'ambiance (`docs/design/PHOTOS.md` §6), explicitement « sans personne ou presque ». Un balcon avec
+une chaise, une table avec du pain, un fauteuil, un banc. Des images d'illustration, pas de métier.
+
+**Décision.** Les bannières des pages locales prennent les scènes d'accompagnement de
+`public/images/heros/fonds/` : repas servi, visite, aide au lever, ménage. Cinq photos en rotation
+par code INSEE, pour que deux communes voisines diffèrent.
+
+**La règle « aucun visage » était plus stricte que nécessaire.** Ce qui est interdit, et qui le
+reste, c'est de *nommer* ces personnes ou de les *présenter* comme salariées ou clientes
+(`public/images/CREDITS.md`, brief D-024 §2), et de faire passer un lieu pour celui de la page.
+Les textes alternatifs restent donc descriptifs — « deux femmes assises », jamais « notre
+auxiliaire de vie » — et ne nomment aucune commune. Les pages services montrent des visages depuis
+l'origine, sous la même licence et la même réserve.
+
+**La page d'agence ne change pas** : elle garde l'entrée d'immeuble. Une photo de personnes y
+serait lue comme « voici vos intervenants à Puteaux », ce qu'aucune illustration libre de droit ne
+peut dire.
+
+**Réserve ouverte, consignée dans `CREDITS.md`** : ces douze fichiers ne venaient ni de Pexels ni
+d'Unsplash ; le projet les a enregistrés comme récupérés sur `youdom-care.com`, propriété d'Arcel.
+Leur licence d'origine n'est pas documentée. À produire avant l'ouverture au public, ou à
+remplacer par des photos de la photothèque libre de droit.
+
+## D-060 — La mesure de ligne dépassait sa propre cible d'un cinquième (09/10/2026)
+
+**Constat d'Arcel** : « le design des pages locales n'est pas pris au sérieux, c'est trop simple ».
+Mesuré plutôt que jugé, sur la page de Puteaux : la zone éditoriale fait **1 270 mots en sept
+sous-sections**, posées à même le fond de scène, sans surface ni repère.
+
+**Trois corrections, toutes mesurées.**
+
+1. **La mesure de ligne.** `--measure` valait `66ch`, par analogie directe avec la cible écrite en
+   commentaire (« 60 à 72 caractères »). Mais `1ch` est la largeur du chiffre « 0 », et dans
+   Atkinson Hyperlegible les chiffres sont bien plus larges qu'une lettre moyenne. Relevé sur cinq
+   paragraphes : **81 caractères par ligne**, un cinquième au-dessus de la cible. `55ch` ramène à
+   **70**. Le jeton étant global, la correction profite à toutes les pages de texte long — pages
+   services, aides, articles.
+2. **Une surface.** La zone éditoriale prend la carte blanche déjà employée par les autres blocs de
+   la page (même `rounded-card`, même liseré, même élévation) : le texte long repose sur une
+   surface et non sur la couleur de section.
+3. **Des repères.** Un filet au-dessus de chaque sous-titre, sauf le premier, rend les sept
+   sous-sections repérables au défilement sans ajouter de couleur.
+
+**Ce que ça ne règle pas, et qui reste à instruire.** Le contenu de ces pages est riche et
+réellement local (l'agence et sa rue, les chiffres Insee sourcés, les établissements de la
+commune) : le reproche portait sur la présentation, pas sur le texte. Une passe de design plus
+ambitieuse — chiffres mis en avant dans le fil du texte, citations détachées, illustrations
+intercalaires — demanderait de structurer le contenu éditorial autrement que par du Markdown
+courant. À arbitrer avec Arcel.

@@ -248,6 +248,24 @@
     padding-inline-start: 1.5em;
   }
 
+  /*
+   * Zone éditoriale des pages locales : sept sous-sections d'affilée, sur une seule carte. Sans
+   * repère, l'œil ne trouve pas la structure et l'ensemble se lit comme un bloc (relevé le
+   * 09/10/2026). Un filet au-dessus de chaque sous-titre, sauf le premier, rend les sections
+   * repérables au défilement sans ajouter de couleur ni de bruit.
+   */
+  [data-local-editorial] .prose > h3 {
+    margin-block-start: var(--space-10);
+    padding-block-start: var(--space-6);
+    border-block-start: 1px solid var(--color-line);
+  }
+
+  [data-local-editorial] .prose > h3:first-child {
+    margin-block-start: 0;
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
   .prose ul {
     list-style: disc;
   }

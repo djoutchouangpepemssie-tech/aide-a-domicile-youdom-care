@@ -386,7 +386,17 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           <Heading level={2} id="vivre">
             {fill(t.vivre_h2, { lieu })}
           </Heading>
-          <div className="mt-6 max-w-3xl" data-local-editorial>
+          {/*
+            La zone éditoriale fait environ 1 300 mots en sept sous-sections : posée à même le fond
+            de scène, elle se lisait comme un document brut (relevé par Arcel le 09/10/2026). Elle
+            prend la carte blanche déjà utilisée par les autres blocs de la page — même
+            `rounded-card`, même liseré, même élévation — pour que le texte long repose sur une
+            surface et non sur la couleur de section. La mesure de ligne reste celle de `.prose`.
+          */}
+          <div
+            className="mt-6 max-w-[48rem] rounded-card border border-line bg-white p-6 shadow-1 sm:p-8"
+            data-local-editorial
+          >
             <Markdown
               source={editorial.zone_editoriale}
               headingLevel={3}

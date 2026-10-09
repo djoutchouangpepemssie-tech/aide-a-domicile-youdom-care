@@ -69,3 +69,16 @@ Date de téléchargement : 2026-09-20.
 Adresses de téléchargement utilisées : Pexels `https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg?auto=compress&cs=tinysrgb&w=<largeur>` ; Unsplash `https://images.unsplash.com/photo-<id>?w=<largeur>&q=80&auto=format`. Le fichier `jardin-luxembourg-chaises.jpg` a été recompressé localement (qualité JPEG réduite) pour passer sous 450 Ko.
 
 Licences : Pexels — https://www.pexels.com/license/ ; Unsplash — https://unsplash.com/license. Les photos Unsplash retenues affichent toutes la mention « Free to use under the Unsplash License » (aucune photo Unsplash+).
+
+## Photos de `heros/fonds/` — origine différente
+
+Ces douze fichiers **ne viennent ni de Pexels ni d'Unsplash**. Ils ont été récupérés sur
+`youdom-care.com`, propriété d'Arcel, où ils n'étaient plus utilisés (décision du 27/09/2026,
+`docs/DECISIONS.md`, photos de bannière). Ils servent de fond aux scènes des bannières et, depuis
+le 09/10/2026, de bannière aux pages locales (D-059).
+
+**Réserve à lever avec Arcel** : leur source d'origine et leur licence ne sont pas documentées
+ici. Qu'elles soient sa propriété est ce que le projet a enregistré, pas ce qui a été vérifié
+pièce en main. Avant l'ouverture au public, il faut soit la facture ou la licence d'origine, soit
+leur remplacement par des photos de la photothèque libre de droit. La même réserve que pour toute
+image : aucune légende ne nomme les personnes ni ne les présente comme salariées ou clientes.
