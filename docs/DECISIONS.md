@@ -552,3 +552,28 @@ commune) : le reproche portait sur la présentation, pas sur le texte. Une passe
 ambitieuse — chiffres mis en avant dans le fil du texte, citations détachées, illustrations
 intercalaires — demanderait de structurer le contenu éditorial autrement que par du Markdown
 courant. À arbitrer avec Arcel.
+
+## D-061 — Un sommaire ancré sur la zone éditoriale des pages locales (09/10/2026)
+
+**Suite de D-060.** La carte, la mesure de ligne et les filets de sous-section rendent le texte
+lisible, mais ne le rendent pas **parcourable** : 1 300 mots en sept sections restent sept sections
+à traverser. Or un visiteur de page locale cherche rarement à tout lire — il cherche « l'hôpital »,
+« les aides », « la visite d'évaluation ».
+
+**Décision.** Un sommaire ancré ouvre la zone éditoriale : les sous-titres de premier niveau, dans
+l'ordre du texte, en liste compacte repliable sur plusieurs lignes.
+
+- Les ancres sont fabriquées par **`slugifyHeading`**, la fonction déjà utilisée par les
+  intertitres du magazine : une seule façon de calculer une ancre sur tout le site.
+- Le sommaire est une `nav` nommée (`aria-labelledby`), donc annoncée comme telle par un lecteur
+  d'écran, et les cibles portent `scroll-mt-24` pour ne pas arriver sous l'en-tête collant.
+- Il n'apparaît **qu'à partir de trois sections** : en dessous, il encombrerait plus qu'il
+  n'aiderait.
+- Son libellé vit dans `content/interface.json` (`local.sommaire_h3`), pas dans le code.
+
+**Défaut évité de justesse, qui vaut d'être noté** : la première version posait une classe
+`heading-5` sur l'intitulé du sommaire. Cette classe **n'existe pas** — le design system s'arrête
+à `heading-4`. Rien n'aurait échoué : ni le typecheck, ni le lint, ni les tests ne voient passer
+une classe utilitaire inexistante, et le texte serait simplement sorti sans style. Repéré en
+comptant les occurrences de chaque classe dans la feuille produite. **À faire chaque fois qu'on
+écrit une classe de design system de mémoire.**

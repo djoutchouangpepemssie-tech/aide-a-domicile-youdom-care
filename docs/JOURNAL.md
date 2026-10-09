@@ -1011,3 +1011,22 @@ pages locales minces est le moyen le plus sûr de se faire déclasser.
 mesurant le conteneur au lieu du paragraphe, puis « 86 » avec une heuristique de largeur moyenne.
 Le compte réel — caractères divisés par nombre de lignes rendues — donnait 81. Trois chiffres pour
 une seule grandeur, dont deux faux. Quand on peut compter, il faut compter.
+
+## Un sommaire pour les pages locales, et une classe qui n'existait pas — 9 octobre 2026
+
+Suite du travail de design sur les pages locales (D-061). La carte et la mesure de ligne avaient
+rendu le texte lisible ; restait à le rendre parcourable. Un sommaire ancré ouvre désormais la zone
+éditoriale : les sept sous-titres, dans l'ordre, menant chacun à sa section. Les ancres réutilisent
+`slugifyHeading`, la fonction des intertitres du magazine — une seule façon de calculer une ancre
+sur le site. Le sommaire ne s'affiche qu'à partir de trois sections, et son libellé vient du
+contenu, pas du code.
+
+**Ce que j'ai failli livrer sans le voir.** J'avais écrit `className="heading-5 …"` sur l'intitulé
+du sommaire. Cette classe n'existe pas : le design system s'arrête à `heading-4`. Et rien ne me
+l'aurait dit — le typecheck ne regarde pas les chaînes de classes, le lint non plus, et aucun test
+ne vérifie qu'une classe utilitaire existe. Le texte serait simplement sorti sans mise en forme, et
+personne ne l'aurait remarqué avant de regarder la page de près.
+
+Repéré en comptant les occurrences de chaque classe dans la feuille de style produite par le build.
+C'est une vérification de cinq secondes qui mérite de devenir un réflexe : **toute classe de design
+system écrite de mémoire doit être comptée dans le CSS produit.**

@@ -624,6 +624,8 @@ export const interfaceSchema = z.strictObject({
       appeler: text.includes("{téléphone}"),
     }),
     vivre_h2: text.includes("{lieu}"),
+    /** Sommaire des sous-sections de la zone éditoriale (D-061). */
+    sommaire_h3: text,
     reperes_h3: text,
     demographie: z.strictObject({
       population: text.includes("{millesime}"),

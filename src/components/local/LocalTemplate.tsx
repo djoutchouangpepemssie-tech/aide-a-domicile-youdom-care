@@ -31,7 +31,7 @@ import type { Agency, Aid, InterfaceTexts, Navigation, WeekExample } from "@/con
 import { cn } from "@/lib/cn";
 import { formatFrenchPhone, toTelHref } from "@/lib/phone";
 import { LocalFactsGrid } from "./LocalFactsGrid";
-import { Markdown } from "./Markdown";
+import { editorialHeadings, Markdown } from "./Markdown";
 import { localHeroPhoto } from "./local-photos";
 import {
   aidFactTypes,
@@ -279,6 +279,8 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
       : []),
   ];
 
+  const sommaire = editorialHeadings(editorial.zone_editoriale);
+
   return (
     <main
       id="contenu"
@@ -397,6 +399,33 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
             className="mt-6 max-w-[48rem] rounded-card border border-line bg-white p-6 shadow-1 sm:p-8"
             data-local-editorial
           >
+            {/*
+              Sommaire des sous-sections (D-061). Sur 1 300 mots en sept sections, un visiteur
+              cherche rarement à tout lire : il cherche « l'hôpital », « les aides », « la visite ».
+              Sans entrée, il défile au jugé. La liste est une `nav` nommée, donc annoncée comme
+              telle par un lecteur d'écran, et n'apparaît que s'il y a au moins trois sections —
+              en dessous, elle encombrerait plus qu'elle n'aiderait.
+            */}
+            {sommaire.length >= 3 && (
+              <nav aria-labelledby="sommaire-local" data-local-sommaire={sommaire.length}>
+                <p
+                  id="sommaire-local"
+                  className="m-0 text-small font-semibold tracking-wide text-ink-soft uppercase"
+                >
+                  {t.sommaire_h3}
+                </p>
+                <ul className="m-0 mt-3 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-small">
+                  {sommaire.map((entry) => (
+                    <li key={entry.id} className="max-w-none">
+                      <a href={`#${entry.id}`} className="underline-offset-4 hover:underline">
+                        {entry.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <hr className="mt-6 border-0 border-t border-line" />
+              </nav>
+            )}
             <Markdown
               source={editorial.zone_editoriale}
               headingLevel={3}

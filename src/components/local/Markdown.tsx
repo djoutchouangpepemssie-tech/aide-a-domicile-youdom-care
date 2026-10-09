@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { slugifyHeading } from "@/content/article-meta";
 import { Prose } from "@/components/ui/Prose/Prose";
 
 /*
@@ -135,6 +136,27 @@ export function renderInline(
   return nodes;
 }
 
+/** Ancre d'un sous-titre de zone éditoriale ; « section » si le texte n'en produit aucune. */
+export function headingAnchor(text: string): string {
+  return slugifyHeading(text) || "section";
+}
+
+/**
+ * Sous-titres de premier niveau d'une zone éditoriale, dans l'ordre du texte, avec leur ancre.
+ * Sert au sommaire : sur 1 300 mots en sept sections, l'œil a besoin d'une entrée (D-061).
+ */
+export function editorialHeadings(source: string): { id: string; text: string }[] {
+  const blocks = parseBlocks(source);
+  const depths = blocks.flatMap((block) => (block.kind === "heading" ? [block.depth] : []));
+  if (depths.length === 0) return [];
+  const minDepth = Math.min(...depths);
+  return blocks.flatMap((block) =>
+    block.kind === "heading" && block.depth === minDepth
+      ? [{ id: headingAnchor(block.text), text: block.text }]
+      : [],
+  );
+}
+
 export function Markdown({ source, headingLevel = 3, externalLabel, className }: MarkdownProps) {
   const blocks = parseBlocks(source);
   // Le titre le moins profond du texte devient `headingLevel` (h3 sous le H2 de la section),
@@ -149,7 +171,14 @@ export function Markdown({ source, headingLevel = 3, externalLabel, className }:
         if (block.kind === "heading") {
           const level = Math.min(6, headingLevel + block.depth - minDepth);
           const Tag = `h${level}` as "h3" | "h4" | "h5";
-          return <Tag key={key}>{renderInline(block.text, externalLabel, key)}</Tag>;
+          // Ancre du sous-titre, pour que le sommaire de la zone éditoriale puisse y mener.
+          // Même fonction que les intertitres du magazine : une seule façon de fabriquer une
+          // ancre sur tout le site. `scroll-mt-24` dégage l'en-tête collant à l'arrivée.
+          return (
+            <Tag key={key} id={headingAnchor(block.text)} className="scroll-mt-24">
+              {renderInline(block.text, externalLabel, key)}
+            </Tag>
+          );
         }
         if (block.kind === "list") {
           const Tag = block.ordered ? "ol" : "ul";
