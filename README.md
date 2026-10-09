@@ -19,7 +19,12 @@ ouvert au public** :
 - `www.youdom-care.com` sert toujours la version précédente ; le basculement du domaine n'a pas
   été fait ;
 - les **formulaires n'envoient rien** tant que six variables d'environnement ne sont pas
-  renseignées chez l'hébergeur (voir `docs/MESSAGERIE_RESEND.md`) ;
+  renseignées chez l'hébergeur **et que la production n'est pas redéployée** — Vercel ne transmet
+  les variables qu'au déploiement suivant, et c'est l'étape la plus facile à manquer puisque les
+  réglages, eux, s'affichent correctement (voir `docs/MESSAGERIE_RESEND.md`, §4 et §6) ;
+- la production sert encore l'état **antérieur** à l'audit global, et aucune adresse publique ne
+  la dessert : pas de domaine personnalisé, et la protection par authentification Vercel est
+  active sur toutes les adresses du projet (`docs/PLAN.md`, DC.4) ;
 - les **26 pages services** et les **13 articles** du magazine attendent une relecture
   professionnelle : ils sont construits, mais en `noindex` jusque-là ;
 - plusieurs champs obligatoires des mentions légales sont encore vides, dont le médiateur de la

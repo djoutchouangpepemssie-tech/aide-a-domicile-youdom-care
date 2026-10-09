@@ -71,6 +71,27 @@ recevoir les demandes.
 Vercel ne lit ces variables qu'au déploiement suivant : un clic sur **Redeploy** sur le dernier
 déploiement suffit. Sans cela, le site continue de répondre « envoi indisponible ».
 
+**C'est l'étape la plus facile à oublier, et elle se voit mal** : les variables s'affichent bien
+dans les réglages, donc tout semble en place, mais la fonction qui tourne ne les a jamais reçues.
+Relevé le 09/10/2026 : les six variables étaient posées depuis deux jours et le dernier
+déploiement de production datait du 04/10 — les formulaires répondaient « envoi indisponible »
+pour cette seule raison. Le réflexe : après toute modification de variable, **Deployments** →
+dernier déploiement **de production** → **Redeploy**.
+
+Attention aussi à l'environnement : un déploiement de prévisualisation (une branche) ne lit que
+les variables cochées **Preview**. Des variables posées en **Production** seulement ne servent
+qu'à l'adresse de production.
+
+## 4 bis. Sur quelle adresse tester
+
+Le projet Vercel `youdom-care` n'a **aucun domaine personnalisé** rattaché (vérifié le
+09/10/2026) : `www.youdom-care.com` sert encore le site précédent et ne permet donc rien de
+tester. L'adresse de production est :
+
+```
+https://youdom-care-six.vercel.app
+```
+
 ## 5. Vérifier
 
 Remplir une vraie demande sur le site, en renseignant l'adresse e-mail facultative.
@@ -86,6 +107,27 @@ Vous devez recevoir **deux** messages :
 En cas d'échec, l'onglet **Logs** de Resend dit si le message a été accepté, et les journaux de la
 fonction dans Vercel portent une ligne par demande : identifiant, formulaire, résultat — jamais le
 contenu.
+
+## 6. Diagnostiquer un échec
+
+Le visiteur ne voit qu'un message : « L'envoi n'a pas abouti. Vos réponses sont conservées sur cet
+écran. » Il couvre toutes les causes ci-dessous. Pour trancher, il faut la ligne du journal :
+**Vercel → projet `youdom-care` → Deployments → le déploiement servi → Logs**, puis refaire un
+envoi pendant que les journaux défilent. Sur l'offre Hobby, les journaux d'exécution ne sont
+gardés qu'**une heure** : un test de la veille n'y est plus.
+
+| Ligne du journal | Code | Cause | Correctif |
+| --- | --- | --- | --- |
+| `non envoyé (messagerie non configurée)` | 503 | Le transport n'a pas pu être construit : `SMTP_HOST`, `LEADS_FROM` ou `LEADS_TO` manque **dans la fonction qui tourne** — le plus souvent parce que le redéploiement du §4 n'a pas eu lieu. | Vérifier les six variables, puis **redéployer**. |
+| `échec d'envoi` | 503 | Le transport existe mais Resend a refusé. Trois causes : `SMTP_USER` absent (sans lui, aucune identification n'est transmise et la clé de `SMTP_PASS` ne sert à rien), clé d'API invalide ou révoquée, ou `LEADS_FROM` sur un domaine non vérifié. | Dans cet ordre : `SMTP_USER=resend`, domaine *Verified* chez Resend, clé regénérée. |
+| `refusé (limite d'envois)` | 429 | Cinq envois depuis la même adresse en dix minutes. | Attendre dix minutes, ou relever `LEAD_RATE_LIMIT` le temps des tests. |
+| `refusé (trop rapide)` | 400 | Formulaire envoyé en moins du délai minimum. | Prendre le temps de remplir ; c'est le garde-fou anti-robot. |
+| `refusé (vérification anti-robots)` | 403 | `TURNSTILE_SECRET_KEY` est renseignée alors qu'aucun formulaire ne produit de jeton. | **Vider la variable** (voir les garde-fous ci-dessous). |
+| `refusé : corps invalide` | 400 | Le corps reçu ne respecte pas le schéma. | Anomalie de code : à signaler. |
+| *aucune ligne* | 403 | L'origine a été refusée avant tout traitement, ou la requête n'atteint pas la fonction. | Vérifier qu'on teste bien l'adresse du §4 bis. |
+
+Si **rien n'apparaît dans les journaux de Resend**, l'échec est en amont de l'envoi : il s'agit de
+l'une des deux premières lignes, pas d'un problème de délivrabilité.
 
 ---
 
@@ -114,8 +156,12 @@ de réception sans détail. Resend compte la pièce jointe dans la taille du mes
   connaître avant de s'y fier : le compteur vit en mémoire du processus, donc sur des fonctions
   serveur sans état chaque instance a le sien, et la clé est une adresse transmise par en-tête. Il
   décourage un envoi répété à la main, **il n'arrête pas un robot** (`docs/PLAN.md`, DC.3).
-- **Anti-robots renforcé, optionnel** : `TURNSTILE_SITE_KEY` et `TURNSTILE_SECRET_KEY` activent la
-  vérification Cloudflare Turnstile. Inutile tant que le volume reste modeste.
+- **Anti-robots renforcé : à ne pas activer en l'état.** `TURNSTILE_SECRET_KEY` déclenche la
+  vérification Cloudflare Turnstile côté serveur, mais **aucun formulaire ne produit le jeton
+  attendu** : il n'existe pas une ligne de Turnstile côté navigateur. Renseigner cette variable
+  refuserait donc **toutes** les demandes, avec un 403 « vérification anti-robots ». Les deux
+  variables restent vides jusqu'à ce que le widget soit posé dans les formulaires
+  (`docs/PLAN.md`, DC.3).
 
 ## Volumes
 

@@ -810,3 +810,49 @@ Deux demandes d'Arcel, traitées dans l'ordre. Décisions D-047 à D-049.
 - **La vraie correction, elle, était nécessaire** : mon audit §7 présentait la réduction des surfaces à `backdrop-filter` comme la première piste à instruire, sans dire qu'elle avait été tentée, mesurée, puis rendue volontairement. Quiconque la rouvrait rouvrait un arbitrage tranché par le commanditaire, sans le savoir. `docs/AUDIT_GLOBAL.md §7` et DP.2 portent désormais cette histoire, et nomment l'arbitrage pour ce qu'il est : l'effet voulu coûte ce qu'il coûte, et le budget ne peut pas être tenu **et** l'effet rendu pleinement visible.
 - **Le levier qui reste** est nommé des deux côtés : l'évaluation des scripts, 608 ms sur l'accueil dont 539 ms d'hydratation React, donc le nombre d'îles clientes de l'accueil — plus le CSS. Les priorités de l'audit (point 14) et la tâche DP.3 sont alignées en conséquence.
 - **Leçon de méthode** : une branche qui diffère de `main` n'est pas forcément en avance. Ici elle était en retard d'une décision, et c'est `DECISIONS.md` — pas le diff — qui le disait.
+
+## Pourquoi aucun formulaire n'arrivait : la production n'avait jamais été redéployée — 9 octobre 2026
+
+Les formulaires répondaient « L'envoi n'a pas abouti » sur le site déployé. Les outils Vercel
+étant devenus accessibles dans la session, j'ai lu la configuration réelle du projet au lieu de
+continuer à deviner à partir d'une capture d'écran.
+
+- **La cause.** Le dernier déploiement de production date du **4 octobre**, sur `main` à
+  `5ff8714`. Les six variables de messagerie ont été posées deux jours plus tard. Or Vercel ne
+  transmet les variables qu'au déploiement suivant : la fonction en service n'en a reçu aucune,
+  donc `mailerFromEnv()` rend `null` et `handleLead` renvoie 503 « envoi indisponible ». C'est
+  exactement le message vu par le visiteur. Les six déploiements postérieurs sont tous des
+  prévisualisations (`target: null`) : aucun n'a été promu en production. **La documentation le
+  disait déjà** (`docs/MESSAGERIE_RESEND.md` §4) ; l'étape a simplement été sautée, et elle se
+  voit mal puisque les variables s'affichent bien dans les réglages.
+- **Une seconde cause, qui aurait suivi.** `SMTP_USER` manque dans le projet. Sans lui, le
+  transport ne transmet aucune identification et la clé posée dans `SMTP_PASS` ne sert à rien :
+  l'échec se serait déplacé du premier 503 au second, après le redéploiement.
+- **Ce que j'ai pu vérifier directement.** La route est bien en ligne (`GET /api/lead` → 405,
+  `x-matched-path: /api/lead`, en-têtes de sécurité présents). Les journaux d'exécution, eux,
+  n'étaient plus lisibles : l'offre Hobby ne les garde qu'une heure. Les variables elles-mêmes
+  restent illisibles depuis la session (403 du connecteur) — c'est la bonne limite, ce sont les
+  secrets du client.
+
+**Trois autres écarts relevés au passage**, tous consignés en dette (DC.4, DC.5) :
+
+1. la production tourne l'état **antérieur** à l'audit : **Next 16.3.5**, visé par
+   `GHSA-vcvr-r3jv-pc5j` (exécution de code à distance dans `next/og`, corrigé en 16.3.8 sur la
+   branche d'audit), et les **1120 communes** rattachées à des agences supprimées ;
+2. aucun domaine personnalisé n'est rattaché, et la **protection par authentification Vercel**
+   est active sur toutes les adresses du projet : personne hors de l'équipe Vercel ne peut voir le
+   site aujourd'hui ;
+3. le projet Vercel observe le **dépôt personnel**, pas `Youdom-care/Youdom-Care`. L'état de ce
+   dernier n'a pas pu être vérifié : les deux dépôts portent le même nom court et ne peuvent pas
+   cohabiter dans une session.
+
+**Un piège corrigé dans la foulée.** `docs/PLAN.md` (DC.3) et `docs/MESSAGERIE_RESEND.md`
+présentaient Cloudflare Turnstile comme un levier « déjà branché, inerte faute de clé ». C'est
+faux et dangereux : le serveur sait vérifier un jeton et refuse la demande (403) quand la
+vérification échoue, mais **aucun formulaire ne produit ce jeton** — il n'existe pas une ligne de
+Turnstile côté navigateur. Renseigner `TURNSTILE_SECRET_KEY` aurait refusé **toutes** les
+demandes, sans que rien ne l'annonce. Signalé aux trois endroits, `.env.example` compris.
+
+**Leçon de méthode** : une capture d'écran des réglages dit ce qui est *enregistré*, jamais ce que
+la fonction *reçoit*. Les deux ne coïncident qu'après un déploiement.
+
