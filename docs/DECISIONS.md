@@ -372,3 +372,86 @@ Une décision = contexte, choix, conséquences, date. Toute dépendance ajoutée
   - en-tête des deux colonnes de l'encart frontière exigé sur `/personnes-agees/`, alors que la règle du 27/09 ne l'affiche que si **chaque** ligne nomme son relais, ce qui n'est pas le cas de cette page. La règle n'était observable que par les classes utilitaires : `Callout` porte maintenant `data-colonnes`, et le parcours lit l'attribut au lieu de supposer (`services.spec.ts`).
 - **Règle tirée de là** : un parcours ne code plus en dur un fait qui vit dans `content/` ou `data/` ; il le lit. Les trois corrections de nombre d'agences venaient toutes de la même cause et auraient toutes été évitées.
 - **Reste ouvert** : les échecs de mise en page et de mouvement ne sont pas des parcours périmés mais des constats à instruire, consignés dans `docs/PLAN.md` (DP.3, DP.4). Ils ne sont pas « corrigés » en relâchant le seuil : la règle du projet est explicite, on ne relève pas un seuil pour faire passer un contrôle.
+
+## D-056 — Les e-mails sortants passent sur une maquette commune (09/10/2026)
+
+**Contexte.** Première demande reçue en production (formulaire « Être rappelé(e) »). Arcel la juge
+illisible : « c'est très mal organisé, le format est trop brut ». Le constat est juste, et le
+rendu HTML existait pourtant déjà — c'est sa conception qui était en cause.
+
+**Quatre causes, toutes vérifiées sur le message reçu.**
+
+1. **`<details>` n'existe pas en messagerie.** Le `LeadPayload` en JSON était enfermé dans un bloc
+   repliable. Gmail et Outlook ne gèrent pas cet élément : ils l'affichent **toujours ouvert**.
+   Un pavé de quarante lignes de JSON tombait donc au milieu du message, et c'est l'essentiel de
+   ce qui rendait l'e-mail illisible.
+2. **Les clés techniques partaient telles quelles.** Les réponses de situation étaient rendues
+   `${clé} : ${réponse}`, donc « ce_qui_pese : Les nuits difficiles » au lieu de la question
+   posée. Le formulaire de rappel n'ayant pas de situation, le défaut ne s'était pas vu.
+3. **Aucune hiérarchie.** Une suite plate de `h2` + `p`, sans tableaux de disposition : Outlook,
+   qui rend le HTML avec le moteur de Word, ne centrait ni ne limitait la largeur, et rien ne
+   distinguait ce qui sert à agir de ce qui sert à archiver.
+4. **Pas de `<meta charset>`, pas de texte d'aperçu.** Les accents pouvaient arriver abîmés, et la
+   liste des messages résumait le gabarit au lieu de la demande.
+
+**Décision.** Une maquette unique, `src/lib/mail/layout.ts`, partagée par les quatre e-mails
+(demande et candidature, alerte et accusé). Elle impose les contraintes propres au courrier
+électronique : tableaux de disposition `role="presentation"`, styles en ligne seulement, jetons de
+couleur de `docs/02` **recopiés en dur** (`var(--color-…)` ne vaut rien ici), `<meta charset>`
+explicite, aucun `<details>`, texte d'aperçu masqué. Les deux rendus, HTML et texte, dérivent du
+**même modèle** (`MailDocument`) : un champ ajouté apparaît dans les deux ou dans aucun, et les
+deux versions ne peuvent pas divulguer des champs différents.
+
+**Le JSON passe dans la seule version texte.** Il existe pour une reprise automatique, pas pour
+être lu. Il reste dans le corps de l'e-mail à l'équipe — seul endroit autorisé pour une donnée de
+santé (CLAUDE.md, `docs/05` §8) —, donc lisible dans la source du message et exploitable par un
+outil, mais il n'écrase plus la fiche. Le vrai mécanisme de reprise reste `LEAD_WEBHOOK_URL`.
+C'est réversible en une ligne (`MailSection` « textOnly » dans `layout.ts`).
+
+**Les intitulés viennent du contenu, pas du code.** `situationQuestionLabels()` lit les questions
+de `content/formulaires/{id}.json` ; les deux formulaires hors registre
+(`sortie-hospitalisation`, `professionnel`) tirent leurs libellés de `content/emails.json`
+(`equipe.libelles_situation`). Un dernier recours rend la clé présentable si une question arrivait
+sans libellé — il ne doit jamais servir, il évite seulement qu'une clé nue parte chez le client.
+
+**Aucune dépendance ajoutée.** Pas de bibliothèque de gabarits d'e-mail : le rendu reste deux
+fonctions pures, testables sans navigateur ni serveur SMTP, et `pnpm mail:preview` écrit les cinq
+messages dans `.previews/` pour les juger à l'œil.
+
+## D-057 — Le favicon devient le monogramme « YC », aux couleurs du logo (09/10/2026)
+
+**Contexte.** `src/app/favicon.ico` était encore l'icône livrée par défaut avec Next : le site
+s'annonçait dans les onglets sous un logo qui n'est pas le sien.
+
+**Erreur commise, et corrigée.** La première version a pris ses couleurs dans les jetons de
+`docs/02` — teal et framboise — alors que **le logo de la marque était dans le dépôt**
+(`public/images/marque/logo-youdom-care.png`). Il y montre un « y » **vert** et un « C » **bleu**.
+Relevés au pixel : vert `#50C878`, bleu `#007FFF`. Leçon : la source d'une couleur de marque est
+le logo, pas la palette d'interface — et il fallait chercher le logo avant de dessiner.
+
+**Décision.** Monogramme « YC » sur fond blanc, Y en `#50C878`, C en `#007FFF`. Trois fichiers,
+aux emplacements que Next reconnaît sans déclaration : `src/app/icon.svg` (navigateurs),
+`src/app/apple-icon.png` 180 px, pleine page car iOS applique son propre masque, et
+`src/app/favicon.ico` 16/32/48 (secours et vieux clients).
+
+**Pourquoi un fond blanc et non teal.** Le bleu du logo ne tient que **2,7:1** sur `teal-900` :
+rendu à 16 px, le C s'empâte et se confond avec le fond. Vérifié au rendu sur les trois fonds
+(blanc, papier, teal-900) avant de trancher. Sur blanc, les deux lettres restent franches de 16 à
+180 px, et c'est le fond sur lequel le logo est dessiné.
+
+**Trois contraintes qui expliquent la forme du fichier.**
+
+1. **Les lettres sont des tracés, pas du texte.** Une icône ne peut pas dépendre d'une police
+   installée sur le poste qui l'affiche : un `<text>` se décale d'un système à l'autre, et le
+   rendu des favicons n'applique pas les polices Web. Y et C sont donc deux chemins.
+2. **Les deux lettres ont la même hauteur de capitale.** La première version donnait au C un
+   diamètre plus petit que la hauteur du Y : le monogramme se lisait « Yc ». Corrigé au rendu.
+3. **Les couleurs sont recopiées en dur.** `var(--color-…)` ne vaut rien dans une icône.
+
+**Question ouverte, à poser à Arcel.** Le logo est vert et bleu ; l'interface du site est teal et
+framboise (`docs/02`). Les deux ne se parlent pas. Ce n'est pas au favicon de trancher : soit la
+palette d'interface se rapproche du logo, soit le logo est considéré comme une signature à part,
+et il faut l'écrire dans `docs/02`. À instruire avec la révision de `docs/02`, qui lui reste due.
+
+**Reste à faire, hors de cette décision** : aucune `theme-color` n'est déclarée, donc la barre du
+navigateur sur mobile garde sa couleur par défaut.

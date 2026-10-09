@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { situationQuestionLabels } from "@/content/form-definitions";
 import { getCommitments, getEmailTexts, getInterfaceTexts, getSiteConfig } from "@/content/loader";
 import { isProduction } from "@/lib/env";
 import { clientIp, originAllowed, readTextLimited } from "@/lib/http/request";
@@ -59,6 +60,8 @@ export async function POST(request: Request) {
       phone: contact.telephone_principal ? formatFrenchPhone(contact.telephone_principal) : null,
       callbackDelay: callbackDelay(),
       agencies: Object.fromEntries(agences.map((a) => [a.id, a.nom])),
+      // Intitulés réels des questions, pour que l'e-mail n'affiche aucune clé technique.
+      questionLabels: situationQuestionLabels,
     },
     env: process.env as LeadServerEnv,
     limiter,

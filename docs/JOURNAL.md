@@ -856,3 +856,71 @@ demandes, sans que rien ne l'annonce. Signalé aux trois endroits, `.env.example
 **Leçon de méthode** : une capture d'écran des réglages dit ce qui est *enregistré*, jamais ce que
 la fonction *reçoit*. Les deux ne coïncident qu'après un déploiement.
 
+
+## Les e-mails sortants, repris de fond en comble — 9 octobre 2026
+
+**D'abord : la chaîne fonctionne.** La première demande réelle est arrivée dans la boîte de
+l'équipe, formulaire « Être rappelé(e) », après l'ajout de `SMTP_USER` et le redéploiement de la
+production. Ce qui était en panne depuis la mise en ligne des variables ne l'est plus.
+
+**Ensuite : elle était illisible.** Arcel l'a dit sans détour, et il avait raison. Le rendu HTML
+existait pourtant — c'est sa conception qui ne tenait pas. Quatre causes, détaillées en D-056 :
+`<details>`, que ni Gmail ni Outlook ne gèrent, déversait quarante lignes de JSON au milieu du
+message ; les réponses de situation partaient avec leur **clé technique** en guise d'intitulé ;
+aucune hiérarchie ne distinguait ce qui sert à agir de ce qui sert à archiver ; ni `<meta charset>`
+ni texte d'aperçu.
+
+**Ce qui a été fait.** Une maquette commune (`src/lib/mail/layout.ts`) pour les quatre e-mails,
+avec les contraintes réelles du courrier électronique : tableaux de disposition, styles en ligne,
+couleurs de `docs/02` recopiées en dur, aucun `<details>`. Le corps suit désormais l'ordre de
+l'action : qui appeler, à quel numéro — en bouton —, pour quand, puis la demande, puis le contexte,
+puis la traçabilité en petit. Les deux versions, HTML et texte, dérivent du **même modèle** : elles
+ne peuvent plus divulguer des champs différents.
+
+**Le défaut le plus coûteux était le moins visible.** Les clés techniques (`ce_qui_pese`,
+`date_sortie`, `type_besoin`) s'affichaient en guise de question posée. Le formulaire de rappel
+n'ayant pas de bloc situation, personne ne l'avait vu : il aurait surgi à la **première demande
+détaillée**, c'est-à-dire sur le formulaire qui compte le plus. Les intitulés viennent maintenant
+de `content/formulaires/` et de `content/emails.json`, jamais du code.
+
+**Le JSON reste, ailleurs.** Il ferme la version texte du message et disparaît du HTML : il sert à
+une reprise automatique, pas à la lecture. Il demeure dans le corps de l'e-mail à l'équipe, seul
+endroit autorisé pour une donnée de santé, donc rien n'est perdu ni déplacé — ce n'est pas une
+pièce jointe, et ce n'est pas sorti du message.
+
+**Vérifications.** `pnpm mail:preview` écrit les cinq e-mails dans `.previews/`, HTML et texte,
+avec le code de rendu de la route : la maquette se juge à l'œil et se fait valider sans déclencher
+d'envoi. Deux parcours de test neufs tiennent les garanties : l'absence de `<details>` (garde-fou
+contre son retour), le `charset`, l'aperçu avant le bandeau de marque, le JSON toujours dans le
+corps, et l'affichage de l'intitulé des questions pour les formulaires du registre **comme** pour
+les deux formulaires spéciaux. 940 tests verts, aucune dépendance ajoutée.
+
+**Leçon de méthode** : un e-mail n'est pas une page. Le HTML qui marche dans un navigateur ne dit
+rien de ce qu'Outlook affichera, et un bloc repliable y devient un bloc toujours ouvert.
+
+## Le favicon porte enfin la marque — 9 octobre 2026
+
+Le site s'annonçait dans les onglets sous l'icône livrée par défaut avec Next. Remplacée par un
+monogramme « YC » : Y vert `#50C878`, C bleu `#007FFF`, sur fond blanc (D-057). Trois fichiers aux
+emplacements que Next reconnaît seul : `icon.svg`, `apple-icon.png` et `favicon.ico`.
+
+**Ce que je me suis trompé à faire d'abord.** J'ai pris les couleurs dans les jetons de `docs/02`
+— teal et framboise — et dessiné un monogramme crème et rose. Arcel a repris : « Y doit être bleu
+et vert ». Il avait raison, et la preuve était dans le dépôt depuis le début :
+`public/images/marque/logo-youdom-care.png` montre un « y » vert et un « C » bleu. La source d'une
+couleur de marque est le logo, pas la palette d'interface — et il fallait aller le chercher avant
+de dessiner.
+
+**Ce que le rendu a appris, et que le code ne disait pas.** Deux fois. D'abord la hauteur de
+capitale : le C avait un diamètre plus petit que la hauteur du Y, donc le monogramme se lisait
+« Yc » — invisible dans le SVG, évident dès la première planche. Ensuite le fond : le bleu du logo
+ne tient que 2,7:1 sur `teal-900`, et à 16 px le C se confondait avec le fond. Les trois fonds
+(blanc, papier, teal foncé) ont été rendus et comparés à l'œil avant de trancher pour le blanc,
+celui sur lequel le logo est dessiné.
+
+**Une incohérence mise au jour, qui n'est pas au favicon de trancher.** Le logo est vert et bleu,
+l'interface du site est teal et framboise. Les deux palettes ne se parlent pas. Consigné en D-057
+comme question ouverte pour Arcel, à instruire avec la révision de `docs/02` qui lui reste due.
+
+**Leçon de méthode** : une icône se juge à 16 px, pas dans l'éditeur — et une couleur de marque se
+relève sur le logo, pas sur la feuille de style.

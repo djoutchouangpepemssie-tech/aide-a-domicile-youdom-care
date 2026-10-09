@@ -50,3 +50,6 @@ next-env.d.ts
 /tests/e2e/.mails/
 # configuration Playwright jetable d'un poste (exécutable du navigateur local)
 /.pw-audit.config.ts
+
+# Aperçus d'e-mails (pnpm mail:preview) : jetables
+.previews/

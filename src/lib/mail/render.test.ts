@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import emailsJson from "../../../content/emails.json";
 import interfaceJson from "../../../content/interface.json";
+import { situationQuestionLabels } from "@/content/form-definitions";
 import type { LeadPayload } from "@/lib/lead/schema";
 import {
   escapeHtml,
@@ -16,6 +17,7 @@ const ctx = {
   phone: "01 84 80 17 03",
   callbackDelay: null,
   agencies: { puteaux: "Youdom Care Hauts-de-Seine" },
+  questionLabels: situationQuestionLabels,
 };
 
 const lead: LeadPayload = {
@@ -73,13 +75,15 @@ describe("e-mails de la demande", () => {
     expect(sanitizeSubject("a\u0000b\tc   d \n")).toBe("a b c d");
   });
 
-  it("rend l'alerte lisible : coordonnées avec lien tel:, planning en tableau, JSON repliable, HTML échappé", () => {
+  it("rend l'alerte lisible : coordonnées avec lien tel:, planning en tableau, HTML échappé", () => {
     const mail = renderTeamEmail(lead, ctx);
     expect(mail.html).toContain('href="tel:+33612345678"');
-    expect(mail.html).toContain("06 12 34 56 78".replaceAll(" ", " "));
+    // `formatFrenchPhone` relie les paires par des espaces insécables, pour qu'un numéro ne
+    // se coupe jamais en fin de ligne. L'échappement est explicite : la version littérale
+    // repose sur un caractère invisible, qu'une réécriture du fichier perd sans rien dire.
+    expect(mail.html).toContain("06\u00a012\u00a034\u00a056\u00a078");
     expect(mail.html).toContain("<table");
     expect((mail.html.match(/✔/g) ?? []).length).toBe(3);
-    expect(mail.html).toContain("<details");
     expect(mail.html).toContain("&lt;sans&gt; ascenseur &amp; &quot;seule&quot;");
     expect(mail.html).not.toContain("<sans>");
     expect(mail.html).toContain("Youdom Care Hauts-de-Seine");
@@ -89,6 +93,54 @@ describe("e-mails de la demande", () => {
     expect(mail.text).toContain("Estimation : environ 17 heures par semaine");
     expect(mail.text).toContain("Nuits : Nuit calme");
     expect(mail.text).toContain("version du texte : 2026-09");
+  });
+
+  it("tient dans les clients de messagerie : pas de <details>, charset déclaré, aperçu en tête", () => {
+    const mail = renderTeamEmail(lead, ctx);
+    // Gmail et Outlook ne gèrent pas `<details>` : ils l'affichent toujours ouvert, ce qui
+    // déversait le JSON brut au milieu du message. Garde-fou contre son retour.
+    expect(mail.html).not.toContain("<details");
+    expect(mail.html).not.toContain("<summary");
+    // Sans charset déclaré, « é » arrive en « Ã© » chez plusieurs clients.
+    expect(mail.html).toContain('<meta charset="utf-8">');
+    // Outlook rend le HTML avec le moteur de Word : la disposition passe par des tableaux.
+    expect(mail.html).toContain('role="presentation"');
+    // L'aperçu de la liste des messages porte le délai, le numéro et la commune, et vient avant
+    // le bandeau de marque — sinon la boîte affiche « YOUDOM CARE Vous, chez vous… » en résumé.
+    const preheader = mail.html.match(/opacity:0;[^>]*>([^<]*)</)?.[1] ?? "";
+    expect(preheader).toContain("Dans la semaine");
+    expect(preheader).toContain("Puteaux");
+    expect(preheader).toMatch(/06\s12\s34\s56\s78/);
+    expect(mail.html.indexOf(preheader)).toBeLessThan(mail.html.indexOf("YOUDOM CARE"));
+    // Le LeadPayload reste dans le corps de l'e-mail à l'équipe — seul endroit autorisé pour une
+    // donnée de santé (CLAUDE.md) — mais dans la seule version texte : il sert à une reprise
+    // automatique, pas à la lecture, et il noyait la fiche (D-056). Ni joint, ni déplacé.
+    expect(mail.text).toContain('"id": "8f7b1d1e-2c3a-4b5c-9d6e-7f8a9b0c1d2e"');
+    // L'identifiant, lui, reste visible en HTML : c'est la ligne « Référence » de la traçabilité.
+    // Ce qui doit disparaître du HTML, c'est le bloc JSON lui-même, reconnaissable à ses clés.
+    expect(mail.html).not.toContain("&quot;createdAt&quot;");
+    expect(mail.html).not.toContain("&quot;insee&quot;");
+    expect(mail.html).toContain("8f7b1d1e-2c3a-4b5c-9d6e-7f8a9b0c1d2e");
+  });
+
+  it("affiche l'intitulé des questions, jamais la clé technique", () => {
+    const mail = renderTeamEmail(lead, ctx);
+    expect(mail.text).toContain("De quelle maladie s'agit-il ? : Alzheimer ou apparentée");
+    expect(mail.text).toContain("Qu'est-ce qui pèse aujourd'hui ? : Les nuits difficiles");
+    // La clé ne doit apparaître que dans le bloc JSON de fin, pas comme intitulé de ligne.
+    expect(mail.text).not.toContain("ce_qui_pese : ");
+    // Les deux formulaires spéciaux tirent leurs libellés de content/emails.json.
+    const pro = renderTeamEmail(
+      {
+        ...lead,
+        form: "professionnel",
+        situation: { structure: "Hôpital Foch", type_besoin: "Sortie d'hospitalisation" },
+        consentement: { ...lead.consentement, sante: false },
+      },
+      ctx,
+    );
+    expect(pro.text).toContain("Structure : Hôpital Foch");
+    expect(pro.text).toContain("Type de besoin : Sortie d'hospitalisation");
   });
 
   it("rend les dates ponctuelles et la présence 24h/24", () => {

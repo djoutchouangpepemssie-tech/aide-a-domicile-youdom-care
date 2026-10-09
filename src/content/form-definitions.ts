@@ -44,3 +44,17 @@ export function listFormDefinitions(): FormDefinition[] {
 export function getFormDefinitionBySlug(slug: string): FormDefinition | null {
   return listFormDefinitions().find((definition) => definition.slug === slug) ?? null;
 }
+
+/**
+ * Intitulé de chaque question de situation d'un formulaire, par clé (`question.id`).
+ *
+ * Sans cette table, l'e-mail à l'équipe affiche la clé technique (`besoin_relais`) au lieu de la
+ * question posée (« Quelle durée de relais vous aiderait ? »). Les formulaires hors registre
+ * (`sortie-hospitalisation`, `professionnel`) tirent leurs libellés de content/emails.json.
+ */
+export function situationQuestionLabels(formId: string): Record<string, string> {
+  if (!(formId in files)) return {};
+  const labels: Record<string, string> = {};
+  for (const question of parse(formId).situation) labels[question.id] = question.question;
+  return labels;
+}

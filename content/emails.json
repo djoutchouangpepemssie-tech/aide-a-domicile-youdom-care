@@ -31,6 +31,17 @@
     "version_consentement": "version du texte : {version}",
     "json": "Demande complète (JSON, pour reprise automatique)",
     "recu_le": "Reçue le {date}",
+    "titre_contexte": "Où et quand",
+    "titre_tracabilite": "Traçabilité",
+    "reference": "Référence",
+    "commune": "Commune",
+    "libelles_situation": {
+      "date_sortie": "Date de sortie prévue",
+      "hopital": "Hôpital ou clinique",
+      "structure": "Structure",
+      "fonction": "Fonction",
+      "type_besoin": "Type de besoin"
+    },
     "formulaires": {
       "rappel": "Rappel",
       "neuro": "Maladie neurodégénérative",
@@ -76,6 +87,9 @@
     "origine": "Page d'origine",
     "consentement": "Consentement à l'étude de la candidature : oui (version du texte : {version})",
     "recu_le": "Reçue le {date}",
+    "titre_candidature": "La candidature",
+    "titre_tracabilite": "Traçabilité",
+    "reference": "Référence",
     "accuse_objet": "Nous avons bien reçu votre candidature — Youdom Care",
     "accuse_corps": "Bonjour {prénom}, votre candidature est bien arrivée. Nous la lisons avec attention et nous vous répondons. D'ici là, vous pouvez nous joindre au {téléphone}. À bientôt."
   }

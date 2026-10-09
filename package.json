@@ -17,6 +17,7 @@
     "test:watch": "vitest",
     "test:e2e": "pnpm build && playwright test",
     "validate": "tsx scripts/validate/index.ts",
+    "mail:preview": "tsx scripts/preview-emails.ts",
     "audit:textes": "tsx scripts/audit/audit-textes.mts",
     "pdf:outils": "tsx scripts/pdf/outils.ts",
     "lhci": "tsx scripts/lhci.ts",

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Youdom Care">
+  <title>Youdom Care</title>
+  <!--
+    Monogramme « YC » (D-057).
+
+    Couleurs reprises du LOGO DE LA MARQUE, `public/images/marque/logo-youdom-care.png`, où le
+    « y » est vert et le « C » bleu : vert #50C878, bleu #007FFF, relevés au pixel sur le fichier.
+    Ce ne sont pas les jetons de `docs/02` (teal et framboise), qui habillent l'interface mais ne
+    sont pas les couleurs du logo — l'écart entre les deux est une question ouverte pour Arcel.
+
+    Fond blanc, et non teal foncé : le bleu de la marque ne tient que 2,7:1 sur `teal-900`, où le
+    C s'empâte et disparaît à 16 px. Sur blanc, les deux lettres restent franches de 16 à 180 px,
+    et c'est le fond sur lequel le logo est dessiné.
+
+    Les lettres sont des TRACÉS, pas du texte : une icône ne peut pas dépendre d'une police
+    installée sur le poste qui l'affiche. Les deux ont la même hauteur de capitale — un C plus
+    court se lisait « Yc ».
+  -->
+  <rect width="64" height="64" rx="14" fill="#ffffff" />
+  <g fill="none" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.5 20 L19.5 32 L28.5 20" stroke="#50C878" />
+    <path d="M19.5 32 L19.5 44" stroke="#50C878" />
+    <path d="M50.6 23.8 A 11.5 11.5 0 1 0 50.6 40.2" stroke="#007FFF" />
+  </g>
+</svg>

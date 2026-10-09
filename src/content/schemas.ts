@@ -1720,6 +1720,24 @@ export const emailsSchema = z.strictObject({
     version_consentement: text.includes("{version}"),
     json: text,
     recu_le: text.includes("{date}"),
+    /* Titres des blocs de la maquette commune (src/lib/mail/layout.ts). */
+    titre_contexte: text,
+    titre_tracabilite: text,
+    reference: text,
+    commune: text,
+    /**
+     * Libellés des réponses de situation des deux formulaires spéciaux, dont les questions ne
+     * viennent pas de content/formulaires/ : sans eux, l'e-mail afficherait la clé technique
+     * (`date_sortie`, `type_besoin`). Les autres formulaires fournissent l'intitulé de la
+     * question elle-même (src/content/form-definitions.ts).
+     */
+    libelles_situation: z.strictObject({
+      date_sortie: text,
+      hopital: text,
+      structure: text,
+      fonction: text,
+      type_besoin: text,
+    }),
     formulaires: z.strictObject({
       rappel: text,
       neuro: text,
@@ -1755,6 +1773,9 @@ export const emailsSchema = z.strictObject({
     origine: text,
     consentement: text.includes("{version}"),
     recu_le: text.includes("{date}"),
+    titre_candidature: text,
+    titre_tracabilite: text,
+    reference: text,
     accuse_objet: text,
     /** Contient {prénom} et {téléphone}. */
     accuse_corps: text.includes("{prénom}").includes("{téléphone}"),
