@@ -97,7 +97,16 @@ export async function accompagnementLinks(): Promise<AccompagnementLink[]> {
   }));
 }
 
-/** Page de département : pages de communes et d'arrondissements construites, par nom. */
+/**
+ * Page de département : pages de communes et d'arrondissements construites, par nom.
+ *
+ * Le tri est **numérique** (`numeric: true`), et ce n'est pas un détail de confort : les vingt
+ * arrondissements de Paris s'appellent « Paris 1er Arrondissement », « Paris 10e Arrondissement »,
+ * et une comparaison alphabétique ordinaire les range 10e, 11e … 19e, **1er**, 20e, 2e, 3e … Le
+ * 1er arrivait en onzième position et le 2e en treizième : un visiteur qui parcourt la liste croit
+ * qu'il en manque (relevé par Arcel le 09/10/2026). La collation numérique compare les suites de
+ * chiffres comme des nombres et rétablit 1er, 2e, 3e … 20e.
+ */
 export async function departementPages(
   page: LocalPage,
 ): Promise<{ href: string; label: string }[]> {
@@ -106,7 +115,7 @@ export async function departementPages(
   return pages
     .filter((p) => p.data.kind !== "departement" && p.data.departement === page.data.code)
     .map((p) => ({ href: p.chemin, label: p.data.nom }))
-    .sort((a, b) => a.label.localeCompare(b.label, "fr"));
+    .sort((a, b) => a.label.localeCompare(b.label, "fr", { numeric: true }));
 }
 
 /** Chemins des communes voisines qui ont une page construite, par code INSEE. */

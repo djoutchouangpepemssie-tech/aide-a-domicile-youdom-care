@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { listBuildableLocalPages } from "./local";
-import { NEARBY_PAGES, nearbyPages } from "./local-site";
+import { departementPages, NEARBY_PAGES, nearbyPages } from "./local-site";
 
 /*
  * Pages proches calculées (P9.4) : chaque commune ou arrondissement construit compte, entre ses
@@ -50,4 +50,25 @@ describe("nearbyPages", () => {
     expect(departement).toBeDefined();
     if (departement) expect(await nearbyPages(departement)).toEqual([]);
   }, 60_000);
+});
+
+describe("departementPages", () => {
+  it("range les arrondissements de Paris par numéro, pas par ordre alphabétique", async () => {
+    const pages = await listBuildableLocalPages();
+    const paris = pages.find((p) => p.data.kind === "departement" && p.data.code === "75");
+    expect(paris, "la page du département 75 doit exister").toBeDefined();
+    if (!paris) return;
+
+    const numbers = (await departementPages(paris))
+      .map((entry) => /Paris (\d+)(?:er|e)/.exec(entry.label)?.[1])
+      .filter((value): value is string => value !== undefined)
+      .map(Number);
+
+    // Les vingt arrondissements sont là, et dans l'ordre. Un tri alphabétique donnerait
+    // 10, 11 … 19, 1, 20, 2, 3 … : le 1er en onzième position (relevé le 09/10/2026).
+    expect(numbers).toHaveLength(20);
+    expect(numbers).toEqual([...numbers].sort((a, b) => a - b));
+    expect(numbers[0]).toBe(1);
+    expect(numbers.at(-1)).toBe(20);
+  });
 });
