@@ -455,3 +455,46 @@ et il faut l'écrire dans `docs/02`. À instruire avec la révision de `docs/02`
 
 **Reste à faire, hors de cette décision** : aucune `theme-color` n'est déclarée, donc la barre du
 navigateur sur mobile garde sa couleur par défaut.
+
+## D-058 — La compaction du hero regarde la largeur, pas seulement la hauteur (09/10/2026)
+
+**Contexte.** Demande d'Arcel : « fais en sorte que le site s'adapte à tout type d'écran ».
+
+**Ce que la mesure a montré d'abord, et qui est une bonne nouvelle.** `pnpm audit:responsive`
+charge quinze gabarits à neuf largeurs, de 320 à 1920 px, soit 135 mesures : **aucun débordement
+horizontal**, nulle part. Le site s'adapte déjà. Le défaut est ailleurs.
+
+**Le défaut.** Les quatre réglages de compaction du hero (`src/components/blocks/Hero/hero-scene.ts`
+— échelle typographique, plafond des panneaux de verre, espaces entre blocs, marge verticale de la
+section) ne regardaient que la **hauteur** de la fenêtre. Ils ont été écrits pour le paysage et le
+zoom à 200 %, c'est-à-dire large et court. Sur un téléphone **étroit en portrait**, où c'est la
+largeur qui manque, ils se comportaient de travers :
+
+- un écran de 360 px de large rendait le titre à **31,9 px**, soit **plus gros** que sur un écran
+  de 390 px (25,5 px), parce qu'il tombait dans le palier « hauteur moyenne » prévu pour le
+  paysage ;
+- un téléphone haut et étroit — 390×844, l'iPhone le plus répandu — ne déclenchait **aucun**
+  palier et recevait le hero pleine taille, action rejetée 132 px sous la ligne de flottaison ;
+- le plafond du panneau d'interaction suivait la même logique : 38 svh sur un 360×640 contre
+  30 svh sur un écran plus haut, là encore plus généreux là où il fallait l'être moins.
+
+**Décision.** Les quatre règles distinguent désormais la largeur, en conservant exactement les
+valeurs prévues pour le paysage là où elles ont un sens (`min-width:64rem`) et en appliquant
+l'échelle mobile ailleurs. Aucune valeur de design n'est inventée : les paliers existants sont
+simplement déclenchés sur les écrans pour lesquels ils ont été pensés.
+
+**Effet mesuré** (`pnpm audit:responsive`, avant → après) : accueil 360 px 316 → 153, accueil
+390 px 132 → 33, accueil 414 px 94 → **0**, pathologie 414 px 96 → **0**, pages locales à 360 px
+99 et 71 → **0**, article 390 px 145 → 57. Dix-huit mesures en défaut avant, quatorze après, et
+les écarts restants réduits de moitié à deux tiers.
+
+**Ce qui n'est pas réglé, et pourquoi je m'arrête là.** Il reste 320×568 et 360×640, où la
+compaction maximale est déjà active : l'écart ne tient plus à un réglage mais au volume de contenu
+du hero. Les trois leviers (raccourcir la promesse, réduire encore le panneau, ou accepter
+l'action sous la ligne de flottaison en s'appuyant sur la barre d'action mobile) sont des
+décisions de commanditaire. Détaillées dans `docs/PLAN.md`, DP.3, avec une recommandation.
+
+**Outil ajouté** : `pnpm audit:responsive` écrit `docs/AUDIT_RESPONSIVE.md` et sort en erreur au
+premier débordement horizontal. Il mesure avec les sélecteurs et la règle de hauteur visible de
+`tests/e2e/hero.spec.ts` — la barre d'action fixe comprise — pour que ses chiffres et ceux des
+parcours parlent de la même chose. Aucune dépendance ajoutée : il utilise le Playwright déjà là.

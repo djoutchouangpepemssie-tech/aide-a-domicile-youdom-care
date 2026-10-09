@@ -1,12 +1,16 @@
 import path from "node:path";
 import { render, screen, within } from "@testing-library/react";
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { articleMetadata } from "@/app/magazine/data";
 import { loadArticles, relatedArticles, type LoadedArticle } from "@/content/articles";
 import { getInterfaceTexts } from "@/content/loader";
 import { ArticleTemplate, type ArticleTemplateData } from "./ArticleTemplate";
 
 const dir = path.resolve(__dirname, "../../../tests/fixtures/magazine");
+
+afterEach(() => {
+  vi.unstubAllEnvs();
+});
 
 function dataFor(article: LoadedArticle, pool: LoadedArticle[]): ArticleTemplateData {
   return {
@@ -124,6 +128,14 @@ describe("ArticleTemplate", () => {
   it("n'affiche aucun bandeau d'attente et reste indexable (D-034, D-035)", () => {
     render(<ArticleTemplate data={dataFor(valide, pool)} />);
     expect(screen.queryByText(/attend sa relecture/)).toBeNull();
+    /*
+     * Ce que ce test vérifie : qu'un article relu n'est pas fermé **pour son propre compte**.
+     * Or `pageMetadata` pose aussi `robots` quand le site entier est fermé — et la CI construit
+     * justement avec `SITE_INDEXABLE: "false"` (.github/workflows/ci.yml, env du job, donc aussi
+     * pour `pnpm test`). Sans ce réglage, le test ne pouvait passer qu'en local et échouait en
+     * intégration. Même convention que `src/lib/seo/metadata.test.ts`.
+     */
+    vi.stubEnv("SITE_INDEXABLE", "true");
     const metadata = articleMetadata(valide);
     expect(metadata.robots).toBeUndefined();
     expect(String(metadata.alternates?.canonical)).toBe(

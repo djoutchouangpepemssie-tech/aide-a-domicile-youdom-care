@@ -924,3 +924,51 @@ comme question ouverte pour Arcel, à instruire avec la révision de `docs/02` q
 
 **Leçon de méthode** : une icône se juge à 16 px, pas dans l'éditeur — et une couleur de marque se
 relève sur le logo, pas sur la feuille de style.
+
+## La CI était rouge pour une raison, et le responsive pour une autre — 9 octobre 2026
+
+**La CI d'abord.** Un test échouait en intégration et passait en local :
+`ArticleTemplate.test.tsx` vérifiait qu'un article relu n'est pas fermé à l'indexation
+(`metadata.robots` indéfini). Or `.github/workflows/ci.yml` pose `SITE_INDEXABLE: "false"` dans
+l'`env` du **job**, donc aussi pour `pnpm test` : le site entier étant fermé, `robots` est posé sur
+toutes les pages et l'assertion tombait. C'est le même défaut que celui corrigé en D-055 pour les
+parcours Playwright — un test qui ne peut passer que dans une seule configuration d'indexation —
+mais sur le versant unitaire, où il était passé inaperçu.
+
+Corrigé par `vi.stubEnv("SITE_INDEXABLE", "true")` avant l'assertion, convention déjà en place
+dans `src/lib/seo/metadata.test.ts`. Avant de m'arrêter là, j'ai passé **toute** la suite dans la
+configuration de la CI pour vérifier qu'aucun autre test ne souffrait du même défaut : un seul,
+celui-là. La suite est désormais verte dans les deux configurations, 940 sur 940.
+
+**Le responsive ensuite.** Demande d'Arcel : que le site s'adapte à tout type d'écran. J'ai
+commencé par mesurer plutôt que par deviner — `pnpm audit:responsive`, quinze gabarits à neuf
+largeurs de 320 à 1920 px. Résultat : **aucun débordement horizontal, nulle part**. Le site
+s'adapte déjà ; le défaut était ailleurs, et c'est la dette DP.3.
+
+**Ce que la mesure a mis au jour** (D-058) : les quatre réglages de compaction du hero ne
+regardaient que la hauteur de la fenêtre. Écrits pour le paysage et le zoom — large et court —
+ils se déclenchaient aussi sur un téléphone étroit en portrait. Conséquence absurde et pourtant
+invisible à la lecture du code : à 360 px de large, le titre était rendu **plus gros** qu'à
+390 px. Et un 390×844, l'iPhone le plus répandu aujourd'hui, ne déclenchait aucune compaction.
+
+Les quatre règles distinguent maintenant la largeur. Accueil et pathologie à 414 px corrigés,
+pages locales à 360 px corrigées, écarts restants réduits de moitié à deux tiers.
+
+**Deux pièges de méthode rencontrés en chemin, qui valent d'être écrits.**
+
+1. **Un serveur périmé m'a fait voir 78 débordements là où il n'y en avait aucun.** Le `pnpm start`
+   d'avant la reconstruction servait du HTML qui référençait une feuille de style supprimée par le
+   nouveau build : les pages arrivaient sans style, donc tout débordait. J'ai failli « corriger »
+   un défaut qui n'existait pas. La vérification qui a tranché tient en une ligne : demander la
+   feuille référencée par la page et regarder le code de réponse.
+2. **Ma première mesure du hero était fausse.** J'avais écrit une heuristique (« le premier bouton
+   après le H1 ») et oublié la barre d'action fixe qui recouvre le bas de l'écran. Le projet a
+   pourtant un sélecteur dédié, `[data-hero-primary]`, et une règle de hauteur visible dans
+   `tests/e2e/hero.spec.ts`. En m'alignant dessus, le tableau a changé du tout au tout — et c'est
+   seulement là qu'est apparue la vraie cause. Mesurer autrement que le projet, c'est mesurer autre
+   chose.
+
+**Limite de cette session** : `pnpm test:e2e` ne tourne pas tel quel ici, le bac à sable n'ayant
+pas la version de Chromium que Playwright 1.63 attend. Contourné par une configuration jetable
+pointant le navigateur installé, le temps de vérifier `hero.spec.ts` : 21 parcours verts, 8 en
+échec, tous sur DP.3 — dont un à un pixel près.

@@ -53,7 +53,14 @@ export const heroSectionShell = cn(
   // réserve 9,5 rem sous 64 rem (en-tête + barre) et 6 rem au-delà (en-tête seul).
   "[--hero-chrome:9.5rem] lg:[--hero-chrome:6rem]",
   "min-h-[calc(100svh-var(--hero-chrome))]",
-  "py-8 [@media(max-height:42rem)_and_(min-height:36.01rem)]:py-6 [@media(max-height:36rem)]:py-4",
+  "py-8",
+  // Même correction que l'échelle typographique et les plafonds du panneau : les paliers ne
+  // regardaient que la hauteur, donc un téléphone haut et étroit gardait la marge d'un grand
+  // écran (64 px en tout) alors que c'est la largeur qui lui manque.
+  "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:py-5",
+  "[@media(min-width:64rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:py-6",
+  "[@media(max-width:63.99rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:py-4",
+  "[@media(max-height:36rem)]:py-4",
 );
 
 /** Scènes de `src/styles/scenes.css`. */
@@ -154,8 +161,16 @@ export function heroPanelClass(tint: GlassTint = "teal", dark = false): string {
     // atteignable au clavier (axe `scrollable-region-focusable`). Les deux plafonds ne se
     // recouvrent pas : une seule règle s'applique à la fois.
     "[@media(min-width:64rem)_and_(min-height:42.01rem)]:max-h-[38svh]",
-    "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:max-h-[30svh]",
-    "[@media(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[38svh]",
+    // Téléphone en portrait : le panneau partage la hauteur avec le titre, la promesse et
+    // l'action. Mesuré le 09/10/2026, il atteignait son plafond de 30svh (253 px à 390×844) et
+    // poussait l'action hors de l'écran ; à 24svh il garde tous ses choix et se défile en interne.
+    "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:max-h-[24svh]",
+    // Hauteur moyenne et écran large (paysage, zoom) : la largeur permet de rester généreux.
+    "[@media(min-width:64rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[38svh]",
+    // Hauteur moyenne et écran étroit (360×640 par exemple) : ce cas tombait dans la règle
+    // ci-dessus et recevait 38svh, soit **plus** qu'un téléphone plus haut — le même défaut que
+    // l'échelle typographique, une règle de paysage qui se déclenchait en portrait.
+    "[@media(max-width:63.99rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[26svh]",
     "[@media(max-height:36rem)]:max-h-[22svh]",
     "overflow-y-auto overscroll-contain",
     dark ? "glass-strong" : "glass",
@@ -176,8 +191,16 @@ export function heroLeadPanelClass(dark = false): string {
     // Mêmes plafonds que les autres panneaux : le sélecteur reste en haut, visible et cliquable,
     // et le chapô se défile dans le panneau plutôt que de repousser l'action hors de la fenêtre.
     "[@media(min-width:64rem)_and_(min-height:42.01rem)]:max-h-[38svh]",
-    "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:max-h-[30svh]",
-    "[@media(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[38svh]",
+    // Téléphone en portrait : le panneau partage la hauteur avec le titre, la promesse et
+    // l'action. Mesuré le 09/10/2026, il atteignait son plafond de 30svh (253 px à 390×844) et
+    // poussait l'action hors de l'écran ; à 24svh il garde tous ses choix et se défile en interne.
+    "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:max-h-[24svh]",
+    // Hauteur moyenne et écran large (paysage, zoom) : la largeur permet de rester généreux.
+    "[@media(min-width:64rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[38svh]",
+    // Hauteur moyenne et écran étroit (360×640 par exemple) : ce cas tombait dans la règle
+    // ci-dessus et recevait 38svh, soit **plus** qu'un téléphone plus haut — le même défaut que
+    // l'échelle typographique, une règle de paysage qui se déclenchait en portrait.
+    "[@media(max-width:63.99rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[26svh]",
     "[@media(max-height:36rem)]:max-h-[22svh]",
     "overflow-y-auto overscroll-contain",
     dark ? "glass-strong" : "glass",
@@ -190,12 +213,23 @@ export function heroLeadPanelClass(dark = false): string {
  * une autre) : c'est la seule façon d'être sûr de la valeur appliquée, l'ordre de deux variantes
  * arbitraires dans la feuille produite n'étant pas garanti.
  */
-export const heroGap =
-  "mt-5 [@media(max-height:42rem)_and_(min-height:36.01rem)]:mt-3 [@media(max-height:36rem)]:mt-2";
+export const heroGap = cn(
+  "mt-5",
+  // Téléphone en portrait : l'écran est haut, donc aucun palier de hauteur ne se déclenche, mais
+  // la largeur manque et le contenu s'allonge. Les espaces d'un grand écran y coûtent une
+  // quarantaine de pixels pris sur l'action (mesuré le 09/10/2026, cinq espaces de 20 à 24 px).
+  "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:mt-3",
+  "[@media(max-height:42rem)_and_(min-height:36.01rem)]:mt-3",
+  "[@media(max-height:36rem)]:mt-2",
+);
 
 /** Espace avant un panneau ou une rangée d'actions (un cran de plus). */
-export const heroGapWide =
-  "mt-6 [@media(max-height:42rem)_and_(min-height:36.01rem)]:mt-4 [@media(max-height:36rem)]:mt-2";
+export const heroGapWide = cn(
+  "mt-6",
+  "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:mt-4",
+  "[@media(max-height:42rem)_and_(min-height:36.01rem)]:mt-4",
+  "[@media(max-height:36rem)]:mt-2",
+);
 
 /** Rangée d'actions du hero : un bouton framboise, un lien secondaire, le téléphone. */
 export const heroActionsClass = cn(
@@ -250,10 +284,25 @@ export const heroOrderLast = "[@media(max-height:36rem)]:order-2";
  *  - hauteur de 36 à 42 rem : 1,875 rem ; sous 36 rem : 1,375 rem.
  */
 export const heroTypeScale = cn(
+  // Large et confortable : le titre porte la page.
   "[@media(min-width:64rem)_and_(min-height:42.01rem)]:[--text-h1:2.5rem]",
+  // Étroit et confortable : échelle mobile.
   "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:[--text-h1:1.5rem]",
-  "[@media(max-height:42rem)_and_(min-height:36.01rem)]:[--text-h1:1.875rem]",
-  "[@media(max-height:42rem)_and_(min-height:36.01rem)]:[--text-lead:1.0625rem]",
+  // Large et de hauteur moyenne — paysage, zoom à 200 % : le titre peut rester grand, la largeur
+  // lui permet de tenir sur peu de lignes.
+  "[@media(min-width:64rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:[--text-h1:1.875rem]",
+  "[@media(min-width:64rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:[--text-lead:1.0625rem]",
+  /*
+   * Étroit et de hauteur moyenne — un téléphone en portrait, 360×640 par exemple. Ce cas tombait
+   * jusqu'ici dans le palier ci-dessus et recevait un titre de 1,875 rem, soit **plus gros** que
+   * sur un écran plus large (1,5 rem) : le palier était écrit pour le paysage, où la largeur
+   * absorbe un grand titre, et se déclenchait aussi là où elle manque. Mesuré le 09/10/2026 :
+   * 31,9 px de titre à 360 px de large contre 25,5 px à 390 px, et l'action repoussée 318 px sous
+   * la ligne de flottaison au lieu de 134. On garde donc l'échelle mobile.
+   */
+  "[@media(max-width:63.99rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:[--text-h1:1.5rem]",
+  "[@media(max-width:63.99rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:[--text-lead:1rem]",
+  // Très court : le dernier palier, quelle que soit la largeur.
   "[@media(max-height:36rem)]:[--text-h1:1.375rem] [@media(max-height:36rem)]:[--text-lead:1rem]",
 );
 
