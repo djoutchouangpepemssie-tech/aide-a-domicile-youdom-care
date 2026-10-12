@@ -1,11 +1,11 @@
 {
   "id": "fiche-de-vie-personne-agee",
   "seo": {
-    "titre": "La fiche de vie de votre proche : histoire, goûts, habitudes",
-    "description": "Modèle gratuit à imprimer et remplir à la main : l'histoire de votre proche, ses goûts, ses habitudes, ce qui le rassure, pour l'accompagner comme vous."
+    "titre": "La fiche de vie de votre proche : histoire, goûts, habitudes",
+    "description": "Modèle gratuit à imprimer et remplir à la main : l'histoire de votre proche, ses goûts, ses habitudes, ce qui le rassure, pour l'accompagner comme vous."
   },
   "ariane": "Fiche de vie de la personne âgée",
-  "h1": "La fiche de vie de votre proche : son histoire, ses goûts, ses habitudes",
+  "h1": "La fiche de vie de votre proche : son histoire, ses goûts, ses habitudes",
   "sous_titre": "Ce que vous savez de lui ou d'elle, écrit pour que chaque personne qui vient l'accompagne comme vous le feriez.",
   "icone": "memoire",
   "mode_emploi": [
@@ -33,7 +33,7 @@
         },
         {
           "type": "champ",
-          "libelle": "Les personnes qui comptent : famille, amis, voisins",
+          "libelle": "Les personnes qui comptent : famille, amis, voisins",
           "lignes": 3
         },
         {
@@ -67,7 +67,7 @@
         },
         {
           "type": "champ",
-          "libelle": "Ce qui lui fait plaisir : une sortie, un jeu, un jardin, un café",
+          "libelle": "Ce qui lui fait plaisir : une sortie, un jeu, un jardin, un café",
           "lignes": 2
         },
         {
@@ -81,7 +81,7 @@
       "items": [
         {
           "type": "champ",
-          "libelle": "Le lever : à quelle heure, comment",
+          "libelle": "Le lever : à quelle heure, comment",
           "lignes": 2
         },
         {
@@ -100,7 +100,7 @@
         },
         {
           "type": "champ",
-          "libelle": "La soirée et le coucher : rituel, lumière, porte",
+          "libelle": "La soirée et le coucher : rituel, lumière, porte",
           "lignes": 2
         },
         {
@@ -120,7 +120,7 @@
         },
         {
           "type": "champ",
-          "libelle": "Ce qui l'apaise : une voix, un geste, un objet, une chanson",
+          "libelle": "Ce qui l'apaise : une voix, un geste, un objet, une chanson",
           "lignes": 2
         },
         {
@@ -140,15 +140,15 @@
       "items": [
         {
           "type": "champ",
-          "libelle": "Canne, déambulateur, fauteuil : quand et où"
+          "libelle": "Canne, déambulateur, fauteuil : quand et où"
         },
         {
           "type": "champ",
-          "libelle": "Lunettes, appareils auditifs, prothèses dentaires : où ils se rangent"
+          "libelle": "Lunettes, appareils auditifs, prothèses dentaires : où ils se rangent"
         },
         {
           "type": "champ",
-          "libelle": "Les repères dans le logement : sa place à table, son fauteuil, la lumière de la nuit",
+          "libelle": "Les repères dans le logement : sa place à table, son fauteuil, la lumière de la nuit",
           "lignes": 2
         }
       ]
@@ -199,7 +199,7 @@
     }
   ],
   "prudence": [
-    "Les soins et les médicaments relèvent du médecin, du pharmacien et de l'infirmier : cette fiche n'en dit rien de plus que qui appeler.",
-    "La fiche reste chez votre proche. Elle n'est ni envoyée ni enregistrée : vous la remplissez à la main, et il ou elle décide qui la lit."
+    "Les soins et les médicaments relèvent du médecin, du pharmacien et de l'infirmier : cette fiche n'en dit rien de plus que qui appeler.",
+    "La fiche reste chez votre proche. Elle n'est ni envoyée ni enregistrée : vous la remplissez à la main, et il ou elle décide qui la lit."
   ]
 }

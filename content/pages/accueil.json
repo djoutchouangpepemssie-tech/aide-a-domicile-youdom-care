@@ -2,12 +2,12 @@
   "_lisezmoi": "Textes de l'accueil, repris tels quels de docs/01 §4 (blocs 1 à 12, ajoutés phase par phase). Les codes engagement renvoient à content/engagements.json : en production, un bloc dont l'engagement n'est pas validé est masqué. Les jetons {téléphone} sont remplacés par les composants. Le bloc seo reprend le modèle de docs/01 §8.",
   "seo": {
     "titre": "Aide à domicile spécialisée à Paris et en Île-de-France",
-    "description": "Alzheimer, Parkinson, handicap, grand âge : un accompagnement à domicile sur mesure, jusqu'à 24h/24, à Paris et en Île-de-France. Évaluation gratuite."
+    "description": "Alzheimer, Parkinson, handicap, grand âge : un accompagnement à domicile sur mesure, jusqu'à 24h/24, à Paris et en Île-de-France. Évaluation gratuite."
   },
   "banniere": {
     "sur_titre": "Aide et accompagnement à domicile · Paris et Île-de-France",
     "h1": "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",
-    "chapo": "Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : chaque situation est unique. Youdom Care construit un accompagnement sur mesure, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.",
+    "chapo": "Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : chaque situation est unique. Youdom Care construit un accompagnement sur mesure, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.",
     "lien_telephone": "Ou appelez le {téléphone}",
     "reassurance": ["Évaluation à domicile gratuite", "Sans engagement", "Crédit d'impôt de 50 %"],
     "illustration": "maison",
@@ -19,7 +19,7 @@
     "noeud": "49% 82%",
     "parcours": {
       "_lisezmoi": "Geste d'entrée (docs/design/CONCEPT.md §3). Le jeton {pour} du titre du panneau est remplacé par le champ « pour » du choix. Le choix « Je ne sais pas encore » (sans « pour ») mène à la page de rappel avec ?motif=inconnu : le message affiché est motifs.inconnu de content/pages/etre-rappele.json.",
-      "question": "Pour qui cherchez-vous de l'aide ?",
+      "question": "Pour qui cherchez-vous de l'aide ?",
       "choix": [
         {
           "id": "personne-agee",
@@ -30,7 +30,7 @@
         },
         {
           "id": "neuro",
-          "libelle": "Pour un proche : Alzheimer, Parkinson…",
+          "libelle": "Pour un proche : Alzheimer, Parkinson…",
           "pour": "pour une personne touchée par la maladie",
           "icone": "public-neuro",
           "href": "/maladies-neurodegeneratives/"
@@ -44,14 +44,14 @@
         },
         {
           "id": "adulte-handicap",
-          "libelle": "Pour moi : je vis avec un handicap",
+          "libelle": "Pour moi : je vis avec un handicap",
           "pour": "pour vous-même",
           "icone": "public-adultes",
           "href": "/adultes-en-situation-de-handicap/"
         },
         {
           "id": "aidant",
-          "libelle": "Pour moi : j'aide un proche",
+          "libelle": "Pour moi : j'aide un proche",
           "pour": "pour vous, qui aidez un proche",
           "icone": "public-aidants",
           "href": "/aidants/"
@@ -63,19 +63,19 @@
           "href": "/etre-rappele/"
         }
       ],
-      "titre_panneau": "Vous cherchez de l'aide {pour}. Que vivez-vous ?",
-      "autre": "Autre chose : je décris ma situation",
+      "titre_panneau": "Vous cherchez de l'aide {pour}. Que vivez-vous ?",
+      "autre": "Autre chose : je décris ma situation",
       "toutes": "Toutes les situations"
     },
     "signature": {
       "photo": {
         "src": "/images/heros/accueil-couple-enlace.png",
-        "alt": "Un couple de personnes âgées sourit : la femme enlace l'homme par les épaules, leurs mains jointes devant eux"
+        "alt": "Un couple de personnes âgées sourit : la femme enlace l'homme par les épaules, leurs mains jointes devant eux"
       }
     }
   },
   "situations": {
-    "h2": "Que vivez-vous en ce moment ?",
+    "h2": "Que vivez-vous en ce moment ?",
     "texte": "Choisissez ce qui vous ressemble le plus. Nous vous emmenons au bon endroit.",
     "cartes": [
       {
@@ -87,14 +87,14 @@
       },
       {
         "citation": "Mon parent ne peut plus rester seul",
-        "texte": "Chutes, oublis, repas sautés : il est temps d'une présence régulière.",
+        "texte": "Chutes, oublis, repas sautés : il est temps d'une présence régulière.",
         "lien": "Voir l'aide aux personnes âgées",
         "href": "/personnes-agees/",
         "icone": "maison"
       },
       {
         "citation": "Mon enfant a besoin de quelqu'un de formé",
-        "texte": "Autisme, polyhandicap, handicap moteur : un relais qui comprend votre enfant.",
+        "texte": "Autisme, polyhandicap, handicap moteur : un relais qui comprend votre enfant.",
         "lien": "Voir l'accompagnement des enfants",
         "href": "/enfants-en-situation-de-handicap/",
         "icone": "fiche-de-vie"
@@ -115,7 +115,7 @@
       },
       {
         "citation": "Je n'en peux plus, j'ai besoin de relais",
-        "texte": "Quelques heures, une nuit, un week-end : vous avez le droit de vous reposer.",
+        "texte": "Quelques heures, une nuit, un week-end : vous avez le droit de vous reposer.",
         "lien": "Voir les solutions pour les aidants",
         "href": "/aidants/",
         "icone": "aidant"
@@ -141,7 +141,7 @@
         "engagement": "E3",
         "icone": "cahier-de-liaison",
         "titre": "Un suivi que vous pouvez lire.",
-        "texte": "Un référent unique, un cahier de liaison, des points réguliers : vous savez ce qui se passe, même à distance."
+        "texte": "Un référent unique, un cahier de liaison, des points réguliers : vous savez ce qui se passe, même à distance."
       },
       {
         "engagement": "E4",
@@ -152,19 +152,19 @@
     ]
   },
   "neuro": {
-    "h2": "Alzheimer, Parkinson, sclérose en plaques : un accompagnement qui évolue avec la maladie",
-    "texte": "Une maladie neurodégénérative ne se vit pas de la même façon à l'annonce du diagnostic, trois ans plus tard, ou quand une présence devient nécessaire jour et nuit. Notre accompagnement change avec elle. Et chaque personne reste unique : son histoire, ses goûts et ses habitudes guident tout ce que nous faisons.",
+    "h2": "Alzheimer, Parkinson, sclérose en plaques : un accompagnement qui évolue avec la maladie",
+    "texte": "Une maladie neurodégénérative ne se vit pas de la même façon à l'annonce du diagnostic, trois ans plus tard, ou quand une présence devient nécessaire jour et nuit. Notre accompagnement change avec elle. Et chaque personne reste unique : son histoire, ses goûts et ses habitudes guident tout ce que nous faisons.",
     "stades": [
       {
-        "titre": "Au début : préserver les habitudes",
+        "titre": "Au début : préserver les habitudes",
         "icone": "memoire"
       },
       {
-        "titre": "Quand la maladie avance : sécuriser et stimuler",
+        "titre": "Quand la maladie avance : sécuriser et stimuler",
         "icone": "compagnie"
       },
       {
-        "titre": "Quand tout devient difficile : une présence continue",
+        "titre": "Quand tout devient difficile : une présence continue",
         "icone": "24h"
       }
     ],
@@ -177,7 +177,7 @@
     }
   },
   "semaine": {
-    "h2": "À quoi ressemble une semaine avec nous ?",
+    "h2": "À quoi ressemble une semaine avec nous ?",
     "texte": "Trois exemples, parmi des centaines de possibles. Votre semaine, nous la construisons avec vous.",
     "onglets": [
       {
@@ -245,7 +245,7 @@
     ]
   },
   "prix": {
-    "h2": "Combien ça coûte, vraiment ?",
+    "h2": "Combien ça coûte, vraiment ?",
     "texte": "Le prix dépend du nombre d'heures et du type d'accompagnement. Vous recevez un devis gratuit et détaillé après l'évaluation. Plusieurs aides peuvent réduire fortement votre reste à charge.",
     "carte_tarifs": {
       "titre": "Nos tarifs",
@@ -270,8 +270,8 @@
     }
   },
   "proches": {
-    "h2": "Et vous, qui prend soin de vous ?",
-    "texte": "Aider un proche, c'est souvent s'oublier. S'organiser pour tenir, ce n'est pas abandonner : c'est durer. Nous prenons le relais quelques heures, une nuit, un week-end. Pour que vous redeveniez sa fille, son fils, son conjoint, son parent. Pas seulement son aidant.",
+    "h2": "Et vous, qui prend soin de vous ?",
+    "texte": "Aider un proche, c'est souvent s'oublier. S'organiser pour tenir, ce n'est pas abandonner : c'est durer. Nous prenons le relais quelques heures, une nuit, un week-end. Pour que vous redeveniez sa fille, son fils, son conjoint, son parent. Pas seulement son aidant.",
     "href": "/aidants/",
     "illustration": "tasse",
     "photo": {
@@ -282,7 +282,7 @@
   },
   "territoire": {
     "h2": "Partout à Paris et en Île-de-France",
-    "texte": "{agences} agences, huit départements. Indiquez votre commune : nous vous répondons tout de suite."
+    "texte": "{agences} agences, huit départements. Indiquez votre commune : nous vous répondons tout de suite."
   },
   "magazine": {
     "h2": "Le Fil, le magazine qui aide ceux qui aident",
@@ -295,7 +295,7 @@
     "bouton_telephone": "J'appelle le {téléphone}"
   },
   "recrutement": {
-    "accroche": "Vous êtes auxiliaire de vie ?",
+    "accroche": "Vous êtes auxiliaire de vie ?",
     "texte": "Rejoignez une équipe qui forme, écoute et respecte ses intervenants.",
     "lien": "Voir les offres",
     "href": "/recrutement/"

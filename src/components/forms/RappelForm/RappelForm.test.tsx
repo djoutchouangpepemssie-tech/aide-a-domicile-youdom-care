@@ -62,7 +62,7 @@ describe("RappelForm", () => {
         texts,
       ),
     ).toEqual({
-      telephone: "Ce numéro semble incomplet. Pouvez-vous le vérifier ?",
+      telephone: "Ce numéro semble incomplet. Pouvez-vous le vérifier ?",
       commune: expect.stringMatching(/^Nous intervenons à Paris et en Île-de-France/),
     });
   });

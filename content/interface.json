@@ -27,7 +27,7 @@
   "pied_de_page": {
     "nous_joindre": "Nous joindre",
     "nos_agences": "Nos agences",
-    "pour_qui": "Pour qui ?",
+    "pour_qui": "Pour qui ?",
     "nos_services": "Nos services",
     "territoires": "Territoires",
     "entreprise": "Youdom Care",
@@ -82,7 +82,7 @@
     "par_unite": "par {unite}",
     "avant_avantage": "Prix avant avantage fiscal",
     "apres_credit": "Soit {montant} après crédit d’impôt de {taux}",
-    "exemple_mensuel": "Exemple : {heures} h par semaine, environ {montant} par mois",
+    "exemple_mensuel": "Exemple : {heures} h par semaine, environ {montant} par mois",
     "mode": "Mode {mode}",
     "devis": "Devis personnalisé gratuit",
     "unites": {
@@ -98,9 +98,9 @@
     }
   },
   "aides": {
-    "pour_qui": "Pour qui ?",
-    "combien": "Combien ?",
-    "comment": "Comment la demander ?",
+    "pour_qui": "Pour qui ?",
+    "combien": "Combien ?",
+    "comment": "Comment la demander ?",
     "lien_externe": "site officiel, lien externe"
   },
   "page_aide": {
@@ -108,7 +108,7 @@
     "sources_h2": "Sources officielles",
     "source_verifiee": "vérifiée le {date}",
     "source_consultee": "consultée le {date}",
-    "avertissement": "Les montants et conditions ci-dessous sont ceux publiés par les sources officielles citées, à la date indiquée. Ils évoluent : vérifiez-les avant toute décision, et parlez-en à votre conseiller.",
+    "avertissement": "Les montants et conditions ci-dessous sont ceux publiés par les sources officielles citées, à la date indiquée. Ils évoluent : vérifiez-les avant toute décision, et parlez-en à votre conseiller.",
     "a_retenir": "À retenir",
     "retour": "Toutes les aides"
   },
@@ -122,7 +122,7 @@
   "recherche_commune": {
     "champ": "Votre commune ou votre code postal",
     "bouton": "Vérifier",
-    "oui": "Oui, nous intervenons à {commune}. Votre agence la plus proche : {agence}.",
+    "oui": "Oui, nous intervenons à {commune}. Votre agence la plus proche : {agence}.",
     "oui_sans_agence": "Oui, nous intervenons à {commune}.",
     "aucun_resultat": "Aucune commune d’Île-de-France ne correspond à votre saisie.",
     "suggestions": "{n} suggestion(s), utilisez les flèches pour choisir."
@@ -137,7 +137,7 @@
       "proche": "pour un proche",
       "soi": "pour vous-même"
     },
-    "situations_h2": "Vous vous reconnaissez ?",
+    "situations_h2": "Vous vous reconnaissez ?",
     "actions_h2": "Ce que nous faisons, concrètement",
     "rubriques": {
       "gestes": "Les gestes du quotidien",
@@ -151,9 +151,9 @@
     "proches_h2": "Et pour vous, les proches",
     "proches_lien": "L’espace Aidants",
     "repit_lien": "Les solutions de répit",
-    "intervenants_h2": "Qui intervient ?",
+    "intervenants_h2": "Qui intervient ?",
     "ne_faisons_pas_h2": "Ce que nous ne faisons pas",
-    "cout_h2": "Combien ça coûte, quelles aides ?",
+    "cout_h2": "Combien ça coûte, quelles aides ?",
     "cout_lien": "Tarifs et aides en détail",
     "tous_les_services_lien": "Voir tous nos services",
     "faq_h2": "Questions fréquentes",
@@ -162,19 +162,19 @@
     "sources_h2": "Sources et relecture",
     "auteur": "Écrit par {nom}, {fonction}",
     "relu_par": "Relu par {nom}, {fonction}, le {date}",
-    "non_relu": "Cette page attend sa relecture par un professionnel : elle n’est pas encore publiée.",
+    "non_relu": "Cette page attend sa relecture par un professionnel : elle n’est pas encore publiée.",
     "maj": "Mise à jour le {date}",
     "relecture_attendue": "En attente de relecture par un professionnel.",
     "frontiere": {
       "sous_titre": "Et avec qui nous travaillons pour cela.",
       "colonne_faits": "Nous ne faisons pas",
       "colonne_relais": "Qui le fait",
-      "ligne_fin": "Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas."
+      "ligne_fin": "Nous nous coordonnons avec ces acteurs ; nous ne les remplaçons pas."
     },
-    "pilier_lien": "Retour à la page principale : {titre}",
+    "pilier_lien": "Retour à la page principale : {titre}",
     "a_lire_aussi_h2": "À lire aussi",
     "soeurs_h2": "Pages proches",
-    "commune_lien": "Intervenons-nous près de chez vous ?",
+    "commune_lien": "Intervenons-nous près de chez vous ?",
     "publics": {
       "neuro": "Maladies neurodégénératives",
       "personne-agee": "Personnes âgées",
@@ -186,7 +186,7 @@
     "sous_pages_nom": "Aller à la page qui vous concerne",
     "gestes": {
       "stades": {
-        "question": "Où en est la maladie ?",
+        "question": "Où en est la maladie ?",
         "choix": [
           "Le diagnostic vient d'être posé",
           "Elle avance, il faut sécuriser",
@@ -194,7 +194,7 @@
         ]
       },
       "planning": {
-        "question": "Quand voulez-vous de l'aide ?",
+        "question": "Quand voulez-vous de l'aide ?",
         "choix": {
           "matin-soir": "Matin et soir, tous les jours",
           "semaine": "En semaine",
@@ -220,7 +220,7 @@
         "mention": "Pas un test médical. Rien n'est conservé."
       },
       "nuit": {
-        "question": "Nuit calme ou nuit active ?",
+        "question": "Nuit calme ou nuit active ?",
         "calme": {
           "titre": "Nuit calme",
           "texte": "L'intervenant dort sur place et se lève au besoin."
@@ -229,7 +229,7 @@
           "titre": "Nuit active",
           "texte": "L'intervenant veille, éveillé."
         },
-        "duree_question": "Combien de temps ?",
+        "duree_question": "Combien de temps ?",
         "durees": {
           "jours": "Quelques jours",
           "semaines": "Quelques semaines",
@@ -237,7 +237,7 @@
         }
       },
       "sortie": {
-        "question": "Quand est la sortie ?",
+        "question": "Quand est la sortie ?",
         "choix": {
           "demain": "Demain ou après-demain",
           "semaine": "Cette semaine",
@@ -264,12 +264,12 @@
   },
   "formulaires": {
     "accroche": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées.",
-    "etape_pour_qui": "Pour qui cherchez-vous de l'aide ?",
+    "etape_pour_qui": "Pour qui cherchez-vous de l'aide ?",
     "etape_situation": "Dites-nous l'essentiel. Vous pourrez tout préciser au téléphone.",
-    "etape_besoins": "De quoi avez-vous besoin ? Plusieurs choix possibles.",
+    "etape_besoins": "De quoi avez-vous besoin ? Plusieurs choix possibles.",
     "choix_ouvert": "À définir ensemble",
     "plusieurs_reponses": "Plusieurs réponses possibles.",
-    "etape_planning": "Quand souhaitez-vous de l'aide ?",
+    "etape_planning": "Quand souhaitez-vous de l'aide ?",
     "raccourcis": [
       "Tous les jours",
       "Du lundi au vendredi",
@@ -277,13 +277,13 @@
       "Toutes les nuits",
       "24h/24, 7j/7"
     ],
-    "estimation": "Environ {h} heures par semaine. Ce n'est qu'une base : nous l'ajusterons ensemble.",
-    "etape_coordonnees": "Où pouvons-nous vous joindre ?",
-    "creneau_rappel": "Quand préférez-vous être rappelé(e) ?",
+    "estimation": "Environ {h} heures par semaine. Ce n'est qu'une base : nous l'ajusterons ensemble.",
+    "etape_coordonnees": "Où pouvons-nous vous joindre ?",
+    "creneau_rappel": "Quand préférez-vous être rappelé(e) ?",
     "consentement": "J'accepte que Youdom Care utilise ces informations, y compris celles qui concernent la santé de la personne à accompagner, pour me recontacter et préparer une proposition.",
     "erreur_champ": "Il manque {champ}. Nous en avons besoin pour vous rappeler.",
-    "telephone_invalide": "Ce numéro semble incomplet. Pouvez-vous le vérifier ?",
-    "hors_idf": "Nous intervenons à Paris et en Île-de-France. Pour cette commune, nous ne pourrons pas vous aider : le centre communal d'action sociale de la mairie et le département recensent les services près de chez vous.",
+    "telephone_invalide": "Ce numéro semble incomplet. Pouvez-vous le vérifier ?",
+    "hors_idf": "Nous intervenons à Paris et en Île-de-France. Pour cette commune, nous ne pourrons pas vous aider : le centre communal d'action sociale de la mairie et le département recensent les services près de chez vous.",
     "envoi_impossible": "L'envoi n'a pas abouti. Vos réponses sont conservées sur cet écran. Réessayez, ou appelez-nous au {téléphone}.",
     "succes": "Merci. Votre demande est arrivée. Un conseiller vous rappelle {délai}.",
     "succes_delai_inconnu": "Merci. Votre demande est arrivée. Un conseiller vous rappelle dès que possible.",
@@ -317,22 +317,22 @@
     "email": "Votre e-mail",
     "email_aide": "Facultatif. Pour recevoir un accusé de réception, sans aucun détail de votre demande.",
     "message": "Ce que vous souhaitez nous dire",
-    "message_aide": "Inutile de détailler l'état de santé : nous en parlerons de vive voix.",
+    "message_aide": "Inutile de détailler l'état de santé : nous en parlerons de vive voix.",
     "consentement_requis": "Il manque votre accord. Nous en avons besoin pour utiliser vos réponses et vous rappeler.",
     "etape_titres": {
-      "pour_qui": "Pour qui ?",
+      "pour_qui": "Pour qui ?",
       "situation": "La situation",
       "besoins": "Les besoins",
       "planning": "Le planning",
       "coordonnees": "Vos coordonnées"
     },
     "rappel": {
-      "titre_etape": "Où pouvons-nous vous joindre ?",
+      "titre_etape": "Où pouvons-nous vous joindre ?",
       "prenom": "Votre prénom",
       "nom": "Votre nom",
       "telephone": "Votre téléphone",
       "commune": "Votre commune ou votre code postal",
-      "creneau_rappel": "Quand préférez-vous être rappelé(e) ?",
+      "creneau_rappel": "Quand préférez-vous être rappelé(e) ?",
       "creneau_choisir": "Peu importe",
       "creneaux_rappel": ["Le matin", "L'après-midi", "En début de soirée"],
       "usage_coordonnees": "Ces coordonnées servent uniquement à vous rappeler.",
@@ -340,7 +340,7 @@
     }
   },
   "planning": {
-    "rythme_question": "À quel rythme ?",
+    "rythme_question": "À quel rythme ?",
     "rythmes": {
       "regulier": "Régulier, chaque semaine",
       "ponctuel": "Ponctuel, à des dates précises",
@@ -356,7 +356,7 @@
     "creneaux_jour_singulier": "1 créneau",
     "creneaux_jour_pluriel": "{n} créneaux",
     "resume_vide": "Aucun créneau choisi pour l'instant.",
-    "estimation_suite": "Ce n'est qu'une base : nous l'ajusterons ensemble.",
+    "estimation_suite": "Ce n'est qu'une base : nous l'ajusterons ensemble.",
     "horaires_precis": "Je préfère indiquer des horaires précis",
     "horaires_legende": "Horaires précis, jour par jour",
     "plage_nom": "{jour}, plage {n}",
@@ -368,13 +368,13 @@
     "copier_choisir": "Choisir un jour",
     "copier_tous": "Tous les autres jours cochés",
     "copier": "Copier",
-    "nuit_question": "Comment se passent les nuits ?",
+    "nuit_question": "Comment se passent les nuits ?",
     "nuits": {
-      "calme": "Nuit calme : la personne dort le plus souvent, l'intervenant se lève au besoin",
-      "active": "Nuit active : besoin d'une présence éveillée",
+      "calme": "Nuit calme : la personne dort le plus souvent, l'intervenant se lève au besoin",
+      "active": "Nuit active : besoin d'une présence éveillée",
       "inconnu": "Je ne sais pas"
     },
-    "debut_question": "Quand souhaitez-vous commencer ?",
+    "debut_question": "Quand souhaitez-vous commencer ?",
     "debuts": {
       "48h": "Dès que possible (sous 48 h)",
       "semaine": "Dans la semaine",
@@ -383,7 +383,7 @@
     },
     "budget": "Environ {avant} par mois TTC, soit {apres} après crédit d'impôt.",
     "budget_mention": "Estimation indicative, devis gratuit après évaluation.",
-    "dates_legende": "À quelles dates ?",
+    "dates_legende": "À quelles dates ?",
     "date_unique": "Une date",
     "ajouter_date": "Ajouter cette date",
     "periode_du": "Ou une période, du",
@@ -392,16 +392,16 @@
     "retirer_date": "Retirer",
     "dates_choisies": "{n} date(s) choisie(s)",
     "aucune_date": "Aucune date choisie pour l'instant.",
-    "dates_maximum": "Vous avez atteint {max} dates : au-delà, parlons-en de vive voix.",
-    "creneaux_dates": "À quels moments, ces jours-là ?",
+    "dates_maximum": "Vous avez atteint {max} dates : au-delà, parlons-en de vive voix.",
+    "creneaux_dates": "À quels moments, ces jours-là ?",
     "resume_dates": "Environ {h} heures au total sur {n} date(s)",
-    "tous_les_jours_question": "Tous les jours ?",
+    "tous_les_jours_question": "Tous les jours ?",
     "tous_les_jours": "Oui, 7 jours sur 7",
     "jours_choisis": "Certains jours seulement",
-    "jours_legende": "Quels jours ?",
-    "grille_24h": "La semaine est remplie d'office : décochez ce qui ne convient pas.",
+    "jours_legende": "Quels jours ?",
+    "grille_24h": "La semaine est remplie d'office : décochez ce qui ne convient pas.",
     "debut_date": "Date de début souhaitée",
-    "duree_question": "Pour combien de temps ?",
+    "duree_question": "Pour combien de temps ?",
     "durees": {
       "jours": "Quelques jours",
       "semaines": "Quelques semaines",
@@ -435,8 +435,8 @@
       "oui": "Oui, nous intervenons {lieu}.",
       "agence": "Vos interventions sont coordonnées par {agence}.",
       "agence_proche": "Vos interventions sont coordonnées par {agence}.",
-      "agence_ici": "Votre agence : {agence}, installée {lieu}.",
-      "agence_departement": "Votre agence dans le département : {agence}, à {commune}.",
+      "agence_ici": "Votre agence : {agence}, installée {lieu}.",
+      "agence_departement": "Votre agence dans le département : {agence}, à {commune}.",
       "agence_hors_departement": "Vos interventions sont coordonnées par {agence}, à {commune}.",
       "voir_agence": "Voir l'agence {nom}",
       "appeler": "Appeler le {téléphone}"
@@ -454,9 +454,9 @@
       "source": "Insee"
     },
     "ressources_h2": "Les ressources près de chez vous",
-    "ressources_texte": "Des lieux et des services publics ou associatifs, relevés dans les sources officielles citées sous chaque ligne. Nous nous coordonnons avec eux ; nous ne les remplaçons pas.",
+    "ressources_texte": "Des lieux et des services publics ou associatifs, relevés dans les sources officielles citées sous chaque ligne. Nous nous coordonnons avec eux ; nous ne les remplaçons pas.",
     "faits": {
-      "source": "Source : {source}, consulté le {date}",
+      "source": "Source : {source}, consulté le {date}",
       "site_officiel": "Site officiel",
       "lien_externe": "lien externe",
       "telephone": "Téléphone",
@@ -485,9 +485,9 @@
       }
     },
     "accompagnements_h2": "Nos accompagnements {lieu}",
-    "accompagnements_texte": "Choisissez la page qui décrit votre situation : chacune explique ce que nous faisons, concrètement, et ce que nous ne faisons pas.",
+    "accompagnements_texte": "Choisissez la page qui décrit votre situation : chacune explique ce que nous faisons, concrètement, et ce que nous ne faisons pas.",
     "exemple_h2": "Un exemple de semaine",
-    "exemple_texte": "Une semaine type choisie pour illustrer le profil du territoire. Les jours, les horaires et les gestes dépendent de la personne : nous les ajustons ensemble, puis au fil des mois.",
+    "exemple_texte": "Une semaine type choisie pour illustrer le profil du territoire. Les jours, les horaires et les gestes dépendent de la personne : nous les ajustons ensemble, puis au fil des mois.",
     "aides_h2": "Les aides du département",
     "aides_texte": "L'APA et la PCH sont instruites par le conseil départemental et la MDPH. Voici ceux dont dépend votre commune, relevés dans les sources officielles, et nos pages qui expliquent chaque aide.",
     "aides_lien": "Tarifs et aides en détail",
@@ -499,15 +499,15 @@
     "autres_pages_h3": "Autres pages du territoire",
     "questions_h2": "Questions locales",
     "formulaire_h2": "Être rappelé(e)",
-    "formulaire_texte": "Laissez vos coordonnées : un conseiller vous rappelle. Votre commune est déjà renseignée, vous pouvez la modifier.",
-    "non_relu": "Cette page attend sa relecture : elle n'est pas encore publiée.",
+    "formulaire_texte": "Laissez vos coordonnées : un conseiller vous rappelle. Votre commune est déjà renseignée, vous pouvez la modifier.",
+    "non_relu": "Cette page attend sa relecture : elle n'est pas encore publiée.",
     "auteur": "Écrit par {nom}, {fonction}",
     "maj": "Page mise à jour le {date}",
-    "donnees": "Données locales assemblées le {date} ; chaque fait porte la date à laquelle sa source a été consultée",
+    "donnees": "Données locales assemblées le {date} ; chaque fait porte la date à laquelle sa source a été consultée",
     "territoires": "Territoires",
     "carte": {
       "titre": "Carte des huit départements d'Île-de-France",
-      "description": "Paris au centre, entouré des Hauts-de-Seine à l'ouest, de la Seine-Saint-Denis au nord-est et du Val-de-Marne au sud-est ; puis le Val-d'Oise au nord, la Seine-et-Marne à l'est, l'Essonne au sud et les Yvelines à l'ouest.",
+      "description": "Paris au centre, entouré des Hauts-de-Seine à l'ouest, de la Seine-Saint-Denis au nord-est et du Val-de-Marne au sud-est ; puis le Val-d'Oise au nord, la Seine-et-Marne à l'est, l'Essonne au sud et les Yvelines à l'ouest.",
       "liste": "Les huit départements",
       "lien": "Aide à domicile {lieu}"
     },
@@ -518,7 +518,7 @@
       "horaires": "Horaires",
       "communes_h2": "Les communes suivies par cette agence",
       "communes_texte": "Les pages locales dont cette agence est la plus proche, par distance à vol d'oiseau.",
-      "communes_aucune": "Les pages locales de ce secteur sont en cours de rédaction : appelez-nous, nous vous répondons pour toute commune d'Île-de-France.",
+      "communes_aucune": "Les pages locales de ce secteur sont en cours de rédaction : appelez-nous, nous vous répondons pour toute commune d'Île-de-France.",
       "departement_lien": "Aide à domicile {lieu}",
       "voir": "Voir l'agence {nom}"
     }
@@ -526,15 +526,15 @@
   "magazine": {
     "essentiel_h2": "L'essentiel",
     "sommaire": "Sommaire",
-    "demain_h2": "Et concrètement, demain ?",
+    "demain_h2": "Et concrètement, demain ?",
     "sources_h2": "Sources",
     "a_lire_ensuite_h2": "À lire ensuite",
     "partager_h2": "Partager cet article",
     "partager_email": "Envoyer par e-mail",
-    "partager_email_objet": "Un article du Fil : {titre}",
+    "partager_email_objet": "Un article du Fil : {titre}",
     "copier_lien": "Copier le lien",
     "lien_copie": "Lien copié.",
-    "lien_non_copie": "La copie n'a pas fonctionné : sélectionnez l'adresse dans la barre de votre navigateur.",
+    "lien_non_copie": "La copie n'a pas fonctionné : sélectionnez l'adresse dans la barre de votre navigateur.",
     "imprimer": "Version imprimable",
     "temps_lecture": "{n} min de lecture",
     "publie_le": "Publié le {date}",
@@ -542,7 +542,7 @@
     "auteur": "Écrit par {nom}, {fonction}",
     "relu_par": "Relu par {nom}, {fonction}, le {date}",
     "relecture_a_venir": "Relecture professionnelle à venir",
-    "non_relu": "Cette page attend sa relecture : elle n'est pas encore publiée.",
+    "non_relu": "Cette page attend sa relecture : elle n'est pas encore publiée.",
     "rubrique": "Rubrique",
     "rubriques_h2": "Les rubriques",
     "derniers_h2": "Les derniers articles",
@@ -583,7 +583,7 @@
     "ensemble_nom": "Lexique du Fil",
     "sur_titre": "Lexique",
     "mis_a_jour": "Définition mise à jour le {date}",
-    "pour_qui_h2": "Pour qui ?",
+    "pour_qui_h2": "Pour qui ?",
     "lien_officiel_h2": "Le texte officiel",
     "lien_officiel_texte": "Nous avons lu cette page officielle pour écrire la définition. Si elle évolue, c'est elle qui fait foi.",
     "pages_liees_h2": "Sur ce site",
@@ -634,13 +634,13 @@
     "envoyer": "J'envoie ma candidature",
     "email_aide": "Pour l'accusé de réception et notre réponse.",
     "offre_ciblee": "Vous postulez à l'offre « {titre} ».",
-    "offre_inconnue": "Cette offre n'est plus publiée : votre candidature sera lue comme une candidature spontanée.",
+    "offre_inconnue": "Cette offre n'est plus publiée : votre candidature sera lue comme une candidature spontanée.",
     "cv": {
       "manquant": "Il manque votre CV. Nous en avons besoin pour lire votre parcours.",
       "trop_lourd": "Ce fichier dépasse {taille}. Réduisez-le, ou envoyez-le en PDF.",
       "type_invalide": "Ce format n'est pas accepté. Envoyez votre CV en PDF ou en Word (DOCX).",
       "choisir": "Choisir un fichier",
-      "choisi": "Fichier choisi : {nom}"
+      "choisi": "Fichier choisi : {nom}"
     },
     "disponibilites": [
       "Dès maintenant",

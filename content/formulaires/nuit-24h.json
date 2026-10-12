@@ -3,27 +3,27 @@
   "id": "nuit-24h",
   "slug": "nuit-et-24h",
   "seo": {
-    "titre": "Décrire votre besoin : garde de nuit ou présence 24h/24",
-    "description": "Nuits calmes ou actives, quelques nuits ou une présence continue, pour quelques jours ou durablement : dites-nous l'essentiel, un conseiller vous rappelle."
+    "titre": "Décrire votre besoin : garde de nuit ou présence 24h/24",
+    "description": "Nuits calmes ou actives, quelques nuits ou une présence continue, pour quelques jours ou durablement : dites-nous l'essentiel, un conseiller vous rappelle."
   },
   "ariane": "Nuit et 24h/24",
-  "h1": "Décrire votre besoin : garde de nuit ou présence 24h/24",
-  "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. La semaine est préremplie sur les nuits : ajustez-la.",
+  "h1": "Décrire votre besoin : garde de nuit ou présence 24h/24",
+  "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. La semaine est préremplie sur les nuits : ajustez-la.",
   "planning_initial": "nuits",
   "situation": [
     {
       "id": "nuits",
-      "question": "Comment se passent les nuits ?",
+      "question": "Comment se passent les nuits ?",
       "type": "choix",
       "options": [
-        "Nuits calmes : la personne dort le plus souvent",
-        "Nuits actives : besoin d'une présence éveillée",
+        "Nuits calmes : la personne dort le plus souvent",
+        "Nuits actives : besoin d'une présence éveillée",
         "Je ne sais pas"
       ]
     },
     {
       "id": "continu",
-      "question": "Faut-il une présence 24h/24 ?",
+      "question": "Faut-il une présence 24h/24 ?",
       "type": "choix",
       "options": [
         "Non, seulement des nuits",

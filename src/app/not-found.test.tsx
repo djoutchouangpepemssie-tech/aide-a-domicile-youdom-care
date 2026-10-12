@@ -37,7 +37,7 @@ describe("Page introuvable (404)", () => {
     expect(tel.length).toBeGreaterThanOrEqual(2);
     for (const link of tel) expect(link).toHaveAttribute("href", "tel:+33184801703");
 
-    const piliers = screen.getByRole("region", { name: "Pour qui cherchez-vous de l'aide ?" });
+    const piliers = screen.getByRole("region", { name: "Pour qui cherchez-vous de l'aide ?" });
     const links = within(piliers).getAllByRole("link");
     expect(links.map((link) => link.textContent)).toEqual([
       "Maladies neurodégénératives",

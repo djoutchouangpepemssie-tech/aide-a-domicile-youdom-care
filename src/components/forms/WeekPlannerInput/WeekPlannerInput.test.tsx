@@ -21,15 +21,15 @@ function openGrid(budget?: typeof basis) {
 describe("WeekPlannerInput", () => {
   it("pose d'abord la question du rythme et n'affiche la grille que pour un besoin régulier", () => {
     render(<WeekPlannerInput texts={texts} />);
-    expect(screen.getByRole("radiogroup", { name: "À quel rythme ?" })).toBeInTheDocument();
+    expect(screen.getByRole("radiogroup", { name: "À quel rythme ?" })).toBeInTheDocument();
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("radiogroup", { name: "Quand souhaitez-vous commencer ?" }),
+      screen.queryByRole("radiogroup", { name: "Quand souhaitez-vous commencer ?" }),
     ).toBeNull();
     fireEvent.click(screen.getByRole("radio", { name: "Je ne sais pas encore" }));
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
     expect(
-      screen.getByRole("radiogroup", { name: "Quand souhaitez-vous commencer ?" }),
+      screen.getByRole("radiogroup", { name: "Quand souhaitez-vous commencer ?" }),
     ).toBeInTheDocument();
     fireEvent.click(screen.getByRole("radio", { name: "Régulier, chaque semaine" }));
     expect(screen.getByRole("table", { name: "Vos créneaux de la semaine" })).toBeInTheDocument();
@@ -113,7 +113,7 @@ describe("WeekPlannerInput", () => {
       screen.getByText(/Environ 13,5 heures par semaine, dont une nuit\./),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("radiogroup", { name: "Comment se passent les nuits ?" }),
+      screen.getByRole("radiogroup", { name: "Comment se passent les nuits ?" }),
     ).toBeInTheDocument();
     fireEvent.change(
       screen.getAllByRole("combobox", { name: "Copier ce jour sur…" })[0] as Element,
@@ -156,7 +156,7 @@ describe("WeekPlannerInput", () => {
     ).toBeInTheDocument();
   });
 
-  it("ponctuel : dates une à une ou par période, créneaux communs, résumé total", () => {
+  it("ponctuel : dates une à une ou par période, créneaux communs, résumé total", () => {
     render(<WeekPlannerInput texts={texts} />);
     fireEvent.click(screen.getByRole("radio", { name: "Ponctuel, à des dates précises" }));
     expect(screen.getByText("Aucune date choisie pour l'instant.")).toBeInTheDocument();
@@ -171,18 +171,18 @@ describe("WeekPlannerInput", () => {
     expect(screen.getByText("samedi 3 octobre 2026")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Retirer dimanche 11 octobre 2026" }));
     expect(screen.getByText("3 date(s) choisie(s)")).toBeInTheDocument();
-    const slots = screen.getByRole("group", { name: "À quels moments, ces jours-là ?" });
+    const slots = screen.getByRole("group", { name: "À quels moments, ces jours-là ?" });
     fireEvent.click(within(slots).getByLabelText(/^Matin/));
     fireEvent.click(within(slots).getByLabelText(/^Nuit/));
     expect(
       screen.getByText(/^Environ 39 heures au total sur 3 date\(s\), dont 3 nuits\./),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("radiogroup", { name: "Comment se passent les nuits ?" }),
+      screen.getByRole("radiogroup", { name: "Comment se passent les nuits ?" }),
     ).toBeInTheDocument();
   });
 
-  it("24h/24 : tous les jours ou jours choisis, grille remplie d'office, début et durée", () => {
+  it("24h/24 : tous les jours ou jours choisis, grille remplie d'office, début et durée", () => {
     render(<WeekPlannerInput texts={texts} />);
     fireEvent.click(screen.getByRole("radio", { name: "Présence continue 24h/24" }));
     expect(screen.queryByRole("table")).not.toBeInTheDocument();

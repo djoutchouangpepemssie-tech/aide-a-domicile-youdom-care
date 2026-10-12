@@ -3,32 +3,32 @@
   "index": {
     "seo": {
       "titre": "Nos agences Youdom Care à Paris et en Île-de-France",
-      "description": "Nos agences d'aide à domicile à Paris et dans les Hauts-de-Seine : téléphone et communes suivies par chacune. Appelez le standard, on vous rappelle."
+      "description": "Nos agences d'aide à domicile à Paris et dans les Hauts-de-Seine : téléphone et communes suivies par chacune. Appelez le standard, on vous rappelle."
     },
     "ariane": "Nos agences",
     "h1": "Nos agences en Île-de-France",
-    "chapo": "{agences} agences, et un territoire qui va bien au-delà : chaque page donne l'adresse, le téléphone et les communes que l'agence suit.",
-    "territoires_texte": "Vous cherchez votre commune plutôt qu'une agence ?",
+    "chapo": "{agences} agences, et un territoire qui va bien au-delà : chaque page donne l'adresse, le téléphone et les communes que l'agence suit.",
+    "territoires_texte": "Vous cherchez votre commune plutôt qu'une agence ?",
     "territoires_lien": "Voir la carte des territoires"
   },
   "page": {
     "sur_titre": "Agence",
-    "chapo": "Notre point d'accueil {lieu} : {adresse}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle.",
+    "chapo": "Notre point d'accueil {lieu} : {adresse}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle.",
     "rappel_h2": "Être rappelé(e) par cette agence",
     "rappel_texte": "Deux minutes. Vos coordonnées servent uniquement à vous rappeler.",
-    "chapo_sans_adresse": "Notre point d'accueil {lieu}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle."
+    "chapo_sans_adresse": "Notre point d'accueil {lieu}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle."
   },
   "agences": {
     "paris-12": {
       "seo": {
-        "titre": "Agence Youdom Care Paris, rue de Lyon : aide à domicile",
-        "description": "L’agence Youdom Care de Paris, rue de Lyon dans le 12e : adresse, téléphone, arrondissements suivis et rappel gratuit par un conseiller pour votre aide."
+        "titre": "Agence Youdom Care Paris, rue de Lyon : aide à domicile",
+        "description": "L’agence Youdom Care de Paris, rue de Lyon dans le 12e : adresse, téléphone, arrondissements suivis et rappel gratuit par un conseiller pour votre aide."
       }
     },
     "puteaux": {
       "seo": {
-        "titre": "Agence Youdom Care de Puteaux : aide à domicile dans le 92",
-        "description": "L’agence Youdom Care des Hauts-de-Seine, quai de Dion-Bouton à Puteaux : adresse, téléphone, communes suivies et rappel gratuit pour votre aide."
+        "titre": "Agence Youdom Care de Puteaux : aide à domicile dans le 92",
+        "description": "L’agence Youdom Care des Hauts-de-Seine, quai de Dion-Bouton à Puteaux : adresse, téléphone, communes suivies et rappel gratuit pour votre aide."
       }
     }
   }

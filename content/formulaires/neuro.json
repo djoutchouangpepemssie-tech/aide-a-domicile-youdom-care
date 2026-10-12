@@ -3,16 +3,16 @@
   "id": "neuro",
   "slug": "maladie-neurodegenerative",
   "seo": {
-    "titre": "Décrire votre situation : maladie neurodégénérative",
+    "titre": "Décrire votre situation : maladie neurodégénérative",
     "description": "Alzheimer, Parkinson, sclérose en plaques, corps de Lewy… Dites-nous l'essentiel en deux à trois minutes, un conseiller Youdom Care vous rappelle."
   },
   "ariane": "Maladie neurodégénérative",
-  "h1": "Décrire votre situation : maladie neurodégénérative",
+  "h1": "Décrire votre situation : maladie neurodégénérative",
   "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. Vous pourrez tout préciser au téléphone.",
   "situation": [
     {
       "id": "maladie",
-      "question": "De quelle maladie s'agit-il ?",
+      "question": "De quelle maladie s'agit-il ?",
       "type": "choix",
       "options": [
         "Alzheimer ou apparentée",
@@ -28,7 +28,7 @@
     },
     {
       "id": "autonomie",
-      "question": "Au quotidien, où en est la personne ?",
+      "question": "Au quotidien, où en est la personne ?",
       "type": "choix",
       "options": [
         "Autonome avec quelques rappels",
@@ -38,7 +38,7 @@
     },
     {
       "id": "ce_qui_pese",
-      "question": "Qu'est-ce qui pèse aujourd'hui ?",
+      "question": "Qu'est-ce qui pèse aujourd'hui ?",
       "type": "choix_multiple",
       "options": [
         "La désorientation",
@@ -58,7 +58,7 @@
     },
     {
       "id": "professionnels",
-      "question": "Quels professionnels interviennent déjà ?",
+      "question": "Quels professionnels interviennent déjà ?",
       "type": "choix_multiple",
       "options": [
         "Infirmier",
@@ -67,7 +67,7 @@
         "Accueil de jour",
         {
           "label": "Équipe Alzheimer",
-          "aide": "ESA : équipe spécialisée qui intervient à domicile, sur prescription médicale."
+          "aide": "ESA : équipe spécialisée qui intervient à domicile, sur prescription médicale."
         },
         {
           "label": "Aucun pour l'instant",
@@ -77,7 +77,7 @@
     },
     {
       "id": "aide_financiere",
-      "question": "Une aide financière est-elle en place ?",
+      "question": "Une aide financière est-elle en place ?",
       "type": "choix",
       "options": ["Obtenue", "En cours", "Pas encore", "Je ne sais pas"],
       "aide": "L'APA est l'allocation personnalisée d'autonomie, la PCH la prestation de compensation du handicap."

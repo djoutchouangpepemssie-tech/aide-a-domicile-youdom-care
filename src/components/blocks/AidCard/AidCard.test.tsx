@@ -23,7 +23,7 @@ describe("AidCard", () => {
       within(article)
         .getAllByRole("term")
         .map((t) => t.textContent),
-    ).toEqual(["Pour qui ?", "Combien ?", "Comment la demander ?"]);
+    ).toEqual(["Pour qui ?", "Combien ?", "Comment la demander ?"]);
     /*
      * 27/09/2026, demande d'Arcel : plus aucun lien sortant vers un service public. Le nom de la
      * source reste affiché, pour que le lecteur sache d'où vient l'information.

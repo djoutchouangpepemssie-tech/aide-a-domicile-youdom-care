@@ -70,7 +70,7 @@ export default async function SiteMapRoute() {
           {groups.map((group) => (
             <nav
               key={group.id}
-              aria-label={`${page.ariane} : ${group.title}`}
+              aria-label={`${page.ariane}\u00a0: ${group.title}`}
               data-groupe={group.id}
             >
               <Heading level={2} id={`groupe-${group.id}`} visual={3}>

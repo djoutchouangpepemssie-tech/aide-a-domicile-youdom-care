@@ -1001,3 +1001,52 @@ remplissage.
 **Ce que je n'ai pas touché.** « Foyer-Logement Beloeuil-Miller » : c'est peut-être un nom propre
 exact, peut-être un « Belœuil » importé sans ligature. Sans source pour trancher, le corriger serait
 inventer un nom. À vérifier auprès de l'établissement.
+
+## D-072 — Les coquilles, et l'espace insécable sur tout le site (12/10/2026)
+
+### Les coquilles de l'audit, vérifiées une par une
+
+Quinze coquilles étaient listées. **Quatorze réelles, une fausse** : « Saint-Quen » est en réalité
+« Pôle autonomie territorial de Saint-Quentin », correct — l'audit avait attrapé un fragment de mot.
+Corrigées : « Notre-de-Dame » → Notre-Dame, « Groupe Hostipalier Sud Ile de France » → Groupe
+hospitalier Sud Île-de-France, « Clinique Saint Jean L'ermiage » → Clinique Saint-Jean l'Ermitage,
+« Cardinal Wyszinski » → Cardinal-Wyszynski, « expliquez-la nous » → expliquez-la-nous, « des lever
+difficiles » → des levers difficiles, « Ambroize Croizat » → Ambroise Croizat, « Richard-Walace » →
+Richard-Wallace, « Les Lillas » → Les Lilas, « Les Jardin des acacias » → Les Jardins des Acacias,
+« à Le Kremlin-Bicêtre » → au Kremlin-Bicêtre.
+
+Deux phrases cassées étaient des interpolations de gabarit où un nom manquait : « L'EHPAD **du**
+propose par ailleurs… » et « **Au,** Casa Delta 7 regroupe deux structures. » Réparées d'après ce que
+la page dit ailleurs, sans inventer de nom.
+
+**Deux noms laissés en place**, faute de source pour trancher : « Foyer-Logement Beloeuil-Miller »
+et « EHPAD d'Orgement ». Ce sont peut-être les noms exacts, peut-être des libellés importés sans
+ligature ou mal orthographiés. Les corriger au jugé serait inventer un nom propre.
+
+### L'espace insécable, partout
+
+La charte demande une espace insécable avant « ; : ! ? ». Mesure avant correction : **507 correctes
+contre 3 464 ordinaires** — la règle n'était quasiment pas appliquée. Une ponctuation précédée d'une
+espace ordinaire peut passer seule à la ligne.
+
+**4 776 espaces posées** : 3 354 dans les contenus JSON, 1 422 dans les MDX. Le caractère compte pour
+un, donc les contraintes de longueur SEO (titre 50-60, description 140-155) ne bougent pas — vérifié,
+`check-local-facts` reste vert. Les notes internes `_lisezmoi` sont laissées de côté : elles ne sont
+jamais rendues. Les séparateurs composés en code sont alignés eux aussi : les e-mails de demande
+(`layout.ts`, `render.ts`) et le nom accessible des navigations du plan du site.
+
+### Ce que cette correction a appris sur les tests
+
+Vingt tests ont cassé. Pas une régression : ils épinglaient l'ancienne typographie. Les aligner a
+révélé une **asymétrie des bibliothèques de test** qu'il faut connaître pour ce projet :
+
+| Comparaison | Texte du DOM | Attente à écrire |
+| --- | --- | --- |
+| `getByRole(…, { name })` | **non normalisé** | avec l'insécable |
+| `toHaveTextContent(…)`, `getByText(…)` | normalisé (l'insécable devient une espace) | avec une espace ordinaire |
+| `toContain` sur une chaîne brute (e-mails) | non normalisé | avec l'insécable |
+
+Mon premier remplacement, appliqué sans cette distinction, a cassé ce qu'il venait de réparer : cinq
+allers-retours pour y arriver. Là où c'était possible, l'attente est devenue indifférente au type
+d'espace — `/^Source\s: .+/` plutôt qu'une insécable codée dans l'expression régulière. C'est la
+forme qui restera juste si la typographie change encore.

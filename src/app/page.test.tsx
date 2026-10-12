@@ -34,7 +34,7 @@ describe("Accueil (blocs 1 à 8)", () => {
       "tel:+33184801703",
     );
 
-    const situations = screen.getByRole("region", { name: "Que vivez-vous en ce moment ?" });
+    const situations = screen.getByRole("region", { name: "Que vivez-vous en ce moment ?" });
     expect(within(situations).getAllByRole("article")).toHaveLength(6);
     expect(within(situations).getAllByRole("link")).toHaveLength(6);
     expect(situations.querySelectorAll(".situation-card svg[data-icon]")).toHaveLength(6);
@@ -50,17 +50,17 @@ describe("Accueil (blocs 1 à 8)", () => {
     );
   });
 
-  it("propose le parcours « Pour qui cherchez-vous de l'aide ? » et ouvre le panneau du public choisi", async () => {
+  it("propose le parcours « Pour qui cherchez-vous de l'aide ? » et ouvre le panneau du public choisi", async () => {
     const user = userEvent.setup();
     render(home);
-    const picker = screen.getByRole("group", { name: "Pour qui cherchez-vous de l'aide ?" });
+    const picker = screen.getByRole("group", { name: "Pour qui cherchez-vous de l'aide ?" });
     const buttons = within(picker).getAllByRole("button");
     expect(buttons.map((b) => b.textContent)).toEqual([
       "Pour un parent âgé",
-      "Pour un proche : Alzheimer, Parkinson…",
+      "Pour un proche : Alzheimer, Parkinson…",
       "Pour mon enfant",
-      "Pour moi : je vis avec un handicap",
-      "Pour moi : j'aide un proche",
+      "Pour moi : je vis avec un handicap",
+      "Pour moi : j'aide un proche",
     ]);
     // Le choix sans panneau mène au rappel avec le motif : la page y affiche son message.
     expect(within(picker).getByRole("link", { name: "Je ne sais pas encore" })).toHaveAttribute(
@@ -71,11 +71,11 @@ describe("Accueil (blocs 1 à 8)", () => {
     await user.click(within(picker).getByRole("button", { name: "Pour un parent âgé" }));
     const title = screen.getByRole("heading", {
       level: 2,
-      name: "Vous cherchez de l'aide pour votre parent. Que vivez-vous ?",
+      name: "Vous cherchez de l'aide pour votre parent. Que vivez-vous ?",
     });
     expect(title).toHaveFocus();
     const region = screen.getByRole("region", {
-      name: "Vous cherchez de l'aide pour votre parent. Que vivez-vous ?",
+      name: "Vous cherchez de l'aide pour votre parent. Que vivez-vous ?",
     });
     const shown = region.querySelector("[data-panel=personne-agee]");
     const links = within(shown as HTMLElement).getAllByRole("link");
@@ -99,7 +99,7 @@ describe("Accueil (blocs 1 à 8)", () => {
     const user = userEvent.setup();
     render(home);
     const semaine = screen.getByRole("region", {
-      name: "À quoi ressemble une semaine avec nous ?",
+      name: "À quoi ressemble une semaine avec nous ?",
     });
     const selector = within(semaine).getByRole("group", { name: "Choisir un exemple" });
     const buttons = within(selector).getAllByRole("button");
@@ -145,12 +145,12 @@ describe("Accueil (blocs 1 à 8)", () => {
       "Une femme âgée ouvre la porte de son appartement sur un palier d'immeuble",
     );
 
-    const prix = screen.getByRole("region", { name: "Combien ça coûte, vraiment ?" });
+    const prix = screen.getByRole("region", { name: "Combien ça coûte, vraiment ?" });
     expect(prix.querySelector("[data-block=tarifs]")).toBeNull();
     expect(within(prix).getByRole("article", { name: "Les aides possibles" })).toBeInTheDocument();
     expect(within(prix).getByRole("link", { name: "Je découvre les aides" })).toBeInTheDocument();
 
-    const proches = screen.getByRole("region", { name: "Et vous, qui prend soin de vous ?" });
+    const proches = screen.getByRole("region", { name: "Et vous, qui prend soin de vous ?" });
     expect(within(proches).getByRole("link", { name: "J'ai besoin de relais" })).toHaveAttribute(
       "href",
       expect.stringMatching(/^\/aidants\/?$/),
@@ -186,7 +186,7 @@ describe("Accueil (blocs 9 à 12)", () => {
       within(appel).getByRole("link", { name: /J'appelle le 01.84.80.17.03/ }),
     ).toHaveAttribute("href", "tel:+33184801703");
 
-    const recrutement = screen.getByRole("region", { name: "Vous êtes auxiliaire de vie ?" });
+    const recrutement = screen.getByRole("region", { name: "Vous êtes auxiliaire de vie ?" });
     expect(within(recrutement).getByRole("link", { name: "Voir les offres" })).toBeInTheDocument();
   });
 });

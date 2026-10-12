@@ -1,14 +1,14 @@
 {
   "_lisezmoi": "Page /mentions-legales/ (docs/07 §2, P8.3). Ce fichier ne porte que les textes et les libellés. Les faits (raison sociale, forme, capital, siège, RCS, SIRET, APE, TVA, numéro SAP, autorisations, directeur de la publication, médiateur, hébergeur) viennent de content/site.config.json > legal et contact : un champ null n'est pas affiché. Les crédits photographiques sont lus dans public/images/CREDITS.md. Texte à faire valider par un juriste avant la mise en ligne (docs/07 §8).",
   "seo": {
-    "titre": "Mentions légales du site Youdom Care : éditeur, hébergeur",
+    "titre": "Mentions légales du site Youdom Care : éditeur, hébergeur",
     "description": "Qui édite le site Youdom Care, qui l'héberge, numéro de déclaration services à la personne, crédits des photos et licences des données ouvertes utilisées."
   },
   "ariane": "Mentions légales",
   "h1": "Mentions légales",
   "chapo": "Qui édite ce site, qui l'héberge, d'où viennent les photos et les données que vous y lisez. Tout est ici, sans détour.",
   "maj": "2026-09-27",
-  "maj_libelle": "Dernière mise à jour : {date}",
+  "maj_libelle": "Dernière mise à jour : {date}",
   "editeur": {
     "h2": "Éditeur du site",
     "intro": "Ce site est édité par la société ci-dessous, qui exploite la marque Youdom Care.",
@@ -31,23 +31,30 @@
     "h2": "Services à la personne",
     "texte_numero": "Nos activités sont déclarées au titre des services à la personne (article L. 7232-1-1 du code du travail), sous le numéro {numero}.",
     "autorisations_h3": "Autorisations",
-    "autorisations_intro": "Autorisations détenues pour intervenir auprès des publics fragiles :",
+    "autorisations_intro": "Autorisations détenues pour intervenir auprès des publics fragiles :",
     "libelles": {
       "departement": "Département",
       "publics": "Publics",
       "mode": "Mode d'intervention",
       "reference": "Référence",
       "date": "Date",
-      "modes": { "prestataire": "prestataire", "mandataire": "mandataire" }
+      "modes": {
+        "prestataire": "prestataire",
+        "mandataire": "mandataire"
+      }
     }
   },
   "hebergeur": {
     "h2": "Hébergement",
-    "libelles": { "nom": "Hébergeur", "adresse": "Adresse", "contact": "Contact" }
+    "libelles": {
+      "nom": "Hébergeur",
+      "adresse": "Adresse",
+      "contact": "Contact"
+    }
   },
   "mediation": {
     "h2": "Médiation de la consommation",
-    "texte": "Si un désaccord avec nous n'a pas trouvé de solution amiable, vous pouvez saisir gratuitement le médiateur de la consommation dont nous relevons (articles L. 611-1 et suivants du code de la consommation) :"
+    "texte": "Si un désaccord avec nous n'a pas trouvé de solution amiable, vous pouvez saisir gratuitement le médiateur de la consommation dont nous relevons (articles L. 611-1 et suivants du code de la consommation) :"
   },
   "propriete_intellectuelle": {
     "h2": "Propriété intellectuelle",
@@ -59,7 +66,7 @@
   },
   "credits": {
     "h2": "Crédits photographiques",
-    "intro": "Les photographies du site sont des illustrations libres de droits, publiées sous la licence Pexels ou la licence Unsplash. Ces licences n'imposent pas de citer les auteurs ; nous les nommons quand même, ainsi que la page d'origine de chaque photo. Aucune des personnes photographiées n'est cliente, salariée ni proche d'un client de Youdom Care.",
+    "intro": "Les photographies du site sont des illustrations libres de droits, publiées sous la licence Pexels ou la licence Unsplash. Ces licences n'imposent pas de citer les auteurs ; nous les nommons quand même, ainsi que la page d'origine de chaque photo. Aucune des personnes photographiées n'est cliente, salariée ni proche d'un client de Youdom Care.",
     "photo_une": "1 photo",
     "photos_n": "{n} photos",
     "licences_libelle": "Licences",
@@ -67,7 +74,7 @@
   },
   "donnees_ouvertes": {
     "h2": "Données ouvertes",
-    "intro": "Nos pages par territoire (départements, communes, arrondissements) citent des faits publics : communes et population, mairies, points d'information, établissements de santé, adresses, parcs et marchés. Ils viennent des jeux de données ouvertes ci-dessous, réutilisés sous leur licence, avec la date de collecte indiquée sur chaque page.",
+    "intro": "Nos pages par territoire (départements, communes, arrondissements) citent des faits publics : communes et population, mairies, points d'information, établissements de santé, adresses, parcs et marchés. Ils viennent des jeux de données ouvertes ci-dessous, réutilisés sous leur licence, avec la date de collecte indiquée sur chaque page.",
     "licences": {
       "etalab-2.0": {
         "libelle": "Licence Ouverte / Open Licence 2.0 (Etalab)",
@@ -93,7 +100,7 @@
       },
       {
         "producteur": "Direction de l'information légale et administrative (DILA)",
-        "jeu": "Annuaire de l'administration : mairies, points d'information, plateformes de répit",
+        "jeu": "Annuaire de l'administration : mairies, points d'information, plateformes de répit",
         "href": "https://api-lannuaire.service-public.fr/",
         "licence": "etalab-2.0"
       },
@@ -131,7 +138,10 @@
         "libelle": "Lire la politique de confidentialité",
         "href": "/politique-de-confidentialite/"
       },
-      { "libelle": "Lire la page sur les cookies", "href": "/cookies/" }
+      {
+        "libelle": "Lire la page sur les cookies",
+        "href": "/cookies/"
+      }
     ]
   }
 }

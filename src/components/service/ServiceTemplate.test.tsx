@@ -90,15 +90,15 @@ describe("ServiceTemplate", () => {
       .filter((h) => h.closest("form") === null)
       .map((h) => h.textContent);
     expect(headings).toEqual([
-      "Vous vous reconnaissez ?",
+      "Vous vous reconnaissez ?",
       "Ce que nous faisons, concrètement",
       "Un accompagnement qui évolue",
       "Exemple de semaine",
       "Le suivi",
       "Et pour vous, les proches",
-      "Qui intervient ?",
+      "Qui intervient ?",
       "Ce que nous ne faisons pas",
-      "Combien ça coûte, quelles aides ?",
+      "Combien ça coûte, quelles aides ?",
       "Questions fréquentes",
       "À lire aussi",
       "Décrire votre situation",
@@ -148,7 +148,7 @@ describe("ServiceTemplate", () => {
     // Icône du pilier (docs/design/CONCEPT.md §5).
     expect(pilier.querySelector('[data-icon="public-neuro"]')).not.toBeNull();
     expectHref(
-      within(nav).getByRole("link", { name: "Intervenons-nous près de chez vous ?" }),
+      within(nav).getByRole("link", { name: "Intervenons-nous près de chez vous ?" }),
       "/aide-a-domicile/",
     );
     // « À lire aussi », avant le formulaire : les sœurs et un service, avec leurs icônes.
@@ -216,7 +216,7 @@ describe("ServiceTemplate", () => {
     expect(simple).toHaveTextContent("Deux.");
   });
 
-  it("fait de chaque situation une carte-lien : sa destination propre, sinon le formulaire", () => {
+  it("fait de chaque situation une carte-lien : sa destination propre, sinon le formulaire", () => {
     render(<ServiceTemplate data={data()} />);
     // 27/09/2026 : toutes les cartes d'une même grille se comportent pareil. Une carte sans
     // destination propre mène au formulaire de la page, au lieu de rester inerte à côté des autres.
@@ -326,14 +326,14 @@ describe("ServiceTemplate", () => {
   it("choisit le geste du hero selon `hero.geste`", () => {
     const { unmount } = render(<ServiceTemplate data={data()} />);
     // La fixture demande `stades` : les trois choix visent les jalons de la section 4.
-    const stades = screen.getByRole("group", { name: "Où en est la maladie ?" });
+    const stades = screen.getByRole("group", { name: "Où en est la maladie ?" });
     expect(stades).toHaveAttribute("data-gesture", "stades");
     expect(document.getElementById("stade-1")).not.toBeNull();
     expect(document.getElementById("stade-2")).not.toBeNull();
     unmount();
 
     render(<ServiceTemplate data={data({ page: withHero({ geste: "planning" }) })} />);
-    const planning = screen.getByRole("group", { name: "Quand voulez-vous de l'aide ?" });
+    const planning = screen.getByRole("group", { name: "Quand voulez-vous de l'aide ?" });
     expectHref(
       within(planning).getByRole("link", { name: "En semaine" }),
       "/demande/maladie-neurodegenerative/?planning=semaine",
@@ -357,7 +357,7 @@ describe("ServiceTemplate", () => {
         data={data({
           page: { ...withHero({ geste: "questionnaire" }), public: "aidant" },
           caregiverQuestion: {
-            question: "Dormez-vous ?",
+            question: "Dormez-vous ?",
             reponses: [
               { valeur: 0, libelle: "Rarement" },
               { valeur: 2, libelle: "Souvent" },
@@ -400,7 +400,7 @@ describe("ServiceTemplate", () => {
       screen.getByRole("link", { name: "Quelques semaines" }),
       "/demande/nuit-et-24h/?duree=semaines",
     );
-    expect(screen.queryByRole("group", { name: "Nuit calme ou nuit active ?" })).toBeNull();
+    expect(screen.queryByRole("group", { name: "Nuit calme ou nuit active ?" })).toBeNull();
     unmount24();
 
     render(

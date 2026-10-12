@@ -459,7 +459,7 @@
           "creneau": "morning",
           "activite": "presence",
           "heures": "10h–17h",
-          "libelle": "Un samedi sur deux : relais des parents"
+          "libelle": "Un samedi sur deux : relais des parents"
         }
       ]
     },
@@ -467,7 +467,7 @@
       "id": "bernard",
       "titre": "Bernard, 74 ans, retour d’hospitalisation",
       "contexte": "Première semaine à la maison après l’hôpital.",
-      "source": "docs/03 §8 (Sortie d’hospitalisation) : présence dès le premier jour, courses, repas, aide aux gestes, vigilance ; répartition des jours et nuits choisie pour l’illustration",
+      "source": "docs/03 §8 (Sortie d’hospitalisation) : présence dès le premier jour, courses, repas, aide aux gestes, vigilance ; répartition des jours et nuits choisie pour l’illustration",
       "photo": {
         "src": "/images/exemples/bernard-fauteuil-salon.jpg",
         "alt": "Un homme âgé, assis dans un fauteuil rouge de son salon, regarde vers la fenêtre",
@@ -479,49 +479,49 @@
           "creneau": "morning",
           "activite": "gestes",
           "heures": "8h–12h",
-          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
         },
         {
           "jour": "mar",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "8h–12h",
-          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
         },
         {
           "jour": "mer",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "8h–12h",
-          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
         },
         {
           "jour": "jeu",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "8h–12h",
-          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
         },
         {
           "jour": "ven",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "8h–12h",
-          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
         },
         {
           "jour": "sam",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "8h–12h",
-          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
         },
         {
           "jour": "dim",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "8h–12h",
-          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
+          "libelle": "Présence dès le premier jour : lever, toilette, aide aux gestes"
         },
         {
           "jour": "lun",
@@ -691,19 +691,19 @@
           "jour": "mar",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : réveils agités, levers sécurisés"
+          "libelle": "Nuit : réveils agités, levers sécurisés"
         },
         {
           "jour": "jeu",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : réveils agités, levers sécurisés"
+          "libelle": "Nuit : réveils agités, levers sécurisés"
         },
         {
           "jour": "dim",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : réveils agités, levers sécurisés"
+          "libelle": "Nuit : réveils agités, levers sécurisés"
         }
       ]
     },
@@ -945,19 +945,19 @@
           "jour": "mar",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : positions, appel, relais de sa femme"
+          "libelle": "Nuit : positions, appel, relais de sa femme"
         },
         {
           "jour": "jeu",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : positions, appel, relais de sa femme"
+          "libelle": "Nuit : positions, appel, relais de sa femme"
         },
         {
           "jour": "sam",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : positions, appel, relais de sa femme"
+          "libelle": "Nuit : positions, appel, relais de sa femme"
         }
       ]
     },
@@ -1137,19 +1137,19 @@
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h30–18h30",
-          "libelle": "Après-midi avec Lina : kinésithérapie, temps calme, jeux sensoriels"
+          "libelle": "Après-midi avec Lina : kinésithérapie, temps calme, jeux sensoriels"
         },
         {
           "jour": "ven",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : positions, surveillance selon le protocole, relais des parents"
+          "libelle": "Nuit : positions, surveillance selon le protocole, relais des parents"
         },
         {
           "jour": "sam",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Nuit : positions, surveillance selon le protocole, relais des parents"
+          "libelle": "Nuit : positions, surveillance selon le protocole, relais des parents"
         }
       ]
     },
@@ -1204,7 +1204,7 @@
           "creneau": "afternoon",
           "activite": "sorties",
           "heures": "14h–18h",
-          "libelle": "Loisirs accessibles : piscine, cinéma, copains"
+          "libelle": "Loisirs accessibles : piscine, cinéma, copains"
         }
       ]
     },
@@ -1252,14 +1252,14 @@
           "creneau": "afternoon",
           "activite": "sorties",
           "heures": "14h–18h",
-          "libelle": "Activité inclusive : club de sport, bibliothèque, trajet en bus appris"
+          "libelle": "Activité inclusive : club de sport, bibliothèque, trajet en bus appris"
         },
         {
           "jour": "sam",
           "creneau": "morning",
           "activite": "presence",
           "heures": "9h30–13h",
-          "libelle": "Un samedi sur deux : relais des parents pour les petites sœurs"
+          "libelle": "Un samedi sur deux : relais des parents pour les petites sœurs"
         }
       ]
     },
@@ -1279,140 +1279,140 @@
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h–13h",
-          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
         },
         {
           "jour": "mar",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h–13h",
-          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
         },
         {
           "jour": "mer",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h–13h",
-          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
         },
         {
           "jour": "jeu",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h–13h",
-          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
         },
         {
           "jour": "ven",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h–13h",
-          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
         },
         {
           "jour": "sam",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h–13h",
-          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
         },
         {
           "jour": "dim",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h–13h",
-          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
+          "libelle": "Intervenant A : lever, toilette, petit-déjeuner, ménage, repas de midi"
         },
         {
           "jour": "lun",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h–21h",
-          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
         },
         {
           "jour": "mar",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h–21h",
-          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
         },
         {
           "jour": "mer",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h–21h",
-          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
         },
         {
           "jour": "jeu",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h–21h",
-          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
         },
         {
           "jour": "ven",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h–21h",
-          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
         },
         {
           "jour": "sam",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h–21h",
-          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
         },
         {
           "jour": "dim",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "13h–21h",
-          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
+          "libelle": "Intervenant B : après-midi, sortie, dîner, coucher"
         },
         {
           "jour": "lun",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
         },
         {
           "jour": "mar",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
         },
         {
           "jour": "mer",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
         },
         {
           "jour": "jeu",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
         },
         {
           "jour": "ven",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
         },
         {
           "jour": "sam",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
         },
         {
           "jour": "dim",
           "creneau": "night",
           "activite": "nuit",
-          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
+          "libelle": "Intervenant C : nuit sur place, levers, réassurance"
         }
       ]
     },

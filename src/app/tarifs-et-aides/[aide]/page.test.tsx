@@ -40,7 +40,7 @@ describe("Pages par aide", () => {
       /sources officielles/,
     );
 
-    const combien = screen.getByRole("region", { name: "Combien ?" });
+    const combien = screen.getByRole("region", { name: "Combien ?" });
     expect(
       within(combien)
         .getAllByRole("term")

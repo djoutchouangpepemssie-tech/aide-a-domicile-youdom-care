@@ -5,7 +5,7 @@
     "description": "Prix TTC par prestation et par mode, exemples mensuels, devis gratuit, et les aides APA, PCH, AEEH, CESU, crédit d'impôt qui réduisent le reste à charge."
   },
   "ariane": "Tarifs et aides",
-  "h1": "Tarifs et aides : ce que vous paierez vraiment",
+  "h1": "Tarifs et aides : ce que vous paierez vraiment",
   "chapo": "Un prix clair, un devis gratuit, et toutes les aides auxquelles vous avez droit.",
   "tarifs": {
     "h2": "Nos prix, par prestation et par mode",
@@ -21,7 +21,7 @@
     "date_application": "Tarifs applicables au {date}",
     "majorations_h3": "Majorations",
     "degressivite_h3": "Tarifs dégressifs",
-    "degressivite_ligne": "Jusqu'à {heures} h par semaine : {prix} TTC de l'heure"
+    "degressivite_ligne": "Jusqu'à {heures} h par semaine : {prix} TTC de l'heure"
   },
   "sans_tarifs": {
     "titre": "Un devis gratuit et détaillé",
@@ -29,7 +29,7 @@
   },
   "exemples": {
     "h2": "Ce que ça représente par mois",
-    "texte": "Trois exemples calculés sur {semaines} semaines par mois, avant et après crédit d'impôt. Ce ne sont que des repères : votre devis tient compte de votre situation.",
+    "texte": "Trois exemples calculés sur {semaines} semaines par mois, avant et après crédit d'impôt. Ce ne sont que des repères : votre devis tient compte de votre situation.",
     "heures": [5, 10, 20],
     "colonne_heures": "{heures} h par semaine",
     "avant": "Avant crédit d'impôt",

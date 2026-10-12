@@ -1,8 +1,8 @@
 {
   "id": "fiche-de-vie-enfant",
   "seo": {
-    "titre": "La fiche de vie de votre enfant : le modèle à imprimer",
-    "description": "Modèle gratuit à imprimer et remplir à la main : ce que votre enfant aime, comment il communique, ce qui l'apaise, ses routines. Pour ne plus tout redire."
+    "titre": "La fiche de vie de votre enfant : le modèle à imprimer",
+    "description": "Modèle gratuit à imprimer et remplir à la main : ce que votre enfant aime, comment il communique, ce qui l'apaise, ses routines. Pour ne plus tout redire."
   },
   "ariane": "Fiche de vie de l'enfant",
   "h1": "La fiche de vie de votre enfant",
@@ -57,7 +57,7 @@
         },
         {
           "type": "champ",
-          "libelle": "Ses outils : mots, gestes, pictogrammes, classeur, tablette",
+          "libelle": "Ses outils : mots, gestes, pictogrammes, classeur, tablette",
           "lignes": 2
         },
         {
@@ -115,7 +115,7 @@
         },
         {
           "type": "champ",
-          "libelle": "Le coucher : rituel, lumière, doudou, porte ouverte ou fermée",
+          "libelle": "Le coucher : rituel, lumière, doudou, porte ouverte ou fermée",
           "lignes": 2
         },
         {
@@ -213,7 +213,7 @@
     }
   ],
   "prudence": [
-    "Les protocoles médicaux sont écrits par le médecin ; les médicaments se donnent selon l'ordonnance, jamais autrement.",
-    "Cette fiche reste chez vous. Elle n'est ni envoyée ni enregistrée : vous la remplissez à la main, et vous décidez qui la lit."
+    "Les protocoles médicaux sont écrits par le médecin ; les médicaments se donnent selon l'ordonnance, jamais autrement.",
+    "Cette fiche reste chez vous. Elle n'est ni envoyée ni enregistrée : vous la remplissez à la main, et vous décidez qui la lit."
   ]
 }

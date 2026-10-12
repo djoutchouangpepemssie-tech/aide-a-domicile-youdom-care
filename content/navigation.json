@@ -3,7 +3,7 @@
   "principale": [
     {
       "id": "pour-qui",
-      "libelle": "Pour qui ?",
+      "libelle": "Pour qui ?",
       "enfants": [
         {
           "libelle": "Maladies neurodégénératives",
@@ -28,7 +28,7 @@
         {
           "libelle": "Aidants",
           "href": "/aidants/",
-          "description": "Solutions de répit, où en êtes-vous ?"
+          "description": "Solutions de répit, où en êtes-vous ?"
         }
       ]
     },

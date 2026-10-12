@@ -29,7 +29,7 @@ describe("Comment ça marche", () => {
     const suivi = screen.getByRole("region", { name: "Le suivi, concrètement" });
     expect(within(suivi).getAllByRole("listitem")).toHaveLength(3);
 
-    const recours = screen.getByRole("region", { name: "Et si ça ne va pas ?" });
+    const recours = screen.getByRole("region", { name: "Et si ça ne va pas ?" });
     expect(within(recours).getAllByRole("listitem")).toHaveLength(3);
     expect(within(recours).getByRole("link", { name: /01.84.80.17.03/ })).toHaveAttribute(
       "href",

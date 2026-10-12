@@ -1,11 +1,11 @@
 {
   "id": "apa",
   "seo": {
-    "titre": "APA à domicile : conditions, montants par GIR, démarche",
-    "description": "L'APA à domicile : pour qui (60 ans et plus, GIR 1 à 4), montants maximaux par GIR, participation selon les ressources et démarche auprès du département."
+    "titre": "APA à domicile : conditions, montants par GIR, démarche",
+    "description": "L'APA à domicile : pour qui (60 ans et plus, GIR 1 à 4), montants maximaux par GIR, participation selon les ressources et démarche auprès du département."
   },
   "ariane": "APA",
-  "h1": "APA à domicile : l'allocation pour rester chez soi après 60 ans",
+  "h1": "APA à domicile : l'allocation pour rester chez soi après 60 ans",
   "chapo": "L'allocation personnalisée d'autonomie finance une partie de l'aide dont une personne âgée a besoin pour continuer à vivre chez elle. Conditions, montants et démarche, tels que les publie service-public.gouv.fr.",
   "maj": "2026-09-20",
   "sources": [
@@ -23,27 +23,43 @@
   ],
   "sections": [
     {
-      "h2": "Qui y a droit ?",
+      "h2": "Qui y a droit ?",
       "paragraphes": [
         "Les personnes âgées d'au moins 60 ans, en perte d'autonomie, qui vivent à leur domicile, chez un proche, chez un accueillant familial ou en résidence autonomie, en France.",
-        "La perte d'autonomie est évaluée avec la grille AGGIR : l'APA concerne les GIR 1 à 4 (le GIR 1 correspond à la perte d'autonomie la plus forte)."
+        "La perte d'autonomie est évaluée avec la grille AGGIR : l'APA concerne les GIR 1 à 4 (le GIR 1 correspond à la perte d'autonomie la plus forte)."
       ]
     },
     {
-      "h2": "Combien ?",
+      "h2": "Combien ?",
       "paragraphes": [
         "Le département établit un plan d'aide, dans la limite d'un montant maximal mensuel qui dépend du GIR. Une participation reste à votre charge selon vos ressources."
       ],
       "montants": [
-        { "libelle": "GIR 1", "valeur": "2 080,33 € par mois", "precision": "au maximum" },
-        { "libelle": "GIR 2", "valeur": "1 682,30 € par mois", "precision": "au maximum" },
-        { "libelle": "GIR 3", "valeur": "1 215,99 € par mois", "precision": "au maximum" },
-        { "libelle": "GIR 4", "valeur": "811,52 € par mois", "precision": "au maximum" }
+        {
+          "libelle": "GIR 1",
+          "valeur": "2 080,33 € par mois",
+          "precision": "au maximum"
+        },
+        {
+          "libelle": "GIR 2",
+          "valeur": "1 682,30 € par mois",
+          "precision": "au maximum"
+        },
+        {
+          "libelle": "GIR 3",
+          "valeur": "1 215,99 € par mois",
+          "precision": "au maximum"
+        },
+        {
+          "libelle": "GIR 4",
+          "valeur": "811,52 € par mois",
+          "precision": "au maximum"
+        }
       ],
       "liste": [
-        "Ressources mensuelles jusqu'à 933,89 € : aucune participation.",
-        "De 933,89 € à 3 439,31 € : participation progressive, de 0 à 90 % du plan d'aide.",
-        "Au-delà de 3 439,31 € : participation de 90 % du plan d'aide."
+        "Ressources mensuelles jusqu'à 933,89 € : aucune participation.",
+        "De 933,89 € à 3 439,31 € : participation progressive, de 0 à 90 % du plan d'aide.",
+        "Au-delà de 3 439,31 € : participation de 90 % du plan d'aide."
       ]
     },
     {

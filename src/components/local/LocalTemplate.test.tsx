@@ -141,7 +141,7 @@ describe("LocalTemplate", () => {
     const sources = document.querySelectorAll("[data-fact-source]");
     expect(rows.length).toBe(sources.length);
     for (const source of sources) {
-      expect(source.textContent).toMatch(/^Source : .+, consulté le 20 septembre 2026$/);
+      expect(source.textContent).toMatch(/^Source\s: .+, consulté le 20 septembre 2026$/);
       // 27/09/2026 : la source est nommée et datée, sans lien sortant.
       expect(source.querySelector("a")).toBeNull();
     }

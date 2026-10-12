@@ -1,16 +1,16 @@
 {
   "id": "aides-en-un-coup-d-oeil",
   "seo": {
-    "titre": "Les aides à domicile en un coup d'œil : le mémo à imprimer",
-    "description": "Mémo gratuit à imprimer : APA, PCH, AEEH, crédit d'impôt, CESU préfinancé, aide après hospitalisation. Pour qui, combien, à qui s'adresser, montants datés."
+    "titre": "Les aides à domicile en un coup d'œil : le mémo à imprimer",
+    "description": "Mémo gratuit à imprimer : APA, PCH, AEEH, crédit d'impôt, CESU préfinancé, aide après hospitalisation. Pour qui, combien, à qui s'adresser, montants datés."
   },
   "ariane": "Les aides en un coup d'œil",
   "h1": "Les aides en un coup d'œil",
-  "sous_titre": "Six aides qui réduisent le coût de l'aide à domicile : pour qui, combien, à qui s'adresser. Sur deux pages.",
+  "sous_titre": "Six aides qui réduisent le coût de l'aide à domicile : pour qui, combien, à qui s'adresser. Sur deux pages.",
   "icone": "aide-financiere",
   "mode_emploi": [
     "Imprimez ce mémo et cochez les aides qui peuvent vous concerner, avant d'appeler qui les instruit.",
-    "Notez où en est chaque dossier : les montants ci-dessous sont ceux publiés par les sources officielles, à la date indiquée."
+    "Notez où en est chaque dossier : les montants ci-dessous sont ceux publiés par les sources officielles, à la date indiquée."
   ],
   "maj": "2026-09-27",
   "sections": [
@@ -27,7 +27,7 @@
         {
           "type": "info",
           "libelle": "Combien",
-          "texte": "50 % des dépenses de l'année, dans la limite de 12 000 € de dépenses (soit 6 000 € d'avantage au plus), + 1 500 € par enfant à charge ou personne de plus de 65 ans au foyer ; 20 000 € pour une personne invalide (10 000 € d'avantage au plus)."
+          "texte": "50 % des dépenses de l'année, dans la limite de 12 000 € de dépenses (soit 6 000 € d'avantage au plus), + 1 500 € par enfant à charge ou personne de plus de 65 ans au foyer ; 20 000 € pour une personne invalide (10 000 € d'avantage au plus)."
         },
         {
           "type": "info",
@@ -57,12 +57,12 @@
         {
           "type": "info",
           "libelle": "Combien",
-          "texte": "au maximum, par mois : 2 080,33 € (GIR 1), 1 682,30 € (GIR 2), 1 215,99 € (GIR 3), 811,52 € (GIR 4). Une participation reste à votre charge selon vos revenus."
+          "texte": "au maximum, par mois : 2 080,33 € (GIR 1), 1 682,30 € (GIR 2), 1 215,99 € (GIR 3), 811,52 € (GIR 4). Une participation reste à votre charge selon vos revenus."
         },
         {
           "type": "info",
           "libelle": "Comment",
-          "texte": "demande auprès du conseil départemental, avec une évaluation à domicile ; une procédure d'urgence existe après une hospitalisation."
+          "texte": "demande auprès du conseil départemental, avec une évaluation à domicile ; une procédure d'urgence existe après une hospitalisation."
         },
         {
           "type": "case",
@@ -87,7 +87,7 @@
         {
           "type": "info",
           "libelle": "Combien",
-          "texte": "aide humaine : 25,00 € l'heure en service prestataire, 21,91 € l'heure en service mandataire, 19,92 € l'heure en emploi direct, 4,93 € l'heure pour un aidant familial."
+          "texte": "aide humaine : 25,00 € l'heure en service prestataire, 21,91 € l'heure en service mandataire, 19,92 € l'heure en emploi direct, 4,93 € l'heure pour un aidant familial."
         },
         {
           "type": "info",
@@ -117,12 +117,12 @@
         {
           "type": "info",
           "libelle": "Combien",
-          "texte": "153,01 € par mois pour l'allocation de base ; un complément de 267,77 € par mois (1re catégorie) à 1 451,45 € par mois (6e catégorie) selon les besoins. Un choix est à faire entre le complément d'AEEH et la PCH."
+          "texte": "153,01 € par mois pour l'allocation de base ; un complément de 267,77 € par mois (1re catégorie) à 1 451,45 € par mois (6e catégorie) selon les besoins. Un choix est à faire entre le complément d'AEEH et la PCH."
         },
         {
           "type": "info",
           "libelle": "Comment",
-          "texte": "dossier déposé auprès de la MDPH ; l'allocation est versée par la CAF ou la MSA."
+          "texte": "dossier déposé auprès de la MDPH ; l'allocation est versée par la CAF ou la MSA."
         },
         {
           "type": "case",
@@ -147,12 +147,12 @@
         {
           "type": "info",
           "libelle": "Combien",
-          "texte": "l'aide de l'employeur ou du CSE peut atteindre 2 591 € par an et par bénéficiaire sans être imposée ; l'employeur n'a aucune obligation de la proposer."
+          "texte": "l'aide de l'employeur ou du CSE peut atteindre 2 591 € par an et par bénéficiaire sans être imposée ; l'employeur n'a aucune obligation de la proposer."
         },
         {
           "type": "info",
           "libelle": "Comment",
-          "texte": "auprès de l'organisme qui les distribue ; ils règlent tout ou partie de l'aide à domicile."
+          "texte": "auprès de l'organisme qui les distribue ; ils règlent tout ou partie de l'aide à domicile."
         },
         {
           "type": "case",
@@ -177,7 +177,7 @@
         {
           "type": "info",
           "libelle": "Combien",
-          "texte": "une aide temporaire, 3 mois au plus, sous conditions de ressources : aide à domicile, courses, repas, téléassistance. Le montant dépend de la caisse et de la situation."
+          "texte": "une aide temporaire, 3 mois au plus, sous conditions de ressources : aide à domicile, courses, repas, téléassistance. Le montant dépend de la caisse et de la situation."
         },
         {
           "type": "info",
@@ -246,13 +246,13 @@
       "consulte_le": "2026-09-27"
     },
     {
-      "libelle": "service-public.gouv.fr — Cesu déclaratif ou Cesu préfinancé : quelles différences ?",
+      "libelle": "service-public.gouv.fr — Cesu déclaratif ou Cesu préfinancé : quelles différences ?",
       "href": "https://www.service-public.gouv.fr/particuliers/vosdroits/F13607",
       "verifie_le": "2026-02-06",
       "consulte_le": "2026-09-27"
     },
     {
-      "libelle": "pour-les-personnes-agees.gouv.fr — Quelles sont les aides des caisses de retraite ?",
+      "libelle": "pour-les-personnes-agees.gouv.fr — Quelles sont les aides des caisses de retraite ?",
       "href": "https://www.pour-les-personnes-agees.gouv.fr/vivre-a-domicile/aides-financieres/quelles-sont-les-aides-des-caisses-de-retraite",
       "verifie_le": "2026-04-09",
       "consulte_le": "2026-09-27"

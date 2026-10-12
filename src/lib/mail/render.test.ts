@@ -57,7 +57,7 @@ describe("e-mails de la demande", () => {
     expect(teamSubject(lead, ctx)).not.toMatch(/Alzheimer|nuit/i);
   });
 
-  it("assainit l'objet : un retour chariot dans un champ libre n'ouvre pas d'en-tête", () => {
+  it("assainit l'objet : un retour chariot dans un champ libre n'ouvre pas d'en-tête", () => {
     // `commune.nom` est un champ libre de 80 caractères et entre dans l'objet : un saut de ligne
     // y terminerait l'en-tête `Subject` (docs/AUDIT_GLOBAL.md, S-9).
     const injecte: LeadPayload = {
@@ -75,7 +75,7 @@ describe("e-mails de la demande", () => {
     expect(sanitizeSubject("a\u0000b\tc   d \n")).toBe("a b c d");
   });
 
-  it("rend l'alerte lisible : coordonnées avec lien tel:, planning en tableau, HTML échappé", () => {
+  it("rend l'alerte lisible : coordonnées avec lien tel:, planning en tableau, HTML échappé", () => {
     const mail = renderTeamEmail(lead, ctx);
     expect(mail.html).toContain('href="tel:+33612345678"');
     // `formatFrenchPhone` relie les paires par des espaces insécables, pour qu'un numéro ne
@@ -88,14 +88,14 @@ describe("e-mails de la demande", () => {
     expect(mail.html).not.toContain("<sans>");
     expect(mail.html).toContain("Youdom Care Hauts-de-Seine");
     expect(mail.text).toContain("Alzheimer ou apparentée");
-    expect(mail.text).toContain("Lundi : Matin, Nuit");
+    expect(mail.text).toContain("Lundi : Matin, Nuit");
     expect(mail.text).toContain('"id": "8f7b1d1e-2c3a-4b5c-9d6e-7f8a9b0c1d2e"');
-    expect(mail.text).toContain("Estimation : environ 17 heures par semaine");
-    expect(mail.text).toContain("Nuits : Nuit calme");
-    expect(mail.text).toContain("version du texte : 2026-09");
+    expect(mail.text).toContain("Estimation : environ 17 heures par semaine");
+    expect(mail.text).toContain("Nuits : Nuit calme");
+    expect(mail.text).toContain("version du texte : 2026-09");
   });
 
-  it("tient dans les clients de messagerie : pas de <details>, charset déclaré, aperçu en tête", () => {
+  it("tient dans les clients de messagerie : pas de <details>, charset déclaré, aperçu en tête", () => {
     const mail = renderTeamEmail(lead, ctx);
     // Gmail et Outlook ne gèrent pas `<details>` : ils l'affichent toujours ouvert, ce qui
     // déversait le JSON brut au milieu du message. Garde-fou contre son retour.
@@ -125,10 +125,10 @@ describe("e-mails de la demande", () => {
 
   it("affiche l'intitulé des questions, jamais la clé technique", () => {
     const mail = renderTeamEmail(lead, ctx);
-    expect(mail.text).toContain("De quelle maladie s'agit-il ? : Alzheimer ou apparentée");
-    expect(mail.text).toContain("Qu'est-ce qui pèse aujourd'hui ? : Les nuits difficiles");
+    expect(mail.text).toContain("De quelle maladie s'agit-il ? : Alzheimer ou apparentée");
+    expect(mail.text).toContain("Qu'est-ce qui pèse aujourd'hui ? : Les nuits difficiles");
     // La clé ne doit apparaître que dans le bloc JSON de fin, pas comme intitulé de ligne.
-    expect(mail.text).not.toContain("ce_qui_pese : ");
+    expect(mail.text).not.toContain("ce_qui_pese : ");
     // Les deux formulaires spéciaux tirent leurs libellés de content/emails.json.
     const pro = renderTeamEmail(
       {
@@ -139,8 +139,8 @@ describe("e-mails de la demande", () => {
       },
       ctx,
     );
-    expect(pro.text).toContain("Structure : Hôpital Foch");
-    expect(pro.text).toContain("Type de besoin : Sortie d'hospitalisation");
+    expect(pro.text).toContain("Structure : Hôpital Foch");
+    expect(pro.text).toContain("Type de besoin : Sortie d'hospitalisation");
   });
 
   it("rend les dates ponctuelles et la présence 24h/24", () => {
@@ -156,14 +156,14 @@ describe("e-mails de la demande", () => {
       ctx,
     );
     expect(ponctuel.text).toContain(
-      "Dates demandées : samedi 3 octobre 2026, dimanche 4 octobre 2026",
+      "Dates demandées : samedi 3 octobre 2026, dimanche 4 octobre 2026",
     );
-    expect(ponctuel.text).toContain("Créneaux ces jours-là : Matin");
+    expect(ponctuel.text).toContain("Créneaux ces jours-là : Matin");
     const continu = renderTeamEmail(
       { ...lead, planning: { rythme: "24h", dates: ["2026-10-01"], duree: "semaines" } },
       ctx,
     );
-    expect(continu.text).toContain("Durée envisagée : Quelques semaines");
+    expect(continu.text).toContain("Durée envisagée : Quelques semaines");
     expect(continu.text).toContain("Présence continue 24h/24");
   });
 

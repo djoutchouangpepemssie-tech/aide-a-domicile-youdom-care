@@ -2,20 +2,23 @@
   "_lisezmoi": "Page d'index /services/ (D-064). Le menu « Nos services » était un déroulant sans page d'atterrissage : un visiteur ne pouvait voir les prestations qu'une par une. Cette page les réunit, groupées par besoin. Les libellés, les liens et les descriptions des cartes ne sont PAS écrits ici : ils viennent de content/navigation.json, pour que le menu et cette page ne puissent pas diverger. Ici on ne décrit que le plan de la page : les groupes, leur ordre, et pour chaque service son icône et, le cas échéant, ce qu'il contient (`inclus`). Un href absent du menu interrompt le build.",
   "seo": {
     "titre": "Nos services d'aide à domicile à Paris et en Île-de-France",
-    "description": "Aide à l'autonomie, vie quotidienne, vie sociale, présence de nuit ou 24h/24, retour d'hospitalisation : tous nos accompagnements à domicile."
+    "description": "Aide à l'autonomie, vie quotidienne, vie sociale, présence de nuit ou 24h/24, retour d'hospitalisation : tous nos accompagnements à domicile."
   },
   "ariane": "Nos services",
   "h1": "Nos services d'aide et d'accompagnement à domicile",
-  "chapo": "Un passage le matin pour le lever, des courses et des repas chaque semaine, une présence la nuit, un relais au retour de l'hôpital : nos accompagnements se composent. Voici ce que nous savons faire, groupé selon ce que vous cherchez.",
+  "chapo": "Un passage le matin pour le lever, des courses et des repas chaque semaine, une présence la nuit, un relais au retour de l'hôpital : nos accompagnements se composent. Voici ce que nous savons faire, groupé selon ce que vous cherchez.",
   "mode_texte": "Chaque prestation s'organise en mode prestataire ou en mode mandataire. Les deux ne vous engagent pas de la même façon, et nous vous disons lequel s'applique avant tout engagement.",
   "mode_lien": "Comprendre les deux modes d'intervention",
   "groupes": [
     {
       "id": "regulier",
       "h2": "L'aide régulière, semaine après semaine",
-      "texte": "L'accompagnement de fond : les mêmes jours, aux mêmes heures, avec les mêmes visages. C'est là que commencent la plupart des accompagnements.",
+      "texte": "L'accompagnement de fond : les mêmes jours, aux mêmes heures, avec les mêmes visages. C'est là que commencent la plupart des accompagnements.",
       "services": [
-        { "href": "/personnes-agees/aide-a-l-autonomie/", "icone": "lever" },
+        {
+          "href": "/personnes-agees/aide-a-l-autonomie/",
+          "icone": "lever"
+        },
         {
           "href": "/personnes-agees/vie-quotidienne/",
           "icone": "courses",
@@ -26,32 +29,53 @@
             "Démarches simples"
           ]
         },
-        { "href": "/personnes-agees/compagnie-et-stimulation/", "icone": "compagnie" }
+        {
+          "href": "/personnes-agees/compagnie-et-stimulation/",
+          "icone": "compagnie"
+        }
       ]
     },
     {
       "id": "presence",
       "h2": "Une présence renforcée, le jour et la nuit",
-      "texte": "Quand un passage ne suffit plus : la nuit, en continu, ou auprès d'une personne malade. Ces accompagnements demandent des équipes en relais, et une organisation que nous posons avec vous.",
+      "texte": "Quand un passage ne suffit plus : la nuit, en continu, ou auprès d'une personne malade. Ces accompagnements demandent des équipes en relais, et une organisation que nous posons avec vous.",
       "services": [
-        { "href": "/services/garde-de-nuit/", "icone": "nuit" },
-        { "href": "/services/presence-24h-24/", "icone": "24h" },
-        { "href": "/services/garde-malade/", "icone": "garde-malade" }
+        {
+          "href": "/services/garde-de-nuit/",
+          "icone": "nuit"
+        },
+        {
+          "href": "/services/presence-24h-24/",
+          "icone": "24h"
+        },
+        {
+          "href": "/services/garde-malade/",
+          "icone": "garde-malade"
+        }
       ]
     },
     {
       "id": "moment",
       "h2": "Un moment particulier à passer",
-      "texte": "Un accompagnement qui a un début et une fin : les semaines qui suivent une hospitalisation, un séjour à préparer, une aide habituelle à remplacer.",
+      "texte": "Un accompagnement qui a un début et une fin : les semaines qui suivent une hospitalisation, un séjour à préparer, une aide habituelle à remplacer.",
       "services": [
-        { "href": "/services/sortie-d-hospitalisation/", "icone": "retour-hopital" },
-        { "href": "/services/accompagnement-en-vacances/", "icone": "vacances" },
-        { "href": "/services/remplacement-d-auxiliaire-de-vie/", "icone": "remplacement" }
+        {
+          "href": "/services/sortie-d-hospitalisation/",
+          "icone": "retour-hopital"
+        },
+        {
+          "href": "/services/accompagnement-en-vacances/",
+          "icone": "vacances"
+        },
+        {
+          "href": "/services/remplacement-d-auxiliaire-de-vie/",
+          "icone": "remplacement"
+        }
       ]
     }
   ],
   "public_h2": "Et selon la personne accompagnée",
-  "public_texte": "Ces services s'adaptent à la situation : l'âge, une maladie neurodégénérative, un handicap chez l'adulte ou chez l'enfant. Chaque public a ses pages, avec ce qui change concrètement.",
-  "appel_h2": "Vous ne savez pas lequel vous cherchez ?",
-  "appel_texte": "C'est le cas le plus fréquent, et ce n'est pas à vous de trancher. Décrivez-nous la situation : nous proposons une composition, et nous la révisons quand les besoins changent."
+  "public_texte": "Ces services s'adaptent à la situation : l'âge, une maladie neurodégénérative, un handicap chez l'adulte ou chez l'enfant. Chaque public a ses pages, avec ce qui change concrètement.",
+  "appel_h2": "Vous ne savez pas lequel vous cherchez ?",
+  "appel_texte": "C'est le cas le plus fréquent, et ce n'est pas à vous de trancher. Décrivez-nous la situation : nous proposons une composition, et nous la révisons quand les besoins changent."
 }

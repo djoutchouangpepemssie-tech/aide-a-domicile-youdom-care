@@ -3,16 +3,16 @@
   "id": "adulte-handicap",
   "slug": "adulte-handicap",
   "seo": {
-    "titre": "Décrire votre situation : adulte en situation de handicap",
-    "description": "Aide humaine, PCH, mode prestataire ou mandataire : dites-nous l'essentiel en deux à trois minutes, un conseiller Youdom Care vous rappelle."
+    "titre": "Décrire votre situation : adulte en situation de handicap",
+    "description": "Aide humaine, PCH, mode prestataire ou mandataire : dites-nous l'essentiel en deux à trois minutes, un conseiller Youdom Care vous rappelle."
   },
   "ariane": "Adulte en situation de handicap",
-  "h1": "Décrire votre situation : adulte en situation de handicap",
+  "h1": "Décrire votre situation : adulte en situation de handicap",
   "chapo": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées. Vous pourrez tout préciser au téléphone.",
   "situation": [
     {
       "id": "nature",
-      "question": "De quel handicap s'agit-il ?",
+      "question": "De quel handicap s'agit-il ?",
       "type": "choix",
       "options": [
         "Moteur",
@@ -25,7 +25,7 @@
     },
     {
       "id": "aides_techniques",
-      "question": "Quelles aides techniques sont utilisées ?",
+      "question": "Quelles aides techniques sont utilisées ?",
       "type": "choix_multiple",
       "options": [
         "Fauteuil roulant",
@@ -40,7 +40,7 @@
     },
     {
       "id": "pch_heures",
-      "question": "Combien d'heures d'aide humaine sont accordées par mois ?",
+      "question": "Combien d'heures d'aide humaine sont accordées par mois ?",
       "type": "choix",
       "options": [
         "Moins de 30 heures",
@@ -53,16 +53,16 @@
     },
     {
       "id": "mode",
-      "question": "Prestataire ou mandataire : que préférez-vous ?",
+      "question": "Prestataire ou mandataire : que préférez-vous ?",
       "type": "choix",
       "options": [
         {
           "label": "Prestataire",
-          "aide": "Nous sommes l'employeur de l'intervenant ; vous payez les heures réalisées."
+          "aide": "Nous sommes l'employeur de l'intervenant ; vous payez les heures réalisées."
         },
         {
           "label": "Mandataire",
-          "aide": "Vous êtes l'employeur ; nous recrutons et gérons l'administratif pour vous."
+          "aide": "Vous êtes l'employeur ; nous recrutons et gérons l'administratif pour vous."
         },
         {
           "label": "À comparer ensemble",

@@ -4,7 +4,7 @@
   "slug": "enfant-handicap",
   "seo": {
     "titre": "Décrire les besoins de votre enfant en situation de handicap",
-    "description": "Sorties d'école, mercredis, vacances, nuits, relais pour souffler : décrivez les besoins de votre enfant en quelques minutes, un conseiller vous rappelle."
+    "description": "Sorties d'école, mercredis, vacances, nuits, relais pour souffler : décrivez les besoins de votre enfant en quelques minutes, un conseiller vous rappelle."
   },
   "ariane": "Enfant en situation de handicap",
   "h1": "Décrire les besoins de votre enfant",
@@ -12,13 +12,13 @@
   "situation": [
     {
       "id": "age",
-      "question": "Quel âge a votre enfant ?",
+      "question": "Quel âge a votre enfant ?",
       "type": "choix",
       "options": ["Moins de 3 ans", "3 à 5 ans", "6 à 10 ans", "11 à 15 ans", "16 à 20 ans"]
     },
     {
       "id": "situation",
-      "question": "De quel handicap s'agit-il ?",
+      "question": "De quel handicap s'agit-il ?",
       "type": "choix",
       "options": [
         "Autisme, TSA",
@@ -32,7 +32,7 @@
     },
     {
       "id": "scolarite",
-      "question": "Où votre enfant passe-t-il ses journées ?",
+      "question": "Où votre enfant passe-t-il ses journées ?",
       "type": "choix",
       "options": [
         "Crèche, ou pas encore scolarisé",
@@ -57,7 +57,7 @@
     },
     {
       "id": "communication",
-      "question": "Comment votre enfant communique-t-il ?",
+      "question": "Comment votre enfant communique-t-il ?",
       "type": "choix_multiple",
       "options": [
         "Par la parole",
@@ -69,7 +69,7 @@
     },
     {
       "id": "aide_financiere",
-      "question": "Une aide financière est-elle en place ?",
+      "question": "Une aide financière est-elle en place ?",
       "type": "choix",
       "options": ["Obtenue", "En cours", "Pas encore"],
       "aide": "L'AEEH est l'allocation d'éducation de l'enfant handicapé, la PCH la prestation de compensation du handicap."

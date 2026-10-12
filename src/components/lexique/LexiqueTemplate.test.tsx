@@ -12,7 +12,7 @@ const term: LexiqueTerm = {
   seo: {
     titre: "APA : définition, conditions et démarche de l'allocation",
     description:
-      "L'APA, allocation personnalisée d'autonomie, en clair : pour qui après 60 ans, ce qu'elle finance à domicile et comment la demander au département.",
+      "L'APA, allocation personnalisée d'autonomie, en clair : pour qui après 60 ans, ce qu'elle finance à domicile et comment la demander au département.",
   },
   definition: "L'APA est une aide versée par le département.",
   explication: Array.from({ length: 125 }, (_, i) => `mot${i}`).join(" "),
@@ -49,7 +49,7 @@ function data(overrides: Partial<LexiqueTemplateData> = {}): LexiqueTemplateData
       { slug: "gir-et-grille-aggir", terme: "GIR et grille AGGIR", definition: "La grille." },
       { slug: "pch", terme: "PCH", developpe: "Prestation de compensation", definition: "La PCH." },
     ],
-    appel: { h2: "Un mot vous manque ?", texte: "Appelez-nous." },
+    appel: { h2: "Un mot vous manque ?", texte: "Appelez-nous." },
     buttons: { rappel: texts.boutons.rappel, demande: texts.boutons.demande_detaillee },
     navigation: { rappel_href: navigation.rappel_href, demande_href: navigation.demande_href },
     ...overrides,
@@ -73,9 +73,9 @@ describe("LexiqueTemplate", () => {
     expect(screen.getByText("Explication compilée.")).toBeInTheDocument();
   });
 
-  it("montre « Pour qui ? », la source officielle datée sans lien, les pages liées et les voisins", () => {
+  it("montre « Pour qui ? », la source officielle datée sans lien, les pages liées et les voisins", () => {
     render(<LexiqueTemplate data={data()} />);
-    expect(screen.getByRole("region", { name: "Pour qui ?" })).toHaveTextContent(
+    expect(screen.getByRole("region", { name: "Pour qui ?" })).toHaveTextContent(
       "Les personnes de 60 ans et plus.",
     );
     const official = screen.getByRole("region", { name: "Le texte officiel" });
@@ -110,7 +110,7 @@ describe("LexiqueTemplate", () => {
     expect(screen.queryByRole("navigation", { name: "Termes voisins" })).toBeNull();
     expect(screen.getByRole("complementary", { name: "Nous joindre" })).toBeInTheDocument();
     expect(screen.queryByRole("form")).toBeNull();
-    const appel = screen.getByRole("region", { name: "Un mot vous manque ?" });
+    const appel = screen.getByRole("region", { name: "Un mot vous manque ?" });
     expect(within(appel).getByRole("link", { name: "Être rappelé(e)" })).toBeInTheDocument();
     expect(within(appel).getByRole("link", { name: "Je décris ma situation" })).toBeInTheDocument();
   });

@@ -3,21 +3,21 @@
   "sortie_hospitalisation": {
     "seo": {
       "titre": "Préparer un retour à domicile après une hospitalisation",
-      "description": "Date de sortie, commune de retour, besoins des premiers jours : quatre écrans pour organiser un retour à domicile après l'hôpital. Nous vous rappelons."
+      "description": "Date de sortie, commune de retour, besoins des premiers jours : quatre écrans pour organiser un retour à domicile après l'hôpital. Nous vous rappelons."
     },
     "ariane": "Sortie d'hospitalisation",
     "h1": "Préparer un retour à domicile après l'hôpital",
     "chapo": "Quatre questions, pour un proche ou pour une personne que vous suivez. Un conseiller vous rappelle pour organiser les premiers jours.",
-    "bandeau_titre": "Sortie dans moins de 48 h ?",
+    "bandeau_titre": "Sortie dans moins de 48 h ?",
     "bandeau_texte": "Appelez-nous directement au {téléphone}.",
-    "etape_date": "Quand la sortie est-elle prévue ?",
+    "etape_date": "Quand la sortie est-elle prévue ?",
     "date": "Date de sortie prévue",
     "date_aide": "Facultatif si vous ne la connaissez pas encore.",
-    "etape_lieu": "D'où et vers où ?",
+    "etape_lieu": "D'où et vers où ?",
     "hopital": "Hôpital ou clinique",
     "hopital_aide": "Facultatif.",
     "commune": "Commune de retour",
-    "etape_besoins": "De quoi aura-t-on besoin les premiers jours ?",
+    "etape_besoins": "De quoi aura-t-on besoin les premiers jours ?",
     "besoins": [
       "Aide au lever et au coucher",
       "Toilette",
@@ -27,19 +27,19 @@
       "Nuits",
       "Accompagnement aux rendez-vous"
     ],
-    "etape_coordonnees": "Où pouvons-nous vous joindre ?",
+    "etape_coordonnees": "Où pouvons-nous vous joindre ?",
     "vous_etes": "Vous êtes…",
     "roles": ["Un proche", "La personne concernée", "Un professionnel de santé ou du social"]
   },
   "professionnel": {
     "seo": {
-      "titre": "Professionnels : adresser une situation à Youdom Care",
-      "description": "Hôpital, cabinet, service social, association : adressez une situation en quelques minutes, sans donnée permettant d'identifier la personne."
+      "titre": "Professionnels : adresser une situation à Youdom Care",
+      "description": "Hôpital, cabinet, service social, association : adressez une situation en quelques minutes, sans donnée permettant d'identifier la personne."
     },
     "ariane": "Professionnels",
     "h1": "Adresser une situation",
-    "chapo": "Vous suivez une personne qui a besoin d'aide à domicile. Dites-nous l'essentiel : nous vous rappelons pour organiser la suite avec elle et ses proches.",
-    "etape_vous": "Qui êtes-vous ?",
+    "chapo": "Vous suivez une personne qui a besoin d'aide à domicile. Dites-nous l'essentiel : nous vous rappelons pour organiser la suite avec elle et ses proches.",
+    "etape_vous": "Qui êtes-vous ?",
     "structure": "Votre structure",
     "fonction": "Votre fonction",
     "telephone": "Votre téléphone direct",
@@ -59,12 +59,12 @@
   },
   "contact": {
     "seo": {
-      "titre": "Contacter Youdom Care : une question, une remarque",
-      "description": "Une question sur nos services, une candidature spontanée, un partenariat, une remarque sur le site : écrivez-nous, nous vous répondons dès que possible."
+      "titre": "Contacter Youdom Care : une question, une remarque",
+      "description": "Une question sur nos services, une candidature spontanée, un partenariat, une remarque sur le site : écrivez-nous, nous vous répondons dès que possible."
     },
     "ariane": "Contact",
     "h1": "Nous écrire",
-    "chapo": "Une question, une remarque, une demande qui n'entre dans aucune case : écrivez-nous. Pour une demande d'aide, le formulaire adapté prépare mieux notre appel.",
+    "chapo": "Une question, une remarque, une demande qui n'entre dans aucune case : écrivez-nous. Pour une demande d'aide, le formulaire adapté prépare mieux notre appel.",
     "sujet": "Votre message concerne",
     "sujets": [
       "Une question sur nos services",
@@ -74,8 +74,8 @@
       "Autre"
     ],
     "message": "Votre message",
-    "message_aide": "Inutile de détailler un état de santé : nous en parlerons de vive voix.",
-    "demande_h2": "Vous cherchez de l'aide pour un proche ?",
+    "message_aide": "Inutile de détailler un état de santé : nous en parlerons de vive voix.",
+    "demande_h2": "Vous cherchez de l'aide pour un proche ?",
     "demande_texte": "Le formulaire adapté à votre situation prépare mieux notre appel.",
     "demande_lien": "Je décris ma situation"
   }

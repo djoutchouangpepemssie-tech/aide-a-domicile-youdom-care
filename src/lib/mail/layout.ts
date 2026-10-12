@@ -275,7 +275,7 @@ export function renderMailDocument(doc: MailDocument): { html: string; text: str
     }
     for (const row of section.rows) {
       const [first, ...rest] = rowValueLines(row);
-      textLines.push(`  ${row.label} : ${first ?? ""}`);
+      textLines.push(`  ${row.label}\u00a0: ${first ?? ""}`);
       for (const line of rest) textLines.push(`  ${" ".repeat(row.label.length)}   ${line}`);
     }
   }

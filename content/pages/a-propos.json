@@ -2,8 +2,8 @@
   "_lisezmoi": "Pages À propos (docs/03 §9) : manifeste de docs/01 §10 repris tel quel, engagements de content/engagements.json (un engagement non validé est masqué en production), charte éditoriale fondée sur docs/03 §1 et docs/06 §4. Histoire et équipe restent null tant qu'Arcel ne les fournit pas (Q-CONTENU-1) : les blocs sont masqués.",
   "a_propos": {
     "seo": {
-      "titre": "À propos de Youdom Care : notre manifeste et nos choix",
-      "description": "Qui nous sommes : une société d'aide à domicile à Paris et en Île-de-France, ce que nous croyons, nos engagements et notre façon d'écrire ce site."
+      "titre": "À propos de Youdom Care : notre manifeste et nos choix",
+      "description": "Qui nous sommes : une société d'aide à domicile à Paris et en Île-de-France, ce que nous croyons, nos engagements et notre façon d'écrire ce site."
     },
     "ariane": "À propos",
     "h1": "Ce que nous croyons, et ce que nous faisons",
@@ -15,7 +15,7 @@
         "Nous croyons qu'une maladie ne résume pas une personne. Qu'un enfant n'est pas son diagnostic. Qu'un grand âge n'est pas une fin de choix.",
         "Nous croyons qu'aider quelqu'un chez lui est un métier, qui s'apprend, qui se prépare, et qui mérite d'être respecté.",
         "Nous croyons que les proches ont le droit de rester des proches. D'être une fille, un mari, une mère. Pas un planning.",
-        "Alors nous faisons une chose, et nous la faisons avec soin : nous venons chez vous, et nous restons à vos côtés."
+        "Alors nous faisons une chose, et nous la faisons avec soin : nous venons chez vous, et nous restons à vos côtés."
       ]
     },
     "engagements": {
@@ -39,8 +39,8 @@
   },
   "engagements_page": {
     "seo": {
-      "titre": "Nos engagements : formation, stabilité, suivi, réactivité",
-      "description": "Ce que Youdom Care s'engage à faire pour chaque personne accompagnée : intervenants formés, équipe stable, suivi lisible, présence quand ça se complique."
+      "titre": "Nos engagements : formation, stabilité, suivi, réactivité",
+      "description": "Ce que Youdom Care s'engage à faire pour chaque personne accompagnée : intervenants formés, équipe stable, suivi lisible, présence quand ça se complique."
     },
     "ariane": "Nos engagements",
     "h1": "Nos engagements, noir sur blanc",
@@ -50,11 +50,11 @@
   },
   "charte_page": {
     "seo": {
-      "titre": "Charte éditoriale : comment nous écrivons et vérifions",
+      "titre": "Charte éditoriale : comment nous écrivons et vérifions",
       "description": "Comment les pages de Youdom Care sont écrites, sourcées, relues par des professionnels et mises à jour, et la place des outils d'aide à la rédaction."
     },
     "ariane": "Charte éditoriale",
-    "h1": "Charte éditoriale : informer, jamais soigner",
+    "h1": "Charte éditoriale : informer, jamais soigner",
     "chapo": "Nos pages parlent de maladies, de handicap, d'argent et de fatigue. Elles méritent des règles strictes. Les voici.",
     "principes": [
       {
@@ -75,7 +75,7 @@
       },
       {
         "titre": "Des mises à jour prévues",
-        "texte": "Chaque article a une date de révision : douze mois au plus, six mois pour les aides financières. Une page dont la révision est échue est signalée et revue."
+        "texte": "Chaque article a une date de révision : douze mois au plus, six mois pour les aides financières. Une page dont la révision est échue est signalée et revue."
       },
       {
         "titre": "Rien d'inventé",
@@ -83,16 +83,16 @@
       },
       {
         "titre": "La personne avant la maladie",
-        "texte": "Nous écrivons « personne atteinte de la maladie d'Alzheimer », « enfant autiste », « personne en situation de handicap ». Jamais « patient » : nous accompagnons, nous ne soignons pas. Pas de photo ni de phrase qui réduit quelqu'un à ses incapacités."
+        "texte": "Nous écrivons « personne atteinte de la maladie d'Alzheimer », « enfant autiste », « personne en situation de handicap ». Jamais « patient » : nous accompagnons, nous ne soignons pas. Pas de photo ni de phrase qui réduit quelqu'un à ses incapacités."
       },
       {
         "titre": "Dire ce que nous ne faisons pas",
-        "texte": "Chaque page de service précise ce qui relève des professionnels de santé, avec lesquels nous nous coordonnons : soins infirmiers, actes médicaux, décisions médicales."
+        "texte": "Chaque page de service précise ce qui relève des professionnels de santé, avec lesquels nous nous coordonnons : soins infirmiers, actes médicaux, décisions médicales."
       }
     ],
     "contact": {
-      "h2": "Une erreur, une question ?",
-      "texte": "Écrivez-nous : nous corrigeons et nous vous répondons."
+      "h2": "Une erreur, une question ?",
+      "texte": "Écrivez-nous : nous corrigeons et nous vous répondons."
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "id": "pch",
   "seo": {
-    "titre": "PCH : conditions, tarifs de l'aide humaine, démarche MDPH",
-    "description": "La PCH : conditions d'âge et de handicap, cinq formes d'aide, tarifs horaires de l'aide humaine selon le mode d'intervention, démarche auprès de la MDPH."
+    "titre": "PCH : conditions, tarifs de l'aide humaine, démarche MDPH",
+    "description": "La PCH : conditions d'âge et de handicap, cinq formes d'aide, tarifs horaires de l'aide humaine selon le mode d'intervention, démarche auprès de la MDPH."
   },
   "ariane": "PCH",
-  "h1": "PCH : la prestation de compensation du handicap, pour l'aide humaine",
+  "h1": "PCH : la prestation de compensation du handicap, pour l'aide humaine",
   "chapo": "La PCH finance les dépenses liées au handicap, dont l'aide humaine à domicile. Conditions, tarifs et démarche, tels que les publie service-public.gouv.fr.",
   "maj": "2026-09-20",
   "sources": [
@@ -23,7 +23,7 @@
   ],
   "sections": [
     {
-      "h2": "Qui y a droit ?",
+      "h2": "Qui y a droit ?",
       "paragraphes": [
         "Les personnes qui vivent en France et dont le handicap entraîne une difficulté absolue pour une activité importante du quotidien, ou une difficulté grave pour au moins deux activités. Cette difficulté doit durer, ou devoir durer, au moins un an.",
         "La demande se fait avant 60 ans, sauf si les conditions étaient remplies avant cet âge ou si la personne poursuit une activité professionnelle."
@@ -32,20 +32,23 @@
     {
       "h2": "Les cinq formes d'aide",
       "liste": [
-        "L'aide humaine : une tierce personne pour les gestes essentiels, la surveillance, la participation à la vie sociale.",
-        "Les aides techniques : le matériel qui compense le handicap.",
+        "L'aide humaine : une tierce personne pour les gestes essentiels, la surveillance, la participation à la vie sociale.",
+        "Les aides techniques : le matériel qui compense le handicap.",
         "L'aménagement du logement ou du véhicule.",
         "Les charges spécifiques ou exceptionnelles.",
         "L'aide animalière."
       ]
     },
     {
-      "h2": "Combien pour l'aide humaine ?",
+      "h2": "Combien pour l'aide humaine ?",
       "paragraphes": [
         "Le nombre d'heures est fixé par la MDPH selon les besoins. Chaque heure est financée sur la base d'un tarif qui dépend du mode d'intervention."
       ],
       "montants": [
-        { "libelle": "Service prestataire", "valeur": "25,00 € l'heure" },
+        {
+          "libelle": "Service prestataire",
+          "valeur": "25,00 € l'heure"
+        },
         {
           "libelle": "Service mandataire",
           "valeur": "21,91 € l'heure",
@@ -63,19 +66,19 @@
         }
       ],
       "liste": [
-        "Taux de couverture : 100 % si les ressources annuelles ne dépassent pas 31 162,62 €, 80 % au-delà. La PCH n'est pas soumise à condition de ressources pour y avoir droit."
+        "Taux de couverture : 100 % si les ressources annuelles ne dépassent pas 31 162,62 €, 80 % au-delà. La PCH n'est pas soumise à condition de ressources pour y avoir droit."
       ]
     },
     {
       "h2": "PCH et mode d'intervention",
       "paragraphes": [
-        "Le tarif prestataire s'applique quand un service comme Youdom Care est l'employeur de l'intervenant ; le tarif mandataire quand vous êtes l'employeur et que le service gère l'administratif pour votre compte. Nous vous expliquons les deux modes sans parti pris."
+        "Le tarif prestataire s'applique quand un service comme Youdom Care est l'employeur de l'intervenant ; le tarif mandataire quand vous êtes l'employeur et que le service gère l'administratif pour votre compte. Nous vous expliquons les deux modes sans parti pris."
       ]
     }
   ],
   "a_retenir": [
     "Une demande auprès de la MDPH, en principe avant 60 ans.",
-    "Un tarif horaire par mode : 25,00 € en prestataire, 21,91 € en mandataire, 19,92 € en emploi direct.",
+    "Un tarif horaire par mode : 25,00 € en prestataire, 21,91 € en mandataire, 19,92 € en emploi direct.",
     "Couverture à 100 % ou 80 % selon les ressources, jamais soumise à condition de ressources pour l'ouverture du droit."
   ],
   "demarche": {
@@ -91,7 +94,7 @@
       },
       {
         "titre": "La réponse arrive dans un délai de 4 mois.",
-        "texte": "Sans réponse dans ce délai, la demande est considérée comme rejetée ; vous pouvez alors contester."
+        "texte": "Sans réponse dans ce délai, la demande est considérée comme rejetée ; vous pouvez alors contester."
       }
     ]
   },

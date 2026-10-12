@@ -1,15 +1,15 @@
 {
   "_lisezmoi": "Pages /recrutement/ et /recrutement/postuler/ (docs/03 §9, docs/00 §3 « le candidat », P8.2). Le métier est décrit tel que les pages services du site le décrivent ; les publics et accompagnements sont des chemins de content/services ; les secteurs viennent de content/site.config.json. Le bloc « Ce que nous vous proposons » est entièrement conditionnel : chaque point est lié à un engagement de content/engagements.json et n'est affiché en production que si valide vaut true ; formation, planning, secteur garanti et salaire n'y figurent pas tant qu'Arcel ne les a pas validés. Les offres sont dans content/offres/*.json (aucune n'est inventée).",
   "seo": {
-    "titre": "Recrutement : auxiliaire de vie à Paris et en Île-de-France",
-    "description": "Offres d'emploi d'auxiliaire de vie et d'aide à domicile chez Youdom Care, en Île-de-France : le métier, les secteurs, la candidature en deux minutes."
+    "titre": "Recrutement : auxiliaire de vie à Paris et en Île-de-France",
+    "description": "Offres d'emploi d'auxiliaire de vie et d'aide à domicile chez Youdom Care, en Île-de-France : le métier, les secteurs, la candidature en deux minutes."
   },
   "ariane": "Recrutement",
-  "h1": "Auxiliaire de vie, aide à domicile : rejoignez Youdom Care",
+  "h1": "Auxiliaire de vie, aide à domicile : rejoignez Youdom Care",
   "chapo": "Vous accompagnez des personnes chez elles, et vous cherchez un employeur qui vous respecte. Voici le métier tel que nous le pratiquons, les secteurs où nous intervenons, et comment postuler en deux minutes.",
   "metier": {
     "h2": "Le métier chez Youdom Care",
-    "texte": "Aider une personne à vivre chez elle : les gestes essentiels, la vie quotidienne, la présence, de jour comme de nuit. Jamais de soin : nous travaillons avec les soignants.",
+    "texte": "Aider une personne à vivre chez elle : les gestes essentiels, la vie quotidienne, la présence, de jour comme de nuit. Jamais de soin : nous travaillons avec les soignants.",
     "missions": [
       {
         "titre": "Les gestes essentiels",
@@ -56,15 +56,15 @@
   },
   "secteurs": {
     "h2": "Où vous intervenez",
-    "texte": "Dans les {departements} départements d'Île-de-France, Paris compris, autour de nos {agences} agences. Vous nous indiquez le département ou la commune que vous souhaitez : c'est la première chose dont nous parlons."
+    "texte": "Dans les {departements} départements d'Île-de-France, Paris compris, autour de nos {agences} agences. Vous nous indiquez le département ou la commune que vous souhaitez : c'est la première chose dont nous parlons."
   },
   "proposons": {
     "h2": "Ce que nous vous proposons",
-    "texte": "Nous préférons ne rien écrire ici que nous n'ayons vérifié. Contrat, planning, secteur, rémunération : tout se discute de vive voix, avant tout engagement.",
+    "texte": "Nous préférons ne rien écrire ici que nous n'ayons vérifié. Contrat, planning, secteur, rémunération : tout se discute de vive voix, avant tout engagement.",
     "items": [
       {
         "titre": "Vous êtes préparé aux situations que vous rencontrez",
-        "texte": "Maladie d'Alzheimer, maladie de Parkinson, sclérose en plaques, autisme, polyhandicap : vous êtes préparé à ce que vous allez réellement rencontrer chez les personnes.",
+        "texte": "Maladie d'Alzheimer, maladie de Parkinson, sclérose en plaques, autisme, polyhandicap : vous êtes préparé à ce que vous allez réellement rencontrer chez les personnes.",
         "engagement": "E1"
       },
       {
@@ -74,7 +74,7 @@
       },
       {
         "titre": "Un suivi que vous pouvez lire",
-        "texte": "Un référent, un cahier de liaison, des points réguliers avec la famille : vous n'êtes pas seul face à la situation.",
+        "texte": "Un référent, un cahier de liaison, des points réguliers avec la famille : vous n'êtes pas seul face à la situation.",
         "engagement": "E3"
       }
     ]
@@ -83,12 +83,12 @@
     "h2": "Les offres",
     "texte": "Chaque offre décrit le contrat, le lieu, le secteur, les missions et le profil. Quand la rémunération est indiquée, elle est réelle.",
     "spontanee_h3": "Candidature spontanée",
-    "spontanee_texte": "Pas d'offre qui vous corresponde ? Envoyez-nous votre CV en deux minutes : nous le lisons avec attention."
+    "spontanee_texte": "Pas d'offre qui vous corresponde ? Envoyez-nous votre CV en deux minutes : nous le lisons avec attention."
   },
   "postuler": {
     "seo": {
-      "titre": "Postuler chez Youdom Care : candidature en deux minutes",
-      "description": "Candidature d'auxiliaire de vie ou d'aide à domicile en deux minutes : vos coordonnées, le secteur souhaité, votre disponibilité, votre CV. Nous répondons."
+      "titre": "Postuler chez Youdom Care : candidature en deux minutes",
+      "description": "Candidature d'auxiliaire de vie ou d'aide à domicile en deux minutes : vos coordonnées, le secteur souhaité, votre disponibilité, votre CV. Nous répondons."
     },
     "ariane": "Postuler",
     "h1": "Je postule chez Youdom Care",

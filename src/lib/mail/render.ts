@@ -125,7 +125,7 @@ function planningSections(lead: LeadPayload, ctx: RenderContext): MailSection[] 
     for (const day of weekDays) {
       const chosen = grid[day];
       if (chosen && chosen.length > 0) {
-        lines.push(`${days[day]} : ${chosen.map((slot: WeekSlot) => slots[slot]).join(", ")}`);
+        lines.push(`${days[day]}\u00a0: ${chosen.map((slot: WeekSlot) => slots[slot]).join(", ")}`);
       }
     }
   }
@@ -135,7 +135,7 @@ function planningSections(lead: LeadPayload, ctx: RenderContext): MailSection[] 
     for (const day of weekDays) {
       const ranges = planning.plages[day as WeekDay];
       if (ranges && ranges.length > 0) {
-        const text = `${days[day]} : ${ranges.map((r) => `${r.debut} – ${r.fin}`).join(", ")}`;
+        const text = `${days[day]}\u00a0: ${ranges.map((r) => `${r.debut} – ${r.fin}`).join(", ")}`;
         lines.push(text);
         items.push(`<li>${escapeHtml(text)}</li>`);
       }
@@ -152,7 +152,7 @@ function planningSections(lead: LeadPayload, ctx: RenderContext): MailSection[] 
   ];
   for (const [label, value] of extras) {
     if (value === undefined) continue;
-    lines.push(`${label} : ${value}`);
+    lines.push(`${label}\u00a0: ${value}`);
     html += `<p style="margin:0 0 6px;"><span style="color:${mailColors.inkSoft};">${escapeHtml(label)} :</span> ${escapeHtml(value)}</p>`;
   }
   if (planning.heuresParSemaine !== undefined) {
@@ -266,8 +266,10 @@ export function renderTeamEmail(lead: LeadPayload, ctx: RenderContext): Rendered
       name: `${lead.contact.prenom} ${lead.contact.nom}`,
       phone: { display: phone, href: telHref, callLabel: t.appeler },
       ...(lead.contact.email ? { email: lead.contact.email } : {}),
-      ...(lead.contact.rappel ? { lines: [`${t.rappel_prefere} : ${lead.contact.rappel}`] } : {}),
-      badge: { label: `${t.urgence} : ${urgency}`, tone: urgencyTone(lead.urgence) },
+      ...(lead.contact.rappel
+        ? { lines: [`${t.rappel_prefere}\u00a0: ${lead.contact.rappel}`] }
+        : {}),
+      badge: { label: `${t.urgence}\u00a0: ${urgency}`, tone: urgencyTone(lead.urgence) },
     },
     sections,
   });

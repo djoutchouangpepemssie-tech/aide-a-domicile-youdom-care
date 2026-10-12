@@ -1,8 +1,8 @@
 {
   "id": "tour-du-logement-anti-chutes",
   "seo": {
-    "titre": "Le tour du logement anti-chutes : la liste à imprimer",
-    "description": "Liste de contrôle gratuite, pièce par pièce, pour repérer ce qui fait tomber à la maison : tapis, fils, éclairage, salle de bain, escaliers, chaussures."
+    "titre": "Le tour du logement anti-chutes : la liste à imprimer",
+    "description": "Liste de contrôle gratuite, pièce par pièce, pour repérer ce qui fait tomber à la maison : tapis, fils, éclairage, salle de bain, escaliers, chaussures."
   },
   "ariane": "Tour du logement anti-chutes",
   "h1": "Le tour du logement anti-chutes",
@@ -20,11 +20,11 @@
       "items": [
         {
           "type": "case",
-          "texte": "Les passages sont dégagés : rien au sol, aucun meuble qui dépasse."
+          "texte": "Les passages sont dégagés : rien au sol, aucun meuble qui dépasse."
         },
         {
           "type": "case",
-          "texte": "Aucun fil électrique ne traverse un passage ; les câbles sont fixés au mur."
+          "texte": "Aucun fil électrique ne traverse un passage ; les câbles sont fixés au mur."
         },
         {
           "type": "case",
@@ -57,7 +57,7 @@
         },
         {
           "type": "case",
-          "texte": "Le sol n'est pas glissant : pas de cire, pas de parquet trop lustré."
+          "texte": "Le sol n'est pas glissant : pas de cire, pas de parquet trop lustré."
         }
       ]
     },
@@ -70,7 +70,7 @@
         },
         {
           "type": "case",
-          "texte": "Le sol est sec ; ce qui est renversé est essuyé tout de suite."
+          "texte": "Le sol est sec ; ce qui est renversé est essuyé tout de suite."
         },
         {
           "type": "case",
@@ -91,7 +91,7 @@
         },
         {
           "type": "case",
-          "texte": "Le lit est à bonne hauteur : assis au bord, les pieds sont à plat au sol."
+          "texte": "Le lit est à bonne hauteur : assis au bord, les pieds sont à plat au sol."
         },
         {
           "type": "case",
@@ -99,7 +99,7 @@
         },
         {
           "type": "case",
-          "texte": "La personne se lève en deux temps : assise d'abord, debout ensuite, sans se presser."
+          "texte": "La personne se lève en deux temps : assise d'abord, debout ensuite, sans se presser."
         }
       ]
     },
@@ -158,20 +158,20 @@
       "items": [
         {
           "type": "case",
-          "texte": "Les chaussures sont fermées, à talon bas et large ; les chaussons ouverts sont rangés."
+          "texte": "Les chaussures sont fermées, à talon bas et large ; les chaussons ouverts sont rangés."
         },
         {
           "type": "case",
-          "texte": "Les lunettes sont propres et à jour ; la vue et l'audition ont été contrôlées dans l'année."
+          "texte": "Les lunettes sont propres et à jour ; la vue et l'audition ont été contrôlées dans l'année."
         },
         {
           "type": "case",
-          "texte": "Tous les médicaments pris ont été signalés au médecin ou au pharmacien : certains jouent sur l'équilibre.",
+          "texte": "Tous les médicaments pris ont été signalés au médecin ou au pharmacien : certains jouent sur l'équilibre.",
           "precision": "On ne change rien seul. C'est le médecin qui décide, avec le pharmacien."
         },
         {
           "type": "case",
-          "texte": "La personne marche ou bouge chaque jour, même un peu ; elle boit et mange suffisamment."
+          "texte": "La personne marche ou bouge chaque jour, même un peu ; elle boit et mange suffisamment."
         },
         {
           "type": "case",
@@ -188,7 +188,7 @@
       "items": [
         {
           "type": "case",
-          "texte": "Le médecin a été prévenu : une chute a toujours une cause à chercher."
+          "texte": "Le médecin a été prévenu : une chute a toujours une cause à chercher."
         },
         {
           "type": "champ",
@@ -217,12 +217,12 @@
         {
           "type": "info",
           "libelle": "CICAT",
-          "texte": "centre d'information et de conseil en aides techniques, neutre et gratuit ; annuaire sur pour-les-personnes-agees.gouv.fr."
+          "texte": "centre d'information et de conseil en aides techniques, neutre et gratuit ; annuaire sur pour-les-personnes-agees.gouv.fr."
         },
         {
           "type": "info",
           "libelle": "MaPrimeAdapt'",
-          "texte": "aide de l'État pour les travaux d'adaptation du logement, avec un accompagnement ; renseignements sur France Rénov'."
+          "texte": "aide de l'État pour les travaux d'adaptation du logement, avec un accompagnement ; renseignements sur France Rénov'."
         },
         {
           "type": "info",
@@ -234,12 +234,12 @@
   ],
   "prudence": [
     "Cette liste aide à regarder le logement avec un œil neuf. Elle ne remplace ni l'avis du médecin ni la visite d'un ergothérapeute.",
-    "Ne modifiez jamais un médicament vous-même : parlez-en au médecin ou au pharmacien.",
+    "Ne modifiez jamais un médicament vous-même : parlez-en au médecin ou au pharmacien.",
     "Une chute, même sans blessure, se dit au médecin."
   ],
   "sources": [
     {
-      "libelle": "pour-les-personnes-agees.gouv.fr — Comment prévenir les chutes chez les personnes âgées ?",
+      "libelle": "pour-les-personnes-agees.gouv.fr — Comment prévenir les chutes chez les personnes âgées ?",
       "href": "https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/preserver-son-autonomie-et-sa-sante/comment-prevenir-les-risques-de-chutes-chez-les-personnes-agees",
       "verifie_le": "2026-04-09",
       "consulte_le": "2026-09-27"
@@ -251,13 +251,13 @@
       "consulte_le": "2026-09-27"
     },
     {
-      "libelle": "ameli.fr (Assurance Maladie) — Comment prévenir les chutes des personnes âgées ?",
+      "libelle": "ameli.fr (Assurance Maladie) — Comment prévenir les chutes des personnes âgées ?",
       "href": "https://www.ameli.fr/assure/sante/bons-gestes/seniors/prevenir-chutes-personnes-agees",
       "verifie_le": "2024-12-24",
       "consulte_le": "2026-09-27"
     },
     {
-      "libelle": "Santé publique France — Prévenir les chutes : un dispositif d'information pour le grand public et les professionnels",
+      "libelle": "Santé publique France — Prévenir les chutes : un dispositif d'information pour le grand public et les professionnels",
       "href": "https://www.santepubliquefrance.fr/les-actualites/prevenir-les-chutes-un-dispositif-dinformation-pour-le-grand-public-et-les-professionnels",
       "consulte_le": "2026-09-27"
     }

@@ -17,7 +17,7 @@
     "situation": "Situation",
     "besoins": "Besoins",
     "planning": "Planning",
-    "heures": "Estimation : environ {h} heures par semaine",
+    "heures": "Estimation : environ {h} heures par semaine",
     "nuit": "Nuits",
     "dates": "Dates demandées",
     "creneaux_dates": "Créneaux ces jours-là",
@@ -28,7 +28,7 @@
     "consentement": "Consentement aux données de santé",
     "oui": "oui",
     "non": "non",
-    "version_consentement": "version du texte : {version}",
+    "version_consentement": "version du texte : {version}",
     "json": "Demande complète (JSON, pour reprise automatique)",
     "recu_le": "Reçue le {date}",
     "titre_contexte": "Où et quand",
@@ -64,7 +64,7 @@
     "nuits": {
       "calme": "Nuit calme",
       "active": "Nuit active",
-      "inconnu": "Nuit : à préciser"
+      "inconnu": "Nuit : à préciser"
     },
     "durees": {
       "jours": "Quelques jours",
@@ -85,7 +85,7 @@
     "cv": "CV",
     "cv_joint": "{nom} ({taille}), en pièce jointe",
     "origine": "Page d'origine",
-    "consentement": "Consentement à l'étude de la candidature : oui (version du texte : {version})",
+    "consentement": "Consentement à l'étude de la candidature : oui (version du texte : {version})",
     "recu_le": "Reçue le {date}",
     "titre_candidature": "La candidature",
     "titre_tracabilite": "Traçabilité",
