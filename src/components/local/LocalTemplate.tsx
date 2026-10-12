@@ -6,7 +6,6 @@ import { FAQ } from "@/components/blocks/FAQ/FAQ";
 import { Hero } from "@/components/blocks/Hero/Hero";
 import { HeroSection } from "@/components/blocks/Hero/HeroSection";
 import {
-  heroOnlyWide,
   heroPhotoSizes,
   heroWhenRoomy,
   sceneByTerritory,
@@ -295,7 +294,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
         <Breadcrumb
           texts={texts.fil_ariane}
           items={[...crumbs, { label: data.nom }]}
-          className={cn("mb-4", heroOnlyWide)}
+          className="mb-4"
         />
         <Hero
           surtitle={surtitle}

@@ -9,7 +9,6 @@ import { FollowUpTimeline } from "@/components/blocks/FollowUpTimeline/FollowUpT
 import { Hero, type HeroTone } from "@/components/blocks/Hero/Hero";
 import { HeroSection } from "@/components/blocks/Hero/HeroSection";
 import {
-  heroOnlyWide,
   heroPhotoSizes,
   sceneByPublic,
   sceneTint,
@@ -388,7 +387,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           d'Ariane est dans la scène : il compte dans sa hauteur, et se retire au dernier palier de
           compaction (le plan du site et le fil d'Ariane structuré restent, eux, toujours là). */}
       <HeroSection scene={heroScene} aria-label={t.publics[page.public]} data-hero-tone={heroTone}>
-        <Breadcrumb texts={texts.fil_ariane} items={crumbs} className={cn("mb-4", heroOnlyWide)} />
+        <Breadcrumb texts={texts.fil_ariane} items={crumbs} className="mb-4" />
         {withReader ? <ReaderProvider>{banner}</ReaderProvider> : banner}
       </HeroSection>
 

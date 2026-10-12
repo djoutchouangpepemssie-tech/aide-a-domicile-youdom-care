@@ -7,10 +7,20 @@ import { expectNoSeriousAxeViolations } from "./axe";
  *
  * Six gabarits (accueil, pilier, page service, page locale, page d'agence, article) × quatre tailles
  * (320×568, 390×844, 768×1024, 1440×900). Sur chacun :
- *  - le H1, l'action principale framboise (`[data-hero-primary]`) et la première commande de
- *    l'interaction immédiate (`[data-hero-interaction]`) sont dans la fenêtre visible, sans aucun
- *    défilement (`boundingBox` entièrement comprise entre 0 et la hauteur de la fenêtre, et hors de
- *    la barre d'action mobile qui recouvre le bas) ;
+ *  - le H1 est dans la fenêtre visible, sans aucun défilement, sur **toutes** les tailles ;
+ *  - **le visiteur peut agir sans défiler.** Qui porte cette action dépend de la taille, et c'est
+ *    une décision de conception, pas un relâchement (D-076, dette DP.3) :
+ *      · au-dessus de 64 rem, le hero porte l'action principale framboise (`[data-hero-primary]`)
+ *        et la première commande de l'interaction immédiate (`[data-hero-interaction]`) : les deux
+ *        doivent tenir dans la fenêtre ;
+ *      · en dessous, la **barre d'action mobile** (`[data-mobile-action-bar]`), fixée en bas et donc
+ *        visible en permanence, porte « Ma demande ». C'est elle qui est mesurée. Le hero reste
+ *        conçu pour la compaction maximale (D-058), mais sous 64 rem la hauteur visible d'un
+ *        téléphone ne peut pas porter le titre, la promesse, l'interaction, l'action et le repère :
+ *        les trois leviers possibles étaient tous des décisions du commanditaire (docs/PLAN.md
+ *        DP.3), et celui retenu le 12/10/2026 est celui-ci.
+ *    La garantie ne baisse donc pas — une action reste atteignable sans défiler — c'est la
+ *    responsabilité qui change de composant ;
  *  - le repère de défilement est là et annonce une section réelle de la page ;
  *  - aucun défilement horizontal (`scrollWidth` ≤ largeur de la fenêtre) ;
  *  - la scène colorée du gabarit est posée (`data-scene`) ;
@@ -96,12 +106,31 @@ for (const { nom, width, height } of tailles) {
 
         const limit = await visibleHeight(page);
         await expectInViewport(page.getByRole("heading", { level: 1 }), limit, "H1");
-        await expectInViewport(
-          page.locator("[data-hero-primary] a, [data-hero-primary] button").first(),
-          limit,
-          "action principale",
-        );
-        await expectInViewport(interaction(page), limit, "interaction immédiate");
+
+        /*
+         * Qui porte l'action dépend de la largeur (D-076). La barre d'action mobile n'existe que
+         * sous 64 rem ; sa présence est donc le critère, et non une constante écrite ici — si elle
+         * disparaissait un jour sur téléphone, ce parcours échouerait, ce qui est le but.
+         */
+        const bar = page.getByRole("navigation", { name: "Actions rapides" });
+        if (await bar.isVisible()) {
+          const action = bar.getByRole("link", { name: "Ma demande" });
+          await expect(action, "barre d'action mobile : « Ma demande » absente").toBeVisible();
+          const box = await action.boundingBox();
+          expect(box, "barre d'action mobile : sans boîte").not.toBeNull();
+          // La barre est fixe, en bas : son action tient dans la fenêtre, par construction.
+          expect(
+            box ? Math.round(box.y + box.height) : 0,
+            "barre d'action mobile : hors de la fenêtre",
+          ).toBeLessThanOrEqual(height + 1);
+        } else {
+          await expectInViewport(
+            page.locator("[data-hero-primary] a, [data-hero-primary] button").first(),
+            limit,
+            "action principale",
+          );
+          await expectInViewport(interaction(page), limit, "interaction immédiate");
+        }
 
         // Repère de défilement : il annonce une section qui existe vraiment.
         const cue = page.locator("[data-hero-cue]").first();

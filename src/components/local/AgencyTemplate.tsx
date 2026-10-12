@@ -95,7 +95,7 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
         <Breadcrumb
           texts={texts.fil_ariane}
           items={[{ label: indexLabel, href: "/agences/" }, { label: agency.nom }]}
-          className={cn("mb-4", heroOnlyWide)}
+          className="mb-4"
         />
         <div
           className={cn(

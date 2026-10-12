@@ -1168,3 +1168,54 @@ Seize occurrences dans douze fichiers, dont **une seule rendue** —
 leur note interne. Le cahier des charges est corrigé avec le code, pour qu'ils ne divergent pas.
 
 946 tests, 13/13 contrôles, les deux parcours de formulaires verts.
+
+## D-076 — DP.3 tranchée : la barre d'action porte l'action sur téléphone (12/10/2026)
+
+**La décision du client**, prise sur les trois leviers que `docs/PLAN.md` DP.3 lui réservait : sur
+petit écran, l'action principale peut rester sous la ligne de flottaison, **parce que la barre
+d'action mobile porte « Ma demande » en permanence et qu'elle, elle est toujours visible.**
+
+**Ce qui change dans le parcours, et pourquoi ce n'est pas un relâchement.** `hero.spec.ts`
+mesurait l'action du hero à toutes les tailles. Il mesure désormais **qui porte réellement
+l'action** :
+
+- au-dessus de 64 rem, le hero — action principale et interaction immédiate dans la fenêtre, comme
+  avant ;
+- en dessous, la **barre d'action mobile** (`navigation` « Actions rapides »), et son lien
+  « Ma demande ».
+
+Le H1 reste exigé dans la fenêtre à **toutes** les tailles. La garantie du contrat — *le visiteur
+voit où il est et peut agir sans défiler* — ne baisse donc pas : c'est la responsabilité qui change
+de composant. Le critère est la **présence de la barre**, pas une largeur écrite dans le test : si
+la barre disparaissait un jour sur téléphone, le parcours échouerait, ce qui est exactement le but.
+
+Résultat mesuré : `hero.spec.ts` passe de **16 échecs à 0**, 58 parcours verts, **sans toucher une
+ligne du site**.
+
+### La conséquence que je n'avais pas prévue : DP.5 se corrige par le code
+
+En préparant ce lot, j'avais proposé au client d'aligner aussi le test du fil d'Ariane du magazine
+sur `heroOnlyWide`. **C'était une erreur de ma part, et je ne l'ai pas faite** : ce test porte un
+commentaire explicite — « Reste rouge volontairement sous 64 rem (DP.5) […] `docs/00 §5` l'exige sur
+toutes les pages sauf l'accueil. Ce parcours dit la règle écrite ; on ne le réécrit pas pour épouser
+l'écart. » Le code violait le cahier des charges, et le test était le garde-fou. L'aligner aurait
+effacé la seule trace du défaut.
+
+La décision sur DP.3 a libéré la hauteur qui manquait. Mesuré à 320×568 avant de changer quoi que
+ce soit : le fil d'Ariane coûte **79 à 106 px**, et le H1 reste à **307 px pour 508 disponibles** —
+200 px de marge. Le fil d'Ariane est donc rétabli sur toutes les tailles dans les quatre gabarits
+qui le portaient (article, service, locale, agence). C'est **le code qui se conforme à la règle**,
+pas le test qui s'assouplit. Dans deux de ces gabarits, `heroOnlyWide` ne servait qu'à cela : son
+import a disparu avec.
+
+### Ce qui reste, et que je n'ai pas fait
+
+Le parcours du magazine échoue encore sur un point : la **ligne de confiance** (auteur, relecteur,
+date) est placée **dans la colonne photo** de la bannière, masquée par `heroOnlyWide` *et* par
+`heroWhenTall` — donc absente sur téléphone. L'audit du 12/10 demandait précisément qu'auteur et
+relecteur soient visibles (E-E-A-T).
+
+La sortir de cette colonne est une **restructuration de la bannière d'article**, pas un réglage. Il
+y a la place (200 px de marge mesurés), et c'est la bonne correction ; mais c'est une décision de
+mise en page, du ressort du commanditaire, et ce serait la troisième modification de design que je
+justifierais par la précédente. Elle est donc proposée, pas appliquée.

@@ -126,7 +126,7 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
             { label: rubrique, href: rubriquePath(meta.rubrique) },
             { label: meta.titre },
           ]}
-          className={cn("mb-4", heroOnlyWide)}
+          className="mb-4"
         />
         <div
           className={cn(
