@@ -28,11 +28,18 @@ describe("données des pages du magazine", () => {
     expect(extraPages(37)).toEqual([2, 3, 4]);
   });
 
-  it("l'index existe toujours et n'est indexable qu'avec un article publié", async () => {
+  it("l'index existe toujours et s'indexe dès qu'il liste un article", async () => {
     const data = await indexData(1);
     expect(data).not.toBeNull();
     expect(data?.current).toBe(1);
-    expect(data?.noindex).toBe(!data?.articles.some((a) => a.meta.statut === "publie"));
+    /*
+     * D-070 : la condition portait sur `statut === "publie"`. D-035 ayant rendu un article
+     * `a_relire` indexable, l'index listait treize articles indexés tout en partant lui-même en
+     * `noindex`, alors qu'il figure dans le plan de site. Une page s'indexe maintenant selon ce
+     * qu'elle montre : des articles, ou rien.
+     */
+    expect(data?.articles.length).toBeGreaterThan(0);
+    expect(data?.noindex).toBe(false);
     expect(await indexData(999)).toBeNull();
   });
 

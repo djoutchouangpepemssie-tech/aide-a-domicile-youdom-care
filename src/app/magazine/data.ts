@@ -14,7 +14,6 @@ import {
   getArticle,
   listBuildableArticles,
   listMagazinePages,
-  listPublishedArticles,
   relatedArticles,
   type LoadedArticle,
   type MagazinePage,
@@ -27,8 +26,20 @@ import { canonicalUrl, pageMetadata } from "@/lib/seo/metadata";
 /*
  * Données partagées des routes du magazine (index, pagination, rubriques, articles) et de la
  * route des images Open Graph. Métadonnées : `pageMetadata`, avec le suffixe de pagination sur
- * les pages 2 et suivantes, `noindex` tant qu'aucun article publié n'est listé (index vide,
- * rubrique vide) ou pour un article `a_relire` ; image Open Graph par /og/{chemin}/.
+ * les pages 2 et suivantes, `noindex` quand la page ne liste AUCUN article ; image Open Graph par
+ * /og/{chemin}/.
+ *
+ * **Pourquoi « aucun article listé » et non « aucun article publié » (D-070).** La condition
+ * portait sur `listPublishedArticles()`, c'est-à-dire `statut === "publie"`. Or D-035 a rendu un
+ * article `a_relire` indexable comme les autres, et les treize articles du site sont tous
+ * `a_relire` : l'index et les cinq rubriques peuplées partaient donc en `noindex` alors que les
+ * treize articles qu'ils listent sont indexés, et alors que `/magazine/` figure dans le plan de
+ * site. Un moteur recevait une adresse à explorer, la trouvait en `noindex`, et aucun lien
+ * n'arrivait aux articles. D-035 avait changé la règle de l'article sans changer celle du hub.
+ *
+ * La condition suit désormais ce que la page montre réellement : une page qui liste des articles
+ * s'indexe, une page vide ne s'indexe pas. C'est le cas de la rubrique « Dans les coulisses »,
+ * qui n'a aucun article.
  */
 
 export interface ArticleListData {
@@ -37,7 +48,7 @@ export interface ArticleListData {
   /** Page courante, à partir de 1. */
   current: number;
   total: number;
-  /** Vrai quand aucun article publié n'est listé : page construite mais en noindex. */
+  /** Vrai quand la page ne liste aucun article : page construite mais en noindex (D-070). */
   noindex: boolean;
 }
 
@@ -56,8 +67,8 @@ export async function indexData(n: number): Promise<ArticleListData | null> {
   const all = await listBuildableArticles();
   const total = pageCount(all.length);
   if (n < 1 || n > total) return null;
-  const published = await listPublishedArticles();
-  return { page, articles: paginate(all, n), current: n, total, noindex: published.length === 0 };
+  const articles = paginate(all, n);
+  return { page, articles, current: n, total, noindex: articles.length === 0 };
 }
 
 export async function indexMetadata(n: number): Promise<Metadata> {
@@ -81,8 +92,8 @@ export async function rubriqueData(
   const all = articlesOfRubrique(await listBuildableArticles(), rubrique);
   const total = pageCount(all.length);
   if (n < 1 || n > total) return null;
-  const published = articlesOfRubrique(await listPublishedArticles(), rubrique);
-  return { page, articles: paginate(all, n), current: n, total, noindex: published.length === 0 };
+  const articles = paginate(all, n);
+  return { page, articles, current: n, total, noindex: articles.length === 0 };
 }
 
 export async function rubriqueMetadata(rubrique: ArticleRubrique, n: number): Promise<Metadata> {

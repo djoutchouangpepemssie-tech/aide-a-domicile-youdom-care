@@ -921,3 +921,34 @@ Next répond **308** et non 301 pour `permanent: true`. Les deux sont permanents
 un moteur ; le 308 conserve en plus la méthode HTTP. Vérifié sur le build : les huit adresses
 testées arrivent à destination, et `/services/` répond 200 — elle n'est plus une ancienne adresse,
 elle existe (D-064).
+
+## D-070 — Le magazine était en noindex alors que ses articles étaient indexés (12/10/2026)
+
+**Le défaut.** L'audit relève que `/magazine/` et ses six rubriques sont en « noindex, nofollow »
+tout en figurant dans le plan de site : un moteur reçoit une adresse à explorer et la trouve fermée,
+et aucun lien n'arrive aux treize articles.
+
+**La cause, vérifiée dans le code et sur le build.** La condition était
+`noindex: listPublishedArticles().length === 0`, et `listPublishedArticles()` ne retient que
+`statut === "publie"`. Les treize articles du site sont tous `a_relire`, donc la liste était vide,
+donc tout partait en noindex.
+
+Or **D-035 a rendu un article `a_relire` indexable comme les autres** — `articleMetadata` pose
+explicitement `noindex: false`, et le HTML construit d'un article ne porte aucune balise robots.
+D-035 a donc changé la règle de l'article sans changer celle du hub. Treize articles indexés sous un
+index fermé, c'est l'incohérence que l'audit a vue de l'extérieur.
+
+**La correction.** Une page de liste s'indexe selon **ce qu'elle montre** : elle est en noindex quand
+elle ne liste aucun article, et indexable dès qu'elle en liste un. C'est la même règle pour l'index,
+les pages de pagination et les rubriques.
+
+Vérifié sur le build après correction : `/magazine/` et les cinq rubriques peuplées n'ont plus de
+balise robots ; `/magazine/categorie/dans-les-coulisses/` reste en noindex, parce qu'elle n'a
+réellement aucun article — ce qui est le comportement voulu, et répond au passage à la remarque de
+l'audit sur cette rubrique vide.
+
+**Le test, encore une fois, gardait l'ancienne règle** : `expect(data?.noindex).toBe(!data?.articles.some((a) => a.meta.statut === "publie"))`.
+Écrit ainsi, il se contentait de recopier la logique du code au lieu d'affirmer ce qui doit être
+vrai, et il restait vert quelle que fût la réponse. Il affirme désormais le contrat : l'index liste
+des articles, donc il s'indexe. C'est la troisième fois aujourd'hui qu'un test adossé à
+l'implémentation laisse passer un défaut que le premier lecteur humain voit.
