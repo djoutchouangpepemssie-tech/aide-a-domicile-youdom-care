@@ -38,6 +38,43 @@ const securityHeaders = [
 const indexable = process.env.SITE_INDEXABLE !== "false";
 const robotsHeaders = indexable ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
 
+/*
+ * Redirections permanentes des adresses de l'ancien site (D-069).
+ *
+ * L'audit du 12/10/2026 a trouvé ces adresses en 404 : les liens entrants qui les visaient — un
+ * annuaire, un article, un partage — n'arrivent nulle part, et leur valeur de référencement est
+ * perdue. Une 301 la transfère à la page équivalente.
+ *
+ * **La liste des anciennes adresses vient de l'audit, pas d'une vérification de notre part** :
+ * l'ancien site n'est plus en ligne et l'environnement d'exécution n'a pas d'accès sortant. Si une
+ * adresse n'a jamais existé, sa redirection ne coûte rien — elle répondait 404 de toute façon.
+ * Les correspondances, elles, sont un choix : chacune mène à la page qui traite le même sujet.
+ *
+ * `/services` n'y figure pas : cette adresse existe désormais pour de bon (D-064).
+ */
+const legacyRedirects: { source: string; destination: string }[] = [
+  { source: "/functioning", destination: "/comment-ca-marche/" },
+  { source: "/about", destination: "/a-propos/" },
+  { source: "/quality", destination: "/a-propos/nos-engagements/" },
+  { source: "/devis/create", destination: "/demande/" },
+  { source: "/devis", destination: "/demande/" },
+  { source: "/contact/create", destination: "/contact/" },
+  { source: "/cgu", destination: "/conditions-generales/" },
+  { source: "/cgv", destination: "/conditions-generales/" },
+  { source: "/confidentialite", destination: "/politique-de-confidentialite/" },
+  { source: "/mentions", destination: "/mentions-legales/" },
+  { source: "/metiers", destination: "/recrutement/" },
+  { source: "/recrutement/offres", destination: "/recrutement/" },
+  { source: "/services-pour-personnes-agees", destination: "/personnes-agees/" },
+  {
+    source: "/services-pour-personnes-handicapees",
+    destination: "/adultes-en-situation-de-handicap/",
+  },
+  { source: "/tarifs", destination: "/tarifs-et-aides/" },
+  { source: "/blog", destination: "/magazine/" },
+  { source: "/actualites", destination: "/magazine/" },
+];
+
 const nextConfig: NextConfig = {
   trailingSlash: true,
   poweredByHeader: false,
@@ -46,6 +83,23 @@ const nextConfig: NextConfig = {
   images: { formats: ["image/avif", "image/webp"], qualities: [60, 75] },
   async headers() {
     return [{ source: "/(.*)", headers: [...securityHeaders, ...robotsHeaders] }];
+  },
+  /*
+   * Une seule forme déclarée, avec la barre finale, et c'est une contrainte et non un choix :
+   * `trailingSlash: true` normalise AVANT d'appliquer ces règles. `/about` reçoit donc d'abord un
+   * 308 vers `/about/`, puis le 308 vers `/a-propos/` — deux sauts, mesurés sur le build. Déclarer
+   * aussi la forme sans barre ne supprime pas le premier saut : la règle n'est jamais atteinte, et
+   * c'était du code mort (vérifié : `/about` partait vers `/about/`, pas vers `/a-propos/`).
+   *
+   * Next répond 308 et non 301 pour `permanent: true`. Les deux sont permanents et Google les
+   * traite de même ; le 308 conserve en plus la méthode HTTP.
+   */
+  async redirects() {
+    return legacyRedirects.map(({ source, destination }) => ({
+      source: `${source}/`,
+      destination,
+      permanent: true,
+    }));
   },
 };
 

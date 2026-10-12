@@ -875,3 +875,49 @@ remplacement parce qu'elle portait une espace ordinaire avant son deux-points l�
 une insécable. Un caractère invisible qui fait rater une correction sur dix-sept, sans aucun signal.
 La leçon est acquise : sur ce projet, une substitution de texte français s'écrit avec une classe
 d'espaces, jamais avec le caractère qu'on croit voir.
+
+## D-069 — Les agences, et les adresses de l'ancien site (12/10/2026)
+
+### Le nombre d'agences : une contradiction tenue par un seul fichier
+
+L'audit opposait « depuis six agences » et « 2 agences réelles ». Vérification faite,
+`content/site.config.json` — seule source autorisée pour les faits d'entreprise — porte **deux**
+agences : Youdom Care Paris (61 rue de Lyon, 12e) et Youdom Care Hauts-de-Seine (Puteaux). Quinze
+phrases du site parlent du nombre d'agences : **treize disaient déjà « deux »**. Les deux fausses
+étaient dans le même fichier, `content/pages/aide-a-domicile.json` :
+
+- `chapo` : « depuis six agences » ;
+- `agences_texte` : « {agences} agences réelles, **de Paris à Versailles** » — le nombre était
+  calculé, mais la seconde agence est à Puteaux, pas à Versailles.
+
+Les deux champs sont réécrits. Le client a rappelé le 12/10/2026 que les deux adresses sont les
+seules à conserver, y compris sur les pages locales, et qu'il ne faut pas s'en inquiéter : les
+auxiliaires de vie interviennent dans toute l'Île-de-France. Le nouveau texte le dit, en reprenant
+la règle déjà posée dans `couverture.phrase` : « la distance d'une commune à une agence n'est jamais
+une limite. »
+
+*Une promesse fausse retirée au passage.* L'ancien `agences_texte` annonçait que chaque agence « a
+son adresse, son itinéraire et la liste des communes qu'elle suit ». L'audit note que les pages
+agences n'ont ni horaires, ni plan, ni accès, ni responsable. La phrase ne promet donc plus ce que
+les pages ne tiennent pas ; les compléter reste à faire, et demande des faits que seul le client a.
+
+### Les adresses de l'ancien site répondaient 404
+
+Dix-sept anciennes adresses sont redirigées en permanent vers la page qui traite le même sujet.
+Deux précisions honnêtes :
+
+- **La liste vient de l'audit, pas d'une vérification de notre part** : l'ancien site n'est plus en
+  ligne et l'environnement n'a pas d'accès sortant. Une redirection vers une adresse qui n'a jamais
+  existé ne coûte rien — elle répondait 404 de toute façon. Les correspondances, elles, sont un
+  choix de notre part.
+- **Deux sauts, pas un.** `trailingSlash: true` normalise avant d'appliquer les redirections :
+  `/about` reçoit d'abord un 308 vers `/about/`, puis le 308 vers `/a-propos/`. J'avais d'abord
+  déclaré les deux formes en écrivant en commentaire que cela donnait « une seule redirection » :
+  c'était faux, et la mesure l'a montré — `/about` partait vers `/about/`, jamais vers
+  `/a-propos/`. Les entrées sans barre étaient du code mort ; elles sont retirées et le commentaire
+  dit maintenant ce qui se passe vraiment.
+
+Next répond **308** et non 301 pour `permanent: true`. Les deux sont permanents et équivalents pour
+un moteur ; le 308 conserve en plus la méthode HTTP. Vérifié sur le build : les huit adresses
+testées arrivent à destination, et `/services/` répond 200 — elle n'est plus une ancienne adresse,
+elle existe (D-064).
