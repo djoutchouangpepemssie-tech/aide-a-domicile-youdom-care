@@ -1084,3 +1084,32 @@ branche qui diffère n'est pas forcément en retard et que c'est `DECISIONS.md`,
 tranche. Même scène ici : un commentaire de code nommant une décision est un signal d'arrêt. On
 lit la décision **avant** de proposer une correction, pas après avoir obtenu l'accord de la
 corriger.
+
+## Le catalogue de services d'Arcel entre au menu — 12 octobre 2026
+
+Arcel a envoyé la liste des dix services à présenter. Le réflexe était d'ouvrir dix fichiers et
+d'écrire les pages manquantes. L'inventaire a dit autre chose : **huit des dix pages existaient
+déjà**. Trois étaient simplement rangées sous `/personnes-agees/` — aide à l'autonomie, vie
+quotidienne, compagnie et stimulation — et n'apparaissaient nulle part dans « Nos services ». Deux
+autres portaient un nom maison : « Garde de nuit » là où Arcel dit « Présence de nuit », « Sortie
+d'hospitalisation » là où il dit « Retour d'hospitalisation ».
+
+J'étais à deux doigts d'écrire cinq pages neuves. `docs/design/PHOTOS.md` m'a arrêté : trois de ces
+cinq pages y étaient listées, avec leur photo. Les créer aurait produit du contenu dupliqué —
+deux pages du site à se disputer la même requête, exactement ce que `docs/04` interdit.
+
+Le travail s'est donc réduit à sa vraie taille : un menu à récrire, dans l'ordre d'Arcel, avec ses
+mots. **Aucune URL touchée.** Le site n'a pas de redirections, et ces adresses sont déjà dans le
+plan de site que Google vient de prendre ; les renommer pour faire joli aurait cassé des liens et
+remis l'indexation à zéro. Le libellé du menu porte le nom du service ; l'URL porte l'histoire.
+
+Deux tests ont cassé, et c'était la bonne nouvelle : le plan du site et les pages liées du lexique
+lisent leurs libellés dans le menu. Le changement s'y était propagé tout seul. J'ai mis à jour les
+attentes, pas le code — mais seulement après avoir lu les deux tests en entier, parce qu'un test qui
+épingle des chaînes exactes garde souvent un contrat réel à côté (ici : les piliers listés avant
+leurs sous-pages en retrait, et le libellé du menu qui l'emporte sur le H1). Ce contrat-là tient
+toujours.
+
+Reste une question pour Arcel : « Aide pour les repas & courses » et « Entretien du cadre de vie »
+sont les deux seuls services sans page propre. Ils sont traités dans « Aide à la vie quotidienne ».
+Les en sortir, c'est deux pages à écrire — ou deux pages minces, si on se contente de découper.

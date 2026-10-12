@@ -83,7 +83,7 @@ export async function linkedPageLabel(href: string): Promise<string | null> {
   const service = await getServicePage(href);
   if (service) {
     if (service.meta.type === "pilier") return texts.service.publics[service.meta.public];
-    // Libellé du menu s'il existe (« Garde de nuit »), sinon le libellé court, sinon le H1.
+    // Libellé du menu s'il existe (« Présence de nuit »), sinon le libellé court, sinon le H1.
     const menu = navigation.principale
       .flatMap((item) => item.enfants ?? [])
       .find((child) => child.href === href)?.libelle;

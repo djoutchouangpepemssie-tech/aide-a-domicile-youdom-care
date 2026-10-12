@@ -75,10 +75,11 @@ describe("Plan du site", () => {
       "/aidants/ou-en-etes-vous/",
     ]);
     const servicesGroup = groups.find((g) => g.id === "services");
+    // Libellés et ordre repris de `content/navigation.json` (D-063) : le plan du site suit le menu.
     expect(servicesGroup?.entries.map((e) => e.label)).toEqual([
-      "Garde de nuit",
+      "Retour d'hospitalisation",
+      "Présence de nuit",
       "Présence 24h/24",
-      "Sortie d'hospitalisation",
       "Garde-malade",
       "Accompagnement en vacances",
       "Remplacement d'auxiliaire de vie",

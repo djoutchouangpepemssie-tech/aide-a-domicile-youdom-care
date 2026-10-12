@@ -38,7 +38,27 @@
       "libelle_court": "Services",
       "enfants": [
         {
-          "libelle": "Garde de nuit",
+          "libelle": "Aide à l'autonomie",
+          "href": "/personnes-agees/aide-a-l-autonomie/",
+          "description": "Se lever, se laver, s'habiller, se déplacer"
+        },
+        {
+          "libelle": "Aide à la vie quotidienne",
+          "href": "/personnes-agees/vie-quotidienne/",
+          "description": "Repas, courses, linge, entretien du cadre de vie"
+        },
+        {
+          "libelle": "Accompagner à la vie sociale",
+          "href": "/personnes-agees/compagnie-et-stimulation/",
+          "description": "Compagnie, sorties, stimulation"
+        },
+        {
+          "libelle": "Retour d'hospitalisation",
+          "href": "/services/sortie-d-hospitalisation/",
+          "description": "Un retour préparé"
+        },
+        {
+          "libelle": "Présence de nuit",
           "href": "/services/garde-de-nuit/",
           "description": "Nuit calme, nuit active"
         },
@@ -48,57 +68,111 @@
           "description": "Présence continue, équipes en relais"
         },
         {
-          "libelle": "Sortie d'hospitalisation",
-          "href": "/services/sortie-d-hospitalisation/",
-          "description": "Un retour préparé"
-        },
-        {
           "libelle": "Garde-malade",
           "href": "/services/garde-malade/",
-          "description": "Jour et nuit"
+          "description": "Jour et nuit, auprès d'une personne malade"
         },
         {
           "libelle": "Accompagnement en vacances",
-          "href": "/services/accompagnement-en-vacances/"
+          "href": "/services/accompagnement-en-vacances/",
+          "description": "Partir malgré une perte d'autonomie"
         },
         {
           "libelle": "Remplacement d'auxiliaire de vie",
-          "href": "/services/remplacement-d-auxiliaire-de-vie/"
+          "href": "/services/remplacement-d-auxiliaire-de-vie/",
+          "description": "Un relais quand votre aide habituelle manque"
         }
       ]
     },
-    { "id": "comment-ca-marche", "libelle": "Comment ça marche", "href": "/comment-ca-marche/" },
+    {
+      "id": "comment-ca-marche",
+      "libelle": "Comment ça marche",
+      "href": "/comment-ca-marche/"
+    },
     {
       "id": "tarifs-et-aides",
       "libelle": "Tarifs et aides",
       "libelle_court": "Tarifs",
       "href": "/tarifs-et-aides/"
     },
-    { "id": "territoires", "libelle": "Territoires", "href": "/aide-a-domicile/" },
-    { "id": "le-fil", "libelle": "Le Fil", "href": "/magazine/" }
+    {
+      "id": "territoires",
+      "libelle": "Territoires",
+      "href": "/aide-a-domicile/"
+    },
+    {
+      "id": "le-fil",
+      "libelle": "Le Fil",
+      "href": "/magazine/"
+    }
   ],
   "rappel_href": "/etre-rappele/",
   "demande_href": "/demande/",
   "contact_href": "/contact/",
   "pied_de_page": {
     "entreprise": [
-      { "libelle": "À propos", "href": "/a-propos/" },
-      { "libelle": "Nos engagements", "href": "/a-propos/nos-engagements/" },
-      { "libelle": "Comment ça marche", "href": "/comment-ca-marche/" },
-      { "libelle": "Tarifs et aides", "href": "/tarifs-et-aides/" },
-      { "libelle": "Le Fil, le magazine", "href": "/magazine/" },
-      { "libelle": "Lexique", "href": "/lexique/" },
-      { "libelle": "Professionnels", "href": "/professionnels/" },
-      { "libelle": "Recrutement", "href": "/recrutement/" },
-      { "libelle": "Contact", "href": "/contact/" }
+      {
+        "libelle": "À propos",
+        "href": "/a-propos/"
+      },
+      {
+        "libelle": "Nos engagements",
+        "href": "/a-propos/nos-engagements/"
+      },
+      {
+        "libelle": "Comment ça marche",
+        "href": "/comment-ca-marche/"
+      },
+      {
+        "libelle": "Tarifs et aides",
+        "href": "/tarifs-et-aides/"
+      },
+      {
+        "libelle": "Le Fil, le magazine",
+        "href": "/magazine/"
+      },
+      {
+        "libelle": "Lexique",
+        "href": "/lexique/"
+      },
+      {
+        "libelle": "Professionnels",
+        "href": "/professionnels/"
+      },
+      {
+        "libelle": "Recrutement",
+        "href": "/recrutement/"
+      },
+      {
+        "libelle": "Contact",
+        "href": "/contact/"
+      }
     ],
     "legal": [
-      { "libelle": "Mentions légales", "href": "/mentions-legales/" },
-      { "libelle": "Politique de confidentialité", "href": "/politique-de-confidentialite/" },
-      { "libelle": "Cookies", "href": "/cookies/" },
-      { "libelle": "Conditions générales", "href": "/conditions-generales/" },
-      { "libelle": "Accessibilité", "href": "/accessibilite/" },
-      { "libelle": "Plan du site", "href": "/plan-du-site/" }
+      {
+        "libelle": "Mentions légales",
+        "href": "/mentions-legales/"
+      },
+      {
+        "libelle": "Politique de confidentialité",
+        "href": "/politique-de-confidentialite/"
+      },
+      {
+        "libelle": "Cookies",
+        "href": "/cookies/"
+      },
+      {
+        "libelle": "Conditions générales",
+        "href": "/conditions-generales/"
+      },
+      {
+        "libelle": "Accessibilité",
+        "href": "/accessibilite/"
+      },
+      {
+        "libelle": "Plan du site",
+        "href": "/plan-du-site/"
+      }
     ]
   }
 }

@@ -609,3 +609,53 @@ paraître lâche un nombre isolé en grand corps.
 les deux morceaux sont présents **et dans le bon ordre**. Au passage, le séparateur de milliers est
 une espace fine insécable (U+202F) : échappée explicitement dans le test, comme le numéro de
 téléphone des e-mails — une assertion ne doit jamais dépendre d'un caractère invisible.
+
+## D-063 — Le menu « Nos services » reprend le catalogue d'Arcel, sans toucher aux URL (12/10/2026)
+
+**Contexte.** Arcel a fourni la liste des services à présenter sur le site :
+
+> Aide à l'autonomie / Aide à la vie quotidienne / Accompagner à la vie sociale / Aide pour les
+> repas & courses / Retour d'hospitalisation / Entretien du cadre de vie / Présence 24h/24 /
+> Garde-malade / Présence de nuit / Accompagnement en vacances
+
+L'inventaire du site a montré que **huit de ces dix services avaient déjà leur page**, mais que
+trois d'entre elles vivaient sous le pilier `/personnes-agees/` et n'étaient donc pas dans le menu
+« Nos services » — un visiteur qui cherchait « aide à l'autonomie » ne la trouvait qu'en passant par
+le public. Deux services portaient par ailleurs un autre nom que celui d'Arcel.
+
+**Décision.** Le menu « Nos services » liste les neuf pages existantes qui correspondent au
+catalogue, dans l'ordre d'Arcel :
+
+| Libellé du menu | Page |
+| --- | --- |
+| Aide à l'autonomie | `/personnes-agees/aide-a-l-autonomie/` |
+| Aide à la vie quotidienne | `/personnes-agees/vie-quotidienne/` |
+| Accompagner à la vie sociale | `/personnes-agees/compagnie-et-stimulation/` |
+| Retour d'hospitalisation | `/services/sortie-d-hospitalisation/` |
+| Présence de nuit | `/services/garde-de-nuit/` |
+| Présence 24h/24 | `/services/presence-24h-24/` |
+| Garde-malade | `/services/garde-malade/` |
+| Accompagnement en vacances | `/services/accompagnement-en-vacances/` |
+| Remplacement d'auxiliaire de vie | `/services/remplacement-d-auxiliaire-de-vie/` |
+
+**Trois choses que cette décision ne fait pas, et pourquoi.**
+
+1. *Aucune URL ne change.* « Retour d'hospitalisation » reste servi par
+   `/services/sortie-d-hospitalisation/`, « Présence de nuit » par `/services/garde-de-nuit/`. Le
+   site n'a aucun mécanisme de redirection, et ces adresses sont déjà dans le plan de site soumis à
+   Search Console : les renommer casserait des liens et ferait repartir l'indexation de zéro pour un
+   gain de confort. Le libellé du menu suffit à nommer le service comme Arcel le nomme ; c'est ce
+   libellé que lisent le visiteur, le plan du site et les pages du lexique.
+2. *« Remplacement d'auxiliaire de vie » reste au menu* bien qu'il ne figure pas dans la liste
+   d'Arcel : il a sa page, Arcel a demandé de le garder.
+3. *« Aide pour les repas & courses » et « Entretien du cadre de vie » n'ont pas de page à eux.* Ce
+   sont les deux seuls services de la liste dans ce cas. Ils sont **traités à l'intérieur** de
+   « Aide à la vie quotidienne », dont la description de menu les nomme : « Repas, courses, linge,
+   entretien du cadre de vie ». Les découper en deux pages est une question ouverte pour Arcel : ce
+   serait deux pages de contenu neuf, et un découpage de trop donnerait deux pages minces là où une
+   page complète se référence mieux.
+
+**Conséquence sur les tests.** `src/app/plan-du-site/page.test.tsx` et
+`src/app/lexique/[slug]/page.test.tsx` figeaient les anciens libellés : le plan du site et les pages
+liées du lexique tirent leur nom du menu, le changement s'y propage, c'est le comportement voulu.
+Les deux attentes ont été mises à jour, pas le code.

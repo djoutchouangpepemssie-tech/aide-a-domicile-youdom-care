@@ -35,7 +35,9 @@ describe("/lexique/{slug}/", () => {
     expect(await linkedPageLabel("/tarifs-et-aides/")).toBe("Tarifs et aides");
     expect(await linkedPageLabel("/tarifs-et-aides/apa/")).toBeTruthy();
     expect(await linkedPageLabel("/personnes-agees/")).toBe("Personnes âgées");
-    expect(await linkedPageLabel("/services/garde-de-nuit/")).toBe("Garde de nuit");
+    // Le libellé du menu l'emporte sur le H1 de la page : /services/garde-de-nuit/ s'y nomme
+    // « Présence de nuit » depuis D-063.
+    expect(await linkedPageLabel("/services/garde-de-nuit/")).toBe("Présence de nuit");
     expect(await linkedPageLabel("/page-inconnue/")).toBeNull();
     // Chaque page liée de chaque terme existe dans ce build (prévisualisation).
     for (const term of await listLexiqueTerms()) {
