@@ -91,6 +91,8 @@ export const declaredLastmod: Readonly<Record<string, string>> = {
   "/": "2026-09-20",
   "/comment-ca-marche/": "2026-09-20",
   "/comment-ca-marche/prestataire-ou-mandataire/": "2026-09-20",
+  // Index des services (D-064) : content/pages/services.json.
+  "/services/": "2026-10-12",
   "/tarifs-et-aides/": "2026-09-20",
   "/a-propos/": "2026-09-20",
   "/a-propos/nos-engagements/": "2026-09-20",

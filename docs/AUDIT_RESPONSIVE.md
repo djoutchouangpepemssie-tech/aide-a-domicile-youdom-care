@@ -1,7 +1,7 @@
 # Audit d'adaptation aux écrans
 
-Relevé du 2026-10-09 par `pnpm audit:responsive`, sur le build
-de production. 15 gabarits × 9 largeurs = 135 mesures.
+Relevé du 2026-10-12 par `pnpm audit:responsive`, sur le build
+de production. 16 gabarits × 9 largeurs = 144 mesures.
 
 ## Débordement horizontal
 
@@ -14,16 +14,16 @@ aucune barre de défilement horizontale, aucun contenu hors écran.
 | --- | --- | --- |
 | Accueil | 320 px | 38 px |
 | Accueil | 360 px | 153 px |
-| Accueil | 390 px | 33 px |
-| Service | 320 px | 67 px |
+| Accueil | 390 px | 35 px |
+| Service | 320 px | 71 px |
 | Service | 360 px | 176 px |
-| Service | 390 px | 101 px |
+| Service | 390 px | 103 px |
 | Service | 414 px | 32 px |
-| Pathologie | 320 px | 69 px |
+| Pathologie | 320 px | 67 px |
 | Pathologie | 360 px | 153 px |
-| Pathologie | 390 px | 70 px |
-| Article | 320 px | 40 px |
+| Pathologie | 390 px | 66 px |
+| Article | 320 px | 42 px |
 | Article | 360 px | 144 px |
 | Article | 390 px | 57 px |
-| Article | 414 px | 19 px |
+| Article | 414 px | 17 px |
 

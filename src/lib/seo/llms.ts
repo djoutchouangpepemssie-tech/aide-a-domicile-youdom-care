@@ -3,6 +3,7 @@ import {
   getCallbackPage,
   getHowItWorksPage,
   getPricingPage,
+  getServicesPage,
   getSiteConfig,
 } from "@/content/loader";
 import { listArticleMetas } from "@/content/article-meta";
@@ -106,6 +107,13 @@ export async function buildLlmsInput(): Promise<LlmsInput> {
   const byPath = (a: LlmsPage, b: LlmsPage) => a.chemin.localeCompare(b.chemin, "fr");
   piliers.sort(byPath);
   services.sort(byPath);
+  // L'index /services/ (D-064) ouvre la liste : il n'a pas de fichier MDX, il vient du JSON.
+  const servicesIndex = getServicesPage();
+  services.unshift({
+    titre: servicesIndex.h1,
+    chemin: "/services/",
+    description: servicesIndex.seo.description,
+  });
 
   // Lexique : chaque terme avec sa définition en une phrase, par ordre alphabétique du terme.
   const collator = new Intl.Collator("fr", { sensitivity: "base" });

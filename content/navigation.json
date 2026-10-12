@@ -38,6 +38,11 @@
       "libelle_court": "Services",
       "enfants": [
         {
+          "libelle": "Tous nos services",
+          "href": "/services/",
+          "description": "La vue d'ensemble, groupée par besoin"
+        },
+        {
           "libelle": "Aide à l'autonomie",
           "href": "/personnes-agees/aide-a-l-autonomie/",
           "description": "Se lever, se laver, s'habiller, se déplacer"

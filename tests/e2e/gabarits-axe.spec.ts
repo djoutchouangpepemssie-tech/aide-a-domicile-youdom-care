@@ -10,6 +10,7 @@ import { expectNoSeriousAxeViolations } from "./axe";
 
 const pagesTemoins: ReadonlyArray<[string, string]> = [
   ["accueil", "/"],
+  ["index des services", "/services/"],
   ["pilier", "/personnes-agees/"],
   ["pathologie", "/maladies-neurodegeneratives/alzheimer/"],
   ["page locale", "/aide-a-domicile/hauts-de-seine/puteaux/"],

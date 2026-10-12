@@ -659,3 +659,62 @@ catalogue, dans l'ordre d'Arcel :
 `src/app/lexique/[slug]/page.test.tsx` figeaient les anciens libellés : le plan du site et les pages
 liées du lexique tirent leur nom du menu, le changement s'y propage, c'est le comportement voulu.
 Les deux attentes ont été mises à jour, pas le code.
+
+## D-064 — « Nos services » devient une page, pas seulement un menu (12/10/2026)
+
+**Le défaut, qui n'était pas celui qu'on cherchait.** Arcel demandait que « les utilisateurs voient
+tous les services présents sur la page services, bien structurée, bien organisée ». En cherchant
+cette page pour la réorganiser, on a trouvé qu'elle **n'existait pas** : dans
+`content/navigation.json`, l'entrée `services` portait `href: null` et neuf enfants. « Nos
+services » était un menu déroulant sans page d'atterrissage, et aucune route `/services/` n'existait
+dans `src/app/`.
+
+Un visiteur ne pouvait donc voir les prestations **qu'une par une**, et seulement s'il savait déjà
+laquelle chercher. Celui qui arrivait sans vocabulaire — le cas le plus fréquent — n'avait nulle
+part où regarder. La question du découpage de « Aide à la vie quotidienne » (Q-OFFRE-7) était un
+symptôme de ce manque, pas le problème.
+
+**Décision.** Une page `/services/` réunit les prestations, groupées par ce que le visiteur cherche
+plutôt que par notre organisation interne :
+
+| Groupe | Services |
+| --- | --- |
+| L'aide régulière, semaine après semaine | Aide à l'autonomie · Aide à la vie quotidienne · Accompagner à la vie sociale |
+| Une présence renforcée, le jour et la nuit | Présence de nuit · Présence 24h/24 · Garde-malade |
+| Un moment particulier à passer | Retour d'hospitalisation · Accompagnement en vacances · Remplacement d'auxiliaire de vie |
+
+**Ce que la page ne duplique pas, et c'est l'essentiel de sa conception.** Les libellés et les
+descriptions des cartes **ne sont pas écrits dans `content/pages/services.json`** : ils sont lus
+dans le menu (`content/navigation.json`) par `href`. Le menu et la page ne peuvent donc pas
+diverger — deux textes à maintenir auraient fini par se contredire. Le JSON de la page ne décrit que
+son plan : les groupes, leur ordre, l'icône de chaque service. Un `href` absent du menu
+**interrompt le build** plutôt que d'afficher une carte sans nom.
+
+**Les trois réponses aux questions ouvertes.**
+
+1. *Q-OFFRE-7 (« Aide pour les repas & courses » et « Entretien du cadre de vie »).* Ces deux
+   services n'ont pas de page à eux. Plutôt que d'en créer deux minces en découpant une page
+   complète de 1 867 mots — et de faire se disputer la même requête à deux pages du même site —
+   le champ `inclus` les **nomme sur la carte** de « Aide à la vie quotidienne ». Les dix services
+   d'Arcel sont visibles ; aucun contenu n'est dupliqué. Un découpage reste possible plus tard,
+   avec du contenu propre à chacun ; ce n'est plus un préalable.
+2. *Mode d'intervention.* Le garde-fou du projet veut le mode indiqué pour chaque prestation.
+   `content/tarifs.json` le porte, et sa liste `prestations` est **vide** (Q-TARIFS-1). Plutôt
+   qu'inventer un mode par carte, la page renvoie vers `/comment-ca-marche/prestataire-ou-mandataire/`.
+   Un test interdit qu'un mode apparaisse sur une carte tant que la donnée n'existe pas.
+3. *Lien dans le menu.* `navigationItemSchema` impose « soit un href, soit des enfants ». Cette
+   contrainte n'a pas été affaiblie pour la circonstance : l'index entre comme **premier enfant**
+   du déroulant (« Tous nos services »). Aucun composant interactif n'a été touché.
+
+**Liens entrants.** `check-depth` a refusé la page : aucun lien entrant contextuel, le menu ne
+comptant pas. Le lien manquant n'était pas une formalité de référencement mais un vrai trou de
+navigation en sens inverse — une page service ne montre qu'une prestation, et le visiteur qui
+comprend en la lisant qu'il cherchait autre chose devait rouvrir le menu. `ServiceRelated` rend
+désormais « Voir tous nos services » au bas de chaque page service.
+
+**Enregistrement.** `declaredLastmod` (plan de site XML), `llms.ts` (tête de la liste des
+services), et le plan du site, où l'index ouvre le groupe avec ses six pages en retrait — la
+convention déjà en place pour les piliers.
+
+**Contrôles.** 13/13 verts, 946 tests unitaires, 0 violation axe critique ou sérieuse sur mobile et
+sur ordinateur, 0 débordement sur 144 mesures de 320 à 1920 px.

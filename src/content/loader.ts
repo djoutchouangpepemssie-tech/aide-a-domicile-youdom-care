@@ -20,6 +20,7 @@ import aidsJson from "../../content/aides.json";
 import weekExamplesJson from "../../content/semaines-types.json";
 import pricingJson from "../../content/tarifs.json";
 import regionPageJson from "../../content/pages/aide-a-domicile.json";
+import servicesPageJson from "../../content/pages/services.json";
 import agenciesPageJson from "../../content/pages/agences.json";
 import lexiquePageJson from "../../content/pages/lexique.json";
 import professionalsPageJson from "../../content/pages/professionnels.json";
@@ -77,6 +78,8 @@ import {
   type WeekExamples,
   regionPageSchema,
   type RegionPage,
+  servicesPageSchema,
+  type ServicesPage,
   agenciesPageSchema,
   type AgenciesPage,
   professionalsPageSchema,
@@ -228,6 +231,17 @@ let regionPage: RegionPage | undefined;
 export function getRegionPage(): RegionPage {
   regionPage ??= parseContent(regionPageSchema, regionPageJson, "pages/aide-a-domicile.json");
   return regionPage;
+}
+
+let servicesPage: ServicesPage | undefined;
+
+/**
+ * Index /services/ (D-064) : le plan de la page, pas ses libellés — ceux-ci viennent du menu
+ * (content/navigation.json), lus par `href`. Voir `servicesPageSchema`.
+ */
+export function getServicesPage(): ServicesPage {
+  servicesPage ??= parseContent(servicesPageSchema, servicesPageJson, "pages/services.json");
+  return servicesPage;
 }
 
 let agenciesPage: AgenciesPage | undefined;

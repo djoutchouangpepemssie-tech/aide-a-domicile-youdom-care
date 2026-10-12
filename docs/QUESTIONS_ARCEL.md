@@ -41,6 +41,7 @@ Mode d'emploi : répondez sous chaque question (ligne `Réponse :`) ou remplisse
 
 - **Q-OFFRE-7.** « Aide pour les repas & courses » et « Entretien du cadre de vie » sont les deux seuls services de votre liste du 12 octobre sans page à eux : ils sont traités à l'intérieur de « Aide à la vie quotidienne » (`/personnes-agees/vie-quotidienne/`), dont le menu annonce « Repas, courses, linge, entretien du cadre de vie ». Faut-il les détacher en deux pages ? Deux réserves avant de le faire : il faut du contenu propre à chacune, sinon on obtient deux pages minces qui se référencent moins bien qu'une page complète, et le découpage fait perdre le lien naturel entre les tâches d'une même intervention.
   Réponse :
+  *État au 12/10/2026 (D-064) : les deux sont désormais **nommés sur la carte** « Aide à la vie quotidienne » de la page /services/, donc visibles pour le visiteur. La question n'est plus bloquante : elle ne porte plus que sur l'opportunité de leur donner une page propre, avec du contenu à elles.*
 
 - **Q-OFFRE-6.** Nuits : cadre du temps de travail d’une nuit calme (présence responsable) et d’une nuit active selon le mode (prestataire, mandataire), conditions matérielles demandées (chambre, lit), tarif de chaque type de nuit. Les pages « Garde de nuit » et « Présence 24h/24 » (docs/03 §8) renvoient à « précisé avant tout engagement » tant que la règle n’est pas connue.
   Réponse :

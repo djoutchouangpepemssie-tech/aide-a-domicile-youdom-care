@@ -28,5 +28,17 @@ describe("ServiceRelated", () => {
     expect(
       within(nav).getByRole("link", { name: "Parkinson" }).querySelector("[data-icon]"),
     ).not.toBeNull();
+
+    /*
+     * Retour vers l'index des services (D-064) : hors du bloc « À lire aussi », qui ne lie que
+     * des pages services entre elles. C'est le seul chemin, depuis une page qui ne montre qu'une
+     * prestation, vers la vue d'ensemble — et il donne à /services/ ses liens entrants
+     * contextuels, que `check-depth` exige et que le menu ne fournit pas.
+     */
+    const index = screen.getByRole("link", { name: texts.service.tous_les_services_lien });
+    expect(index.getAttribute("href")).toMatch(/\/services\/?$/);
+    expect(
+      within(nav).queryByRole("link", { name: texts.service.tous_les_services_lien }),
+    ).toBeNull();
   }, 60_000);
 });

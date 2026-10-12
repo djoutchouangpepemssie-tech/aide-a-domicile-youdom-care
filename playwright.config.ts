@@ -15,6 +15,15 @@ export default defineConfig({
     baseURL,
     locale: "fr-FR",
     trace: "retain-on-failure",
+    /*
+     * `CHROMIUM_PATH` : navigateur déjà présent sur la machine, quand la version téléchargée par
+     * Playwright n'y est pas (conteneurs d'exécution où `playwright install` n'a pas tourné, ou a
+     * posé une autre révision). Même variable que `scripts/audit-responsive.ts`. Sans elle,
+     * Playwright utilise son navigateur habituel : la CI ne change pas.
+     */
+    ...(process.env.CHROMIUM_PATH
+      ? { launchOptions: { executablePath: process.env.CHROMIUM_PATH } }
+      : {}),
   },
   projects: [
     { name: "mobile", use: { ...devices["Pixel 7"] } },

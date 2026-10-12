@@ -75,8 +75,10 @@ describe("Plan du site", () => {
       "/aidants/ou-en-etes-vous/",
     ]);
     const servicesGroup = groups.find((g) => g.id === "services");
-    // Libellés et ordre repris de `content/navigation.json` (D-063) : le plan du site suit le menu.
-    expect(servicesGroup?.entries.map((e) => e.label)).toEqual([
+    // L'index /services/ (D-064) ouvre le groupe, ses pages en retrait. Libellés et ordre repris
+    // de `content/navigation.json` (D-063) : le plan du site suit le menu.
+    expect(servicesGroup?.entries.map((e) => e.href)).toEqual(["/services/"]);
+    expect(servicesGroup?.entries[0]?.children?.map((e) => e.label)).toEqual([
       "Retour d'hospitalisation",
       "Présence de nuit",
       "Présence 24h/24",

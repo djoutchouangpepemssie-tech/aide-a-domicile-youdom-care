@@ -21,6 +21,7 @@ import {
   getRecruitmentPage,
   getRegionPage,
   getRequestIndexPage,
+  getServicesPage,
   getSiteConfig,
   getSiteMapPage,
   getSpecialForms,
@@ -189,10 +190,10 @@ function groupBuilders(): Record<SiteMapGroupId, () => Promise<SiteMapEntry[]>> 
         .map((pilier) => pilierEntry(all, pilier));
     },
 
-    // Nos services : dans l'ordre du menu, avec son libellé.
+    // Nos services : l'index (D-064), puis ses pages dans l'ordre du menu, avec son libellé.
     services: async () => {
       const servicesMenu = menu("services");
-      return orderByMenu(
+      const pages = orderByMenu(
         (await services()).filter((p) => p.type === "service"),
         servicesMenu.map((child) => child.href),
       ).map((p) => ({
@@ -200,6 +201,8 @@ function groupBuilders(): Record<SiteMapGroupId, () => Promise<SiteMapEntry[]>> 
         label:
           servicesMenu.find((child) => child.href === p.chemin)?.libelle ?? p.libelle_court ?? p.h1,
       }));
+      const index = getServicesPage();
+      return [{ href: "/services/", label: index.ariane, children: pages }];
     },
 
     aidants: async () => {

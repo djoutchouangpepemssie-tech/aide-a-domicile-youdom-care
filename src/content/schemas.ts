@@ -365,6 +365,8 @@ export const interfaceSchema = z.strictObject({
     ne_faisons_pas_h2: text,
     cout_h2: text,
     cout_lien: text,
+    /** Lien de retour vers l'index /services/ (D-064), rendu par ServiceRelated. */
+    tous_les_services_lien: text,
     faq_h2: text,
     formulaire_h2: text,
     formulaire_texte: text,
@@ -1788,6 +1790,52 @@ export type NavigationItem = z.infer<typeof navigationItemSchema>;
 export type NavigationChild = z.infer<typeof navigationChildSchema>;
 
 /* ---------- content/pages/aide-a-domicile.json (docs/04 §4, carte régionale, P6.5) ---------- */
+
+/* ---------- content/pages/services.json ---------- */
+
+/*
+ * Index /services/ (D-064). Une carte ne porte PAS son libellé ni sa description : elles sont
+ * lues dans content/navigation.json par `href`, pour que le menu et la page ne divergent pas.
+ * `inclus` nomme les prestations traitées à l'intérieur d'une page — « Aide pour les repas et les
+ * courses » et « Entretien du cadre de vie » sont dans ce cas, et ce champ est le seul endroit où
+ * le visiteur les voit nommées (Q-OFFRE-7).
+ */
+const servicesIndexCardSchema = z.strictObject({
+  href: internalPath,
+  icone: z.enum(iconNames as [IconName, ...IconName[]]),
+  inclus: z.array(text).min(1).optional(),
+});
+
+const servicesIndexGroupSchema = z.strictObject({
+  id: slug,
+  h2: text,
+  texte: text,
+  services: z.array(servicesIndexCardSchema).min(1),
+});
+
+export const servicesPageSchema = z
+  .strictObject({
+    _lisezmoi: z.string(),
+    seo: seoFieldsSchema,
+    ariane: text,
+    h1: text,
+    chapo: text,
+    mode_texte: text,
+    mode_lien: text,
+    groupes: z.array(servicesIndexGroupSchema).min(1),
+    public_h2: text,
+    public_texte: text,
+    appel_h2: text,
+    appel_texte: text,
+  })
+  .refine(
+    (page) => {
+      const hrefs = page.groupes.flatMap((g) => g.services.map((s) => s.href));
+      return new Set(hrefs).size === hrefs.length;
+    },
+    { message: "un service ne peut pas figurer dans deux groupes" },
+  );
+export type ServicesPage = z.infer<typeof servicesPageSchema>;
 
 export const regionPageSchema = z.strictObject({
   _lisezmoi: z.string(),

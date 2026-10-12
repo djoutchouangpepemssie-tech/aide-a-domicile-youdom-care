@@ -1113,3 +1113,56 @@ toujours.
 Reste une question pour Arcel : « Aide pour les repas & courses » et « Entretien du cadre de vie »
 sont les deux seuls services sans page propre. Ils sont traités dans « Aide à la vie quotidienne ».
 Les en sortir, c'est deux pages à écrire — ou deux pages minces, si on se contente de découper.
+
+## La page que personne n'avait remarquée manquante — 12 octobre 2026
+
+Arcel voulait « que les utilisateurs voient tous les services sur la page services, bien structurée,
+bien organisée ». J'ai ouvert le projet pour aller réorganiser cette page.
+
+Elle n'existait pas.
+
+`content/navigation.json`, entrée `services` : `href: null`, neuf enfants. Aucun dossier
+`src/app/services/`. « Nos services » était un menu déroulant qui ne menait nulle part. Depuis le
+début du projet, un visiteur ne pouvait voir les prestations qu'**une par une**, et seulement s'il
+savait déjà laquelle chercher. Celui qui arrivait sans vocabulaire — « ma mère ne s'en sort plus,
+je ne sais pas ce qu'il me faut » — n'avait aucune page où regarder.
+
+Et la question sur laquelle je m'étais arrêté la veille — faut-il découper « Aide à la vie
+quotidienne » en deux pages ? — était un symptôme de ce trou, pas le problème. Je débattais de la
+forme d'une étagère dans une pièce sans mur.
+
+**Ce que j'ai failli faire de travers.** La tentation était d'écrire les libellés et les
+descriptions des cartes dans le JSON de la nouvelle page. Neuf titres, neuf descriptions, confortable
+à écrire. Et deux sources pour la même information : le jour où Arcel renomme un service dans le
+menu, la page le nomme encore autrement, et personne ne s'en aperçoit avant un client. Les cartes
+lisent donc le menu par `href`, et un `href` inconnu du menu **interrompt le build**. Le JSON de la
+page ne contient que son plan : les groupes, leur ordre, les icônes.
+
+**Deux contraintes que je n'ai pas contournées.** Le schéma de navigation impose « soit un href,
+soit des enfants ». J'ai eu la main sur le clavier pour l'assouplir — c'était l'affaire de deux
+lignes. Mais cette contrainte garde une invariante réelle du menu, et l'affaiblir pour un cas de
+confort, c'est la perdre pour tous les autres. L'index est donc entré comme premier enfant du
+déroulant, « Tous nos services ». Aucun composant interactif touché, aucune règle diluée.
+
+L'autre : le garde-fou du projet veut le mode d'intervention indiqué pour chaque prestation.
+`content/tarifs.json` le porte et sa liste est vide — Arcel ne l'a pas encore remplie. Écrire
+« prestataire » sur neuf cartes aurait fait une page qui a l'air complète. La page renvoie vers
+l'explication des deux modes, et un test interdit désormais qu'un mode apparaisse sur une carte tant
+que la donnée n'existe pas. Une page qui dit « nous vous le précisons » est moins jolie qu'une page
+qui affirme. Elle est vraie.
+
+**Le contrôle qui a trouvé mieux que moi.** `check-depth` a refusé la page : aucun lien entrant
+contextuel, le menu ne comptant pas. Mon premier réflexe a été de chercher où caser trois liens pour
+faire passer le contrôle — exactement le réflexe qui transforme un garde-fou en formalité. En
+cherchant l'endroit honnête, j'ai trouvé le vrai manque, et il était en sens inverse : une page
+service ne montre qu'une prestation, et le visiteur qui comprend en la lisant qu'il cherchait autre
+chose devait rouvrir le menu. « Voir tous nos services » est maintenant au bas de chaque page
+service. Le contrôle ne m'a pas fait ajouter des liens ; il m'a fait trouver une navigation qui
+manquait.
+
+**Deux erreurs de ma part dans les tests, les deux du même genre.** J'ai écrit que la page devait
+avoir six H2 — un nombre deviné, pas compté ; et j'ai asserti que l'ordre des cartes serait celui du
+menu, alors que le propos même des groupes est de **réordonner** par besoin. Deux fois j'avais
+épinglé un chiffre ou une séquence au lieu de dire ce que je voulais vraiment vérifier :
+l'exhaustivité, l'unicité, et les trois groupes nommés. Un test qui fige ce qu'on n'a pas mesuré ne
+garde rien ; il casse au premier changement légitime.

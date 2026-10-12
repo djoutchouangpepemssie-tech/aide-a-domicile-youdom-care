@@ -24,6 +24,7 @@ const BASE = process.env.AUDIT_BASE_URL ?? "http://127.0.0.1:3000";
 /** Un gabarit par famille : ce qui casse casse par gabarit, pas par page. */
 const PAGES: { label: string; path: string }[] = [
   { label: "Accueil", path: "/" },
+  { label: "Index des services", path: "/services/" },
   { label: "Service", path: "/services/garde-de-nuit/" },
   { label: "Pathologie", path: "/maladies-neurodegeneratives/alzheimer/" },
   { label: "Locale (département)", path: "/aide-a-domicile/essonne/" },
