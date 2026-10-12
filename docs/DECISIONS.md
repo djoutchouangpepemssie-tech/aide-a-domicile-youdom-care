@@ -1278,3 +1278,44 @@ lancé `pnpm build` **avant** d'exporter `SITE_INDEXABLE`, donc construit le sit
 comme s'il était fermé. Soixante et un faux défauts, tous sur l'indexation. La CI ne connaît pas ce
 piège : elle déclare ses variables au niveau du job, une fois pour toutes les étapes. Reproduire une
 chaîne à la main sans reproduire **l'ordre** de ses déclarations, c'est mesurer autre chose.
+
+## D-079 — DP.4 : le plan se trompait de coupable (12/10/2026)
+
+**Le défaut mesuré.** `tests/e2e/mouvement.spec.ts` relevait une animation à **640 ms** sur
+l'accueil, contre un plafond de 600 ms délai compris. En reproduisant exactement sa mesure dans le
+navigateur — même collecteur, même parcours de défilement, mêmes points de collecte — le seul
+dépassement est :
+
+```
+total 640   prop="stroke-dashoffset"   <path class="thread-knot">   delay=240  dur=400
+```
+
+Le **nœud du composant `Thread`**. Il partage la durée du tracé (`MOTION_DURATION.draw` = 400 ms) et
+partait à `0.6` de celle-ci : 240 + 400 = 640.
+
+**Correction** : `0.4`, soit 160 + 400 = **560 ms** — la durée d'entrée du hero, et le contrat
+respecté avec de la marge. Ni le seuil du parcours ni la règle écrite n'ont été touchés :
+l'implémentation violait son propre garde-fou, posé dans `docs/design/MOUVEMENT.md` §8 (« aucune ne
+dépasse 600 ms, délai compris », `MOTION_MAX_DURATION`).
+
+**Ce que le plan disait, et pourquoi c'était faux.** DP.4 attribuait le dépassement au décalage des
+révélations : « `motion.css` donne aux blocs `.m-reveal` une transition de 360 ms avec un délai de
+60 ms par rang ; le total franchit 600 ms dès le cinquième élément ». Le calcul est juste, sa
+prémisse non : `MOTION_STAGGER = 40` est le contrat (`grid.ts`, « contrat §5 : 40 ms ») et
+`Reveal` **pose lui-même** `--m-stagger` à cette valeur. Les 60 ms de `motion.css` ne sont qu'un
+repli jamais atteint. Le décalage ne dépassait donc pas, et la mesure le confirme : zéro dépassement
+hors le nœud.
+
+Le plan en concluait qu'il fallait trancher entre trois règles de `docs/02 §5`, et réservait la dette
+au commanditaire. **Il n'y avait rien à trancher** : un seul composant ne respectait pas un plafond
+déjà écrit. Ce diagnostic erroné est ce qui a tenu la dette ouverte une semaine.
+
+**Une correction que j'ai faite puis annulée.** J'ai d'abord plafonné le rang du décalage
+(`min(var(--m-i), 3)`), en suivant le plan. Le test continuait d'échouer à 640 — preuve que ce
+n'était pas la cause — et ce plafond changeait la cascade de tout le site : au-delà du troisième
+rang, les éléments seraient arrivés ensemble. Annulé. **Modifier un comportement sans défaut mesuré
+coûte plus que de ne rien faire** : personne ne l'aurait relié à cette journée.
+
+**Le second point de DP.4 ne se déclenche pas.** `--thread-duration: 800ms` (`tokens.css`) concerne
+le fil conducteur, lié au défilement : il n'a pas de durée en millisecondes et le parcours l'exclut
+correctement. `docs/02 §1` l'autorise d'ailleurs entre 600 et 900 ms.

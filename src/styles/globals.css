@@ -372,8 +372,17 @@
     transition: stroke-dashoffset var(--thread-duration) var(--ease-out);
   }
 
+  /*
+   * Le nœud se noue à 40 % du tracé, et ce n'est pas un choix esthétique : c'est le budget.
+   *
+   * `MOTION_MAX_DURATION` (grid.ts) plafonne toute animation à 600 ms **délai compris**, et
+   * `--thread-duration` vaut `MOTION_DURATION.draw`, soit 400 ms. Le nœud partageant la durée du
+   * tracé, son total est délai + 400. À 0,6 il valait 240 + 400 = 640 : hors contrat, mesuré par
+   * `tests/e2e/mouvement.spec.ts` et consigné en dette DP.4 depuis le 05/10/2026. À 0,4 il vaut
+   * 160 + 400 = 560, la durée d'entrée du hero (D-079).
+   */
   .thread[data-state="drawn"] .thread-knot {
-    transition-delay: calc(var(--thread-duration) * 0.6);
+    transition-delay: calc(var(--thread-duration) * 0.4);
   }
 
   @media (prefers-reduced-motion: reduce) {
