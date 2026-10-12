@@ -1051,3 +1051,36 @@ toute mise en forme du chiffre. Réécrite : les deux morceaux présents, et dan
 elle a échoué de nouveau, parce que le séparateur de milliers de « 45 210 » est une espace **fine
 insécable**. Exactement le même caractère invisible que le numéro de téléphone des e-mails ce
 matin. Échappé explicitement cette fois, sans attendre.
+
+## Le README mentait sur l'indexation, pas le code — 12 octobre 2026
+
+Arcel signale dans Search Console 5 pages exclues par `noindex` et 65 explorées mais non indexées.
+
+**Ce que la mesure a donné.** Le plan de site déclare 245 adresses uniques, sans aucun doublon, pour
+263 pages construites — l'écart de 18 étant `/merci/`, `/styleguide/` et `/api/`, volontairement
+exclus. Huit pages portent une balise `robots` : l'accueil du magazine, ses six rubriques et sa
+page 2. La règle est qu'une page de liste se ferme tant qu'elle ne liste aucun article **publié**,
+et les treize articles sont tous au statut `a_relire`. C'est donc cohérent, et ce sont ces pages
+que Google a trouvées.
+
+**L'erreur que j'ai failli commettre.** J'ai annoncé à Arcel un défaut : les articles non relus
+sont indexables alors que le README affirme l'inverse, et j'ai proposé de « corriger » le code. Il
+a dit oui. En ouvrant le fichier, j'ai trouvé un commentaire explicite — « D-035 : un article en
+attente de relecture est indexable comme les autres » — et, en remontant, deux décisions prises le
+27/09 **à la demande d'Arcel** : D-034 a retiré la mention « en attente de relecture » des pages
+services, D-035 a ouvert l'indexation par défaut.
+
+Le code appliquait exactement ce qui avait été décidé. C'est **le README qui était faux** — et
+c'est moi qui l'avais écrit le 6 octobre, sans vérifier ces deux décisions. Corrigé là, pas dans le
+code.
+
+**Et j'ai présenté une hypothèse comme une cause.** J'ai écrit que ces articles étaient
+« très probablement une partie des 65 pages explorées et non indexées ». Je n'en sais rien. Sur un
+site mis en ligne depuis quelques jours, 65 pages explorées et pas encore indexées sur 245 est
+ordinaire : Google explore d'abord, indexe ensuite, et ça prend des semaines.
+
+**Leçon, et c'est la deuxième fois sur ce projet.** Après l'épisode DP.2, j'avais écrit qu'une
+branche qui diffère n'est pas forcément en retard et que c'est `DECISIONS.md`, pas le diff, qui
+tranche. Même scène ici : un commentaire de code nommant une décision est un signal d'arrêt. On
+lit la décision **avant** de proposer une correction, pas après avoir obtenu l'accord de la
+corriger.

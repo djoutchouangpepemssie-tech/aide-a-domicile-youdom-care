@@ -26,7 +26,10 @@ ouvert au public** :
   la dessert : pas de domaine personnalisé, et la protection par authentification Vercel est
   active sur toutes les adresses du projet (`docs/PLAN.md`, DC.4) ;
 - les **26 pages services** et les **13 articles** du magazine attendent une relecture
-  professionnelle : ils sont construits, mais en `noindex` jusque-là ;
+  professionnelle — mais ils sont **indexables**, et c'est une décision assumée : D-034 a retiré
+  la mention « en attente de relecture » des pages services, et D-035 a ouvert l'indexation par
+  défaut, toutes deux à la demande d'Arcel le 27/09/2026. Seules les pages de liste du magazine se
+  ferment d'elles-mêmes, tant qu'aucun article n'est passé au statut `publie` ;
 - plusieurs champs obligatoires des mentions légales sont encore vides, dont le médiateur de la
   consommation.
 
