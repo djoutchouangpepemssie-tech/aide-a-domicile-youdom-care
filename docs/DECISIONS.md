@@ -1219,3 +1219,30 @@ La sortir de cette colonne est une **restructuration de la bannière d'article**
 y a la place (200 px de marge mesurés), et c'est la bonne correction ; mais c'est une décision de
 mise en page, du ressort du commanditaire, et ce serait la troisième modification de design que je
 justifierais par la précédente. Elle est donc proposée, pas appliquée.
+
+## D-077 — La ligne de confiance d'un article disparaissait là où on lit le plus (12/10/2026)
+
+Suite directe de D-076. Le parcours du magazine exigeait la ligne de confiance — auteur, relecteur,
+dates, temps de lecture — visible sur toutes les tailles. Elle était placée **dans la colonne média**
+de la bannière, masquée sur téléphone par `heroOnlyWide` **et** par `heroWhenTall`.
+
+Sur un article, l'information la plus demandée après le titre est **qui l'a écrit**. Elle manquait
+précisément là où la lecture se fait le plus. L'audit du 12/10 le relevait sous un autre angle :
+« Auteur et relecteur : aucun nom […] c'est le levier le plus rentable pour un site de santé. »
+
+La ligne sort donc de la colonne média. Un seul élément dans le DOM, pas deux copies à visibilités
+complémentaires : la leçon de D-065 est que dupliquer un contenu pour le montrer ailleurs le fait
+lire deux fois.
+
+**Deux emplacements essayés, et c'est la mesure qui a tranché.** Placée avant l'action, dans l'ordre
+de lecture naturel (titre, chapô, l'essentiel, qui l'écrit, puis l'action), elle a poussé le bouton
+du hero de 58 px sur **ordinateur** — 958 px pour 900 disponibles, et `hero.spec.ts` l'a attrapé
+immédiatement. C'était ma régression, trouvée en deux minutes parce que le parcours venait d'être
+remis en état par D-076.
+
+Elle est donc posée en **fin de colonne**, après l'action et le repère de défilement : elle ne pousse
+plus rien, et reste visible sur téléphone. 66 parcours de hero et de magazine verts.
+
+**Ce que cet aller-retour montre.** Un parcours réparé se met à payer tout de suite : sans la remise
+en état de `hero.spec.ts`, ce déplacement aurait dégradé le premier écran de tous les articles sur
+ordinateur, sans que rien ne le signale.

@@ -183,29 +183,17 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
             <p className={cn("m-0", heroOrderLast, heroGap)}>
               <ScrollCue label={heroCue.label} href={heroCue.href} />
             </p>
-          </div>
-          <div
-            className={cn(
-              heroOnlyWide,
-              heroWhenTall,
-              heroGapWide,
-              "lg:mt-0 print:hidden",
-              heroMediaWidth,
-            )}
-          >
-            <PhotoFigure
-              src={meta.image.src}
-              alt={meta.image.alt}
-              focal={meta.image.focal}
-              ratio="3:2"
-              mobileRatio="16:9"
-              radius={28}
-              sizes={heroPhotoSizes}
-              priority
-            />
+            {/*
+              Ligne de confiance (auteur, relecteur, dates, temps de lecture). Elle vivait dans la
+              colonne média, masquée sur téléphone par `heroOnlyWide` ET `heroWhenTall` : sur un
+              article, l'information la plus demandée après le titre est QUI l'a écrit, et elle
+              disparaissait justement là où on lit le plus (D-077). Elle est sortie de cette colonne,
+              Elle est posée en FIN de colonne, après l'action : placée avant, elle poussait le
+              bouton de 58 px sur ordinateur (958 px pour 900 disponibles, mesuré).
+            */}
             <ul
               className={cn(
-                "tabular-figures m-0 mt-4 flex list-none flex-wrap gap-x-4 gap-y-1 p-0 text-small text-text-soft",
+                "tabular-figures m-0 mt-5 flex list-none flex-wrap gap-x-4 gap-y-1 p-0 text-small text-text-soft",
               )}
               data-confiance
             >
@@ -244,6 +232,26 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
                 {fill(t.temps_lecture, { n: String(article.readingMinutes) })}
               </li>
             </ul>
+          </div>
+          <div
+            className={cn(
+              heroOnlyWide,
+              heroWhenTall,
+              heroGapWide,
+              "lg:mt-0 print:hidden",
+              heroMediaWidth,
+            )}
+          >
+            <PhotoFigure
+              src={meta.image.src}
+              alt={meta.image.alt}
+              focal={meta.image.focal}
+              ratio="3:2"
+              mobileRatio="16:9"
+              radius={28}
+              sizes={heroPhotoSizes}
+              priority
+            />
           </div>
         </div>
       </HeroSection>
