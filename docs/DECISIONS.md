@@ -1050,3 +1050,54 @@ Mon premier remplacement, appliqué sans cette distinction, a cassé ce qu'il ve
 allers-retours pour y arriver. Là où c'était possible, l'attente est devenue indifférente au type
 d'espace — `/^Source\s: .+/` plutôt qu'une insécable codée dans l'expression régulière. C'est la
 forme qui restera juste si la typographie change encore.
+
+## D-073 — La CI dépassait son propre délai, et cela se lisait comme un échec (12/10/2026)
+
+**Le constat.** Le dépôt du client montrait deux exécutions rouges sur `main`. Elles ne disaient pas
+la même chose, et c'est la durée qui les sépare :
+
+| Exécution | Durée | Nature |
+| --- | --- | --- |
+| `37944143797` | 3 min 21 s | **vrai échec** — un test cassé |
+| `38216421109` | **20 min 20 s** | **délai dépassé** — arrêté par GitHub |
+
+`ci.yml` déclarait `timeout-minutes: 20` sur un job unique. La seconde exécution n'a trouvé aucun
+défaut : elle n'a pas eu le temps de finir. Un délai dépassé s'affiche comme une croix rouge dans la
+liste des exécutions — l'alerte sans l'information, le pire des deux mondes, et ce qui a fait croire
+à un travail cassé.
+
+La cause est la taille de la suite de parcours : **788 tests**, soit 43 fichiers × deux projets
+(mobile et ordinateur), exécutés *après* l'installation, le build, les tests unitaires et les
+contrôles, tous dans le même job.
+
+L'échec de 3 min 21 s, lui, est le test qui ne cassait qu'en CI à cause de `SITE_INDEXABLE="false"` :
+corrigé le 12/10/2026 (`ArticleTemplate.test.tsx`, `vi.stubEnv`), il attend d'être fusionné.
+
+**La décision.** Deux jobs parallèles plutôt qu'un seul enchaînement :
+
+- `verifier` : audit, lint, typecheck, formatage, tests unitaires, build, contrôles — 20 minutes ;
+- `parcours` : les parcours en **trois fractions parallèles** (`--shard=i/3`) — 25 minutes chacune,
+  avec le navigateur de Playwright mis en cache, son téléchargement coûtant une à deux minutes par
+  fraction.
+
+Le temps d'attente devient celui du job le plus long, non la somme des deux.
+
+**Vérifié, pas supposé.** Le découpage ne doit pas perdre de test :
+
+```
+fraction 1/3 : 263   fraction 2/3 : 263   fraction 3/3 : 262   somme : 788
+```
+
+`fail-fast: false` : une fraction en échec ne masque pas les deux autres — on veut la liste complète
+des défauts en une exécution. Et un nom de rapport par fraction, deux artefacts de même nom se
+refusant l'un l'autre.
+
+**Ce que cette correction ne fait pas.** Elle vit dans ce dépôt. Le `main` du client garde son job
+unique et continuera d'être coupé **jusqu'à ce que ce travail y soit fusionné**. La croix rouge
+disparaîtra avec la mise à jour, pas avant.
+
+**Une mesure que je n'ai pas prise, et pourquoi.** La durée réelle de la suite n'a pas été mesurée
+ici : ce conteneur est nettement plus lent qu'un exécuteur GitHub, et son chiffre ne dirait rien de
+la CI. Le dimensionnement s'appuie sur le fait établi — 20 min 20 s contre une limite de 20 minutes
+— et non sur une extrapolation locale. La première exécution après fusion donnera la vraie durée par
+fraction, et c'est elle qui dira s'il faut quatre fractions plutôt que trois.

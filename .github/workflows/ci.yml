@@ -1,5 +1,17 @@
 # Intégration continue : lint, typecheck, tests, build, contrôles, parcours Playwright + axe.
 # Aucun secret n'est nécessaire : le site est statique et les formulaires ne s'exécutent pas ici.
+#
+# **Deux jobs parallèles depuis le 12/10/2026 (D-073), et c'est une correction, pas un confort.**
+# Un seul job enchaînait tout et dépassait son propre `timeout-minutes: 20` : l'exécution 38216421109
+# sur `main` a été arrêtée à 20 min 20 s. Elle n'avait trouvé aucun défaut — elle n'avait pas eu le
+# temps de finir. La cause est la taille de la suite de parcours : 788 tests (43 fichiers × deux
+# projets, mobile et ordinateur), après l'installation, le build, les tests unitaires et les
+# contrôles. Un délai dépassé se lit comme un échec dans la liste des exécutions, ce qui est le
+# pire des deux mondes : l'alerte sans l'information.
+#
+# `verifier` porte les contrôles rapides ; `parcours` exécute les parcours en trois fractions
+# parallèles (`--shard`). Les deux partent en même temps, donc le temps d'attente est celui du plus
+# long, non leur somme.
 name: CI
 
 on:
@@ -71,16 +83,58 @@ jobs:
       - name: Contrôles (pnpm validate)
         run: pnpm validate
 
+  parcours:
+    name: Parcours (fraction ${{ matrix.shard }}/3)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      # Une fraction qui échoue ne masque pas les autres : on veut la liste complète des défauts
+      # en une exécution, pas le premier d'entre eux.
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Types Next.js (next-env.d.ts)
+        run: pnpm exec next typegen
+
+      - name: Mettre en cache le navigateur de Playwright
+        # Le téléchargement de Chromium et de ses dépendances système coûte une à deux minutes par
+        # fraction, soit trois fois par exécution. La clé porte la version de Playwright : une mise
+        # à jour du paquet invalide le cache d'elle-même.
+        id: cache-playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
       - name: Installer Chromium pour Playwright
         run: pnpm exec playwright install --with-deps chromium
 
+      - name: Build
+        # Les parcours tournent sur le build de production : `playwright.config.ts` démarre
+        # `pnpm start`, qui exige un build présent.
+        run: pnpm build
+
       - name: Parcours Playwright + axe
-        run: pnpm exec playwright test
+        run: pnpm exec playwright test --shard=${{ matrix.shard }}/3
 
       - name: Rapport Playwright (en cas d'échec)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          # Un nom par fraction : deux artefacts de même nom se refusent l'un l'autre.
+          name: playwright-report-${{ matrix.shard }}
           path: playwright-report/
           retention-days: 7
