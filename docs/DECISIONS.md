@@ -1101,3 +1101,44 @@ ici : ce conteneur est nettement plus lent qu'un exécuteur GitHub, et son chiff
 la CI. Le dimensionnement s'appuie sur le fait établi — 20 min 20 s contre une limite de 20 minutes
 — et non sur une extrapolation locale. La première exécution après fusion donnera la vraie durée par
 fraction, et c'est elle qui dira s'il faut quatre fractions plutôt que trois.
+
+## D-074 — Quatre attentes de parcours figées sur l'ancienne typographie (12/10/2026)
+
+**Le défaut, et il est de moi.** La suite de parcours, exécutée en conditions d'intégration après
+D-072, donne **22 échecs** (658 verts, 108 ignorés, 20,4 min). J'avais aligné les tests **unitaires**
+sur l'espace insécable, et jamais lancé les **parcours** avant de livrer. Quatre assertions
+comparaient encore un texte à espace ordinaire :
+
+| Fichier | Attente | Correction |
+| --- | --- | --- |
+| `local.spec.ts` | `/Source : .+, consulté le/` | `/Source\s: …/` — indifférente au type d'espace |
+| `magazine.spec.ts` | `name: "Le Fil : comment…"` | insécable |
+| `tous-gabarits-axe.spec.ts` | `name: "Plan du site : Pour qui ?"` | insécable |
+| `home.spec.ts` | `Votre agence la plus proche : …` | insécable |
+
+Là où c'était possible, l'attente est devenue **indifférente au type d'espace** (`\s`) plutôt que de
+porter l'insécable : c'est la forme qui restera juste si la typographie bouge encore.
+
+**Les dix-huit autres ne sont pas de moi, et c'est vérifié un par un, pas supposé.**
+
+- **Huit `hero.spec.ts`** : la dette **DP.3**, consignée le 05/10/2026 avec le chiffre exact que j'ai
+  mesuré aujourd'hui — 551 px pour 508 disponibles sur l'accueil à 320×568. J'ai cru un moment en
+  être la cause par l'insécable ; **la mesure l'a écartée** : en retirant toutes les insécables du
+  hero dans le navigateur, l'action reste à 551 et le H1 à 126 px. Rien ne bouge.
+- **Un `mouvement.spec.ts`** : la dette **DP.4**, consignée le même jour.
+- **Un `magazine.spec.ts`** : le fil d'Ariane absent sur téléphone. Ce n'est pas un défaut mais une
+  décision de conception de la phase 9 — `heroOnlyWide = "max-lg:hidden"`, avec sa justification
+  écrite : sous 64 rem la hauteur visible ne peut pas porter le fil en plus du titre, de la promesse,
+  de l'interaction, de l'action et du repère. **Le test contredit la décision** ; c'est lui qu'il
+  faudra reprendre, et cela demande l'arbitrage qui va avec DP.3.
+- Le dernier commit touchant ces fichiers dit « 97 échecs → 18 » (05/10/2026) : ce socle de dix-huit
+  était déjà connu et mesuré.
+
+**Pourquoi personne ne l'avait vu.** La CI n'a **jamais atteint** l'étape des parcours : elle était
+coupée à 20 minutes (D-073). Ces dix-huit échecs existaient sans être affichés nulle part. En
+corrigeant le délai, la CI va enfin les montrer — c'est le but, et c'est inconfortable : un rouge
+qui nomme une dette connue vaut mieux qu'un délai dépassé muet.
+
+**La leçon, et elle est simple.** Un changement de contenu qui touche 5 637 chaînes ne se vérifie
+pas avec les seuls tests unitaires. Les parcours sont le seul endroit où le texte rendu est comparé
+à ce qu'on attend. Ils prennent vingt minutes ; c'est le prix d'une livraison, pas une option.

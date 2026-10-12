@@ -247,7 +247,7 @@ test.describe("Corrections de l'audit P8.4 reprises en phase 9", () => {
     // Plan du site : les groupes ne portent plus le nom des navigations du pied de page.
     await page.goto("/plan-du-site/");
     await expect(
-      page.locator("main").getByRole("navigation", { name: "Plan du site : Pour qui ?" }),
+      page.locator("main").getByRole("navigation", { name: "Plan du site : Pour qui ?" }),
     ).toBeVisible();
   });
 

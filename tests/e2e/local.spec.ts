@@ -213,7 +213,7 @@ test.describe("Page locale (P6.5, données réelles du dépôt)", () => {
     await expect(page.locator("[data-local-agence]")).toHaveCount(1);
     await expect(page.locator("[data-local-facts]").first()).toBeVisible();
     await expect(page.locator("[data-fact-source]").first()).toContainText(
-      /Source : .+, consulté le/,
+      /Source\s: .+, consulté le/,
     );
     await expect(page.locator("[data-local-editorial]")).toBeVisible();
     await expect(page.getByRole("form")).toBeVisible();

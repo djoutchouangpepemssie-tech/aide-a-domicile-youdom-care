@@ -98,7 +98,7 @@ test.describe("Accueil (P2.3)", () => {
     const vitry = communes.communes.find((c) => c.nom === "Vitry-sur-Seine");
     const agenceVitry = siteConfig.agences.find((a) => a.id === vitry?.agence);
     await expect(page.locator("[data-result=oui]")).toHaveText(
-      `Oui, nous intervenons à Vitry-sur-Seine. Votre agence la plus proche : ${agenceVitry?.nom}.`,
+      `Oui, nous intervenons à Vitry-sur-Seine. Votre agence la plus proche : ${agenceVitry?.nom}.`,
     );
 
     await input.fill("Marseille");

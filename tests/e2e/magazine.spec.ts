@@ -100,7 +100,7 @@ test.describe("Magazine « Le Fil » (P7.1)", () => {
     const response = await page.goto("/a-propos/charte-editoriale/");
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
-    const section = page.getByRole("region", { name: "Le Fil : comment un article est fabriqué" });
+    const section = page.getByRole("region", { name: "Le Fil : comment un article est fabriqué" });
     await expect(section.locator("[data-etapes] li")).toHaveCount(6);
     await expect(section.getByRole("link", { name: "Découvrir le magazine" })).toBeVisible();
     await expectNoSeriousAxeViolations(page);
