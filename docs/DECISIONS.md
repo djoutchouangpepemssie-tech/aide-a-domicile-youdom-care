@@ -836,3 +836,42 @@ Six pages portaient un titre suivi immédiatement d'un autre titre : Paris 11e, 
 **aussi dans le sommaire ancré** (D-061). Un visiteur cliquait « Les communes voisines » et
 atterrissait sur un titre sans rien. Les titres sont retirés — vérification faite, aucun ne portait
 de texte propre, et aucune page sœur n'a de section obligatoire à cet endroit.
+
+## D-068 — Une seule formulation sur les médicaments (12/10/2026)
+
+**Le défaut, et pourquoi il est le plus sérieux de l'audit.** Le site portait 168 phrases parlant de
+médicaments, dont **17 énonçaient la position de Youdom Care** — en trois versions incompatibles :
+
+1. « L'aide porte sur les gestes du quotidien : … médicaments **donnés à l'heure prévue par le
+   médecin** » — dit que l'auxiliaire de vie administre ;
+2. « Youdom Care **ne donne aucun médicament** », « l'intervenante **ne touche pas** aux
+   médicaments » — une auto-limitation plus stricte que la règle ;
+3. « aide à la prise de médicaments préparés, dans le cadre légal » — la formulation juste.
+
+Trois réponses différentes à la même question, sur un sujet où une famille décide qui entre chez
+elle et ce qu'elle peut attendre. La première est la plus risquée : elle promet un geste que
+l'auxiliaire de vie n'a pas à faire.
+
+**La décision.** Une seule formulation, reprise de la charte de ton fournie par le client le
+12/10/2026 :
+
+> Votre auxiliaire de vie vous rappelle l'heure de vos médicaments et vous aide à les prendre quand
+> ils ont été préparés par l'infirmier ou la pharmacie. Elle ne les prépare pas et ne fait aucun
+> soin.
+
+Transposée à la troisième personne, comme le reste des pages, et adaptée à la grammaire de chaque
+phrase plutôt que collée à l'identique. Les 17 phrases de position sont alignées ; les 151 autres,
+qui mentionnent les médicaments sans énoncer de position — « un conjoint qui gère les médicaments »,
+« un médicament que la personne dit ne pas avoir pris » — sont laissées intactes : les remplacer
+aurait abîmé des phrases justes.
+
+**Ce que cette correction demande encore.** La formulation vient du client, pas d'une source
+juridique : elle décrit ce que Youdom Care fait, et c'est à ce titre qu'elle fait autorité ici.
+Qu'elle corresponde exactement au cadre légal de l'aide à la prise reste à faire confirmer par son
+conseil — c'est le genre de phrase qu'on vérifie une fois et qu'on ne rouvre plus.
+
+**Au passage, pour la quatrième fois de cette session** : une des 17 phrases a résisté au
+remplacement parce qu'elle portait une espace ordinaire avant son deux-points là où les autres ont
+une insécable. Un caractère invisible qui fait rater une correction sur dix-sept, sans aucun signal.
+La leçon est acquise : sur ce projet, une substitution de texte français s'écrit avec une classe
+d'espaces, jamais avec le caractère qu'on croit voir.
