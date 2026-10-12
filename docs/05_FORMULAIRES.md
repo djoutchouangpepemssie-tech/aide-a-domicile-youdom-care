@@ -4,7 +4,7 @@
 
 1. **Un formulaire par cas**, parce que l'on ne pose pas les mêmes questions à la fille d'une personne atteinte de la maladie d'Alzheimer et au père d'un enfant autiste.
 2. **Trois niveaux d'engagement partout** : appeler · être rappelé(e) (30 secondes) · décrire sa situation (2 à 3 minutes).
-3. **Rien d'obligatoire sauf l'essentiel** : pour qui, un moyen de joindre la personne, la commune, le consentement. Tout le reste aide à préparer l'appel, et chaque question offre « À définir ensemble » ou « Je préfère en parler ».
+3. **Rien d'obligatoire sauf l'essentiel** : pour qui, un moyen de joindre la personne, la commune, le consentement. Tout le reste aide à préparer l'appel, et chaque question offre « À définir ensemble » ou « Je préfère ne pas en parler ».
 4. **Le planning est le cœur** : choisir plusieurs jours, plusieurs créneaux, des nuits, du 24h/24, en quelques gestes.
 5. **Données de santé = prudence maximale** (voir section 8).
 6. **Destination : e-mail uniquement**, avec un format de demande stable pour brancher le CRM plus tard.

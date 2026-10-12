@@ -33,7 +33,7 @@ import type { BudgetBasis } from "@/lib/pricing/pricing";
 
 /*
  * Formulaire détaillé (docs/05 §3 et §5) : cinq étapes — pour qui, la situation (questions du
- * cas, toutes facultatives, chacune avec « Je préfère en parler »), les besoins (« À définir
+ * cas, toutes facultatives, chacune avec « Je préfère ne pas en parler »), les besoins (« À définir
  * ensemble » toujours proposé), le planning, les coordonnées avec consentement explicite aux
  * données de santé (case non précochée, texte de docs/01, version enregistrée). Les questions
  * et les choix viennent de content/formulaires/{cas}.json.
@@ -165,7 +165,7 @@ export function validateCoordinates(
   return errors;
 }
 
-/** Réponses de situation sans les vides ni « Je préfère en parler ». */
+/** Réponses de situation sans les vides ni « Je préfère ne pas en parler ». */
 export function cleanSituation(
   situation: Record<string, string | string[]>,
   skip: string,

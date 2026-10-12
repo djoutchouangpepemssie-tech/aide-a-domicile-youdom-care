@@ -1142,3 +1142,29 @@ qui nomme une dette connue vaut mieux qu'un délai dépassé muet.
 **La leçon, et elle est simple.** Un changement de contenu qui touche 5 637 chaînes ne se vérifie
 pas avec les seuls tests unitaires. Les parcours sont le seul endroit où le texte rendu est comparé
 à ce qu'on attend. Ils prennent vingt minutes ; c'est le prix d'une livraison, pas une option.
+
+## D-075 — « Je préfère en parler » devient « Je préfère ne pas en parler » (12/10/2026)
+
+**Relevé par le client** sur les formulaires de demande. Vérification faite avant de toucher :
+
+- **La chaîne n'est pas une erreur de frappe** : elle vient de `b96e6d6 feat(phase-03)` et elle est
+  **écrite dans le cahier des charges**, `docs/05_FORMULAIRES.md` point 3 — « chaque question offre
+  "À définir ensemble" ou "Je préfère en parler" ». L'intention était une invitation à la
+  conversation plutôt qu'un refus.
+- Elle n'a **pas** été touchée par les travaux du 12/10 (vérifié : `git log -S "choix_parler"` sur la
+  plage du jour ne renvoie rien).
+
+**Pourquoi le changement est néanmoins juste.** Placée en réponse à « De quelle maladie
+s'agit-il ? », « Je préfère en parler » ne dit plus ce qu'elle veut dire : le visiteur ne sait pas
+s'il décline la question ou s'il demande un appel. Une option d'échappatoire doit être lisible du
+premier coup d'œil — c'est sa seule fonction. Le pendant « À définir ensemble », qui porte sur les
+besoins et non sur une donnée sensible, reste inchangé : lui est clair.
+
+**Le registre.** Le client proposait « Je préfère pas en parler ». La charte de ton demande un
+français simple **et** correct ; la forme retenue est donc **« Je préfère ne pas en parler »**.
+
+Seize occurrences dans douze fichiers, dont **une seule rendue** —
+`content/interface.json` › `choix_parler`. Les six fichiers de formulaire ne la citaient que dans
+leur note interne. Le cahier des charges est corrigé avec le code, pour qu'ils ne divergent pas.
+
+946 tests, 13/13 contrôles, les deux parcours de formulaires verts.

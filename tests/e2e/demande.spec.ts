@@ -32,7 +32,9 @@ test.describe("Formulaires détaillés (P3.6)", () => {
       await form.getByRole("radio", { name: "Moi-même" }).check();
       await form.getByRole("button", { name: "Continuer" }).click();
       await expect(form.getByText("Étape 2 sur 5")).toBeVisible();
-      await expect(form.getByRole("radio", { name: "Je préfère en parler" }).first()).toBeVisible();
+      await expect(
+        form.getByRole("radio", { name: "Je préfère ne pas en parler" }).first(),
+      ).toBeVisible();
       await expectNoSeriousAxeViolations(page);
       await form.getByRole("button", { name: "Continuer" }).click();
       await expect(form.getByText("Étape 3 sur 5")).toBeVisible();

@@ -68,8 +68,8 @@ describe("DetailedForm", () => {
   it("nettoie la situation et exige l'accord aux coordonnées", () => {
     expect(
       cleanSituation(
-        { maladie: "Je préfère en parler", vit: "", pese: [], pro: ["Infirmier"] },
-        "Je préfère en parler",
+        { maladie: "Je préfère ne pas en parler", vit: "", pese: [], pro: ["Infirmier"] },
+        "Je préfère ne pas en parler",
       ),
     ).toEqual({ pro: ["Infirmier"] });
     expect(cleanSituation({}, "x")).toBeUndefined();
@@ -99,9 +99,11 @@ describe("DetailedForm", () => {
     fireEvent.click(screen.getByRole("button", { name: "Continuer" }));
 
     expect(screen.getByText("Étape 2 sur 5")).toBeInTheDocument();
-    expect(screen.getAllByRole("radio", { name: "Je préfère en parler" })).toHaveLength(4);
+    expect(screen.getAllByRole("radio", { name: "Je préfère ne pas en parler" })).toHaveLength(4);
     fireEvent.click(screen.getByRole("radio", { name: "Alzheimer ou apparentée" }));
-    fireEvent.click(screen.getAllByRole("radio", { name: "Je préfère en parler" })[1] as Element);
+    fireEvent.click(
+      screen.getAllByRole("radio", { name: "Je préfère ne pas en parler" })[1] as Element,
+    );
     fireEvent.click(screen.getByRole("checkbox", { name: "Les nuits difficiles" }));
     fireEvent.click(screen.getByRole("button", { name: "Continuer" }));
 

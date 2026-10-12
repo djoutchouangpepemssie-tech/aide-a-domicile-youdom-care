@@ -174,7 +174,7 @@ for (const cas of [
     await checkByKeyboard(form, page, "radio", "Moi-même");
     await pressContinue(page, form);
     await expect(form.getByText("Étape 2 sur 5")).toBeVisible();
-    await checkByKeyboard(form, page, "radio", /Je préfère en parler/);
+    await checkByKeyboard(form, page, "radio", /Je préfère ne pas en parler/);
     await pressContinue(page, form);
     await expect(form.getByText("Étape 3 sur 5")).toBeVisible();
     await checkByKeyboard(form, page, "checkbox", "À définir ensemble");
