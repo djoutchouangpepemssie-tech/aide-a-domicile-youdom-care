@@ -171,7 +171,7 @@ export function Callout({
                 </span>
                 {item.relais ? (
                   <span className="pl-9 text-teal-800 md:pl-0">
-                    {columns ? <span className="sr-only">{columns.relais} : </span> : null}
+                    {columns ? <span className="sr-only">{columns.relais} : </span> : null}
                     <span aria-hidden="true">→ </span>
                     {item.relais}
                   </span>

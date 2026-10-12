@@ -140,7 +140,7 @@ export function ArticleTemplate({ data }: { data: ArticleTemplateData }) {
               palier) s'y applique. */}
           <div className="flex min-w-0 flex-col">
             <p className={cn("m-0 text-small font-bold text-teal-800", heroWhenRoomy)}>
-              <span className="sr-only">{t.rubrique} : </span>
+              <span className="sr-only">{t.rubrique} : </span>
               <Link href={rubriquePath(meta.rubrique)} className="no-underline hover:underline">
                 {rubrique}
               </Link>

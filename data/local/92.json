@@ -41,7 +41,7 @@
     {
       "type": "demographie",
       "label": "Part des 75 ans et plus",
-      "value": "7,6 % de la population (75-89 ans : 6,4 % ; 90 ans ou plus : 1,2 %)",
+      "value": "7,6 % de la population (75-89 ans : 6,4 % ; 90 ans ou plus : 1,2 %)",
       "source_url": "https://www.insee.fr/fr/statistiques/8581696",
       "source_label": "Insee, recensement de la population 2022 (base « Évolution et structure de la population »)",
       "collected_at": "2026-09-26"
@@ -401,7 +401,7 @@
       "type": "transport-adapte",
       "label": "PAM Île-de-France — transport à la demande pour personnes à mobilité réduite",
       "value": "Service régional d'Île-de-France Mobilités couvrant les huit départements. Réservation au 0800 00 18 18 (service et appel gratuits, 7 h à 20 h), inscription en ligne ou par courrier. Ouvert notamment aux titulaires d'une carte mobilité inclusion mention invalidité ou d'une carte d'invalidité (taux ≥ 80 %) et aux personnes âgées classées en GIR 1 à 4.",
-      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
+      "address": "Agence commerciale : 24 allée Vivaldi, 75012 Paris",
       "telephone": "0800 00 18 18",
       "url": "https://pam.iledefrance-mobilites.fr/",
       "source_url": "https://pam.iledefrance-mobilites.fr/inscription/eligibilite",
@@ -444,7 +444,7 @@
     {
       "type": "association",
       "label": "France Alzheimer Hauts-de-Seine",
-      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
+      "value": "Association départementale France Alzheimer : accueil et écoute des familles",
       "address": "94 avenue Achille Peretti, 92200 Neuilly-sur-Seine",
       "telephone": "01 46 24 68 31",
       "url": "https://www.francealzheimer.org/hautsdeseine/",
