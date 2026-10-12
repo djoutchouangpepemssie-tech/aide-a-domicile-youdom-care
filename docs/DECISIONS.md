@@ -783,3 +783,56 @@ n'est pas une liste amputée, c'est le garde-fou qui fonctionne — publier ces 
 client les valide un par un. Les passer à `valide: true` pour remplir la page publierait des
 promesses non validées : exactement ce que `docs/07` interdit. La grille s'adapte déjà au nombre
 réellement affiché (D-032).
+
+## D-067 — L'avantage fiscal, l'adjacence et les titres vides sur les pages locales (12/10/2026)
+
+Trois corrections issues de l'audit du 12/10/2026, vérifiées une par une avant d'y toucher.
+
+### 1. « L'avantage fiscal vient une fois par an » — faux depuis l'avance immédiate
+
+Quatorze pages du Val-de-Marne écrivaient, en cinq variantes, que « l'avantage fiscal vient plus
+tard, une fois par an, et ne change rien à votre trésorerie ». C'est contredit par l'avance
+immédiate de l'Urssaf, que le site présente ailleurs.
+
+La phrase reprend désormais la formulation **déjà sourcée** du site
+(`content/aides/credit-d-impot-et-avance-immediate.json`, source urssaf.fr) : le crédit d'impôt se
+déduit au moment du paiement « plutôt qu'un an plus tard », avec l'avance immédiate, **soumise à
+conditions d'éligibilité**. L'ordre légal est conservé : le tarif TTC d'abord, parce que c'est
+celui qu'on règle.
+
+*Ce que je n'ai pas écrit, et pourquoi.* L'audit suggérait de mentionner l'exclusion APA/PCH. La
+page de référence du site ne la porte pas : elle dit « soumise à conditions d'éligibilité », avec sa
+source. Ajouter une exclusion précise que rien dans le contenu ne soutient aurait été un fait
+inventé — sur un sujet où une famille prend une décision d'argent.
+
+*Ce que le contrôle a corrigé chez moi.* Ma première rédaction disait « le crédit d'impôt de
+50 % ». `check-local-facts` l'a refusée : tout nombre d'une page locale doit être un fait sourcé de
+cette page. Le taux a donc disparu de la phrase — il vit, sourcé, sur la page dédiée vers laquelle
+le texte renvoie. Le contrôle avait raison : un chiffre juste au mauvais endroit reste un chiffre
+sans source.
+
+*Deux pages que l'audit comptait à tort.* Serris et Jouy-en-Josas étaient dans sa liste de seize.
+Elles écrivent « avant tout avantage fiscal », ce qui est exact. Le compte réel était quatorze.
+
+### 2. « Ses voisines immédiates sont… » — une adjacence que la donnée ne porte pas
+
+Trente et une pages affirmaient une adjacence. Or `communes_voisines` (`local-schema.ts`) ne porte
+qu'un `distance_km` : **aucune notion de limite commune**. La liste est triée à vol d'oiseau, ce qui
+mélange une commune limitrophe et une ville à trente kilomètres. Saint-Mandé annonçait ainsi le 11e
+arrondissement parmi ses voisines immédiates — un arrondissement entièrement intérieur à Paris, qui
+ne touche aucune commune de banlieue.
+
+Le texte dit maintenant « les communes les plus proches », ce que la donnée soutient réellement.
+Une seule affirmation d'adjacence subsiste, vérifiée exacte : le 12e borde Saint-Mandé.
+
+*Ce que cela ne corrige pas.* Nommer les vraies limitrophes demande une source d'adjacence
+(contours communaux), que le pipeline de données ouvertes ne peut pas récupérer tant que le réseau
+de l'environnement est fermé. En attendant, le site ne dit plus faux : il dit moins.
+
+### 3. Six titres sans une ligne dessous
+
+Six pages portaient un titre suivi immédiatement d'un autre titre : Paris 11e, 12e, 13e, 18e, le
+16e (« L'agence de Puteaux ») et Serris. Vérifié dans le HTML construit : le titre vide apparaissait
+**aussi dans le sommaire ancré** (D-061). Un visiteur cliquait « Les communes voisines » et
+atterrissait sur un titre sans rien. Les titres sont retirés — vérification faite, aucun ne portait
+de texte propre, et aucune page sœur n'a de section obligatoire à cet endroit.
