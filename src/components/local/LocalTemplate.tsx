@@ -416,7 +416,16 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
                 <ul className="m-0 mt-3 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-small">
                   {sommaire.map((entry) => (
                     <li key={entry.id} className="max-w-none">
-                      <a href={`#${entry.id}`} className="underline-offset-4 hover:underline">
+                      {/*
+                        44 px de haut au minimum, comme toute cible tactile du site (contrat
+                        mobile, `tests/e2e/mobile.spec.ts`). Les liens de ce sommaire faisaient
+                        21 px à leur création (D-061) : lisibles à la souris, trop fins au pouce.
+                        Le parcours l'a relevé sur les 131 pages locales (D-078).
+                      */}
+                      <a
+                        href={`#${entry.id}`}
+                        className="inline-flex min-h-11 items-center underline-offset-4 hover:underline"
+                      >
                         {entry.text}
                       </a>
                     </li>

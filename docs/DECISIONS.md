@@ -1246,3 +1246,35 @@ plus rien, et reste visible sur téléphone. 66 parcours de hero et de magazine 
 **Ce que cet aller-retour montre.** Un parcours réparé se met à payer tout de suite : sans la remise
 en état de `hero.spec.ts`, ce déplacement aurait dégradé le premier écran de tous les articles sur
 ordinateur, sans que rien ne le signale.
+
+## D-078 — Le sommaire des pages locales avait des cibles de 21 px (12/10/2026)
+
+Relevé par `tests/e2e/mobile.spec.ts` sur les pages de département et de commune, à 390 px :
+
+```
+cibles sous 44 px : « Se déplacer, et l'agence de Puteaux » 248×21
+```
+
+**C'est mon défaut, et il date du jour même.** Le sommaire ancré des pages locales (D-061) rendait
+ses liens en texte simple : 248 px de large, **21 px de haut**. Lisible à la souris, trop fin au
+pouce — le contrat mobile du projet exige 44 px, et c'est la bonne exigence sur un site dont le
+public appelle depuis un téléphone.
+
+Les liens reçoivent `inline-flex min-h-11 items-center`, comme toute autre cible tactile du site.
+Le sommaire grandit en hauteur ; c'est le prix d'une cible atteignable, et il est juste.
+
+**Ce que cet enchaînement de la journée montre.** D-061 a ajouté le sommaire sans que rien ne
+mesure ses cibles, parce que la CI n'atteignait jamais les parcours (D-073). Le délai corrigé, le
+parcours a trouvé le défaut en une exécution. Trois corrections d'aujourd'hui — les quatre attentes
+typographiques, la ligne de confiance qui poussait le bouton de 58 px, et ces cibles de 21 px —
+n'auraient été vues par personne sans cela.
+
+**Compte final de la suite, environnement cohérent** (`SITE_INDEXABLE="false"` posé **avant** le
+build, comme la CI le fait au niveau du job) : **677 verts, 108 ignorés, 3 échecs, 18,6 min**. Après
+cette correction il en reste **un** : la dette DP.4, consignée le 05/10/2026 et réservée à Arcel.
+
+*Note de méthode, pour la prochaine fois.* Mon avant-dernière mesure annonçait **61** échecs : j'avais
+lancé `pnpm build` **avant** d'exporter `SITE_INDEXABLE`, donc construit le site indexable puis testé
+comme s'il était fermé. Soixante et un faux défauts, tous sur l'indexation. La CI ne connaît pas ce
+piège : elle déclare ses variables au niveau du job, une fois pour toutes les étapes. Reproduire une
+chaîne à la main sans reproduire **l'ordre** de ses déclarations, c'est mesurer autre chose.
