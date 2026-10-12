@@ -72,15 +72,26 @@ describe("CountUp", () => {
     expect(formatCount(3, 2)).toBe("3,00");
   });
 
-  it("rend la valeur finale côté serveur, lisible et en chiffres tabulaires", () => {
+  it("ne rend la valeur QU'UNE FOIS côté serveur, lisible et en chiffres tabulaires", () => {
     const html = renderToString(<CountUp value={1268} prefix="+" suffix=" %" />);
     const final = formatCount(1268);
     expect(html).toContain(`class="m-count"`);
-    expect(html).toContain(`aria-hidden="true"`);
-    expect(html).toContain(`class="sr-only">${final}<`);
     expect(html.startsWith(`<span class="m-count">+`)).toBe(true);
     expect(html.endsWith(` %</span>`)).toBe(true);
     expect(html).toContain(`--m-count-width:${final.length}ch`);
+
+    /*
+     * Le défaut relevé le 12/10/2026 (D-065) : deux copies de la valeur dans le HTML livré
+     * faisaient un texte de page à « 4545 » pour 45 heures — ce que lit un moteur de recherche.
+     * Le texte rendu ne doit contenir le nombre qu'une fois, et sans `aria-hidden`, sinon un
+     * lecteur d'écran ne lirait aucune valeur quand JavaScript ne tourne pas.
+     */
+    expect(html.split(final)).toHaveLength(2);
+    expect(html).not.toContain("aria-hidden");
+    expect(html).not.toContain("sr-only");
+    const text = render(<CountUp value={1268} prefix="+" suffix=" %" />);
+    expect(text.container.textContent).toBe(`+${final} %`);
+    text.unmount();
   });
 
   it("affiche la valeur finale immédiatement en mouvement réduit", () => {
@@ -117,7 +128,12 @@ describe("CountUp", () => {
     frames.tick(10_600);
     expect(digits(container)).toBe(formatCount(1000));
     expect(frames.pending()).toBe(0);
+    /*
+     * Pendant et après le comptage, la copie `sr-only` existe et la copie animée est masquée aux
+     * lecteurs d'écran : la valeur est annoncée une seule fois, et c'est la bonne.
+     */
     expect(container.querySelector(".sr-only")?.textContent).toBe(formatCount(1000));
+    expect(container.querySelector(".m-count__digits")).toHaveAttribute("aria-hidden", "true");
   });
 
   it("annule l'image en attente et rétablit la valeur finale au démontage", () => {

@@ -43,9 +43,16 @@ describe("WeekPlanner (lecture)", () => {
       hours: 15,
       after: " heures par semaine, dont une nuit.",
     });
+    /*
+     * Le total ne s'écrit QU'UNE FOIS (D-065). Cette assertion attendait « Environ 15 15 heures »
+     * : elle figeait le défaut au lieu de le trouver, et c'est ainsi qu'« environ 5151 heures par
+     * semaine » a tenu une centaine de pages jusqu'à l'audit du 12/10/2026. Le texte rendu est
+     * celui que lit un moteur de recherche ; il doit valoir exactement la phrase de `summaryText`.
+     */
     const summary = document.querySelector(".week-summary") as HTMLElement;
-    expect(summary).toHaveTextContent(/^Environ 15\s*15 heures par semaine, dont une nuit\.$/);
-    expect(summary.querySelector(".m-count .sr-only")).toHaveTextContent("15");
+    expect(summary.textContent).toBe("Environ 15 heures par semaine, dont une nuit.");
+    expect(summary.querySelector(".m-count .sr-only")).toBeNull();
+    expect(summary.querySelector(".m-count__digits")).not.toHaveAttribute("aria-hidden");
     expect(WEEK_COUNT_DURATION).toBe(600);
   });
 

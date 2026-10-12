@@ -1166,3 +1166,64 @@ menu, alors que le propos même des groupes est de **réordonner** par besoin. D
 épinglé un chiffre ou une séquence au lieu de dire ce que je voulais vraiment vérifier :
 l'exhaustivité, l'unicité, et les trois groupes nommés. Un test qui fige ce qu'on n'a pas mesuré ne
 garde rien ; il casse au premier changement légitime.
+
+## Un test qui gardait le défaut au lieu de le trouver — 12 octobre 2026
+
+L'audit du site relevait « environ 5151 heures par semaine » sur une centaine de pages. Le calcul
+était juste : 51 heures. C'est l'affichage qui écrivait le nombre deux fois.
+
+`CountUp` rendait deux copies de la valeur — une visible qui se compte de 0 à 51, masquée aux
+lecteurs d'écran pendant l'animation, et une copie invisible qui leur donne la valeur. À l'œil,
+parfait. Au lecteur d'écran, parfait. Mais le **texte** de la page valait « 5151 », et c'est ce
+texte que lit un moteur de recherche.
+
+Ce qui m'a arrêté, c'est ce que j'ai trouvé en voulant corriger le test :
+
+```ts
+expect(summary).toHaveTextContent(/^Environ 15\s*15 heures par semaine, dont une nuit\.$/);
+```
+
+Le test **attendait** « 15 15 ». Quelqu'un — moi, à une phase précédente — avait observé le rendu,
+trouvé ce doublon, et l'avait écrit dans l'assertion pour que le test passe. À partir de là, le
+défaut n'était plus un défaut : c'était le contrat. Cent soixante pages l'ont porté jusqu'à ce
+qu'un lecteur humain le voie.
+
+C'est la leçon la plus coûteuse de la journée, et elle ne parle pas de `CountUp` : **un test qui
+épingle ce qu'on a observé, au lieu de ce qui doit être vrai, ne garde rien.** Il fige. Le nouveau
+test dit ce qui doit être vrai — le texte vaut exactement la phrase de `summaryText` — et il aurait
+échoué dès le premier jour.
+
+J'ai vérifié sur le build et pas seulement en test : 160 résumés de semaine lus dans les pages
+construites, 0 doublé.
+
+## Trois choses que l'audit a mal lues — 12 octobre 2026
+
+L'audit est sérieux et m'a fait trouver un vrai défaut sur cent soixante pages. Mais il a été
+produit en grattant les balises des pages, et cette méthode fabrique des défauts qui n'existent pas.
+Je les ai tous vérifiés dans le HTML construit avant de toucher à quoi que ce soit.
+
+**« Nous ne faisons pasQui le fait ».** Le balisage réel :
+
+```html
+<li aria-hidden="true" class="hidden … md:grid md:grid-cols-2">
+  <span class="pl-9">Nous ne faisons pas</span><span>Qui le fait</span>
+</li>
+```
+
+Deux colonnes d'une grille, et la ligne entière est `aria-hidden` : un navigateur les affiche côte
+à côte, un lecteur d'écran la saute. Même chose pour « 21,91 € l'heure22,77 € » — deux cartes de
+prix voisines — et pour « Solutions de répitAidants » — un titre et son étiquette de public,
+empilés en blocs. Les navigateurs insèrent un espace à la frontière de bloc quand ils calculent le
+nom accessible. Rien de collé à l'écran, rien de collé à l'oreille. Collé seulement quand on retire
+les balises, ce qu'aucun visiteur ne fait.
+
+**« Confirmé par Arcel » visible.** Vrai, mais sur **une** page, pas quatre :
+`/a-propos/nos-engagements/`, par le champ `preuve` de l'engagement E2. La seconde occurrence,
+`couverture.source`, n'est jamais rendue — je l'ai cherchée dans les 523 pages construites.
+
+**« Listes amputées : un seul engagement, une seule carte ».** Ce n'est pas un défaut de gabarit.
+Quatre engagements sur cinq portent `valide: false`, et le composant masque un engagement non
+validé — le garde-fou fonctionne. La tentation était réelle : passer les cinq à `true` remplissait
+deux listes d'un coup et faisait disparaître deux lignes de l'audit. Cela aurait publié quatre
+promesses que le client n'a pas validées. Une liste courte et vraie vaut mieux qu'une liste pleine
+et inventée.

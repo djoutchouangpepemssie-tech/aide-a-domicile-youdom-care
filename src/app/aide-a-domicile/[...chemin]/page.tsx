@@ -89,7 +89,7 @@ export async function buildLocalData(chemin: string): Promise<LocalTemplateData 
     navigation,
     phone: contact.telephone_principal,
     agency,
-    // Confirmé par Arcel le 27/09/2026 : les auxiliaires de vie interviennent dans toute la région.
+    // Règle de Youdom Care : les auxiliaires de vie interviennent dans toute la région (27/09/2026).
     coverage: couverture?.phrase ?? null,
     weekExample: getWeekExamples().exemples.find((e) => e.id === editorial.semaine_type) ?? null,
     aids,

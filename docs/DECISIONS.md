@@ -718,3 +718,68 @@ convention déjà en place pour les piliers.
 
 **Contrôles.** 13/13 verts, 946 tests unitaires, 0 violation axe critique ou sérieuse sur mobile et
 sur ordinateur, 0 débordement sur 144 mesures de 320 à 1920 px.
+
+## D-065 — Le total des heures s'écrivait deux fois dans le texte de la page (12/10/2026)
+
+**Le défaut.** L'audit du 12/10/2026 relève « environ 5151 heures par semaine » sur une centaine de
+pages, et « 161161 » sur les pages de présence continue. Le calcul était juste : c'est l'affichage
+qui doublait.
+
+`CountUp` (`src/components/motion/CountUp/CountUp.tsx`) rendait **deux copies** de la valeur :
+
+```html
+<span aria-hidden="true" class="m-count__digits">45</span>
+<span class="sr-only">45</span>
+```
+
+La première se compte de 0 à 45 et est masquée aux lecteurs d'écran pendant l'animation ; la
+seconde, invisible à l'œil, leur donne la valeur. À l'écran comme au lecteur d'écran, c'était
+juste. Mais le **texte** de la page valait « 4545 » — et c'est ce texte que lit un moteur de
+recherche, un générateur d'extrait, `llms.txt`, et tout ce qui analyse la page sans la peindre.
+
+**La correction.** Le rendu statique ne contient plus la valeur qu'une fois, sans `aria-hidden` :
+sans JavaScript, le lecteur d'écran lit la vraie valeur, le moteur aussi. Le dédoublement
+n'apparaît que **côté client, et seulement quand le comptage a réellement lieu** — un état
+`animated` qui ne passe à vrai que dans l'effet, donc avec JavaScript, hors mouvement réduit et
+avec un `IntersectionObserver`. Le premier rendu du client est identique à celui du serveur :
+aucun écart d'hydratation.
+
+**Ce qui l'avait laissé passer, et c'est le vrai enseignement.** Le test de `WeekPlanner` attendait
+le défaut :
+
+```ts
+expect(summary).toHaveTextContent(/^Environ 15\s*15 heures par semaine, dont une nuit\.$/);
+```
+
+Un test qui épingle ce qu'il a observé au lieu de ce qui doit être vrai ne garde rien : il
+transforme le défaut en contrat. L'assertion vérifie désormais que le texte vaut exactement la
+phrase de `summaryText`, et celle de `CountUp` que le HTML livré ne contient le nombre qu'une fois.
+
+**Vérifié sur le build**, pas seulement en test : 160 résumés de semaine lus dans les pages
+construites, 0 doublé.
+
+## D-066 — Une note de suivi interne s'affichait comme preuve d'un engagement (12/10/2026)
+
+L'audit relève « Confirmé par Arcel le 27 septembre 2026 » visible sur le site. Vérification faite
+sur les pages construites : la mention apparaissait sur **une seule page**,
+`/a-propos/nos-engagements/`, par le champ `preuve` de l'engagement E2 dans
+`content/engagements.json`. L'autre occurrence, `couverture.source` de `site.config.json`, n'est
+**jamais rendue** — l'audit se trompe sur ce point.
+
+Le champ `preuve` est destiné au visiteur : il porte un fait qu'il peut vérifier — un délai tenu,
+une garantie écrite, un chiffre. « Le client nous l'a confirmé » n'en est pas un, et le lire sur le
+site donne l'impression d'un brouillon laissé en ligne. Le champ repasse à `null` ; une preuve
+vérifiable reste à écrire pour E2.
+
+Les mentions internes nominatives sont retirées du contenu et des commentaires du code à la demande
+du client. Les commentaires qui attribuent une **décision de conception** à une demande datée sont
+conservés : ils expliquent pourquoi un réglage est ce qu'il est, et c'est de la provenance
+d'ingénierie, pas une note de suivi.
+
+**Ce que l'audit a lu comme un défaut de gabarit et qui n'en est pas un.** « Nos engagements » n'en
+affiche qu'un, et « Ce qui change avec Youdom Care » qu'une carte, pour la même raison : quatre
+engagements sur cinq portent `valide: false`, et le composant masque un engagement non validé. Ce
+n'est pas une liste amputée, c'est le garde-fou qui fonctionne — publier ces textes demande que le
+client les valide un par un. Les passer à `valide: true` pour remplir la page publierait des
+promesses non validées : exactement ce que `docs/07` interdit. La grille s'adapte déjà au nombre
+réellement affiché (D-032).

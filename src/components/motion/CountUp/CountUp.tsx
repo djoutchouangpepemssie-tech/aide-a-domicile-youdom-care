@@ -1,19 +1,36 @@
 "use client";
 
-import { useEffect, useRef, type ComponentPropsWithoutRef, type CSSProperties } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+  type CSSProperties,
+} from "react";
 import { cn } from "@/lib/cn";
 import { MOTION_MAX_DURATION } from "@/lib/motion/grid";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
 import { observeOnce } from "@/lib/motion/viewport";
 
 /*
- * Compteur pour un chiffre sourcé (docs/design/BRIEF_EXPERIENCE.md §3). Le serveur rend la
- * valeur finale ; une copie `sr-only` la garde lisible par les lecteurs d'écran pendant que la
- * copie visible (aria-hidden) se compte de 0 à la valeur en 600 ms (`requestAnimationFrame`,
- * sortie en cube), déclenchée une seule fois à l'apparition, par la fabrique d'observateurs
- * partagée. La dernière image écrit la valeur exacte, jamais un arrondi. Chiffres tabulaires et
- * largeur réservée : aucun décalage de mise en page. En mouvement réduit, la valeur finale reste
- * affichée. Le chiffre reste un fait sourcé : le composant ne l'invente pas, il l'affiche.
+ * Compteur pour un chiffre sourcé (docs/design/BRIEF_EXPERIENCE.md §3). La valeur se compte de 0
+ * à sa valeur exacte en 600 ms (`requestAnimationFrame`, sortie en cube), une seule fois à
+ * l'apparition, par la fabrique d'observateurs partagée. La dernière image écrit la valeur
+ * exacte, jamais un arrondi. Chiffres tabulaires et largeur réservée : aucun décalage de mise en
+ * page. En mouvement réduit, la valeur finale reste affichée. Le chiffre reste un fait sourcé :
+ * le composant ne l'invente pas, il l'affiche.
+ *
+ * **Le rendu statique ne contient la valeur qu'UNE fois (D-065).** Jusqu'au 12/10/2026, le
+ * serveur rendait deux copies — la copie visible en `aria-hidden`, et une copie `sr-only` pour
+ * les lecteurs d'écran. À l'œil et au lecteur d'écran, c'était juste ; mais le *texte* de la page
+ * valait « 4545 » pour un total de 45 heures. Relevé par l'audit du 12/10/2026 sur une centaine
+ * de pages (« environ 5151 heures par semaine ») : c'est ce texte que lisent un moteur de
+ * recherche, un extrait de résultat et tout ce qui analyse la page.
+ *
+ * Le dédoublement n'existe donc plus que **côté client, et seulement quand l'animation a
+ * réellement lieu** : `animated` ne passe à vrai que dans l'effet, c'est-à-dire avec JavaScript,
+ * hors mouvement réduit et avec un `IntersectionObserver`. Sans animation, il n'y a qu'un nombre,
+ * sans `aria-hidden` : le lecteur d'écran lit la vraie valeur, le moteur aussi.
  */
 
 export interface CountUpProps extends Omit<ComponentPropsWithoutRef<"span">, "children"> {
@@ -63,10 +80,18 @@ export function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const final = formatCount(value, decimals, locale);
+  /*
+   * Vrai uniquement côté client, et seulement quand le comptage va avoir lieu. Le premier rendu
+   * du client est donc identique à celui du serveur (pas d'écart d'hydratation) ; l'effet le fait
+   * basculer ensuite, et c'est ce basculement qui ajoute la copie `sr-only` et masque la copie
+   * animée aux lecteurs d'écran — pour la durée de l'animation, pas dans le HTML livré.
+   */
+  const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element || prefersReducedMotion() || typeof IntersectionObserver === "undefined") return;
+    setAnimated(true);
     let frame = 0;
     const unobserve = observeOnce(element, 0.5, () => {
       let start: number | undefined;
@@ -97,13 +122,14 @@ export function CountUp({
       {prefix}
       <span
         ref={ref}
-        aria-hidden="true"
+        /* Masqué aux lecteurs d'écran seulement pendant qu'il se compte : voir `animated`. */
+        aria-hidden={animated ? "true" : undefined}
         className="m-count__digits"
         style={{ "--m-count-width": `${final.length}ch` } as CSSProperties}
       >
         {final}
       </span>
-      <span className="sr-only">{final}</span>
+      {animated ? <span className="sr-only">{final}</span> : null}
       {suffix}
     </span>
   );

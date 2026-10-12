@@ -79,7 +79,7 @@ export interface LocalTemplateData {
   /** Agence la plus proche (`data.agence_proche.id` résolu dans site.config.json) ; null si inconnue. */
   agency: Agency | null;
   /**
-   * Couverture régionale (`site.config.json` › `couverture.phrase`), confirmée par Arcel le
+   * Couverture régionale (`site.config.json` › `couverture.phrase`), règle de Youdom Care du
    * 27/09/2026 : les auxiliaires de vie interviennent dans toute l'Île-de-France. Affichée sous la
    * réponse, à la place de la distance jusqu'à l'agence, qui laissait croire à une limite.
    */
