@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Engagements affichés par le site. La loop les affiche en prévisualisation. En production, un engagement dont valide vaut false n'est pas affiché et fait échouer pnpm validate --prod tant qu'il est référencé. Youdom Care ajuste le texte pour qu'il dise exactement ce que l'entreprise fait, puis passe valide à true. Le champ preuve est destiné au VISITEUR : il porte un fait qu'il peut vérifier (un délai tenu, une garantie écrite, un chiffre), jamais une note de suivi interne — l'audit du 12/10/2026 en a trouvé une affichée en clair sur /a-propos/nos-engagements/ (D-065).",
+  "_lisezmoi": "Engagements affichés par le site. La loop les affiche en prévisualisation. En production, un engagement dont valide vaut false n'est pas affiché et fait échouer pnpm validate --prod tant qu'il se trouve. Youdom Care ajuste le texte pour qu'il dise exactement ce que l'entreprise fait, puis passe valide à true. Le champ preuve est destiné au VISITEUR : il porte un fait qu'il peut vérifier (un délai tenu, une garantie écrite, un chiffre), jamais une note de suivi interne — l'audit du 12/10/2026 en a trouvé une affichée en clair sur /a-propos/nos-engagements/ (D-065).",
   "engagements": [
     {
       "code": "E1",

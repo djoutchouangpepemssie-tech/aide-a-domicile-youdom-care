@@ -952,3 +952,52 @@ l'audit sur cette rubrique vide.
 vrai, et il restait vert quelle que fût la réponse. Il affirme désormais le contrat : l'index liste
 des articles, donc il s'indexe. C'est la troisième fois aujourd'hui qu'un test adossé à
 l'implémentation laisse passer un défaut que le premier lecteur humain voit.
+
+## D-071 — Le site ne dit plus qu'il lit une base de données (12/10/2026)
+
+**Le défaut.** L'audit relève, sur les pages locales, des « signaux de génération automatique » :
+noms d'établissements importés sans accents, libellés d'annuaire, et surtout des tournures qui
+disent au visiteur qu'il lit une base plutôt qu'une page écrite pour lui. La charte de ton fournie
+par le client le même jour les nomme explicitement : « recensé, d'après les données, la base, FINESS
+→ supprimer, ou "dans la commune", "tout près" ».
+
+**Mesuré avant de corriger** : 312 « recensé », 78 « référencé », 49 mentions de base ou de données,
+76 noms sans accents.
+
+**Ce qui a été fait.** 387 tournures d'annuaire réécrites en français ordinaire — « trois
+établissements de santé **sont recensés** dans le 8e » devient « se trouvent » ; « aucun accueil de
+jour **n'est recensé** » devient « n'existe » ; l'usage adjectival (« le seul établissement
+**recensé** dans la commune ») est simplement supprimé. 146 mentions de base ou de données retirées
+ou réécrites. 91 noms d'établissements restitués avec leurs accents, comme la charte l'autorise
+nommément : Hôpital, Privé, Sœurs, Cœur, École, « Hôpital Delafontaine, centre hospitalier de
+Saint-Denis » au lieu du libellé tronqué « Centre Hospitalier de St Denis Hopital Delafontaine ».
+
+**Ce qui est resté intact, et c'est le plus important.**
+
+- **« au recensement de 2022 » et « recense »** : ce sont les sources Insee des chiffres de
+  population. Les motifs employés visent `recensé` avec son accent, qui ne les touche pas — vérifié,
+  113 mentions de « recensement » préservées.
+- **« habitants recensés en 2022 »** : protégé par une exclusion explicite, pour la même raison.
+- Les mentions légitimes de « données » hors pages locales : « vider les données du site dans votre
+  navigateur » (politique de confidentialité), les licences des photographies, « les consignes
+  données par l'équipe ».
+
+**Le sourcing n'est pas affaibli.** Vérifié sur le build : chaque page locale rend un bloc
+« Repères chiffrés, avec leurs sources », avec « Source : Insee, consulté le 26 septembre 2026 ».
+L'attribution dans le corps du texte était redondante avec ce bloc ; la retirer ne désource aucun
+fait, et `check-local-facts` reste vert.
+
+**Deux fautes que j'ai introduites et corrigées.** Ma substitution `est recensé` → `se trouve` a
+produit cinq « y se trouve », qui n'est pas français — il fallait « s'y trouve ». Et elle a produit
+un « se trouve par la base de la CNSA » là où le texte disait « est recensée par la base ». Les deux
+ont été trouvées en relisant systématiquement ~450 substitutions, pas par hasard : sur un
+remplacement de masse, la vérification n'est pas optionnelle, c'est la moitié du travail.
+
+**Un contrôle a attrapé une troisième conséquence** que je n'avais pas vue : en retirant « référencés »
+d'une méta-description, je l'avais fait passer sous le minimum de 140 caractères.
+`check-local-facts` l'a refusée. Recomposée à 144 caractères, avec un fait de la page et non du
+remplissage.
+
+**Ce que je n'ai pas touché.** « Foyer-Logement Beloeuil-Miller » : c'est peut-être un nom propre
+exact, peut-être un « Belœuil » importé sans ligature. Sans source pour trancher, le corriger serait
+inventer un nom. À vérifier auprès de l'établissement.
