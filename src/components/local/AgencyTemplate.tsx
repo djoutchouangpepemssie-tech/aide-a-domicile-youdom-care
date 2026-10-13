@@ -122,9 +122,9 @@ export function AgencyTemplate({ data }: { data: AgencyTemplateData }) {
               {agency.nom}
             </Heading>
             <Lead className={cn(heroGap, heroLeadClamp)}>
-              {address
-                ? fill(page.chapo, { adresse: address, lieu })
-                : fill(page.chapo_sans_adresse, { lieu })}
+              {/* L'adresse complète est donnée par le bloc « Adresse » juste dessous : la
+                  répéter ici la mettait deux fois sur le même écran (D-089). */}
+              {fill(page.chapo_sans_adresse, { lieu })}
             </Lead>
             <div
               className={cn(heroOrderPanel, heroGapWide, heroPanelClass("sable"))}

@@ -7,13 +7,12 @@
     },
     "ariane": "Nos agences",
     "h1": "Nos agences en Île-de-France",
-    "chapo": "{agences} agences, et un territoire qui va bien au-delà : chaque page donne l'adresse, le téléphone et les communes que l'agence suit.",
+    "chapo": "Nos {agences} agences, et un territoire qui va bien au-delà : chaque page donne l'adresse, le téléphone et les communes que l'agence suit.",
     "territoires_texte": "Vous cherchez votre commune plutôt qu'une agence ?",
     "territoires_lien": "Voir la carte des territoires"
   },
   "page": {
     "sur_titre": "Agence",
-    "chapo": "Notre point d'accueil {lieu} : {adresse}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle.",
     "rappel_h2": "Être rappelé(e) par cette agence",
     "rappel_texte": "Deux minutes. Vos coordonnées servent uniquement à vous rappeler.",
     "chapo_sans_adresse": "Notre point d'accueil {lieu}. Appelez-nous, ou laissez vos coordonnées : un conseiller vous rappelle."

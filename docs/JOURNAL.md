@@ -1396,3 +1396,19 @@ Une seule vraie divergence : un nom d'établissement écrit avec un trait d'unio
 pas. J'ai suivi la source. Et j'ai rétabli deux chiffres que j'avais d'abord retirés par prudence,
 la vérification les autorisant. Voir D-088.
 
+## 13/10/2026 — Passe 3 : et trois fois, ce sont les règles du projet qui ont tranché
+
+Magazine, lexique, tarifs, agences. Trois fois, la prose proposée par l'audit a buté sur une règle
+du dépôt, et trois fois j'ai resserré le texte plutôt que la règle : deux chapeaux à 62 et 65 mots
+pour une fenêtre de 40 à 60, une phrase de plus de 30 mots dans un chapô.
+
+Le lexique a été le plus instructif. « En clair » figurait dans 22 descriptions sur 23, et les
+tournures proposées font 11 à 12 caractères de plus — or les marges disponibles vont de 0 à 10 dans
+la fenêtre 140-155. Mon premier essai a fait échouer 33 tests. Mesuré fiche par fiche, j'ai réparti
+six variantes courtes selon la marge de chacune, équilibrées pour ne pas remplacer une répétition
+par une autre.
+
+Sur les pages d'agence, l'adresse apparaissait quatre fois dans le texte visible : trois sont
+légitimes, la quatrième était le chapô. La forme avec adresse disparaît du gabarit, du schéma et du
+contenu. Voir D-089.
+

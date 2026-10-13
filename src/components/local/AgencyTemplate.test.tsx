@@ -46,7 +46,20 @@ describe("AgencyTemplate (P6.6)", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Youdom Care Hauts-de-Seine",
     );
-    expect(screen.getByText(/49-51 quai de Dion-Bouton, 92800 Puteaux\./)).toBeInTheDocument();
+    /*
+     * L'adresse est affichée, mais plus dans le chapô : celui-ci la répétait alors que le panneau
+     * du hero et le bloc « Adresse » la donnent déjà (D-089). Le motif d'avant exigeait l'adresse
+     * suivie d'un point, forme qu'elle n'avait que dans le chapô.
+     */
+    expect(screen.getAllByText(/49-51 quai de Dion-Bouton, 92800 Puteaux/).length).toBeGreaterThan(
+      0,
+    );
+    expect(
+      screen.getByText("Notre point d'accueil dans les Hauts-de-Seine.", { exact: false }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(/accueil dans les Hauts-de-Seine\u00a0: 49-51/),
+    ).not.toBeInTheDocument();
     expect(document.querySelector("main")).toHaveAttribute("data-agence-page", "puteaux");
     // Téléphone et horaires de l'agence sont null dans site.config.json : ni affichés, ni inventés.
     expect(screen.queryByText("Téléphone de l'agence")).not.toBeInTheDocument();

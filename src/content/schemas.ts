@@ -1881,9 +1881,10 @@ export const agenciesPageSchema = z.strictObject({
   }),
   page: z.strictObject({
     sur_titre: text,
-    /** Contient {adresse} (adresse postale complète) et {lieu} (« dans les Hauts-de-Seine »). */
-    chapo: text.includes("{adresse}").includes("{lieu}"),
-    /** Même phrase sans l'adresse, pour une agence qui n'en publie pas (D-036). */
+    /**
+     * Chapô d'une page d'agence. Il ne porte pas l'adresse : le bloc « Adresse » juste dessous la
+     * donne, et l'écrire aux deux endroits la répétait sur un même écran (D-089).
+     */
     chapo_sans_adresse: text.includes("{lieu}"),
     rappel_h2: text,
     rappel_texte: text,

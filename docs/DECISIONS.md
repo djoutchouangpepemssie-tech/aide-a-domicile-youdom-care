@@ -1770,3 +1770,45 @@ contiennent « Crédit d'impôt de 50 % » : un chiffre national se déclare com
 `autre` avec sa source (règle écrite dans `src/lib/local/numbers.ts`), il ne se pose pas dans une
 puce sans cela.
 
+## D-089 — Passe 3 : magazine, lexique, tarifs, agences (13/10/2026)
+
+**Magazine.** Les neuf chapeaux qui finissaient par « Voici… » ont une dernière phrase propre :
+zéro « Voici » restant. Trois des formulations proposées ne tenaient pas dans les règles du projet,
+et ce sont les règles qui ont gagné :
+
+- deux chapeaux passaient à **62 et 65 mots** pour une fenêtre de 40 à 60 (`check-content`) ;
+- la phrase de la liste des 48 heures faisait **plus de 30 mots** dans un chapô (`check-copy`).
+
+Les trois sont resserrées — « Reste à savoir lire un devis. », « Cette liste dit quoi emporter en
+quittant l'hôpital, quoi regarder les deux premiers jours, et qui appeler. » — et l'idée est gardée.
+
+**Lexique.** « En clair » figurait dans 22 descriptions sur 23 : **0 maintenant**. Mais pas avec les
+tournures proposées : mesurées fiche par fiche, les marges disponibles vont de **0 à 10 caractères**
+dans la fenêtre 140-155, et les six tournures de l'audit en demandent 11 à 12. Elles auraient
+cassé la limite — c'est d'ailleurs ce qui est arrivé au premier essai, 33 tests en échec. Six
+variantes courtes (« en bref », « en résumé », « simplement », « l'essentiel », « en deux mots »)
+sont réparties selon la marge de chaque fiche et équilibrées : 5, 5, 4, 4, 4. Remplacer une
+répétition par une autre n'aurait rien réglé.
+
+Le développé de la fiche GIR ne répète plus « groupes iso-ressources » deux fois.
+
+**Tarifs.** Une formule par page au lieu de « tels que les publie service-public.gouv.fr » sur
+quatre pages.
+
+**Agences.** L'adresse apparaissait **quatre fois** dans le texte visible d'une page d'agence —
+mesuré, scripts retirés avant les balises. Trois sont légitimes (panneau du hero, bloc « Adresse »,
+pied de page commun à tout le site) ; la quatrième était le chapô. Il ne la porte plus : la forme
+avec adresse disparaît du gabarit, du schéma et du contenu, et `chapo_sans_adresse` devient la seule
+(il en restait deux formes pour un seul usage). Le chapô de l'index ne commence plus par un chiffre.
+
+Un test figeait l'ancienne forme en exigeant l'adresse **suivie d'un point**, ce qu'elle n'avait que
+dans le chapô. Il fige désormais le nouveau contrat : l'adresse est affichée, et le chapô ne la
+répète pas.
+
+**Vérifications** : 948 tests, 13/13 contrôles, 22 parcours (magazine, lexique, local, aides), lint
+et typecheck verts. Les 37 parcours services lancés après la réécriture des Hero sont verts aussi.
+
+**Reste de l'audit** : les premiers intertitres du magazine (« Pourquoi… ? » sur 10 articles sur 13),
+les photos réutilisées entre articles et pages, et les quatre jeux de puces locales — ces derniers
+en attente d'arbitrage, « Crédit d'impôt de 50 % » devant d'abord être déclaré comme fait sourcé.
+
