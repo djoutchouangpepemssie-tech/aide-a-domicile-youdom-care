@@ -1367,3 +1367,17 @@ reste partagé, la photo bascule toujours avec le texte. Vérifié sur le HTML c
 ne contient plus que le chapô. 948 tests, 141 parcours et les quatre parcours de l'audit P8.4, dont
 celui qui éprouve l'annonce aux lecteurs d'écran. Voir D-086.
 
+## 13/10/2026 — Passe 2, premier temps
+
+Le hero des pages locales répétait la réponse « Oui, nous intervenons à X » et la phrase d'agence
+que le bloc juste dessous reprend en titre. Mesuré proprement — scripts retirés avant les balises,
+sinon la charge RSC fausse le compte — c'était bien deux fois, sur 131 pages.
+
+Une seule modification du gabarit, et chaque phrase n'apparaît plus qu'une fois. L'ancre du hero
+annonce maintenant le contenu local au lieu de répéter le titre du bloc. L'interaction immédiate du
+hero reste la recherche de commune, celle qui la portait déjà au clavier : le parcours qui l'exige
+dans la hauteur visible passe toujours.
+
+Restent les puces et les 97 sous-titres, et une contrainte qui ne se négocie pas : les formulations
+proposées portent des chiffres, qui doivent être des faits sourcés de leur page. Voir D-087.
+

@@ -5,12 +5,7 @@ import { SiteConversionRail } from "@/components/blocks/ConversionRail/SiteConve
 import { FAQ } from "@/components/blocks/FAQ/FAQ";
 import { Hero } from "@/components/blocks/Hero/Hero";
 import { HeroSection } from "@/components/blocks/Hero/HeroSection";
-import {
-  heroPhotoSizes,
-  heroWhenRoomy,
-  sceneByTerritory,
-  sceneTint,
-} from "@/components/blocks/Hero/hero-scene";
+import { heroPhotoSizes, sceneByTerritory, sceneTint } from "@/components/blocks/Hero/hero-scene";
 import { TerritorySearch } from "@/components/blocks/TerritorySearch/TerritorySearch";
 import { formatFrenchDate } from "@/components/blocks/SourcesList/SourcesList";
 import { WeekPlanner } from "@/components/blocks/WeekPlanner/WeekPlanner";
@@ -218,23 +213,14 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
   const heroScene = sceneByTerritory(data.departement ?? data.code);
   const searchTexts = { ...texts.recherche_commune, hors: texts.formulaires.hors_idf };
   /*
-   * Interaction immédiate du hero (brief docs/design/BRIEF_LIQUID_GLASS.md §4) : la réponse est
-   * déjà là — « Oui, nous intervenons à … » et l'agence réelle la plus proche avec sa distance
-   * arrondie — et la recherche de commune permet d'en vérifier une autre, au clavier. Aucun fait
-   * nouveau : les textes sont ceux de content/interface.json, l'agence celle du pipeline.
+   * Interaction immédiate du hero (brief docs/design/BRIEF_LIQUID_GLASS.md §4) : la recherche de
+   * commune, au clavier. La réponse « Oui, nous intervenons à … » et la phrase d'agence **ne sont
+   * plus ici** : elles titrent le bloc immédiatement suivant, et les lire deux fois en deux écrans
+   * donnait à 131 pages un air de copie (audit des Hero du 13/10/2026, D-087). Aucun fait nouveau :
+   * les textes sont ceux de content/interface.json, l'agence celle du pipeline.
    */
   const heroAnswer = (
     <div data-local-reponse-hero="">
-      <p className="heading-4 m-0 text-teal-900">{fill(t.reponse.oui, { lieu })}</p>
-      {agency ? (
-        <p className={cn("m-0 mt-1 text-small", heroWhenRoomy)}>
-          {fill(agencyResponse(data, agency, t), {
-            agence: agency.nom,
-            lieu,
-            commune: agency.commune,
-          })}
-        </p>
-      ) : null}
       <TerritorySearch
         className="mt-3"
         texts={searchTexts}
@@ -305,7 +291,7 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
           phone={phone && telHref ? { label: formatFrenchPhone(phone), href: telHref } : null}
           reassurance={reassurance}
           tint={sceneTint(heroScene)}
-          cue={{ label: fill(t.vivre_h2, { lieu }), href: "#vivre" }}
+          cue={{ label: fill(t.vivre_ancre, { lieu }), href: "#vivre" }}
           gesture={heroAnswer}
           media={
             <PhotoFigure

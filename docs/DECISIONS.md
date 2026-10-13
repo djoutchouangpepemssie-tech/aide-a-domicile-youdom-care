@@ -1694,3 +1694,38 @@ parcours de l'audit P8.4 dont R-2, qui éprouve précisément l'annonce du séle
 d'écran. Les tests de `ReaderSwitch` rendent désormais les deux composants ensemble sous le
 fournisseur, comme la page le fait.
 
+## D-087 — Passe 2, premier temps : le hero des pages locales ne se répète plus (13/10/2026)
+
+**Mesure d'abord.** Sur `/aide-a-domicile/hauts-de-seine/puteaux/`, « Oui, nous intervenons à
+Puteaux » apparaissait **4 fois** dans le fichier HTML — mais deux de ces quatre sont dans la charge
+RSC, invisible pour un visiteur. En retirant les `<script>` **avant** les balises (la leçon du
+12/10), la duplication réelle était de **2** : une fois dans le hero, une fois en titre du bloc
+immédiatement suivant, avec la même phrase d'agence sous les deux. Sur 131 pages, lire deux fois la
+même chose en deux écrans suffit à donner un air de copie.
+
+**Correction, une seule, pour 131 pages.** Le hero ne porte plus que la recherche de commune comme
+interaction immédiate ; la réponse et la phrase d'agence titrent le bloc suivant, où Arcel voulait
+les garder. L'ancre du hero annonce désormais le contenu local (« Ce qui existe à X ») au lieu de
+répéter le H2 du bloc (« Vivre à domicile à X ») : nouveau texte `local.vivre_ancre`, déclaré au
+schéma comme les autres.
+
+Après correction, texte visible seulement :
+
+```
+« Oui, nous intervenons à Puteaux »      1 fois
+« Vivre à domicile à Puteaux »           1 fois
+« Ce qui existe à Puteaux »              1 fois
+« Vos interventions sont coordonnées »   0 fois
+```
+
+**Vérifications** : 948 tests, 13/13 contrôles, 69 parcours locaux et hero. Le parcours qui exige
+une « interaction immédiate » dans la hauteur visible passe toujours : la recherche de commune la
+porte, et c'est elle qui la portait déjà au clavier.
+
+**Ce qui reste de la passe 2.** Les quatre jeux de puces de réassurance et les 97 sous-titres. Les
+puces proposées par l'audit contiennent des chiffres (« Crédit d'impôt de 50 % ») : `check-local-facts`
+refuse un nombre qui n'est pas un fait sourcé **de la page** — règle posée le 12/10 et déjà
+rencontrée. Les sous-titres proposés contiennent, eux, des faits chiffrés par commune (habitants,
+pourcentages, nombre d'établissements) : chacun sera confronté aux faits sourcés de sa page avant
+d'être posé, et écarté s'il ne l'est pas. Un sous-titre plus vivant ne vaut pas un fait inventé.
+
