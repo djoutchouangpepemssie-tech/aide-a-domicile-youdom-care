@@ -16,9 +16,12 @@ import { useReader, type Reader } from "./ReaderContext";
  */
 
 export interface ReaderSwitchProps {
+  texts: { legende: string; proche: string; soi: string };
+}
+
+export interface ReaderTextProps {
   proche: string;
   soi: string;
-  texts: { legende: string; proche: string; soi: string };
 }
 
 /* Boutons de 56 px (docs/design/CONCEPT.md §4 : « le sélecteur de lecteur existant, agrandi »). */
@@ -28,7 +31,7 @@ const pill =
   "motion-reduce:transition-none hover:bg-teal-50 aria-pressed:border-teal-800 aria-pressed:bg-teal-800 " +
   "aria-pressed:text-white aria-pressed:hover:bg-teal-800";
 
-export function ReaderSwitch({ proche, soi, texts }: ReaderSwitchProps) {
+export function ReaderSwitch({ texts }: ReaderSwitchProps) {
   const { reader, setReader } = useReader();
   const legendId = useId();
   const [announcement, setAnnouncement] = useState("");
@@ -68,7 +71,18 @@ export function ReaderSwitch({ proche, soi, texts }: ReaderSwitchProps) {
       <span role="status" aria-live="polite" className="sr-only">
         {announcement}
       </span>
-      <span data-reader={reader}>{reader === "proche" ? proche : soi}</span>
     </>
   );
+}
+
+/*
+ * Le chapô qui bascule, séparé des commandes : celles-ci vivent **à côté** du paragraphe et non
+ * dedans. Dans le même paragraphe, le texte lu par un robot d'indexation mêlait les libellés des
+ * boutons au chapô (« Vous cherchez de l'aidepour un prochepour vous-mêmeVotre mère est tombée… »).
+ * Le balisage était valide — `span` et `button` sont du contenu de phrasé — mais le chapô n'a pas à
+ * contenir des commandes (audit des Hero du 13/10/2026, D-086).
+ */
+export function ReaderText({ proche, soi }: ReaderTextProps) {
+  const { reader } = useReader();
+  return <span data-reader={reader}>{reader === "proche" ? proche : soi}</span>;
 }

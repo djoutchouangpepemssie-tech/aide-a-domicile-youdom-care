@@ -1356,3 +1356,14 @@ déploiement en retard, pas du code.
 La signature du magazine est devenue mot pour mot celle qu'Arcel demande, et six tests qui figeaient
 l'ancien libellé ont été alignés. Voir D-085.
 
+## 13/10/2026 — Le sélecteur n'est plus dans le paragraphe
+
+Dernier point juste de l'audit des Hero : le sélecteur de lecteur vivait dans le `<p class="lead">`,
+si bien que le texte du chapô se mêlait aux libellés des boutons. Le balisage était valide, mais un
+chapô n'a pas à contenir des commandes.
+
+Les commandes et le texte sont maintenant deux composants voisins, sous le même fournisseur — l'état
+reste partagé, la photo bascule toujours avec le texte. Vérifié sur le HTML construit : le paragraphe
+ne contient plus que le chapô. 948 tests, 141 parcours et les quatre parcours de l'audit P8.4, dont
+celui qui éprouve l'annonce aux lecteurs d'écran. Voir D-086.
+

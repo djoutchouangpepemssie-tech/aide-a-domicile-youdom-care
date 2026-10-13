@@ -17,7 +17,7 @@ const texts = { legende: "Vous lisez", proche: "pour un proche", soi: "pour vous
 function Scene() {
   return (
     <ReaderProvider>
-      <ReaderSwitch proche="Texte proche." soi="Texte soi." texts={texts} />
+      <ReaderSwitch texts={texts} />
       <ReaderPhoto proche={proche} soi={soi} />
     </ReaderProvider>
   );

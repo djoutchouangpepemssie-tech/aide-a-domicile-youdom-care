@@ -38,7 +38,7 @@ import { Tilt } from "@/components/motion/Tilt/Tilt";
 import { RelatedLinks } from "@/components/blocks/RelatedLinks/RelatedLinks";
 import { ReaderProvider } from "@/components/service/ReaderContext";
 import { ReaderPhoto } from "@/components/service/ReaderPhoto";
-import { ReaderSwitch } from "@/components/service/ReaderSwitch";
+import { ReaderSwitch, ReaderText } from "@/components/service/ReaderSwitch";
 import { RELATED_HEADING_ID, ServiceRelated } from "@/components/service/ServiceRelated";
 import { Callout } from "@/components/ui/Callout/Callout";
 import { Heading } from "@/components/ui/Heading/Heading";
@@ -347,12 +347,12 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
     <Hero
       surtitle={t.publics[page.public]}
       title={page.h1}
+      leadControl={page.chapo_pour_soi ? <ReaderSwitch texts={t.lecteur} /> : undefined}
       lead={
         page.chapo_pour_soi ? (
-          <ReaderSwitch
+          <ReaderText
             proche={`${page.chapo} ${page.promesse.join(" ")}`}
             soi={`${page.chapo_pour_soi} ${page.promesse.join(" ")}`}
-            texts={t.lecteur}
           />
         ) : (
           `${page.chapo} ${page.promesse.join(" ")}`

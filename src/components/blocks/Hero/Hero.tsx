@@ -72,6 +72,12 @@ export interface HeroProps {
   title: string;
   /** Chapô : texte, ou nœud (sélecteur de lecteur des pages services, docs/03 §4). */
   lead: ReactNode;
+  /**
+   * Commandes posées **avant** le chapô, dans le même panneau : le sélecteur de lecteur, quand il
+   * y en a un. Elles ne vont pas dans le chapô lui-même, dont le texte serait alors mêlé aux
+   * libellés des boutons (D-086).
+   */
+  leadControl?: ReactNode;
   primary: { label: string; href: string };
   secondary: { label: string; href: string };
   /** Lien téléphone ; null si le numéro est inconnu (le lien se masque). */
@@ -113,6 +119,7 @@ export function Hero({
   surtitle,
   title,
   lead,
+  leadControl,
   primary,
   secondary,
   phone,
@@ -206,8 +213,9 @@ export function Hero({
         )}
         data-hero-interaction={interaction === "lead" ? "" : undefined}
       >
-        {/* Chapô borné à deux ou trois lignes, sauf quand il porte le sélecteur de lecteur : le
-            recadrage d'un texte multiligne ne doit pas toucher aux boutons qui y vivent. */}
+        {leadControl}
+        {/* Chapô borné à deux ou trois lignes, sauf quand des commandes l'accompagnent : le
+            recadrage d'un texte multiligne ne doit pas toucher aux boutons posés juste au-dessus. */}
         <Lead className={interaction === "lead" ? undefined : heroLeadClamp}>{lead}</Lead>
       </div>
       {gesture ? (

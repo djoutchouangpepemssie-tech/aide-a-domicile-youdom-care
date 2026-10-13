@@ -1666,3 +1666,31 @@ sous-titres proposés par l'audit contiennent des faits chiffrés (habitants, po
 d'établissements) : chacun devra être confronté aux faits sourcés de **sa** page avant d'être posé,
 sous peine de publier un fait non sourcé — ce que `check-local-facts` refuse, et avec raison.
 
+## D-086 — Le sélecteur de lecteur sort du chapô (13/10/2026)
+
+**Le constat, vérifié.** Sur `/personnes-agees/`, le sélecteur « pour un proche / pour vous-même »
+était rendu **à l'intérieur** du `<p class="lead">`. Le balisage était valide — `span` et `button`
+sont du contenu de phrasé — mais le texte du paragraphe mêlait les libellés des commandes au chapô :
+« Vous cherchez de l'aide / pour un proche / pour vous-même / Votre mère est tombée… ». Un chapô n'a
+pas à contenir des commandes, et c'est ce paragraphe que lisent les robots d'indexation.
+
+**Correction.** `ReaderSwitch` ne porte plus que les commandes et la zone de statut ; le texte qui
+bascule passe dans un composant voisin, `ReaderText`. `Hero` reçoit une prop `leadControl`, rendue
+avant le chapô dans le même panneau. Les deux restent sous le même `ReaderProvider` — vérifié : il
+enveloppe tout le hero — donc l'état est partagé comme avant, et la photo continue de basculer avec
+le texte.
+
+Rendu construit après correction :
+
+```html
+<div data-hero-interaction=""><span role="group" …>…commandes…</span>
+  <p class="lead"><span data-reader="proche">Votre mère est tombée, …</span></p>
+```
+
+Le paragraphe ne contient plus que le chapô. Mesuré sur le HTML produit, pas déduit.
+
+**Vérifications** : 948 tests unitaires, 141 parcours (hero et services, deux projets) et les quatre
+parcours de l'audit P8.4 dont R-2, qui éprouve précisément l'annonce du sélecteur aux lecteurs
+d'écran. Les tests de `ReaderSwitch` rendent désormais les deux composants ensemble sous le
+fournisseur, comme la page le fait.
+

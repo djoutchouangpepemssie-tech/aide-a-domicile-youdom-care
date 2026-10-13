@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
-import { ReaderSwitch } from "./ReaderSwitch";
+import { ReaderProvider } from "./ReaderContext";
+import { ReaderSwitch, ReaderText } from "./ReaderSwitch";
 
 const texts = {
   legende: "Vous cherchez de l’aide",
@@ -9,9 +10,22 @@ const texts = {
   soi: "pour vous-même",
 };
 
+/*
+ * Les commandes et le chapô sont deux composants voisins depuis D-086 : le sélecteur ne vit plus
+ * dans le paragraphe. Ils partagent leur état par le fournisseur, comme sur la page.
+ */
+function renderSwitch() {
+  return render(
+    <ReaderProvider>
+      <ReaderSwitch texts={texts} />
+      <ReaderText proche="Texte proche." soi="Texte soi." />
+    </ReaderProvider>,
+  );
+}
+
 describe("ReaderSwitch (docs/03 §4)", () => {
   it("affiche le chapô « pour un proche » par défaut, avec un groupe de boutons à bascule", () => {
-    render(<ReaderSwitch proche="Texte proche." soi="Texte soi." texts={texts} />);
+    renderSwitch();
     expect(screen.getByRole("group", { name: texts.legende })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: texts.proche })).toHaveAttribute(
       "aria-pressed",
@@ -27,7 +41,7 @@ describe("ReaderSwitch (docs/03 §4)", () => {
 
   it("bascule vers « pour vous-même » au clic et au clavier", async () => {
     const user = userEvent.setup();
-    render(<ReaderSwitch proche="Texte proche." soi="Texte soi." texts={texts} />);
+    renderSwitch();
     await user.click(screen.getByRole("button", { name: texts.soi }));
     expect(screen.getByRole("button", { name: texts.soi })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByText("Texte soi.")).toBeInTheDocument();
@@ -43,7 +57,7 @@ describe("ReaderSwitch (docs/03 §4)", () => {
 
   it("annonce la version affichée dans une zone de statut, vide au départ (audit P8.4 R-2)", async () => {
     const user = userEvent.setup();
-    render(<ReaderSwitch proche="Texte proche." soi="Texte soi." texts={texts} />);
+    renderSwitch();
     const status = screen.getByRole("status");
     expect(status).toHaveAttribute("aria-live", "polite");
     expect(status).toHaveTextContent("");
