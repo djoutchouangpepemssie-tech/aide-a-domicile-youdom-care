@@ -6,7 +6,8 @@ import { chromium } from "@playwright/test";
  * port de débogage, puis lance `lhci autorun` qui s'y connecte (`settings.port` de
  * lighthouserc.cjs). Lighthouse ne lance donc pas son propre Chrome : sous Windows,
  * chrome-launcher échoue (EPERM) en supprimant son profil temporaire avant que Chrome ne le
- * libère, et le poste n'a pas besoin de Google Chrome.
+ * libère, et le poste n'a pas besoin de Google Chrome. `CHROMIUM_PATH` désigne au besoin un
+ * binaire déjà présent, comme dans `playwright.config.ts`.
  *
  * Les pages sont prérendues au build : le site doit être construit indexable, sinon l'audit
  * SEO « is-crawlable » échoue alors que la prévisualisation est volontairement en noindex
@@ -31,8 +32,15 @@ async function main() {
     process.exitCode = built;
     return;
   }
+  /*
+   * `CHROMIUM_PATH` permet de désigner un Chromium déjà présent, comme le fait déjà
+   * `playwright.config.ts` : sur un poste où la version attendue par Playwright n'est pas
+   * installée et ne peut pas l'être (réseau fermé), c'est la seule façon de mesurer. Sans la
+   * variable, rien ne change.
+   */
+  const executablePath = process.env.CHROMIUM_PATH;
   const browser = await chromium.launch({
-    channel: "chromium",
+    ...(executablePath ? { executablePath } : { channel: "chromium" }),
     args: [`--remote-debugging-port=${DEBUGGING_PORT}`],
   });
   try {

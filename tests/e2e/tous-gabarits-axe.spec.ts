@@ -287,7 +287,18 @@ test.describe("Corrections de l'audit P8.4 reprises en phase 9", () => {
     await expect(
       form.getByRole("combobox", { name: "Votre commune ou votre code postal" }),
     ).toHaveValue("Puteaux");
+    /*
+     * On attend la réponse en panne avant d'exiger l'alerte. Sans cela, le délai d'assertion
+     * couvrait à la fois l'aller-retour simulé et le rendu : au 775e parcours sur 788, machine
+     * chargée, les 5 s n'ont pas suffi et le test est passé « flaky » (reprise verte). Rien n'est
+     * relâché — l'alerte est toujours exigée visible et focalisée — mais l'attente ne porte plus
+     * que sur le rendu (D-083).
+     */
+    const enPanne = page.waitForResponse(
+      (r) => r.url().includes("/api/lead/") && r.status() === 503,
+    );
     await nextButton(form).click();
+    await enPanne;
     const alert = form.getByRole("alert").filter({ hasText: "L'envoi n'a pas abouti" });
     await expect(alert).toBeVisible();
     await expect(alert).toBeFocused();
