@@ -1381,3 +1381,18 @@ dans la hauteur visible passe toujours.
 Restent les puces et les 97 sous-titres, et une contrainte qui ne se négocie pas : les formulations
 proposées portent des chiffres, qui doivent être des faits sourcés de leur page. Voir D-087.
 
+## 13/10/2026 — Les 97 sous-titres, et l'audit qui avait raison
+
+Passe 2 terminée : la répétition « aide à domicile » sous un H1 qui la contient déjà passe de 70
+pages à **zéro sur 131**.
+
+Le sous-titre n'étant pas couvert par le contrôle des nombres, j'ai éprouvé chaque proposition à
+part — et deux fois, parce que les nombres écrits en lettres échappent même à la règle du dépôt.
+Mon compteur a crié trois fois : trois fois il avait tort, et l'audit raison. Un jardin nommé
+« Jardin de l'Hôpital Saint-Louis » comptait pour un hôpital ; deux lignes de données étaient le
+même établissement ; et « deux hôpitaux de jour et une polyclinique » était exact au fait près.
+
+Une seule vraie divergence : un nom d'établissement écrit avec un trait d'union que la source n'a
+pas. J'ai suivi la source. Et j'ai rétabli deux chiffres que j'avais d'abord retirés par prudence,
+la vérification les autorisant. Voir D-088.
+

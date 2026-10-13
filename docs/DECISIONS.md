@@ -1729,3 +1729,44 @@ rencontrée. Les sous-titres proposés contiennent, eux, des faits chiffrés par
 pourcentages, nombre d'établissements) : chacun sera confronté aux faits sourcés de sa page avant
 d'être posé, et écarté s'il ne l'est pas. Un sous-titre plus vivant ne vaut pas un fait inventé.
 
+## D-088 — Passe 2 terminée : 97 sous-titres locaux, chaque fait éprouvé (13/10/2026)
+
+Les 97 sous-titres proposés par l'audit sont posés. La répétition qui donnait l'air de copie —
+« aide à domicile » dans un sous-titre placé sous un H1 qui la contient déjà — passe de **70 pages
+à 0 sur 131**, mesuré sur les fichiers de contenu.
+
+**Pourquoi une vérification était obligatoire.** `check-local-facts` ne contrôle les nombres que
+dans la zone éditoriale et dans les réponses aux questions locales : le **sous-titre n'est pas
+couvert**. Rien n'aurait donc arrêté un chiffre inventé. Chaque proposition a été éprouvée avec les
+fonctions du projet (`referenceNumbers`, `findUnsourcedNumbers`), puis une seconde fois par un
+compteur écrit pour l'occasion, parce que les propositions écrivent souvent les nombres **en
+lettres** (« cinq hôpitaux », « sept résidences autonomie ») et que la règle du dépôt ne relève que
+les chiffres.
+
+**Ce que la vérification a donné — et c'est l'audit qui gagne trois fois sur quatre.**
+
+| cas | mon compteur | la vérité, après lecture des faits |
+| --- | --- | --- |
+| « cinq hôpitaux » (10e) | 6 faits | **5 faits `hopital`** : le sixième était le « Jardin de l'Hôpital Saint-Louis » |
+| « un hôpital sur deux sites » (Levallois) | 2 faits | **le même établissement saisi deux fois** (HOPITAL / HOSP FRANCO BRITANNIQUE) |
+| « une polyclinique et deux hôpitaux de jour » (Alfortville) | 3 faits | **exact** : deux « HOPITAL DE JOUR », une « POLYCLINIQUE » |
+| « résidence autonomie Madeleine-Wagner » (Vélizy) | nom absent | **le fait écrit « Madeleine Wagner », sans trait d'union** |
+
+Seul le dernier était une vraie divergence, et la source l'emporte : un nom d'établissement sourcé
+s'écrit comme sa source, sauf demande explicite du commanditaire — ce qui était le cas, à l'inverse,
+pour l'accent d'« Édith-Kremsdorf », réclamé nommément par l'audit.
+
+Deux formulations que j'avais d'abord adoucies par prudence ont été **rétablies** telles qu'Arcel les
+a écrites, la vérification les autorisant : les parts d'âge de Franconville (6,9 % et 1 %, Insee) et
+les 15 places de l'accueil de jour de Levallois. Une page vivante vaut mieux qu'une page prudente
+quand le fait est sourcé.
+
+**Vérifications** : 13/13 contrôles, 948 tests, 12 parcours locaux. Chaque sous-titre porte les
+espaces insécables du site avant « : », « ; » et « % ».
+
+**Reste de l'audit** : les quatre jeux de puces de réassurance (passe 2) et la passe 3 (réécriture
+des Hero publics, pathologies, services, puis magazine, lexique, tarifs). Les puces proposées
+contiennent « Crédit d'impôt de 50 % » : un chiffre national se déclare comme un fait de type
+`autre` avec sa source (règle écrite dans `src/lib/local/numbers.ts`), il ne se pose pas dans une
+puce sans cela.
+
