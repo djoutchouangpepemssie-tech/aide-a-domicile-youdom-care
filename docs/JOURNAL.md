@@ -1249,3 +1249,12 @@ Rien dans `content/` n'était à corriger. Voir D-080.
 Ce qu'il faut en retenir : deux fois de suite, j'ai déduit l'état du monde d'un instrument qui ne
 pouvait pas l'observer, au lieu de demander une mesure là où il y a du réseau. C'est la demande de
 mesure qui a tranché, en quatre lignes.
+
+Suite, le même jour : le run portant cette correction a blanchi les trois adresses et en a sali une
+quatrième, verte jusque-là, dont la page parente répond 200. L'adresse qui échoue change donc d'un
+run à l'autre : l'hôte refuse une partie des requêtes envoyées six à la fois, et le dit en 404.
+Toute disparition est maintenant confirmée par un second appel, hors rafale — une page vraiment
+disparue répond 404 deux fois.
+
+Trois diagnostics pour un seul défaut, et les deux premiers démentis par une mesure. Le point commun
+des deux erreurs : avoir conclu depuis un instrument qui ne pouvait pas observer ce que j'affirmais.

@@ -124,32 +124,54 @@ const goneStatuses = new Set([404, 410]);
  */
 const BROWSER_USER_AGENT = "Mozilla/5.0";
 
-/** Ouvre chaque adresse une fois (GET, 10 s, redirections suivies). */
+/**
+ * Ouvre chaque adresse (GET, 10 s, redirections suivies) et **confirme toute disparition par un
+ * second appel**, après une pause et hors de la rafale.
+ *
+ * Pourquoi la confirmation. Mesuré les 13/10/2026 sur deux runs de CI :
+ * pour-les-personnes-agees.gouv.fr répond 404 à une partie des requêtes quand on lui en envoie six
+ * à la fois, et **l'adresse qui échoue change d'un run à l'autre** — trois pages au premier run,
+ * une quatrième au suivant, dont le parent répond 200. Ce n'est pas la page qui manque, c'est
+ * l'hôte qui refuse sous charge, en se présentant comme une page disparue. Une page vraiment
+ * disparue, elle, répond 404 deux fois : le contrôle ne perd donc rien, il cesse seulement de
+ * rendre la CI rouge au hasard de l'ordre des requêtes (D-080).
+ */
 export async function checkExternal(
   urls: readonly string[],
   fetchImpl: typeof fetch = fetch,
   concurrency = 6,
+  recheckDelayMs = 2_000,
 ): Promise<ExternalReport> {
   const unique = [...new Set(urls)];
   const failures: string[] = [];
   const unreachable: string[] = [];
   let reached = 0;
   let index = 0;
+  const open = (url: string) =>
+    fetchImpl(url, {
+      method: "GET",
+      redirect: "follow",
+      headers: { "user-agent": BROWSER_USER_AGENT },
+      signal: AbortSignal.timeout(10_000),
+    });
   const worker = async () => {
     while (index < unique.length) {
       const url = unique[index];
       index += 1;
       if (!url) continue;
       try {
-        const response = await fetchImpl(url, {
-          method: "GET",
-          redirect: "follow",
-          headers: { "user-agent": BROWSER_USER_AGENT },
-          signal: AbortSignal.timeout(10_000),
-        });
+        const response = await open(url);
         reached += 1;
         if (goneStatuses.has(response.status)) {
-          failures.push(`${url} → HTTP ${response.status}`);
+          await new Promise((resolve) => setTimeout(resolve, recheckDelayMs));
+          const second = await open(url);
+          if (goneStatuses.has(second.status)) {
+            failures.push(`${url} → HTTP ${second.status}`);
+          } else {
+            unreachable.push(
+              `${url} → HTTP ${response.status} au premier appel, ${second.status} au second : hôte qui refuse sous charge, pas une page disparue`,
+            );
+          }
         } else if (response.status >= 400) {
           unreachable.push(
             `${url} → HTTP ${response.status} (refus de répondre, pas une page disparue), à vérifier à la main`,

@@ -1360,6 +1360,24 @@ répond-elle à un visiteur ? » : il faut donc la poser comme un visiteur. Un t
 (`scripts/validate/check-links.test.ts`) pour que le jeton de robot ne revienne pas sans nouvelle
 mesure. `goneStatuses` n'a pas bougé : 404 et 410 restent des erreurs.
 
+**Deuxième mesure, deuxième surprise.** Le run de CI qui portait cet agent a bien blanchi les trois
+adresses — et en a sali une quatrième, jusque-là verte :
+
+```
+✖ …/solutions-pour-les-aidants/soutien-financier/l-aide-au-repit-dans-le-cadre-de-l-apa → HTTP 404
+```
+
+Sa page parente répond 200 depuis le codespace, et c'est une autre adresse qui échouait au run
+précédent. **L'adresse qui échoue change d'un run à l'autre** : ce n'est donc pas la page qui manque,
+c'est l'hôte qui refuse une partie des requêtes quand le contrôle lui en envoie six à la fois, en se
+présentant comme une page disparue. L'agent n'était qu'une partie du problème.
+
+`checkExternal` **confirme donc toute disparition par un second appel**, après une pause de deux
+secondes et hors de la rafale. Une page vraiment disparue répond 404 deux fois : le contrôle ne perd
+rien. Un hôte qui refuse sous charge répond 200 au second appel, et l'adresse devient un
+avertissement nommé (« 404 au premier appel, 200 au second : hôte qui refuse sous charge »), visible
+mais non bloquant. `goneStatuses` n'a toujours pas bougé.
+
 **Ce qui reste ouvert.** L'adresse `…-s-informer-et-anticiper/…` de `content/lexique/clic.json`
 (`lien_officiel`) n'a pas répondu à la mesure. Elle est antérieure à cette session ; sa section
 longue n'existe probablement plus. À vérifier depuis un poste avec réseau avant de la remplacer par

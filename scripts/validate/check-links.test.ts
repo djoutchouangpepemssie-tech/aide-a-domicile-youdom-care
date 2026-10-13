@@ -67,6 +67,12 @@ describe("check-links", () => {
       calls.push(url);
       agents.push((init?.headers as Record<string, string> | undefined)?.["user-agent"]);
       if (url.includes("absente")) return new Response("", { status: 404 });
+      // Répond 404 au premier appel, 200 au second : c'est ce que fait un hôte qui refuse sous
+      // charge, et ce n'est pas une page disparue (D-080).
+      if (url.includes("intermittente"))
+        return new Response("", {
+          status: calls.filter((c) => c.includes("intermittente")).length === 1 ? 404 : 200,
+        });
       if (url.includes("partie")) return new Response("", { status: 410 });
       if (url.includes("filtre")) return new Response("", { status: 403 });
       if (url.includes("trop-vite")) return new Response("", { status: 429 });
@@ -85,11 +91,15 @@ describe("check-links", () => {
         "https://trop-vite.example/",
         "https://en-panne.example/",
         "https://bloque.example/",
+        "https://intermittente.example/",
       ],
       fake,
       2,
+      0,
     );
-    expect(calls).toHaveLength(7);
+    // Sept adresses distinctes joignables, plus un second appel pour chacune des trois qui a
+    // répondu « disparue » au premier : 404, 410 et l'intermittente.
+    expect(calls).toHaveLength(11);
     expect(report.errors).toEqual([
       "https://absente.example/ → HTTP 404",
       "https://partie.example/ → HTTP 410",
@@ -100,10 +110,11 @@ describe("check-links", () => {
       "https://bloque.example/ → injoignable depuis ce poste (ECONNRESET), à vérifier à la main",
       "https://en-panne.example/ → HTTP 503 (refus de répondre, pas une page disparue), à vérifier à la main",
       "https://filtre.example/ → HTTP 403 (refus de répondre, pas une page disparue), à vérifier à la main",
+      "https://intermittente.example/ → HTTP 404 au premier appel, 200 au second : hôte qui refuse sous charge, pas une page disparue",
       "https://trop-vite.example/ → HTTP 429 (refus de répondre, pas une page disparue), à vérifier à la main",
     ]);
     // Sept adresses distinctes ouvertes, une seule injoignable : six ont répondu.
-    expect({ reached: report.reached, total: report.total }).toEqual({ reached: 6, total: 7 });
+    expect({ reached: report.reached, total: report.total }).toEqual({ reached: 7, total: 8 });
     // On interroge comme un visiteur : pour-les-personnes-agees.gouv.fr répond 404 — et non 403 —
     // à un agent qui s'annonce comme robot, pour des pages vivantes (D-080). Si ce jeton revient,
     // le contrôle redéclare mortes des sources en ligne.
