@@ -1,7 +1,7 @@
 import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   plannedRoutes,
   builtRoutes,
@@ -100,6 +100,36 @@ describe("check-links", () => {
       "https://filtre.example/ → HTTP 403 (refus de répondre, pas une page disparue), à vérifier à la main",
       "https://trop-vite.example/ → HTTP 429 (refus de répondre, pas une page disparue), à vérifier à la main",
     ]);
+    // Sept adresses distinctes ouvertes, une seule injoignable : six ont répondu.
+    expect({ reached: report.reached, total: report.total }).toEqual({ reached: 6, total: 7 });
+  });
+
+  it("dit qu'il n'a rien éprouvé quand aucune source externe ne répond (D-080)", async () => {
+    const dir = await mkdtemp(path.join(os.tmpdir(), "yc-links-offline-"));
+    try {
+      await mkdir(path.join(dir, ".next", "server", "app"), { recursive: true });
+      await writeFile(path.join(dir, ".next", "server", "app", "index.html"), "<html></html>");
+      await mkdir(path.join(dir, "content"), { recursive: true });
+      await writeFile(
+        path.join(dir, "content", "article.json"),
+        JSON.stringify({ sources: [{ libelle: "portail", href: "https://portail.example/page" }] }),
+      );
+      const offline = process.env.YC_LINKS_OFFLINE;
+      delete process.env.YC_LINKS_OFFLINE;
+      vi.stubGlobal("fetch", () => Promise.reject(new Error("getaddrinfo ENOTFOUND")));
+      try {
+        const res = await runLinksCheck({ rootDir: dir, prod: false });
+        expect(res.errors).toEqual([]);
+        expect(res.warnings).toContain(
+          "source externe : 0 des 1 adresses n'a répondu depuis ce poste — les liens externes ne sont pas éprouvés ici, seule la CI les vérifie",
+        );
+      } finally {
+        vi.unstubAllGlobals();
+        if (offline !== undefined) process.env.YC_LINKS_OFFLINE = offline;
+      }
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
   });
 
   describe("sur un rendu", () => {

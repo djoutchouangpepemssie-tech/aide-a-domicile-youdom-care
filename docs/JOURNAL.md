@@ -1227,3 +1227,20 @@ validé — le garde-fou fonctionne. La tentation était réelle : passer les ci
 deux listes d'un coup et faisait disparaître deux lignes de l'audit. Cela aurait publié quatre
 promesses que le client n'a pas validées. Une liste courte et vraie vaut mieux qu'une liste pleine
 et inventée.
+
+## 13/10/2026 — Ce que mon poste ne peut pas voir
+
+La CI du dépôt du client refusait `pnpm validate` : `12/13`, trois sources du portail
+`pour-les-personnes-agees.gouv.fr` en **HTTP 404**. Chez moi, le même contrôle annonce `13/13` — non
+parce qu'il est content, mais parce que le portail est injoignable depuis ce conteneur et que les
+adresses injoignables deviennent des avertissements. J'avais annoncé « tout est vert » sur la foi
+d'un contrôle qui, pour cette partie, ne mesurait rien.
+
+Le run de CI a servi d'oracle : les autres adresses du même portail y passent, donc aucun blocage par
+hôte, donc trois pages ont vraiment bougé. Une a été retrouvée dans le dépôt lui-même — le lexique
+citait déjà la même page sous sa nouvelle section ; les deux autres étaient redondantes avec une
+source voisine de la même liste, et sont retirées. Rien n'a été inventé, aucun seuil n'a bougé, et
+les faits concernés gardent leur source (voir D-080).
+
+La leçon vaut pour la suite : sur ce poste, `check-links` ne vérifie que les liens internes. Les
+liens externes se vérifient là où il y a du réseau — en CI, ou dans le codespace.

@@ -95,6 +95,9 @@ export interface ExternalReport {
    * et réponses qui disent « filtré » plutôt que « disparu » (401, 403, 429, 5xx).
    */
   warnings: string[];
+  /** Adresses qui ont vraiment répondu (quel que soit le code), sur le total d'adresses distinctes. */
+  reached: number;
+  total: number;
 }
 
 /**
@@ -115,6 +118,7 @@ export async function checkExternal(
   const unique = [...new Set(urls)];
   const failures: string[] = [];
   const unreachable: string[] = [];
+  let reached = 0;
   let index = 0;
   const worker = async () => {
     while (index < unique.length) {
@@ -128,6 +132,7 @@ export async function checkExternal(
           headers: { "user-agent": "Mozilla/5.0 (compatible; YoudomCare-check-links/1.0)" },
           signal: AbortSignal.timeout(10_000),
         });
+        reached += 1;
         if (goneStatuses.has(response.status)) {
           failures.push(`${url} → HTTP ${response.status}`);
         } else if (response.status >= 400) {
@@ -143,7 +148,12 @@ export async function checkExternal(
     }
   };
   await Promise.all(Array.from({ length: Math.min(concurrency, unique.length) }, worker));
-  return { errors: failures.sort(), warnings: unreachable.sort() };
+  return {
+    errors: failures.sort(),
+    warnings: unreachable.sort(),
+    reached,
+    total: unique.length,
+  };
 }
 
 /** Liens internes d'un fichier JSON ou MDX de `content/`. */
@@ -244,6 +254,14 @@ export async function runLinksCheck(ctx: CheckContext): Promise<CheckResult> {
     const external = await checkExternal(sourceUrls);
     for (const failure of external.errors) report.errors.push(`source externe : ${failure}`);
     for (const warning of external.warnings) report.warnings.push(`source externe : ${warning}`);
+    // Sans réseau, aucune adresse ne répond et toutes deviennent des avertissements : le contrôle
+    // passe au vert sans avoir rien éprouvé. Le dire, pour qu'un « validate vert » depuis un poste
+    // fermé ne soit pas lu comme « les sources répondent » (D-080).
+    if (external.total > 0 && external.reached === 0) {
+      report.warnings.push(
+        `source externe : 0 des ${external.total} adresses n'a répondu depuis ce poste — les liens externes ne sont pas éprouvés ici, seule la CI les vérifie`,
+      );
+    }
   }
   for (const route of Object.keys(plannedRoutes)) {
     if (routes.has(route)) {

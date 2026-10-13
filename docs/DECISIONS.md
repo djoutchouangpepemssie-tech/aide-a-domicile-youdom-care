@@ -1319,3 +1319,45 @@ coûte plus que de ne rien faire** : personne ne l'aurait relié à cette journ�
 **Le second point de DP.4 ne se déclenche pas.** `--thread-duration: 800ms` (`tokens.css`) concerne
 le fil conducteur, lié au défilement : il n'a pas de durée en millisecondes et le parcours l'exclut
 correctement. `docs/02 §1` l'autorise d'ailleurs entre 600 et 900 ms.
+
+## D-080 — Trois sources officielles répondaient 404 : un défaut invisible depuis mon poste (13/10/2026)
+
+**Le défaut.** Sur le dépôt du client, `pnpm validate` échouait — `12/13`, `check-links` rouge :
+
+```
+✖ source externe : …/preserver-son-autonomie/a-qui-s-adresser/les-points-d-information-locaux-dedies-aux-personnes-agees → HTTP 404
+✖ source externe : …/solutions-pour-les-aidants/soutien-financier → HTTP 404
+✖ source externe : …/vivre-a-domicile/aides-financieres/l-apa-a-domicile → HTTP 404
+```
+
+**Pourquoi je ne l'avais pas vu.** `pour-les-personnes-agees.gouv.fr` est injoignable depuis mon
+conteneur (DNS fermé). `check-links` dégrade alors l'adresse en avertissement — « injoignable depuis
+ce poste, à vérifier à la main » — et annonce `13/13`. Ce comportement est volontaire et reste juste
+(`goneStatuses` = 404 et 410 seulement : un 403 est un refus de répondre, pas une page disparue, et
+le commentaire du contrôle nomme déjà ce portail parmi ceux qui filtrent les robots). Mais il a une
+conséquence qu'il faut écrire noir sur blanc : **un `validate` vert sur mon poste ne dit rien des
+liens externes.** Seule la CI, qui a le réseau, les éprouve vraiment.
+
+**Comment j'ai tranché sans réseau.** Le run de CI est lui-même l'oracle : la vingtaine d'autres
+adresses du même portail citées dans `content/` y sont passées. Ce n'est donc pas un blocage par
+hôte, et toute URL du dépôt absente de la liste d'échecs est vivante ce jour-là. Je n'ai inventé
+aucune adresse de remplacement — je ne peux pas les ouvrir — et je n'ai pas touché au seuil du
+contrôle.
+
+**Les trois corrections.**
+
+1. *Points d'information locaux* — la même page, sous la section longue
+   (`preserver-son-autonomie-s-informer-et-anticiper/…`), est déjà citée par
+   `content/lexique/clic.json` avec le même libellé, et passe la CI. L'article du magazine adopte
+   cette adresse : les deux fichiers ne divergent plus.
+2. *Soutien financier des aidants* — une section sans page (sa fille
+   `…/soutien-financier/l-aide-au-repit-dans-le-cadre-de-l-apa` répond, elle). L'entrée est retirée
+   de `solutions-de-repit.mdx` : le fait qu'elle appuyait (droit au répit plafonné à 583,52 € en
+   2026) vient de la page fille, citée deux lignes plus haut dans la même liste.
+3. *L'APA à domicile* — page déplacée. L'entrée est retirée de l'article APA : le sujet y reste
+   sourcé par `service-public.gouv.fr` F10009 (« APA à domicile », vérifié le 01/06/2026) et par
+   « Comment faire la demande d'APA à domicile ? » du même portail, tous deux dans la même liste.
+
+Aucun fait n'a donc perdu sa source. Ce qui est perdu, ce sont deux liens vers un portail qui a
+réorganisé ses adresses ; les retrouver demande d'ouvrir le site, ce qui se fera depuis un poste qui
+a le réseau.
