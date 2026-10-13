@@ -1433,3 +1433,50 @@ projets, dont celui qui échouait.
 runner, et mon Chromium n'est pas celui de la CI. Je corrige une fragilité démontrée par lecture du
 code, pas un défaut observé chez moi. La CI du client tranchera — et comme le parcours est en mode
 `serial`, les dix tests qu'il bloquait repartiront avec lui.
+
+## D-082 — Quatre alertes des journaux : une vraie, trois fausses (13/10/2026)
+
+La suite entière est verte en CI sur `8afc26f` (quatre jobs, réseau compris : `check-links` confirmé
+par second appel, et `envoi.spec.ts` passe dans la fraction 2). Restaient quatre bruits que personne
+n'avait instruits, tous visibles dans les journaux depuis des semaines.
+
+**1. `quality={100}` sur le logo — vraie, et inerte.** Next avertissait, à chaque rendu :
+« quality 100 n'est pas dans images.qualities ». Or la balise porte aussi `unoptimized` : l'optimiseur
+est contourné, le fichier est servi tel quel, et `quality` ne fait **rien**. La prop ne produisait
+donc qu'une alerte, sur une page vue par tous les visiteurs. Retirée ; le commentaire du composant
+dit maintenant pourquoi il n'y en a pas.
+
+`qualities: [60, 75]` reste déclaré dans `next.config.ts` et couvre les seules valeurs réellement
+demandées (`PhotoFigure`, 60 pour le hero et 75 ailleurs). Les avertissements « 60 n'est pas dans
+[75] » des tests unitaires n'ont pas d'objet : vitest ne charge pas `next.config`.
+
+**2. `fill` avec un parent en `position: static`, hauteur 0 — fausse.** Le parent de `PhotoFigure`
+porte bien `relative` (`photo-figure glass-edge relative w-full overflow-hidden bg-sand`). jsdom
+n'applique aucune feuille de style : la position calculée y est `static` et la hauteur 0 par
+construction. Ajouter un style en ligne pour faire taire l'avertissement aurait changé le code de
+production pour un artefact d'environnement de test. Non fait.
+
+**3. `Internal: NoFallbackError` sur les 404 — fausse.** Mesuré sur le serveur de production
+(`next start`, trois chemins inconnus) : `404` renvoyé à chaque fois, en-tête `noindex` présent, et
+la page est bien la nôtre — « Cette page n'existe pas, ou plus ». Next journalise cette erreur
+interne une fois par 404 ; un visiteur ne voit rien. Bruit de journal, pas défaut.
+
+**4. `pnpm audit` : six avis, un seul corrigeable.** Et c'est l'inverse de ce que j'avais conclu.
+L'avis annonce pour chacun une « patched version » ; vérification contre le registre :
+
+| Paquet | installé | réclamé par l'avis | publié ? |
+| --- | --- | --- | --- |
+| `source-map-js` | 1.2.1 et 1.2.2 | ≥ 1.2.2 | **oui** |
+| `braces` | 3.0.3 | ≥ 3.0.4 | non, s'arrête à 3.0.3 |
+| `extract-zip` | 2.0.1 | ≥ 2.0.2 | non, s'arrête à 2.0.1 |
+| `sprintf-js` | 1.0.3 | ≥ 1.1.4 | non, s'arrête à 1.1.3 |
+| `uuid` | 8.3.2 | ≥ 11.1.1 | oui, mais trois sauts majeurs dans `@lhci/cli` |
+
+J'avais écrit quatre overrides dans `package.json` avant de vérifier deux choses : que ce projet les
+déclare dans `pnpm-workspace.yaml` (le `package.json` était donc inopérant), et que trois des
+versions réclamées **n'existent pas**. Le commentaire déjà présent dans ce fichier le disait, et il
+avait raison ; je l'ai complété plutôt que contredit. Seul `source-map-js: ^1.2.2` est ajouté — la
+version saine était déjà dans l'arbre, l'override ne fait que dédoublonner. `pnpm audit` passe de
+six avis à cinq, un « high » en moins. Aucun des cinq restants n'atteint le navigateur du visiteur :
+ce sont des dépendances d'outillage, et le site est statique.
+

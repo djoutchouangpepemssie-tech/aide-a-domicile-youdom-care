@@ -3,14 +3,21 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 
-# Dépendances transitives de `@lhci/cli` (outillage de développement seulement, jamais exécuté par
-# le site) remontées par `pnpm audit`. Seules les corrections disponibles dans la même version
-# majeure sont forcées : `tmp` (traversée de répertoire, GHSA-ph9p-34f9-6g65) et `basic-ftp`
-# (déni de service). `extract-zip` et `braces` n'ont aucune version corrigée publiée, et `uuid`
-# exigerait un saut de la 8 à la 11 dans `@lhci/cli` : voir DC.2.
+# Dépendances transitives de l'outillage de développement (jamais exécuté par le site) remontées
+# par `pnpm audit`. Seules les corrections réellement publiées sont forcées : `tmp` (traversée de
+# répertoire, GHSA-ph9p-34f9-6g65), `basic-ftp` (déni de service) et `source-map-js` (GHSA
+# source-map-js, remonté par `@tailwindcss/postcss` — la 1.2.2 était déjà dans l'arbre à côté de
+# la 1.2.1, l'override ne fait que dédoublonner vers la version saine).
+#
+# Les quatre autres avis n'ont **pas** de correctif publié, vérifié contre le registre le
+# 13/10/2026 : `braces` s'arrête à 3.0.3 (l'avis réclame 3.0.4), `extract-zip` à 2.0.1 (réclame
+# 2.0.2), `sprintf-js` à 1.1.3 (réclame 1.1.4). Les « patched versions » de ces avis annoncent des
+# versions qui n'existent pas ; les forcer casserait l'installation sans rien corriger. `uuid`
+# exigerait un saut de la 8 à la 11 dans `@lhci/cli`. Voir DC.2 et D-082.
 # Attention : après une modification ici, `pnpm install` seul répond « Already up to date » sans
 # rien appliquer ; il faut `pnpm install --no-frozen-lockfile` jusqu'à voir la section `overrides`
 # dans pnpm-lock.yaml (DC.2).
 overrides:
   tmp: ^0.2.7
   basic-ftp: ^6.2.2
+  source-map-js: ^1.2.2

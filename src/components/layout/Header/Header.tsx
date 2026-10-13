@@ -230,9 +230,13 @@ export function Header({
              * Servi tel quel (27/09/2026) : le fichier d'origine ne pèse que 12 Ko, et le
              * recompresser en WebP à la qualité par défaut ajoutait des artefacts très visibles
              * sur les aplats et les lettres d'un logo. Rien à gagner, beaucoup à perdre.
+             *
+             * Pas de `quality` ici : `unoptimized` contourne l'optimiseur, donc la valeur ne
+             * servait à rien — elle produisait seulement, à chaque rendu, l'avertissement
+             * « quality 100 n'est pas dans images.qualities ». Une prop inerte qui alerte à tort
+             * coûte plus qu'elle ne rapporte (D-082).
              */
             unoptimized
-            quality={100}
             className={cn(
               "h-auto w-auto transition-[max-height] [transition-duration:var(--duration-base)] motion-reduce:transition-none",
               compact ? "max-h-9" : "max-h-11",

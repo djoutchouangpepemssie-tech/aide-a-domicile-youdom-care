@@ -1274,3 +1274,23 @@ de raison d'apparaître. L'aide vérifie désormais, et reprend la frappe. 26 pa
 
 Je n'ai pas reproduit l'échec — il dépend de la charge du runner. C'est une fragilité établie par
 lecture, pas un défaut observé ici, et je le dis plutôt que de l'annoncer réparé. Voir D-081.
+
+## 13/10/2026 — La suite entière verte, et quatre bruits instruits
+
+Première exécution complète et verte de la CI sur le travail de branche : quatre jobs, réseau
+compris. Les liens externes sont éprouvés pour de vrai, et le parcours qui échouait chez la cliente
+passe aussi en CI.
+
+Restaient quatre alertes dans les journaux, visibles depuis des semaines, qu'aucun contrôle ne
+relevait. Une seule était un défaut : le logo demandait une qualité d'image à un optimiseur qu'il
+contourne — une prop inerte qui alertait sur toutes les pages. Les trois autres sont des faux
+positifs, et je les ai laissés tels quels plutôt que de modifier le site pour faire taire un
+avertissement : le parent de la photo porte bien `relative` (c'est jsdom qui n'a pas de CSS), et le
+`NoFallbackError` des 404 est un journal interne de Next — mesuré : 404 correct, `noindex`, notre
+page.
+
+Sur les dépendances, je m'étais trompé deux fois dans le même geste : écrire les overrides au
+mauvais endroit, et vouloir forcer des versions corrigées qui ne sont pas publiées. Le commentaire
+laissé par un passage précédent disait déjà la seconde ; vérification faite contre le registre, il
+avait raison. Un seul avis se corrige réellement. Voir D-082.
+
