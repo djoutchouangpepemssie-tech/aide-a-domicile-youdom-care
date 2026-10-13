@@ -90,7 +90,7 @@ describe("ServiceTemplate", () => {
       .filter((h) => h.closest("form") === null)
       .map((h) => h.textContent);
     expect(headings).toEqual([
-      "Vous vous reconnaissez ?",
+      "Des phrases qui reviennent souvent",
       "Ce que nous faisons, concrètement",
       "Un accompagnement qui évolue",
       "Exemple de semaine",

@@ -308,7 +308,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       gesture =
         hero?.geste === "lecteur" ? null : (
           <SituationChooser
-            question={t.situations_h2}
+            question={t.situations_h2[page.public]}
             situations={page.situations.map((situation) => ({
               titre: situation.titre,
               href: situation.href,
@@ -366,7 +366,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
       gesture={gesture}
       interaction={heroInteraction}
       tint={sceneTint(heroScene)}
-      cue={{ label: t.situations_h2, href: "#situations" }}
+      cue={{ label: t.situations_h2[page.public], href: "#situations" }}
       tone={heroTone}
       depth={heroDepth}
       thread={heroThread}
@@ -429,7 +429,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
         {/* 2. Vous vous reconnaissez ? */}
         <Section tone="white" aria-labelledby="situations" className={withRail}>
           <Heading level={2} id="situations">
-            {t.situations_h2}
+            {t.situations_h2[page.public]}
           </Heading>
           <Reveal
             as="ul"

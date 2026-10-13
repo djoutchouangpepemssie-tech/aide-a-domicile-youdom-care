@@ -137,7 +137,14 @@
       "proche": "pour un proche",
       "soi": "pour vous-même"
     },
-    "situations_h2": "Vous vous reconnaissez ?",
+    "situations_h2": {
+      "neuro": "Des phrases qui reviennent souvent",
+      "personne-agee": "Ce que nous disent les familles",
+      "adulte-handicap": "Ce que vous nous dites",
+      "enfant-handicap": "Ça vous parle\u00a0?",
+      "aidant": "Vous aussi\u00a0?",
+      "transverse": "C'est votre situation\u00a0?"
+    },
     "actions_h2": "Ce que nous faisons, concrètement",
     "rubriques": {
       "gestes": "Les gestes du quotidien",

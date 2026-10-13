@@ -352,7 +352,16 @@ export const interfaceSchema = z.strictObject({
   service: z.strictObject({
     /** docs/03 §4 : sélecteur « pour un proche / pour vous-même » du chapô. */
     lecteur: z.strictObject({ legende: text, proche: text, soi: text }),
-    situations_h2: text,
+    /* Un titre par public (audit des Hero du 13/10/2026) : la même question sur 26 pages se
+     * lisait comme un gabarit. */
+    situations_h2: z.strictObject({
+      neuro: text,
+      "personne-agee": text,
+      "adulte-handicap": text,
+      "enfant-handicap": text,
+      aidant: text,
+      transverse: text,
+    }),
     actions_h2: text,
     rubriques: z.strictObject({ gestes: text, presence: text, lien: text, coordination: text }),
     stades_h2: text,
