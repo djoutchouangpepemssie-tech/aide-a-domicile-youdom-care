@@ -17,7 +17,11 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    # `main` seul laissait le travail de branche sans aucun signal : le dépôt du client montrait
+    # encore, le 13/10/2026, l'échec du 04/10 comme dernier état connu, alors que neuf commits
+    # avaient été poussés depuis sur une branche. Les branches de travail sont donc éprouvées
+    # avant d'atteindre `main`, où il est trop tard pour apprendre quelque chose (D-081).
+    branches: [main, "phase/**", "claude/**"]
 
 concurrency:
   group: ci-${{ github.ref }}

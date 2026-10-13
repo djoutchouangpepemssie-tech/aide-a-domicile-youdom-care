@@ -1,5 +1,6 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { expectNoSeriousAxeViolations } from "./axe";
+import { checkByKeyboard } from "./keyboard";
 import { readMails, type StoredMail } from "./smtp";
 
 /*
@@ -39,8 +40,7 @@ async function fillCandidate(form: Locator, page: Page) {
   await page.keyboard.press("Tab");
   await page.keyboard.type("claire@test.local");
   await form.getByLabel(/Département souhaité/).selectOption("92");
-  await form.getByRole("radio", { name: "Dès maintenant" }).focus();
-  await page.keyboard.press("Space");
+  await checkByKeyboard(form, page, "radio", "Dès maintenant");
 }
 
 async function submit(form: Locator, page: Page) {
@@ -89,8 +89,7 @@ test("candidature au clavier avec un PDF : page merci, alerte avec le CV joint, 
     .getByLabel("Votre CV")
     .setInputFiles({ name: "CV Claire Martin.pdf", mimeType: "application/pdf", buffer: PDF });
   await expect(form.getByText("Fichier choisi : CV Claire Martin.pdf")).toBeVisible();
-  await form.getByRole("checkbox", { name: /J'accepte que Youdom Care utilise/ }).focus();
-  await page.keyboard.press("Space");
+  await checkByKeyboard(form, page, "checkbox", /J'accepte que Youdom Care utilise/);
   await expectNoSeriousAxeViolations(page);
   await submit(form, page);
   await expect(page).toHaveURL(/\/merci\/candidature\/$/);

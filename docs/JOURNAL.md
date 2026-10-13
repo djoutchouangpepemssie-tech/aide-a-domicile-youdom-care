@@ -1258,3 +1258,19 @@ disparue répond 404 deux fois.
 
 Trois diagnostics pour un seul défaut, et les deux premiers démentis par une mesure. Le point commun
 des deux erreurs : avoir conclu depuis un instrument qui ne pouvait pas observer ce que j'affirmais.
+
+## 13/10/2026 — Un échec du 4 octobre, et une aide de test qui ne vérifiait rien
+
+Deux erreurs de CI remontées le même jour. La première, sur le dépôt personnel, datait du **4
+octobre** : vérifiée par l'API GitHub avant d'y toucher, même assertion, même commit, un seul job.
+Elle était réparée depuis longtemps. Elle s'affichait encore comme dernier état connu parce que la
+CI ne se déclenchait que sur `main` : neuf commits de branche n'avaient jamais été éprouvés. Les
+branches de travail déclenchent maintenant la CI.
+
+La seconde est réelle. Un parcours échouait sur un bouton « Toutes les nuits » introuvable, et
+l'explication n'était pas là : l'aide qui cochait au clavier ne vérifiait pas son effet, si bien
+qu'une frappe perdue ressortait une ligne plus loin, en délai dépassé, sur un champ qui n'avait plus
+de raison d'apparaître. L'aide vérifie désormais, et reprend la frappe. 26 parcours verts en local.
+
+Je n'ai pas reproduit l'échec — il dépend de la charge du runner. C'est une fragilité établie par
+lecture, pas un défaut observé ici, et je le dis plutôt que de l'annoncer réparé. Voir D-081.

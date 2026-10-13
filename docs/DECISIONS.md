@@ -1390,3 +1390,46 @@ répondu depuis ce poste`). C'est ce garde-fou qui manquait pour que je n'annonc
 n'avais pas mesuré. Et la leçon de fond : deux fois de suite, j'ai déduit l'état du monde d'un
 contrôle qui ne pouvait pas l'observer. Sur ce poste, `check-links` ne vérifie que les liens
 internes.
+
+## D-081 — Deux échecs de CI, dont un vieux de neuf jours que personne ne pouvait voir autrement (13/10/2026)
+
+**Premier échec, celui du dépôt personnel.** `pnpm test` y échouait sur
+`ArticleTemplate.test.tsx:128` : « expected { index: false, follow: false } to be undefined ».
+Vérifié par l'API GitHub avant d'y toucher : c'est l'exécution `37188240490`, commit `5ff8714`, du
+**4 octobre à 08:18** — même assertion, même `jsdom was created 175 times · 118.11s`, et un seul job
+« Vérifier », donc antérieure à la séparation en deux jobs (D-073). À `a17fa41`, ce test passe (947
+tests verts). Rien à corriger : l'échec était déjà réparé.
+
+**Pourquoi il s'affichait encore comme le dernier état connu.** `.github/workflows/ci.yml` ne se
+déclenchait, en `push`, que sur `main`. Les neuf commits poussés sur la branche de travail depuis le
+12/10 n'ont donc **jamais** été éprouvés : la liste des exécutions montrait le 4 octobre. Le
+déclencheur accepte désormais `phase/**` et `claude/**`. Un travail de branche sans signal est un
+travail dont on découvre les défauts sur `main`, où il est trop tard pour apprendre quelque chose.
+
+**Second échec, celui du dépôt du client, et il est réel.** `envoi.spec.ts:92`, fraction 2 sur 3 :
+délai de 30 s dépassé en attendant le bouton « Toutes les nuits », à l'étape 4 de la demande
+personne âgée. Deux fois de suite, retentative comprise.
+
+Le bouton n'a rien d'inatteignable : `gridShortcuts` est une liste statique, affichée dès que
+`rythme === "regulier"`. Le défaut est dans l'aide du parcours :
+
+```ts
+await form.getByRole(role, { name }).first().focus();
+await page.keyboard.press("Space");
+```
+
+Elle **ne vérifiait pas** que le champ avait été coché. Une frappe perdue — focus déplacé par une
+animation, nœud re-rendu, runner chargé — laissait le rythme décoché, donc la grille absente, donc
+l'échec une ligne plus loin, sur un champ qui n'avait plus aucune raison d'apparaître. L'erreur
+désignait « Toutes les nuits » alors que le raté était au-dessus : voilà pourquoi elle est illisible.
+
+`tests/e2e/keyboard.ts` porte maintenant cette aide pour les deux fichiers qui en avaient besoin
+(`envoi`, `recrutement`) : elle exige le champ visible, puis reprend la frappe sous `toPass` jusqu'à
+ce qu'il soit coché. Si l'espace ne coche vraiment pas, le test échoue toujours — mais en nommant le
+champ. Mesure locale, Chromium du conteneur via `CHROMIUM_PATH` : 26 parcours verts sur les deux
+projets, dont celui qui échouait.
+
+**Ce que je ne peux pas affirmer.** Je n'ai pas reproduit l'échec : il dépend de la charge du
+runner, et mon Chromium n'est pas celui de la CI. Je corrige une fragilité démontrée par lecture du
+code, pas un défaut observé chez moi. La CI du client tranchera — et comme le parcours est en mode
+`serial`, les dix tests qu'il bloquait repartiront avec lui.

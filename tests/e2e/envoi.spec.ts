@@ -1,5 +1,6 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { expectNoSeriousAxeViolations } from "./axe";
+import { checkByKeyboard } from "./keyboard";
 import { readMails, type StoredMail } from "./smtp";
 
 /*
@@ -20,16 +21,6 @@ async function pressContinue(page: Page, form: Locator) {
   }
   await button.focus();
   await page.keyboard.press("Enter");
-}
-
-async function checkByKeyboard(
-  form: Locator,
-  page: Page,
-  role: "radio" | "checkbox",
-  name: string | RegExp,
-) {
-  await form.getByRole(role, { name }).first().focus();
-  await page.keyboard.press("Space");
 }
 
 async function pickCommuneByKeyboard(form: Locator, page: Page, label: string) {
