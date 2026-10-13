@@ -125,6 +125,37 @@ const goneStatuses = new Set([404, 410]);
 const BROWSER_USER_AGENT = "Mozilla/5.0";
 
 /**
+ * Répartit les adresses en tour de rôle entre les hôtes, pour que deux appels au même service ne
+ * partent pas en même temps. Avec six requêtes simultanées et une file groupée par hôte, six
+ * adresses d'un même service partaient ensemble : c'est précisément ce qui fait répondre « refus »
+ * — et, sur pour-les-personnes-agees.gouv.fr, ce refus prend la forme d'un 404 (D-080, D-084).
+ * Espacer les appels d'un même hôte ne ralentit rien : le nombre total de requêtes est le même.
+ */
+export function spreadByHost(urls: readonly string[]): string[] {
+  const parHote = new Map<string, string[]>();
+  for (const url of urls) {
+    let hote = url;
+    try {
+      hote = new URL(url).host;
+    } catch {
+      /* adresse non analysable : son propre groupe, elle sera ouverte comme les autres */
+    }
+    const groupe = parHote.get(hote);
+    if (groupe) groupe.push(url);
+    else parHote.set(hote, [url]);
+  }
+  const groupes = [...parHote.values()];
+  const out: string[] = [];
+  for (let rang = 0; out.length < urls.length; rang += 1) {
+    for (const groupe of groupes) {
+      const url = groupe[rang];
+      if (url !== undefined) out.push(url);
+    }
+  }
+  return out;
+}
+
+/**
  * Ouvre chaque adresse (GET, 10 s, redirections suivies) et **confirme toute disparition par un
  * second appel**, après une pause et hors de la rafale.
  *
@@ -140,13 +171,15 @@ export async function checkExternal(
   urls: readonly string[],
   fetchImpl: typeof fetch = fetch,
   concurrency = 6,
-  recheckDelayMs = 2_000,
+  recheckDelayMs = 4_000,
 ): Promise<ExternalReport> {
-  const unique = [...new Set(urls)];
+  const unique = spreadByHost([...new Set(urls)]);
   const failures: string[] = [];
   const unreachable: string[] = [];
   let reached = 0;
   let index = 0;
+  /** Adresses qui ont répondu « disparue » pendant la rafale, à confirmer hors rafale. */
+  const candidates: [string, number][] = [];
   const open = (url: string) =>
     fetchImpl(url, {
       method: "GET",
@@ -163,15 +196,8 @@ export async function checkExternal(
         const response = await open(url);
         reached += 1;
         if (goneStatuses.has(response.status)) {
-          await new Promise((resolve) => setTimeout(resolve, recheckDelayMs));
-          const second = await open(url);
-          if (goneStatuses.has(second.status)) {
-            failures.push(`${url} → HTTP ${second.status}`);
-          } else {
-            unreachable.push(
-              `${url} → HTTP ${response.status} au premier appel, ${second.status} au second : hôte qui refuse sous charge, pas une page disparue`,
-            );
-          }
+          // Rien n'est conclu ici : la confirmation a lieu après la rafale, une à la fois.
+          candidates.push([url, response.status]);
         } else if (response.status >= 400) {
           unreachable.push(
             `${url} → HTTP ${response.status} (refus de répondre, pas une page disparue), à vérifier à la main`,
@@ -185,6 +211,35 @@ export async function checkExternal(
     }
   };
   await Promise.all(Array.from({ length: Math.min(concurrency, unique.length) }, worker));
+
+  /*
+   * Confirmation des disparitions, **après** la rafale et **une adresse à la fois**. La première
+   * version rappelait l'adresse sur place, après une pause : inutile, puisque cinq autres requêtes
+   * continuaient pendant ce temps de marteler le même hôte — la vérification se faisait dans la
+   * rafale qu'elle devait écarter. Mesuré sur quatre runs de CI : à chacun, un sous-ensemble
+   * différent d'adresses de pour-les-personnes-agees.gouv.fr répondait 404, y compris des adresses
+   * vertes au run précédent, et l'une s'est blanchie au second appel. Une page disparue ne
+   * ressuscite pas : c'est l'hôte qui refuse sous charge (D-084).
+   */
+  for (const [url, first] of candidates) {
+    await new Promise((resolve) => setTimeout(resolve, recheckDelayMs));
+    try {
+      const second = await open(url);
+      if (goneStatuses.has(second.status)) {
+        failures.push(`${url} → HTTP ${second.status}`);
+      } else {
+        unreachable.push(
+          `${url} → HTTP ${first} pendant la rafale, ${second.status} hors rafale : hôte qui refuse sous charge, pas une page disparue`,
+        );
+      }
+    } catch (error) {
+      const cause = error instanceof Error && error.cause instanceof Error ? error.cause : null;
+      const reason = cause?.message ?? (error instanceof Error ? error.name : "erreur");
+      unreachable.push(
+        `${url} → HTTP ${first} pendant la rafale, puis injoignable (${reason}) : à vérifier à la main`,
+      );
+    }
+  }
   return {
     errors: failures.sort(),
     warnings: unreachable.sort(),

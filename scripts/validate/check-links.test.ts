@@ -7,6 +7,7 @@ import {
   builtRoutes,
   checkExternal,
   checkRefs,
+  spreadByHost,
   extractLinks,
   isInternalHref,
   normalizeInternal,
@@ -59,6 +60,25 @@ describe("check-links", () => {
     ]);
   });
 
+  it("espace les appels à un même hôte au lieu de les envoyer en rafale (D-084)", () => {
+    const sortie = spreadByHost([
+      "https://a.example/1",
+      "https://a.example/2",
+      "https://a.example/3",
+      "https://b.example/1",
+      "https://c.example/1",
+    ]);
+    expect(sortie).toEqual([
+      "https://a.example/1",
+      "https://b.example/1",
+      "https://c.example/1",
+      "https://a.example/2",
+      "https://a.example/3",
+    ]);
+    // Aucune adresse perdue ni dupliquée, quelle que soit la répartition.
+    expect(new Set(sortie).size).toBe(5);
+  });
+
   it("ouvre chaque source externe une fois : 404 et 410 en erreur, refus et panne en avertissement", async () => {
     const calls: string[] = [];
     const agents: (string | undefined)[] = [];
@@ -97,8 +117,8 @@ describe("check-links", () => {
       2,
       0,
     );
-    // Sept adresses distinctes joignables, plus un second appel pour chacune des trois qui a
-    // répondu « disparue » au premier : 404, 410 et l'intermittente.
+    // Sept adresses distinctes joignables, plus un second appel — hors rafale, une à la fois —
+    // pour chacune des trois qui a répondu « disparue » : 404, 410 et l'intermittente.
     expect(calls).toHaveLength(11);
     expect(report.errors).toEqual([
       "https://absente.example/ → HTTP 404",
@@ -110,7 +130,7 @@ describe("check-links", () => {
       "https://bloque.example/ → injoignable depuis ce poste (ECONNRESET), à vérifier à la main",
       "https://en-panne.example/ → HTTP 503 (refus de répondre, pas une page disparue), à vérifier à la main",
       "https://filtre.example/ → HTTP 403 (refus de répondre, pas une page disparue), à vérifier à la main",
-      "https://intermittente.example/ → HTTP 404 au premier appel, 200 au second : hôte qui refuse sous charge, pas une page disparue",
+      "https://intermittente.example/ → HTTP 404 pendant la rafale, 200 hors rafale : hôte qui refuse sous charge, pas une page disparue",
       "https://trop-vite.example/ → HTTP 429 (refus de répondre, pas une page disparue), à vérifier à la main",
     ]);
     // Sept adresses distinctes ouvertes, une seule injoignable : six ont répondu.

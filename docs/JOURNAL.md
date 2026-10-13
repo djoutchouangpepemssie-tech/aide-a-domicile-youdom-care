@@ -1313,3 +1313,17 @@ PSNR. Une cinquième remise comme avant : 39 Ko gagnés ne valaient pas la seule
 DP.2 n'est pas close pour autant, et je ne la coche pas : le poste dominant reste le JavaScript, et
 l'arbitrage du flou appartient à Arcel. Voir D-083.
 
+## 13/10/2026 — Ma correction se vérifiait dans la rafale qu'elle devait écarter
+
+Le quatrième run a prouvé deux choses d'un coup : la confirmation par second appel marche — une
+adresse y est blanchie explicitement — et elle ne suffisait pas, parce que la pause de deux secondes
+se déroulait pendant que cinq autres requêtes continuaient de marteler le même hôte.
+
+Deux adresses encore nouvelles ont donc échoué, toutes deux vertes au run précédent. Quatre runs,
+quatre sous-ensembles différents, le même hôte : une page disparue ne ressuscite pas.
+
+La confirmation a lieu maintenant après la rafale, une adresse à la fois. Et la cause première est
+traitée : la file des adresses est répartie par hôte en tour de rôle, pour ne plus envoyer six
+appels d'un même service en même temps. Ni seuil déplacé, ni assertion retirée, et le service public
+cesse d'être martelé à chaque exécution. Voir D-084.
+

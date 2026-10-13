@@ -1546,3 +1546,37 @@ arbitrage est intact — les deux atténuations connues ont été défaites volo
 la demande d'Arcel (D-046). Piste suivante, sans arbitrage de conception : servir ces fonds en AVIF
 ou WebP par `image-set()` avec repli JPEG, ce que le fond CSS permet et que personne n'a posé.
 
+## D-084 — La confirmation se faisait dans la rafale qu'elle devait écarter (13/10/2026)
+
+**Ce que le quatrième run a montré.** La confirmation posée en D-080 **fonctionne** : une adresse y
+est blanchie noir sur blanc — « 404 au premier appel, 200 au second ». Mais deux autres ont répondu
+404 deux fois, et ce sont **encore des adresses nouvelles** : `…/vivre-a-domicile/beneficier-d-aide-a-domicile`
+et `…/solutions-d-accueil-temporaire/l-hebergement-temporaire`, toutes deux vertes aux runs
+précédents.
+
+Quatre runs, quatre sous-ensembles différents, toujours le même hôte, et des adresses qui
+ressuscitent d'un run à l'autre. Une page disparue ne fait pas cela.
+
+**Le défaut de ma correction.** La pause de deux secondes avait lieu **à l'intérieur** de la rafale :
+pendant qu'un ouvrier attendait, les cinq autres continuaient d'appeler le même hôte. La
+vérification se déroulait donc exactement dans les conditions qu'elle devait écarter.
+
+**Corrigé en deux temps.**
+
+1. **La confirmation est déportée après la rafale, une adresse à la fois.** Le balayage ne conclut
+   plus rien : il collecte les adresses qui ont répondu « disparue », et elles sont rappelées une à
+   une, après quatre secondes, quand plus rien d'autre ne tourne. Le message distingue désormais les
+   deux moments : « HTTP 404 pendant la rafale, 200 hors rafale ».
+2. **La file est répartie par hôte en tour de rôle** (`spreadByHost`). C'était la cause première :
+   six requêtes simultanées sur une file groupée par hôte envoyaient six appels d'un même service en
+   même temps. Avec la répartition, deux appels au même hôte sont séparés par tous les autres hôtes.
+   Rien n'est ralenti — le nombre de requêtes est identique — et le service public cesse d'être
+   martelé à chaque exécution de la CI.
+
+`goneStatuses` n'a toujours pas bougé : 404 et 410, confirmés hors rafale, restent des erreurs.
+
+**Ce qui reste à mesurer.** Je n'ai pas la preuve que ces deux adresses sont vivantes : mon
+conteneur ne joint pas cet hôte. La preuve viendra d'un appel depuis un poste avec réseau, ou du
+prochain run. Si elles répondent 404 hors rafale, elles sont réellement mortes et c'est le contenu
+que je corrigerai — pas l'instrument.
+
