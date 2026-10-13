@@ -22,9 +22,9 @@ test.describe("Blocs de contenu (P1.9a)", () => {
     await expect(items).toHaveCount(3);
     await expect(page.getByText("Première semaine")).toHaveCount(0);
     const current = page
-      .getByRole("navigation", { name: "Fil d’Ariane" })
+      .getByRole("navigation", { name: "Fil d'Ariane" })
       .locator("[aria-current=page]");
-    await expect(current).toHaveText("Aide à l’autonomie");
+    await expect(current).toHaveText("Aide à l'autonomie");
   });
 });
 

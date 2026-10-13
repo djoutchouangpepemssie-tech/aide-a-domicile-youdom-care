@@ -18,7 +18,7 @@ describe("Comment ça marche", () => {
     render(await HowItWorksPage());
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Comment ça marche");
     expect(
-      screen.getByRole("navigation", { name: "Fil d’Ariane" }).querySelector("[aria-current=page]"),
+      screen.getByRole("navigation", { name: "Fil d'Ariane" }).querySelector("[aria-current=page]"),
     ).toHaveTextContent("Comment ça marche");
 
     const etapes = screen.getByRole("region", { name: "Comment ça commence" });

@@ -38,7 +38,7 @@ const props: FooterProps = {
     navigation_pied: "Pied de page",
     toutes_les_agences: "Toutes les agences",
     aide_a_domicile_en: "Aide à domicile en {territoire}",
-    voir_agence: "Voir l’agence {nom}",
+    voir_agence: "Voir l'agence {nom}",
   },
 };
 
@@ -61,7 +61,7 @@ describe("Footer", () => {
       expect.stringMatching(/^\/aide-a-domicile\/paris\/?$/),
     );
     expect(
-      within(footer).getByRole("link", { name: /^Voir l’agence Youdom Care Hauts-de-Seine, / }),
+      within(footer).getByRole("link", { name: /^Voir l'agence Youdom Care Hauts-de-Seine, / }),
     ).toHaveAttribute("href", expect.stringMatching(/^\/agences\/puteaux\/?$/));
     expect(
       within(footer).getByText(/49-51 quai de Dion-Bouton, 92800 Puteaux/),

@@ -64,7 +64,7 @@ export function markdownToText(markdown: string): string {
 }
 
 /** Un mot : lettres ou chiffres, liés par apostrophe, trait d'union ou séparateur décimal (« 27,3 »). */
-const wordPattern = /[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+|[,.](?=\p{N})\p{N}+)*/gu;
+const wordPattern = /[\p{L}\p{N}]+(?:[''\-][\p{L}\p{N}]+|[,.](?=\p{N})\p{N}+)*/gu;
 
 /** Nombre de mots d'un texte brut (voir l'en-tête pour la définition d'un mot). */
 export function countWords(text: string): number {

@@ -39,7 +39,7 @@ describe("Prestataire ou mandataire", () => {
     expect(cards[0]).toHaveAttribute("data-mode", "prestataire");
     expect(cards[1]).toHaveAttribute("data-mode", "mandataire");
 
-    const crumbs = screen.getByRole("navigation", { name: "Fil d’Ariane" });
+    const crumbs = screen.getByRole("navigation", { name: "Fil d'Ariane" });
     expect(within(crumbs).getByRole("link", { name: "Comment ça marche" })).toHaveAttribute(
       "href",
       expect.stringMatching(/^\/comment-ca-marche\/?$/),

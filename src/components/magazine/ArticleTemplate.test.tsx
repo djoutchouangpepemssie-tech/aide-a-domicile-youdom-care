@@ -41,7 +41,7 @@ describe("ArticleTemplate", () => {
     const { container } = render(<ArticleTemplate data={dataFor(valide, pool)} />);
 
     // 1. fil d'Ariane avec la rubrique, titre
-    const crumbs = screen.getByRole("navigation", { name: "Fil d’Ariane" });
+    const crumbs = screen.getByRole("navigation", { name: "Fil d'Ariane" });
     expect(within(crumbs).getByRole("link", { name: "Le Fil" })).toBeInTheDocument();
     expect(within(crumbs).getByRole("link", { name: "Comprendre" })).toBeInTheDocument();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);

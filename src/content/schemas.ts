@@ -615,6 +615,11 @@ export const interfaceSchema = z.strictObject({
     }),
     h1: text.includes("{lieu}"),
     h1_code_postal: text.includes("{lieu}").includes("{cp}"),
+    /**
+     * Quatre formulations de la puce d'évaluation, réparties par département : la même puce sur
+     * les 131 pages locales se lisait comme un gabarit (audit des Hero du 13/10/2026, D-090).
+     */
+    reassurance_evaluation: z.array(text).length(4),
     reassurance_7j7: text,
     reassurance_24h: text,
     reponse: z.strictObject({
@@ -1209,7 +1214,7 @@ export const caregiverCheckSchema = z
         })
       );
     },
-    { message: "les trois niveaux doivent couvrir toute l’échelle, sans trou ni chevauchement" },
+    { message: "les trois niveaux doivent couvrir toute l'échelle, sans trou ni chevauchement" },
   );
 export type CaregiverCheckPage = z.infer<typeof caregiverCheckSchema>;
 

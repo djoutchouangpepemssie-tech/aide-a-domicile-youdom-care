@@ -2,7 +2,7 @@
   "_lisezmoi": "Page /aide-a-domicile/ (docs/04 §4, P6.5) : carte d'Île-de-France accessible (SVG schématique avec une liste équivalente de liens), recherche par commune (TerritorySearch), liste des agences de site.config.json. Les liens vers les départements n'apparaissent que pour les pages locales construites. Le jeton {agences} est remplacé par le nombre d'agences.",
   "seo": {
     "titre": "Aide à domicile en Île-de-France : trouvez votre commune",
-    "description": "Paris et les sept départements d’Île-de-France : tapez votre commune, nous vous disons tout de suite si nous intervenons, avec l’agence la plus proche."
+    "description": "Paris et les sept départements d'Île-de-France : tapez votre commune, nous vous disons tout de suite si nous intervenons, avec l'agence la plus proche."
   },
   "ariane": "Territoires",
   "h1": "Aide à domicile à Paris et en Île-de-France",

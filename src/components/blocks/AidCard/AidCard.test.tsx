@@ -7,7 +7,7 @@ describe("AidCard", () => {
   it("présente pour qui, combien, comment, et nomme la source sans lien sortant", () => {
     render(
       <AidCard
-        name="Crédit d’impôt"
+        name="Crédit d'impôt"
         forWho="Les particuliers qui paient des services à la personne."
         howMuch="La moitié des sommes versées, dans la limite des plafonds."
         howTo="Lors de la déclaration de revenus."
@@ -17,7 +17,7 @@ describe("AidCard", () => {
     );
     const article = screen.getByRole("article");
     expect(
-      within(article).getByRole("heading", { level: 3, name: "Crédit d’impôt" }),
+      within(article).getByRole("heading", { level: 3, name: "Crédit d'impôt" }),
     ).toBeInTheDocument();
     expect(
       within(article)

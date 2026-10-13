@@ -34,7 +34,7 @@ describe("/lexique/", () => {
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/lexique/i);
     expect(
-      within(screen.getByRole("navigation", { name: "Fil d’Ariane" })).getByText("Lexique"),
+      within(screen.getByRole("navigation", { name: "Fil d'Ariane" })).getByText("Lexique"),
     ).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("navigation", { name: "Aller à une lettre" })).toBeInTheDocument();
     for (const term of terms) {

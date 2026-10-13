@@ -101,7 +101,7 @@ test.describe("Lexique (P7.2)", () => {
     await expect(apa).toHaveAttribute("href", "/lexique/apa/");
     // Le corps écrit « allocation personnalisée d'autonomie (APA) » : c'est la variante qui vient
     // en premier qui porte le lien, une seule fois.
-    await expect(apa).toHaveText(/^(APA|allocation personnalisée d['’]autonomie)$/);
+    await expect(apa).toHaveText(/^(APA|allocation personnalisée d['']autonomie)$/);
     const slugs = await page
       .locator("a[data-lexique]")
       .evaluateAll((links) => links.map((link) => link.getAttribute("data-lexique") ?? ""));

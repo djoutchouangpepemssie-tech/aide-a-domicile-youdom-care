@@ -1412,3 +1412,21 @@ Sur les pages d'agence, l'adresse apparaissait quatre fois dans le texte visible
 légitimes, la quatrième était le chapô. La forme avec adresse disparaît du gabarit, du schéma et du
 contenu. Voir D-089.
 
+## 13/10/2026 — Fin de l'audit, et deux mesures qui corrigent l'audit
+
+Intertitres, photos, puces, apostrophes : le reste de l'audit est traité.
+
+Deux constats méritent d'être retournés au commanditaire. Les photos d'abord : les quatre paires
+nommées sont défaites, mais la mesure en trouve **huit**, et il ne reste que trois images
+inutilisées — le stock ne suffit pas. Et une bonne part des réutilisations est voulue, puisque les
+photos des semaines types suivent des personnages récurrents.
+
+Les puces ensuite : telles que proposées, elles auraient remis l'adresse de l'agence dans le hero,
+c'est-à-dire recréé la duplication que je venais d'en retirer. La puce d'évaluation tourne donc
+entre quatre formulations selon le département.
+
+Les apostrophes m'ont appris quelque chose : j'ai tout passé en droite, cassé le lint, et compris
+que les sept fichiers du styleguide utilisaient la courbe parce que `react/no-unescaped-entities`
+l'exige dans du texte JSX. Je leur ai rendu leur état. Sur les pages publiques, il reste deux
+apostrophes courbes, et elles appartiennent à Next. Voir D-090.
+

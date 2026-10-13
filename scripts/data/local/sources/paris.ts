@@ -148,7 +148,7 @@ function arrondissementOfPostcode(cp: string | null): number | null {
 export function titleCase(value: string): string {
   return value
     .toLowerCase()
-    .replace(/(^|[\s\-'’(])([a-zà-ÿ])/g, (_m, sep: string, c: string) => `${sep}${c.toUpperCase()}`)
+    .replace(/(^|[\s\-''(])([a-zà-ÿ])/g, (_m, sep: string, c: string) => `${sep}${c.toUpperCase()}`)
     .replace(/\b(De|Du|Des|La|Le|Les|Et|L'|D')\b/g, (m) => m.toLowerCase());
 }
 

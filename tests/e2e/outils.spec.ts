@@ -46,7 +46,7 @@ test.describe("Outils à imprimer (P7.7)", () => {
     await page.goto(`/outils/${TOOL}/`);
     await page.emulateMedia({ media: "print" });
     await expect(page.locator("body > header")).toBeHidden();
-    await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeHidden();
+    await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeHidden();
     await expect(page.getByRole("button", { name: "J'imprime cet outil" })).toBeHidden();
     await expect(page.locator("footer[data-print='hide']")).toBeHidden();
     await expect(page.locator(".tool-sheet")).toBeVisible();

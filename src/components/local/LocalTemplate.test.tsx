@@ -209,7 +209,7 @@ describe("LocalTemplate", () => {
     // l'`import()` se résolve — délai large parce que Vitest transforme la chaîne de modules du
     // formulaire à la volée quand aucun autre test du lot ne l'a déjà importée.
     expect(await screen.findByRole("form", {}, { timeout: 20_000 })).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: "Fil d’Ariane" })).toHaveTextContent(
+    expect(screen.getByRole("navigation", { name: "Fil d'Ariane" })).toHaveTextContent(
       "Hauts-de-Seine",
     );
   }, 30_000);

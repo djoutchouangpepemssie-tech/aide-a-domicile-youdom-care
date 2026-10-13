@@ -3,7 +3,7 @@
   "exemples": [
     {
       "id": "madeleine",
-      "titre": "Madeleine, 82 ans, maladie d’Alzheimer",
+      "titre": "Madeleine, 82 ans, maladie d'Alzheimer",
       "contexte": "Vit avec son mari.",
       "source": "docs/03 §3 (Alzheimer et maladies apparentées)",
       "photo": {
@@ -104,49 +104,49 @@
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h30–9h30",
-          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+          "libelle": "Médicaments à l'heure, lever, toilette, petit-déjeuner"
         },
         {
           "jour": "mar",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h30–9h30",
-          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+          "libelle": "Médicaments à l'heure, lever, toilette, petit-déjeuner"
         },
         {
           "jour": "mer",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h30–9h30",
-          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+          "libelle": "Médicaments à l'heure, lever, toilette, petit-déjeuner"
         },
         {
           "jour": "jeu",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h30–9h30",
-          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+          "libelle": "Médicaments à l'heure, lever, toilette, petit-déjeuner"
         },
         {
           "jour": "ven",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h30–9h30",
-          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+          "libelle": "Médicaments à l'heure, lever, toilette, petit-déjeuner"
         },
         {
           "jour": "sam",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h30–9h30",
-          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+          "libelle": "Médicaments à l'heure, lever, toilette, petit-déjeuner"
         },
         {
           "jour": "dim",
           "creneau": "morning",
           "activite": "gestes",
           "heures": "7h30–9h30",
-          "libelle": "Médicaments à l’heure, lever, toilette, petit-déjeuner"
+          "libelle": "Médicaments à l'heure, lever, toilette, petit-déjeuner"
         },
         {
           "jour": "mar",
@@ -205,14 +205,14 @@
           "creneau": "evening",
           "activite": "presence",
           "heures": "16h30–19h",
-          "libelle": "Sortie d’école, devoirs, dîner"
+          "libelle": "Sortie d'école, devoirs, dîner"
         },
         {
           "jour": "jeu",
           "creneau": "evening",
           "activite": "presence",
           "heures": "16h30–19h",
-          "libelle": "Sortie d’école, devoirs, dîner"
+          "libelle": "Sortie d'école, devoirs, dîner"
         }
       ]
     },
@@ -424,28 +424,28 @@
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "16h15–19h",
-          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+          "libelle": "Sortie d'école, goûter, temps calme, jeux, bain"
         },
         {
           "jour": "mar",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "16h15–19h",
-          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+          "libelle": "Sortie d'école, goûter, temps calme, jeux, bain"
         },
         {
           "jour": "jeu",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "16h15–19h",
-          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+          "libelle": "Sortie d'école, goûter, temps calme, jeux, bain"
         },
         {
           "jour": "ven",
           "creneau": "afternoon",
           "activite": "presence",
           "heures": "16h15–19h",
-          "libelle": "Sortie d’école, goûter, temps calme, jeux, bain"
+          "libelle": "Sortie d'école, goûter, temps calme, jeux, bain"
         },
         {
           "jour": "mer",
@@ -465,9 +465,9 @@
     },
     {
       "id": "bernard",
-      "titre": "Bernard, 74 ans, retour d’hospitalisation",
-      "contexte": "Première semaine à la maison après l’hôpital.",
-      "source": "docs/03 §8 (Sortie d’hospitalisation) : présence dès le premier jour, courses, repas, aide aux gestes, vigilance ; répartition des jours et nuits choisie pour l’illustration",
+      "titre": "Bernard, 74 ans, retour d'hospitalisation",
+      "contexte": "Première semaine à la maison après l'hôpital.",
+      "source": "docs/03 §8 (Sortie d'hospitalisation) : présence dès le premier jour, courses, repas, aide aux gestes, vigilance ; répartition des jours et nuits choisie pour l'illustration",
       "photo": {
         "src": "/images/exemples/bernard-fauteuil-salon.jpg",
         "alt": "Un homme âgé, assis dans un fauteuil rouge de son salon, regarde vers la fenêtre",
@@ -848,49 +848,49 @@
           "creneau": "noon",
           "activite": "repas",
           "heures": "12h–13h30",
-          "libelle": "Repas adapté, textures selon l’orthophoniste"
+          "libelle": "Repas adapté, textures selon l'orthophoniste"
         },
         {
           "jour": "mar",
           "creneau": "noon",
           "activite": "repas",
           "heures": "12h–13h30",
-          "libelle": "Repas adapté, textures selon l’orthophoniste"
+          "libelle": "Repas adapté, textures selon l'orthophoniste"
         },
         {
           "jour": "mer",
           "creneau": "noon",
           "activite": "repas",
           "heures": "12h–13h30",
-          "libelle": "Repas adapté, textures selon l’orthophoniste"
+          "libelle": "Repas adapté, textures selon l'orthophoniste"
         },
         {
           "jour": "jeu",
           "creneau": "noon",
           "activite": "repas",
           "heures": "12h–13h30",
-          "libelle": "Repas adapté, textures selon l’orthophoniste"
+          "libelle": "Repas adapté, textures selon l'orthophoniste"
         },
         {
           "jour": "ven",
           "creneau": "noon",
           "activite": "repas",
           "heures": "12h–13h30",
-          "libelle": "Repas adapté, textures selon l’orthophoniste"
+          "libelle": "Repas adapté, textures selon l'orthophoniste"
         },
         {
           "jour": "sam",
           "creneau": "noon",
           "activite": "repas",
           "heures": "12h–13h30",
-          "libelle": "Repas adapté, textures selon l’orthophoniste"
+          "libelle": "Repas adapté, textures selon l'orthophoniste"
         },
         {
           "jour": "dim",
           "creneau": "noon",
           "activite": "repas",
           "heures": "12h–13h30",
-          "libelle": "Repas adapté, textures selon l’orthophoniste"
+          "libelle": "Repas adapté, textures selon l'orthophoniste"
         },
         {
           "jour": "lun",
@@ -1109,28 +1109,28 @@
           "creneau": "evening",
           "activite": "gestes",
           "heures": "17h–20h",
-          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+          "libelle": "Retour d'IME, installation, repas, changements de position, bain"
         },
         {
           "jour": "mar",
           "creneau": "evening",
           "activite": "gestes",
           "heures": "17h–20h",
-          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+          "libelle": "Retour d'IME, installation, repas, changements de position, bain"
         },
         {
           "jour": "jeu",
           "creneau": "evening",
           "activite": "gestes",
           "heures": "17h–20h",
-          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+          "libelle": "Retour d'IME, installation, repas, changements de position, bain"
         },
         {
           "jour": "ven",
           "creneau": "evening",
           "activite": "gestes",
           "heures": "17h–20h",
-          "libelle": "Retour d’IME, installation, repas, changements de position, bain"
+          "libelle": "Retour d'IME, installation, repas, changements de position, bain"
         },
         {
           "jour": "mer",
@@ -1169,28 +1169,28 @@
           "creneau": "evening",
           "activite": "gestes",
           "heures": "16h30–19h30",
-          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+          "libelle": "Sortie d'école, goûter, devoirs, transferts, douche"
         },
         {
           "jour": "mar",
           "creneau": "evening",
           "activite": "gestes",
           "heures": "16h30–19h30",
-          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+          "libelle": "Sortie d'école, goûter, devoirs, transferts, douche"
         },
         {
           "jour": "jeu",
           "creneau": "evening",
           "activite": "gestes",
           "heures": "16h30–19h30",
-          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+          "libelle": "Sortie d'école, goûter, devoirs, transferts, douche"
         },
         {
           "jour": "ven",
           "creneau": "evening",
           "activite": "gestes",
           "heures": "16h30–19h30",
-          "libelle": "Sortie d’école, goûter, devoirs, transferts, douche"
+          "libelle": "Sortie d'école, goûter, devoirs, transferts, douche"
         },
         {
           "jour": "mer",
@@ -1224,28 +1224,28 @@
           "creneau": "evening",
           "activite": "presence",
           "heures": "16h30–19h",
-          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+          "libelle": "Sortie d'école, goûter préparé ensemble, apprentissages du quotidien"
         },
         {
           "jour": "mar",
           "creneau": "evening",
           "activite": "presence",
           "heures": "16h30–19h",
-          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+          "libelle": "Sortie d'école, goûter préparé ensemble, apprentissages du quotidien"
         },
         {
           "jour": "jeu",
           "creneau": "evening",
           "activite": "presence",
           "heures": "16h30–19h",
-          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+          "libelle": "Sortie d'école, goûter préparé ensemble, apprentissages du quotidien"
         },
         {
           "jour": "ven",
           "creneau": "evening",
           "activite": "presence",
           "heures": "16h30–19h",
-          "libelle": "Sortie d’école, goûter préparé ensemble, apprentissages du quotidien"
+          "libelle": "Sortie d'école, goûter préparé ensemble, apprentissages du quotidien"
         },
         {
           "jour": "mer",

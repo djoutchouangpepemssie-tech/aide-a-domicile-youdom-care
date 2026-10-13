@@ -157,7 +157,7 @@ test.describe("Pages services (P4)", () => {
     page,
   }) => {
     await page.goto("/personnes-agees/");
-    const group = page.getByRole("group", { name: "Vous cherchez de l’aide" });
+    const group = page.getByRole("group", { name: "Vous cherchez de l'aide" });
     const proche = group.getByRole("button", { name: "pour un proche" });
     const soi = group.getByRole("button", { name: "pour vous-même" });
     await expect(proche).toHaveAttribute("aria-pressed", "true");
@@ -436,7 +436,7 @@ test.describe("Pages services (P4)", () => {
     );
     const railBox = await rail.boundingBox();
     const switchBox = await page
-      .getByRole("group", { name: "Vous cherchez de l’aide" })
+      .getByRole("group", { name: "Vous cherchez de l'aide" })
       .boundingBox();
     expect(railBox).not.toBeNull();
     expect(switchBox).not.toBeNull();

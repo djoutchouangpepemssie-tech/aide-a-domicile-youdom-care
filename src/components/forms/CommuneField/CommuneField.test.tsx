@@ -8,7 +8,7 @@ const rows: CompactCommune[] = [
   ["75112", "Paris 12e Arrondissement", "75012", "75", "paris-12"],
 ];
 const texts = {
-  aucun_resultat: "Aucune commune d’Île-de-France ne correspond à votre saisie.",
+  aucun_resultat: "Aucune commune d'Île-de-France ne correspond à votre saisie.",
   suggestions: "{n} suggestion(s), utilisez les flèches pour choisir.",
 };
 
@@ -52,7 +52,7 @@ describe("CommuneField", () => {
     const input = screen.getByRole("combobox", { name: "Votre commune" });
     fireEvent.change(input, { target: { value: "Lyon" } });
     await waitFor(() =>
-      expect(screen.getByText(/Aucune commune d’Île-de-France/)).toBeInTheDocument(),
+      expect(screen.getByText(/Aucune commune d'Île-de-France/)).toBeInTheDocument(),
     );
     expect(input).toHaveAttribute("aria-invalid", "true");
     expect(input).toHaveAccessibleDescription("Nous intervenons à Paris et en Île-de-France.");

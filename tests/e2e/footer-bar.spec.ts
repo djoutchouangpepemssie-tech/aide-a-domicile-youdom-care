@@ -14,7 +14,7 @@ test.describe("Pied de page et barre mobile (P1.6)", () => {
     );
     await expect(footer.getByRole("heading", { name: "Nos agences" })).toBeVisible();
     await expect(
-      footer.getByRole("link", { name: /Voir l’agence Youdom Care Paris/ }),
+      footer.getByRole("link", { name: /Voir l'agence Youdom Care Paris/ }),
     ).toHaveAttribute("href", "/agences/paris-12/");
     await expect(footer.getByRole("link", { name: "Mentions légales" })).toBeVisible();
     await expect(footer.getByText("Vous, chez vous. Nous, à vos côtés.")).toBeVisible();

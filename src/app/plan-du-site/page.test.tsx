@@ -127,7 +127,7 @@ describe("Plan du site", () => {
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Plan du site");
     expect(
-      screen.getByRole("navigation", { name: "Fil d’Ariane" }).querySelector("[aria-current=page]"),
+      screen.getByRole("navigation", { name: "Fil d'Ariane" }).querySelector("[aria-current=page]"),
     ).toHaveTextContent("Plan du site");
     // Nom préfixé par la page : les navigations du pied de page portent déjà « Pour qui ? » et
     // « Nos services » (RGAA 12.6, audit P8.4 R-1) ; le titre visible reste le titre du groupe.

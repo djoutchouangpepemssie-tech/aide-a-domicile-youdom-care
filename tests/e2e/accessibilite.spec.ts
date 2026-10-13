@@ -10,7 +10,7 @@ test.describe("Déclaration d'accessibilité (P8.4)", () => {
     await expect(page).toHaveTitle(/Accessibilité/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Déclaration d'accessibilité");
-    await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
     for (const name of [
       "État de conformité",
       "Résultats des tests",
@@ -57,7 +57,7 @@ test.describe("Déclaration d'accessibilité (P8.4)", () => {
     await expect(page).toHaveURL(/#contenu$/);
     await page.keyboard.press("Tab");
     await expect(
-      page.getByRole("navigation", { name: "Fil d’Ariane" }).getByRole("link", { name: "Accueil" }),
+      page.getByRole("navigation", { name: "Fil d'Ariane" }).getByRole("link", { name: "Accueil" }),
     ).toBeFocused();
   });
 });

@@ -256,10 +256,10 @@ test.describe("Corrections de l'audit P8.4 reprises en phase 9", () => {
     const status = page.getByRole("status").filter({ hasText: /Vous cherchez de l.aide/ });
     await expect(status).toHaveCount(0);
     await page.getByRole("button", { name: "pour vous-même" }).click();
-    await expect(page.getByRole("status")).toContainText("Vous cherchez de l’aide pour vous-même");
+    await expect(page.getByRole("status")).toContainText("Vous cherchez de l'aide pour vous-même");
     await page.getByRole("button", { name: "pour un proche" }).focus();
     await page.keyboard.press("Enter");
-    await expect(page.getByRole("status")).toContainText("Vous cherchez de l’aide pour un proche");
+    await expect(page.getByRole("status")).toContainText("Vous cherchez de l'aide pour un proche");
   });
 
   test("R-3 : les liens légaux du pied de page mesurent au moins 44 px de haut", async ({

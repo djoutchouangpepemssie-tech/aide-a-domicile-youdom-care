@@ -11,7 +11,7 @@ test.describe("Magazine « Le Fil » (P7.1)", () => {
     const response = await page.goto("/magazine/");
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
-    await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
     const rubriques = page.getByRole("region", { name: "Les rubriques" });
     await expect(rubriques.getByRole("link")).toHaveCount(6);
     await expect(page.getByRole("link", { name: "Lire notre charte éditoriale" })).toBeVisible();
@@ -49,7 +49,7 @@ test.describe("Magazine « Le Fil » (P7.1)", () => {
      * Ce parcours dit la règle écrite ; on ne le réécrit pas pour épouser l'écart
      * (docs/AUDIT_GLOBAL.md §10).
      */
-    await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
     await expect(page.locator("[data-confiance]")).toBeVisible();
     await expect(page.getByRole("region", { name: "L'essentiel" })).toBeVisible();
     const toc = page.getByRole("navigation", { name: "Sommaire" });

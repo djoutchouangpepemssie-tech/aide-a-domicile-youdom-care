@@ -9,7 +9,7 @@ const texts = interfaceJson.tarifs;
 // Chiffres de test uniquement : aucun tarif réel n'est connu (Q-TARIFS-1).
 const service: Service = {
   id: "aide-a-l-autonomie-prestataire",
-  libelle: "Aide à l’autonomie",
+  libelle: "Aide à l'autonomie",
   activite: "Assistance aux personnes âgées",
   mode: "prestataire",
   unite: "heure",
@@ -26,13 +26,13 @@ describe("PriceCard", () => {
     render(
       <PriceCard service={service} creditImpotTaux={0.5} exampleHoursPerWeek={10} texts={texts} />,
     );
-    const card = screen.getByRole("article", { name: "Aide à l’autonomie" });
+    const card = screen.getByRole("article", { name: "Aide à l'autonomie" });
     // Le montant contient une espace insécable : on cible la classe du grand chiffre.
     const ttc = card.querySelector(".text-h2");
     expect(ttc).toHaveTextContent("30 €");
     expect(card).toHaveTextContent("30 € TTC par heure");
     expect(card).toHaveTextContent("27,27 € HT");
-    expect(card).toHaveTextContent("Soit 15 € après crédit d’impôt de 50 %");
+    expect(card).toHaveTextContent("Soit 15 € après crédit d'impôt de 50 %");
     expect(screen.getByText(/après crédit/)).toHaveClass("text-small");
     expect(card).toHaveTextContent("Exemple : 10 h par semaine, environ 1 300 € par mois");
     expect(card).toHaveTextContent("Mode prestataire");

@@ -59,7 +59,7 @@ test("/recrutement/ : 200, un seul H1, aucune offre inventée, candidature spont
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Auxiliaire de vie, aide à domicile : rejoignez Youdom Care",
   );
-  await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
   await expect(page.getByTestId("aucune-offre")).toHaveText("Aucune offre publiée pour le moment.");
   await expect(page.getByRole("link", { name: "Je postule" }).first()).toHaveAttribute(
     "href",

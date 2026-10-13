@@ -7,7 +7,7 @@ test.describe("Comment ça marche (P2.4)", () => {
     expect(response?.status()).toBe(200);
     await expect(page).toHaveTitle(/Comment ça marche/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
-    await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
     await expect(page.locator(".steps-timeline li")).toHaveCount(4);
     await expect(page.locator(".follow-up-timeline li")).toHaveCount(3);
     await expect(

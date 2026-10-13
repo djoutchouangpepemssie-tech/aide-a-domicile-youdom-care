@@ -9,7 +9,7 @@ const texts = {
   oui: "Oui, nous intervenons à {commune}. Votre agence la plus proche : {agence}.",
   oui_sans_agence: "Oui, nous intervenons à {commune}.",
   hors: "Nous intervenons à Paris et en Île-de-France.",
-  aucun_resultat: "Aucune commune d’Île-de-France ne correspond.",
+  aucun_resultat: "Aucune commune d'Île-de-France ne correspond.",
   suggestions: "{n} suggestions",
 };
 

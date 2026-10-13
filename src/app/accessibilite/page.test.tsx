@@ -23,7 +23,7 @@ describe("Déclaration d'accessibilité (P8.4)", () => {
       "Déclaration d'accessibilité",
     );
     expect(
-      screen.getByRole("navigation", { name: "Fil d’Ariane" }).querySelector("[aria-current=page]"),
+      screen.getByRole("navigation", { name: "Fil d'Ariane" }).querySelector("[aria-current=page]"),
     ).toHaveTextContent("Accessibilité");
 
     // Éditeur et adresse du site, depuis site.config.json.

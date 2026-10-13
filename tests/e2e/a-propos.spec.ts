@@ -9,7 +9,7 @@ test.describe("À propos (P2.9)", () => {
       const response = await page.goto(path);
       expect(response?.status()).toBe(200);
       await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
-      await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+      await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
       await expectNoSeriousAxeViolations(page);
     });
   }

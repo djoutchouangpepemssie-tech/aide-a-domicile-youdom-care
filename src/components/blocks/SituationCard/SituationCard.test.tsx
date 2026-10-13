@@ -9,7 +9,7 @@ describe("SituationCard", () => {
         quote="Un diagnostic vient de tomber"
         text="Alzheimer, Parkinson, sclérose en plaques… Vous cherchez comment organiser la suite."
         href="/maladies-neurodegeneratives/"
-        linkLabel="Voir l’accompagnement par maladie"
+        linkLabel="Voir l'accompagnement par maladie"
         illustration="carnet"
       />,
     );
@@ -17,7 +17,7 @@ describe("SituationCard", () => {
     expect(within(card).getByText("« Un diagnostic vient de tomber »")).toHaveClass("heading-3");
     const links = within(card).getAllByRole("link");
     expect(links).toHaveLength(1);
-    expect(links[0]).toHaveAccessibleName("Voir l’accompagnement par maladie");
+    expect(links[0]).toHaveAccessibleName("Voir l'accompagnement par maladie");
     expect(links[0]).toHaveAttribute(
       "href",
       expect.stringMatching(/^\/maladies-neurodegeneratives\/?$/),
@@ -32,7 +32,7 @@ describe("SituationCard", () => {
         quote="Mon parent ne peut plus rester seul"
         text="Chutes, oublis, repas sautés : il est temps d'une présence régulière."
         href="/personnes-agees/"
-        linkLabel="Voir l’aide aux personnes âgées"
+        linkLabel="Voir l'aide aux personnes âgées"
         icon="maison"
       />,
     );

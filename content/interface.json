@@ -35,7 +35,7 @@
     "navigation_pied": "Pied de page",
     "toutes_les_agences": "Toutes les agences",
     "aide_a_domicile_en": "Aide à domicile · {territoire}",
-    "voir_agence": "Voir l’agence {nom}"
+    "voir_agence": "Voir l'agence {nom}"
   },
   "confort": {
     "libelle": "Confort de lecture",
@@ -81,7 +81,7 @@
     "ht": "HT",
     "par_unite": "par {unite}",
     "avant_avantage": "Prix avant avantage fiscal",
-    "apres_credit": "Soit {montant} après crédit d’impôt de {taux}",
+    "apres_credit": "Soit {montant} après crédit d'impôt de {taux}",
     "exemple_mensuel": "Exemple : {heures} h par semaine, environ {montant} par mois",
     "mode": "Mode {mode}",
     "devis": "Devis personnalisé gratuit",
@@ -124,16 +124,16 @@
     "bouton": "Vérifier",
     "oui": "Oui, nous intervenons à {commune}. Votre agence la plus proche : {agence}.",
     "oui_sans_agence": "Oui, nous intervenons à {commune}.",
-    "aucun_resultat": "Aucune commune d’Île-de-France ne correspond à votre saisie.",
+    "aucun_resultat": "Aucune commune d'Île-de-France ne correspond à votre saisie.",
     "suggestions": "{n} suggestion(s), utilisez les flèches pour choisir."
   },
   "fil_ariane": {
-    "nom": "Fil d’Ariane",
+    "nom": "Fil d'Ariane",
     "accueil": "Accueil"
   },
   "service": {
     "lecteur": {
-      "legende": "Vous cherchez de l’aide",
+      "legende": "Vous cherchez de l'aide",
       "proche": "pour un proche",
       "soi": "pour vous-même"
     },
@@ -156,7 +156,7 @@
     "semaine_h2": "Exemple de semaine",
     "suivi_h2": "Le suivi",
     "proches_h2": "Et pour vous, les proches",
-    "proches_lien": "L’espace Aidants",
+    "proches_lien": "L'espace Aidants",
     "repit_lien": "Les solutions de répit",
     "intervenants_h2": "Qui intervient ?",
     "ne_faisons_pas_h2": "Ce que nous ne faisons pas",
@@ -165,11 +165,11 @@
     "tous_les_services_lien": "Voir tous nos services",
     "faq_h2": "Questions fréquentes",
     "formulaire_h2": "Décrire votre situation",
-    "formulaire_texte": "Deux à trois minutes. Aucune question n’est obligatoire, sauf vos coordonnées.",
+    "formulaire_texte": "Deux à trois minutes. Aucune question n'est obligatoire, sauf vos coordonnées.",
     "sources_h2": "Sources et relecture",
     "auteur": "Par {nom}, {fonction}",
     "relu_par": "Relu par {nom}, {fonction}, le {date}",
-    "non_relu": "Cette page attend sa relecture par un professionnel : elle n’est pas encore publiée.",
+    "non_relu": "Cette page attend sa relecture par un professionnel : elle n'est pas encore publiée.",
     "maj": "Mise à jour le {date}",
     "relecture_attendue": "En attente de relecture par un professionnel.",
     "frontiere": {
@@ -436,6 +436,12 @@
     },
     "h1": "Aide à domicile {lieu}",
     "h1_code_postal": "Aide à domicile {lieu} ({cp})",
+    "reassurance_evaluation": [
+      "Évaluation à domicile gratuite, sans engagement.",
+      "Visite d'évaluation offerte, chez vous.",
+      "Évaluation gratuite, sans obligation.",
+      "Première visite gratuite, à votre rythme."
+    ],
     "reassurance_7j7": "7 jours sur 7",
     "reassurance_24h": "Jour et nuit, 24h/24",
     "reponse": {

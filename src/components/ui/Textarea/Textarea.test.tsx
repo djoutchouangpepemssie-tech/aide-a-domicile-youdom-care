@@ -7,7 +7,7 @@ describe("Textarea", () => {
     render(
       <Textarea
         label="Ce que vous souhaitez nous dire"
-        hint="Inutile de détailler l’état de santé : nous en parlerons de vive voix."
+        hint="Inutile de détailler l'état de santé : nous en parlerons de vive voix."
         optional
       />,
     );

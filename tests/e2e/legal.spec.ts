@@ -21,7 +21,7 @@ test.describe("Pages légales (P8.3)", () => {
       expect(response?.status()).toBe(200);
       await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
       await expect(page.getByRole("heading", { level: 1 })).toHaveText(h1);
-      await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+      await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
       await expect(page.locator("[data-maj] time")).toHaveAttribute(
         "datetime",
         /^\d{4}-\d{2}-\d{2}$/,

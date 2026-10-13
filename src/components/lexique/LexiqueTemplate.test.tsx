@@ -62,7 +62,7 @@ const bare = (value: string | null) => (value ?? "").replace(/\/$/, "");
 describe("LexiqueTemplate", () => {
   it("rend le fil d'Ariane, un seul H1 (terme et développé), la définition et la date", () => {
     render(<LexiqueTemplate data={data()} />);
-    const crumbs = screen.getByRole("navigation", { name: "Fil d’Ariane" });
+    const crumbs = screen.getByRole("navigation", { name: "Fil d'Ariane" });
     expect(within(crumbs).getByRole("link", { name: "Lexique" })).toBeInTheDocument();
     const headings = screen.getAllByRole("heading", { level: 1 });
     expect(headings).toHaveLength(1);

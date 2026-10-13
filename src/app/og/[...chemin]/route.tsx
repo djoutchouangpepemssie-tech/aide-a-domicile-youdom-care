@@ -11,7 +11,7 @@ import { renderOgImage } from "@/lib/og/render";
  * Image Open Graph des pages servies par un segment attrape-tout, /og/{chemin}/ : pages
  * services et pathologies (src/app/[...chemin]/page.tsx), pages locales
  * (src/app/aide-a-domicile/[...chemin]/page.tsx) et pages du magazine (src/app/magazine/**,
- * illustration « carnet » ; un opengraph-image.tsx sous /magazine/ s’appliquerait aussi aux
+ * illustration « carnet » ; un opengraph-image.tsx sous /magazine/ s'appliquerait aussi aux
  * articles et masquerait leur image). Mêmes paramètres statiques que ces pages : une
  * image PNG par page construite, générée au build ; le H1 de la page et un tracé du fil choisi
  * par public (services) ou la maison (territoires). Un fichier opengraph-image.tsx est

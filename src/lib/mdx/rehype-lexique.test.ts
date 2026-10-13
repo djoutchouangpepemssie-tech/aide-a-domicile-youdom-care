@@ -83,13 +83,13 @@ describe("rehype-lexique", () => {
       root([
         el("p", [text("apa n'est pas un sigle ici.")]),
         el("p", [text("Les Auxiliaires de vie passent le matin.")]),
-        el("p", [text("Puis l'allocation personnalisée d’autonomie, et l'APA ensuite.")]),
+        el("p", [text("Puis l'allocation personnalisée d'autonomie, et l'APA ensuite.")]),
       ]),
     );
     const found = links(tree);
     expect(found.map((l) => [l.properties?.dataLexique, toText(l)])).toEqual([
       ["auxiliaire-de-vie", "Auxiliaires de vie"],
-      ["apa", "allocation personnalisée d’autonomie"],
+      ["apa", "allocation personnalisée d'autonomie"],
     ]);
   });
 

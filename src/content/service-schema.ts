@@ -198,7 +198,7 @@ export const servicePageSchema = z
     maj: isoDate,
   })
   .superRefine((page, ctx) => {
-    // Les services transverses (docs/03 §8) n’ont pas de pilier ; toute autre page en a un.
+    // Les services transverses (docs/03 §8) n'ont pas de pilier ; toute autre page en a un.
     if (page.type !== "pilier" && page.type !== "service" && !page.pilier) {
       ctx.addIssue({ code: "custom", path: ["pilier"], message: "page rattachée à un pilier" });
     }

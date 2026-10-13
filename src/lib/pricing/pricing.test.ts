@@ -56,10 +56,10 @@ describe("pricing", () => {
   });
 });
 
-describe("budget d’un planning", () => {
+describe("budget d'un planning", () => {
   const services = [
     { libelle: "Nuit calme", unite: "nuit", prix_ttc: 120, degressivite: [] },
-    { libelle: "Aide à l’autonomie", unite: "heure", prix_ttc: null, degressivite: [] },
+    { libelle: "Aide à l'autonomie", unite: "heure", prix_ttc: null, degressivite: [] },
     {
       libelle: "Vie quotidienne",
       unite: "heure",
@@ -68,13 +68,13 @@ describe("budget d’un planning", () => {
     },
   ];
 
-  it("retient la première prestation à l’heure dont le prix est connu", () => {
+  it("retient la première prestation à l'heure dont le prix est connu", () => {
     expect(budgetBasis([], 0.5)).toBeNull();
     expect(budgetBasis(services.slice(0, 2), 0.5)).toBeNull();
     expect(budgetBasis(services, 0.5)).toMatchObject({ hourlyPrice: 30, label: "Vie quotidienne" });
   });
 
-  it("calcule le budget mensuel avant et après crédit d’impôt", () => {
+  it("calcule le budget mensuel avant et après crédit d'impôt", () => {
     const basis = budgetBasis(services, 0.5);
     if (!basis) throw new Error("base attendue");
     expect(monthlyBudget(basis, 5)).toEqual({

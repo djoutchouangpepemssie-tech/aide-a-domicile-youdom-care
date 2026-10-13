@@ -1812,3 +1812,38 @@ et typecheck verts. Les 37 parcours services lancés après la réécriture des 
 les photos réutilisées entre articles et pages, et les quatre jeux de puces locales — ces derniers
 en attente d'arbitrage, « Crédit d'impôt de 50 % » devant d'abord être déclaré comme fait sourcé.
 
+## D-090 — Fin de l'audit : intertitres, photos, puces, apostrophes (13/10/2026)
+
+**Intertitres du magazine.** Dix premiers intertitres sur treize ouvraient par « Pourquoi… ? ». Six
+sont réécrits — affirmation, « Comment… », « Ce que… » — et quatre gardent la question, là où elle
+en est vraiment une. C'est ce que demandait l'audit (« garder Pourquoi sur 4 ou 5 »).
+
+**Photos.** Les quatre paires nommées sont défaites : chaque article concerné reçoit une photo
+jusque-là inutilisée, **décrite d'après ce qu'elle montre réellement** — je les ai ouvertes une par
+une plutôt que d'inventer un texte de remplacement.
+
+La mesure dit cependant que le problème est plus large que l'audit ne l'écrit : **huit** articles
+partagent encore leur photo avec une page de service, et il ne reste que **trois** images
+inutilisées dans `public/images`. Le stock ne couvre pas le besoin ; choisir ou acheter des photos
+appartient au commanditaire. À noter aussi : une bonne part des réutilisations relevées est
+**voulue** — les photos de `semaines-types.json` suivent des personnages récurrents (Madeleine sur
+huit pages, Suzanne sur six), et les séparer casserait la continuité du récit.
+
+**Puces des pages locales.** Les quatre jeux proposés mettaient l'adresse de l'agence dans une puce,
+ce qui aurait recréé exactement la duplication retirée des pages d'agence (D-089), et « Crédit
+d'impôt de 50 % », un chiffre qui doit d'abord être déclaré comme fait sourcé (`numbers.ts`). La
+puce d'évaluation tourne donc entre **quatre formulations selon le département** : deux pages
+voisines ne portent plus la même, sans fait nouveau ni répétition nouvelle. Vérifié sur le rendu des
+cinq départements témoins.
+
+**Apostrophes.** 17 025 droites contre 54 courbes dans `content/`, 172 de plus dans le code : la
+convention du dépôt est l'apostrophe droite, et les exceptions sont alignées. Sur les pages
+publiques construites, il n'en reste **2**, qui appartiennent au message d'erreur interne de Next.
+
+Les 96 restantes vivent dans le styleguide, et elles y restent : dans du **texte JSX**, une
+apostrophe droite déclenche `react/no-unescaped-entities`. C'est précisément pourquoi ces fichiers
+l'utilisaient. Je l'ai découvert en cassant le lint, puis j'ai rendu leur état à ces sept fichiers.
+Le styleguide est interne et en `noindex` : aucun visiteur ne lit ces apostrophes.
+
+**Vérifications** : 948 tests, 13/13 contrôles, 22 parcours, lint et typecheck verts.
+

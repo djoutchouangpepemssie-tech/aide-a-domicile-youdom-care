@@ -56,7 +56,7 @@ export function SourcesList({
   sources: readonly Source[];
   texts: SourcesListTexts;
   review?: SourcesReview;
-  /** Liste numérotée (sources d’un article, docs/06 §3) plutôt qu’une liste sans puces. */
+  /** Liste numérotée (sources d'un article, docs/06 §3) plutôt qu'une liste sans puces. */
   ordered?: boolean;
   className?: string;
 }) {

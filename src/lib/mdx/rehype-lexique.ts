@@ -88,7 +88,7 @@ function escapeRegExp(value: string): string {
 /** Expression d'une graphie : mot entier, apostrophes et espaces tolérants. */
 export function variantPattern(variant: string): RegExp {
   const body = escapeRegExp(variant.trim())
-    .replace(/['’]/g, "['’]")
+    .replace(/['']/g, "['']")
     .replace(/\s+/g, "[\\s\\u00a0]+");
   return new RegExp(
     `(?<![\\p{L}\\p{N}])(?:${body})(?![\\p{L}\\p{N}])`,

@@ -16,7 +16,7 @@ test.describe("Professionnels (P8.1)", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       "Professionnels : une réponse claire en un appel",
     );
-    await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
     const links = page.getByRole("link", { name: "J'adresse une situation" });
     await expect(links.first()).toHaveAttribute("href", /\/demande\/professionnel\/?$/);
     await expect(

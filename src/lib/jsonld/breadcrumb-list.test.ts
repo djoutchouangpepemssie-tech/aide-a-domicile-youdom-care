@@ -10,7 +10,7 @@ describe("jsonld/breadcrumbList", () => {
         [
           { name: "Accueil", url: "/" },
           { name: "Personnes âgées", url: "/personnes-agees/" },
-          { name: "Aide à l’autonomie" },
+          { name: "Aide à l'autonomie" },
         ],
         site,
       ),
@@ -25,7 +25,7 @@ describe("jsonld/breadcrumbList", () => {
           name: "Personnes âgées",
           item: "https://www.example.org/personnes-agees/",
         },
-        { "@type": "ListItem", position: 3, name: "Aide à l’autonomie" },
+        { "@type": "ListItem", position: 3, name: "Aide à l'autonomie" },
       ],
     });
   });

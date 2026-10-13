@@ -36,12 +36,12 @@ describe("/outils/{slug}/", () => {
     expect(screen.getByText(/Rien n'est saisi ni collecté sur le site/)).toBeInTheDocument();
     expect(container.querySelectorAll(".tool-box").length).toBeGreaterThanOrEqual(30);
     expect(
-      screen.getByRole("navigation", { name: "Fil d’Ariane" }).querySelector("[aria-current=page]"),
+      screen.getByRole("navigation", { name: "Fil d'Ariane" }).querySelector("[aria-current=page]"),
     ).toHaveTextContent("Tour du logement anti-chutes");
     // next/link rend l'adresse sans barre finale dans les tests (trailingSlash s'applique au build).
     const bare = (href: string | null) => (href ?? "").replace(/\/$/, "");
     // Le fil d'Ariane mène à l'index ; le bloc « À lire aussi » (P9.4) le lie aussi, avec les autres outils.
-    const crumbs = screen.getByRole("navigation", { name: "Fil d’Ariane" });
+    const crumbs = screen.getByRole("navigation", { name: "Fil d'Ariane" });
     expect(
       bare(within(crumbs).getByRole("link", { name: "Outils à imprimer" }).getAttribute("href")),
     ).toBe("/outils");

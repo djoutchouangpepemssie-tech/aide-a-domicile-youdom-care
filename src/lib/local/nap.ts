@@ -38,7 +38,7 @@ const streetAddressPattern = new RegExp(
  * « 92000 Nanterre » grâce à `addressStartsWith`).
  */
 const postalCityPattern =
-  /\b(\d{5})\s+((?:[A-ZÀ-ÖØ-Þ][\p{L}'’]*(?:-[\p{L}'’]+)*)(?:\s(?:[A-ZÀ-ÖØ-Þ][\p{L}'’]*(?:-[\p{L}'’]+)*|sur|sous|en|la|le|les|de|des|du|au|aux|et)){0,3})/gu;
+  /\b(\d{5})\s+((?:[A-ZÀ-ÖØ-Þ][\p{L}'']*(?:-[\p{L}'']+)*)(?:\s(?:[A-ZÀ-ÖØ-Þ][\p{L}'']*(?:-[\p{L}'']+)*|sur|sous|en|la|le|les|de|des|du|au|aux|et)){0,3})/gu;
 
 const phonePattern =
   /(?:\+33|0033)[\s.-]?[1-9](?:[\s.-]?\d{2}){4}\b|(?<!\d)0[1-9](?:[\s.-]?\d{2}){4}(?!\d)/g;

@@ -53,7 +53,7 @@ test.describe("Maillage (P5.5)", () => {
     expect(response?.status()).toBe(200);
     await expect(page).toHaveTitle(/Plan du site/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
-    await expect(page.getByRole("navigation", { name: "Fil d’Ariane" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Fil d'Ariane" })).toBeVisible();
     for (const title of [
       "Accueil et fonctionnement",
       "Pour qui ?",

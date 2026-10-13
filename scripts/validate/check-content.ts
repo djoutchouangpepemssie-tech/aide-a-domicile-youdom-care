@@ -238,7 +238,7 @@ export async function runContentCheck(ctx: CheckContext): Promise<CheckResult> {
   }
 
   // Articles du Fil (content/magazine/*.mdx, docs/06) : en-tête validé et corps borné aux
-  // composants autorisés ; un article invalide est une erreur ici (le chargeur, lui, l’ignore
+  // composants autorisés ; un article invalide est une erreur ici (le chargeur, lui, l'ignore
   // avec un avertissement pour ne jamais casser le build). Statuts : brouillon jamais construit,
   // a_relire non construit en production ; en production, un sujet de santé publié sans
   // relecteur est refusé par le schéma lui-même.

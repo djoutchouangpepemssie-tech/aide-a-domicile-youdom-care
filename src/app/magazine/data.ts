@@ -164,7 +164,7 @@ export function truncate(text: string, max: number): string {
 }
 
 /**
- * Titre et description moteur d’une fiche auteur, composés depuis la fiche tant que
+ * Titre et description moteur d'une fiche auteur, composés depuis la fiche tant que
  * `authorSchema` ne porte pas de champ `seo` (à ajouter avec la première fiche réelle).
  */
 export function authorSeo(author: Author): { titre: string; description: string } {

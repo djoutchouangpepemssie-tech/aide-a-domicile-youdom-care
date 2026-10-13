@@ -28,7 +28,7 @@ describe("Page introuvable (404)", () => {
       "Cette page n'existe pas, ou plus",
     );
     expect(
-      screen.getByRole("navigation", { name: "Fil d’Ariane" }).querySelector("[aria-current=page]"),
+      screen.getByRole("navigation", { name: "Fil d'Ariane" }).querySelector("[aria-current=page]"),
     ).toHaveTextContent("Page introuvable");
     expect(
       screen.getByRole("combobox", { name: "Votre commune ou votre code postal" }),

@@ -331,7 +331,7 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
 
   // Profondeur et fil du hero (docs/design/CONCEPT.md §4) : aucune inclinaison pour les adultes
   // en situation de handicap (photo posée, stable), 2° pour les aidants, 4° ailleurs ; le nœud du
-  // fil se pose sur le point d’intérêt de la photo (`focal`).
+  // fil se pose sur le point d'intérêt de la photo (`focal`).
   const heroDepth = page.public === "adulte-handicap" ? 0 : page.public === "aidant" ? 2 : 4;
   const heroFil: HeroThreadFil =
     page.public === "personne-agee"

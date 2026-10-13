@@ -5,7 +5,7 @@ import { ReaderProvider } from "./ReaderContext";
 import { ReaderSwitch, ReaderText } from "./ReaderSwitch";
 
 const texts = {
-  legende: "Vous cherchez de l’aide",
+  legende: "Vous cherchez de l'aide",
   proche: "pour un proche",
   soi: "pour vous-même",
 };
@@ -62,8 +62,8 @@ describe("ReaderSwitch (docs/03 §4)", () => {
     expect(status).toHaveAttribute("aria-live", "polite");
     expect(status).toHaveTextContent("");
     await user.click(screen.getByRole("button", { name: texts.soi }));
-    expect(status).toHaveTextContent("Vous cherchez de l’aide pour vous-même");
+    expect(status).toHaveTextContent("Vous cherchez de l'aide pour vous-même");
     await user.click(screen.getByRole("button", { name: texts.proche }));
-    expect(status).toHaveTextContent("Vous cherchez de l’aide pour un proche");
+    expect(status).toHaveTextContent("Vous cherchez de l'aide pour un proche");
   });
 });

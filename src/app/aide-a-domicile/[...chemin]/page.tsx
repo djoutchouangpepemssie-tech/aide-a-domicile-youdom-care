@@ -76,8 +76,14 @@ export async function buildLocalData(chemin: string): Promise<LocalTemplateData 
     ? (agences.find((a) => a.id === data.agence_proche?.id) ?? null)
     : null;
   const aids = getAids().aides.filter((aid) => departementAids.includes(aid.id));
+  /*
+   * La puce d'évaluation tourne entre quatre formulations selon le département : deux pages
+   * voisines ne portent plus la même, et aucun fait nouveau n'est introduit (D-090).
+   */
+  const evaluations = texts.local.reassurance_evaluation;
   const reassurance = [
-    texts.rail_conversion.reassurance,
+    evaluations[Number(departementCodeOf(page)) % evaluations.length] ??
+      texts.rail_conversion.reassurance,
     ...(disponibilite.sept_jours_sur_sept === true ? [texts.local.reassurance_7j7] : []),
     ...(disponibilite.vingt_quatre_heures === true ? [texts.local.reassurance_24h] : []),
   ];
