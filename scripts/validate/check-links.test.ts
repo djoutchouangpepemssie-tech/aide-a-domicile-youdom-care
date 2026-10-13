@@ -61,9 +61,11 @@ describe("check-links", () => {
 
   it("ouvre chaque source externe une fois : 404 et 410 en erreur, refus et panne en avertissement", async () => {
     const calls: string[] = [];
-    const fake = (async (input: string | URL | Request) => {
+    const agents: (string | undefined)[] = [];
+    const fake = (async (input: string | URL | Request, init?: RequestInit) => {
       const url = String(input);
       calls.push(url);
+      agents.push((init?.headers as Record<string, string> | undefined)?.["user-agent"]);
       if (url.includes("absente")) return new Response("", { status: 404 });
       if (url.includes("partie")) return new Response("", { status: 410 });
       if (url.includes("filtre")) return new Response("", { status: 403 });
@@ -102,6 +104,10 @@ describe("check-links", () => {
     ]);
     // Sept adresses distinctes ouvertes, une seule injoignable : six ont répondu.
     expect({ reached: report.reached, total: report.total }).toEqual({ reached: 6, total: 7 });
+    // On interroge comme un visiteur : pour-les-personnes-agees.gouv.fr répond 404 — et non 403 —
+    // à un agent qui s'annonce comme robot, pour des pages vivantes (D-080). Si ce jeton revient,
+    // le contrôle redéclare mortes des sources en ligne.
+    expect(new Set(agents)).toEqual(new Set(["Mozilla/5.0"]));
   });
 
   it("dit qu'il n'a rien éprouvé quand aucune source externe ne répond (D-080)", async () => {

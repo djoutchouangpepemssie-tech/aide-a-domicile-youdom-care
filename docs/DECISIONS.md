@@ -1320,44 +1320,55 @@ coûte plus que de ne rien faire** : personne ne l'aurait relié à cette journ�
 le fil conducteur, lié au défilement : il n'a pas de durée en millisecondes et le parcours l'exclut
 correctement. `docs/02 §1` l'autorise d'ailleurs entre 600 et 900 ms.
 
-## D-080 — Trois sources officielles répondaient 404 : un défaut invisible depuis mon poste (13/10/2026)
+## D-080 — Un 404 ne prouve la disparition que si l'on interroge comme un visiteur (13/10/2026)
 
-**Le défaut.** Sur le dépôt du client, `pnpm validate` échouait — `12/13`, `check-links` rouge :
+**Le défaut.** Sur le dépôt du client, `pnpm validate` échouait — `12/13`, `check-links` rouge, trois
+sources de `pour-les-personnes-agees.gouv.fr` en **HTTP 404** : « les points d'information locaux »,
+« soutien financier » des aidants, « l'APA à domicile ».
+
+**Ce que je ne pouvais pas voir, et ma première erreur.** Ce portail est injoignable depuis mon
+conteneur : `check-links` dégrade alors l'adresse en avertissement et annonce `13/13`. J'ai donc
+annoncé « tout est vert » sur la foi d'un contrôle qui, pour cette partie, ne mesurait rien.
+
+Faute de réseau, j'ai pris le run de CI pour oracle : les autres adresses du même portail y passaient,
+donc — ai-je conclu — pas de blocage par hôte, donc trois pages avaient vraiment bougé. J'ai retiré
+deux sources et repointé la troisième vers l'adresse que `content/lexique/clic.json` citait pour la
+même page.
+
+**La mesure, depuis un poste avec réseau** (codespace, agent de navigateur) :
 
 ```
-✖ source externe : …/preserver-son-autonomie/a-qui-s-adresser/les-points-d-information-locaux-dedies-aux-personnes-agees → HTTP 404
-✖ source externe : …/solutions-pour-les-aidants/soutien-financier → HTTP 404
-✖ source externe : …/vivre-a-domicile/aides-financieres/l-apa-a-domicile → HTTP 404
+200 /vivre-a-domicile/aides-financieres/l-apa-a-domicile
+200 /solutions-pour-les-aidants/soutien-financier
+200 /preserver-son-autonomie/a-qui-s-adresser/les-points-d-information-locaux-dedies-aux-personnes-agees
+000 /preserver-son-autonomie-s-informer-et-anticiper/a-qui-s-adresser/les-points-d-information-…
 ```
 
-**Pourquoi je ne l'avais pas vu.** `pour-les-personnes-agees.gouv.fr` est injoignable depuis mon
-conteneur (DNS fermé). `check-links` dégrade alors l'adresse en avertissement — « injoignable depuis
-ce poste, à vérifier à la main » — et annonce `13/13`. Ce comportement est volontaire et reste juste
-(`goneStatuses` = 404 et 410 seulement : un 403 est un refus de répondre, pas une page disparue, et
-le commentaire du contrôle nomme déjà ce portail parmi ceux qui filtrent les robots). Mais il a une
-conséquence qu'il faut écrire noir sur blanc : **un `validate` vert sur mon poste ne dit rien des
-liens externes.** Seule la CI, qui a le réseau, les éprouve vraiment.
+Les trois pages sont **en ligne**. Ce portail répond **404 — et non 403 — aux agents qui s'annoncent
+comme des robots**, et le contrôle s'annonçait `Mozilla/5.0 (compatible; YoudomCare-check-links/1.0)`.
+Le commentaire de `goneStatuses` connaissait le filtrage de ce host, mais le croyait en 403 ; en 404,
+le même filtrage traverse le garde-fou et se présente comme une page disparue.
 
-**Comment j'ai tranché sans réseau.** Le run de CI est lui-même l'oracle : la vingtaine d'autres
-adresses du même portail citées dans `content/` y sont passées. Ce n'est donc pas un blocage par
-hôte, et toute URL du dépôt absente de la liste d'échecs est vivante ce jour-là. Je n'ai inventé
-aucune adresse de remplacement — je ne peux pas les ouvrir — et je n'ai pas touché au seuil du
-contrôle.
+Mon oracle était faux de la même façon : « passer en CI » ne voulait pas dire « vivante », seulement
+« pas 404 ». La preuve en est la quatrième ligne — l'adresse reprise de `clic.json`, qui passait la
+CI, ne répond pas du tout.
 
-**Les trois corrections.**
+**Correction.** Les trois sources sont rétablies telles quelles (rien à corriger dans `content/`), et
+`checkExternal` interroge désormais avec `BROWSER_USER_AGENT = "Mozilla/5.0"`, la seule chaîne dont on
+ait la preuve qu'elle obtient 200 sur ces pages. La question que pose ce contrôle est « cette page
+répond-elle à un visiteur ? » : il faut donc la poser comme un visiteur. Un test fige l'agent
+(`scripts/validate/check-links.test.ts`) pour que le jeton de robot ne revienne pas sans nouvelle
+mesure. `goneStatuses` n'a pas bougé : 404 et 410 restent des erreurs.
 
-1. *Points d'information locaux* — la même page, sous la section longue
-   (`preserver-son-autonomie-s-informer-et-anticiper/…`), est déjà citée par
-   `content/lexique/clic.json` avec le même libellé, et passe la CI. L'article du magazine adopte
-   cette adresse : les deux fichiers ne divergent plus.
-2. *Soutien financier des aidants* — une section sans page (sa fille
-   `…/soutien-financier/l-aide-au-repit-dans-le-cadre-de-l-apa` répond, elle). L'entrée est retirée
-   de `solutions-de-repit.mdx` : le fait qu'elle appuyait (droit au répit plafonné à 583,52 € en
-   2026) vient de la page fille, citée deux lignes plus haut dans la même liste.
-3. *L'APA à domicile* — page déplacée. L'entrée est retirée de l'article APA : le sujet y reste
-   sourcé par `service-public.gouv.fr` F10009 (« APA à domicile », vérifié le 01/06/2026) et par
-   « Comment faire la demande d'APA à domicile ? » du même portail, tous deux dans la même liste.
+**Ce qui reste ouvert.** L'adresse `…-s-informer-et-anticiper/…` de `content/lexique/clic.json`
+(`lien_officiel`) n'a pas répondu à la mesure. Elle est antérieure à cette session ; sa section
+longue n'existe probablement plus. À vérifier depuis un poste avec réseau avant de la remplacer par
+`…/preserver-son-autonomie/a-qui-s-adresser/…`, qui, elle, renvoie 200 — je ne la change pas sur une
+seule mesure à 000, qui peut être un délai dépassé.
 
-Aucun fait n'a donc perdu sa source. Ce qui est perdu, ce sont deux liens vers un portail qui a
-réorganisé ses adresses ; les retrouver demande d'ouvrir le site, ce qui se fera depuis un poste qui
-a le réseau.
+**Ce que je garde de l'épisode.** `check-links` dit maintenant quand il n'a rien éprouvé : si aucune
+adresse externe ne répond, il ajoute un avertissement nommant le compte (`0 des 135 adresses n'a
+répondu depuis ce poste`). C'est ce garde-fou qui manquait pour que je n'annonce pas un vert que je
+n'avais pas mesuré. Et la leçon de fond : deux fois de suite, j'ai déduit l'état du monde d'un
+contrôle qui ne pouvait pas l'observer. Sur ce poste, `check-links` ne vérifie que les liens
+internes.

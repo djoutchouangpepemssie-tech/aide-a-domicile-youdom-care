@@ -106,8 +106,23 @@ export interface ExternalReport {
  * santepubliquefrance.fr, pour-les-personnes-agees.gouv.fr) filtrent les agents non-navigateurs et
  * répondent 403 à ce contrôle alors que leurs pages sont en ligne. Les traiter en erreur rendrait
  * la CI rouge au hasard de l'adresse du poste qui l'exécute.
+ *
+ * Attention : 404 ne prouve la disparition que si l'on interroge comme un visiteur. Mesuré le
+ * 13/10/2026, pour-les-personnes-agees.gouv.fr répond **404** — et non 403 — aux agents qui
+ * s'annoncent comme des robots, pour des pages qui renvoient 200 depuis un navigateur. D'où
+ * `BROWSER_USER_AGENT` ci-dessous : sans lui, trois sources vivantes étaient déclarées mortes
+ * (D-080).
  */
 const goneStatuses = new Set([404, 410]);
+
+/**
+ * Agent annoncé aux sources externes. Volontairement celui d'un navigateur, sans jeton de robot :
+ * la question posée est « cette page répond-elle à un visiteur ? », et c'est la seule chaîne dont
+ * on ait la preuve qu'elle obtient 200 sur les trois pages que la CI déclarait 404 (mesure du
+ * 13/10/2026 depuis un poste avec réseau). Y rajouter « compatible; YoudomCare-check-links/1.0 »
+ * suffit à faire répondre 404 au portail : ne pas le remettre sans refaire la mesure.
+ */
+const BROWSER_USER_AGENT = "Mozilla/5.0";
 
 /** Ouvre chaque adresse une fois (GET, 10 s, redirections suivies). */
 export async function checkExternal(
@@ -129,7 +144,7 @@ export async function checkExternal(
         const response = await fetchImpl(url, {
           method: "GET",
           redirect: "follow",
-          headers: { "user-agent": "Mozilla/5.0 (compatible; YoudomCare-check-links/1.0)" },
+          headers: { "user-agent": BROWSER_USER_AGENT },
           signal: AbortSignal.timeout(10_000),
         });
         reached += 1;
