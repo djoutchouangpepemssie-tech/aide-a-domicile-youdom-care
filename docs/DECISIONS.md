@@ -1580,3 +1580,27 @@ conteneur ne joint pas cet hôte. La preuve viendra d'un appel depuis un poste a
 prochain run. Si elles répondent 404 hors rafale, elles sont réellement mortes et c'est le contenu
 que je corrigerai — pas l'instrument.
 
+### D-083 (suite) — Mesure d'après, et une mesure invalidée par ma faute (13/10/2026)
+
+| page | poids | LCP | perf |
+| --- | --- | --- | --- |
+| `/personnes-agees/` | 823 → **567 Ko** | 5 328 → **3 985 ms** | 0,57 → 0,64 |
+| `/agences/puteaux/` | 557 → 557 Ko | 4 002 → 3 989 ms | 0,73 → 0,74 |
+| `/etre-rappele/` | 534 → 534 Ko | 3 791 → 3 770 ms | 0,76 → 0,74 |
+| `/aide-a-domicile/…/puteaux/` | 543 → 543 Ko | 3 681 → 3 922 ms | 0,72 → 0,67 |
+| `/services/garde-de-nuit/` | 681 → 681 Ko | 4 729 → 4 791 ms | 0,60 → 0,59 |
+| `/` | 447 → 447 Ko | 1 812 → 1 879 ms | 0,80 → 0,76 |
+
+Le gain tombe **exactement** là où la photo a été réencodée : `/personnes-agees/` perd 256 Ko, soit
+la différence du fond `fond-aide-a-domicile` (351 → 95 Ko), et son LCP recule de 1,3 s. Les pages
+dont aucun fond n'a changé gardent un poids **identique à l'octet** — c'est le témoin qui valide la
+mesure — et leur performance varie de ±0,05, ce qui est le bruit de ce conteneur. Seul le poids est
+déterministe ici ; le LCP va dans le même sens mais sur une machine bruyante.
+
+**Une mesure à jeter, et c'est moi qui l'ai cassée.** `/lexique/apa/` affichait 0,86 → 0,91 et
+421 → 373 Ko. Les horodatages disent autre chose : mon `pnpm build` de vérification a fini à
+11:18:23, et les trois passes de cette page, lancées à 11:19, portent `seo 0,69` — la signature d'un
+build en noindex. Elles ne mesurent donc pas le même site que les sept autres. Chiffre écarté. La
+leçon est simple et vaut pour la suite : **rien ne doit reconstruire `.next` pendant que lhci
+mesure**, même un contrôle anodin ; `pnpm lhci` sert le build qu'il vient de produire.
+

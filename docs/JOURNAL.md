@@ -1327,3 +1327,14 @@ traitée : la file des adresses est répartie par hôte en tour de rôle, pour n
 appels d'un même service en même temps. Ni seuil déplacé, ni assertion retirée, et le service public
 cesse d'être martelé à chaque exécution. Voir D-084.
 
+## 13/10/2026 — Le gain chiffré, et une mesure que j'ai cassée moi-même
+
+La mesure d'après confirme : `/personnes-agees/` perd 256 Ko — exactement la différence du fond
+réencodé — et son LCP recule de 1,3 s. Les pages dont aucun fond n'a changé gardent un poids
+identique à l'octet, ce qui valide la mesure autant que le gain.
+
+Une page est à jeter, et c'est de mon fait : mon `pnpm build` de vérification a fini à 11:18:23, les
+trois passes de `/lexique/apa/` ont été lancées à 11:19, et elles portent la signature d'un build en
+noindex. Elles ne mesurent pas le même site. J'écarte le chiffre — il était flatteur, c'est
+précisément pour cela qu'il faut l'écarter. Voir D-083 (suite).
+
