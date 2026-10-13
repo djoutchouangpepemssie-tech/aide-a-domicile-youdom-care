@@ -1480,3 +1480,69 @@ version saine était déjà dans l'arbre, l'override ne fait que dédoublonner. 
 six avis à cinq, un « high » en moins. Aucun des cinq restants n'atteint le navigateur du visiteur :
 ce sont des dépendances d'outillage, et le site est statique.
 
+## D-083 — DP.2 : la mesure neuve, et les photos de scène qui n'ont jamais été optimisées (13/10/2026)
+
+DP.2 exigeait « une mesure neuve avant de choisir un levier à partir de nombres périmés ». Elle n'avait
+jamais pu tourner ici : `scripts/lhci.ts` ouvre le navigateur par l'API Playwright, qui réclame une
+version absente et non installable (réseau fermé), et `lhci` a en plus son propre contrôle de
+présence de Chrome. Les deux acceptent désormais un binaire désigné (`CHROMIUM_PATH`, comme
+`playwright.config.ts` ; `CHROME_PATH` pour lhci). Mesure faite : 8 pages témoins, 3 passes,
+étranglement 4G et processeur ×4.
+
+**Médianes relevées (avant correction).**
+
+| page | perf | TBT | LCP | CLS | poids |
+| --- | --- | --- | --- | --- | --- |
+| `/` | 0,80 | 753 ms | 1 812 ms | 0,023 | 447 Ko |
+| `/lexique/apa/` | 0,86 | 484 ms | 1 881 ms | 0,018 | 421 Ko |
+| `/etre-rappele/` | 0,76 | 460 ms | 3 791 ms | 0 | 534 Ko |
+| `/agences/puteaux/` | 0,73 | 517 ms | 4 002 ms | 0 | 557 Ko |
+| `/aide-a-domicile/hauts-de-seine/puteaux/` | 0,72 | 656 ms | 3 681 ms | 0 | 543 Ko |
+| article du Fil | 0,65 | 638 ms | 4 949 ms | 0 | 741 Ko |
+| `/services/garde-de-nuit/` | 0,60 | 886 ms | 4 729 ms | 0 | 681 Ko |
+| `/personnes-agees/` | 0,57 | 1 024 ms | 5 328 ms | 0 | 823 Ko |
+
+**À lire avec prudence** : ce conteneur n'est pas une machine de référence, et l'étranglement ×4
+s'applique par-dessus un processeur déjà lent et partagé. Les valeurs absolues ne se comparent donc
+pas à celles du plan, relevées sur un autre poste. Ce qui se compare, c'est le **classement** et les
+postes de coût. Accessibilité, bonnes pratiques et SEO sont à **1,00 sur les huit pages** : la
+performance est le seul axe en défaut.
+
+**Le plan se trompait sur le poste dominant.** Il affirmait « le calcul des styles et de la mise en
+page, pas le JavaScript ». Sur `/personnes-agees/`, la page la plus coûteuse :
+
+```
+Script Evaluation              1135 ms
+Other                           860 ms
+Style & Layout                  626 ms
+Script Parsing & Compilation    194 ms
+```
+
+L'évaluation du JavaScript domine (1 257 ms de `bootup-time`). Le relevé du plan portait sur une page
+locale ; il ne vaut pas pour les piliers.
+
+**Le défaut trouvé en chemin, et corrigé.** Lighthouse signalait 1,5 s de gain en « formats d'image
+modernes » sur une page où `next.config.ts` déclare pourtant AVIF et WebP. Raison : les photos de
+scène sont posées en **fond CSS** (`--scene-photo: url(...)` dans `src/styles/scenes.css`), donc
+elles ne passent **jamais** par `next/image` — rien ne les optimise, ni format, ni dimension, ni
+qualité. Leurs encodages allaient de q=55 à **q=99**, et l'une pesait **1 046 Ko**.
+
+Quatre photos réencodées à q=82, dimensions inchangées, métadonnées retirées :
+
+| photo | avant | après | PSNR |
+| --- | --- | --- | --- |
+| `fond-personne-agee-accompagnee` | 1 046 Ko (q=99) | 188 Ko | 37,4 dB |
+| `fond-aide-a-domicile` | 351 Ko (q=95) | 95 Ko | 41,7 dB |
+| `fond-repas-partage` | 295 Ko (q=94) | 134 Ko | 37,8 dB |
+| `fond-nuit-veille` | 204 Ko (q=94) | 100 Ko | 41,4 dB |
+
+**1,4 Mo en moins**, et le dossier des héros passe de 5,6 à 4,2 Mo. Une cinquième, `fond-presence-nuit`,
+a été **rétablie dans son état d'origine** : elle ne gagnait que 39 Ko pour la plus forte dégradation
+du lot (35,2 dB). Un gain marginal ne justifie pas la seule perte visible.
+
+**Ce que cela ne règle pas.** Le poste dominant est le JavaScript, pas les images : la correction
+allège le téléchargement et le LCP, pas le temps de blocage. DP.2 reste donc ouverte, et son
+arbitrage est intact — les deux atténuations connues ont été défaites volontairement, dont le flou à
+la demande d'Arcel (D-046). Piste suivante, sans arbitrage de conception : servir ces fonds en AVIF
+ou WebP par `image-set()` avec repli JPEG, ce que le fond CSS permet et que personne n'a posé.
+

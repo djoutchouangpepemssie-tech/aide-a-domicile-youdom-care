@@ -1294,3 +1294,22 @@ mauvais endroit, et vouloir forcer des versions corrigées qui ne sont pas publi
 laissé par un passage précédent disait déjà la seconde ; vérification faite contre le registre, il
 avait raison. Un seul avis se corrige réellement. Voir D-082.
 
+## 13/10/2026 — La mesure que DP.2 attendait depuis le 27 septembre
+
+Elle n'avait jamais pu tourner ici : l'outil ouvrait le navigateur par une API qui réclame une
+version absente et non installable. Les deux points de blocage acceptent maintenant un binaire
+désigné, et la mesure est faite — 8 pages, 3 passes, 4G et processeur ×4.
+
+Deux enseignements. Le premier : la performance est le seul axe en défaut, accessibilité, bonnes
+pratiques et SEO sont à 1,00 partout. Le second : le plan se trompait de coupable, l'évaluation du
+JavaScript domine le fil principal (1 135 ms) et non le calcul des styles (626 ms) — son relevé
+portait sur une page locale et ne vaut pas pour les piliers.
+
+Et un défaut trouvé en chemin : les photos de scène sont posées en fond CSS, donc elles échappent
+complètement à l'optimiseur d'images. Personne ne les avait regardées depuis leur import : qualités
+de 55 à 99, une à plus d'un mégaoctet. Quatre réencodées, 1,4 Mo en moins, dégradation mesurée au
+PSNR. Une cinquième remise comme avant : 39 Ko gagnés ne valaient pas la seule perte visible du lot.
+
+DP.2 n'est pas close pour autant, et je ne la coche pas : le poste dominant reste le JavaScript, et
+l'arbitrage du flou appartient à Arcel. Voir D-083.
+
