@@ -1430,3 +1430,16 @@ que les sept fichiers du styleguide utilisaient la courbe parce que `react/no-un
 l'exige dans du texte JSX. Je leur ai rendu leur état. Sur les pages publiques, il reste deux
 apostrophes courbes, et elles appartiennent à Next. Voir D-090.
 
+## 13/10/2026 — Garde de nuit : ce que la page ne disait pas
+
+Deux manques, et le second est celui qu'Arcel a nommé. La page ne disait rien du risque réel — les
+chutes nocturnes — et rien de la personne qui dort bien mais ne supporte pas d'être seule la nuit.
+
+Les chiffres sur les chutes existaient déjà dans le dépôt, sourcés, dans l'article de prévention :
+je les ai repris avec leurs sources plutôt que d'en chercher de nouveaux. Et j'ai écrit la section
+qui manquait : ce qu'une nuit calme apporte, quand il ne se passe rien.
+
+En vérifiant, les parcours ont échoué sur un titre que ma propre modification de la veille avait
+rendu propre à chaque public et que le test figeait encore. Le test lit maintenant le libellé dans
+le contenu. Voir D-091.
+

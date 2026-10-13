@@ -1847,3 +1847,40 @@ Le styleguide est interne et en `noindex` : aucun visiteur ne lit ces apostrophe
 
 **Vérifications** : 948 tests, 13/13 contrôles, 22 parcours, lint et typecheck verts.
 
+## D-091 — La page « garde de nuit » : les chutes, et la présence qui apaise (13/10/2026)
+
+Demande du commanditaire : une page plus convaincante, qui parle des **chutes**, et qui réponde à un
+besoin qu'elle ignorait — celui de la personne qui dort bien mais ne supporte pas d'être seule la
+nuit.
+
+**Ce qui manquait.** La page couvrait le lever, l'angoisse, le retour d'hôpital et l'aidant épuisé.
+Elle ne disait rien du risque réel, et rien du cas le plus fréquent après le grand âge : une personne
+sans maladie particulière, seule depuis un décès ou un départ, qui guette les bruits.
+
+**Ce qui est ajouté.**
+
+- Une section « La nuit, l'heure des chutes », avec deux faits **déjà sourcés dans le dépôt** et
+  repris avec leurs sources : plus de 20 000 personnes de 65 ans et plus décédées en lien avec une
+  chute en 2024 (Santé publique France), et le fait qu'une chute en annonce souvent une autre, même
+  sans blessure apparente (Haute Autorité de santé). Les deux sources entrent dans la liste de la
+  page. Aucun chiffre n'a été inventé pour l'occasion.
+- Une section « Une présence qui apaise, même quand la nuit se passe bien », qui dit ce qu'une nuit
+  calme apporte : s'endormir parce que quelqu'un veille, se rendormir après un bruit, et pour
+  l'aidant, cesser de dormir d'une oreille.
+- Une cinquième situation vécue (« Elle dort bien. Mais seule, la nuit, elle n'est jamais
+  tranquille. »), le profil correspondant dans « Pour qui », et deux questions fréquentes : à quoi
+  sert une présence quand la personne dort bien, et ce qui se passe en cas de chute.
+- Chapô, promesses et puces de réassurance resserrés sur le bénéfice, et la description de
+  référencement porte enfin le mot « chutes » (150 caractères, dans la fenêtre 140-155).
+
+**Ce que je n'ai pas fait.** Pas de promesse de sécurité absolue : le texte dit qu'une présence
+« n'empêche pas tous les faux pas » et ce qu'elle change. Pas d'urgence commerciale ni de
+superlatif : `check-copy` les refuse, et ils n'auraient pas rendu la page plus convaincante.
+
+**Un défaut trouvé en chemin, et il venait de moi.** Les parcours de `services.spec.ts` figeaient le
+titre « Vous vous reconnaissez ? », alors que D-087 l'a rendu propre à chaque public. Le test lit
+désormais le libellé dans `content/interface.json` d'après le public de la page : le figer aurait
+ramené le libellé unique que cette correction supprimait. 83 parcours services verts.
+
+**Vérifications** : 948 tests, 13/13 contrôles, 83 parcours, lint et typecheck verts.
+

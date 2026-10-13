@@ -1,9 +1,37 @@
+import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 import { expectNoSeriousAxeViolations } from "./axe";
 import { expectIndexable } from "./indexable";
 
+/*
+ * Le titre de la section 2 dépend du public depuis D-087 : « Ce que nous disent les familles »,
+ * « Des phrases qui reviennent souvent »… Le figer ici le ramènerait au libellé unique que cette
+ * correction supprimait ; on le lit donc dans le contenu.
+ */
+const situationsTitres = (
+  JSON.parse(readFileSync("content/interface.json", "utf8")) as {
+    service: { situations_h2: Record<string, string> };
+  }
+).service.situations_h2;
+
+function titreSituations(chemin: string): string {
+  const groupe = chemin.startsWith("/maladies-neurodegeneratives/")
+    ? "neuro"
+    : chemin.startsWith("/personnes-agees/")
+      ? "personne-agee"
+      : chemin.startsWith("/adultes-en-situation-de-handicap/")
+        ? "adulte-handicap"
+        : chemin.startsWith("/enfants-en-situation-de-handicap/")
+          ? "enfant-handicap"
+          : chemin.startsWith("/aidants/")
+            ? "aidant"
+            : "transverse";
+  const titre = situationsTitres[groupe];
+  if (!titre) throw new Error(`aucun titre de situations pour « ${groupe} »`);
+  return titre;
+}
+
 const sections = [
-  "Vous vous reconnaissez ?",
   "Ce que nous faisons, concrètement",
   "Un accompagnement qui évolue",
   "Exemple de semaine",
@@ -63,7 +91,7 @@ test.describe("Pages services (P4)", () => {
       // D-034 et D-035 : aucun bandeau d'attente, et la page n'est pas fermée pour elle-même.
       await expectIndexable(page);
       await expect(page.getByText(/attend sa relecture/)).toHaveCount(0);
-      for (const title of sections) {
+      for (const title of [titreSituations(chemin), ...sections]) {
         await expect(
           page.locator("main section").getByRole("heading", { level: 2, name: title, exact: true }),
         ).toHaveCount(1);
