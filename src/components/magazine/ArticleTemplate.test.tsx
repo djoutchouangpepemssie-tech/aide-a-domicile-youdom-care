@@ -50,7 +50,7 @@ describe("ArticleTemplate", () => {
     expect(container.querySelector(".lead")).toHaveTextContent(valide.meta.chapo);
     // 3. ligne de confiance
     const trust = container.querySelector("[data-confiance]");
-    expect(trust).toHaveTextContent("Écrit par Équipe éditoriale Youdom Care");
+    expect(trust).toHaveTextContent("Par Équipe éditoriale Youdom Care");
     // D-034 : plus aucune mention d'attente de relecture.
     expect(trust).not.toHaveTextContent(/[Rr]electure/);
     expect(trust).toHaveTextContent("Publié le 20 septembre 2026");

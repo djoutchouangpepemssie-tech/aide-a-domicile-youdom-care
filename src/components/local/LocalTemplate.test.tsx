@@ -201,7 +201,7 @@ describe("LocalTemplate", () => {
       expect(screen.getByText(q.question)).toBeInTheDocument();
     }
     const review = document.querySelector("[data-local-review]");
-    expect(review).toHaveTextContent("Écrit par Auteur fictif, rédaction");
+    expect(review).toHaveTextContent("Par Auteur fictif, rédaction");
     expect(review).toHaveTextContent("Page mise à jour le 20 septembre 2026");
     expect(review).toHaveTextContent("Données locales assemblées le 20 septembre 2026");
     expect(document.querySelector("#formulaire")).toHaveAttribute("data-local-form-insee", "92999");

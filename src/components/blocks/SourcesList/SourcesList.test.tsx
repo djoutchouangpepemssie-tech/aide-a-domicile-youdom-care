@@ -50,14 +50,14 @@ describe("SourcesList", () => {
         texts={texts}
         sources={sources}
         review={{
-          author: "Écrit par la loop, rédaction",
+          author: "Par la loop, rédaction",
           reviewer: "Relu par A. B., infirmière, le 1 juin 2026",
           updated: "Mise à jour le 20 septembre 2026",
         }}
       />,
     );
     const card = document.querySelector(".sources-review") as HTMLElement;
-    expect(within(card).getByText("Écrit par la loop, rédaction")).toBeInTheDocument();
+    expect(within(card).getByText("Par la loop, rédaction")).toBeInTheDocument();
     expect(within(card).getByText(/Relu par A\. B\./)).toBeInTheDocument();
     expect(within(card).getByText(/Mise à jour le 20 septembre 2026/)).toHaveClass(
       "tabular-figures",
@@ -69,7 +69,7 @@ describe("SourcesList", () => {
         texts={texts}
         sources={sources}
         review={{
-          author: "Écrit par la loop, rédaction",
+          author: "Par la loop, rédaction",
           reviewer: null,
           pending: "En attente de relecture par un professionnel.",
         }}

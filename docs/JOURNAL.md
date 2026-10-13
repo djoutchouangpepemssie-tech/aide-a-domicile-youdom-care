@@ -1338,3 +1338,21 @@ trois passes de `/lexique/apa/` ont été lancées à 11:19, et elles portent la
 noindex. Elles ne mesurent pas le même site. J'écarte le chiffre — il était flatteur, c'est
 précisément pour cela qu'il faut l'écarter. Voir D-083 (suite).
 
+## 13/10/2026 — L'audit des Hero, passe 1
+
+Onze fautes annoncées, treize trouvées sur trois des constats : « Edith-Kremsdorf » était écrit six
+fois et non une, « Marché Saint-Honore » perdait son accent deux fois sans que l'audit le voie, et
+« se trouvent pour » — un résidu de ma propre passe de substitution — touchait cinq fichiers.
+
+Deux constats sont infondés, et je préfère le dire que corriger pour faire plaisir : « Vous vous
+reconnaîssez ? » avec accent circonflexe n'existe nulle part, le site écrit la forme correcte ; et le
+H1 du lexique ne se lit pas « AAHAllocation » pour un lecteur d'écran, c'est l'extraction par retrait
+des balises qui colle les mots. J'ai tout de même posé une espace, invisible, pour que la fausse
+alerte ne revienne pas.
+
+Les 34 pages aux espaces manquantes portent déjà l'insécable dans le dépôt : ce constat vient du
+déploiement en retard, pas du code.
+
+La signature du magazine est devenue mot pour mot celle qu'Arcel demande, et six tests qui figeaient
+l'ancien libellé ont été alignés. Voir D-085.
+

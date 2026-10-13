@@ -346,7 +346,7 @@ export default function BlocsPage() {
           sources={demoSources}
           texts={{ ...texts.page_aide, lien_externe: texts.aides.lien_externe }}
           review={{
-            author: "Écrit par la rédaction Youdom Care",
+            author: "Par la rédaction Youdom Care",
             reviewer: null,
             pending: texts.service.relecture_attendue,
             updated: "Mise à jour le 20 septembre 2026",

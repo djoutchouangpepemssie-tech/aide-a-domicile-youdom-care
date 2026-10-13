@@ -1,7 +1,7 @@
 {
   "_lisezmoi": "Terme du lexique (docs/06 §6). Le taux et les plafonds sont ceux de la fiche officielle citée et de /tarifs-et-aides/credit-d-impot-et-avance-immediate/ (même source, même date) : ne pas les modifier ici sans les modifier là.",
   "slug": "credit-d-impot",
-  "terme": "crédit d'impôt",
+  "terme": "Crédit d'impôt",
   "developpe": "Crédit d'impôt pour l'emploi d'un salarié à domicile et les services à la personne",
   "variantes": ["crédits d'impôt", "avance immédiate"],
   "seo": {

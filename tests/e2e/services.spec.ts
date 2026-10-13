@@ -95,7 +95,7 @@ test.describe("Pages services (P4)", () => {
       // « En attente de relecture par un professionnel. », ce que D-034 a retiré et ce que le
       // test unitaire de ServiceTemplate interdit déjà (docs/AUDIT_GLOBAL.md §10).
       const review = page.locator(".sources-review");
-      await expect(review).toContainText("Écrit par");
+      await expect(review).toContainText("Par ");
       await expect(review).toContainText("Mise à jour le");
       await expect(review).not.toContainText("En attente de relecture");
       await expectNoSeriousAxeViolations(page);

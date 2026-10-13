@@ -1604,3 +1604,65 @@ build en noindex. Elles ne mesurent donc pas le même site que les sept autres. 
 leçon est simple et vaut pour la suite : **rien ne doit reconstruire `.next` pendant que lhci
 mesure**, même un contrôle anodin ; `pnpm lhci` sert le build qu'il vient de produire.
 
+## D-085 — Audit des Hero d'Arcel : passe 1 appliquée, après vérification point par point (13/10/2026)
+
+L'audit du 13/10 a été lu **sur le site en ligne**, c'est-à-dire sur un déploiement qui ne contient
+pas les neuf commits poussés depuis le 12/10. Chaque constat a donc été vérifié contre le dépôt
+avant correction, et trois catégories s'en dégagent.
+
+**Confirmé et corrigé.** Les onze fautes ponctuelles existaient, et trois étaient plus étendues que
+l'audit ne le disait :
+
+| constat | annoncé | mesuré |
+| --- | --- | --- |
+| « Edith-Kremsdorf » sans accent | 1 occurrence | **6** dans `content/local/75103.json` |
+| « Marché Saint-Honore » | non relevé | **2** occurrences sans l'accent final |
+| « se trouvent pour » | 1 page | **6** occurrences dans 5 fichiers, plus 2 « n'apparaît de » |
+
+Les trois dernières familles sont des résidus de ma propre passe de substitution du 12/10 (D-074) :
+« Deux hôpitaux se trouvent pour la commune » → « desservent la commune », « Aucun accueil de jour
+n'apparaît de X » → « n'est recensé à X ». L'audit en avait vu une ; la mesure en a trouvé treize.
+
+Également corrigés : le sous-titre du 11e (minuscule initiale, phrase sans verbe), celui de
+Charenton (phrase sans verbe), l'accord de « tels que le publie » sur la fiche CESU, le subjonctif
+après « vous cherchez des … qui » (deux pages), l'accord masculin sur une liste mixte (`/aidants/`
+et, non relevé par l'audit, un intertitre du magazine), la construction bancale de Huntington et le
+contresens « plus d'élan pour rien ».
+
+**Défauts de gabarit.** La casse des six termes du lexique est corrigée dans `content/`. La
+signature du magazine devient, mot pour mot ce qu'Arcel demande : « Par l'équipe éditoriale de
+Youdom Care, avec l'aide d'un outil d'écriture, sous sa responsabilité » — vérifié sur le HTML
+construit. Les données structurées ne s'en trouvent pas abîmées : l'auteur JSON-LD est
+l'organisation tant qu'aucune fiche réelle n'existe. Six attentes de tests figeaient l'ancien
+libellé : elles sont alignées, ce qui n'est pas relâcher un seuil mais suivre une décision de
+commanditaire sur un texte.
+
+**Deux constats infondés, et il faut le dire.**
+
+1. « Vous vous reconnaîssez ? » : cette graphie, avec accent circonflexe, **n'existe nulle part**
+   dans le dépôt. Le site écrit « reconnaissez », qui est correct. C'est l'audit qui porte la faute.
+   La répétition sur 26 pages, elle, est réelle — c'est un sujet de la passe 3, pas une faute.
+2. Le H1 du lexique qui se lirait « AAHAllocation aux adultes handicapés » : le développé est dans
+   un `span` en `block`, et les navigateurs insèrent un espace à la frontière de bloc quand ils
+   calculent le nom accessible. Un lecteur d'écran ne colle pas les deux mots ; seule une extraction
+   par retrait des balises le fait. Même artefact que celui déjà mesuré le 12/10 sur les listes de
+   l'accueil. Une espace a tout de même été posée — invisible dans une mise en page par blocs — pour
+   que cette fausse alerte ne revienne pas à chaque audit. Le séparateur « — » proposé n'a pas été
+   retenu : il changerait la composition pour un défaut qui n'existe pas.
+
+**Un constat juste, traité à part.** Sur `/personnes-agees/`, le sélecteur de lecteur est bien à
+l'intérieur du `<p class="lead">` : le balisage est valide (un `span` et des `button` sont du contenu
+de phrasé), mais le texte du chapô se mélange aux libellés des boutons. C'est une restructuration de
+gabarit, avec ses tests de parcours ; elle ne tient pas dans la même passe que des corrections de
+texte.
+
+**Les espaces insécables.** Les 34 pages signalées portent déjà l'insécable dans le dépôt (vérifié :
+les sous-titres relevés contiennent `\u00a0` avant « : » et « ; »). Ce constat vient du déploiement
+en retard, pas du code. Il disparaîtra à la mise à jour de `main`.
+
+Reste à faire, non traité ici : la passe 2 (gabarit et 97 sous-titres des 131 pages locales) et la
+passe 3 (réécriture des Hero publics, pathologies, services, magazine, lexique, tarifs). Les
+sous-titres proposés par l'audit contiennent des faits chiffrés (habitants, pourcentages, noms
+d'établissements) : chacun devra être confronté aux faits sourcés de **sa** page avant d'être posé,
+sous peine de publier un fait non sourcé — ce que `check-local-facts` refuse, et avec raison.
+

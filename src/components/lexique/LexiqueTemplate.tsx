@@ -93,7 +93,7 @@ export function LexiqueTemplate({ data }: { data: LexiqueTemplateData }) {
         />
         <p className="m-0 text-small font-bold text-teal-700">{texts.sur_titre}</p>
         <Heading level={1} id="titre" className="mt-2">
-          {term.terme}
+          {term.terme}{" "}
           {term.developpe ? (
             <span className="mt-3 block text-h3 font-normal text-text-soft">{term.developpe}</span>
           ) : null}
