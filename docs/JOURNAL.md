@@ -1463,3 +1463,15 @@ Trois fichiers de parcours supposaient cinq étapes et une première obligatoire
 chaque étape en erreur. Ils s'adaptent maintenant au nombre réel d'étapes, plutôt que d'être
 contournés. Voir D-093.
 
+
+## 2026-10-14 — Les deux échecs de CI, à la racine (D-094)
+
+Deux parcours rouges en CI. Le premier attendait une apostrophe droite là où la page affiche la
+forme française courbe : l'assertion était en retard sur le contenu, elle est corrigée.
+
+Le second était plus intéressant. axe voyait le lien « Accueil » du fil d'Ariane recouvert par
+l'en-tête collant. Le retour en haut de page existait déjà dans `tests/e2e/axe.ts`, mais le
+défilement doux du geste du hero reprenait la main juste après le `scrollTo`. Sonde à l'appui : la
+page revient à 10 px ; et en balayant les hauteurs, la violation n'apparaît qu'à partir de 72 px de
+défilement — une fenêtre étroite, où un défilement interrompu tombe par chance. La CI y tombait,
+ma machine non. Le retour en haut est maintenant vérifié jusqu'à stabilisation.

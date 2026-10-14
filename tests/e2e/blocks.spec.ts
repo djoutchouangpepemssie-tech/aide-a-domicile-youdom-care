@@ -24,7 +24,7 @@ test.describe("Blocs de contenu (P1.9a)", () => {
     const current = page
       .getByRole("navigation", { name: "Fil d'Ariane" })
       .locator("[aria-current=page]");
-    await expect(current).toHaveText("Aide à l'autonomie");
+    await expect(current).toHaveText("Aide à l’autonomie");
   });
 });
 

@@ -17,12 +17,27 @@ export async function expectNoSeriousAxeViolations(page: Page, testInfo?: TestIn
   // Les apparitions (`Reveal`) en cours fausseraient `color-contrast` (couleurs à mi-transition) :
   // on attend la fin des animations lancées, une seconde et demie au plus.
   await page.evaluate(async () => {
-    window.scrollTo(0, 0);
     const running = document.getAnimations().filter((a) => a.playState === "running");
     await Promise.race([
       Promise.allSettled(running.map((a) => a.finished)),
       new Promise((resolve) => setTimeout(resolve, 1500)),
     ]);
+  });
+  /*
+   * Retour en haut de page, et vérifié : un défilement doux encore en cours (`scrollIntoView`
+   * d'un geste de hero) reprend la main après un `scrollTo` unique et laisse la page quelques
+   * dizaines de pixels plus bas, où l'en-tête collant recouvre le fil d'Ariane. On force donc la
+   * position jusqu'à ce qu'elle reste à zéro sur trois images consécutives.
+   */
+  await page.evaluate(async () => {
+    const frame = () => new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
+    const derniers: number[] = [];
+    for (let i = 0; i < 40; i += 1) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      await frame();
+      derniers.push(window.scrollY);
+      if (derniers.length >= 3 && derniers.slice(-3).every((y) => y === 0)) return;
+    }
   });
   const results = await new AxeBuilder({ page }).withTags(axeTags).analyze();
   const blocking = results.violations.filter(

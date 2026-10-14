@@ -1939,3 +1939,35 @@ cette demande ? » dans l'étape de situation la rattraperait sans rendre l'éta
 **Vérifications** : 948 tests, 13/13 contrôles, 40 parcours de formulaires (demande, envoi, chaque
 étape et état d'erreur, deux projets), lint et typecheck verts.
 
+
+## D-094 — Deux échecs de CI : une apostrophe figée et un défilement doux qui reprend la main
+
+**Contexte.** `pnpm test:e2e` échouait sur deux parcours, les deux reproductibles en CI, aucun sur
+ma machine du premier coup.
+
+**1. `blocks.spec.ts` : l'apostrophe.** Le parcours attendait « Aide à l'autonomie » avec
+l'apostrophe droite, alors que le guide de styles affiche la forme française courbe depuis la fin de
+l'audit (`89aefb0`, qui a normalisé les apostrophes du contenu sans mettre l'assertion à jour).
+C'est la page qui a raison : l'assertion est corrigée, pas la page.
+
+**2. `services.spec.ts` : `target-size` sur le fil d'Ariane.** axe signalait le lien « Accueil »
+du fil d'Ariane comme « partiellement obscurci » par l'en-tête collant. `tests/e2e/axe.ts` remontait
+déjà en haut de page pour cette raison — mais avec un seul `window.scrollTo(0, 0)`, et le
+défilement doux lancé par le geste du hero (`StageChooser`, `scrollIntoView({ behavior: "smooth" })`)
+**reprend la main juste après** : une sonde montre la page revenir à 10 px, puis s'y stabiliser.
+
+Mesuré au pixel sur `/maladies-neurodegeneratives/` en Pixel 7 : l'en-tête se compacte de 86 px à
+69 px au défilement, le lien du fil d'Ariane mesure 51 px de haut. Jusqu'à 70 px de défilement, la
+bande libre reste au-dessus du seuil de 24 px et axe ne dit rien ; **à 72 px, la violation apparaît**
+— exactement celle de la CI (bande libre de 12,4 px). La fenêtre est étroite, et c'est par hasard
+qu'un défilement interrompu y atterrit : d'où un échec ferme en CI et un parcours vert ici.
+
+**Correctif.** `expectNoSeriousAxeViolations` force désormais la position jusqu'à ce qu'elle reste à
+zéro sur trois images consécutives (`behavior: "instant"`, 40 images au plus), après l'attente des
+animations. Aucune assertion retirée, aucun seuil déplacé : l'audit porte toujours sur toute la page,
+et sur l'état activé des cartes. Le correctif profite à tous les parcours qui lancent un geste avant
+leur audit (`hero.spec.ts`, `services.spec.ts`, `comfort.spec.ts`, `styleguide.spec.ts`).
+
+**Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; côté parcours,
+`blocks`, `services`, `hero` (147 verts) puis `tous-gabarits-axe`, `gabarits-axe`, `home` et
+`mobile` (238 verts), sur les deux projets.
