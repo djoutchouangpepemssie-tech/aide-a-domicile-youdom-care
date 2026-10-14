@@ -1884,3 +1884,28 @@ ramené le libellé unique que cette correction supprimait. 83 parcours services
 
 **Vérifications** : 948 tests, 13/13 contrôles, 83 parcours, lint et typecheck verts.
 
+## D-092 — Le formulaire « enfant en situation de handicap » ne demandait pas les besoins (14/10/2026)
+
+**Le défaut, relevé par le commanditaire.** L'étape 3 des demandes détaillées pose la question
+« De quoi avez-vous besoin ? ». Sur les cinq autres cas, elle propose des besoins — gestes
+essentiels, transferts, repas, présence et sécurité, nuits. Sur le cas « enfant », elle proposait
+des **moments** : sortie d'école, mercredis, vacances, soirées, week-ends.
+
+Deux conséquences. La question n'était jamais posée : l'équipe recevait une demande sans savoir ce
+dont l'enfant a besoin. Et ces moments étaient demandés **deux fois**, puisque l'étape suivante est
+la grille de planning, qui les recueille précisément.
+
+**Correction.** Onze besoins, pris dans ce que les pages enfants promettent déjà — gestes du
+quotidien, transferts et installation, communication (pictogrammes, signes, tablette), routines et
+repères, présence et sécurité, jeux et loisirs, trajets, accompagnement aux rééducations, nuits,
+temps pour la fratrie, relais pour souffler. Aucun acte de soin, conformément à ce que Youdom Care
+fait et ne fait pas. Les trois entrées de l'ancienne liste qui étaient bien des besoins
+(rééducations, fratrie, relais) sont conservées.
+
+**Les cinq autres cas ont été vérifiés** : personne âgée, neuro, adulte en situation de handicap et
+aidant listent bien des besoins. Le cas nuit-24h liste des formes de présence (garde de nuit,
+présence 24h/24, garde-malade), ce qui est cohérent pour ce formulaire-là.
+
+**Vérifications** : 948 tests, 13/13 contrôles, les parcours du formulaire enfant (situation, axe,
+chaque étape, état d'erreur) et les neuf parcours d'envoi de bout en bout.
+

@@ -1443,3 +1443,12 @@ En vérifiant, les parcours ont échoué sur un titre que ma propre modification
 rendu propre à chaque public et que le test figeait encore. Le test lit maintenant le libellé dans
 le contenu. Voir D-091.
 
+## 14/10/2026 — La question posée, et jamais répondue
+
+Arcel a vu ce que ni les contrôles ni moi n'avions vu : le formulaire des enfants demandait « De quoi
+avez-vous besoin ? » et proposait des moments — mercredis, vacances, soirées. Les besoins n'étaient
+donc jamais recueillis, et les moments l'étaient deux fois, la grille de planning venant juste après.
+
+Onze besoins remplacent la liste, pris dans ce que les pages enfants promettent déjà. J'ai vérifié
+les cinq autres formulaires au passage : ils demandent bien des besoins. Voir D-092.
+
