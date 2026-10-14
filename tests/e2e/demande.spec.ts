@@ -29,15 +29,25 @@ test.describe("Formulaires détaillés (P3.6)", () => {
     test(`${cas} : questions de situation du cahier et axe`, async ({ page }) => {
       await page.goto(`/demande/${cas}/`);
       const form = page.getByRole("form");
-      await form.getByRole("radio", { name: "Moi-même" }).check();
-      await form.getByRole("button", { name: "Continuer" }).click();
-      await expect(form.getByText("Étape 2 sur 5")).toBeVisible();
+      /*
+       * Le cas « enfant » impose « Mon enfant » et n'affiche donc pas l'étape « pour qui » : on
+       * ouvre directement sur les questions de situation, en quatre étapes au lieu de cinq (D-093).
+       */
+      const sansPourQui = cas === "enfant-handicap";
+      const total = sansPourQui ? 4 : 5;
+      if (sansPourQui) {
+        await expect(form.getByRole("radio", { name: "Moi-même" })).toHaveCount(0);
+      } else {
+        await form.getByRole("radio", { name: "Moi-même" }).check();
+        await form.getByRole("button", { name: "Continuer" }).click();
+      }
+      await expect(form.getByText(`Étape ${sansPourQui ? 1 : 2} sur ${total}`)).toBeVisible();
       await expect(
         form.getByRole("radio", { name: "Je préfère ne pas en parler" }).first(),
       ).toBeVisible();
       await expectNoSeriousAxeViolations(page);
       await form.getByRole("button", { name: "Continuer" }).click();
-      await expect(form.getByText("Étape 3 sur 5")).toBeVisible();
+      await expect(form.getByText(`Étape ${sansPourQui ? 2 : 3} sur ${total}`)).toBeVisible();
       await expect(form.getByRole("checkbox", { name: "À définir ensemble" })).toBeVisible();
       await expectNoSeriousAxeViolations(page);
     });

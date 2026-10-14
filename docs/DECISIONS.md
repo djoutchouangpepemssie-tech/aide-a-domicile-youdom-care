@@ -1909,3 +1909,33 @@ présence 24h/24, garde-malade), ce qui est cohérent pour ce formulaire-là.
 **Vérifications** : 948 tests, 13/13 contrôles, les parcours du formulaire enfant (situation, axe,
 chaque étape, état d'erreur) et les neuf parcours d'envoi de bout en bout.
 
+## D-093 — Le formulaire « enfant » ouvre sur les questions, pas sur « pour qui » (14/10/2026)
+
+**Le constat du commanditaire.** On arrive sur `/demande/enfant-handicap/` depuis une page enfants,
+en cliquant « Je décris ma situation ». La première étape demandait alors « Pour qui cherchez-vous de
+l'aide ? » — avec « Moi-même », « Mon conjoint », « Mon père ou ma mère »… La page d'où l'on vient a
+déjà répondu : la question est une friction pour rien, en tête d'un formulaire qu'il faut avoir envie
+de remplir.
+
+**Correction, pilotée par le contenu et non câblée dans le code.** Un cas de formulaire peut déclarer
+`pour_qui_impose`. Quand il le fait, l'étape n'est pas construite, et la réponse est posée dès
+l'ouverture dans la valeur du formulaire. `enfant-handicap.json` porte `"Mon enfant"`, valeur prise
+dans `formulaires.pour_qui_options` — la demande part donc **avec** cette réponse, et l'équipe la lit
+comme avant. Un parcours le vérifie sur l'e-mail reçu, pas seulement à l'écran.
+
+Le formulaire des enfants compte désormais **quatre étapes** et s'ouvre sur les questions de
+situation. Les cinq autres cas sont inchangés.
+
+**Les parcours ont été réécrits, pas contournés.** Trois fichiers supposaient cinq étapes et une
+première étape obligatoire : `demande.spec.ts`, `envoi.spec.ts` et le parcours générique de
+`tous-gabarits-axe.spec.ts`, qui met chaque étape en erreur — or la première étape du cas enfant est
+facultative et ne peut pas l'être. Chacun s'adapte maintenant au nombre réel d'étapes du cas.
+
+**Une limite, à dire.** Un grand-parent ou un professionnel qui remplirait ce formulaire sera
+enregistré comme « Mon enfant ». Les professionnels ont leur propre formulaire ; pour les autres, le
+message libre et les coordonnées restent là. Si cela gêne, une question facultative « qui remplit
+cette demande ? » dans l'étape de situation la rattraperait sans rendre l'étape 1.
+
+**Vérifications** : 948 tests, 13/13 contrôles, 40 parcours de formulaires (demande, envoi, chaque
+étape et état d'erreur, deux projets), lint et typecheck verts.
+

@@ -1621,6 +1621,12 @@ export const formDefinitionSchema = z.strictObject({
   chapo: text,
   /** Grille de planning préremplie à l'ouverture (docs/05 §5 : nuit-24h). */
   planning_initial: z.enum(["nuits"]).optional(),
+  /**
+   * Réponse imposée à « Pour qui cherchez-vous de l'aide ? ». Quand elle est présente, l'étape 1
+   * n'est pas affichée : la page d'où l'on vient a déjà répondu, et la reposer est une friction
+   * pour rien (D-093). La valeur doit figurer dans `formulaires.pour_qui_options`.
+   */
+  pour_qui_impose: text.optional(),
   situation: z.array(situationQuestionSchema).min(1).max(8),
   besoins: z.array(text).min(3).max(12),
 });

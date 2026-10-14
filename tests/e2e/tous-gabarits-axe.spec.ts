@@ -108,22 +108,32 @@ test.describe("Formulaires : chaque étape et l'état d'erreur", () => {
       const form = page.getByRole("form");
       const audit = () => expectNoSeriousAxeViolations(page, testInfo);
 
-      await expectStep(form, 1, 5);
+      /*
+       * Le cas « enfant » impose « Mon enfant » : pas d'étape « pour qui », donc quatre étapes et
+       * une première étape facultative, qui ne peut pas être mise en erreur (D-093).
+       */
+      const sansPourQui = chemin.includes("enfant-handicap");
+      const total = sansPourQui ? 4 : 5;
+      const etape = (n: number) => (sansPourQui ? n - 1 : n);
+
+      if (!sansPourQui) {
+        await expectStep(form, 1, total);
+        await audit();
+        await submitInvalid(form);
+        await audit();
+        await form.getByRole("radio").first().check();
+        await nextButton(form).click();
+      }
+
+      await expectStep(form, etape(2), total);
       await audit();
-      await submitInvalid(form);
-      await audit();
-      await form.getByRole("radio").first().check();
       await nextButton(form).click();
 
-      await expectStep(form, 2, 5);
+      await expectStep(form, etape(3), total);
       await audit();
       await nextButton(form).click();
 
-      await expectStep(form, 3, 5);
-      await audit();
-      await nextButton(form).click();
-
-      await expectStep(form, 4, 5);
+      await expectStep(form, etape(4), total);
       await audit();
       // Date de début toujours manquante à ce stade (le rythme peut être prérempli, nuit et 24h).
       await submitInvalid(form);
@@ -132,7 +142,7 @@ test.describe("Formulaires : chaque étape et l'état d'erreur", () => {
       await form.getByRole("radio", { name: "Dans le mois" }).check();
       await nextButton(form).click();
 
-      await expectStep(form, 5, 5);
+      await expectStep(form, etape(5), total);
       await audit();
       await submitInvalid(form);
       await audit();

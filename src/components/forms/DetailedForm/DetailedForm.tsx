@@ -134,9 +134,17 @@ export const emptyDetailedValue: DetailedValue = {
 
 /** Valeur de départ : grille préremplie sur les nuits quand le cas le prévoit (docs/05 §5). */
 export function initialDetailedValue(definition: FormDefinition): DetailedValue {
-  if (definition.planning_initial !== "nuits") return emptyDetailedValue;
+  /*
+   * `pour_qui_impose` : la page d'où l'on vient a déjà répondu « pour qui » (le cas « enfant »
+   * ne s'ouvre que depuis les pages enfants). La réponse part donc avec la demande, mais sans
+   * faire traverser une étape dont le visiteur connaît déjà la réponse (D-093).
+   */
+  const base: DetailedValue = definition.pour_qui_impose
+    ? { ...emptyDetailedValue, pourQui: definition.pour_qui_impose }
+    : emptyDetailedValue;
+  if (definition.planning_initial !== "nuits") return base;
   return {
-    ...emptyDetailedValue,
+    ...base,
     planning: { ...emptyPlanning, rythme: "regulier", grille: applyShortcut({}, "nuits") },
   };
 }
@@ -211,26 +219,32 @@ export function DetailedForm({
 }: DetailedFormProps) {
   const missing = (champ: string) => texts.erreur_champ.replace("{champ}", champ);
 
+  const etapePourQui: FormStep<DetailedValue>[] = definition.pour_qui_impose
+    ? []
+    : [
+        {
+          id: "pour-qui",
+          title: texts.etape_pour_qui,
+          shortTitle: texts.etape_titres.pour_qui,
+          validate: (value): Record<string, string> =>
+            value.pourQui ? {} : { pourQui: missing(texts.champs.pour_qui) },
+          render: ({ value, setValue, errors, fieldId }) => (
+            <RadioCards
+              id={fieldId("pourQui")}
+              name="pour_qui"
+              legend={texts.etape_titres.pour_qui}
+              legendHidden
+              error={errors["pourQui"]}
+              options={texts.pour_qui_options.map((label) => ({ value: label, label }))}
+              value={value.pourQui}
+              onChange={(pourQui) => setValue({ ...value, pourQui })}
+            />
+          ),
+        },
+      ];
+
   const steps: FormStep<DetailedValue>[] = [
-    {
-      id: "pour-qui",
-      title: texts.etape_pour_qui,
-      shortTitle: texts.etape_titres.pour_qui,
-      validate: (value): Record<string, string> =>
-        value.pourQui ? {} : { pourQui: missing(texts.champs.pour_qui) },
-      render: ({ value, setValue, errors, fieldId }) => (
-        <RadioCards
-          id={fieldId("pourQui")}
-          name="pour_qui"
-          legend={texts.etape_titres.pour_qui}
-          legendHidden
-          error={errors["pourQui"]}
-          options={texts.pour_qui_options.map((label) => ({ value: label, label }))}
-          value={value.pourQui}
-          onChange={(pourQui) => setValue({ ...value, pourQui })}
-        />
-      ),
-    },
+    ...etapePourQui,
     {
       id: "situation",
       title: texts.etape_situation,

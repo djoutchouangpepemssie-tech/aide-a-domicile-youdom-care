@@ -1452,3 +1452,14 @@ donc jamais recueillis, et les moments l'étaient deux fois, la grille de planni
 Onze besoins remplacent la liste, pris dans ce que les pages enfants promettent déjà. J'ai vérifié
 les cinq autres formulaires au passage : ils demandent bien des besoins. Voir D-092.
 
+## 14/10/2026 — Une étape de moins sur le formulaire des enfants
+
+On arrive sur ce formulaire depuis une page enfants : lui redemander « pour qui ? » en première
+étape était une friction pour rien. Le cas déclare maintenant sa réponse (`pour_qui_impose`), l'étape
+n'est plus construite, et la demande part quand même avec « Mon enfant » — un parcours le vérifie sur
+l'e-mail reçu.
+
+Trois fichiers de parcours supposaient cinq étapes et une première obligatoire, dont celui qui met
+chaque étape en erreur. Ils s'adaptent maintenant au nombre réel d'étapes, plutôt que d'être
+contournés. Voir D-093.
+

@@ -162,28 +162,36 @@ for (const cas of [
     const since = new Date().toISOString();
     await page.goto(`/demande/${cas}/`);
     const form = page.getByRole("form");
-    await checkByKeyboard(form, page, "radio", "Moi-même");
-    await pressContinue(page, form);
-    await expect(form.getByText("Étape 2 sur 5")).toBeVisible();
+    // Le cas « enfant » impose « Mon enfant » : pas d'étape « pour qui », quatre étapes (D-093).
+    const sansPourQui = cas === "enfant-handicap";
+    const total = sansPourQui ? 4 : 5;
+    const etape = (n: number) => `Étape ${sansPourQui ? n - 1 : n} sur ${total}`;
+    if (!sansPourQui) {
+      await checkByKeyboard(form, page, "radio", "Moi-même");
+      await pressContinue(page, form);
+    }
+    await expect(form.getByText(etape(2))).toBeVisible();
     await checkByKeyboard(form, page, "radio", /Je préfère ne pas en parler/);
     await pressContinue(page, form);
-    await expect(form.getByText("Étape 3 sur 5")).toBeVisible();
+    await expect(form.getByText(etape(3))).toBeVisible();
     await checkByKeyboard(form, page, "checkbox", "À définir ensemble");
     await pressContinue(page, form);
-    await expect(form.getByText("Étape 4 sur 5")).toBeVisible();
+    await expect(form.getByText(etape(4))).toBeVisible();
     if (cas !== "nuit-et-24h") {
       await checkByKeyboard(form, page, "radio", "Je ne sais pas encore");
     }
     await checkByKeyboard(form, page, "radio", "Je me renseigne pour plus tard");
     await expectNoSeriousAxeViolations(page);
     await pressContinue(page, form);
-    await expect(form.getByText("Étape 5 sur 5")).toBeVisible();
+    await expect(form.getByText(etape(5))).toBeVisible();
     await fillIdentityByKeyboard(form, page);
     await pickCommuneByKeyboard(form, page, "Votre commune ou votre code postal");
     await checkByKeyboard(form, page, "checkbox", /J'accepte que Youdom Care utilise/);
     await pressContinue(page, form);
     await expect(page).toHaveURL(/\/merci\//);
-    await waitForMail(since, (m) => m.subject.startsWith("Nouvelle demande"));
+    const mail = await waitForMail(since, (m) => m.subject.startsWith("Nouvelle demande"));
+    // La réponse imposée part bien avec la demande, même sans étape affichée.
+    if (sansPourQui) expect(mail.text).toContain("Mon enfant");
   });
 }
 
