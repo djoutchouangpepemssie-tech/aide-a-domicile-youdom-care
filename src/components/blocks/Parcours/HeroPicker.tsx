@@ -11,11 +11,26 @@ import { useParcours } from "./ParcoursProvider";
 
 /*
  * Geste d'entrée de l'accueil (docs/design/CONCEPT.md §3, bloc 1) : la question et six choix,
- * icône 32 px et libellé court, rangées de 56 px, une colonne sur mobile (icône à gauche,
- * chevron à droite), deux colonnes à partir de 48 rem. Le concept prévoyait deux rangées de
- * trois sur ordinateur : la colonne du hero (700 px à côté de la photo) ne laisse alors qu'une
- * centaine de pixels au libellé et les choix « Pour moi : … » passent sur trois lignes ; en
- * deux colonnes, chaque libellé tient sur deux lignes au plus et le bloc est moins haut.
+ * icône 32 px et libellé court, rangées de 56 px, icône à gauche et chevron à droite. Le concept
+ * prévoyait deux rangées de trois sur ordinateur : la colonne du hero (700 px à côté de la photo)
+ * ne laisse alors qu'une centaine de pixels au libellé et les choix « Pour moi : … » passent sur
+ * trois lignes.
+ *
+ * **La grille suit la largeur du BLOC, pas celle de l'écran (`@container`, D-098).** Elle suivait
+ * l'écran (`min-[22rem]`) : sur un grand écran, le panneau du hero fait malgré tout 450 px
+ * environ, chaque cellule tombait à 124 px de texte utile et « Personne en situation de handicap »
+ * s'empilait sur cinq lignes, les cartes d'une même rangée n'ayant plus la même hauteur. Même
+ * effet, sans zoom, dès que le visiteur agrandit le texte (mode confort, RGAA 1.4.4).
+ *
+ * Mesuré, puis réglé en conséquence : une colonne tant que le bloc ne fait pas 24 rem ; au-delà,
+ * deux colonnes, mais **le chevron s'efface et l'icône rapetisse tant que le bloc reste sous
+ * 36 rem**, ce qui rend 32 px au libellé. Chaque libellé tient alors sur deux lignes au plus, les
+ * six choix restent dans la fenêtre, et `min-w-0` laisse le texte se replier au lieu de pousser
+ * la rangée.
+ *
+ * Attention aux seuils : la racine du site est à **18 px** (docs/02), donc `@sm` vaut 432 px et
+ * `@xl` 648 px, non 384 et 576. Mon premier réglage (`@md`, soit 504 px) ne s'appliquait jamais au
+ * panneau du hero, large de 453 px : la sonde l'a montré, pas la lecture du code.
  * - Sans JavaScript (et au rendu serveur) : six liens vers les cinq piliers et vers la page
  *   « Être rappelé(e) ». Le choix « Je ne sais pas encore » reste toujours un lien.
  * - Avec JavaScript : les choix qui ont un panneau deviennent des boutons `aria-pressed` ; le
@@ -78,7 +93,7 @@ function Chevron() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="ml-auto shrink-0 text-teal-700 max-lg:hidden"
+      className="ml-auto shrink-0 text-teal-700 max-lg:hidden @max-xl:hidden"
     >
       <path d="m9 6 6 6-6 6" />
     </svg>
@@ -109,7 +124,7 @@ export function HeroPicker({ question, choices, panelTitleId, className }: HeroP
     <div
       role="group"
       aria-labelledby={questionId}
-      className={cn("hero-picker", className)}
+      className={cn("hero-picker @container", className)}
       data-hydrated={hydrated ? "true" : undefined}
     >
       <p id={questionId} className="m-0 font-bold text-teal-900 max-lg:text-small">
@@ -117,15 +132,15 @@ export function HeroPicker({ question, choices, panelTitleId, className }: HeroP
       </p>
       <ul
         className={cn(
-          "m-0 mt-3 grid list-none grid-cols-1 gap-3 p-0 min-[22rem]:grid-cols-2",
+          "m-0 mt-3 grid list-none grid-cols-1 gap-3 p-0 @sm:grid-cols-2",
           "max-lg:mt-2 max-lg:gap-2",
         )}
       >
         {choices.map((choice) => {
           const content = (
             <>
-              <Icon name={choice.icone} size="lg" className="shrink-0 max-lg:size-6" />
-              <span>{choice.libelle}</span>
+              <Icon name={choice.icone} size="lg" className="shrink-0 max-lg:size-6 @max-xl:size-6" />
+              <span className="min-w-0 text-pretty">{choice.libelle}</span>
               <Chevron />
             </>
           );

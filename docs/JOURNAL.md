@@ -1512,3 +1512,14 @@ validé, et la stabilité de l'équipe n'en fait pas partie. La plus belle prome
 la seule sans rien derrière.
 
 Et « intervenant », mot d'administration, cède la place au métier sur neuf heros.
+
+## 2026-10-15 — Le parcours de l'accueil ne se coupe plus (D-098)
+
+Arcel m'envoie deux captures : « Personne en situation de handicap » sur cinq lignes, des cartes de
+hauteurs inégales, un panneau coupé en plein mot. La grille passait à deux colonnes selon la largeur
+de l'écran, alors que le panneau du hero ne fait que 453 px sur un écran de 1440 : 124 px de texte
+par cellule. Elle suit maintenant la largeur du bloc.
+
+Au passage, un piège : mon premier seuil (`@md`, 28 rem) ne s'appliquait jamais, parce que la racine
+du site est à 18 px et non 16 — `@md` y vaut 504 px. C'est la sonde dans le navigateur qui l'a dit,
+pas la lecture du code.

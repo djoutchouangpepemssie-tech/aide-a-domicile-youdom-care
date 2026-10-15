@@ -2179,3 +2179,37 @@ décision de commanditaire sur un texte, ce qui n'est pas relâcher un seuil.
 **Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts, 169 parcours
 (accueil, heros aux quatre tailles sur les deux projets, services, SEO) ; H1 et chapô relus sur le
 HTML construit, pas seulement dans le contenu.
+
+## D-098 — Le parcours de l'accueil : la grille suivait l'écran, pas le panneau (15/10/2026)
+
+**Ce qu'Arcel a vu.** Deux captures : « Personne en situation de handicap » empilé sur **cinq
+lignes**, des cartes de hauteurs très différentes dans une même rangée, et le panneau coupé en plein
+milieu d'un libellé.
+
+**Ce que la mesure a montré.** La grille des six choix passait à deux colonnes selon la largeur de
+l'**écran** (`min-[22rem]`, soit 352 px). Or le panneau du hero vit dans la colonne de droite de la
+bannière : sur un écran de 1440 px, il ne fait que **453 px**. Chaque cellule tombait à
+**124 px de texte utile**, et un libellé de 32 caractères n'y tient pas. Le même effet apparaît sans
+zoom dès qu'un visiteur agrandit le texte (mode confort, RGAA 1.4.4) — ce n'est donc pas un défaut
+de mon libellé de la veille, mais une faiblesse du gabarit que le nouveau libellé a révélée : l'ancien
+(« Pour moi : je vis avec un handicap », 34 caractères) était tout aussi long.
+
+**Correction.** La grille suit désormais la largeur du **bloc** (`@container`), comme les cartes
+d'étapes depuis le 27/09 : une colonne tant que le bloc ne fait pas 24 rem, deux au-delà. Sous
+36 rem, le chevron s'efface et l'icône rapetisse — 32 px rendus au libellé — et `min-w-0` laisse le
+texte se replier au lieu de pousser la rangée.
+
+**Un piège de seuil, trouvé par la sonde et non par la lecture.** Mon premier réglage utilisait
+`@md` (28 rem). Il ne s'appliquait jamais : **la racine du site est à 18 px**, donc `@md` vaut 504 px,
+pas 448. Le panneau de 453 px passait juste en dessous. C'est une sonde dans le navigateur qui l'a
+dit (`rootFont: "18px"`), après deux mesures où je croyais à un cache de build.
+
+**Mesuré après correction**, panneau de 453 px à 1440×900 : deux colonnes, trois rangées de hauteur
+égale, chaque libellé sur deux ou trois lignes, **aucun texte coupé**, et le panneau ne défile plus
+en interne (son contenu passe sous le plafond de 38 svh). À 390 px : une colonne, libellés sur une ou
+deux lignes. Captures d'écran à l'appui, à six largeurs.
+
+**Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; 158 parcours
+(heros aux quatre tailles sur les deux projets, accueil, mobile, mouvement) puis 150 parcours axe sur
+tous les gabarits. Un parcours de `motion.spec.ts` a échoué sous la charge de la suite et passe seul
+en 4,6 s : même fragilité que R-4 (D-083), page sans rapport avec ce changement.
