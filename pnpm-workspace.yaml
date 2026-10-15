@@ -1,3 +1,9 @@
+# Le dépôt porte deux produits : le site public (à la racine) et l'API du CRM / de l'espace
+# client (`apps/api`, vague 1). Un seul atelier — un lint, un typecheck, une suite de tests, une
+# chaîne d'intégration continue — plutôt que deux outillages à tenir à jour en parallèle (D-102).
+packages:
+  - apps/*
+
 allowBuilds:
   esbuild: true
   sharp: false

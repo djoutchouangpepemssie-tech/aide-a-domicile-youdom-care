@@ -34,9 +34,20 @@ décision de pointage. **3 à 5 j** après réception des réponses.
 
 ---
 
-### Phase 1 — Le socle et le terrain · **15 à 22 j**
+### Phase 1 — Le socle et le terrain · **15 à 22 j** · *commencée le 15/10*
 
 > Sans cette phase, l'espace client n'a rien à afficher. C'est elle qui change tout.
+
+**Étape 1 — fait (15/10)** : le paquet `apps/api` (MY-08 MongoDB, MY-09 TypeScript). Modules,
+rôles et matrice par défaut ; schémas Zod du socle ; **moteur d'autorisation** avec les cinq règles
+de `PERMISSIONS.md` §7, le gel du foyer, l'astreinte et les protocoles ; journal d'audit en ajout
+seul, refus compris ; lien magique, code SMS, sessions, second facteur ; collections et index de
+`DATA_MODEL.md` §4 ; configuration qui refuse de démarrer en production sans hébergement certifié.
+89 tests, dont un qui parcourt les douze modules pour prouver le 404 — jamais 403.
+
+**Étape 2 — suivante** : serveur HTTP et ses trois surfaces séparées, back-office minimal (créer un
+foyer, un intervenant, poser un planning, affecter), validateurs `$jsonSchema` en doublure des
+schémas Zod.
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

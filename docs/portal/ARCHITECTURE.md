@@ -138,8 +138,8 @@ Ce que cela donne, concrètement :
 | Cahier de liaison, fiche de vie, signalements | rendu **client** uniquement | **données de santé** : elles ne doivent exister que chez l'hébergeur certifié |
 
 **Ce qu'il reste à choisir** : l'hébergeur certifié qui porte l'API. MongoDB Atlas, déjà cité dans le
-cadrage, **est** certifié et peut porter la base. Pour l'API (FastAPI), il faut un hébergeur de la
-[liste de l'ANS](https://esante.gouv.fr/ens/offre/hds) — Scalingo, Clever Cloud, OVHcloud, Outscale
+cadrage, **est** certifié et peut porter la base (MY-08). Pour l'API (TypeScript / Node, MY-09), il
+faut un hébergeur de la [liste de l'ANS](https://esante.gouv.fr/ens/offre/hds) — Scalingo, Clever Cloud, OVHcloud, Outscale
 sont les candidats habituels pour une application de cette taille. C'est un devis à demander.
 
 **Si vous préférez ne rien ajouter du tout** : un portail **sans donnée de santé** reste possible —
@@ -166,7 +166,7 @@ relevés.
    └──────────┬───────────┘   └────────┬─────────┘   └────────┬─────────┘
               │ jetons courts, HTTPS   │                      │
          ┌────▼────────────────────────▼──────────────────────▼────┐
-         │  API — FastAPI                                          │
+         │  API — TypeScript / Node (MY-09)                        │
          │  /portal/v1 (familles) · /field/v1 (terrain) · /admin   │
          │  trois surfaces séparées, jamais mélangées              │
          └────┬──────────────────────────────┬─────────────────────┘

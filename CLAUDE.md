@@ -23,6 +23,8 @@ Signature de marque : **« Vous, chez vous. Nous, à vos côtés. »**
 | Journal des itérations | `docs/JOURNAL.md` |
 | Questions en attente pour Arcel | `docs/QUESTIONS_ARCEL.md` |
 | Décisions d'architecture | `docs/DECISIONS.md` |
+| CRM et espace client « Mon Youdom » : périmètre, droits, modèle, décisions | `docs/portal/` |
+| Le socle de l'API (vague 1) | `apps/api/README.md` |
 | Faits d'entreprise (seule source autorisée) | `content/site.config.json`, `content/tarifs.json`, `content/engagements.json` |
 
 ## Pile technique

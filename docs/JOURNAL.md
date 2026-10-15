@@ -1554,3 +1554,52 @@ contenu masqué, ce qui donne le vrai fond sous chaque bloc de texte. Le contras
 5,98 pour un seuil de 4,5 — et c'est cette mesure qui a révélé deux choses invisibles autrement : le
 chapô de la page « garde de nuit » était pile au seuil, et la photo des pages locales, un panoramique
 de 1920×557, ne se voyait pas du tout sur téléphone.
+
+---
+
+## 2026-10-15 — Le socle du CRM : première ligne de code (MY-08, MY-09, D-102)
+
+« On peut le faire sur Mongo ? Sur oui commence par la phase 1. »
+
+**Oui, sur Mongo.** Et c'est le choix qui fait gagner du temps : Atlas est certifié HDS (vérifié le
+15/10), donc il ne reste qu'un fournisseur à trouver, celui de l'API. J'ai écrit les trois réserves
+qui vont avec plutôt que de les découvrir en vague 4 : un jeu de réplicas M10 au minimum en
+production (sans quoi une facture peut s'écrire à moitié), la forme des documents tenue par les
+schémas Zod puis par des validateurs côté base, et la facturation modélisée à plat le jour où elle
+arrivera. MY-08.
+
+**L'API s'écrit en TypeScript, pas en FastAPI.** Le prompt de cadrage décrivait un CRM qui
+n'existait pas ; puisque tout est à écrire, le choix se repose. Un seul atelier au lieu de deux, des
+schémas écrits une fois pour l'API et pour l'interface, un seul langage pour une seule personne sur
+neuf à quatorze mois. C'est réversible aujourd'hui pour deux jours, et pour des mois dans six mois :
+si Arcel préfère Python, c'est maintenant. MY-09.
+
+**Ce que j'ai écrit, et ce que ça garantit.** Le socle n'est pas un squelette : c'est la partie dont
+une erreur ne se voit pas à l'écran.
+
+- **Le moteur d'autorisation** applique les cinq règles de `PERMISSIONS.md` §7, et trois que le même
+  document impose ailleurs : le gel du foyer retire les notes de santé immédiatement, l'astreinte
+  sans motif saisi est refusée hors heures ouvrées, un protocole de la fiche de vie ne se modifie
+  pas sans relecture de l'agence.
+- **Deux garde-fous que je n'avais pas promis et qui m'ont paru nécessaires** : la matrice du rôle
+  prime sur la base — un droit qui accorde une case « — » ne vaut rien, donc un document mal écrit,
+  importé ou forgé n'ouvre pas ce que le rôle n'ouvre jamais ; et une mesure de protection non
+  vérifiée par un humain n'ouvre rien du tout.
+- **Le jeton de session ne porte aucun droit.** Les droits sont relus à chaque requête. C'est moins
+  astucieux qu'un jeton signé qui porte ses autorisations, et c'est volontaire : l'autre solution
+  obligerait à dire à une famille « votre retrait prendra effet à la prochaine connexion ».
+- **Le journal garde les refus**, pas seulement les succès, et jamais le contenu consulté. Un
+  journal qui ne garde que les succès ne sert qu'à se rassurer.
+- **La configuration refuse de démarrer en production** tant que l'hébergement certifié n'est pas
+  confirmé. Un garde-fou brutal, et c'est le but : c'est le seul point où une négligence
+  d'exploitation deviendrait une infraction.
+
+**Vérifications** : 1 037 tests unitaires (948 du site, 89 du socle), 13/13 contrôles, lint,
+typecheck, format et build verts, `pnpm audit` inchangé. Parmi les 89 : un test parcourt les douze
+modules et prouve qu'un membre sans droit reçoit **404 et jamais 403** — l'exigence nommée par
+`PERMISSIONS.md` §7, qui refuse qu'un refus confirme l'existence de la ressource.
+
+**Ce qui n'est pas fait, et que je ne cache pas** : il n'y a pas encore de serveur HTTP. L'étape 2
+pose les trois surfaces séparées et le back-office minimal. Le planning attend les règles de
+planification d'Arcel (amplitude, trajets, repos, majorations) : sans elles, un planning est faux et
+aucun code n'y change rien.

@@ -1,5 +1,7 @@
 # dependencies
 /node_modules
+# Les paquets de l'espace de travail ont le leur (apps/api, D-102).
+apps/*/node_modules
 /.pnp
 .pnp.*
 

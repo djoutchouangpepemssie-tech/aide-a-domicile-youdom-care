@@ -1,0 +1,11 @@
+{
+  "name": "@youdom/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "API du CRM Youdom Care et de l'espace client Mon Youdom (vague 1 : le socle).",
+  "dependencies": {
+    "mongodb": "^7.7.0",
+    "zod": "^4.6.5"
+  }
+}

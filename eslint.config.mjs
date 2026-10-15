@@ -23,8 +23,16 @@ const eslintConfig = defineConfig([
   },
   {
     // Les scripts d'outillage (contrôles, pipelines de données) écrivent sur la sortie standard.
-    files: ["scripts/**/*.{ts,mts,js,mjs}"],
+    files: ["scripts/**/*.{ts,mts,js,mjs}", "apps/*/scripts/**/*.ts"],
     rules: { "no-console": "off" },
+  },
+  {
+    // `apps/api` n'est pas une application Next.js : c'est un service Node. La règle
+    // `no-assign-module-variable` existe pour la variable `module` de CommonJS dans les pages ;
+    // ici, `module` est un mot du domaine (`PERMISSIONS.md` §3) et une variable de boucle
+    // parfaitement ordinaire. Les autres règles, elles, restent en vigueur.
+    files: ["apps/**/*.{ts,tsx}"],
+    rules: { "@next/next/no-assign-module-variable": "off" },
   },
   prettier,
   // Sorties d'outils, jamais du code du projet : le rapport HTML de Playwright embarque son

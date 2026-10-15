@@ -2342,3 +2342,40 @@ aucune balise image.
 (heros aux quatre tailles sur les deux projets, accueil, mobile, mouvement, axe des gabarits
 témoins, local) puis 214 parcours (axe de tous les gabarits, services). Un parcours R-4 a lâché sous
 la charge de la suite et repasse seul en 4,1 s : fragilité connue (D-083), page sans rapport.
+
+---
+
+## D-102 — `apps/api` entre dans l'espace de travail, avec une seule dépendance (15/10/2026)
+
+**Contexte.** Arcel a tranché : un CRM Youdom Care complet, et l'espace client dessus
+(`docs/portal/DECISIONS.md` MY-07). La vague 1 commence, et la question d'implantation se pose avant
+la première ligne : un second dépôt, ou un paquet dans celui-ci ?
+
+**Décision : un paquet de l'espace de travail**, `apps/api`, déclaré par `packages: [apps/*]` dans
+`pnpm-workspace.yaml`.
+
+**Pourquoi.** L'atelier existe déjà et il est vert : un lint, un typecheck, 1 037 tests, un
+contrôle de format, une intégration continue en deux jobs. L'API en hérite sans rien monter. Un
+second dépôt demanderait une seconde chaîne complète, tenue par la même personne — c'est le genre
+d'économie qui coûte. Trois ajustements suffisent, tous visibles dans le diff :
+
+- `vitest.config.mts` : les tests de `apps/*/src` rejoignent la suite (ils déclarent
+  `@vitest-environment node`, sans DOM, et tournent en 1,6 s) ;
+- `eslint.config.mjs` : la règle Next `no-assign-module-variable` est désactivée pour `apps/**` —
+  `apps/api` n'est pas une application Next.js, et `module` y est un mot du domaine
+  (`PERMISSIONS.md` §3). Toutes les autres règles restent ;
+- `package.json` : un script `portal:migrer` pour poser les index.
+
+Le site, lui, ne change pas : `pnpm build` reste identique, et aucune ligne de l'API n'est importée
+par une page.
+
+**Une dépendance ajoutée, et une seule** (règle de CLAUDE.md : nom, raison, poids) :
+
+| Paquet | Raison | Poids |
+| --- | --- | --- |
+| `mongodb@^7.7.0` | pilote officiel ; MongoDB est la base retenue (MY-08), Atlas est certifié HDS | 4,4 Mo + `bson` 2,3 Mo, côté serveur uniquement — jamais dans un paquet envoyé au navigateur |
+
+`zod` est déjà dans le dépôt et sert des deux côtés : c'est précisément l'argument de MY-09. Aucun
+framework HTTP n'est ajouté à cette étape — il n'y a pas encore de serveur, et choisir un framework
+avant d'avoir une route à servir, c'est choisir pour rien. `pnpm audit` est inchangé : le pilote
+MongoDB n'apporte aucun avis.

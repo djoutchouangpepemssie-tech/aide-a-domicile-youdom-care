@@ -161,3 +161,60 @@ Si Arcel veut internaliser l'un ou l'autre, c'est faisable et j'estimerai à par
 
 **Ordre de construction inchangé** : ce qui produit la donnée, puis ce qui la montre, puis ce qui la
 facture.
+
+---
+
+## MY-08 — La base : MongoDB, oui (15/10/2026)
+
+**Question d'Arcel** : « on peut le faire sur Mongo ? » **Réponse : oui**, et c'est même le choix
+qui fait gagner du temps. Trois raisons vérifiées plutôt que supposées :
+
+1. **MongoDB Atlas est certifié HDS** (référentiel 2024, audit Schellman — vérifié le 15/10,
+   `ARCHITECTURE.md` §4.1). C'est un fournisseur de moins à trouver : il ne reste que l'hébergeur de
+   l'API (question A).
+2. **Le modèle de données s'y prête.** Un foyer, ses membres, ses droits, ses visites, ses comptes
+   rendus : des documents qu'on lit par foyer, presque toujours entiers. C'est exactement ce que
+   MongoDB fait bien.
+3. **L'ajout seul y est naturel** (pointages, événements de visite, journal d'audit), et les index
+   dont `DATA_MODEL.md` §4 a besoin sont posés dès maintenant (`db/collections.ts`).
+
+**Trois réserves, et comment elles sont tenues** — elles ne remettent pas le choix en cause, mais
+elles ne se découvrent pas en vague 4 :
+
+| Réserve | Ce qui est fait |
+| --- | --- |
+| La facturation exige qu'une écriture soit entière ou pas du tout | MongoDB sait le faire, mais seulement sur un **jeu de réplicas** : en production, **M10 au minimum**, jamais une offre partagée. L'écriture est déjà confirmée par la majorité des membres (`db/client.ts`) — sans quoi un pointage peut disparaître lors d'une bascule |
+| Le moteur n'impose aucune forme aux documents | La forme est tenue par les schémas Zod en `strictObject` (`domaine/schemas.ts`) : un champ inattendu est une erreur, pas un champ ignoré. Des validateurs `$jsonSchema` côté base viendront en doublure à l'étape 2 — la ceinture **et** les bretelles, parce qu'un jour une écriture viendra d'ailleurs que de ce code |
+| Factures, aides et reste à charge sont par nature relationnels | Ce sont les seules données que je modéliserai **à plat**, avec des références et non des documents imbriqués. Décision à prendre en vague 4, notée maintenant pour ne pas l'oublier |
+
+**Ce que cela ne résout pas** : Atlas porte la base, pas l'API. L'hébergeur certifié de l'API reste
+à choisir (question A) — un devis, pas une difficulté technique.
+
+---
+
+## MY-09 — L'API s'écrit en TypeScript, pas en Python (15/10/2026)
+
+**Décision du développeur, et je l'assume.** Le prompt de cadrage parlait d'une API **FastAPI** —
+il décrivait un CRM qui n'existait pas (MY-01). Puisque tout est à écrire, le choix se repose, et
+je choisis **TypeScript sur Node**.
+
+**Pourquoi, en trois points mesurables** :
+
+1. **Un seul atelier au lieu de deux.** Le dépôt a déjà un lint, un typecheck, 1 037 tests, un
+   format, et une intégration continue verte. L'API y entre comme paquet de l'espace de travail et
+   hérite de tout. En Python, il faudrait monter et tenir une seconde chaîne complète (ruff, mypy,
+   pytest, un second job de CI) — pour une seule personne qui maintient les deux.
+2. **Les schémas ne sont écrits qu'une fois.** L'interface de l'espace client est en Next.js. Les
+   schémas Zod du socle sont lisibles des deux côtés : un champ renommé casse la compilation de
+   l'interface, au lieu de casser une requête en production.
+3. **Une personne, un langage.** Le critère qui compte sur un projet de 175 à 270 jours n'est pas
+   l'élégance du framework : c'est le nombre de contextes à tenir en tête à trois heures du matin
+   quand une astreinte appelle.
+
+**Ce que cela coûte** : rien aujourd'hui (aucune ligne de Python n'existe). Revenir en arrière
+coûterait deux jours maintenant, et des mois dans six mois. Si Arcel préfère Python, c'est le moment
+de le dire — pas après l'étape 2.
+
+**Ce que cela ne change pas** : l'architecture de `ARCHITECTURE.md` §5 — trois surfaces d'API
+séparées, autorisation au plus près de la donnée, journal en ajout seul, SSE pour les statuts,
+hors ligne d'abord pour l'application intervenant. Le langage change, les principes non.
