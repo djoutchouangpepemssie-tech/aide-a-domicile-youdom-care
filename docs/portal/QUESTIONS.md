@@ -9,31 +9,31 @@
 
 ---
 
-## Bloquantes — avant d'écrire la première ligne
+## Soldées le 15/10 (voir `DECISIONS.md`)
 
-**1. Hébergement des données de santé.** Quel hébergeur certifié HDS, ou quel budget pour en
-choisir un ? Rappel du fait vérifié : MongoDB Atlas est certifié, Vercel et Railway ne publient
-aucun certificat HDS (`ARCHITECTURE.md` §4). Tant que ce choix n'est pas fait, la Phase 3 (fiche de
-vie, comptes rendus) ne peut pas commencer — et comme rien n'existe encore, le choisir maintenant ne
-coûte **aucune** migration.
+| # | Question | Réponse d'Arcel | Ce que j'en fais |
+| --- | --- | --- | --- |
+| 1 | Hébergement des données de santé | **Vercel** | Vercel sert l'interface ; les données vivent chez un hébergeur certifié HDS, et aucune donnée de santé ne traverse Vercel (`ARCHITECTURE.md` §4.2). **Reste à choisir l'hébergeur de l'API** — un devis, pas une difficulté technique |
+| 2 | Mode de pointage | **NFC et QR code** | Aucune géolocalisation : le sujet « surveillance des salariés » disparaît. J'ajoute le pointage manuel avec motif, pour le badge décollé ou illisible |
+| 3 | Volumétrie | **Pas de nombre défini** | Je conçois sans hypothèse : index dès le départ, pagination partout, aucune liste chargée entière |
+| 4 | Outils actuels | **Word et Ximi** | **Change le calcul du périmètre.** Ximi porte déjà planning, facturation, paie et télétransmission. Voir `ARCHITECTURE.md` §3 et la question A ci-dessous |
+| 5 | Astreinte | **La responsable** | Le produit n'annoncera pas « astreinte 24 h/24 » comme un centre d'appels : heures d'ouverture affichées, numéro d'astreinte pour l'urgent, et un seuil de gravité pour ce qui réveille la nuit |
 
-**2. Mode de pointage.** Badge NFC posé au domicile, QR code imprimé, ou position ponctuelle au seul
-instant du pointage ? Ma recommandation : **NFC ou QR en premier**, la position ponctuelle en
-secours, jamais seule — c'est ce que la CNIL attend, et c'est ce qui évite un conflit social.
-Question liée : **le CSE a-t-il été informé** du projet de télégestion ?
+---
 
-**3. Votre activité réelle, en chiffres.** Combien de foyers suivis aujourd'hui ? Combien
-d'intervenants ? Combien de visites par semaine ? Combien en mandataire ? Ces chiffres décident du
-dimensionnement, des index, et de l'ordre des fonctions.
+## Les deux questions qui commandent maintenant
 
-**4. Comment faites-vous aujourd'hui ?** Plannings sur Excel, sur papier, sur un logiciel ? Factures
-avec quel outil ? C'est ce qu'il faudra reprendre, et ce qui restera en service pendant que la
-Phase 4 se construit.
+**A. Ximi expose-t-il une API, et laquelle ?** À demander par écrit à Xelya :
+(1) existe-t-elle et avec quelle documentation ? (2) donne-t-elle les **pointages, affectations et
+comptes rendus en temps réel**, ou seulement un export de facturation ? (3) à quel coût ?
 
-**5. Qui, à l'agence, valide quoi ?** Qui vérifie un justificatif de tutelle ou de curatelle ? Qui
-répond à un signalement de chute à 22 h ? L'astreinte 24 h/24 annoncée aux familles, qui la tient ?
-Un produit qui promet une réponse que personne ne peut donner détruit la confiance plus vite que
-l'absence de produit.
+C'est **la** question du projet. Selon la réponse, on construit l'espace client seul (quelques
+semaines), ou l'ensemble (plusieurs mois). Je peux commencer la Phase 1 sans la réponse — le socle
+est le même dans les trois cas — mais pas la Phase 2.
+
+**B. Quel hébergeur certifié HDS pour l'API ?** Scalingo, Clever Cloud, OVHcloud, Outscale…
+Demandez deux devis : c'est suffisant pour décider. MongoDB Atlas, déjà certifié, peut porter la
+base.
 
 ---
 

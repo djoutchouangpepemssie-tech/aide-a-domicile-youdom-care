@@ -1,8 +1,9 @@
 # Mon Youdom — Architecture (Phase 0)
 
-> État : **brouillon de cadrage**. Rien n'est construit. Le périmètre est tranché (§3 : tout est à
-> créer). Restent deux décisions qui commandent la Phase 1 : l'hébergement des données de santé
-> (§4) et le mode de pointage. Voir `QUESTIONS.md`.
+> État : **cadrage, décisions du 15/10 intégrées** (voir `DECISIONS.md`). Rien n'est construit.
+> Hébergement : Vercel pour l'interface, hébergeur certifié HDS pour les données (§4). Pointage :
+> NFC et QR code. Une question reste ouverte et elle est importante : la place de **Ximi**, déjà en
+> service chez vous (§3).
 
 ---
 
@@ -30,7 +31,8 @@ n'existe pas.** J'ai aussi vérifié les dépôts accessibles : aucun ne contien
    premier chantier.
 3. L'ordre de grandeur n'est plus celui d'une extension. Voir `PLAN.md` : on parle de trois
    applications (back-office, intervenant, famille), d'une API, d'une conformité santé, et
-   d'intégrations financières réglementées. Arcel a tranché le 15/10 : **tout est à créer** (§3).
+   d'intégrations financières réglementées — **sauf si Ximi, déjà en service, en porte une partie**
+   (§3).
 4. **Une bonne nouvelle** : aucune dette, aucune migration. L'hébergement certifié HDS peut être
    choisi dès le premier jour, au lieu d'être une reprise douloureuse.
 
@@ -59,39 +61,50 @@ par construction.
 
 ---
 
-## 3. Le périmètre, tranché par Arcel : on crée tout
+## 3. Le périmètre : tout créer, mais Ximi existe déjà
 
-Question posée, réponse donnée le 15/10 : **« on doit tout créer de zéro »**. Je prends acte, et je
-note ce que cela engage, pour que personne ne le découvre en route.
+Deux réponses d'Arcel le 15/10, dans cet ordre : **« on doit tout créer de zéro »** (MY-01), puis,
+à la question « comment faites-vous aujourd'hui ? » : **« Word et Ximi »** (MY-04).
+
+La seconde change le calcul de la première, et il faut le dire avant d'écrire du code.
 
 **Ce que « tout » contient vraiment**, dans un service d'aide à domicile :
 
-| Brique | Pourquoi elle est indispensable | Difficulté |
-| --- | --- | --- |
-| Back-office de coordination (foyers, intervenants, planning, affectation, remplacements) | Sans elle, l'espace client n'a **aucune donnée** à afficher | Moyenne, bien balisée |
-| Application intervenant (pointage, compte rendu, hors ligne) | C'est elle qui produit la donnée | Moyenne ; le hors ligne est le vrai sujet |
-| Espace client « Mon Youdom » | La promesse vendue aux familles | Moyenne |
-| Facturation : APA, PCH, CESU préfinancé, avance immédiate, crédit d'impôt, reste à charge | Obligation, et cœur de la relation financière | **Élevée** : réglementaire, mouvante |
-| Paie et contrats en mode mandataire | Vous gérez des particuliers employeurs | **Élevée** : droit du travail, conventions collectives |
-| Télétransmission aux départements (APA) | Exigée pour être payé par le département | **Élevée** : spécifique à chaque département |
+| Brique | Pourquoi elle est indispensable | Difficulté | Ximi le fait-il ? |
+| --- | --- | --- | --- |
+| Coordination : foyers, intervenants, planning, affectation | Sans elle, l'espace client n'a **aucune donnée** à afficher | moyenne | **oui** |
+| Application intervenant : pointage, compte rendu, hors ligne | C'est elle qui produit la donnée | moyenne ; le hors ligne est le vrai sujet | oui, à éprouver |
+| **Espace client « Mon Youdom »** | La promesse vendue aux familles | moyenne | **non** — c'est votre différence |
+| Facturation : APA, PCH, CESU, avance immédiate, crédit d'impôt | Obligation, et cœur de la relation financière | **élevée**, réglementaire et mouvante | **oui** |
+| Paie et contrats en mandataire | Vous gérez des particuliers employeurs | **élevée** | **oui** |
+| Télétransmission aux départements (APA) | Exigée pour être payé | **élevée**, propre à chaque département | **oui** |
 
-Les trois dernières lignes sont d'un autre ordre que les trois premières. Elles ne sont pas plus
-« techniques » : elles sont **réglementaires et changeantes**, et une erreur s'y paie en argent et
-en relation avec un financeur public.
+Les trois dernières lignes ne sont pas « plus techniques » : elles sont **réglementaires et
+changeantes**, une erreur s'y paie en argent et en relation avec un financeur public — et **vous
+les payez déjà** dans votre abonnement Ximi.
 
-**Ma recommandation n'est donc pas d'acheter, puisque vous avez tranché — c'est un ordre de
-construction**, et il tient en une phrase : *construire d'abord ce qui produit la donnée, ensuite ce
-qui la montre, en dernier ce qui la facture.*
+**Ma recommandation, dite une fois** : ne recréez pas la facturation, la paie et la
+télétransmission. Construisez ce que Ximi ne fait pas — l'espace client — et, si son application
+terrain ne convient pas, la vôtre. Vous mettez alors votre argent là où se trouve votre différence.
 
-1. **D'abord le terrain** : foyers, intervenants, planning, affectation, pointage. Rien ne marche
-   sans cela.
-2. **Ensuite la promesse** : l'espace client, qui devient possible dès que le terrain produit.
-3. **En dernier l'argent** : facturation, aides, mandataire, télétransmission — en gardant vos
-   outils actuels le temps que cette brique soit sûre. Une double saisie temporaire coûte moins cher
-   qu'une facture fausse envoyée à un département.
+**Ce qu'il faut demander à Xelya (éditeur de Ximi) avant de trancher**, par écrit :
 
-Si votre calendrier impose l'inverse (facturer d'abord), dites-le : c'est faisable, mais l'espace
-client sortira plus tard, et je préfère que ce choix soit fait les yeux ouverts.
+1. existe-t-il une API, et quelle documentation ? (Leur plaquette cite « API, workflows » ; aucune
+   documentation développeur publique n'existe, et un annuaire indique qu'il n'y a pas d'API
+   ouverte — peut-être réservée aux offres hautes.)
+2. donne-t-elle accès aux **pointages, affectations et comptes rendus en temps réel**, ou seulement
+   à un export de facturation ? **C'est la question qui décide du projet.**
+3. à quel coût et sous quelles conditions ?
+
+**Trois voies selon leur réponse** — détaillées dans `DECISIONS.md` (MY-04) :
+
+- **API riche** → on construit l'espace client seul. Le plus court, et le plus rentable.
+- **Export seulement** → espace client + coordination et pointage ; Ximi garde la facturation.
+- **Rien d'exploitable** → tout, comme le prévoyait MY-01.
+
+**Dans les trois cas, l'ordre de construction ne change pas** : d'abord ce qui **produit** la donnée,
+ensuite ce qui la **montre**, en dernier ce qui la **facture**. Et dans les trois cas, le premier
+code écrit est le même — c'est pourquoi la Phase 1 peut commencer avant la réponse de Xelya.
 
 ## 4. Le point bloquant suivant : l'hébergement des données de santé
 
@@ -119,23 +132,52 @@ L'absence de preuve n'est pas une preuve d'absence : avant d'écarter Vercel ou 
 demander par écrit s'ils détiennent un certificat HDS v2.0 et son périmètre. Mais on ne construit pas
 sur une espérance.
 
-### 4.2 Les options, maintenant qu'il n'y a rien à migrer
+### 4.2 L'architecture retenue : Vercel devant, HDS derrière
 
-| Option | Description | Pour | Contre |
-| --- | --- | --- | --- |
-| **A — tout en HDS** | Front, API, base, fichiers et tâches chez un hébergeur français certifié (Scalingo, Clever Cloud, OVHcloud, Outscale… liste ANS) | Un seul périmètre, un seul contrat, une seule histoire à raconter à une famille comme à un auditeur | Outillage moins familier que Vercel ; coût d'exploitation plus élevé |
-| **B — isolation** | Le portail reste sur Vercel ; un service « santé » certifié HDS détient fiche de vie, comptes rendus, signalements | Entrée moins chère | **La frontière est difficile à tenir** : un compte rendu parle de repas, de sommeil, d'humeur — c'est de la santé. Deux bases, deux journaux, et une question à chaque nouvelle fonction |
-| **C — reporter** | Livrer d'abord sans donnée de santé : qui vient, quand, ce qu'on paie | Sort plus tôt, aucune dette de conformité | Le cahier de liaison est le cœur émotionnel du produit ; il faudra trancher de toute façon |
+Arcel a choisi **Vercel** (MY-03). Vercel ne publie aucun certificat HDS. Les deux se concilient, à
+une condition stricte :
 
-**Recommandation : option A.** La raison n'est pas technique. Votre produit se vend sur une phrase :
-« vos données sont chez vous, et vous voyez qui les consulte ». Une architecture à deux périmètres
-oblige à répondre « ça dépend de la donnée » à chaque question. Comme **rien n'est encore construit**,
-l'option A ne coûte aucune migration — seulement un choix d'hébergeur fait dès le départ.
+```
+  Navigateur
+     │
+     ├──────────► Vercel : l'interface (HTML, CSS, JavaScript, images)
+     │            aucune donnée de santé ne passe par là
+     │
+     └──────────► API certifiée HDS : les données
+                  (appel direct depuis le navigateur, jeton court)
+```
 
-**Je ne tranche pas** : le chiffrage réel demande des devis. C'est une décision d'Arcel, et elle
-ouvre la Phase 1.
+**La règle, et elle ne souffre aucune exception** : les écrans qui affichent une donnée de santé la
+demandent **depuis le navigateur**, directement à l'API certifiée. Aucun rendu serveur, aucune route
+intermédiaire, aucun cache Vercel ne touche une note de santé. Vercel sert des fichiers ; il ne voit
+rien.
 
----
+Ce que cela donne, concrètement :
+
+| Écran | Rendu | Pourquoi |
+| --- | --- | --- |
+| Accueil, aide, pages publiques du portail | statique, Vercel | aucune donnée |
+| Planning, statuts de visite, factures | rendu **client**, données appelées à l'API | données personnelles, pas de santé — mais la même discipline évite les erreurs |
+| Cahier de liaison, fiche de vie, signalements | rendu **client** uniquement | **données de santé** : elles ne doivent exister que chez l'hébergeur certifié |
+
+**Ce qu'il reste à choisir** : l'hébergeur certifié qui porte l'API. MongoDB Atlas, déjà cité dans le
+cadrage, **est** certifié et peut porter la base. Pour l'API (FastAPI), il faut un hébergeur de la
+[liste de l'ANS](https://esante.gouv.fr/ens/offre/hds) — Scalingo, Clever Cloud, OVHcloud, Outscale
+sont les candidats habituels pour une application de cette taille. C'est un devis à demander.
+
+**Si vous préférez ne rien ajouter du tout** : un portail **sans donnée de santé** reste possible —
+qui vient, quand, ce qu'on paie. Honnête, mais amputé du cahier de liaison, qui est ce qui touche le
+plus les familles. À dire maintenant, pas au moment de la Phase 3.
+
+### 4.3 Le pointage, tranché : NFC et QR code
+
+Décidé (MY-02) : badge NFC posé au domicile **et** QR code imprimé, **aucune géolocalisation**.
+C'est le choix que la CNIL attend, et il supprime le sujet « surveillance des salariés ».
+
+Un cas doit être prévu dès la Phase 2, sans quoi les intervenants inventeront leur propre
+contournement : **le badge illisible, décollé ou absent**. L'application doit permettre un pointage
+manuel, avec un motif, qui remonte au coordinateur et se distingue d'un pointage normal dans les
+relevés.
 
 ## 5. Architecture cible
 

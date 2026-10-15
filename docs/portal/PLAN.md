@@ -1,8 +1,9 @@
 # Mon Youdom — Plan des phases et estimation (Phase 0)
 
-> Tout est à créer (voir `ARCHITECTURE.md` §1 et §3). Ce plan en tire les conséquences : on
-> construit d'abord ce qui **produit** la donnée, ensuite ce qui la **montre**, en dernier ce qui la
-> **facture**.
+> Ce plan chiffre le cas le plus lourd : **tout créer** (MY-01). Il se raccourcit nettement si Ximi,
+> déjà en service, expose une API exploitable — les phases 1, 2 et 4 fondent alors de moitié ou
+> disparaissent (`ARCHITECTURE.md` §3). L'ordre, lui, ne change pas : on construit d'abord ce qui
+> **produit** la donnée, ensuite ce qui la **montre**, en dernier ce qui la **facture**.
 
 ---
 
@@ -105,9 +106,12 @@ AIPD finalisée et signée, `RUNBOOK.md`, déploiement progressif sur un foyer p
 | --- | --- | --- |
 | Phases 1 à 3 (la promesse : savoir qui vient et comment ça s'est passé) | **39 j** | **58 j** |
 | Phases 4 à 6 (argent, échanges, lancement) | **40 j** | **60 j** |
-| **Ensemble** | **79 j** | **118 j** |
+| **Ensemble, si tout est à créer** | **79 j** | **118 j** |
+| **Si Ximi expose une API riche** (espace client seul) | **25 j** | **40 j** |
 
-Soit, pour une personne à temps plein, **4 à 6 mois**. Les phases 1 à 3 — c'est-à-dire le produit
+Soit, pour une personne à temps plein, **4 à 6 mois** — ou **5 à 8 semaines** si Ximi fournit les
+données et qu'il ne reste que l'espace client à écrire. C'est l'écart que mesure la question A de
+`QUESTIONS.md`, et c'est pourquoi elle passe avant tout le reste. Les phases 1 à 3 — c'est-à-dire le produit
 que vous vendez aux familles — représentent la moitié de ce total.
 
 **Ce que ces chiffres ne disent pas, et que je dois dire** : un logiciel métier de SAAD n'est pas
