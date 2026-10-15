@@ -15,7 +15,8 @@
         "description": "Maladies neurodégénératives, handicaps, vieillissement : ce qui se passe, ce que cela change à la maison, ce qui aide les proches. Sourcé et relu."
       },
       "h1": "Comprendre",
-      "texte": "Maladies neurodégénératives, handicaps, vieillissement : ce qui se passe, ce que cela change au quotidien."
+      "texte": "Maladies neurodégénératives, handicaps, vieillissement : ce qui se passe, ce que cela change au quotidien.",
+      "intro": "Cette rubrique explique ce qu'une maladie ou un handicap change dans une journée. Les repères qui s'effacent, la fatigue qu'on ne voit pas, les gestes qui deviennent difficiles. Elle s'adresse aux proches, et à ceux qui vivent la situation eux-mêmes. Chaque article cite ses sources, les date, et annonce quand il sera revu. Aucun conseil médical : les décisions de soin appartiennent aux professionnels de santé."
     },
     "vivre-chez-soi": {
       "seo": {
@@ -23,7 +24,8 @@
         "description": "Aménagement du logement, prévention des chutes, repas, sommeil, activités, saisons : des repères concrets pour rester chez soi en confiance."
       },
       "h1": "Vivre chez soi",
-      "texte": "Aménagement, sécurité, repas, sommeil, activités, saisons : le quotidien à la maison, pièce par pièce."
+      "texte": "Aménagement, sécurité, repas, sommeil, activités, saisons : le quotidien à la maison, pièce par pièce.",
+      "intro": "Rester chez soi se prépare, pièce par pièce. Le tapis du couloir, la douche, l'éclairage du lever de nuit, les repas quand cuisiner fatigue. Les articles de cette rubrique disent quoi regarder, quoi changer d'abord, et ce qui ne dépend pas des murs. Les chiffres sont sourcés et datés, à chaque fois."
     },
     "grandir-avec-un-handicap": {
       "seo": {
@@ -31,7 +33,8 @@
         "description": "Enfants et adolescents en situation de handicap : école, fratrie, relais à domicile, passage à l'âge adulte. Des repères sourcés pour les parents."
       },
       "h1": "Grandir avec un handicap",
-      "texte": "Enfants et adolescents, école, fratrie, passage à l'âge adulte : accompagner sans s'oublier."
+      "texte": "Enfants et adolescents, école, fratrie, passage à l'âge adulte : accompagner sans s'oublier.",
+      "intro": "L'école, la fratrie, les relais à domicile, le passage à l'âge adulte. Cette rubrique s'adresse aux parents d'un enfant ou d'un adolescent en situation de handicap. Elle dit ce que vous pouvez attendre d'une aide, et ce qui se prépare avant la première venue. Chaque texte nomme ses sources et la date de sa dernière révision."
     },
     "tenir-dans-la-duree": {
       "seo": {
@@ -39,7 +42,8 @@
         "description": "Fatigue, culpabilité, relais, couple, travail : ce que vivent les aidants, comment le reconnaître et où trouver du soutien, sans jugement ni leçon."
       },
       "h1": "Tenir dans la durée",
-      "texte": "Fatigue, culpabilité, relais, couple, travail : ce que vivent les aidants et ce qui les soulage."
+      "texte": "Fatigue, culpabilité, relais, couple, travail : ce que vivent les aidants et ce qui les soulage.",
+      "intro": "Aider un proche pendant des mois use, et cela se dit rarement. Fatigue, culpabilité, couple, emploi, droit au répit : cette rubrique parle de ce que vivent les aidants. Sans jugement ni leçon. Elle renvoie aux associations, aux plateformes de répit et aux repères de la Haute Autorité de santé."
     },
     "droits-et-aides": {
       "seo": {
@@ -47,7 +51,8 @@
         "description": "APA, PCH, AEEH, crédit d'impôt, protection juridique : qui y a droit, combien, comment la demander, pas à pas. Montants datés, sources officielles."
       },
       "h1": "Droits et aides",
-      "texte": "APA, PCH, AEEH, crédit d'impôt, protection juridique : les démarches expliquées pas à pas, avec leurs montants datés."
+      "texte": "APA, PCH, AEEH, crédit d'impôt, protection juridique : les démarches expliquées pas à pas, avec leurs montants datés.",
+      "intro": "APA, PCH, AEEH, crédit d'impôt, aides après une hospitalisation. Cette rubrique explique qui y a droit, ce que cela couvre, et comment faire la demande. Les montants viennent des textes officiels, avec leur date et le lien vers la source. Ils changent : chaque article porte sa date de révision, et nous le reprenons quand les barèmes bougent."
     },
     "dans-les-coulisses": {
       "seo": {

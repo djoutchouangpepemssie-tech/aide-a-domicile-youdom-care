@@ -379,9 +379,9 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
   return (
     <main id="contenu" data-service={page.chemin} data-statut={page.statut}>
       {/*
-       * D-034 : aucun bandeau d'avertissement visible tant que la relecture manque. La page reste
-       * `noindex, nofollow` et hors des plans de site (D-033) ; la carte de relecture en bas de
-       * page continue de nommer l'auteur et d'indiquer qu'un relecteur est attendu.
+       * D-034 : aucun bandeau d'avertissement visible tant que la relecture manque. La page est
+       * indexable et listée dans les plans de site (D-035, qui a remplacé le noindex de D-033) ;
+       * la carte de relecture en bas de page nomme l'auteur et indique qu'un relecteur est attendu.
        */}
       {/* 1. Bannière : scène colorée du public, contenu compris et actionnable sans défiler. Le fil
           d'Ariane est dans la scène : il compte dans sa hauteur, et se retire au dernier palier de

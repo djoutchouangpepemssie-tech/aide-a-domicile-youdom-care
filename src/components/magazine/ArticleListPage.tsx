@@ -71,6 +71,13 @@ export function ArticleListPage({
           {paginated ? ` — ${pageLabel}` : ""}
         </Heading>
         {paginated ? null : <Lead className="mt-5">{section ? section.texte : page.chapo}</Lead>}
+        {/* Entrée de rubrique (D-096) : ce qu'on y trouve et comment c'est écrit. Pas sur les
+            pages 2 et suivantes, dont le titre porte déjà le numéro. */}
+        {!paginated && section?.intro ? (
+          <p className="mt-5" data-rubrique-intro>
+            {section.intro}
+          </p>
+        ) : null}
         {rubrique ? (
           <RubriqueNav label={t.rubriques_h2} current={rubrique} className="mt-8" />
         ) : null}

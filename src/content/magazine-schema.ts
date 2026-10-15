@@ -27,6 +27,13 @@ const rubriquePageSchema = z.strictObject({
   h1: text,
   /** Une phrase qui dit ce que la rubrique contient (docs/06 §2). */
   texte: text,
+  /**
+   * Paragraphe d'entrée de la page de rubrique : ce qu'on y trouve, pour qui, comment les
+   * articles sont faits. Absent sur une rubrique encore sans article, qui est en noindex (D-070) :
+   * la page de rubrique vivait sinon sur un titre et une phrase, soit 100 à 165 mots en tout
+   * (mesuré, D-096), ce qui est maigre pour une page indexable.
+   */
+  intro: text.optional(),
 });
 
 export const magazinePageSchema = z.strictObject({

@@ -274,7 +274,8 @@ export function LocalTemplate({ data: page }: { data: LocalTemplateData }) {
       data-local-code={data.code}
       data-statut={editorial.statut}
     >
-      {/* D-034 : pas de bandeau d'avertissement visible ; la page reste `noindex` (D-033). */}
+      {/* D-034 : pas de bandeau d'avertissement visible. La page est indexable et listée dans son
+          plan de site départemental depuis D-035. */}
       {/* 1. Bannière locale : scène du territoire, réponse immédiate et recherche dans le hero. */}
       <HeroSection scene={heroScene} aria-label={surtitle}>
         <Breadcrumb

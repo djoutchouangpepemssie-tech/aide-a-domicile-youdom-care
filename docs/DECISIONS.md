@@ -2041,3 +2041,79 @@ qui annonçait encore des H1 que le site n'affiche plus.
 **Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; 181 parcours
 (heros aux quatre tailles, services, accueil, local, magazine, index des services) sur les deux
 projets, puis les parcours mobiles, axe et maillage.
+
+## D-096 — SEO : audit des 246 adresses construites, cinq défauts réels (15/10/2026)
+
+Arcel demande « le SEO complet » du site. J'ai donc exploré le site construit comme un moteur le
+ferait : les 13 segments de plans de site, puis chacune des 246 adresses qu'ils annoncent, HTML en
+main. Le socle est bon, et c'est la première chose à dire : **aucune page orpheline, aucune page à
+moins de 3 liens entrants, profondeur 2 au plus depuis l'accueil, un H1 partout, aucun saut de
+hiérarchie, canonique auto-référente partout, `BreadcrumbList` sur les 245 pages hors accueil.**
+
+**Une fausse alerte, écartée avant de corriger quoi que ce soit.** Ma première mesure annonçait des
+titres jusqu'à 70 caractères et des descriptions jusqu'à 175, hors des fenêtres de `docs/01` §8. Elle
+comptait les entités HTML (`&#x27;` pour une apostrophe) comme six caractères. Décodées : **tous les
+titres sont entre 50 et 60, toutes les descriptions entre 140 et 155**. `check-seo` avait raison,
+c'est ma mesure qui était fausse. Même leçon que le 13/10 sur les comptages de texte.
+
+**Cinq défauts réels, corrigés.**
+
+1. **Une adresse en `noindex` dans un plan de site.** Sur les 246, une seule portait
+   `noindex, nofollow` : `/magazine/categorie/dans-les-coulisses/`, la rubrique encore sans article.
+   La règle de D-070 est pourtant nette — noindex si et seulement si la page ne liste aucun article —
+   et le commentaire de `sitemaps.ts` affirmait le contraire (« une rubrique encore sans article est
+   construite et indexable, elle est donc listée »). Une rubrique vide n'est plus listée. Un plan de
+   site qui annonce une page en noindex dépense du budget d'exploration pour rien et déclenche
+   l'alerte « URL envoyée marquée noindex » de la Search Console.
+   **La réciproque est devenue un test** : `sitemaps.test.ts` exigeait que toute page indexable
+   construite soit listée ; il exige maintenant aussi qu'aucune page listée ne soit en noindex.
+2. **Neuf pages sans image Open Graph** : `/services/`, `/accessibilite/`, `/outils/`, les cinq
+   outils à imprimer et `/recrutement/postuler/`. La cause est une propriété de Next que le dépôt
+   supposait fausse : un fichier `opengraph-image.tsx` vaut pour **son** segment, pas pour ses
+   enfants — le commentaire de `/recrutement/` disait pourtant couvrir « ses pages (offres,
+   candidature) ». Cinq fichiers ajoutés, dont un dynamique pour les outils. Vérifié après build :
+   **0 page sans image** sur les 245.
+3. **IndexNow n'était jamais appelé.** `docs/04` §2 l'exige « au déploiement », le script existait
+   (`pnpm indexnow`), `prebuild` écrivait déjà le fichier de clé — mais aucun workflow, aucun hook ne
+   le déclenchait. `.github/workflows/indexnow.yml` le fait désormais sur `deployment_status` en
+   production, jamais sur une prévisualisation. Il **demande au commanditaire** le secret
+   `INDEXNOW_KEY`, de la même valeur que la variable Vercel : deux valeurs différentes et IndexNow
+   refuse la soumission. Sans clé, le script n'envoie rien et le workflow reste vert.
+4. **Pages de rubrique maigres.** Les six rubriques du Fil tenaient en 84 à 165 mots : un titre, une
+   phrase, des cartes d'articles. Les cinq rubriques indexables reçoivent un paragraphe d'entrée de
+   50 à 70 mots — ce qu'on y trouve, pour qui, comment les articles sont faits et datés. Elles
+   passent à 162–235 mots. La sixième, vide et en noindex, n'en reçoit pas : ce serait du texte pour
+   un moteur qui ne la lira pas.
+5. **Le `lastmod` des 25 pages services ne suivait pas la réécriture des heros de la veille** : leur
+   `maj` datait du 20/09 au 13/10 alors que leur texte avait changé. Le champ est à la fois le
+   `lastmod` du plan de site et la date affichée en bas de page : il passe au 15/10.
+
+**Trois corrections de détail.** « En clair » subsistait dans deux titres du lexique (D-089 n'avait
+traité que les descriptions). Deux pages services n'avaient pas de repère géographique dans leur
+titre : « Remplacement d'auxiliaire de vie, Paris et Île-de-France », « Sortie d'hospitalisation :
+retour à domicile, Île-de-France ». Et quatre commentaires du code affirmaient encore qu'une page
+`a_relire` est en noindex et hors des plans de site, ce que D-035 a changé il y a longtemps : le
+code mentait sur son propre comportement.
+
+**Ce que je n'ai pas fait, et pourquoi.**
+
+- **Les 23 pages de moins de 300 mots** sont des formulaires (`/demande/…`, `/etre-rappele/`,
+  `/recrutement/postuler/`), des pages de contact et deux index. Les remplir de texte avant le
+  formulaire coûterait des demandes sans rien gagner : un moteur n'attend pas 300 mots sur une page
+  dont le travail est d'être remplie.
+- **`WebPage` manque sur 57 pages** : les articles portent `Article`, les fiches du lexique
+  `DefinedTerm`, et c'est ce que `docs/04` §2 demande. Aucun manque réel.
+- **`WebSite` + `SearchAction`** (barre de recherche dans les liens de site) supposerait un moteur de
+  recherche interne. Le site n'en a pas — la recherche de commune n'en est pas un — et le déclarer
+  serait un champ inventé.
+- **`HowTo` sur les outils à imprimer** : Google a retiré ce résultat enrichi en 2023. Aucun gain.
+
+**Ce qui reste et vous appartient** (aucun code ne peut le faire) : `SITE_INDEXABLE=true` sur Vercel
+en production, sans quoi `robots.txt` interdit tout le site ; les variables
+`GOOGLE_SITE_VERIFICATION` et `BING_SITE_VERIFICATION` ; le secret `INDEXNOW_KEY` du dépôt ; la fiche
+Google Business Profile ; et les neuf champs légaux encore `null`, qui laissent l'`Organization` et
+les deux `LocalBusiness` incomplets (pas de raison sociale, pas de téléphone d'agence).
+
+**Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts, 62 parcours (SEO,
+magazine, outils, accessibilité, recrutement, index des services, local) ; puis nouvelle exploration
+des 245 adresses après build : 0 noindex listé, 0 page sans image Open Graph, 0 page orpheline.

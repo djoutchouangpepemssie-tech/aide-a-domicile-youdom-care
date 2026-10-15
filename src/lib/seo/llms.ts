@@ -15,10 +15,9 @@ import { canonicalUrl } from "./metadata";
  * /llms.txt (docs/04 §2 « Moteurs de réponse », P5.6) : un résumé du site pour les assistants,
  * au format llms.txt (titre, citation, paragraphes, sections de liens). Tout vient de content/ :
  * marque et zones de site.config.json, règle éditoriale de la charte (pages/a-propos.json),
- * piliers et pages services relues (statut `publie` : les pages `a_relire` sont noindex en
- * prévisualisation et absentes en production), pages de fonctionnement, termes du lexique
- * (docs/06 §6 : la définition en une phrase) et articles du Fil publiés (P9.4 : un article
- * `a_relire` n'y figure jamais). Aucune page noindex, aucun fait listé dans `a_confirmer` (le
+ * piliers et pages services construites (D-035 : une page `a_relire` est indexable, elle figure
+ * donc ici comme dans les plans de site), pages de fonctionnement, termes du lexique
+ * (docs/06 §6 : la définition en une phrase) et articles du Fil hors brouillon. Aucune page noindex, aucun fait listé dans `a_confirmer` (le
  * téléphone n'apparaît qu'une fois confirmé), aucune promesse : les descriptions sont les
  * descriptions moteurs déjà contrôlées.
  */

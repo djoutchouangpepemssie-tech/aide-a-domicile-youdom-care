@@ -37,9 +37,10 @@ import { neverIndexedPaths } from "./indexable";
  *   Vercel clone le dépôt à chaque build et toutes les dates de fichiers deviennent celle du build.
  *
  * Tout ce qui est `noindex` reste dehors : chemins de `neverIndexedPaths` (/api/, /merci/,
- * /styleguide/) et pages services `a_relire`, construites en prévisualisation mais en noindex
- * (docs/03 §1). Quand `isIndexable()` est faux, les plans de site sont quand même générés : c'est
- * robots.txt qui ferme le site (src/app/robots.ts).
+ * /styleguide/) et pages servies en noindex, aujourd'hui les seules rubriques du Fil sans article
+ * (D-070, D-096). Une page `a_relire` est indexable depuis D-035 : elle est donc listée. Quand
+ * `isIndexable()` est faux, les plans de site sont quand même générés : c'est robots.txt qui ferme
+ * le site (src/app/robots.ts).
  */
 
 export const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -196,9 +197,15 @@ function localEntries(departement: string): () => Promise<SitemapEntry[]> {
 
 /**
  * Segment `magazine` (docs/06, P7.1) : articles construits datés par `maj_le`, l'index /magazine/
- * et les six rubriques (date : le `maj_le` le plus récent de la rubrique, à défaut celui du
- * magazine ; une rubrique encore sans article est construite et indexable, elle est donc listée).
- * D-035 : un article en attente de relecture est listé ; un brouillon ne l'est jamais.
+ * et les rubriques **qui listent au moins un article**, datées par le `maj_le` le plus récent de
+ * la rubrique. D-035 : un article en attente de relecture est listé ; un brouillon ne l'est jamais.
+ *
+ * Une rubrique vide est construite, mais servie en `noindex` — c'est la règle de D-070 : noindex
+ * si et seulement si la page ne liste aucun article. Elle était pourtant listée ici, et le
+ * commentaire d'origine la disait « indexable » : mesuré sur le site construit, /magazine/
+ * categorie/dans-les-coulisses/ était la seule des 246 adresses des plans de site à porter
+ * `noindex, nofollow` (D-096). Un plan de site qui annonce une page en noindex dépense du budget
+ * d'exploration et déclenche l'alerte « URL envoyée marquée noindex » de la Search Console.
  * Les pages 2 et suivantes ne sont pas listées : les articles le sont déjà.
  */
 async function magazineEntries(): Promise<SitemapEntry[]> {
@@ -212,10 +219,8 @@ async function magazineEntries(): Promise<SitemapEntry[]> {
   const entries: SitemapEntry[] = [{ path: MAGAZINE_PATH, lastmod: magazineLastmod }];
   for (const rubrique of articleRubriques) {
     const inRubrique = published.filter((article) => article.meta.rubrique === rubrique);
-    entries.push({
-      path: rubriquePath(rubrique),
-      lastmod: inRubrique.length > 0 ? latest(inRubrique) : magazineLastmod,
-    });
+    if (inRubrique.length === 0) continue;
+    entries.push({ path: rubriquePath(rubrique), lastmod: latest(inRubrique) });
   }
   for (const article of published) {
     entries.push({ path: article.chemin, lastmod: article.meta.maj_le });

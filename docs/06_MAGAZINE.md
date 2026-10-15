@@ -25,6 +25,11 @@
 | Droits et aides | `/magazine/categorie/droits-et-aides/` | APA, PCH, AEEH, crédit d'impôt, protection juridique, démarches pas à pas |
 | Dans les coulisses | `/magazine/categorie/dans-les-coulisses/` | Le métier d'auxiliaire de vie, la formation, une journée avec… |
 
+Chaque page de rubrique porte, sous sa phrase de présentation, un **paragraphe d'entrée** (`intro`
+de `content/pages/magazine.json`, 50 à 70 mots) : ce qu'on y trouve, pour qui, comment les articles
+sont faits. Une rubrique encore sans article n'en a pas : elle est servie en `noindex` et le dit
+(D-070). Sans ce paragraphe, une page de rubrique indexable vivait sur 100 à 165 mots (D-096).
+
 ## 3. Gabarit d'article
 
 1. Fil d'Ariane, rubrique, **titre** (promesse claire, 55 à 70 caractères).

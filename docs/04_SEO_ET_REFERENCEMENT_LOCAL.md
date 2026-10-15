@@ -20,10 +20,10 @@ Deux faits à connaître en 2026 : les résultats enrichis de type FAQ n'existen
 | Descriptions | 140 à 155 caractères, uniques, un bénéfice et une action |
 | Structure | Un seul H1, hiérarchie sans saut, sommaire ancré sur les pages longues |
 | Canoniques | Auto-référents, absolus. `noindex` : `/merci/…`, `/styleguide/`, pages `statut: a_relire` en prévisualisation, résultats de recherche interne |
-| Plans de site | Index + segments : `pages`, `services`, `local-paris`, `local-{departement}` × 7, `magazine`, `lexique`, `agences`. `lastmod` réel (date du contenu). Ping IndexNow au déploiement |
+| Plans de site | Index + segments : `pages`, `services`, `local-paris`, `local-{departement}` × 7, `magazine`, `lexique`, `agences`. `lastmod` réel (date du contenu). **Aucune adresse en `noindex` n'y figure** (vérifié par `src/lib/seo/sitemaps.test.ts` contre le rendu construit, D-096). Ping IndexNow au déploiement : `.github/workflows/indexnow.yml`, sur `deployment_status` en production ; exige le secret `INDEXNOW_KEY` du dépôt, de la même valeur que la variable Vercel |
 | `robots.txt` | Autorise tout sauf `/api/`, `/merci/`, `/styleguide/` ; déclare l'index des plans de site |
 | Images | `next/image`, AVIF/WebP, dimensions fixes, chargement différé sous la ligne de flottaison, `alt` obligatoire (schéma Zod), nom de fichier descriptif |
-| Open Graph | Image générée par page (`opengraph-image.tsx`) : fond `paper`, titre en Fraunces, fil décoratif, logo |
+| Open Graph | Image générée par page (`opengraph-image.tsx`) : fond `paper`, titre en Fraunces, fil décoratif, logo. Une image de métadonnées vaut pour son segment, **pas pour ses enfants** : chaque route en a besoin d'une (mesuré, D-096) |
 | Maillage | Fil d'Ariane partout · blocs « À lire aussi » calculés par thème · chaque page reçoit au moins 3 liens internes contextuels · aucune page orpheline (contrôle automatique) |
 | Erreurs | 404 utile (recherche de commune, téléphone, liens piliers) · aucune chaîne de redirections |
 | Vitesse | Budgets de `docs/07` · polices auto-hébergées · pas de script tiers bloquant |

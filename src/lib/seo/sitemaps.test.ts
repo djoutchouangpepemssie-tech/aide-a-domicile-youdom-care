@@ -225,8 +225,12 @@ describe("plans de site segmentés", () => {
  *
  * Hors comparaison : les zones jamais indexées, les pages en prévisualisation (`a_relire`,
  * `data-statut` sur <main>, absentes en production), les pages 2 et suivantes du magazine (les
- * articles sont déjà listés ; sitemaps.ts) et, tant qu'aucun article n'est publié (segment
- * magazine vide), l'index et les rubriques du Fil, alors en noindex.
+ * articles sont déjà listés ; sitemaps.ts), les pages servies en `noindex` (une rubrique du Fil
+ * sans article, D-070) et, tant qu'aucun article n'est publié (segment magazine vide), l'index et
+ * les rubriques du Fil.
+ *
+ * La réciproque est exigée depuis D-096 : **aucune adresse listée n'est en `noindex`**. Elle ne
+ * l'était pas, et une rubrique vide du Fil passait dans le plan de site du magazine.
  */
 const builtDir = path.join(process.cwd(), ".next", "server", "app");
 
@@ -274,14 +278,25 @@ describe.skipIf(!existsSync(builtDir))("plans de site contre le rendu construit"
       }
     }
     const magazineListed = segments.some((segment) => segment.id === "magazine");
+    const isNoindex = (html: string) => /<meta name="robots" content="[^"]*noindex/.test(html);
     const missing: string[] = [];
     for (const [route, html] of pages) {
       if (neverIndexedPaths.some((prefix) => route.startsWith(prefix))) continue;
       if (/<main\b[^>]*\bdata-statut="a_relire"/.test(html)) continue;
       if (/\/page\/\d+\/$/.test(route)) continue;
       if (!magazineListed && route.startsWith("/magazine/")) continue;
+      if (isNoindex(html)) continue;
       if (!owners.has(route)) missing.push(route);
     }
     expect(missing, "pages construites indexables absentes des plans de site").toEqual([]);
+
+    // D-096 : un plan de site n'annonce jamais une page en noindex.
+    const listedNoindex = [...owners.keys()].filter((route) => {
+      const html = pages.get(route);
+      return html !== undefined && isNoindex(html);
+    });
+    expect(listedNoindex, "adresses listées dans un plan de site mais servies en noindex").toEqual(
+      [],
+    );
   }, 60_000);
 });

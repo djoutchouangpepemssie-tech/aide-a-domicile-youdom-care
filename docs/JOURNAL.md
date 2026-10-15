@@ -1487,3 +1487,15 @@ Après la passe : plus aucun préfixe partagé, 67 caractères au plus pour un H
 de 20 mots. Aucun fait ajouté, aucun fait perdu. Une page sur vingt-six est restée intacte parce
 qu'elle tenait déjà les quatre critères, et les 131 sous-titres locaux n'ont pas été touchés : ils
 portent des faits sourcés vérifiés avant-hier, et le style n'y gagnerait rien.
+
+## 2026-10-15 — SEO : exploré comme un moteur, cinq défauts réels (D-096)
+
+J'ai exploré les 246 adresses annoncées par les plans de site, HTML en main. Le socle tient :
+aucune page orpheline, profondeur 2 au plus, titres et descriptions tous dans leur fenêtre — ma
+première mesure disait le contraire, elle comptait les entités HTML comme six caractères.
+
+Cinq défauts réels : une page en noindex annoncée dans un plan de site, neuf pages sans image Open
+Graph (un fichier d'image de métadonnées ne couvre pas les routes enfants, contrairement à ce que
+le dépôt supposait), IndexNow jamais appelé faute de déclencheur, six pages de rubrique à moins de
+165 mots, et le `lastmod` des pages services qui ne suivait pas la réécriture de la veille. Tout est
+corrigé, et l'invariant « aucune adresse listée n'est en noindex » est devenu un test.

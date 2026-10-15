@@ -1,0 +1,59 @@
+# IndexNow après un déploiement de production (docs/04 §2).
+#
+# **Pourquoi ce fichier existe.** `docs/04` §2 exige un « ping IndexNow au déploiement ». Le script
+# existait (`scripts/indexnow.ts`, `pnpm indexnow`) et `prebuild` écrit déjà le fichier de clé à la
+# racine du site, mais **rien ne l'appelait** : mesuré le 15/10/2026, aucun workflow ni hook ne
+# soumettait les adresses (D-096). Les moteurs qui partagent IndexNow (Bing, Yandex, Seznam, Naver)
+# n'apprenaient donc une mise à jour qu'à leur prochain passage.
+#
+# Le déclencheur est `deployment_status` : Vercel publie l'état de chaque déploiement sur GitHub, et
+# ce workflow ne part que sur un succès en production. Un ping avant la mise en ligne ferait
+# explorer l'ancienne version.
+#
+# **Un secret est nécessaire, et il appartient au commanditaire :** `INDEXNOW_KEY`, la même valeur
+# que la variable d'environnement INDEXNOW_KEY de Vercel. Si les deux diffèrent, le fichier
+# /<clé>.txt servi par le site ne correspond pas à la clé soumise et IndexNow refuse la soumission.
+# Sans la clé, le script n'envoie rien et affiche seulement la charge utile : le workflow reste vert
+# et ne masque donc jamais un déploiement réussi.
+#
+# L'origine soumise est `marque.url` de content/site.config.json, comme les plans de site : il n'y a
+# pas de variable à régler pour cela.
+name: IndexNow
+
+on:
+  deployment_status:
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  soumettre:
+    name: Soumettre les adresses
+    # `production_environment` écarte les prévisualisations de branche : elles sont en noindex.
+    if: >
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.payload.production_environment == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Soumettre les plans de site à IndexNow
+        run: pnpm indexnow
