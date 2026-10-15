@@ -10,7 +10,7 @@ test.describe("Accueil (P2.1)", () => {
   }) => {
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",
+      "Vivre chez soi, bien entouré. Même quand la maladie ou le handicap s'installent.",
     );
     // Le surtitre est `max-lg:hidden` par conception (Hero.tsx, et son test unitaire) : sous
     // 64 rem, la hauteur visible va au titre et à l'action. Ce parcours l'exigeait visible sur

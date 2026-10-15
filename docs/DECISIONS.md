@@ -2117,3 +2117,65 @@ les deux `LocalBusiness` incomplets (pas de raison sociale, pas de téléphone d
 **Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts, 62 parcours (SEO,
 magazine, outils, accessibilité, recrutement, index des services, local) ; puis nouvelle exploration
 des 245 adresses après build : 0 noindex listé, 0 page sans image Open Graph, 0 page orpheline.
+
+## D-097 — Le hero de l'accueil : puissant et chaleureux, cette fois pour de bon (15/10/2026)
+
+**J'avais eu tort de ne pas y toucher.** Dans la passe D-095, j'ai réécrit 25 heros sur 26 et laissé
+le H1 de l'accueil intact, au motif qu'il était validé et qu'il passait le contrat des heros. Arcel
+l'a redemandé, et il a raison : c'est **la** phrase du site, et « bien **accompagné** » est un mot de
+prestataire. « Bien **entouré** » est un mot de famille. C'est la différence entre un service et des
+gens.
+
+| | avant | après |
+| --- | --- | --- |
+| H1 | Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout. (86) | Vivre chez soi, bien entouré. Même quand la maladie ou le handicap s'installent. (80) |
+
+« S'installent » plutôt que « compliquent tout » : une maladie chronique s'installe, c'est ce que
+vivent les familles, et cela ne promet rien.
+
+**Le chapô cesse de parler de nous.** Il disait « Youdom Care construit un accompagnement », puis,
+après D-095, « L'accompagnement se construit avec vous » — déjà mieux, encore abstrait. Il dit
+maintenant, en phrases brèves : les mots de la maladie, puis ce qu'il y a derrière, puis ce que nous
+faisons, puis pour qui.
+
+> Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge.
+> Derrière chaque mot, une personne et une maison. Nous venons chez vous, de quelques heures par
+> semaine à une présence jour et nuit. Pour la personne que vous aimez. Et pour vous, qui tenez tout
+> à bout de bras.
+
+52 mots, aucune phrase au-delà de 15. Les mots recherchés restent en tête du premier paragraphe
+(docs/01 §2). La dernière phrase, celle qu'Arcel avait validée, est gardée mot pour mot : c'est la
+plus chaleureuse du site.
+
+**Ce que je n'ai pas écrit, et pourquoi.** J'avais d'abord mis « Nous venons chez vous **avec les
+mêmes visages** ». Vérification faite dans `content/engagements.json` : sur cinq engagements, **un
+seul est validé** (E2, « si l'intervenant ne convient pas, nous changeons »). La stabilité de
+l'équipe n'en fait pas partie. La promesse la plus séduisante du hero serait donc la seule à n'être
+adossée à rien : elle est retirée.
+
+**« Intervenant » cède la place au métier, sur neuf heros.** C'est le mot de l'administration, et il
+était dans quinze chapôs. Là où la page nomme déjà le métier dans sa ligne de réassurance
+(« Auxiliaires de vie préparés à… »), le chapô dit « l'auxiliaire de vie ». Sur les pages d'enfants,
+« intervenant » reste : c'est le mot de leur propre réassurance, et le métier y est plus large. Sur
+`/personnes-agees/vie-quotidienne/`, dont la réassurance parle d'« aides à domicile », c'est « la
+personne qui vient » — une personne, pas une fonction.
+
+**Le parcours de l'accueil, à la demande d'Arcel.** « Pour moi : je vis avec un handicap » devient
+**« Personne en situation de handicap »**. Deux conséquences, à dire :
+
+1. La casse. Arcel a écrit « Handicap » avec une majuscule ; le site écrit « personne en situation de
+   handicap » en minuscules partout, et c'est l'usage comme la table des mots de `docs/01` §2. J'ai
+   gardé la minuscule. Un mot suffit si vous préférez la majuscule.
+2. La reprise du panneau. Le titre du panneau se construit sur le champ `pour` du choix, qui valait
+   « pour vous-même » — cohérent avec « Pour moi », plus avec le nouveau libellé. Il devient « pour
+   une personne en situation de handicap », donc « Vous cherchez de l'aide pour une personne en
+   situation de handicap. Que vivez-vous ? ». Le libellé ne suppose plus que le visiteur est la
+   personne concernée, ce qui ouvre le choix aux proches d'un adulte en situation de handicap.
+
+`docs/01` §4 suit, et trois attentes de tests figeaient les anciens textes (le H1 dans
+`page.test.tsx` et `home.spec.ts`, le libellé du parcours dans `page.test.tsx`) : elles suivent une
+décision de commanditaire sur un texte, ce qui n'est pas relâcher un seuil.
+
+**Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts, 169 parcours
+(accueil, heros aux quatre tailles sur les deux projets, services, SEO) ; H1 et chapô relus sur le
+HTML construit, pas seulement dans le contenu.

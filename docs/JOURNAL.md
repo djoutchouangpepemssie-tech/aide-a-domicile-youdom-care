@@ -1499,3 +1499,16 @@ Graph (un fichier d'image de métadonnées ne couvre pas les routes enfants, con
 le dépôt supposait), IndexNow jamais appelé faute de déclencheur, six pages de rubrique à moins de
 165 mots, et le `lastmod` des pages services qui ne suivait pas la réécriture de la veille. Tout est
 corrigé, et l'invariant « aucune adresse listée n'est en noindex » est devenu un test.
+
+## 2026-10-15 — Le hero de l'accueil, repris comme il aurait dû l'être (D-097)
+
+Hier, j'ai réécrit 25 heros et épargné celui de l'accueil. Arcel me le redemande, et il a raison :
+c'est la phrase du site. « Bien accompagné » est un mot de prestataire, « bien entouré » est un mot
+de famille. Le chapô, lui, cesse de parler de nous : les mots de la maladie, ce qu'il y a derrière,
+ce que nous faisons, et pour qui — en phrases brèves.
+
+J'ai failli écrire « avec les mêmes visages ». Vérification faite : un seul des cinq engagements est
+validé, et la stabilité de l'équipe n'en fait pas partie. La plus belle promesse du hero aurait été
+la seule sans rien derrière.
+
+Et « intervenant », mot d'administration, cède la place au métier sur neuf heros.

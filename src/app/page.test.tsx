@@ -26,7 +26,7 @@ describe("Accueil (blocs 1 à 8)", () => {
   it("rend la bannière, les six situations, les engagements et le bloc neuro", () => {
     render(home);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",
+      "Vivre chez soi, bien entouré. Même quand la maladie ou le handicap s'installent.",
     );
     // Le numéro est formaté avec des espaces insécables : on tolère tout séparateur.
     expect(screen.getByRole("link", { name: /Ou appelez le 01.84.80.17.03/ })).toHaveAttribute(
@@ -59,7 +59,7 @@ describe("Accueil (blocs 1 à 8)", () => {
       "Pour un parent âgé",
       "Pour un proche : Alzheimer, Parkinson…",
       "Pour mon enfant",
-      "Pour moi : je vis avec un handicap",
+      "Personne en situation de handicap",
       "Pour moi : j'aide un proche",
     ]);
     // Le choix sans panneau mène au rappel avec le motif : la page y affiche son message.

@@ -77,8 +77,8 @@ Ce cahier fixe la voix de Youdom Care et fournit les textes moteurs du site. La 
 ### Bloc 1 — Bannière
 
 - Sur-titre : **Aide et accompagnement à domicile · Paris et Île-de-France**
-- H1 : **Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.**
-- Chapô : Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : aucune situation ne se ressemble. L'accompagnement se construit avec vous, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.
+- H1 : **Vivre chez soi, bien entouré. Même quand la maladie ou le handicap s'installent.**
+- Chapô : Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge. Derrière chaque mot, une personne et une maison. Nous venons chez vous, de quelques heures par semaine à une présence jour et nuit. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.
 - Bouton principal : **Être rappelé(e)** · Bouton secondaire : **Je décris ma situation** · Lien : **Ou appelez le {téléphone}**
 - Ligne de réassurance : Évaluation à domicile gratuite · Devis détaillé, sans engagement · Crédit d'impôt de 50 %*
 
