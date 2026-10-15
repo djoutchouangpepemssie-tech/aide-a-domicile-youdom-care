@@ -21,19 +21,25 @@
 
 ---
 
-## Les deux questions qui commandent maintenant
+## Ce qui bloque maintenant
 
-**A. Ximi expose-t-il une API, et laquelle ?** À demander par écrit à Xelya :
-(1) existe-t-elle et avec quelle documentation ? (2) donne-t-elle les **pointages, affectations et
-comptes rendus en temps réel**, ou seulement un export de facturation ? (3) à quel coût ?
+La question « Ximi expose-t-il une API ? » est **close** : Arcel construit son propre CRM (MY-07).
+Restent quatre choses, dont une seule est bloquante.
 
-C'est **la** question du projet. Selon la réponse, on construit l'espace client seul (quelques
-semaines), ou l'ensemble (plusieurs mois). Je peux commencer la Phase 1 sans la réponse — le socle
-est le même dans les trois cas — mais pas la Phase 2.
+**A. Un hébergeur certifié HDS pour l'API** — *bloquant pour la mise en service, pas pour commencer
+à écrire*. Scalingo, Clever Cloud, OVHcloud, Outscale : deux devis suffisent. Vercel garde
+l'interface. MongoDB Atlas, déjà certifié, peut porter la base.
 
-**B. Quel hébergeur certifié HDS pour l'API ?** Scalingo, Clever Cloud, OVHcloud, Outscale…
-Demandez deux devis : c'est suffisant pour décider. MongoDB Atlas, déjà certifié, peut porter la
-base.
+**B. Vos règles de planification** : amplitude maximale d'une journée, temps de trajet entre deux
+visites, repos entre deux services, majorations de nuit, de dimanche et de jours fériés. Ce sont
+elles qui font qu'un planning est juste ou faux — et elles ne s'inventent pas.
+
+**C. Vos grilles tarifaires** et vos conditions générales (délai de prévenance, règles
+d'annulation). Nécessaires à la vague 4, utiles dès la vague 1 pour modéliser correctement.
+
+**D. Un accès en lecture à Ximi, ou quelques exports.** Voir vos données réelles — un planning
+d'une semaine, une facture, un dossier salarié — vaut mieux que les imaginer. À demander à Xelya
+en même temps que **l'export complet de vos données**, qui vous sera nécessaire au basculement.
 
 ---
 

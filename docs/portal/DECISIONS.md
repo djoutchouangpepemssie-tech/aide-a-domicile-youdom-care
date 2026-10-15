@@ -125,3 +125,39 @@ Le produit ne doit donc **pas** promettre « astreinte 24 h/24 » comme le ferai
 chargement de liste entière en mémoire, pagination partout. Le système tiendra de dix foyers à
 plusieurs centaines. Si un jour l'activité change d'ordre de grandeur, le dimensionnement se révise
 avec des mesures, pas avec des estimations.
+
+---
+
+## MY-07 — Un CRM Youdom Care complet, et l'espace client dessus (15/10/2026)
+
+**Décision** : « un CRM à la hauteur de Ximi, plus puissant s'il le faut, connecté à l'espace client
+de chaque client ».
+
+J'avais recommandé l'inverse (MY-04 : garder Ximi pour la facturation, ne construire que l'espace
+client). Arcel confirme son choix. **C'est tranché : on construit le CRM.** Je ne rouvre pas le
+débat ; le périmètre réel est écrit dans `CRM_PERIMETRE.md`, module par module, pour que « à la
+hauteur de Ximi » veuille dire quelque chose de vérifiable.
+
+**Ce que cela engage, en clair** :
+
+- six métiers à couvrir : commerce, planification, terrain, facturation, ressources humaines,
+  qualité — plus l'espace client, qui est l'avantage que Ximi n'a pas ;
+- **175 à 270 jours** de travail, soit 9 à 14 mois pour une personne à temps plein. Les vagues 1 à 3
+  (planning, terrain, espace client) en font 85 à 130, et donnent déjà un produit qui tourne ;
+- une **charge récurrente** après la livraison : barèmes, conventions, formats départementaux. Un
+  logiciel métier ne se termine pas, il s'entretient. C'est le prix de l'indépendance ;
+- la sortie de Ximi n'intervient qu'à la **vague 4** : l'abonnement court jusque-là, et une période
+  de double saisie d'un à deux mois est à prévoir.
+
+**Deux réserves techniques, maintenues et motivées** (`CRM_PERIMETRE.md` §3) :
+
+1. **La paie** : le CRM produira les variables (heures, majorations, absences, indemnités) et les
+   transmettra à un logiciel de paie. Écrire un moteur de paie, c'est porter la convention
+   collective, ses avenants et la DSN — un risque de contrôle URSSAF sans contrepartie.
+2. **La télétransmission départementale** : écrite département par département, à la demande, en
+   commençant par celui qui pèse le plus d'heures. Pas les huit d'un coup.
+
+Si Arcel veut internaliser l'un ou l'autre, c'est faisable et j'estimerai à part.
+
+**Ordre de construction inchangé** : ce qui produit la donnée, puis ce qui la montre, puis ce qui la
+facture.

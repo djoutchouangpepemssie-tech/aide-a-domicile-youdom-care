@@ -61,50 +61,27 @@ par construction.
 
 ---
 
-## 3. Le périmètre : tout créer, mais Ximi existe déjà
+## 3. Le périmètre : un CRM complet, et l'espace client dessus
 
-Deux réponses d'Arcel le 15/10, dans cet ordre : **« on doit tout créer de zéro »** (MY-01), puis,
-à la question « comment faites-vous aujourd'hui ? » : **« Word et Ximi »** (MY-04).
+Tranché par Arcel le 15/10 (MY-07) : **un CRM à la hauteur de Ximi, plus puissant s'il le faut,
+connecté à l'espace client**. J'avais recommandé de garder Ximi pour la facturation ; la décision
+est prise, et je construis.
 
-La seconde change le calcul de la première, et il faut le dire avant d'écrire du code.
+Le périmètre réel — six métiers, l'ordre des vagues, les durées, la reprise de données — est écrit
+dans **`CRM_PERIMETRE.md`**. En une ligne : **175 à 270 jours**, dont 85 à 130 pour les trois
+premières vagues (coordination, terrain, espace client), qui donnent déjà un produit en service.
 
-**Ce que « tout » contient vraiment**, dans un service d'aide à domicile :
+Ce qu'il faut retenir ici, côté architecture :
 
-| Brique | Pourquoi elle est indispensable | Difficulté | Ximi le fait-il ? |
-| --- | --- | --- | --- |
-| Coordination : foyers, intervenants, planning, affectation | Sans elle, l'espace client n'a **aucune donnée** à afficher | moyenne | **oui** |
-| Application intervenant : pointage, compte rendu, hors ligne | C'est elle qui produit la donnée | moyenne ; le hors ligne est le vrai sujet | oui, à éprouver |
-| **Espace client « Mon Youdom »** | La promesse vendue aux familles | moyenne | **non** — c'est votre différence |
-| Facturation : APA, PCH, CESU, avance immédiate, crédit d'impôt | Obligation, et cœur de la relation financière | **élevée**, réglementaire et mouvante | **oui** |
-| Paie et contrats en mandataire | Vous gérez des particuliers employeurs | **élevée** | **oui** |
-| Télétransmission aux départements (APA) | Exigée pour être payé | **élevée**, propre à chaque département | **oui** |
-
-Les trois dernières lignes ne sont pas « plus techniques » : elles sont **réglementaires et
-changeantes**, une erreur s'y paie en argent et en relation avec un financeur public — et **vous
-les payez déjà** dans votre abonnement Ximi.
-
-**Ma recommandation, dite une fois** : ne recréez pas la facturation, la paie et la
-télétransmission. Construisez ce que Ximi ne fait pas — l'espace client — et, si son application
-terrain ne convient pas, la vôtre. Vous mettez alors votre argent là où se trouve votre différence.
-
-**Ce qu'il faut demander à Xelya (éditeur de Ximi) avant de trancher**, par écrit :
-
-1. existe-t-il une API, et quelle documentation ? (Leur plaquette cite « API, workflows » ; aucune
-   documentation développeur publique n'existe, et un annuaire indique qu'il n'y a pas d'API
-   ouverte — peut-être réservée aux offres hautes.)
-2. donne-t-elle accès aux **pointages, affectations et comptes rendus en temps réel**, ou seulement
-   à un export de facturation ? **C'est la question qui décide du projet.**
-3. à quel coût et sous quelles conditions ?
-
-**Trois voies selon leur réponse** — détaillées dans `DECISIONS.md` (MY-04) :
-
-- **API riche** → on construit l'espace client seul. Le plus court, et le plus rentable.
-- **Export seulement** → espace client + coordination et pointage ; Ximi garde la facturation.
-- **Rien d'exploitable** → tout, comme le prévoyait MY-01.
-
-**Dans les trois cas, l'ordre de construction ne change pas** : d'abord ce qui **produit** la donnée,
-ensuite ce qui la **montre**, en dernier ce qui la **facture**. Et dans les trois cas, le premier
-code écrit est le même — c'est pourquoi la Phase 1 peut commencer avant la réponse de Xelya.
+1. **Trois applications, une API.** Back-office (agence), application intervenant (PWA hors ligne),
+   espace client (familles). Trois surfaces d'API séparées, jamais mélangées.
+2. **L'ordre ne change pas** : ce qui **produit** la donnée, puis ce qui la **montre**, puis ce qui
+   la **facture**. L'espace client est la vague 3 parce qu'il n'a rien à afficher avant.
+3. **Deux interfaces plutôt que deux moteurs** : la paie part vers un logiciel de paie sous forme de
+   variables ; la télétransmission départementale s'écrit département par département. Motivé dans
+   `CRM_PERIMETRE.md` §3.
+4. **Ximi reste en service jusqu'à la vague 4.** Son export complet est à demander maintenant, pas
+   le jour du basculement.
 
 ## 4. Le point bloquant suivant : l'hébergement des données de santé
 
