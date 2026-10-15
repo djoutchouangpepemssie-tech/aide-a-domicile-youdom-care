@@ -1543,3 +1543,14 @@ Arcel tranche : la photo du couple passe sous le texte sur téléphone. Deux ess
 bon, et les deux n'ont été vus qu'à la capture — un fondu qui effaçait les visages, puis une photo
 trop large dont le panneau de verre mangeait la moitié haute. Réduite et posée au bas de la scène,
 elle se lit entière, et le titre est enfin seul sur la couleur de scène.
+
+## 2026-10-15 — Les photos en fond complet (D-101)
+
+Les photos de bannière n'occupaient qu'une moitié d'écran, effacées par un dégradé. Elles couvrent
+maintenant toute la scène, derrière un voile de la couleur de la scène qui tient la lisibilité.
+
+J'ai mesuré plutôt que de juger à l'œil : chaque page est capturée deux fois, dont une avec le
+contenu masqué, ce qui donne le vrai fond sous chaque bloc de texte. Le contraste le plus bas est
+5,98 pour un seuil de 4,5 — et c'est cette mesure qui a révélé deux choses invisibles autrement : le
+chapô de la page « garde de nuit » était pile au seuil, et la photo des pages locales, un panoramique
+de 1920×557, ne se voyait pas du tout sur téléphone.

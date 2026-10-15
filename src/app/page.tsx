@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Commitments, visibleCommitments } from "@/components/blocks/Commitments/Commitments";
 import { Hero } from "@/components/blocks/Hero/Hero";
 import { HeroSection } from "@/components/blocks/Hero/HeroSection";
@@ -170,40 +169,14 @@ export default async function Home() {
         <HeroSection
           scene="aurore"
           aria-label={page.banniere.sur_titre}
-          background={
-            page.banniere.signature ? (
-              /*
-               * Photo détourée fournie par Arcel, posée en fond de la bannière (27/09/2026) :
-               * ancrée en bas à droite, sous le panneau du parcours, elle ne passe jamais sous le
-               * titre ni sous la promesse. Décorative, donc sans alternative textuelle.
-               */
-              <Image
-                src={page.banniere.signature.photo.src}
-                alt=""
-                aria-hidden="true"
-                width={600}
-                height={550}
-                sizes="(min-width: 80rem) 30rem, (min-width: 40rem) 34vw, 62vw"
-                /*
-                 * 27/09/2026 : la photo était masquée sous 40 rem, Arcel ne la voyait donc jamais
-                 * sur téléphone. Posée ensuite en bas de bannière, elle restait hors de l'écran
-                 * d'arrivée (mesuré : haut à 797 px pour une fenêtre de 812). Elle est maintenant
-                 * ancrée en haut à droite, sur 46 % de la largeur et à 45 % d'opacité : elle se
-                 * voit dès l'arrivée, derrière un titre en gras foncé qui reste lisible.
-                 */
-                /*
-                 * 15/10/2026 (D-099, puis demande d'Arcel le même jour) : sur téléphone, elle
-                 * était posée en haut à droite et passait derrière les dernières lignes du H1.
-                 * Baisser son opacité ne suffisait pas — elle descend donc **sous le texte**,
-                 * ancrée au bas de la scène, derrière le panneau de verre du parcours. Le titre
-                 * est sur la couleur de scène, et rien d'autre. À partir de 40 rem, le réglage
-                 * d'origine reprend : la photo tient la droite de la bannière.
-                 */
-                className="hero-signature absolute right-0 bottom-0 h-auto right-3 w-[40vw] max-w-[11rem] object-contain object-bottom opacity-80 sm:top-[14%] sm:right-[3%] sm:bottom-auto sm:w-[30vw] sm:max-w-[24rem] sm:opacity-100 xl:top-[10%] xl:max-w-[27rem]"
-                priority={false}
-              />
-            ) : null
-          }
+          /*
+           * 15/10/2026 (D-101) : plus de photo détourée posée par-dessus la scène. La bannière
+           * reçoit la photo de sa scène, **en plein cadre** (`heroBackgrounds.aurore`), avec le
+           * voile de `scenes.css` qui tient la lisibilité du texte. Les deux images superposées se
+           * masquaient l'une l'autre — c'était déjà noté le 27/09 dans ce fichier. Le couple
+           * détouré reste dans le contenu (`banniere.signature`) : il revient en une ligne si
+           * Arcel le préfère.
+           */
         >
           <Hero
             surtitle={page.banniere.sur_titre}

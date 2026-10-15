@@ -365,58 +365,83 @@
 }
 
 /*
- * Fond photographique d'une scène de bannière (`HeroSection`). L'image arrive en variable
- * (`--hero-fond`) parce qu'elle vient du contenu ; tout le reste vit ici, pour avoir des points de
- * rupture — un style en ligne n'en a pas (D-099).
+ * Fond photographique d'une scène de bannière (`HeroSection`), **en plein cadre** depuis le
+ * 15/10 (D-101, demande d'Arcel : « mes photos en fond complet sur la zone hero »). L'image
+ * arrive en variable (`--hero-fond`) parce qu'elle vient du contenu ; tout le reste vit ici, pour
+ * avoir des points de rupture — un style en ligne n'en a pas.
  *
- * Grand écran : la photo tient la droite de la scène et le dégradé l'efface sur la moitié gauche,
- * là où vivent le titre et la promesse. Téléphone : le texte occupe toute la largeur, un dégradé
- * horizontal ne protège donc plus rien ; la photo descend vers le bas de la scène et s'efface vers
- * le haut, sous le texte.
+ * Avant, un dégradé l'effaçait sur la moitié gauche et elle plafonnait à 0,85 d'opacité : la photo
+ * n'occupait qu'un côté de la bannière. Elle couvre maintenant toute la scène.
+ *
+ * **Le voile (`::after`) est ce qui rend la chose possible.** Un texte foncé sur une photo claire
+ * tombe à un contraste imprévisible, photo par photo. Le voile reprend la couleur de base de la
+ * scène — donc chaque famille de pages garde la sienne — et il est dense là où vit le texte,
+ * léger à l'opposé : la photo reste lisible partout, le texte garde un fond stable. Mesuré sur le
+ * rendu, pas déduit (D-101).
  */
 .hero-fond {
   background-image: var(--hero-fond);
   background-size: cover;
-  background-position: center right;
-  opacity: 0.85;
-  mask-image: linear-gradient(
+  background-position: center;
+}
+
+.hero-fond::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0) 46%,
-    rgba(0, 0, 0, 0.5) 64%,
-    rgb(0, 0, 0) 84%
+    color-mix(in srgb, var(--scene-base) 86%, transparent) 0%,
+    color-mix(in srgb, var(--scene-base) 78%, transparent) 38%,
+    color-mix(in srgb, var(--scene-base) 46%, transparent) 72%,
+    color-mix(in srgb, var(--scene-base) 26%, transparent) 100%
   );
-  -webkit-mask-image: linear-gradient(
+}
+
+/*
+ * Scène de nuit : le texte y est blanc, et la photo de fond a des zones claires (un drap, une
+ * fenêtre). Mesuré sur le rendu, voile allégé : le chapô tombait à 4,50 — le seuil exact, donc
+ * sans marge. Le voile de cette scène est plus dense, et le contraste remonte au-dessus de 6.
+ */
+.scene-nuit .hero-fond::after,
+[data-scene="nuit"] .hero-fond::after {
+  background-image: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0) 46%,
-    rgba(0, 0, 0, 0.5) 64%,
-    rgb(0, 0, 0) 84%
+    color-mix(in srgb, var(--scene-base) 93%, transparent) 0%,
+    color-mix(in srgb, var(--scene-base) 88%, transparent) 38%,
+    color-mix(in srgb, var(--scene-base) 62%, transparent) 72%,
+    color-mix(in srgb, var(--scene-base) 42%, transparent) 100%
   );
 }
 
 @media (max-width: 63.99rem) {
-  .hero-fond {
-    background-position: bottom center;
-    opacity: 0.6;
-    mask-image: linear-gradient(
+  .scene-nuit .hero-fond::after,
+  [data-scene="nuit"] .hero-fond::after {
+    background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0) 34%,
-      rgba(0, 0, 0, 0.45) 60%,
-      rgb(0, 0, 0) 100%
+      color-mix(in srgb, var(--scene-base) 94%, transparent) 0%,
+      color-mix(in srgb, var(--scene-base) 90%, transparent) 46%,
+      color-mix(in srgb, var(--scene-base) 58%, transparent) 100%
     );
-    -webkit-mask-image: linear-gradient(
+  }
+}
+
+@media (max-width: 63.99rem) {
+  /*
+   * Téléphone : le texte occupe toute la largeur, un dégradé horizontal ne protège donc plus rien.
+   * Le voile devient vertical — dense sous le titre et le chapô, plus léger au bas de la scène, où
+   * la photo se donne à voir.
+   */
+  .hero-fond::after {
+    background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0) 34%,
-      rgba(0, 0, 0, 0.45) 60%,
-      rgb(0, 0, 0) 100%
+      color-mix(in srgb, var(--scene-base) 80%, transparent) 0%,
+      color-mix(in srgb, var(--scene-base) 74%, transparent) 46%,
+      color-mix(in srgb, var(--scene-base) 36%, transparent) 100%
     );
   }
 
-  /*
-   * Photo détourée de l'accueil : sur téléphone elle est ancrée au bas de la scène, sous le texte
-   * (demande d'Arcel du 15/10). Elle est détourée, donc elle se pose sans dégradé — le premier
-   * essai, un fondu vertical, effaçait précisément les deux visages et n'en laissait que les
-   * mains (vu sur capture). Seule l'opacité la tient en retrait du contenu.
-   */
+  /* Photo détourée de l'accueil : sans dégradé, elle est détourée (D-100). */
   .hero-signature {
     mask-image: none;
     -webkit-mask-image: none;

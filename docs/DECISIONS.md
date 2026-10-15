@@ -2292,3 +2292,53 @@ disaient « la photo est là, 207 px de haut », et elles avaient raison.
 (heros aux quatre tailles sur les deux projets, accueil, mobile, mouvement, axe des gabarits
 témoins), dont le contrat mobile de `mobile.spec.ts` qui refuse tout débordement horizontal à
 320 px. Captures relues à 320 et 390.
+
+## D-101 — Les photos en fond complet de la bannière (15/10/2026)
+
+Arcel : « mes photos en fond complet sur la zone hero ». Jusqu'ici, la photo d'une scène était
+effacée sur sa moitié gauche par un dégradé et plafonnée à 0,85 d'opacité : elle n'occupait qu'un
+côté de la bannière. Elle couvre maintenant toute la scène, sur les six gabarits.
+
+**Ce qui rend la chose possible : un voile, et une mesure.** Un texte foncé sur une photo claire
+donne un contraste imprévisible, photo par photo. Un voile (`::after` sur `.hero-fond`) reprend la
+couleur de base de la scène — chaque famille de pages garde donc la sienne — dense là où vit le
+texte, léger à l'opposé. Et surtout : **je l'ai mesuré sur le rendu**, pas déduit. La page est
+capturée deux fois, une fois normale et une fois **le contenu masqué** : la seconde donne le vrai
+fond sous chaque bloc de texte, et le contraste se calcule sur le pire centile de ses pixels.
+
+| page | titre | chapô |
+| --- | --- | --- |
+| accueil (1440) | 6,75 | 7,62 |
+| accueil (390) | 9,73 | 8,10 |
+| page service, scène de nuit (1440) | 6,18 | **5,98** |
+| pilier (1440) | 9,31 | 7,09 |
+| page locale (390) | 8,42 | 7,98 |
+
+Le plus bas est 5,98 pour un seuil WCAG de 4,5. Deux réglages ont été nécessaires, et les deux
+viennent de la mesure, pas de l'œil :
+
+1. **La scène de nuit a son propre voile, plus dense.** Au réglage commun, son chapô — blanc sur une
+   photo qui a des zones claires — tombait à **4,50**, c'est-à-dire exactement le seuil, donc sans
+   aucune marge.
+2. **La photo de la scène verte a changé.** `fond-projet-de-vie.webp` fait 1920×557 : en plein cadre
+   sur un téléphone, il faut l'agrandir trois fois et demie pour couvrir la hauteur, et on tombe sur
+   une zone unie — mesuré, le contraste y était identique à celui de la couleur de scène pure, donc
+   **la photo ne se voyait pas du tout**. Elle est remplacée par `fond-personne-agee-accompagnee.jpg`
+   (1400×1056), utilisable debout comme couchée. Cela concerne les 131 pages locales : à revoir
+   avec Arcel s'il tient à l'image d'origine, qui mériterait alors un recadrage vertical.
+
+**La photo détourée de l'accueil est retirée.** Avec un fond photographique plein cadre, deux images
+se superposaient — c'était déjà la raison notée le 27/09 pour retirer la photo encadrée de la
+colonne de droite. L'accueil reçoit donc `accueil-hero-fenetre.jpg`, qui dormait dans le contenu
+(`banniere.photo`) sans être affichée nulle part depuis cette date. Le couple détouré reste dans
+`banniere.signature` : il revient en une ligne si Arcel le préfère.
+
+**Un test mis à jour, et son intention avec lui.** `page.test.tsx` comptait cinq balises images dans
+l'accueil, dont la photo détourée. Le fond étant désormais une image CSS, il en reste quatre ; le
+test vérifie en plus ce qui compte vraiment — le fond est décoratif, `aria-hidden`, et ne contient
+aucune balise image.
+
+**Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; 189 parcours
+(heros aux quatre tailles sur les deux projets, accueil, mobile, mouvement, axe des gabarits
+témoins, local) puis 214 parcours (axe de tous les gabarits, services). Un parcours R-4 a lâché sous
+la charge de la suite et repasse seul en 4,1 s : fragilité connue (D-083), page sans rapport.

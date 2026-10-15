@@ -83,9 +83,17 @@ export type HeroSceneName =
  * pas : ces pages restent sobres. L'accueil non plus : il porte déjà sa photo détourée.
  */
 export const heroBackgrounds: Partial<Record<HeroSceneName, { src: string }>> = {
+  // L'accueil a sa photo de bannière depuis le 15/10 (D-101) : elle vivait dans le contenu
+  // (`banniere.photo`) sans être affichée nulle part depuis que la colonne de droite a cédé la
+  // place au panneau du parcours.
+  aurore: { src: "/images/heros/accueil-hero-fenetre.jpg" },
   teal: { src: "/images/heros/fonds/fond-aide-a-domicile.jpg" },
   azure: { src: "/images/heros/fonds/fond-premiere-visite.jpg" },
-  verte: { src: "/images/heros/fonds/fond-projet-de-vie.webp" },
+  // 15/10 (D-101) : `fond-projet-de-vie.webp` fait 1920×557. En plein cadre sur un téléphone,
+  // il faut l'agrandir trois fois et demie pour couvrir la hauteur : on tombe sur une zone
+  // unie et la photo ne se voit plus (mesuré : contraste identique à la couleur de scène
+  // pure). Celle-ci est en 1400×1056, donc utilisable debout comme couchée.
+  verte: { src: "/images/heros/fonds/fond-personne-agee-accompagnee.jpg" },
   sable: { src: "/images/heros/fonds/fond-auxiliaire-de-vie.jpg" },
   framboise: { src: "/images/heros/fonds/fond-repas-partage.jpg" },
   nuit: { src: "/images/heros/fonds/fond-presence-nuit.jpg" },

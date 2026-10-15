@@ -159,13 +159,19 @@ describe("Accueil (blocs 1 à 8)", () => {
       "alt",
       "Une femme d'une soixantaine d'années, assise sur un rebord de fenêtre, regarde dehors",
     );
-    // 27/09/2026 : la bannière porte une photo de fond décorative, sans cadre ni priorité. Les
-    // cinq images de la page (fond de bannière, neuro, la semaine affichée, étapes, proches) se
-    // chargent donc toutes à la demande.
+    /*
+     * D-101 : la photo de la bannière est le fond de la scène (image CSS), plus une balise image
+     * posée par-dessus. Restent quatre images dans la page (neuro, la semaine affichée, étapes,
+     * proches), toutes chargées à la demande. Le fond, lui, est décoratif : aucun texte de
+     * remplacement à fournir, et il est masqué aux lecteurs d'écran.
+     */
     const images = Array.from(document.querySelectorAll("main img"));
-    expect(images).toHaveLength(5);
-    expect(images.filter((img) => img.getAttribute("loading") === "lazy")).toHaveLength(5);
-    expect(images[0]).toHaveAttribute("alt", "");
+    expect(images).toHaveLength(4);
+    expect(images.filter((img) => img.getAttribute("loading") === "lazy")).toHaveLength(4);
+    const fond = document.querySelector("[data-hero-fond]");
+    expect(fond).toHaveClass("hero-fond");
+    expect(fond).toHaveAttribute("aria-hidden", "true");
+    expect(fond?.querySelector("img")).toBeNull();
   });
 });
 
