@@ -191,7 +191,13 @@ export default async function Home() {
                  * ancrée en haut à droite, sur 46 % de la largeur et à 45 % d'opacité : elle se
                  * voit dès l'arrivée, derrière un titre en gras foncé qui reste lisible.
                  */
-                className="absolute top-0 right-0 h-auto w-[44vw] max-w-[14rem] object-contain opacity-35 sm:top-[14%] sm:right-[3%] sm:w-[30vw] sm:max-w-[24rem] sm:opacity-100 xl:top-[10%] xl:max-w-[27rem]"
+                /*
+                 * 15/10/2026 (D-099) : sur téléphone, à 35 % d'opacité et sans dégradé, elle
+                 * passait derrière les deux dernières lignes du H1 — mesuré sur capture à 320 et
+                 * 390 px. Elle reste visible dès l'arrivée, mais à 18 % et effacée vers la gauche
+                 * par `hero-signature` : le titre retrouve la couleur de scène sous lui.
+                 */
+                className="hero-signature absolute top-0 right-0 h-auto w-[40vw] max-w-[13rem] object-contain opacity-[0.18] sm:top-[14%] sm:right-[3%] sm:w-[30vw] sm:max-w-[24rem] sm:opacity-100 xl:top-[10%] xl:max-w-[27rem]"
                 priority={false}
               />
             ) : null
@@ -201,6 +207,7 @@ export default async function Home() {
             surtitle={page.banniere.sur_titre}
             title={page.banniere.h1}
             lead={page.banniere.chapo}
+            leadShort={page.banniere.chapo_court}
             primary={{ label: boutons.rappel, href: navigation.rappel_href }}
             secondary={{ label: boutons.demande_detaillee, href: navigation.demande_href }}
             phone={phone}

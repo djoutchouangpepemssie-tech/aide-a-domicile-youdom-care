@@ -358,6 +358,15 @@ export function ServiceTemplate({ data }: { data: ServiceTemplateData }) {
           `${page.chapo} ${page.promesse.join(" ")}`
         )
       }
+      /*
+       * Petit écran : le chapô seul en tête, les deux phrases de promesse après l'interaction
+       * (D-099). Mesuré à 390×844 sur /services/garde-de-nuit/ : chapô et promesse réunis
+       * faisaient quatorze lignes avant la moindre action. Rien n'est perdu, l'ordre change.
+       * Les pages à sélecteur de lecteur gardent leur chapô d'un seul tenant : deux `ReaderText`
+       * dans la même scène donneraient deux fois le même repère de lecture.
+       */
+      leadShort={page.chapo_pour_soi ? undefined : page.chapo}
+      leadExtra={page.chapo_pour_soi ? undefined : page.promesse.join(" ")}
       primary={{ label: primaryLabel, href: formHref }}
       secondary={{ label: texts.boutons.rappel, href: navigation.rappel_href }}
       phone={phone && telHref ? { label: formatFrenchPhone(phone), href: telHref } : null}

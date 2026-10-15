@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { heroBackgrounds, heroSectionShell, sceneClass, type HeroSceneName } from "./hero-scene";
 
@@ -60,25 +60,8 @@ export function HeroSection({
       <div
         aria-hidden="true"
         data-hero-fond="scene"
-        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-        style={{
-          backgroundImage: `url(${defaut.src})`,
-          backgroundSize: "cover",
-          /*
-           * La photo couvre toute la bannière et se voit franchement à droite (27/09/2026, seconde
-           * demande d'Arcel : le premier réglage, un tiers de largeur à 38 % d'opacité, était trop
-           * discret pour se remarquer). Le masque l'efface complètement sur la moitié gauche, là
-           * où vivent le titre et la promesse : ce texte reste donc sur la couleur de scène, et son
-           * contraste est celui déjà mesuré par check-contrast. Sur mobile, le cadrage descend vers
-           * le bas de l'image et le masque s'efface vers le haut, sous le texte.
-           */
-          backgroundPosition: "center right",
-          opacity: 0.85,
-          maskImage:
-            "linear-gradient(to right, rgba(0,0,0,0) 46%, rgba(0,0,0,0.5) 64%, rgba(0,0,0,1) 84%)",
-          WebkitMaskImage:
-            "linear-gradient(to right, rgba(0,0,0,0) 46%, rgba(0,0,0,0.5) 64%, rgba(0,0,0,1) 84%)",
-        }}
+        className="hero-fond pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        style={{ "--hero-fond": `url(${defaut.src})` } as CSSProperties}
       />
     ) : null;
 

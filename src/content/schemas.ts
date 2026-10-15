@@ -980,6 +980,14 @@ export const homePageSchema = z.strictObject({
     sur_titre: text,
     h1: text,
     chapo: text,
+    /**
+     * Chapô des petits écrans (sous 64 rem), **écrit**, jamais une troncature du précédent :
+     * D-036 avait retiré la coupe automatique parce qu'elle laissait des points de suspension au
+     * milieu d'une promesse. Mesuré à 320×568 (D-099), le chapô complet occupait 237 px sur les
+     * 421 px disponibles sous l'en-tête et la barre d'action : il ne restait rien pour le
+     * parcours. Absent, le chapô complet est affiché partout.
+     */
+    chapo_court: text.optional(),
     lien_telephone: text.includes("{téléphone}"),
     reassurance: z.array(text).min(1),
     /** D-036 : mention légale du crédit d'impôt retirée du hero ; champs facultatifs. */

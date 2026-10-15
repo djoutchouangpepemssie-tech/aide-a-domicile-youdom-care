@@ -2213,3 +2213,55 @@ deux lignes. Captures d'écran à l'appui, à six largeurs.
 (heros aux quatre tailles sur les deux projets, accueil, mobile, mouvement) puis 150 parcours axe sur
 tous les gabarits. Un parcours de `motion.spec.ts` a échoué sous la charge de la suite et passe seul
 en 4,6 s : même fragilité que R-4 (D-083), page sans rapport avec ce changement.
+
+## D-099 — La bannière sur téléphone : regardée, mesurée, recomposée (15/10/2026)
+
+Arcel demande une version mobile « plus professionnelle, bien organisée ». J'ai donc **regardé** la
+page sur un téléphone avant de toucher au code : captures à 320×568, 390×844 et 430×932, puis la
+position de chaque bloc au pixel. Six défauts, tous réels, tous corrigés.
+
+| ce qui n'allait pas | mesure |
+| --- | --- |
+| Chapô interminable avant la moindre action | **237 px à 320×568**, sur 421 px utiles sous l'en-tête et la barre |
+| Bouton principal caché sous la barre d'action fixe | bas du bouton à **793 px** pour une fenêtre de 844 |
+| Panneau du parcours coupé en plein milieu d'une carte | plafond de 24 svh, soit **203 px** : deux cartes et demie |
+| Photo de signature posée sur le titre | opacité 35 %, sans dégradé, derrière les deux dernières lignes du H1 |
+| Réassurance absente du téléphone | `heroOnlyWide` : elle n'apparaissait qu'à partir de 64 rem |
+| Fil d'Ariane illisible sur la scène de nuit | **contraste 1,2** pour la page courante, 1,9 pour ses liens |
+
+**Ce qui a changé.**
+
+1. **Un chapô écrit pour les petits écrans**, jamais une troncature : `chapo_court` pour l'accueil,
+   et sur les pages services le chapô seul en tête, les deux phrases de promesse déplacées **après**
+   l'interaction. Rien n'est perdu, l'ordre change — D-036 avait retiré la coupe automatique parce
+   qu'elle laissait des points de suspension au milieu d'une promesse, et cette décision tient.
+   Mesuré sur `/services/garde-de-nuit/` : quatorze lignes avant l'action, six maintenant.
+2. **L'action principale passe avant le parcours sous 64 rem.** Elle était déjà prioritaire au
+   dernier palier de compaction ; la règle vaut désormais pour tout téléphone, sans quoi le panneau
+   complet la repoussait à 954 px.
+3. **Le panneau du parcours ne se défile plus en interne sur téléphone.** Le plafond de D-058
+   servait à garder l'action dans la fenêtre : depuis D-076, c'est la barre d'action qui la porte.
+   Il ne faisait donc plus que couper une carte en deux, et deux zones de défilement imbriquées sur
+   un écran tactile sont un piège.
+4. **La scène réserve la hauteur de la barre d'action** (4 rem de plus en bas sous 64 rem) : plus
+   rien ne se termine sous elle.
+5. **La photo de signature s'efface vers la gauche** et descend à 18 % d'opacité sur téléphone ; les
+   réglages du fond de scène quittent le style en ligne — qui n'a pas de point de rupture — pour la
+   feuille `scenes.css`, où le masque devient vertical sous 64 rem.
+6. **La réassurance s'affiche sur téléphone**, juste sous le bouton : « évaluation gratuite, devis
+   sans engagement, crédit d'impôt » manquait exactement là où arrive la majorité des visiteurs.
+7. **Le fil d'Ariane redevient lisible sur la scène de nuit.** La règle existait depuis le 27/09
+   mais n'a jamais rien changé : elle vit dans `@layer components`, et les classes utilitaires de
+   Tailwind (`text-ink`, `text-link`) sont déclarées dans `@layer utilities`, donc après. La
+   nouvelle règle est posée **hors de tout layer** — ce qui passe devant tous les layers sans
+   recourir à `!important`. Vérifié dans le navigateur : blanc sur teal-900, contraste 11.
+8. Deux alignements : la coche de la réassurance et le chevron du fil d'Ariane se calent sur la
+   **première ligne** d'un libellé qui passe à la ligne, au lieu de flotter au milieu du bloc.
+
+**Composition obtenue à 390×844**, de haut en bas : titre (117 px), chapô court (212), bouton
+framboise (386), réassurance, parcours entier (462 → 886), repère. Tout ce qui compte est au-dessus
+de la ligne de flottaison, et le parcours se poursuit d'un pouce.
+
+**Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; 254 parcours
+(heros aux quatre tailles sur les deux projets, accueil, mobile, services, local, mouvement) puis
+150 parcours axe sur tous les gabarits. Captures à l'appui sur quatre gabarits.

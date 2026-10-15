@@ -73,6 +73,18 @@ export interface HeroProps {
   /** Chapô : texte, ou nœud (sélecteur de lecteur des pages services, docs/03 §4). */
   lead: ReactNode;
   /**
+   * Chapô des petits écrans (sous 64 rem). Les deux sont dans le document, l'un des deux est
+   * masqué par `display:none` : aucune troncature, aucun point de suspension (D-036), et un
+   * lecteur d'écran n'en lit qu'un. Sans valeur, `lead` est affiché à toutes les tailles.
+   */
+  leadShort?: ReactNode;
+  /**
+   * Suite du chapô, rendue **après** l'interaction et seulement sous 64 rem, quand `leadShort`
+   * allège le haut de la scène : rien n'est perdu, l'ordre change. Sur grand écran, ce texte est
+   * déjà dans `lead`.
+   */
+  leadExtra?: ReactNode;
+  /**
    * Commandes posées **avant** le chapô, dans le même panneau : le sélecteur de lecteur, quand il
    * y en a un. Elles ne vont pas dans le chapô lui-même, dont le texte serait alors mêlé aux
    * libellés des boutons (D-086).
@@ -119,6 +131,8 @@ export function Hero({
   surtitle,
   title,
   lead,
+  leadShort,
+  leadExtra,
   leadControl,
   primary,
   secondary,
@@ -216,7 +230,14 @@ export function Hero({
         {leadControl}
         {/* Chapô borné à deux ou trois lignes, sauf quand des commandes l'accompagnent : le
             recadrage d'un texte multiligne ne doit pas toucher aux boutons posés juste au-dessus. */}
-        <Lead className={interaction === "lead" ? undefined : heroLeadClamp}>{lead}</Lead>
+        {leadShort ? (
+          <>
+            <Lead className="lg:hidden">{leadShort}</Lead>
+            <Lead className="max-lg:hidden">{lead}</Lead>
+          </>
+        ) : (
+          <Lead className={interaction === "lead" ? undefined : heroLeadClamp}>{lead}</Lead>
+        )}
       </div>
       {gesture ? (
         <div
@@ -265,10 +286,15 @@ export function Hero({
           </Link>
         ) : null}
       </div>
+      {/*
+       * Réassurance (évaluation gratuite, devis sans engagement, crédit d'impôt) : affichée aussi
+       * sur téléphone depuis le 15/10 (D-099). Elle attendait 64 rem, c'est-à-dire qu'elle
+       * manquait précisément là où arrive la majorité des visiteurs, juste sous le bouton qui
+       * demande leurs coordonnées. Elle reste retirée quand la hauteur manque (`heroWhenTall`).
+       */}
       <ul
         className={cn(
           heroRows.reassurance,
-          heroOnlyWide,
           heroWhenTall,
           "m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-small",
           heroGap,
@@ -277,7 +303,7 @@ export function Hero({
         data-hero-reassurance=""
       >
         {reassurance.map((item) => (
-          <li key={item} className="flex max-w-none items-center gap-2">
+          <li key={item} className="flex max-w-none items-start gap-2">
             <svg
               aria-hidden="true"
               viewBox="0 0 24 24"
@@ -288,7 +314,7 @@ export function Hero({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className={cn("shrink-0", dark ? "text-green-500" : "text-green-700")}
+              className={cn("mt-[0.3em] shrink-0", dark ? "text-green-500" : "text-green-700")}
             >
               <path d="m5 12 5 5 9-10" />
             </svg>
@@ -303,6 +329,12 @@ export function Hero({
           <Link href={footnote.href} className={link}>
             {footnote.text}
           </Link>
+        </p>
+      ) : null}
+      {/* Suite du chapô sur petit écran : après l'interaction, avant le repère (D-099). */}
+      {leadShort && leadExtra ? (
+        <p className={cn(heroRows.cue, heroOrderLast, "m-0 lg:hidden", heroGap, soft)}>
+          {leadExtra}
         </p>
       ) : null}
       {cue ? (

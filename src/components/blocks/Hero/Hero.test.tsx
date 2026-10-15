@@ -121,10 +121,25 @@ describe("Hero", () => {
       "[@media(max-height:42rem)]:hidden",
     );
     expect(document.querySelector("[data-hero-surtitle]")).toHaveClass("max-lg:hidden");
-    expect(document.querySelector("[data-hero-reassurance]")).toHaveClass("max-lg:hidden");
-    // Panneau : plafonné et défilable quand la hauteur manque, jamais amputé de ses choix.
+    /*
+     * D-099 : la réassurance n'attend plus 64 rem — elle manquait là où arrive la majorité des
+     * visiteurs. Elle ne part plus qu'avec la compaction, quand la hauteur manque vraiment.
+     */
+    const reassurance = document.querySelector("[data-hero-reassurance]");
+    expect(reassurance).not.toHaveClass("max-lg:hidden");
+    expect(reassurance).toHaveClass("[@media(max-height:42rem)]:hidden");
+    /*
+     * Panneau : plafonné et défilable seulement sur grand écran très court. Sous 64 rem, aucun
+     * plafond (D-099) : il coupait une carte en plein milieu, et c'est la barre d'action fixe qui
+     * porte l'action depuis D-076.
+     */
     const panel = document.querySelector(".hero-panel");
-    expect(panel?.className).toContain("[@media(max-height:36rem)]:max-h-[22svh]");
+    expect(panel?.className).toContain(
+      "[@media(min-width:64rem)_and_(max-height:36rem)]:max-h-[22svh]",
+    );
+    expect(panel?.className).toContain(
+      "[@media(max-width:63.99rem)_and_(max-height:42rem)]:max-h-none",
+    );
     expect(panel).toHaveClass("overflow-y-auto");
     // Titre et chapô suivent la hauteur visible, sans redéfinir les jetons du site.
     expect(document.querySelector(".hero")?.className).toContain(

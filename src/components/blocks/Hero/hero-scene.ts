@@ -58,6 +58,13 @@ export const heroSectionShell = cn(
   // regardaient que la hauteur, donc un téléphone haut et étroit gardait la marge d'un grand
   // écran (64 px en tout) alors que c'est la largeur qui lui manque.
   "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:py-5",
+  /*
+   * Sous 64 rem, la barre d'action est **fixée** au bas de la fenêtre : elle recouvre la fin de la
+   * scène. `--hero-chrome` la retranche bien de la hauteur minimale, mais rien n'empêchait le
+   * contenu de passer dessous quand il dépasse cette hauteur — mesuré à 320×568 et 390×844, le
+   * bouton framboise finissait sous la barre (D-099). La scène garde donc 4 rem de plus en bas.
+   */
+  "[@media(max-width:63.99rem)]:pb-[calc(var(--spacing)*20)]",
   "[@media(min-width:64rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:py-6",
   "[@media(max-width:63.99rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:py-4",
   "[@media(max-height:36rem)]:py-4",
@@ -161,17 +168,22 @@ export function heroPanelClass(tint: GlassTint = "teal", dark = false): string {
     // atteignable au clavier (axe `scrollable-region-focusable`). Les deux plafonds ne se
     // recouvrent pas : une seule règle s'applique à la fois.
     "[@media(min-width:64rem)_and_(min-height:42.01rem)]:max-h-[38svh]",
-    // Téléphone en portrait : le panneau partage la hauteur avec le titre, la promesse et
-    // l'action. Mesuré le 09/10/2026, il atteignait son plafond de 30svh (253 px à 390×844) et
-    // poussait l'action hors de l'écran ; à 24svh il garde tous ses choix et se défile en interne.
-    "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:max-h-[24svh]",
+    /*
+     * Téléphone en portrait : **aucun plafond** (D-099). Le plafond de 24 svh posé le 09/10
+     * (D-058) servait à garder l'action principale dans la fenêtre ; depuis D-076, c'est la barre
+     * d'action fixe qui porte l'action sous 64 rem, et le plafond ne faisait plus que couper une
+     * carte en plein milieu — mesuré à 390×844 : le panneau s'arrêtait à 203 px, au milieu du
+     * troisième choix. Deux zones de défilement imbriquées sur un téléphone sont de toute façon
+     * un piège tactile. Le panneau montre donc ses six choix, et la page se défile normalement.
+     */
+    "[@media(max-width:63.99rem)_and_(min-height:42.01rem)]:max-h-none",
     // Hauteur moyenne et écran large (paysage, zoom) : la largeur permet de rester généreux.
     "[@media(min-width:64rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[38svh]",
-    // Hauteur moyenne et écran étroit (360×640 par exemple) : ce cas tombait dans la règle
-    // ci-dessus et recevait 38svh, soit **plus** qu'un téléphone plus haut — le même défaut que
-    // l'échelle typographique, une règle de paysage qui se déclenchait en portrait.
-    "[@media(max-width:63.99rem)_and_(max-height:42rem)_and_(min-height:36.01rem)]:max-h-[26svh]",
-    "[@media(max-height:36rem)]:max-h-[22svh]",
+    // Écran étroit et court (320×568, 360×640) : même raison qu'au-dessus, aucun plafond. Mesuré
+    // à 320×568 : le plafond de 26 svh coupait le panneau à 125 px, soit deux cartes et demie.
+    "[@media(max-width:63.99rem)_and_(max-height:42rem)]:max-h-none",
+    // Grand écran très court (paysage, zoom fort) : le plafond garde l'action dans la fenêtre.
+    "[@media(min-width:64rem)_and_(max-height:36rem)]:max-h-[22svh]",
     "overflow-y-auto overscroll-contain",
     dark ? "glass-strong" : "glass",
     glassTints[tint],
@@ -266,13 +278,15 @@ export const heroWhenRoomy = "[@media(max-height:36rem)]:hidden";
 export const heroLeadClamp = "";
 
 /**
- * Au dernier palier de compaction (36 rem de haut ou moins), l'action principale passe **avant**
- * l'interaction : c'est ce qui la garde dans la fenêtre sur un petit téléphone en portrait comme en
- * paysage. L'ordre du document ne change pas (lecture d'écran et clavier : titre, promesse, action,
- * interaction, repère).
+ * Sous 64 rem — donc sur tout téléphone — et au dernier palier de compaction, l'action principale
+ * passe **avant** l'interaction : c'est ce qui la garde dans la fenêtre d'arrivée. Étendu à toute
+ * la largeur mobile le 15/10 (D-099) : depuis que le panneau du parcours montre ses six choix sans
+ * se défiler en interne, il mesure 424 px à 390×844 et repoussait le bouton framboise à 954 px,
+ * soit hors de l'écran. L'ordre du document ne change pas (lecture d'écran et clavier : titre,
+ * promesse, action, interaction, repère).
  */
-export const heroOrderPanel = "[@media(max-height:36rem)]:order-1";
-export const heroOrderLast = "[@media(max-height:36rem)]:order-2";
+export const heroOrderPanel = "max-lg:order-1 [@media(max-height:36rem)]:order-1";
+export const heroOrderLast = "max-lg:order-2 [@media(max-height:36rem)]:order-2";
 
 /**
  * Échelle typographique du hero : le titre et le chapô suivent la largeur et la hauteur visibles.

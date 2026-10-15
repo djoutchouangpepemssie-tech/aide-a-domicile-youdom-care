@@ -44,7 +44,9 @@ export function Breadcrumb({ items, texts, className, siteUrl }: BreadcrumbProps
         {all.map((item, index) => {
           const current = index === all.length - 1;
           return (
-            <li key={`${item.label}-${index}`} className="flex max-w-none items-center gap-x-2">
+            // `items-start` : sur un téléphone, un libellé long passe à la ligne et un chevron
+            // centré se retrouvait seul, décalé d'une demi-hauteur (mesuré, D-099).
+            <li key={`${item.label}-${index}`} className="flex max-w-none items-start gap-x-2">
               {index > 0 ? (
                 <svg
                   aria-hidden="true"
@@ -56,7 +58,7 @@ export function Breadcrumb({ items, texts, className, siteUrl }: BreadcrumbProps
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="shrink-0 text-text-soft"
+                  className="mt-[0.3em] shrink-0 text-text-soft"
                 >
                   <path d="m9 6 6 6-6 6" />
                 </svg>

@@ -1523,3 +1523,15 @@ par cellule. Elle suit maintenant la largeur du bloc.
 Au passage, un piège : mon premier seuil (`@md`, 28 rem) ne s'appliquait jamais, parce que la racine
 du site est à 18 px et non 16 — `@md` y vaut 504 px. C'est la sonde dans le navigateur qui l'a dit,
 pas la lecture du code.
+
+## 2026-10-15 — La bannière sur téléphone (D-099)
+
+Arcel veut une version mobile professionnelle. J'ai commencé par regarder : captures à 320, 390 et
+430 px, puis la position de chaque bloc. Le chapô prenait 237 px sur les 421 utiles, le bouton
+principal finissait sous la barre d'action, le panneau du parcours était coupé en plein milieu d'une
+carte, la photo passait sur le titre, la réassurance n'apparaissait qu'à partir de 64 rem — et, sur
+la scène de nuit, le fil d'Ariane sortait à un contraste de 1,2.
+
+Tout est corrigé. Le plus instructif : la règle de couleur du fil d'Ariane existait depuis trois
+semaines et n'avait jamais rien changé, parce qu'elle vivait dans `@layer components` quand les
+utilitaires Tailwind sont déclarés après. Posée hors de tout layer, elle s'applique enfin.
