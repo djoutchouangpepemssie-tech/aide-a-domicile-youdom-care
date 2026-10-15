@@ -192,12 +192,14 @@ export default async function Home() {
                  * voit dès l'arrivée, derrière un titre en gras foncé qui reste lisible.
                  */
                 /*
-                 * 15/10/2026 (D-099) : sur téléphone, à 35 % d'opacité et sans dégradé, elle
-                 * passait derrière les deux dernières lignes du H1 — mesuré sur capture à 320 et
-                 * 390 px. Elle reste visible dès l'arrivée, mais à 18 % et effacée vers la gauche
-                 * par `hero-signature` : le titre retrouve la couleur de scène sous lui.
+                 * 15/10/2026 (D-099, puis demande d'Arcel le même jour) : sur téléphone, elle
+                 * était posée en haut à droite et passait derrière les dernières lignes du H1.
+                 * Baisser son opacité ne suffisait pas — elle descend donc **sous le texte**,
+                 * ancrée au bas de la scène, derrière le panneau de verre du parcours. Le titre
+                 * est sur la couleur de scène, et rien d'autre. À partir de 40 rem, le réglage
+                 * d'origine reprend : la photo tient la droite de la bannière.
                  */
-                className="hero-signature absolute top-0 right-0 h-auto w-[40vw] max-w-[13rem] object-contain opacity-[0.18] sm:top-[14%] sm:right-[3%] sm:w-[30vw] sm:max-w-[24rem] sm:opacity-100 xl:top-[10%] xl:max-w-[27rem]"
+                className="hero-signature absolute right-0 bottom-0 h-auto right-3 w-[40vw] max-w-[11rem] object-contain object-bottom opacity-80 sm:top-[14%] sm:right-[3%] sm:bottom-auto sm:w-[30vw] sm:max-w-[24rem] sm:opacity-100 xl:top-[10%] xl:max-w-[27rem]"
                 priority={false}
               />
             ) : null

@@ -1535,3 +1535,11 @@ la scène de nuit, le fil d'Ariane sortait à un contraste de 1,2.
 Tout est corrigé. Le plus instructif : la règle de couleur du fil d'Ariane existait depuis trois
 semaines et n'avait jamais rien changé, parce qu'elle vivait dans `@layer components` quand les
 utilitaires Tailwind sont déclarés après. Posée hors de tout layer, elle s'applique enfin.
+
+
+## 2026-10-15 — La photo descend sous le texte (D-100)
+
+Arcel tranche : la photo du couple passe sous le texte sur téléphone. Deux essais ratés avant le
+bon, et les deux n'ont été vus qu'à la capture — un fondu qui effaçait les visages, puis une photo
+trop large dont le panneau de verre mangeait la moitié haute. Réduite et posée au bas de la scène,
+elle se lit entière, et le titre est enfin seul sur la couleur de scène.

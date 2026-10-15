@@ -411,20 +411,15 @@
     );
   }
 
-  /* Photo détourée de l'accueil : effacée vers la gauche, là où le titre se termine. */
+  /*
+   * Photo détourée de l'accueil : sur téléphone elle est ancrée au bas de la scène, sous le texte
+   * (demande d'Arcel du 15/10). Elle est détourée, donc elle se pose sans dégradé — le premier
+   * essai, un fondu vertical, effaçait précisément les deux visages et n'en laissait que les
+   * mains (vu sur capture). Seule l'opacité la tient en retrait du contenu.
+   */
   .hero-signature {
-    mask-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.6) 38%,
-      rgb(0, 0, 0) 72%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.6) 38%,
-      rgb(0, 0, 0) 72%
-    );
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 }
 

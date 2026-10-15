@@ -2265,3 +2265,30 @@ de la ligne de flottaison, et le parcours se poursuit d'un pouce.
 **Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; 254 parcours
 (heros aux quatre tailles sur les deux projets, accueil, mobile, services, local, mouvement) puis
 150 parcours axe sur tous les gabarits. Captures à l'appui sur quatre gabarits.
+
+
+## D-100 — La photo de signature passe sous le texte sur téléphone (15/10/2026)
+
+Suite immédiate de D-099 : j'avais ramené la photo détourée à 18 % d'opacité pour qu'elle cesse
+d'écraser le titre, et j'ai proposé à Arcel de la descendre complètement. Réponse : oui.
+
+Sur téléphone, elle est donc **ancrée au bas de la bannière**, à droite, derrière le panneau du
+parcours. Le titre est sur la couleur de scène, et rien d'autre. À partir de 40 rem, le réglage
+d'origine reprend : la photo tient la droite de la bannière.
+
+**Deux essais avant le bon, et c'est la capture qui a tranché :**
+
+1. Premier essai, un fondu vertical pour qu'elle « émerge » du bas : il effaçait précisément les
+   deux visages et ne laissait que les mains. Le dégradé est retiré — la photo est détourée, elle
+   se pose sans fondu.
+2. Deuxième essai, large (58 vw) : le panneau de verre, qui court sur toute la largeur, en
+   recouvrait la moitié haute ; on voyait des épaules sans tête. Réduite à **40 vw** (156 px à
+   390), elle tient entièrement dans la bande libre sous le panneau. Les deux visages se voient.
+
+Aucune des deux n'aurait été visible sans regarder l'image produite : les mesures de position
+disaient « la photo est là, 207 px de haut », et elles avaient raison.
+
+**Vérifications** : 948 tests unitaires, lint, typecheck et mise en forme verts ; 177 parcours
+(heros aux quatre tailles sur les deux projets, accueil, mobile, mouvement, axe des gabarits
+témoins), dont le contrat mobile de `mobile.spec.ts` qui refuse tout débordement horizontal à
+320 px. Captures relues à 320 et 390.
