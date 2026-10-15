@@ -7,9 +7,13 @@
   "banniere": {
     "sur_titre": "Aide et accompagnement à domicile · Paris et Île-de-France",
     "h1": "Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.",
-    "chapo": "Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : chaque situation est unique. Youdom Care construit un accompagnement sur mesure, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.",
+    "chapo": "Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : aucune situation ne se ressemble. L'accompagnement se construit avec vous, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.",
     "lien_telephone": "Ou appelez le {téléphone}",
-    "reassurance": ["Évaluation à domicile gratuite", "Sans engagement", "Crédit d'impôt de 50 %"],
+    "reassurance": [
+      "Évaluation à domicile gratuite",
+      "Devis détaillé, sans engagement",
+      "Crédit d'impôt de 50 %"
+    ],
     "illustration": "maison",
     "photo": {
       "src": "/images/heros/accueil-hero-fenetre.jpg",

@@ -78,9 +78,9 @@ Ce cahier fixe la voix de Youdom Care et fournit les textes moteurs du site. La 
 
 - Sur-titre : **Aide et accompagnement à domicile · Paris et Île-de-France**
 - H1 : **Vivre chez soi, bien accompagné. Même quand la maladie ou le handicap compliquent tout.**
-- Chapô : Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : chaque situation est unique. Youdom Care construit un accompagnement sur mesure, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.
+- Chapô : Alzheimer, Parkinson, sclérose en plaques, handicap de l'enfant ou de l'adulte, grand âge : aucune situation ne se ressemble. L'accompagnement se construit avec vous, de quelques heures par semaine à une présence 24h/24. Pour la personne que vous aimez. Et pour vous, qui tenez tout à bout de bras.
 - Bouton principal : **Être rappelé(e)** · Bouton secondaire : **Je décris ma situation** · Lien : **Ou appelez le {téléphone}**
-- Ligne de réassurance : Évaluation à domicile gratuite · Sans engagement · Crédit d'impôt de 50 %*
+- Ligne de réassurance : Évaluation à domicile gratuite · Devis détaillé, sans engagement · Crédit d'impôt de 50 %*
 
 ### Bloc 2 — Les situations
 
@@ -169,19 +169,24 @@ Ce cahier fixe la voix de Youdom Care et fournit les textes moteurs du site. La 
 
 ## 5. Titres moteurs des pages piliers
 
+Le H1 porte le bénéfice, pas le mot-clé : celui-ci vit dans la balise titre (`titre` du
+frontmatter) et dans le premier paragraphe. Chaque H1 est mesuré pour tenir dans la fenêtre d'un
+téléphone de 320 px sans défilement (contrat des heros, `tests/e2e/hero.spec.ts`) : 67 caractères au
+plus, 51 en moyenne. Deux pages sœurs n'ouvrent jamais sur les mêmes mots (D-095).
+
 | Page | H1 | Première phrase |
 | --- | --- | --- |
-| Maladies neurodégénératives | Maladies neurodégénératives : un accompagnement à domicile qui évolue avec la personne | Aucune maladie ne se vit deux fois de la même façon. Aucun accompagnement ne devrait se ressembler. |
-| Alzheimer | Maladie d'Alzheimer : rester chez soi, en sécurité, avec ses repères | La maison est souvent le dernier repère solide. Nous aidons à le garder. |
-| Parkinson | Maladie de Parkinson : une aide à domicile réglée sur le rythme de la maladie | Avec Parkinson, tout est question de moment. Nous organisons la journée autour des bons moments. |
-| Sclérose en plaques | Sclérose en plaques : de l'aide à domicile pour garder votre énergie pour l'essentiel | La fatigue décide de trop de choses. Reprenons-lui du terrain. |
-| Personnes âgées | Aide à domicile pour personnes âgées : rester chez soi, sans rester seul | Vieillir chez soi est un projet. Nous l'organisons avec vous. |
-| Adultes en situation de handicap | Aide à domicile et handicap : vous décidez, nous suivons | Votre quotidien, vos choix, vos horaires. Notre rôle : les rendre possibles. |
-| Enfants en situation de handicap | Accompagnement à domicile des enfants en situation de handicap : un relais qui connaît votre enfant | Vous ne devriez pas avoir à tout réexpliquer chaque semaine. |
-| Aidants | Aidants : vous avez le droit d'être relayé | Tenir dans la durée, ce n'est pas abandonner. C'est la condition pour continuer. |
-| Garde de nuit | Garde de nuit à domicile : des nuits sûres pour lui, du sommeil pour vous | La nuit, tout paraît plus grave. Une présence change tout. |
-| Présence 24h/24 | Présence à domicile 24h/24 : l'alternative à l'établissement | Rester chez soi, même quand une présence continue devient nécessaire. |
-| Sortie d'hospitalisation | Sortie d'hospitalisation : un retour à la maison organisé en 48 heures `[E4]` (si E4 n'est pas validé : « Sortie d'hospitalisation : un retour à la maison bien préparé ») | L'hôpital annonce la sortie pour après-demain. Voici comment nous nous organisons. |
+| Maladies neurodégénératives | Vivre chez soi avec une maladie neurodégénérative | Le diagnostic vient de tomber, ou la maladie a franchi un cap. |
+| Alzheimer | Maladie d'Alzheimer : garder ses repères, et sa maison | Les oublis deviennent dangereux, les mêmes questions reviennent, le jour et la nuit s'inversent : vous ne dormez plus. |
+| Parkinson | Parkinson : la journée réglée sur les bons moments | Journées en dents de scie, pied qui « colle » au passage d'une porte, peur de tomber. |
+| Sclérose en plaques | Sclérose en plaques : garder son énergie pour l'essentiel | Une fatigue que personne ne voit, des poussées imprévisibles, et cette phrase : « tu as l'air en forme ». |
+| Personnes âgées | Vieillir chez soi, sans rester seul | Votre mère est tombée, votre père ne mange presque plus, et vos passages du soir ne suffisent plus. |
+| Adultes en situation de handicap | Vous décidez, nous suivons | Vous savez ce dont vous avez besoin, à quelle heure et comment. |
+| Enfants en situation de handicap | Vous ne devriez pas avoir à tout réexpliquer chaque semaine | Ce qui l'apaise, ce qui le met en difficulté, sa façon de communiquer : vous l'avez déjà dit dix fois. |
+| Aidants | Vous aidez quelqu'un. Qui vous aide, vous ? | Vous ne vous dites peut-être pas « aidant ». |
+| Garde de nuit | Garde de nuit : quelqu'un est là, et vous dormez | La nuit, tout pèse plus lourd : un lever mal éclairé, une angoisse, un appel auquel personne ne répond. |
+| Présence 24h/24 | Présence 24h/24 : l'alternative à l'établissement | Quand une personne ne peut plus rester seule, ni le jour ni la nuit, deux voies existent. |
+| Sortie d'hospitalisation | Sortie d'hospitalisation : un retour à la maison bien préparé | Il sort vendredi, fatigué, fragile, et personne ne peut être là en permanence. |
 | Tarifs et aides | Tarifs et aides : ce que vous paierez vraiment | Un prix clair, un devis gratuit, et toutes les aides auxquelles vous avez droit. |
 | Prestataire ou mandataire | Prestataire ou mandataire : quel mode choisir ? | Deux façons d'être accompagné. Une seule question : voulez-vous être l'employeur ? |
 

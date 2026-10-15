@@ -1971,3 +1971,73 @@ leur audit (`hero.spec.ts`, `services.spec.ts`, `comfort.spec.ts`, `styleguide.s
 **Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; côté parcours,
 `blocks`, `services`, `hero` (147 verts) puis `tous-gabarits-axe`, `gabarits-axe`, `home` et
 `mobile` (238 verts), sur les deux projets.
+
+## D-095 — Les textes des heros, repris sur quatre mesures (15/10/2026)
+
+Arcel demande d'améliorer et de reformuler les textes de **toutes** les zones hero. Avant d'écrire,
+j'ai mesuré les 26 heros des pages services, parce qu'une réécriture sans critère n'est que du
+remplacement. Quatre défauts sortent, et ce sont eux que la passe corrige.
+
+| mesure | avant | après |
+| --- | --- | --- |
+| H1 au moule « X : y » | **20 / 26** | 18 / 26, mais plus aucun préfixe partagé |
+| H1 ouvrant par « Aide à domicile et … » | **7** (les 7 pathologies) | **0** |
+| H1 le plus long | **111** caractères | **67** (moyenne 51) |
+| phrases de plus de 20 mots dans un chapô de hero | **20 pages sur 26**, jusqu'à 36 mots | **0**, plus longue phrase 20 mots |
+| chapô de hero le plus lourd | **89** mots | 77 (moyenne 57, contre 63) |
+
+**Pourquoi ces quatre-là.** La règle 2 de `docs/01` §2 demande des phrases de moins de 20 mots : au
+plus lu de chaque page, elle était tenue par six pages sur vingt-six. Le H1, lui, doit entrer dans la
+fenêtre d'un téléphone de 320 px sans défilement — c'est le contrat des heros (`hero.spec.ts`) — et
+un titre de 111 caractères y prend six lignes. Enfin, sept pages sœurs qui ouvrent toutes par « Aide
+à domicile et … » donnent à un visiteur qui en lit trois le sentiment d'un gabarit, pas d'une
+réponse. Le mot-clé n'est pas perdu pour autant : il vit dans la balise `titre` et dans le premier
+paragraphe, comme `docs/01` §2 le prévoit.
+
+**Ce qui n'a pas changé : les faits.** Aucune réécriture n'ajoute un fait. Chaque fait du texte
+d'origine est conservé ou déplacé d'un champ à l'autre — PCH, SESSAD, avis du diététicien, lien avec
+l'assistante sociale, lève-personne, modes prestataire et mandataire. Les quatre H1 déjà justes sont
+restés : « Vous décidez, nous suivons », « Vous aidez quelqu'un. Qui vous aide, vous ? », « Vous ne
+devriez pas avoir à tout réexpliquer chaque semaine », « Garde de nuit : quelqu'un est là, et vous
+dormez ».
+
+**Une page sur vingt-six n'a pas été touchée** : `autisme.mdx` tenait déjà les quatre critères (H1 de
+50 caractères, aucune phrase au-delà de 17 mots). La réécrire aurait été du mouvement, pas une
+amélioration. Je préfère le dire que de maquiller un diff.
+
+**Accueil.** Le H1 reste celui de `docs/01` §4 : il nomme en deux souffles la réalité des cinq
+publics, il est validé, et il passe le contrat des heros. Le chapô, lui, perd « Youdom Care construit
+un accompagnement **sur mesure** » — formule usée, et qui parle de nous — pour « **L'accompagnement
+se construit avec vous** ». « Chaque situation est unique » devient « aucune situation ne se
+ressemble ». La ligne de réassurance remplace « Sans engagement », qui pend dans le vide, par
+« Devis détaillé, sans engagement ».
+
+**Agences.** Le chapô des deux pages d'agence disait « Notre point d'accueil {lieu} » : il parlait de
+nos murs. Il dit maintenant « Une équipe installée {lieu}, que vous joignez directement ». Le chapô
+de l'index garde son jeton `{agences}` — j'avais d'abord écrit « Deux équipes », c'est-à-dire un
+chiffre en dur, ce que la règle 6 de `docs/01` interdit ; corrigé avant commit.
+
+**Magazine.** Le hero d'un article affiche son chapô. Six phrases y dépassaient 22 mots, jusqu'à 27 :
+elles sont scindées, sans perte d'idée et sans sortir de la fenêtre de 40 à 60 mots que
+`check-content` impose. Plus longue phrase du magazine : 22 mots, contre 27.
+
+**Pages locales : rien, et c'est voulu.** Le chapô d'un hero local est son sous-titre, et les 97
+sous-titres réécrits le 13/10 (D-088) portent chacun un fait sourcé, confronté un par un aux sources
+de **sa** page. Les reformuler deux jours plus tard, c'est risquer un fait non sourcé pour un gain de
+style nul. Le H1 local (« Aide à domicile {lieu} ») reste tel quel : c'est la requête, mot pour mot.
+
+**Espaces insécables.** Mes 64 lignes neuves étaient écrites avec des espaces ordinaires avant « : »,
+« ; », « ? » et « » ». La convention du dépôt est l'insécable (vérifié sur `HEAD` avant d'écrire la
+normalisation) : les 25 fichiers touchés sont repassés dessus.
+
+**Un test aligné, son intention renforcée.** `AgencyTemplate.test.tsx` figeait le texte du chapô
+d'agence. Il fige désormais le nouveau, et surtout le **contrat** de D-089 d'une façon qui ne dépend
+plus de la formulation : le chapô ne contient ni la voie, ni le code postal
+(`expect(chapo.textContent).not.toMatch(/quai de Dion-Bouton|92800/)`).
+
+`docs/01` est remis d'accord avec le site : le chapô et la réassurance du bloc 1, et le tableau §5,
+qui annonçait encore des H1 que le site n'affiche plus.
+
+**Vérifications** : 948 tests unitaires, 13/13 contrôles, lint et typecheck verts ; 181 parcours
+(heros aux quatre tailles, services, accueil, local, magazine, index des services) sur les deux
+projets, puis les parcours mobiles, axe et maillage.

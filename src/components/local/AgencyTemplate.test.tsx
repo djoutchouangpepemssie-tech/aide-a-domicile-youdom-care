@@ -54,12 +54,12 @@ describe("AgencyTemplate (P6.6)", () => {
     expect(screen.getAllByText(/49-51 quai de Dion-Bouton, 92800 Puteaux/).length).toBeGreaterThan(
       0,
     );
-    expect(
-      screen.getByText("Notre point d'accueil dans les Hauts-de-Seine.", { exact: false }),
-    ).toBeInTheDocument();
-    expect(
-      screen.queryByText(/accueil dans les Hauts-de-Seine\u00a0: 49-51/),
-    ).not.toBeInTheDocument();
+    const chapo = screen.getByText("Une équipe installée dans les Hauts-de-Seine", {
+      exact: false,
+    });
+    expect(chapo).toBeInTheDocument();
+    // Le contrat de D-089 ne tient pas à la formulation : le chapô ne porte pas l'adresse de voie.
+    expect(chapo.textContent).not.toMatch(/quai de Dion-Bouton|92800/);
     expect(document.querySelector("main")).toHaveAttribute("data-agence-page", "puteaux");
     // Téléphone et horaires de l'agence sont null dans site.config.json : ni affichés, ni inventés.
     expect(screen.queryByText("Téléphone de l'agence")).not.toBeInTheDocument();

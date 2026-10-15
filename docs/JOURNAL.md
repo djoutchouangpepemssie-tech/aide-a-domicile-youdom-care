@@ -1475,3 +1475,15 @@ défilement doux du geste du hero reprenait la main juste après le `scrollTo`. 
 page revient à 10 px ; et en balayant les hauteurs, la violation n'apparaît qu'à partir de 72 px de
 défilement — une fenêtre étroite, où un défilement interrompu tombe par chance. La CI y tombait,
 ma machine non. Le retour en haut est maintenant vérifié jusqu'à stabilisation.
+
+## 2026-10-15 — Les heros réécrits, sur mesures (D-095)
+
+Arcel veut tous les textes de hero améliorés. J'ai commencé par les mesurer : sept pathologies
+ouvraient leur H1 par les mêmes quatre mots, un titre atteignait 111 caractères là où le contrat des
+heros demande qu'il tienne dans un écran de 320 px, et vingt chapôs sur vingt-six portaient une
+phrase de plus de 20 mots — la règle de voix la moins respectée, au plus lu de chaque page.
+
+Après la passe : plus aucun préfixe partagé, 67 caractères au plus pour un H1, aucune phrase au-delà
+de 20 mots. Aucun fait ajouté, aucun fait perdu. Une page sur vingt-six est restée intacte parce
+qu'elle tenait déjà les quatre critères, et les 131 sous-titres locaux n'ont pas été touchés : ils
+portent des faits sourcés vérifiés avant-hier, et le style n'y gagnerait rien.
