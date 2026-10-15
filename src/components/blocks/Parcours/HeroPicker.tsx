@@ -139,7 +139,11 @@ export function HeroPicker({ question, choices, panelTitleId, className }: HeroP
         {choices.map((choice) => {
           const content = (
             <>
-              <Icon name={choice.icone} size="lg" className="shrink-0 max-lg:size-6 @max-xl:size-6" />
+              <Icon
+                name={choice.icone}
+                size="lg"
+                className="shrink-0 max-lg:size-6 @max-xl:size-6"
+              />
               <span className="min-w-0 text-pretty">{choice.libelle}</span>
               <Chevron />
             </>
