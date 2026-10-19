@@ -1,10 +1,12 @@
 # `@youdom/api` — le socle du CRM Youdom Care
 
-Vague 1, étape 1 (`docs/portal/CRM_PERIMETRE.md` §2). Ce paquet porte l'API du CRM et de l'espace
-client « Mon Youdom ». Il n'y a **pas encore de serveur HTTP** : cette étape pose ce qui doit être
-juste avant que quoi que ce soit soit exposé.
+Vague 1, étapes 1 et 2 (`docs/portal/CRM_PERIMETRE.md` §2). Ce paquet porte l'API du CRM et de
+l'espace client « Mon Youdom » : le socle (droits, audit, authentification) et les quatre surfaces
+HTTP qui s'appuient dessus.
 
 ## Ce qui existe
+
+**Étape 1 — le socle** (ce qui doit être juste avant que quoi que ce soit soit exposé) :
 
 | Fichier                   | Ce qu'il tient                                                                                                    |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -15,23 +17,46 @@ juste avant que quoi que ce soit soit exposé.
 | `src/audit/journal.ts`    | le journal en ajout seul, et la seule porte que les routes doivent appeler                                        |
 | `src/auth/`               | lien magique, code SMS, sessions, second facteur                                                                  |
 | `src/db/collections.ts`   | les collections et les index de `DATA_MODEL.md` §4                                                                |
-| `src/store/`              | la lecture du contexte d'autorisation : en mémoire (tests) et sur MongoDB                                         |
 | `src/config/env.ts`       | la configuration, validée au démarrage                                                                            |
-| `scripts/migrate.ts`      | pose les collections et les index — idempotent                                                                    |
 
-89 tests unitaires, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit
-reçoit **404 et jamais 403** (exigence de `PERMISSIONS.md` §7).
+**Étape 2 — l'API** (quatre surfaces séparées, `ARCHITECTURE.md` §5 principe 1) :
+
+| Surface      | Pour qui                         | Routes                                                                                                                         |
+| ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `/auth/v1`   | tout le monde, sans jeton        | demander un lien ou un code, ouvrir une session, second facteur, liste des appareils, déconnexion à distance                   |
+| `/portal/v1` | familles, bénéficiaires, payeurs | `me`, planning d'un foyer, **journal des accès**                                                                               |
+| `/field/v1`  | intervenants                     | tournée du jour, pointage NFC / QR / manuel, consignes d'accès bornées à la visite                                             |
+| `/admin/v1`  | agence                           | créer un foyer, enregistrer un intervenant, rattacher un membre avec ses droits par défaut, poser une visite, retirer un droit |
+
+Chaque surface vérifie la famille de rôles à son entrée ; chaque route vérifie ensuite le foyer et
+le module. Les deux, pas l'un ou l'autre.
+
+Autour : `src/store/` (dépôts en mémoire pour les tests, sur MongoDB en service),
+`src/services/` (limite de débit, heures d'ouverture, envoi du lien et du code),
+`scripts/migrate.ts` (index, idempotent), `scripts/create-admin.ts` (le premier compte d'agence,
+**volontairement hors API**).
+
+121 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
+**404 et jamais 403** (exigence de `PERMISSIONS.md` §7).
+
+## Ce qui n'est pas couvert par un test, et il faut le savoir
+
+Les dépôts MongoDB (`src/store/mongo.ts`) sont vérifiés par le typage et par la lecture, **pas par
+un test d'intégration** : il n'y a pas de MongoDB dans l'environnement de construction. C'est pour
+cela qu'ils sont volontairement minces — aucune logique métier n'y vit, elle est toute dans le
+domaine, qui est testé. Un test d'intégration viendra avec le premier cluster réel, et
+`pnpm portal:migrer` est le premier geste à faire dessus.
 
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. le serveur HTTP et ses **trois surfaces séparées** (`/portal/v1`, `/field/v1`, `/admin/v1`) ;
-2. le planning : récurrences, affectation, remplacements, règles légales — **en attente des règles
+1. le planning : récurrences, affectation, remplacements, règles légales — **en attente des règles
    de planification d'Arcel** (question B de `QUESTIONS.md`) ;
+2. la portée par agence des comptes de l'agence : aujourd'hui, un coordinateur authentifié agit sur
+   l'agence qu'il nomme, et chaque action est journalisée ;
 3. les validateurs `$jsonSchema` côté MongoDB, en doublure des schémas Zod ;
-4. le déploiement chez l'hébergeur certifié HDS — **en attente du choix** (question A).
-
-Rien de tout cela ne remet en cause ce qui est écrit ici : le socle ne dépend d'aucune des quatre
-réponses attendues.
+4. le contenu des consignes d'accès (chiffrement au champ) : la route et son autorisation existent,
+   le contenu arrive avec le chiffrement ;
+5. le déploiement chez l'hébergeur certifié HDS — **en attente du choix** (question A).
 
 ## Faire tourner
 
@@ -41,6 +66,7 @@ Les contrôles passent par l'atelier de la racine — un seul lint, un seul type
 pnpm lint && pnpm typecheck && pnpm test     # à la racine du dépôt
 pnpm vitest run apps/api                     # les seuls tests de l'API
 pnpm portal:migrer                           # pose les index (MONGODB_URI et AUTH_PEPPER requis)
+pnpm --filter @youdom/api start              # démarre l'API (port 8787 par défaut)
 ```
 
 ## Les secrets

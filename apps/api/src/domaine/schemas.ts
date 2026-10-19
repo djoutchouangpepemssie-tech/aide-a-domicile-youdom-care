@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { ACTIONS, MODULES } from "./modules";
+import { ACTIONS, ADMIN_SCOPE, MODULES } from "./modules";
 import { CLIENT_ROLES, STAFF_ROLES } from "./roles";
 
 /*
@@ -153,6 +153,63 @@ export const visitSchema = z.strictObject({
 
 export type Visit = z.infer<typeof visitSchema>;
 
+/*
+ * L'intervenant. **Son `_id` est celui de son compte membre** : une personne, une identité. C'est
+ * ce qui permet à la règle R4 de comparer `visits.workerId` au membre qui demande l'accès au
+ * logement sans jointure, et ce qui évite qu'un intervenant existe deux fois dans la base.
+ *
+ * La photo et le nom complet n'apparaissent **jamais** sans accord écrit : ce sont ses données
+ * personnelles, pas celles du foyer (`PERMISSIONS.md` §8).
+ */
+export const workerSchema = z.strictObject({
+  _id: idSchema,
+  agencyId: idSchema,
+  firstName: z.string().min(1).max(40),
+  lastInitial: z.string().length(1),
+  senioritySince: isoDateTime.nullish(),
+  qualifications: z.array(z.string().max(80)).default([]),
+  languages: z.array(z.string().max(40)).default([]),
+  photoConsent: z.boolean().default(false),
+  photoId: idSchema.nullish(),
+  createdAt: isoDateTime,
+});
+
+export type Worker = z.infer<typeof workerSchema>;
+
+export const punchSources = ["nfc", "qr", "manuel", "agence"] as const;
+export const visitEventTypes = [
+  "en_route",
+  "arrivee",
+  "depart",
+  "annulation",
+  "remplacement",
+] as const;
+
+/**
+ * Événement de visite, **en ajout seul**. `at` est l'heure du geste, `recordedAt` celle de la
+ * réception : sur un pointage hors ligne, les deux diffèrent, et c'est la première qui compte dans
+ * les relevés d'heures. Un pointage `manuel` exige un motif — sans cette porte de sortie, les
+ * intervenants trouveront la leur, et elle sera pire (MY-02).
+ */
+export const visitEventSchema = z
+  .strictObject({
+    _id: idSchema,
+    visitId: idSchema,
+    householdId: idSchema,
+    workerId: idSchema,
+    type: z.enum(visitEventTypes),
+    source: z.enum(punchSources),
+    at: isoDateTime,
+    recordedAt: isoDateTime,
+    reason: z.string().max(200).nullish(),
+  })
+  .refine((event) => event.source !== "manuel" || Boolean(event.reason?.trim()), {
+    error: "un pointage manuel demande un motif",
+    path: ["reason"],
+  });
+
+export type VisitEvent = z.infer<typeof visitEventSchema>;
+
 export const auditOutcomes = ["autorise", "refuse"] as const;
 
 /** Journal d'audit, en ajout seul (`DATA_MODEL.md` §2, `ARCHITECTURE.md` §5 principe 3). */
@@ -162,7 +219,9 @@ export const auditEventSchema = z.strictObject({
   actorRole: z.enum([...CLIENT_ROLES, ...STAFF_ROLES]).nullish(),
   householdId: idSchema.nullish(),
   action: z.enum(ACTIONS),
-  module: z.enum(MODULES),
+  // Les douze modules, ou `administration` pour une action d'agence qui ne porte sur aucun d'eux
+  // (créer un foyer, enregistrer un intervenant) : elle se journalise quand même.
+  module: z.enum([...MODULES, ADMIN_SCOPE]),
   target: z.string().max(120).nullish(),
   outcome: z.enum(auditOutcomes),
   reason: z.string().max(80).nullish(),

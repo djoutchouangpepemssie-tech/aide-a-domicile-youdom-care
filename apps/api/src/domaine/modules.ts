@@ -59,6 +59,15 @@ export const SECOND_FACTOR_MODULES: readonly ModuleKey[] = MODULES.filter((modul
   ["sante", "financier", "critique"].includes(MODULE_SENSITIVITY[module]),
 );
 
+/**
+ * Portée des actions d'agence qui ne relèvent d'aucun module : créer un foyer, enregistrer un
+ * intervenant. Ce n'est pas un module — on ne peut pas en recevoir un droit — mais le journal
+ * d'audit doit pouvoir les nommer, sinon elles n'existent nulle part.
+ */
+export const ADMIN_SCOPE = "administration" as const;
+
+export type AuditScope = ModuleKey | typeof ADMIN_SCOPE;
+
 export function isModuleKey(value: string): value is ModuleKey {
   return (MODULES as readonly string[]).includes(value);
 }

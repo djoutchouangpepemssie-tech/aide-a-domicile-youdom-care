@@ -2379,3 +2379,29 @@ par une page.
 framework HTTP n'est ajouté à cette étape — il n'y a pas encore de serveur, et choisir un framework
 avant d'avoir une route à servir, c'est choisir pour rien. `pnpm audit` est inchangé : le pilote
 MongoDB n'apporte aucun avis.
+
+---
+
+## D-103 — L'API et ses quatre surfaces : Hono, et la CI qui manquait (19/10/2026)
+
+**Deux dépendances ajoutées** (règle de CLAUDE.md : nom, raison, poids) :
+
+| Paquet | Raison | Poids |
+| --- | --- | --- |
+| `hono@^4.13.13` | routage, intermédiaires, en-têtes de sécurité et CORS. Surtout : son application se teste par `app.request()` **sans ouvrir de port** — les 32 tests de routes tournent en moins d'une seconde | 3,7 Mo installés, aucune dépendance transitive |
+| `@hono/node-server@^2.1.5` | l'adaptateur pour écouter sur Node | 220 Ko |
+
+**Pourquoi pas le `node:http` nu**, qui aurait évité les deux : il aurait fallu écrire le routage,
+l'analyse des corps, les en-têtes de sécurité et le CORS. Ce code-là n'a aucune valeur propre pour
+Youdom Care, et chacune de ses lignes est une occasion de se tromper sur une règle de sécurité.
+`hono` n'apporte aucun avis à `pnpm audit`.
+
+**Pourquoi pas Express**, le réflexe habituel : il ne sait pas répondre à une requête sans serveur
+HTTP, donc chaque test de route demanderait un port, et la suite passerait de moins d'une seconde à
+plusieurs dizaines.
+
+**Et une correction qui n'a rien à voir avec le code, mais qui compte autant.** La branche du
+portail s'appelle `feat/portal-phase-0` : elle n'était couverte par **aucun déclencheur** de
+`.github/workflows/ci.yml`, qui écoutait `main`, `phase/**` et `claude/**`. Autrement dit, les
+commits du portail n'ont jamais été éprouvés par la CI — exactement le trou que D-081 avait fermé
+pour les autres branches, rouvert par un nom de branche. `feat/**` est ajouté à la liste.

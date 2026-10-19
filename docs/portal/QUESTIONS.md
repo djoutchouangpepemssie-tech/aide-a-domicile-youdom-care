@@ -60,6 +60,13 @@ soient visibles des familles ? Un refus doit rester possible sans conséquence. 
 
 ---
 
+**9 bis. Vos heures d'ouverture exactes.** L'API s'en sert pour une seule chose : savoir si un
+accès au dossier a lieu pendant ou en dehors des heures ouvrées, parce qu'un accès hors heures
+exige un motif saisi (MY-05). J'ai posé par défaut 8 h 30 – 18 h 30 du lundi au vendredi et
+9 h – 12 h 30 le samedi, d'après ce que le site annonce. À confirmer ou à corriger.
+
+---
+
 ## Décisions de produit
 
 **10. Le nom.** « Mon Youdom » est une proposition. Autres pistes : « Chez vous », « Le Fil de

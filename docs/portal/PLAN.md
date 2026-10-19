@@ -45,9 +45,17 @@ seul, refus compris ; lien magique, code SMS, sessions, second facteur ; collect
 `DATA_MODEL.md` §4 ; configuration qui refuse de démarrer en production sans hébergement certifié.
 89 tests, dont un qui parcourt les douze modules pour prouver le 404 — jamais 403.
 
-**Étape 2 — suivante** : serveur HTTP et ses trois surfaces séparées, back-office minimal (créer un
-foyer, un intervenant, poser un planning, affecter), validateurs `$jsonSchema` en doublure des
-schémas Zod.
+**Étape 2 — faite (19/10)** : l'API et ses **quatre** surfaces séparées (`/auth/v1`, `/portal/v1`,
+`/field/v1`, `/admin/v1`), chacune gardée par famille de rôles puis par foyer et module ;
+connexion sans énumération de comptes, second facteur, liste des appareils, déconnexion à
+distance ; planning et journal des accès côté famille ; tournée du jour, pointage NFC / QR /
+manuel avec motif et horodatage du geste, consignes d'accès bornées à la visite côté terrain ;
+back-office minimal côté agence (foyer, intervenant, rattachement avec droits par défaut, visite,
+retrait de droit). 121 tests. Le premier compte d'agence se crée hors API, par script.
+
+**Étape 3 — suivante** : le planning (récurrences, affectation, remplacements, règles légales) —
+**bloquée par la question B**, les règles de planification ; la portée par agence des comptes de
+l'agence ; les validateurs `$jsonSchema` en doublure des schémas Zod.
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

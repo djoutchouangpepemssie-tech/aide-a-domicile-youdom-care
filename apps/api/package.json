@@ -5,7 +5,13 @@
   "type": "module",
   "description": "API du CRM Youdom Care et de l'espace client Mon Youdom (vague 1 : le socle).",
   "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "hono": "^4.13.13",
     "mongodb": "^7.7.0",
     "zod": "^4.6.5"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts"
   }
 }

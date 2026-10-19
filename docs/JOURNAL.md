@@ -1603,3 +1603,55 @@ modules et prouve qu'un membre sans droit reçoit **404 et jamais 403** — l'ex
 pose les trois surfaces séparées et le back-office minimal. Le planning attend les règles de
 planification d'Arcel (amplitude, trajets, repos, majorations) : sans elles, un planning est faux et
 aucun code n'y change rien.
+
+---
+
+## 2026-10-19 — L'API, ses quatre surfaces, et le back-office minimal (D-103)
+
+« Go. » Étape 2 de la vague 1 : le socle du 15/10 avait tout ce qu'il faut pour autoriser, mais
+rien pour répondre. Maintenant, il répond.
+
+**Quatre surfaces, séparées pour de bon** (`ARCHITECTURE.md` §5, principe 1) : `/auth/v1` pour se
+connecter, `/portal/v1` pour les familles, `/field/v1` pour les intervenants, `/admin/v1` pour
+l'agence. La séparation est vérifiée à deux endroits et pas un seul : la famille de rôles à
+l'entrée de la surface, puis le foyer et le module sur chaque route. Un intervenant qui appelle
+l'espace client reçoit 404, et une famille qui appelle la surface terrain aussi — pas 403, qui
+reviendrait à confirmer que cette porte existe.
+
+**Ce que l'agence peut faire aujourd'hui** : créer un foyer, enregistrer un intervenant, rattacher
+un membre avec les droits « ✓ » de son rôle — et **rien de plus** : les « ○ » attendent une décision
+du bénéficiaire, l'agence ne les pose pas à sa place —, poser une visite, l'affecter, retirer un
+droit. C'est le minimum pour que la coordination quitte Word, et c'est délibérément le minimum.
+
+**Trois choix qui viennent du terrain ou de la loi, pas du confort :**
+
+- **Une demande de connexion ne dit jamais si une adresse est connue.** Même code, même forme,
+  même durée annoncée. Sans cela, le portail répondrait à la question « cette personne est-elle
+  accompagnée par Youdom Care ? », et il ne doit jamais y répondre.
+- **L'heure du geste n'est pas l'heure de l'envoi.** Dans un sous-sol, il n'y a pas de réseau : le
+  pointage arrive plus tard, horodaté à l'heure du badge. Elle est bornée — deux minutes
+  d'avance, quarante-huit heures de retard — sinon un relevé d'heures devient déclaratif.
+- **Le pointage manuel existe, avec un motif obligatoire.** Un badge se décolle. Sans porte de
+  sortie officielle, les intervenants inventent la leur, et elle est pire.
+
+**Il n'y a pas de route pour créer le premier administrateur**, volontairement : elle serait une
+porte ouverte, et on oublie de refermer ces choses-là. Le premier compte d'agence se crée par
+`apps/api/scripts/create-admin.ts`, en accès direct à la base.
+
+**Une découverte en passant, et elle valait le détour** : la branche du portail n'était couverte par
+aucun déclencheur de la CI. Neuf commits y sont passés sans le moindre contrôle automatique — le
+trou que D-081 avait fermé pour les autres branches, rouvert par un simple nom. Corrigé (D-103).
+
+**Vérifications** : 1 069 tests unitaires (948 du site, 121 de l'API), 13/13 contrôles, lint,
+typecheck, format et build verts, `pnpm audit` sans avis critique. Les tests de routes passent par
+la vraie application, avec une base en mémoire qui valide chaque écriture avec les schémas de la
+vraie base.
+
+**Ce qui n'est pas couvert, et je préfère l'écrire que de le laisser croire** : les dépôts MongoDB
+ne sont pas éprouvés par un test d'intégration — il n'y a pas de MongoDB dans l'environnement de
+construction. C'est pourquoi ils sont minces : aucune règle métier n'y vit. Le premier geste sur le
+premier cluster réel sera `pnpm portal:migrer`, puis un test d'intégration.
+
+**Prochaine étape, et son mur** : le planning — récurrences, affectation, remplacements. Il attend
+les règles de planification d'Arcel (amplitude, trajets, repos, majorations). Sans elles, un
+planning est faux, et aucun code n'y change rien.
