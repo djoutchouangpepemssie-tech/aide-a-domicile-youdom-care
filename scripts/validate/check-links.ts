@@ -172,6 +172,8 @@ export async function checkExternal(
   fetchImpl: typeof fetch = fetch,
   concurrency = 6,
   recheckDelayMs = 4_000,
+  /** Pause avant la **troisième** tentative, plus longue : l'hôte doit avoir le temps de souffler. */
+  thirdTryDelayMs = 20_000,
 ): Promise<ExternalReport> {
   const unique = spreadByHost([...new Set(urls)]);
   const failures: string[] = [];
@@ -225,11 +227,31 @@ export async function checkExternal(
     await new Promise((resolve) => setTimeout(resolve, recheckDelayMs));
     try {
       const second = await open(url);
-      if (goneStatuses.has(second.status)) {
-        failures.push(`${url} → HTTP ${second.status}`);
-      } else {
+      if (!goneStatuses.has(second.status)) {
         unreachable.push(
           `${url} → HTTP ${first} pendant la rafale, ${second.status} hors rafale : hôte qui refuse sous charge, pas une page disparue`,
+        );
+        continue;
+      }
+      /*
+       * **Troisième tentative, après vingt secondes.** Mesuré le 19/10/2026, exécution 54 de la
+       * CI : `pour-les-personnes-agees.gouv.fr` a déclaré disparues deux de ses pages, deux fois
+       * chacune. Interrogées depuis un autre poste, l'une répond 404 puis 200 à quelques secondes
+       * d'intervalle — elle est vivante — et l'autre répond 404 quatre fois de suite : celle-là
+       * avait vraiment changé d'adresse, et le contrôle avait raison.
+       *
+       * Deux refus consécutifs ne suffisent donc pas à distinguer les deux cas sur cet hôte, et
+       * une CI rouge au hasard finit par ne plus être lue. Rien n'est relâché : une page vraiment
+       * disparue répond 404 aux trois appels, à vingt secondes d'écart — c'est ce qui s'est passé
+       * pour celle qui l'était.
+       */
+      await new Promise((resolve) => setTimeout(resolve, thirdTryDelayMs));
+      const third = await open(url);
+      if (goneStatuses.has(third.status)) {
+        failures.push(`${url} → HTTP ${third.status}`);
+      } else {
+        unreachable.push(
+          `${url} → HTTP ${first} puis ${second.status}, enfin ${third.status} : hôte qui refuse sous charge, pas une page disparue`,
         );
       }
     } catch (error) {

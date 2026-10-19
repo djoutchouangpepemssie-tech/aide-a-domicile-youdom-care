@@ -93,6 +93,12 @@ describe("check-links", () => {
         return new Response("", {
           status: calls.filter((c) => c.includes("intermittente")).length === 1 ? 404 : 200,
         });
+      // Répond 404 deux fois, puis 200 : mesuré sur pour-les-personnes-agees.gouv.fr le
+      // 19/10/2026 (exécution 54 de la CI). Deux refus ne prouvent donc rien sur cet hôte.
+      if (url.includes("capricieuse"))
+        return new Response("", {
+          status: calls.filter((c) => c.includes("capricieuse")).length <= 2 ? 404 : 200,
+        });
       if (url.includes("partie")) return new Response("", { status: 410 });
       if (url.includes("filtre")) return new Response("", { status: 403 });
       if (url.includes("trop-vite")) return new Response("", { status: 429 });
@@ -112,14 +118,17 @@ describe("check-links", () => {
         "https://en-panne.example/",
         "https://bloque.example/",
         "https://intermittente.example/",
+        "https://capricieuse.example/",
       ],
       fake,
       2,
       0,
+      0,
     );
-    // Sept adresses distinctes joignables, plus un second appel — hors rafale, une à la fois —
-    // pour chacune des trois qui a répondu « disparue » : 404, 410 et l'intermittente.
-    expect(calls).toHaveLength(11);
+    // Neuf adresses distinctes, plus un second appel — hors rafale, une à la fois — pour chacune
+    // des quatre qui a répondu « disparue », plus un troisième pour les trois qui le redisent :
+    // seule l'intermittente se blanchit dès le second appel.
+    expect(calls).toHaveLength(16);
     expect(report.errors).toEqual([
       "https://absente.example/ → HTTP 404",
       "https://partie.example/ → HTTP 410",
@@ -128,13 +137,14 @@ describe("check-links", () => {
     // plusieurs sources publiques filtrent les agents non-navigateurs (docs/AUDIT_GLOBAL.md, Q-2).
     expect(report.warnings).toEqual([
       "https://bloque.example/ → injoignable depuis ce poste (ECONNRESET), à vérifier à la main",
+      "https://capricieuse.example/ → HTTP 404 puis 404, enfin 200 : hôte qui refuse sous charge, pas une page disparue",
       "https://en-panne.example/ → HTTP 503 (refus de répondre, pas une page disparue), à vérifier à la main",
       "https://filtre.example/ → HTTP 403 (refus de répondre, pas une page disparue), à vérifier à la main",
       "https://intermittente.example/ → HTTP 404 pendant la rafale, 200 hors rafale : hôte qui refuse sous charge, pas une page disparue",
       "https://trop-vite.example/ → HTTP 429 (refus de répondre, pas une page disparue), à vérifier à la main",
     ]);
-    // Sept adresses distinctes ouvertes, une seule injoignable : six ont répondu.
-    expect({ reached: report.reached, total: report.total }).toEqual({ reached: 7, total: 8 });
+    // Neuf adresses distinctes ouvertes, une seule injoignable : huit ont répondu.
+    expect({ reached: report.reached, total: report.total }).toEqual({ reached: 8, total: 9 });
     // On interroge comme un visiteur : pour-les-personnes-agees.gouv.fr répond 404 — et non 403 —
     // à un agent qui s'annonce comme robot, pour des pages vivantes (D-080). Si ce jeton revient,
     // le contrôle redéclare mortes des sources en ligne.

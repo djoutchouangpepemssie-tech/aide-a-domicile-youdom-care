@@ -15,14 +15,56 @@ import { readMails, type StoredMail } from "./smtp";
 
 test.describe.configure({ mode: "serial" });
 
+/**
+ * Donne le focus au bouton et presse Entrée — dans cet ordre, et en vérifiant que le focus y est
+ * **au moment de la frappe**.
+ *
+ * Pourquoi cette vérification. Le formulaire se rend à nouveau à chaque réponse cochée : entre
+ * `focus()` et `press("Enter")`, React peut remplacer le nœud du bouton, et la frappe part alors
+ * dans le vide. Rien ne se passe, aucune requête n'atteint la route, et le test ne voit qu'une
+ * adresse qui ne change pas. C'est exactement ce que décrivent les journaux de l'exécution 54 de
+ * la CI : l'envoi du formulaire « maladie neurodégénérative » n'y a laissé **aucune trace côté
+ * serveur**, ni réussie ni refusée.
+ */
+async function pressByKeyboard(page: Page, button: Locator) {
+  await expect(button).toBeEnabled();
+  await button.focus();
+  await expect(button).toBeFocused();
+  await page.keyboard.press("Enter");
+}
+
 async function pressContinue(page: Page, form: Locator) {
   const button = form.getByRole("button", { name: /Continuer|J'envoie ma demande/ });
-  if ((await button.textContent())?.includes("J'envoie")) {
+  const isSubmit = (await button.textContent())?.includes("J'envoie");
+  if (isSubmit) {
     // La route refuse un remplissage de moins de trois secondes (anti-robots).
     await page.waitForTimeout(3_100);
   }
-  await button.focus();
-  await page.keyboard.press("Enter");
+  await pressByKeyboard(page, button);
+  if (!isSubmit) return;
+
+  /*
+   * Sur l'étape d'envoi, on s'assure que l'envoi a **démarré** : soit la page part vers la page
+   * merci, soit le bouton passe en « envoi en cours » (il est désactivé pendant la requête). Si ni
+   * l'un ni l'autre en trois secondes, la frappe s'est perdue : on represse une fois, le focus
+   * revérifié. Un refus du serveur, lui, n'est pas rattrapé — le formulaire affiche son erreur et
+   * le test échoue, comme il doit.
+   */
+  const demarre = await Promise.race([
+    page
+      .waitForURL(/\/merci\//, { timeout: 3_000 })
+      .then(() => true)
+      .catch(() => false),
+    button
+      .waitFor({ state: "hidden", timeout: 3_000 })
+      .then(() => true)
+      .catch(() => false),
+    expect(button)
+      .toBeDisabled({ timeout: 3_000 })
+      .then(() => true)
+      .catch(() => false),
+  ]);
+  if (!demarre) await pressByKeyboard(page, button);
 }
 
 async function pickCommuneByKeyboard(form: Locator, page: Page, label: string) {
@@ -106,7 +148,21 @@ function teamSubjectLabel(slug: string): string {
 const ATTENTE_ENVOI_MS = 15_000;
 
 async function expectSubmitted(page: Page, pattern: RegExp) {
-  await expect(page).toHaveURL(pattern, { timeout: ATTENTE_ENVOI_MS });
+  try {
+    await expect(page).toHaveURL(pattern, { timeout: ATTENTE_ENVOI_MS });
+  } catch (error) {
+    /*
+     * Un échec muet ne s'explique pas : « l'adresse n'a pas changé » ne dit ni si le serveur a
+     * refusé, ni si la page affiche une panne, ni si rien n'est parti. On joint donc ce que la
+     * personne verrait à l'écran — c'est la première question qu'on se pose en lisant le rapport.
+     */
+    const panne = page.getByText(/L'envoi n'a pas abouti/);
+    const vu =
+      (await panne.count()) > 0
+        ? await panne.first().innerText()
+        : "aucun message d'erreur à l'écran";
+    throw new Error(`${error instanceof Error ? error.message : error}\n\nÀ l'écran : ${vu}`);
+  }
 }
 
 test("rappel au clavier jusqu'à la page merci ; l'équipe reçoit l'alerte", async ({ page }) => {

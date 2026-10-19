@@ -1696,3 +1696,62 @@ la réponse est d'accuser réception avant d'envoyer, pas d'allonger une attente
 **Vérifications** : les 18 parcours de `envoi.spec.ts` (neuf par projet, les deux lancés ensemble)
 passent deux fois de suite en 1 min 20 ; le cas qui échouait reproductiblement passe. Lint et
 format verts.
+
+---
+
+## 2026-10-19 — Deux échecs de CI, deux causes, et une mesure qui corrige ma première explication
+
+L'exécution 54 est repartie rouge, pour **deux raisons distinctes** — et la première invalide ce que
+j'avais écrit une heure plus tôt.
+
+### 1. Une source morte, et une autre qui fait semblant de l'être
+
+Le contrôle des liens a déclaré disparues deux pages de `pour-les-personnes-agees.gouv.fr`.
+Interrogées depuis ce poste, avec le même agent de navigateur que le contrôle :
+
+| Adresse | Réponses | Verdict |
+| --- | --- | --- |
+| `.../preserver-son-autonomie-s-informer-et-anticiper/a-qui-s-adresser/les-points-d-information-locaux...` | 404, puis **200** | vivante — l'hôte refuse sous charge (D-080, D-084) |
+| `.../preserver-son-autonomie/a-qui-s-adresser/les-points-d-information-locaux...` | **404 quatre fois de suite** | **vraiment déplacée** |
+
+Donc : **le contrôle avait raison sur l'une des deux.** L'article du magazine citait l'ancienne
+adresse de cette page ; le lexique citait déjà la nouvelle. L'article pointe désormais la même, et
+sa date de consultation est celle du jour.
+
+Et pour l'autre, une **troisième tentative, après vingt secondes**, avant de conclure à la
+disparition. Deux refus consécutifs ne distinguent pas les deux cas sur cet hôte — c'est mesuré
+ci-dessus, dans les deux sens. Rien n'est relâché : la page vraiment déplacée répondait 404 aux
+quatre appels, elle resterait en erreur. Un test couvre ce cas nouveau (404, 404, puis 200).
+
+**Au passage, une chose à savoir sur ce dépôt** : le contrôle des sources externes **ne tourne pas
+vraiment en local**. Le `fetch` de Node ne passe pas par le mandataire de ce poste, donc les 137
+adresses sont « injoignables » et le contrôle se contente d'un avertissement. Seule la CI les
+vérifie — c'est écrit dans son avertissement, et c'est pour cela que j'ai mesuré à la main.
+
+### 2. L'envoi d'un formulaire : ma première explication était fausse
+
+J'avais attribué l'échec de `envoi.spec.ts` à une attente trop courte et porté les six attentes
+d'envoi à quinze secondes. **Les journaux de l'exécution 54 montrent que ce n'était pas cela** : la
+page est restée sur le formulaire pendant les quinze secondes entières, trente-trois relevés — et
+surtout, **la route n'a rien journalisé**, ni envoi réussi ni refus. Aucune requête n'est partie.
+
+Ce n'est donc pas de la lenteur : **la frappe s'est perdue**. Le formulaire se rend à nouveau à
+chaque réponse cochée ; entre le `focus()` sur le bouton et la frappe d'Entrée, React peut remplacer
+le nœud, et la touche part dans le vide.
+
+La frappe vérifie maintenant trois choses avant de partir : le bouton est actif, il a le focus, et —
+sur l'étape d'envoi — que **l'envoi a bien démarré** (la page part, ou le bouton passe en « envoi en
+cours »). Sinon, une seule nouvelle frappe, focus revérifié. Un refus du serveur n'est pas rattrapé
+pour autant : le formulaire affiche son erreur et le test échoue, comme il doit.
+
+Et quand il échoue, il ne se taira plus : le message joint **ce que la personne verrait à l'écran**.
+« L'adresse n'a pas changé » ne dit pas si le serveur a refusé, si la page affiche une panne, ou si
+rien n'est parti — c'est la première question qu'on se pose en lisant un rapport.
+
+**Vérifications** : 18 parcours d'envoi (neuf par projet, les deux ensemble) verts ; la fraction 2/3
+complète, celle qui échouait en CI, rejouée localement dans les mêmes conditions — **260 parcours
+verts en 6 min 42** ; 91 tests des contrôles, 13/13 contrôles, format vert.
+
+**Ce que je ne prétends pas** : l'échec ne se reproduit pas sur ce poste, ni par le fichier seul, ni
+par la fraction entière. La correction suit la preuve des journaux — aucune requête partie — et non
+une reproduction. Si elle revient, le message d'échec dira enfin ce qu'il y avait à l'écran.
