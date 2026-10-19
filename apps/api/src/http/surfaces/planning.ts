@@ -40,13 +40,13 @@ import {
   visibleOccurrences,
   type Serie,
 } from "../../planning/serie";
-import { planMaterialisation } from "../../planning/materialisation";
+import { occurrenceSignature, planMaterialisation } from "../../planning/materialisation";
 import { optimise, suggestWorkers } from "../../planning/optimisation";
 import { judgePlanning, workerFacts } from "../../planning/validation";
 import { isDate, isTime, nextDay, parisToInstant } from "../../temps/paris";
 import { parseBody } from "../body";
 import { fail, notFound } from "../errors";
-import { actorRole, traceAdmin } from "../trace";
+import { couvre, traceAdmin } from "../trace";
 import type { ApiDeps, AppEnv } from "../types";
 
 /*
@@ -89,6 +89,8 @@ export function planningSurface(deps: ApiDeps) {
   app.get("/rules/:agencyId", async (context) => {
     const agencyId = context.req.param("agencyId");
     if (!idParam.safeParse(agencyId).success) return notFound(context);
+    // Un compte d'agence ne lit et ne règle que son agence (`trace.ts`).
+    if (!couvre(context.get("acteur"), agencyId)) return notFound(context);
     const rules = await deps.repositories.rules.current(agencyId);
     return context.json({
       // Le catalogue explique chaque règle et propose une valeur : il n'en applique aucune.
@@ -102,13 +104,14 @@ export function planningSurface(deps: ApiDeps) {
   app.put("/rules/:agencyId", async (context) => {
     const agencyId = context.req.param("agencyId");
     if (!idParam.safeParse(agencyId).success) return notFound(context);
+    if (!couvre(context.get("acteur"), agencyId)) return notFound(context);
     const body = await parseBody(
       context,
       z.strictObject({ regles: z.record(z.enum(RULE_KEYS), ruleSchema) }),
     );
     if (!body.ok) return body.response;
 
-    const acteur = await actorRole(deps, context);
+    const acteur = context.get("acteur");
     const courantes = await deps.repositories.rules.current(agencyId);
     const parsed = agencyRulesSchema.safeParse({
       _id: deps.newId(),
@@ -152,11 +155,12 @@ export function planningSurface(deps: ApiDeps) {
     if (!body.ok) return body.response;
 
     const household = await deps.repositories.households.findById(body.value.householdId);
-    if (!household) return notFound(context);
+    // Le foyer décide de l'agence : un compte de l'agence A ne pose pas de planning chez B.
+    if (!household || !couvre(context.get("acteur"), household.agencyId)) return notFound(context);
     if (household.status !== "actif")
       return fail(context, "requete_invalide", "foyer gelé ou archivé");
 
-    const acteur = await actorRole(deps, context);
+    const acteur = context.get("acteur");
     const now = deps.now();
     const parsed = serieSchema.safeParse({
       _id: deps.newId(),
@@ -217,6 +221,8 @@ export function planningSurface(deps: ApiDeps) {
   app.get("/households/:id/series", async (context) => {
     const householdId = context.req.param("id");
     if (!idParam.safeParse(householdId).success) return notFound(context);
+    const foyer = await deps.repositories.households.findById(householdId);
+    if (!foyer || !couvre(context.get("acteur"), foyer.agencyId)) return notFound(context);
     const series = await deps.repositories.series.listByHousehold(householdId);
     return context.json({
       series: series.map((serie) => ({
@@ -235,7 +241,7 @@ export function planningSurface(deps: ApiDeps) {
 
   app.get("/series/:id/occurrences", async (context) => {
     const serie = await deps.repositories.series.findById(context.req.param("id"));
-    if (!serie) return notFound(context);
+    if (!serie || !couvre(context.get("acteur"), serie.agencyId)) return notFound(context);
     const fenetre = z
       .strictObject({ from: dateSchema, to: dateSchema })
       .safeParse({ from: context.req.query("from"), to: context.req.query("to") });
@@ -252,7 +258,7 @@ export function planningSurface(deps: ApiDeps) {
 
   app.patch("/series/:id/occurrences/:date/:slotIndex", async (context) => {
     const serie = await deps.repositories.series.findById(context.req.param("id"));
-    if (!serie) return notFound(context);
+    if (!serie || !couvre(context.get("acteur"), serie.agencyId)) return notFound(context);
     const date = context.req.param("date");
     const slotIndex = Number(context.req.param("slotIndex"));
     if (!isDate(date) || !Number.isInteger(slotIndex) || slotIndex < 0) {
@@ -277,7 +283,7 @@ export function planningSurface(deps: ApiDeps) {
     );
     if (!body.ok) return body.response;
 
-    const acteur = await actorRole(deps, context);
+    const acteur = context.get("acteur");
     const now = deps.now();
     const { portee, change } = body.value;
 
@@ -349,7 +355,7 @@ export function planningSurface(deps: ApiDeps) {
 
   app.post("/series/:id/skip", async (context) => {
     const serie = await deps.repositories.series.findById(context.req.param("id"));
-    if (!serie) return notFound(context);
+    if (!serie || !couvre(context.get("acteur"), serie.agencyId)) return notFound(context);
     const body = await parseBody(
       context,
       z.strictObject({ date: dateSchema, motif: z.string().max(200).optional() }),
@@ -367,7 +373,7 @@ export function planningSurface(deps: ApiDeps) {
 
   app.post("/series/:id/status", async (context) => {
     const serie = await deps.repositories.series.findById(context.req.param("id"));
-    if (!serie) return notFound(context);
+    if (!serie || !couvre(context.get("acteur"), serie.agencyId)) return notFound(context);
     const body = await parseBody(
       context,
       z.strictObject({
@@ -414,6 +420,7 @@ export function planningSurface(deps: ApiDeps) {
       });
     if (!query.success) return fail(context, "requete_invalide", "agencyId, from, to");
     if (query.data.to < query.data.from) return fail(context, "requete_invalide", "to");
+    if (!couvre(context.get("acteur"), query.data.agencyId)) return notFound(context);
 
     const series = await deps.repositories.series.listByAgency(query.data.agencyId);
     const liste = series
@@ -454,10 +461,10 @@ export function planningSurface(deps: ApiDeps) {
       deps.repositories.households.findById(body.value.householdId),
       deps.repositories.workers.findById(body.value.workerId),
     ]);
-    if (!household) return notFound(context);
+    if (!household || !couvre(context.get("acteur"), household.agencyId)) return notFound(context);
     if (!worker) return fail(context, "requete_invalide", "workerId");
 
-    const acteur = await actorRole(deps, context);
+    const acteur = context.get("acteur");
     await deps.repositories.workerPreferences.upsert(
       workerPreferenceSchema.parse({
         _id: deps.newId(),
@@ -517,6 +524,7 @@ export function planningSurface(deps: ApiDeps) {
     });
     if (!query.success) return fail(context, "requete_invalide", "agencyId, from, to");
     if (query.data.to < query.data.from) return fail(context, "requete_invalide", "to");
+    if (!couvre(context.get("acteur"), query.data.agencyId)) return notFound(context);
 
     const series = await deps.repositories.series.listByAgency(query.data.agencyId);
     const aPourvoir = series
@@ -566,6 +574,7 @@ export function planningSurface(deps: ApiDeps) {
     );
     if (!body.ok) return body.response;
     if (body.value.to < body.value.from) return fail(context, "requete_invalide", "to");
+    if (!couvre(context.get("acteur"), body.value.agencyId)) return notFound(context);
 
     const series = await deps.repositories.series.listByAgency(body.value.agencyId, "active");
     const occurrences = series.flatMap((serie) =>
@@ -589,7 +598,7 @@ export function planningSurface(deps: ApiDeps) {
       });
     }
 
-    const acteur = await actorRole(deps, context);
+    const acteur = context.get("acteur");
     const now = deps.now();
     const appliquees: typeof resultat.propositions = [];
     const refusees: Array<{ proposition: (typeof resultat.propositions)[number]; raison: string }> =
@@ -659,6 +668,7 @@ export function planningSurface(deps: ApiDeps) {
     );
     if (!body.ok) return body.response;
     if (body.value.to < body.value.from) return fail(context, "requete_invalide", "to");
+    if (!couvre(context.get("acteur"), body.value.agencyId)) return notFound(context);
 
     const series = await deps.repositories.series.listByAgency(body.value.agencyId);
     const occurrences = series.flatMap((serie) =>
@@ -676,7 +686,7 @@ export function planningSurface(deps: ApiDeps) {
     });
     const plan = planMaterialisation(occurrences, existantes, instants);
     const now = deps.now();
-    const acteurMateria = await actorRole(deps, context);
+    const acteurMateria = context.get("acteur");
 
     /*
      * Affecter quelqu'un à un foyer doit lui **ouvrir les droits de sa mission** sur ce foyer, et
@@ -805,6 +815,76 @@ export function planningSurface(deps: ApiDeps) {
     });
   });
 
+  /* ------------------------------------------- ajuster une visite divergente */
+
+  /*
+   * Une visite commencée ne suit plus le planning (MY-13) : la divergence est signalée. Voici où
+   * elle se tranche, et il n'y a que deux réponses honnêtes — **aligner** la visite sur le nouveau
+   * planning, ou **conserver** ce qui a eu lieu. Les deux demandent un motif : une heure
+   * travaillée qui change demande une explication, et c'est elle qui sera lue dans six mois.
+   */
+  app.post("/visits/:id/ajustement", async (context) => {
+    const body = await parseBody(
+      context,
+      z.strictObject({
+        decision: z.enum(["aligner", "conserver"]),
+        motif: z.string().min(3).max(200),
+      }),
+    );
+    if (!body.ok) return body.response;
+
+    const visit = await deps.repositories.visits.findById(context.req.param("id"));
+    if (!visit) return notFound(context);
+    if (!visit.serieId || !visit.occurrenceDate || visit.slotIndex == null) {
+      // Une visite ponctuelle ne diverge de rien : il n'y a pas de planning à aligner.
+      return fail(context, "requete_invalide", "visite hors planning");
+    }
+
+    const serie = await deps.repositories.series.findById(visit.serieId);
+    if (!serie || !couvre(context.get("acteur"), serie.agencyId)) return notFound(context);
+
+    const occurrence = occurrences(serie, visit.occurrenceDate, visit.occurrenceDate).find(
+      (candidate) => candidate.slotIndex === visit.slotIndex,
+    );
+    if (!occurrence) return fail(context, "requete_invalide", "l'occurrence n'existe plus");
+
+    const acteur = context.get("acteur");
+    const decision = {
+      decision: body.value.decision,
+      motif: body.value.motif,
+      occurrenceSignature: occurrenceSignature(occurrence),
+      decidedBy: acteur.memberId,
+      decidedAt: deps.now(),
+    };
+
+    const aligne =
+      body.value.decision === "aligner"
+        ? {
+            workerId: occurrence.workerId ?? visit.workerId,
+            plannedStart: parisToInstant(occurrence.date, occurrence.start),
+            plannedEnd: parisToInstant(occurrence.endDate, occurrence.end),
+            kind: occurrence.kind,
+          }
+        : {};
+
+    await deps.repositories.visits.save(
+      visitSchema.parse({ ...visit, ...aligne, adjustment: decision }),
+    );
+    await traceAdmin(deps, context, {
+      action: "modifier",
+      householdId: visit.householdId,
+      target: `ajustement:${body.value.decision}:${visit._id}`,
+    });
+
+    return context.json({
+      decision: body.value.decision,
+      visitId: visit._id,
+      // Si le planning rebouge, la divergence se reposera : une décision ne vaut que pour ce
+      // qu'elle a vu.
+      signature: decision.occurrenceSignature,
+    });
+  });
+
   /* ---------------------------------------------------------------- absences */
 
   app.post("/absences", async (context) => {
@@ -821,9 +901,9 @@ export function planningSurface(deps: ApiDeps) {
     if (!body.ok) return body.response;
 
     const worker = await deps.repositories.workers.findById(body.value.workerId);
-    if (!worker) return notFound(context);
+    if (!worker || !couvre(context.get("acteur"), worker.agencyId)) return notFound(context);
 
-    const acteur = await actorRole(deps, context);
+    const acteur = context.get("acteur");
     const parsed = absenceSchema.safeParse({
       _id: deps.newId(),
       workerId: body.value.workerId,
@@ -872,7 +952,9 @@ export function planningSurface(deps: ApiDeps) {
     );
     if (!body.ok) return body.response;
 
-    const acteur = await actorRole(deps, context);
+    if (!couvre(context.get("acteur"), body.value.agencyId)) return notFound(context);
+
+    const acteur = context.get("acteur");
     const existantes = await deps.repositories.prestations.listByAgency(body.value.agencyId);
     const enConflit = existantes.filter(
       (prestation) =>
@@ -936,6 +1018,7 @@ export function planningSurface(deps: ApiDeps) {
   app.get("/prestations/:agencyId", async (context) => {
     const agencyId = context.req.param("agencyId");
     if (!idParam.safeParse(agencyId).success) return notFound(context);
+    if (!couvre(context.get("acteur"), agencyId)) return notFound(context);
     const prestations = await deps.repositories.prestations.listByAgency(agencyId);
     const reglages = await deps.repositories.tariffSettings.find(agencyId);
     return context.json({
@@ -969,7 +1052,9 @@ export function planningSurface(deps: ApiDeps) {
     );
     if (!body.ok) return body.response;
 
-    const acteur = await actorRole(deps, context);
+    if (!couvre(context.get("acteur"), agencyId)) return notFound(context);
+
+    const acteur = context.get("acteur");
     const existant = await deps.repositories.tariffSettings.find(agencyId);
     const settings = tariffSettingsSchema.parse({
       _id: existant?._id ?? deps.newId(),
@@ -1004,6 +1089,8 @@ export function planningSurface(deps: ApiDeps) {
       }),
     );
     if (!body.ok) return body.response;
+
+    if (!couvre(context.get("acteur"), body.value.agencyId)) return notFound(context);
 
     const prestations = await deps.repositories.prestations.listByAgency(body.value.agencyId);
     const prestation = prestationAt(prestations, body.value.code, body.value.visite.startDate);

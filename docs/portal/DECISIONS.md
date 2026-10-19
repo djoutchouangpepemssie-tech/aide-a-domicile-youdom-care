@@ -371,3 +371,61 @@ y penser — et l'accès au logement reste limité à la plage de la visite, quo
 
 **Ce qui reste** : la révocation explicite quand un intervenant quitte l'agence (vague 5, RH), et
 l'ajustement d'une visite divergente — aujourd'hui signalé, demain modifiable en deux clics.
+
+---
+
+## MY-14 — Trois fermetures : la portée par agence, les validateurs en base, l'ajustement (19/10/2026)
+
+Les trois points que j'avais laissés ouverts dans la vague 1 sont fermés. Aucun ne demandait quoi
+que ce soit d'Arcel ; tous les trois étaient des promesses à tenir.
+
+### 1. La portée par agence (un trou de sécurité, et je l'avais signalé)
+
+Jusqu'ici, un compte d'agence authentifié agissait sur **l'agence qu'il nommait dans sa requête**.
+Chaque action était journalisée — mais rien ne l'arrêtait. C'est corrigé : la portée vient de ses
+**rattachements**, pas de ce qu'il écrit.
+
+- un compte d'agence est rattaché au foyer technique de son agence, et c'est de ce foyer qu'on lit
+  l'agence ;
+- **rien n'est inscrit dans le jeton** : un jeton ne porte aucun droit (`auth/sessions.ts`), et une
+  portée inscrite dans un jeton survivrait à sa révocation ;
+- un responsable de deux agences a deux rattachements, et couvre les deux ;
+- toute requête hors portée répond **404**, comme tout refus d'autorisation.
+
+Un test le vérifie sur dix routes à la fois — lectures, règles, planning, suggestions, tarifs,
+séries, absences, matérialisation — et vérifie **qu'aucune écriture n'a eu lieu**.
+
+### 2. Les validateurs `$jsonSchema` : la doublure des schémas Zod
+
+Zod protège ce qui passe par le code, c'est-à-dire tout, aujourd'hui. Demain, une reprise de
+données, un script d'import ou une console ouverte écriront directement dans la base — et ce jour-là
+le schéma applicatif ne protégera rien.
+
+Les validateurs sont **dérivés** des schémas Zod, pas recopiés : un test échoue dès qu'un champ
+obligatoire apparaît d'un côté sans l'autre. Ils sont volontairement pauvres (champs obligatoires et
+type BSON), parce qu'un second schéma complet à tenir à jour est un second schéma qui dérive. Ils
+sont posés en `moderate` / `warn` : on refuse l'écriture invalide sans bloquer une base qui
+contiendrait de l'ancien. Durcir se fera après une passe de vérification, pas le jour de la mise en
+service.
+
+**Ce que je ne peux pas vérifier ici** : il n'y a pas de MongoDB dans l'environnement de
+construction. Les tests éprouvent ce qui peut l'être sans base — la dérivation, le typage des dates,
+et l'absence des mots-clés que MongoDB refuse (`$schema`, `format`). Le premier `pnpm portal:migrer`
+sur un vrai cluster dira le reste, collection par collection, sans s'arrêter à la première.
+
+### 3. L'ajustement d'une visite divergente
+
+MY-13 signalait les divergences ; elles se tranchent maintenant, et il n'y a que deux réponses
+honnêtes : **aligner** la visite sur le nouveau planning, ou **conserver** ce qui a eu lieu. Les
+deux demandent un motif — une heure travaillée qui change demande une explication, et c'est elle
+qu'on lira dans six mois.
+
+La décision retient **l'état du planning qu'elle a vu**. Si le planning rebouge ensuite, la
+divergence se repose : une décision ne vaut que pour ce qu'elle a vu.
+
+### Ce que cela veut dire pour la suite
+
+**L'API de la vague 1 est complète.** Ce qui manque maintenant pour que l'agence s'en serve n'est
+plus de l'API : ce sont les **écrans**. Le back-office (Next.js, sur Vercel, avec les jetons de
+style et les primitives accessibles du site) est le prochain chantier, et c'est lui qui transformera
+ce travail en outil quotidien.

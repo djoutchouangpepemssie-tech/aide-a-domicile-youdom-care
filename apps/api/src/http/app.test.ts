@@ -512,7 +512,8 @@ describe("la surface terrain", () => {
 describe("le back-office", () => {
   async function agence() {
     const h = harnais();
-    const bureau = household({ code: "AGENCE-01" });
+    const agencyId = newId();
+    const bureau = household({ code: "AGENCE-01", agencyId });
     await h.db.repositories.households.insert(bureau);
     const responsable = await membre(h, { email: "arcel@exemple.fr", nom: "Arcel" });
     await h.db.repositories.memberships.insert(
@@ -523,16 +524,18 @@ describe("le back-office", () => {
       }),
     );
     const token = await h.connecter(responsable);
-    return { h, token, responsable };
+    // L'agence de l'auteur vient de son rattachement : c'est elle, et pas une autre, qu'il peut
+    // administrer (`trace.ts`).
+    return { h, token, responsable, agencyId };
   }
 
   const json = (token: string) => ({ ...auth(token), "content-type": "application/json" });
 
   it("crée un foyer, refuse un code déjà pris", async () => {
-    const { h, token } = await agence();
+    const { h, token, agencyId } = await agence();
     const corps = {
       code: "FOY-0001",
-      agencyId: newId(),
+      agencyId,
       mode: "prestataire",
       address: { line1: "12 rue des Lilas", postalCode: "75011", city: "Paris" },
     };
@@ -552,14 +555,14 @@ describe("le back-office", () => {
   });
 
   it("enregistre un intervenant sans consentement photo par défaut", async () => {
-    const { h, token } = await agence();
+    const { h, token, agencyId } = await agence();
     const reponse = await h.app.request("/admin/v1/workers", {
       method: "POST",
       headers: json(token),
       body: JSON.stringify({
         email: "fatima@exemple.fr",
         displayName: "Fatima B.",
-        agencyId: newId(),
+        agencyId,
         firstName: "Fatima",
         lastInitial: "B",
       }),
@@ -571,8 +574,8 @@ describe("le back-office", () => {
   });
 
   it("rattache un membre avec les droits « ✓ » de son rôle, et rien d'autre", async () => {
-    const { h, token } = await agence();
-    const foyer = household({ code: "FOY-0002" });
+    const { h, token, agencyId } = await agence();
+    const foyer = household({ code: "FOY-0002", agencyId });
     await h.db.repositories.households.insert(foyer);
 
     const beneficiaire = await h.app.request("/admin/v1/memberships", {
@@ -606,8 +609,8 @@ describe("le back-office", () => {
   });
 
   it("pose une visite, refuse un intervenant inconnu et un foyer inconnu", async () => {
-    const { h, token } = await agence();
-    const foyer = household({ code: "FOY-0003" });
+    const { h, token, agencyId } = await agence();
+    const foyer = household({ code: "FOY-0003", agencyId });
     await h.db.repositories.households.insert(foyer);
     const fatima = await membre(h, { nom: "Fatima", phone: "+33622222222" });
     await h.db.repositories.workers.insert({
@@ -664,8 +667,8 @@ describe("le back-office", () => {
   });
 
   it("refuse une visite qui finit avant de commencer", async () => {
-    const { h, token } = await agence();
-    const foyer = household({ code: "FOY-0004" });
+    const { h, token, agencyId } = await agence();
+    const foyer = household({ code: "FOY-0004", agencyId });
     await h.db.repositories.households.insert(foyer);
     const reponse = await h.app.request("/admin/v1/visits", {
       method: "POST",
@@ -682,13 +685,13 @@ describe("le back-office", () => {
   });
 
   it("journalise chaque action d'agence", async () => {
-    const { h, token, responsable } = await agence();
+    const { h, token, responsable, agencyId } = await agence();
     await h.app.request("/admin/v1/households", {
       method: "POST",
       headers: json(token),
       body: JSON.stringify({
         code: "FOY-0005",
-        agencyId: newId(),
+        agencyId,
         mode: "mandataire",
         address: { line1: "3 avenue Gambetta", postalCode: "93100", city: "Montreuil" },
       }),
@@ -705,8 +708,8 @@ describe("le back-office", () => {
   });
 
   it("retire un droit, et le retrait prend effet tout de suite", async () => {
-    const { h, token } = await agence();
-    const foyer = household({ code: "FOY-0006" });
+    const { h, token, agencyId } = await agence();
+    const foyer = household({ code: "FOY-0006", agencyId });
     await h.db.repositories.households.insert(foyer);
     const claire = await membre(h, { email: "claire@exemple.fr" });
     await rattacher(h, { memberId: claire, householdId: foyer._id, role: "beneficiaire" });

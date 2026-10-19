@@ -68,8 +68,13 @@ matérialisation (MY-13) : les occurrences deviennent des visites pointables, id
 suivent le planning tant qu'elles n'ont pas commencé et ne le suivent plus après. Affecter ouvre
 désormais les droits de la mission sur le foyer, bornés dans le temps. 243 tests d'API.
 
-**Étape 5 — suivante** : la portée par agence des comptes de l'agence, les validateurs
-`$jsonSchema` en doublure des schémas Zod, et l'ajustement d'une visite divergente.
+**Étape 5 — faite (19/10, MY-14)** : la portée par agence (un compte n'agit plus que sur ses
+agences, et la portée vient de ses rattachements, pas de sa requête), les validateurs `$jsonSchema`
+dérivés des schémas Zod, et l'ajustement d'une visite divergente — aligner ou conserver, avec motif.
+
+**L'API de la vague 1 est complète.** La suite n'est plus de l'API : ce sont les **écrans**. Le
+back-office en Next.js, sur Vercel, avec les jetons de style et les primitives accessibles du site —
+c'est lui qui transformera ce travail en outil quotidien, et c'est le prochain chantier.
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

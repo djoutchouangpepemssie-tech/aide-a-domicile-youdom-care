@@ -36,7 +36,7 @@ Autour : `src/store/` (dépôts en mémoire pour les tests, sur MongoDB en servi
 `scripts/migrate.ts` (index, idempotent), `scripts/create-admin.ts` (le premier compte d'agence,
 **volontairement hors API**).
 
-243 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
+261 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
 **404 et jamais 403** (exigence de `PERMISSIONS.md` §7).
 
 ## Ce qui n'est pas couvert par un test, et il faut le savoir
@@ -72,14 +72,19 @@ Affecter un intervenant à un foyer lui ouvre **les droits de sa mission** sur c
 colonne « intervenant » de la matrice, pas un de plus), **bornés dans le temps** et repoussés à
 chaque matérialisation.
 
+**Étape 5 — les fermetures** (MY-14) : la **portée par agence** (`src/http/trace.ts` : elle vient
+des rattachements, jamais du jeton ni de la requête), les **validateurs `$jsonSchema`**
+(`src/db/validators.ts`, dérivés des schémas Zod et posés par `pnpm portal:migrer`), et
+l'**ajustement d'une visite divergente** (aligner ou conserver, avec motif, et la question se repose
+si le planning rebouge).
+
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. la portée par agence des comptes de l'agence : aujourd'hui, un coordinateur authentifié agit sur
-   l'agence qu'il nomme, et chaque action est journalisée ;
-2. les validateurs `$jsonSchema` côté MongoDB, en doublure des schémas Zod ;
-3. le contenu des consignes d'accès (chiffrement au champ) : la route et son autorisation existent,
+1. **les écrans** : l'API de la vague 1 est complète, le back-office reste à écrire (Next.js, sur
+   Vercel, avec les jetons de style et les primitives accessibles du site) ;
+2. le contenu des consignes d'accès (chiffrement au champ) : la route et son autorisation existent,
    le contenu arrive avec le chiffrement ;
-4. le déploiement chez l'hébergeur certifié HDS — **en attente du choix** (question A).
+3. le déploiement chez l'hébergeur certifié HDS — **en attente du choix** (question A).
 
 ## Faire tourner
 

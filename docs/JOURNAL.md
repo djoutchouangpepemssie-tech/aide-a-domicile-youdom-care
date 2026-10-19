@@ -1919,3 +1919,62 @@ finances.
 tournée du jour et pointe son arrivée en NFC. Le planning et le terrain se parlent.
 
 **Vérifications** : 243 tests d'API, 1 191 en tout avec le site, lint, typecheck, format verts.
+
+---
+
+## 2026-10-19 — Trois fermetures, dont un trou de sécurité que j'avais signalé (MY-14)
+
+Les trois points laissés ouverts dans la vague 1 sont fermés. Aucun ne demandait quoi que ce soit
+d'Arcel ; tous les trois étaient des promesses à tenir.
+
+### La portée par agence — et c'était un vrai trou
+
+Un compte d'agence authentifié agissait sur **l'agence qu'il nommait dans sa requête**. Je l'avais
+écrit noir sur blanc dans le README en disant « la portée arrive avec le module Planning » ; elle
+arrive aujourd'hui. La portée vient désormais de ses **rattachements**, pas de ce qu'il écrit :
+
+- un compte d'agence est rattaché au foyer technique de son agence, et c'est de là qu'on lit
+  l'agence ;
+- **rien dans le jeton** : un jeton ne porte aucun droit, et une portée inscrite dedans survivrait à
+  sa révocation ;
+- un responsable de deux agences couvre les deux, par ses deux rattachements ;
+- hors portée, c'est **404** — comme tout refus d'autorisation, pour ne rien confirmer.
+
+Le test le vérifie sur dix routes d'un coup et vérifie **qu'aucune écriture n'a eu lieu** : ni série
+modifiée, ni absence posée, ni visite matérialisée. Cinq tests du back-office ont dû être corrigés
+au passage : ils nommaient une agence au hasard et passaient — ce qui est précisément le défaut.
+
+### Les validateurs en base : la ceinture et les bretelles
+
+Zod protège ce qui passe par le code — tout, aujourd'hui. Demain, une reprise de données ou une
+console ouverte écriront directement dans la base, et le schéma applicatif ne protégera rien.
+
+Les validateurs MongoDB sont **dérivés** des schémas Zod, pas recopiés : un test échoue dès qu'un
+champ obligatoire apparaît d'un côté sans l'autre. Volontairement pauvres — champs obligatoires et
+type BSON —, parce qu'un second schéma complet à tenir est un second schéma qui dérive. Posés en
+`moderate`/`warn` : on refuse l'écriture invalide sans bloquer une base contenant de l'ancien.
+
+**Ce que je ne peux pas vérifier ici, et je le dis** : il n'y a pas de MongoDB dans cet
+environnement. Les tests éprouvent la dérivation, le typage des dates, et l'absence des mots-clés
+que MongoDB refuse (`$schema`, `format` — ils font échouer un `collMod`). Le premier
+`pnpm portal:migrer` sur un vrai cluster dira le reste, collection par collection, sans s'arrêter à
+la première erreur.
+
+### L'ajustement d'une visite divergente
+
+MY-13 signalait les divergences ; elles se tranchent maintenant. Deux réponses, pas trois :
+**aligner** la visite sur le nouveau planning, ou **conserver** ce qui a eu lieu. Les deux demandent
+un motif — une heure travaillée qui change demande une explication, et c'est elle qu'on lira dans six
+mois.
+
+Et un détail qui compte : la décision retient **l'état du planning qu'elle a vu**. Si le planning
+rebouge ensuite, la divergence se repose. Une décision ne vaut que pour ce qu'elle a vu.
+
+### Ce que cela change pour la suite
+
+**L'API de la vague 1 est complète.** Ce qui manque pour que l'agence s'en serve n'est plus de
+l'API : ce sont les **écrans**. Le back-office — Next.js sur Vercel, avec les jetons de style et les
+primitives accessibles déjà éprouvées sur le site — est le prochain chantier, et c'est lui qui
+transformera ce travail en outil quotidien.
+
+**Vérifications** : 261 tests d'API, lint, typecheck, format verts.

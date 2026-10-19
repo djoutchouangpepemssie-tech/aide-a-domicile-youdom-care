@@ -8,7 +8,7 @@ import { planningSurface } from "./surfaces/planning";
 import { authSurface } from "./surfaces/auth";
 import { fieldSurface } from "./surfaces/field";
 import { portalSurface } from "./surfaces/portal";
-import { ROLES_AGENCE } from "./trace";
+import { chargerActeur, ROLES_AGENCE } from "./trace";
 import type { ApiDeps, AppEnv } from "./types";
 
 /*
@@ -76,7 +76,7 @@ export function createApp(deps: ApiDeps) {
   app.route("/field/v1", field);
 
   const admin = new Hono<AppEnv>();
-  admin.use("*", authenticate(deps), requireRoles(deps, ROLES_AGENCE));
+  admin.use("*", authenticate(deps), requireRoles(deps, ROLES_AGENCE), chargerActeur(deps));
   admin.route("/", adminSurface(deps));
   // Planning et tarifs : même surface, même garde, un fichier par sujet.
   admin.route("/", planningSurface(deps));

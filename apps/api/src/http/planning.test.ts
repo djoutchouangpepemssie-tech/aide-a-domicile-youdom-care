@@ -1106,3 +1106,235 @@ describe("affecter ouvre les droits de la mission, et seulement eux", () => {
     expect(seconds[0].endsAt?.getTime() ?? 0).toBeGreaterThan(premiereFin);
   });
 });
+
+describe("la portée par agence", () => {
+  it("un compte de l'agence A ne touche pas l'agence B, même en la nommant", async () => {
+    const a = await bureau();
+    const fatima = await intervenant(a, "Fatima", "+33611111111");
+    const { body } = await creerSerie(a, {
+      from: "2026-10-19",
+      slots: [creneau({ weekday: 1, start: "09:00", end: "11:00", workerId: fatima })],
+    });
+    const serieDeA = body.id as string;
+
+    // Une seconde agence, dans la même base, avec son propre responsable.
+    const autreAgence = newId();
+    const siegeB = household({ code: "AGENCE-02", agencyId: autreAgence });
+    await a.h.db.repositories.households.insert(siegeB);
+    const responsableB = await membre(a.h, { email: "b@exemple.fr", nom: "Responsable B" });
+    await a.h.db.repositories.memberships.insert(
+      membership({ memberId: responsableB, householdId: siegeB._id, role: "responsable_agence" }),
+    );
+    const tokenB = await a.h.connecter(responsableB);
+
+    // Lectures et réglages de l'agence A : introuvables pour B.
+    for (const chemin of [
+      `/admin/v1/rules/${a.agencyId}`,
+      `/admin/v1/planning?agencyId=${a.agencyId}&from=2026-10-19&to=2026-10-25`,
+      `/admin/v1/planning/suggestions?agencyId=${a.agencyId}&from=2026-10-19&to=2026-10-25`,
+      `/admin/v1/prestations/${a.agencyId}`,
+      `/admin/v1/series/${serieDeA}/occurrences?from=2026-10-19&to=2026-10-25`,
+      `/admin/v1/households/${a.foyer._id}/series`,
+    ]) {
+      expect((await a.h.app.request(chemin, { headers: auth(tokenB) })).status).toBe(404);
+    }
+
+    // Écritures : idem, et rien n'est modifié.
+    const patch = await a.h.app.request(`/admin/v1/series/${serieDeA}/occurrences/2026-10-19/0`, {
+      method: "PATCH",
+      headers: json(tokenB),
+      body: JSON.stringify({ portee: "occurrence", change: { cancelled: true } }),
+    });
+    expect(patch.status).toBe(404);
+
+    const serieChezA = await a.h.app.request("/admin/v1/series", {
+      method: "POST",
+      headers: json(tokenB),
+      body: JSON.stringify({
+        householdId: a.foyer._id,
+        libelle: "Tentative",
+        from: "2026-10-19",
+        everyWeeks: 1,
+        slots: [creneau({ weekday: 2, start: "09:00", end: "11:00" })],
+      }),
+    });
+    expect(serieChezA.status).toBe(404);
+
+    const absenceChezA = await a.h.app.request("/admin/v1/absences", {
+      method: "POST",
+      headers: json(tokenB),
+      body: JSON.stringify({
+        workerId: fatima,
+        kind: "conge",
+        from: "2026-10-19T00:00:00Z",
+        to: "2026-10-20T00:00:00Z",
+      }),
+    });
+    expect(absenceChezA.status).toBe(404);
+
+    const materialisation = await a.h.app.request("/admin/v1/planning/materialisation", {
+      method: "POST",
+      headers: json(tokenB),
+      body: JSON.stringify({ agencyId: a.agencyId, from: "2026-10-19", to: "2026-10-25" }),
+    });
+    expect(materialisation.status).toBe(404);
+
+    expect(a.h.db.tables.series[0].overrides).toEqual([]);
+    expect(a.h.db.tables.series).toHaveLength(1);
+    expect(a.h.db.tables.absences).toEqual([]);
+    expect(a.h.db.tables.visits).toEqual([]);
+  });
+
+  it("et il agit normalement sur la sienne", async () => {
+    const b = await bureau();
+    const reponse = await b.h.app.request(`/admin/v1/rules/${b.agencyId}`, {
+      headers: auth(b.token),
+    });
+    expect(reponse.status).toBe(200);
+  });
+
+  it("un responsable de deux agences couvre les deux", async () => {
+    const a = await bureau();
+    const autreAgence = newId();
+    const siegeB = household({ code: "AGENCE-02", agencyId: autreAgence });
+    await a.h.db.repositories.households.insert(siegeB);
+
+    // Le même membre, rattaché aux deux sièges.
+    const responsable = a.h.db.tables.memberships[0].memberId;
+    await a.h.db.repositories.memberships.insert(
+      membership({ memberId: responsable, householdId: siegeB._id, role: "responsable_agence" }),
+    );
+
+    for (const agence of [a.agencyId, autreAgence]) {
+      const reponse = await a.h.app.request(`/admin/v1/rules/${agence}`, {
+        headers: auth(a.token),
+      });
+      expect(reponse.status).toBe(200);
+    }
+  });
+});
+
+describe("ajuster une visite divergente", () => {
+  async function divergence() {
+    const b = await bureau();
+    const fatima = await intervenant(b, "Fatima", "+33611111111");
+    const { body } = await creerSerie(b, {
+      from: "2026-10-19",
+      slots: [creneau({ weekday: 1, start: "09:00", end: "11:00", workerId: fatima })],
+    });
+    const serieId = body.id as string;
+    const materialiser = () =>
+      b.h.app.request("/admin/v1/planning/materialisation", {
+        method: "POST",
+        headers: json(b.token),
+        body: JSON.stringify({ agencyId: b.agencyId, from: "2026-10-19", to: "2026-10-25" }),
+      });
+    await materialiser();
+
+    // L'intervenante est arrivée, puis le planning change : la visite ne le suit plus.
+    const visite = b.h.db.tables.visits[0];
+    await b.h.db.repositories.visits.save({ ...visite, status: "en_cours" });
+    await b.h.app.request(`/admin/v1/series/${serieId}/occurrences/2026-10-19/0`, {
+      method: "PATCH",
+      headers: json(b.token),
+      body: JSON.stringify({ portee: "occurrence", change: { start: "10:00", end: "12:00" } }),
+    });
+    return { b, serieId, visitId: visite._id, materialiser };
+  }
+
+  const ajuster = (b: Bureau, visitId: string, corps: unknown) =>
+    b.h.app.request(`/admin/v1/visits/${visitId}/ajustement`, {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify(corps),
+    });
+
+  it("aligne la visite sur le planning, avec motif", async () => {
+    const { b, visitId, materialiser } = await divergence();
+    const reponse = await ajuster(b, visitId, {
+      decision: "aligner",
+      motif: "la famille a décalé, la visite a bien eu lieu à 10 h",
+    });
+    expect(reponse.status).toBe(200);
+
+    const visite = b.h.db.tables.visits[0];
+    expect(visite.plannedStart.toISOString()).toBe("2026-10-19T08:00:00.000Z");
+    expect(visite.adjustment).toMatchObject({ decision: "aligner" });
+    // La divergence ne se repose plus à la matérialisation suivante.
+    const apres = await materialiser();
+    expect(((await apres.json()) as { divergences: unknown[] }).divergences).toEqual([]);
+  });
+
+  it("conserve ce qui a eu lieu, sans toucher aux heures", async () => {
+    const { b, visitId, materialiser } = await divergence();
+    const avant = b.h.db.tables.visits[0].plannedStart.toISOString();
+    const reponse = await ajuster(b, visitId, {
+      decision: "conserver",
+      motif: "l'intervenante était déjà sur place à 9 h",
+    });
+    expect(reponse.status).toBe(200);
+    expect(b.h.db.tables.visits[0].plannedStart.toISOString()).toBe(avant);
+    const apres = await materialiser();
+    expect(((await apres.json()) as { divergences: unknown[] }).divergences).toEqual([]);
+  });
+
+  it("repose la question si le planning rebouge après la décision", async () => {
+    const { b, serieId, visitId, materialiser } = await divergence();
+    await ajuster(b, visitId, { decision: "conserver", motif: "décision du coordinateur" });
+
+    await b.h.app.request(`/admin/v1/series/${serieId}/occurrences/2026-10-19/0`, {
+      method: "PATCH",
+      headers: json(b.token),
+      body: JSON.stringify({ portee: "occurrence", change: { start: "14:00", end: "16:00" } }),
+    });
+    const apres = await materialiser();
+    const corps = (await apres.json()) as { divergences: { visitId: string }[] };
+    expect(corps.divergences).toHaveLength(1);
+    expect(corps.divergences[0].visitId).toBe(visitId);
+  });
+
+  it("exige un motif, et refuse une visite hors planning", async () => {
+    const { b, visitId } = await divergence();
+    expect((await ajuster(b, visitId, { decision: "aligner" })).status).toBe(400);
+    expect((await ajuster(b, visitId, { decision: "aligner", motif: "ok" })).status).toBe(400);
+
+    // Une visite ponctuelle ne diverge de rien.
+    const ponctuelle = {
+      ...b.h.db.tables.visits[0],
+      _id: newId(),
+      serieId: null,
+      occurrenceDate: null,
+      slotIndex: null,
+      adjustment: null,
+    };
+    await b.h.db.repositories.visits.insert(ponctuelle);
+    expect((await ajuster(b, ponctuelle._id, { decision: "aligner", motif: "essai" })).status).toBe(
+      400,
+    );
+  });
+
+  it("journalise la décision avec son auteur", async () => {
+    const { b, visitId } = await divergence();
+    await ajuster(b, visitId, { decision: "conserver", motif: "heures réellement faites" });
+    const trace = b.h.db.tables.auditLogs.find((ligne) => ligne.target?.startsWith("ajustement:"));
+    expect(trace).toMatchObject({ module: "administration", actorRole: "responsable_agence" });
+  });
+
+  it("reste fermée à une autre agence", async () => {
+    const { b, visitId } = await divergence();
+    const autreAgence = newId();
+    const siege = household({ code: "AGENCE-09", agencyId: autreAgence });
+    await b.h.db.repositories.households.insert(siege);
+    const autre = await membre(b.h, { email: "autre@exemple.fr" });
+    await b.h.db.repositories.memberships.insert(
+      membership({ memberId: autre, householdId: siege._id, role: "responsable_agence" }),
+    );
+    const token = await b.h.connecter(autre);
+    const reponse = await b.h.app.request(`/admin/v1/visits/${visitId}/ajustement`, {
+      method: "POST",
+      headers: { ...auth(token), "content-type": "application/json" },
+      body: JSON.stringify({ decision: "aligner", motif: "tentative" }),
+    });
+    expect(reponse.status).toBe(404);
+  });
+});

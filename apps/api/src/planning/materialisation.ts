@@ -41,6 +41,20 @@ export type MaterialisationPlan = {
 const clef = (serieId: string, date: string, slotIndex: number) =>
   `${serieId}#${date}#${slotIndex}`;
 
+/**
+ * L'état du planning pour une occurrence, en une chaîne. Sert à retenir **ce que le coordinateur a
+ * vu** quand il a tranché une divergence : si le planning rebouge, la question se repose.
+ */
+export function occurrenceSignature(occurrence: Occurrence): string {
+  return [
+    occurrence.start,
+    occurrence.end,
+    occurrence.endDate,
+    occurrence.workerId ?? "",
+    occurrence.kind,
+  ].join("|");
+}
+
 function clefDeVisite(visit: Visit): string | null {
   if (!visit.serieId || !visit.occurrenceDate || visit.slotIndex == null) return null;
   return clef(visit.serieId, visit.occurrenceDate, visit.slotIndex);
@@ -105,8 +119,13 @@ export function planMaterialisation(
 
     const changements = differences(visit, occurrence, instants(occurrence));
     if (changements.length === 0) continue;
-    if (commencee(visit)) plan.divergences.push({ visit, occurrence, changements });
-    else plan.aMettreAJour.push({ visit, occurrence, changements });
+    if (commencee(visit)) {
+      // Divergence déjà tranchée pour ce même état du planning : on ne la repose pas chaque nuit.
+      if (visit.adjustment?.occurrenceSignature === occurrenceSignature(occurrence)) continue;
+      plan.divergences.push({ visit, occurrence, changements });
+    } else {
+      plan.aMettreAJour.push({ visit, occurrence, changements });
+    }
   }
 
   for (const [identite, occurrence] of parClef) {

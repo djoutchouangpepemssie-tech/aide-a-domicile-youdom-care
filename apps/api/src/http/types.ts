@@ -2,6 +2,7 @@ import type { AuditJournal } from "../audit/journal";
 import type { Session } from "../auth/sessions";
 import type { AuditEvent, Member } from "../domaine/schemas";
 import type { Notifier } from "../services/notifier";
+import type { Actor } from "./trace";
 import type { RateLimiter } from "../services/rate-limit";
 import type { AuthorizationStore } from "../store/authorization-store";
 import type { Repositories } from "../store/repositories";
@@ -27,6 +28,8 @@ export type ApiDeps = {
 
 export type Variables = {
   requestId: string;
+  /** L'auteur d'une requête du back-office, et les agences qu'il couvre (`trace.ts`). */
+  acteur: Actor;
   member: Member;
   session: Session;
   secondFactorPresented: boolean;

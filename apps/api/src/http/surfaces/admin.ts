@@ -8,7 +8,7 @@ import {
   type AccessGrant,
 } from "../../domaine/schemas";
 import { parseBody } from "../body";
-import { actorRole, traceAdmin } from "../trace";
+import { couvre, traceAdmin } from "../trace";
 import { fail, notFound } from "../errors";
 import type { ApiDeps, AppEnv } from "../types";
 
@@ -63,6 +63,10 @@ export function adminSurface(deps: ApiDeps) {
     );
     if (!body.ok) return body.response;
 
+    // Un compte d'agence n'agit que sur son agence : la portée vient de ses rattachements, pas
+    // de ce qu'il écrit dans sa requête (`trace.ts`).
+    if (!couvre(context.get("acteur"), body.value.agencyId)) return notFound(context);
+
     const existant = await deps.repositories.households.findByCode(body.value.code);
     if (existant) return fail(context, "requete_invalide", "code (déjà utilisé)");
 
@@ -102,6 +106,8 @@ export function adminSurface(deps: ApiDeps) {
     );
     if (!body.ok) return body.response;
 
+    if (!couvre(context.get("acteur"), body.value.agencyId)) return notFound(context);
+
     const member = await trouverOuCreerMembre(body.value);
     const worker = {
       // Une personne, une identité : l'intervenant porte l'identifiant de son compte.
@@ -135,13 +141,13 @@ export function adminSurface(deps: ApiDeps) {
     if (!body.ok) return body.response;
 
     const household = await deps.repositories.households.findById(body.value.householdId);
-    if (!household) return notFound(context);
+    if (!household || !couvre(context.get("acteur"), household.agencyId)) return notFound(context);
 
     const member = await trouverOuCreerMembre(body.value.member);
     const existant = await deps.repositories.memberships.find(member._id, household._id);
     if (existant) return fail(context, "requete_invalide", "member (déjà rattaché)");
 
-    const acteur = await actorRole(deps, context);
+    const acteur = context.get("acteur");
     const now = deps.now();
     await deps.repositories.memberships.insert({
       _id: deps.newId(),
@@ -189,6 +195,11 @@ export function adminSurface(deps: ApiDeps) {
       z.strictObject({ householdId: z.string().regex(/^[0-9a-f]{24}$/) }),
     );
     if (!body.ok) return body.response;
+
+    const foyerDuDroit = await deps.repositories.households.findById(body.value.householdId);
+    if (!foyerDuDroit || !couvre(context.get("acteur"), foyerDuDroit.agencyId)) {
+      return notFound(context);
+    }
 
     await deps.repositories.grants.revoke(context.req.param("id"), deps.now());
     // Le retrait est immédiat : aucun droit ne voyage dans un jeton (`auth/sessions.ts`).

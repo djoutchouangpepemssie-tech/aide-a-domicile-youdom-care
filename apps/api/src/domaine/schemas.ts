@@ -161,6 +161,24 @@ export const visitSchema = z.strictObject({
     .regex(/^\d{4}-\d{2}-\d{2}$/)
     .nullish(),
   slotIndex: z.number().int().min(0).nullish(),
+  /*
+   * La décision prise sur une **divergence** : le planning a changé après que la visite a
+   * commencé. Le coordinateur aligne la visite sur le planning, ou conserve ce qui a eu lieu —
+   * avec un motif, parce qu'une heure travaillée qui change demande une explication.
+   *
+   * `occurrenceSignature` retient l'état du planning au moment de la décision : si le planning
+   * change encore, la divergence est de nouveau signalée. Une décision ne vaut que pour ce qu'elle
+   * a vu.
+   */
+  adjustment: z
+    .strictObject({
+      decision: z.enum(["aligner", "conserver"]),
+      motif: z.string().min(3).max(200),
+      occurrenceSignature: z.string().max(160),
+      decidedBy: idSchema,
+      decidedAt: isoDateTime,
+    })
+    .nullish(),
   createdAt: isoDateTime,
 });
 
