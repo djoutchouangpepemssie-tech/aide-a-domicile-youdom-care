@@ -2405,3 +2405,35 @@ portail s'appelle `feat/portal-phase-0` : elle n'était couverte par **aucun dé
 `.github/workflows/ci.yml`, qui écoutait `main`, `phase/**` et `claude/**`. Autrement dit, les
 commits du portail n'ont jamais été éprouvés par la CI — exactement le trou que D-081 avait fermé
 pour les autres branches, rouvert par un nom de branche. `feat/**` est ajouté à la liste.
+
+---
+
+## D-104 — Les sources externes avertissent à chaque poussée, et bloquent une fois par semaine (19/10/2026)
+
+**Le problème, mesuré sur quatre exécutions des 15 et 19/10.** `pour-les-personnes-agees.gouv.fr`
+répond **404 à des pages parfaitement vivantes** depuis les exécuteurs de GitHub — pas les mêmes
+d'une exécution à l'autre. Trois appels espacés n'y suffisent pas (D-080, D-084 et l'ajout de ce
+matin), et sa **racine peut répondre 200 pendant que ses pages profondes refusent**, ce qui défait
+le discriminant que j'avais ajouté quelques heures plus tôt.
+
+Vérification à la main, agent de navigateur, depuis un autre réseau :
+`.../partir-en-vacances/les-sejours-seniors-en-vacances`, déclarée disparue par l'exécution 57
+après trois appels, répond **200 deux fois sur trois**. Elle est vivante.
+
+**La décision** : la mort d'un lien n'est pas une propriété du commit. Un changement de planning ne
+doit pas échouer parce qu'un site public nous limite.
+
+- **CI de chaque poussée** : les défauts de sources externes deviennent des **avertissements**
+  (`YC_SOURCES_INFORMATIF=1`), et chaque ligne dit où le contrôle est strict.
+- **Nouveau job hebdomadaire** `.github/workflows/sources.yml` (lundi, et à la demande) : strict.
+  Son échec se lit pour ce qu'il est — une liste de sources à revoir à la main.
+- **En local** : strict, inchangé. (Sur ce poste, le `fetch` de Node ne passe pas par le mandataire,
+  donc le contrôle avertit déjà qu'il n'a rien éprouvé.)
+
+**Ce que cela ne relâche pas** : les liens **internes** restent bloquants à chaque poussée, et un
+404 confirmé reste une erreur dans le job hebdomadaire. Deux tests figent les deux modes.
+
+**Pourquoi c'est la bonne direction, et pas un contournement** : une CI rouge au hasard apprend à
+ignorer le rouge. C'est exactement comme cela qu'un **vrai** lien mort est resté des semaines dans
+un article du magazine — trouvé ce matin, et seulement parce que j'ai mesuré chaque adresse à la
+main au lieu de relancer.

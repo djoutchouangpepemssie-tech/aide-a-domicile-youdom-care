@@ -6,6 +6,7 @@ import {
   plannedRoutes,
   builtRoutes,
   checkExternal,
+  classifyExternal,
   checkRefs,
   spreadByHost,
   extractLinks,
@@ -226,5 +227,35 @@ describe("check-links", () => {
       const noBuild = await runLinksCheck({ rootDir: dir, prod: false });
       expect(noBuild.errors[0]).toMatch(/pnpm build/);
     });
+  });
+});
+
+describe("sources externes : bloquer ou avertir", () => {
+  const rapport = {
+    errors: ["https://morte.example/page → HTTP 404"],
+    warnings: ["https://filtre.example/ → HTTP 403 (refus de répondre, pas une page disparue)"],
+    reached: 2,
+    total: 2,
+  };
+
+  it("bloque par défaut : c'est ce que fait `pnpm validate` en local et le contrôle hebdomadaire", () => {
+    const classe = classifyExternal(rapport, { informatif: false });
+    expect(classe.errors).toEqual(["source externe : https://morte.example/page → HTTP 404"]);
+    expect(classe.warnings).toHaveLength(1);
+  });
+
+  it("avertit dans la CI de chaque poussée, où un 404 de site public ne prouve rien", () => {
+    const classe = classifyExternal(rapport, { informatif: true });
+    expect(classe.errors).toEqual([]);
+    expect(classe.warnings).toHaveLength(2);
+    // L'avertissement dit où le contrôle est strict : sinon personne ne va voir.
+    expect(classe.warnings[0]).toContain("strict dans le contrôle hebdomadaire");
+  });
+
+  it("ne perd aucun avertissement d'origine dans l'un ou l'autre mode", () => {
+    for (const informatif of [true, false]) {
+      const classe = classifyExternal(rapport, { informatif });
+      expect(classe.warnings.some((ligne) => ligne.includes("403"))).toBe(true);
+    }
   });
 });

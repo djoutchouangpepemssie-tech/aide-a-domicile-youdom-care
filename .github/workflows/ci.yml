@@ -88,7 +88,13 @@ jobs:
         run: pnpm build
 
       - name: Contrôles (pnpm validate)
+        # Les sources externes sont informatives ici : plusieurs sites publics (dont
+        # pour-les-personnes-agees.gouv.fr) répondent 404 aux exécuteurs de la CI pour des pages
+        # vivantes, et la mort d'un lien n'est pas une propriété du commit. Elles sont éprouvées
+        # strictement, une fois par semaine, par `.github/workflows/sources.yml`.
         run: pnpm validate
+        env:
+          YC_SOURCES_INFORMATIF: "1"
 
   parcours:
     name: Parcours (fraction ${{ matrix.shard }}/3)

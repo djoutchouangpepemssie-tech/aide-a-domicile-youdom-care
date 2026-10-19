@@ -1,0 +1,54 @@
+# Contrôle **strict** des sources externes, une fois par semaine et à la demande.
+#
+# Pourquoi séparément de la CI. Mesuré sur quatre exécutions des 15 et 19/10 : plusieurs sites
+# publics répondent 404 ou 403 aux exécuteurs de GitHub pour des pages parfaitement vivantes, et
+# l'adresse qui échoue change d'une exécution à l'autre. Faire échouer chaque poussée là-dessus
+# apprend aux équipes à ignorer le rouge — et c'est exactement comme cela qu'un vrai lien mort est
+# resté des semaines dans un article du magazine (corrigé le 19/10).
+#
+# La mort d'un lien n'est pas une propriété du commit : elle se vérifie dans le temps, pas à chaque
+# poussée. Ce travail-là est donc hebdomadaire, et son échec se lit comme ce qu'il est — une liste
+# de sources à revoir à la main.
+name: Sources externes
+
+on:
+  schedule:
+    # Le lundi à 6 h 07 UTC : tôt, et sur une minute peu fréquentée.
+    - cron: "7 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CI: true
+  SITE_INDEXABLE: "false"
+  NEXT_TELEMETRY_DISABLED: "1"
+
+jobs:
+  sources:
+    name: Éprouver les sources citées
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Types Next.js (next-env.d.ts)
+        run: pnpm exec next typegen
+
+      - name: Build
+        # `check-links` lit les pages construites pour éprouver aussi les liens internes.
+        run: pnpm build
+
+      - name: Contrôles, sources strictes
+        run: pnpm validate

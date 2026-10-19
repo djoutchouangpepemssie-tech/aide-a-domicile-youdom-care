@@ -369,6 +369,40 @@ export interface LinksReport {
   warnings: string[];
 }
 
+/**
+ * Les défauts de sources externes bloquent-ils, ou avertissent-ils ?
+ *
+ * **Les deux, selon le contexte, et c'est une décision mesurée.** Sur quatre exécutions des 15 et
+ * 19/10, `pour-les-personnes-agees.gouv.fr` a déclaré disparues des pages parfaitement vivantes
+ * depuis les exécuteurs de la CI — pas les mêmes d'une fois à l'autre, trois appels espacés n'y
+ * suffisant pas, et sa racine répondant 200 pendant que ses pages profondes refusaient. Vérifié à
+ * la main : `.../les-sejours-seniors-en-vacances`, déclarée morte par l'exécution 57, répond 200
+ * deux fois sur trois depuis un autre réseau.
+ *
+ * Or la mort d'un lien n'est pas une propriété du commit. Faire échouer chaque poussée là-dessus
+ * apprend à ignorer le rouge, et c'est ainsi qu'un **vrai** lien mort est resté des semaines dans
+ * un article (corrigé le 19/10). Le contrôle reste donc strict en local et dans le job
+ * hebdomadaire `sources.yml`, où un humain lit le résultat ; il avertit dans la CI de chaque
+ * poussée, où il ne prouve rien.
+ */
+export function classifyExternal(
+  external: ExternalReport,
+  options: { informatif: boolean },
+): LinksReport {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  for (const failure of external.errors) {
+    const ligne = `source externe : ${failure}`;
+    if (options.informatif) {
+      warnings.push(`${ligne} (informatif ici, strict dans le contrôle hebdomadaire)`);
+    } else {
+      errors.push(ligne);
+    }
+  }
+  for (const warning of external.warnings) warnings.push(`source externe : ${warning}`);
+  return { errors, warnings };
+}
+
 export function checkRefs(refs: LinkRef[], routes: Set<string>, rootDir: string): LinksReport {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -411,8 +445,11 @@ export async function runLinksCheck(ctx: CheckContext): Promise<CheckResult> {
     );
   } else {
     const external = await checkExternal(sourceUrls);
-    for (const failure of external.errors) report.errors.push(`source externe : ${failure}`);
-    for (const warning of external.warnings) report.warnings.push(`source externe : ${warning}`);
+    const classe = classifyExternal(external, {
+      informatif: Boolean(process.env.YC_SOURCES_INFORMATIF),
+    });
+    report.errors.push(...classe.errors);
+    report.warnings.push(...classe.warnings);
     // Sans réseau, aucune adresse ne répond et toutes deviennent des avertissements : le contrôle
     // passe au vert sans avoir rien éprouvé. Le dire, pour qu'un « validate vert » depuis un poste
     // fermé ne soit pas lu comme « les sources répondent » (D-080).
