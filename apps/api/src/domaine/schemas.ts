@@ -148,6 +148,19 @@ export const visitSchema = z.strictObject({
   kind: z.enum(visitKinds),
   status: z.enum(visitStatuses),
   replaces: idSchema.nullish(),
+  /*
+   * D'où vient la visite. Une visite née d'un planning porte sa série, le jour de l'occurrence et
+   * le rang du créneau : ce triplet est **unique**, et c'est lui qui rend la matérialisation
+   * idempotente — on peut la relancer tous les jours sans jamais créer de doublon.
+   *
+   * Les trois champs sont nuls pour une visite ponctuelle, posée à la main hors de tout planning.
+   */
+  serieId: idSchema.nullish(),
+  occurrenceDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .nullish(),
+  slotIndex: z.number().int().min(0).nullish(),
   createdAt: isoDateTime,
 });
 

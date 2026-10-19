@@ -75,6 +75,13 @@ export const COLLECTIONS: readonly CollectionSpec[] = [
     ],
   },
   {
+    name: "workers",
+    indexes: [
+      // `_id` est celui du compte membre : une personne, une identité (`domaine/schemas.ts`).
+      { keys: { agencyId: 1 }, options: { name: "agence" } },
+    ],
+  },
+  {
     name: "agency_rules",
     indexes: [
       // Les réglages sont versionnés : on lit toujours le dernier, on garde les précédents.
@@ -101,6 +108,15 @@ export const COLLECTIONS: readonly CollectionSpec[] = [
     indexes: [{ keys: { agencyId: 1 }, options: { unique: true, name: "agence_unique" } }],
   },
   {
+    name: "worker_preferences",
+    indexes: [
+      {
+        keys: { householdId: 1, workerId: 1 },
+        options: { unique: true, name: "foyer_intervenant" },
+      },
+    ],
+  },
+  {
     name: "absences",
     indexes: [
       { keys: { workerId: 1, from: 1 }, options: { name: "intervenant_debut" } },
@@ -114,6 +130,18 @@ export const COLLECTIONS: readonly CollectionSpec[] = [
       { keys: { workerId: 1, plannedStart: 1 }, options: { name: "intervenant_debut" } },
       // Sert la détection des retards, qui tourne chaque minute (DATA_MODEL §4).
       { keys: { status: 1, plannedStart: 1 }, options: { name: "statut_debut" } },
+      /*
+       * L'unicité qui rend la matérialisation idempotente : une occurrence de planning ne peut
+       * donner qu'une visite. Partiel, parce qu'une visite ponctuelle n'a pas de série.
+       */
+      {
+        keys: { serieId: 1, occurrenceDate: 1, slotIndex: 1 },
+        options: {
+          unique: true,
+          name: "occurrence_unique",
+          partialFilterExpression: { serieId: { $type: "string" } },
+        },
+      },
     ],
   },
   {

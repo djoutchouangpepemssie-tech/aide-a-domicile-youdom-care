@@ -15,6 +15,7 @@ import {
   type Worker,
 } from "../domaine/schemas";
 import type { Absence } from "../domaine/absences";
+import type { WorkerPreference } from "../domaine/preferences";
 import type { AgencyRules } from "../domaine/regles";
 import type { Prestation, TariffSettings } from "../domaine/tarifs";
 import type { Serie } from "../planning/serie";
@@ -50,6 +51,7 @@ export function mongoRepositories(db: Db): Repositories {
   const prestations = db.collection<Prestation>("prestations");
   const tariffSettings = db.collection<TariffSettings>("tariff_settings");
   const absences = db.collection<Absence>("absences");
+  const workerPreferences = db.collection<WorkerPreference>("worker_preferences");
 
   return {
     members: {
@@ -75,12 +77,15 @@ export function mongoRepositories(db: Db): Repositories {
       },
       revoke: async (id, at) =>
         void (await grants.updateOne({ _id: id }, { $set: { revokedAt: at } })),
+      extend: async (id, endsAt) =>
+        void (await grants.updateOne({ _id: id }, { $set: { endsAt } })),
     },
     protections: {
       listByHousehold: (householdId) => protections.find({ householdId }).toArray(),
     },
     workers: {
       findById: (id) => workers.findOne({ _id: id }),
+      listByAgency: (agencyId) => workers.find({ agencyId }).toArray(),
       insert: async (worker) => void (await workers.insertOne(worker, dates)),
     },
     visits: {
@@ -104,7 +109,12 @@ export function mongoRepositories(db: Db): Repositories {
             plannedEnd: { $gt: new Date(around.getTime() - 86_400_000) },
           })
           .toArray(),
+      listBySeries: (serieIds, from, to) =>
+        visits
+          .find({ serieId: { $in: [...serieIds] }, occurrenceDate: { $gte: from, $lte: to } })
+          .toArray(),
       insert: async (visit) => void (await visits.insertOne(visit, dates)),
+      save: async (visit) => void (await visits.updateOne({ _id: visit._id }, { $set: visit })),
     },
     visitEvents: {
       append: async (event) => void (await visitEvents.insertOne(event, dates)),
@@ -148,6 +158,15 @@ export function mongoRepositories(db: Db): Repositories {
       listByWorker: (workerId, from, to) =>
         absences.find({ workerId, from: { $lt: to }, to: { $gt: from } }).toArray(),
       insert: async (absence) => void (await absences.insertOne(absence, dates)),
+    },
+    workerPreferences: {
+      listByHousehold: (householdId) => workerPreferences.find({ householdId }).toArray(),
+      upsert: async (preference) =>
+        void (await workerPreferences.updateOne(
+          { householdId: preference.householdId, workerId: preference.workerId },
+          { $set: preference },
+          { upsert: true },
+        )),
     },
     challenges: {
       findById: (id) => challenges.findOne({ _id: id }),

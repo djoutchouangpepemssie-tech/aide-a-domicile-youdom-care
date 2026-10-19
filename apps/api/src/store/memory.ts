@@ -24,6 +24,7 @@ import type { AuditEvent } from "../domaine/schemas";
 import type { AuditJournal } from "../audit/journal";
 import type { AuditReader } from "../http/types";
 import { absenceSchema, type Absence } from "../domaine/absences";
+import { workerPreferenceSchema, type WorkerPreference } from "../domaine/preferences";
 import { agencyRulesSchema, type AgencyRules } from "../domaine/regles";
 import {
   prestationSchema,
@@ -46,6 +47,7 @@ type Tables = {
   prestations: Prestation[];
   tariffSettings: TariffSettings[];
   absences: Absence[];
+  workerPreferences: WorkerPreference[];
   members: Member[];
   households: Household[];
   memberships: Membership[];
@@ -69,6 +71,7 @@ export class MemoryDatabase {
     prestations: [],
     tariffSettings: [],
     absences: [],
+    workerPreferences: [],
     members: [],
     households: [],
     memberships: [],
@@ -136,6 +139,10 @@ export class MemoryDatabase {
           const grant = t.grants.find((item) => item._id === id);
           if (grant) grant.revokedAt = at;
         },
+        extend: async (id, endsAt) => {
+          const grant = t.grants.find((item) => item._id === id);
+          if (grant) grant.endsAt = endsAt;
+        },
       },
       protections: {
         listByHousehold: async (householdId) =>
@@ -143,6 +150,8 @@ export class MemoryDatabase {
       },
       workers: {
         findById: async (id) => t.workers.find((worker) => worker._id === id) ?? null,
+        listByAgency: async (agencyId) =>
+          t.workers.filter((worker) => worker.agencyId === agencyId),
         insert: async (worker) => void t.workers.push(workerSchema.parse(worker)),
       },
       visits: {
@@ -164,7 +173,20 @@ export class MemoryDatabase {
                 new Date(around.getTime() + 86_400_000),
               ),
           ),
+        listBySeries: async (serieIds, from, to) =>
+          t.visits.filter(
+            (visit) =>
+              visit.serieId !== null &&
+              visit.serieId !== undefined &&
+              serieIds.includes(visit.serieId) &&
+              (visit.occurrenceDate ?? "") >= from &&
+              (visit.occurrenceDate ?? "") <= to,
+          ),
         insert: async (visit) => void t.visits.push(visitSchema.parse(visit)),
+        save: async (visit) => {
+          const index = t.visits.findIndex((item) => item._id === visit._id);
+          if (index >= 0) t.visits[index] = visitSchema.parse(visit);
+        },
       },
       visitEvents: {
         append: async (event) => void t.visitEvents.push(visitEventSchema.parse(event)),
@@ -234,6 +256,18 @@ export class MemoryDatabase {
               absence.to.getTime() > from.getTime(),
           ),
         insert: async (absence) => void t.absences.push(absenceSchema.parse(absence)),
+      },
+      workerPreferences: {
+        listByHousehold: async (householdId) =>
+          t.workerPreferences.filter((preference) => preference.householdId === householdId),
+        upsert: async (preference) => {
+          const valide = workerPreferenceSchema.parse(preference);
+          const index = t.workerPreferences.findIndex(
+            (item) => item.householdId === valide.householdId && item.workerId === valide.workerId,
+          );
+          if (index >= 0) t.workerPreferences[index] = valide;
+          else t.workerPreferences.push(valide);
+        },
       },
       challenges: {
         findById: async (id) => t.challenges.find((challenge) => challenge._id === id) ?? null,

@@ -9,6 +9,7 @@ import type {
   Worker,
 } from "../domaine/schemas";
 import type { Absence } from "../domaine/absences";
+import type { WorkerPreference } from "../domaine/preferences";
 import type { AgencyRules } from "../domaine/regles";
 import type { Prestation, TariffSettings } from "../domaine/tarifs";
 import type { Serie } from "../planning/serie";
@@ -50,6 +51,8 @@ export interface GrantRepository {
   listFor(memberId: string, householdId: string): Promise<AccessGrant[]>;
   insertMany(grants: AccessGrant[]): Promise<void>;
   revoke(id: string, at: Date): Promise<void>;
+  /** Repousse la fin d'un droit : un intervenant qui revient garde l'accès à sa mission. */
+  extend(id: string, endsAt: Date): Promise<void>;
 }
 
 export interface ProtectionRepository {
@@ -58,6 +61,7 @@ export interface ProtectionRepository {
 
 export interface WorkerRepository {
   findById(id: string): Promise<Worker | null>;
+  listByAgency(agencyId: string): Promise<Worker[]>;
   insert(worker: Worker): Promise<void>;
 }
 
@@ -66,7 +70,10 @@ export interface VisitRepository {
   listByHousehold(householdId: string, from: Date, to: Date): Promise<Visit[]>;
   listByWorker(workerId: string, from: Date, to: Date): Promise<Visit[]>;
   listAssigned(householdId: string, workerId: string, around: Date): Promise<Visit[]>;
+  /** Les visites nées d'un planning, pour une fenêtre de jours d'occurrence. */
+  listBySeries(serieIds: readonly string[], from: string, to: string): Promise<Visit[]>;
   insert(visit: Visit): Promise<void>;
+  save(visit: Visit): Promise<void>;
 }
 
 export interface VisitEventRepository {
@@ -114,6 +121,11 @@ export interface TariffSettingsRepository {
   upsert(settings: TariffSettings): Promise<void>;
 }
 
+export interface WorkerPreferenceRepository {
+  listByHousehold(householdId: string): Promise<WorkerPreference[]>;
+  upsert(preference: WorkerPreference): Promise<void>;
+}
+
 export interface AbsenceRepository {
   listByWorker(workerId: string, from: Date, to: Date): Promise<Absence[]>;
   insert(absence: Absence): Promise<void>;
@@ -135,6 +147,7 @@ export type Repositories = {
   prestations: PrestationRepository;
   tariffSettings: TariffSettingsRepository;
   absences: AbsenceRepository;
+  workerPreferences: WorkerPreferenceRepository;
 };
 
 /**

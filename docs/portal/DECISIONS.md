@@ -293,3 +293,81 @@ Quatre points de conception qui évitent une erreur qui coûte de l'argent :
    projet). Le crédit d'impôt est renvoyé **à part**, comme une estimation, et **seulement si vous
    avez saisi son taux**. Sans taux saisi : aucune estimation. Le logiciel ne devine pas votre
    fiscalité.
+
+---
+
+## MY-12 — L'optimisation propose, le coordinateur décide (19/10/2026)
+
+**Décision** : « oui je veux que tu optimises les plannings ». Elle est donc là — avec la précaution
+qui la rend utilisable plutôt que redoutée.
+
+**Deux choses qu'elle sait faire** :
+
+1. **pourvoir un créneau vide** : les intervenants possibles, classés, **avec les raisons en
+   clair** — « déjà 6 visites dans ce foyer », « souhait du foyer », « 12 h déjà posées cette
+   semaine », « 15 min d'écart avec une autre visite du jour », « introduit 1 avertissement :
+   amplitude » ;
+2. **réparer un signalement** : proposer une réaffectation qui fait disparaître un avertissement ou
+   un blocage, en disant lequel.
+
+**Trois propriétés dont je ne voulais pas me passer** :
+
+| | |
+| --- | --- |
+| **Rien d'opaque** | chaque proposition porte ses raisons. Un logiciel qui dit « j'ai optimisé » sans dire pourquoi se fait désactiver au bout d'un mois |
+| **Les contraintes viennent de vous** | un candidat n'est écarté que par une règle que **vous** avez marquée bloquante, par un refus du foyer, ou par une absence déclarée. Les poids ne font que **classer** |
+| **Déterministe** | mêmes données, même ordre ; à score égal, c'est l'identifiant qui tranche. Sans cela, deux coordinateurs voient deux listes différentes et personne n'y croit |
+
+**Rien n'est appliqué sans qu'on le demande.** L'appel sans `appliquer` ne touche à rien : il rend
+la liste. Avec `appliquer`, chaque proposition est **réjugée avant écriture** — une suite de
+propositions peut, ensemble, créer ce qu'aucune ne créait seule — et chacune est journalisée.
+
+**Les préférences du foyer entrent dans le calcul** : un souhait pèse, un refus exclut. Et le
+**motif d'un refus ne sort jamais du foyer et de l'agence** : la réponse dit « le foyer ne souhaite
+pas cet intervenant », jamais pourquoi. Un test le vérifie sur le corps de la réponse entière.
+
+**Ce que je ne prétends pas faire** : l'optimum global d'un problème d'ordonnancement. Le
+remplissage est glouton et séquentiel — chaque choix entre dans le contexte du suivant. C'est
+reproductible et explicable ; un optimum que personne ne peut relire ne se déploie pas dans un
+service d'aide à domicile.
+
+**Une mesure a corrigé mon premier réglage** : je normalisais la charge par la plus forte des
+candidates. Résultat, une intervenante avec 45 minutes posées passait pour « chargée » face à une
+collègue à zéro, et ce faux écart effaçait le bonus d'enchaînement — qui vaut bien plus pour une
+tournée réelle. L'échelle est désormais fixe (une semaine de référence), et le test qui l'a révélé
+est resté.
+
+---
+
+## MY-13 — Du planning à la visite pointable, et les droits qui vont avec (19/10/2026)
+
+**Étape suivante de la vague 1**, demandée dans la foulée : relier le planning au terrain.
+
+**Pourquoi matérialiser.** Une occurrence est une prévision ; une visite est un fait qui se pointe,
+se raconte, se facture et se conteste. Elle a besoin de sa propre identité, stable : le pointage NFC
+de mardi ne peut pas reposer sur un calcul qui changera si le planning est modifié mercredi.
+
+**La règle, et c'est la plus importante** :
+
+> **Une visite qui n'a pas commencé suit son planning. Une visite commencée ne le suit plus.**
+
+Tant qu'elle est prévue, un changement de planning la met à jour. Dès qu'elle a bougé — en route, en
+cours, faite, annulée — le planning ne la réécrit plus : la divergence est **signalée** au
+coordinateur, qui tranche. Réécrire une visite déjà pointée, ce serait réécrire des heures
+travaillées.
+
+La matérialisation est **idempotente** : l'identité d'une visite de planning est le triplet (série,
+jour de l'occurrence, rang du créneau), unique en base. Elle se relance chaque nuit sans créer un
+doublon. Un créneau **sans intervenant** ne devient pas une visite : il n'y a personne à pointer, il
+reste à pourvoir et il est compté comme tel.
+
+**Un trou que cela a révélé, et qui est bouché.** Affecter quelqu'un à un foyer ne lui donnait aucun
+droit sur ce foyer : l'intervenante voyait sa tournée mais pas la fiche de vie du logement où elle
+entre — le contraire de ce que le produit promet. La matérialisation **ouvre donc les droits de la
+mission** : ceux de la colonne « intervenant » de la matrice, pas un de plus (planning, présence,
+comptes rendus, fiche de vie, accès au logement), **bornés dans le temps** et repoussés à chaque
+matérialisation. Un intervenant qui cesse de venir perd l'accès de lui-même, sans qu'un humain ait à
+y penser — et l'accès au logement reste limité à la plage de la visite, quoi qu'il arrive.
+
+**Ce qui reste** : la révocation explicite quand un intervenant quitte l'agence (vague 5, RH), et
+l'ajustement d'une visite divergente — aujourd'hui signalé, demain modifiable en deux clics.

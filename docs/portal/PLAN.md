@@ -62,9 +62,14 @@ changements d'heure traités en instants ; jours fériés calculés. Et les tari
 versionnées créées par l'agence, majorations à la minute réelle, crédit d'impôt estimé seulement si
 le taux est saisi. 206 tests.
 
-**Étape 4 — suivante** : la matérialisation des occurrences en visites pointables (le lien avec la
-surface terrain), la portée par agence des comptes de l'agence, et les validateurs `$jsonSchema` en
-doublure des schémas Zod.
+**Étape 4 — faite (19/10)** : l'optimisation (MY-12) — suggestions classées avec leurs raisons,
+réparation des signalements, préférences du foyer, rien d'appliqué sans demande — et la
+matérialisation (MY-13) : les occurrences deviennent des visites pointables, idempotentes, qui
+suivent le planning tant qu'elles n'ont pas commencé et ne le suivent plus après. Affecter ouvre
+désormais les droits de la mission sur le foyer, bornés dans le temps. 243 tests d'API.
+
+**Étape 5 — suivante** : la portée par agence des comptes de l'agence, les validateurs
+`$jsonSchema` en doublure des schémas Zod, et l'ajustement d'une visite divergente.
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

@@ -54,6 +54,38 @@ export type Rule = z.infer<typeof ruleSchema>;
 /** Règles binaires : elles n'ont pas de seuil, elles sont vraies ou fausses. */
 export const BINARY_RULES: readonly RuleKey[] = ["chevauchement", "absence_intervenant"];
 
+/*
+ * Les **poids d'optimisation**. Ce ne sont pas des règles : ils n'autorisent ni n'interdisent
+ * rien, ils ordonnent des suggestions. Les contraintes, elles, viennent uniquement des règles
+ * ci-dessus — celles que l'agence a saisies.
+ *
+ * Ils ont des valeurs par défaut, et c'est cohérent avec MY-10 : une valeur par défaut qui change
+ * l'ordre d'une liste de propositions n'engage personne ; une valeur par défaut qui refuse un
+ * planning, si.
+ */
+export const optimisationWeightsSchema = z.strictObject({
+  /** Intervenant déjà venu dans ce foyer : « les mêmes visages » est une valeur de métier. */
+  continuite: z.number().int().min(0).max(100),
+  /** Souhait exprimé par le foyer. */
+  souhait: z.number().int().min(0).max(100),
+  /** Équilibre de charge entre intervenants sur la semaine. */
+  equilibre: z.number().int().min(0).max(100),
+  /** Enchaînement géographique : une visite adjacente, peu de trajet. */
+  trajet: z.number().int().min(0).max(100),
+  /** Retrait par avertissement de règle introduit par l'affectation. */
+  penaliteAvertissement: z.number().int().min(0).max(100),
+});
+
+export type OptimisationWeights = z.infer<typeof optimisationWeightsSchema>;
+
+export const DEFAULT_WEIGHTS: OptimisationWeights = {
+  continuite: 40,
+  souhait: 30,
+  equilibre: 20,
+  trajet: 20,
+  penaliteAvertissement: 25,
+};
+
 export const agencyRulesSchema = z
   .strictObject({
     _id: idSchema,
@@ -61,6 +93,8 @@ export const agencyRulesSchema = z
     /** Les réglages sont **versionnés** : un planning posé hier a été jugé par les règles d'hier. */
     version: z.number().int().positive(),
     rules: z.record(z.enum(RULE_KEYS), ruleSchema),
+    /** Poids d'optimisation. Absents = ceux par défaut, qui n'interdisent rien. */
+    optimisation: optimisationWeightsSchema.nullish(),
     updatedBy: idSchema,
     updatedAt: z.coerce.date(),
   })

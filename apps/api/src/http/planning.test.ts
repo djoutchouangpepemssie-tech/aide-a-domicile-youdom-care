@@ -726,3 +726,383 @@ describe("la surface reste fermée aux familles", () => {
     }
   });
 });
+
+describe("l'optimisation : elle propose, elle n'impose pas", () => {
+  async function avecCreneauxVides() {
+    const b = await bureau();
+    const fatima = await intervenant(b, "Fatima", "+33611111111");
+    const awa = await intervenant(b, "Awa", "+33622222222");
+    const { body } = await creerSerie(b, {
+      from: "2026-10-19",
+      slots: [
+        creneau({ weekday: 1, start: "09:00", end: "11:00" }),
+        creneau({ weekday: 1, start: "09:00", end: "11:00" }),
+      ],
+    });
+    return { b, serieId: body.id as string, fatima, awa };
+  }
+
+  it("propose des candidats pour chaque créneau à pourvoir, avec les raisons", async () => {
+    const { b, fatima, awa } = await avecCreneauxVides();
+    const reponse = await b.h.app.request(
+      `/admin/v1/planning/suggestions?agencyId=${b.agencyId}&from=2026-10-19&to=2026-10-25`,
+      { headers: auth(b.token) },
+    );
+    expect(reponse.status).toBe(200);
+    const corps = (await reponse.json()) as {
+      total: number;
+      creneaux: { suggestions: { workerId: string; raisons: string[] }[]; exclus: unknown[] }[];
+    };
+    expect(corps.total).toBe(2);
+    const premiers = corps.creneaux[0].suggestions.map((s) => s.workerId);
+    expect(premiers.sort()).toEqual([awa, fatima].sort());
+    expect(corps.creneaux[0].suggestions[0].raisons.length).toBeGreaterThan(0);
+  });
+
+  it("respecte un refus du foyer, sans en dire la raison", async () => {
+    const { b, awa } = await avecCreneauxVides();
+    const enregistre = await b.h.app.request("/admin/v1/worker-preferences", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({
+        householdId: b.foyer._id,
+        workerId: awa,
+        kind: "refus",
+        motif: "raison interne au foyer",
+      }),
+    });
+    expect(enregistre.status).toBe(201);
+
+    const reponse = await b.h.app.request(
+      `/admin/v1/planning/suggestions?agencyId=${b.agencyId}&from=2026-10-19&to=2026-10-25`,
+      { headers: auth(b.token) },
+    );
+    const texte = await reponse.text();
+    expect(texte).not.toContain("raison interne au foyer");
+    const corps = JSON.parse(texte) as {
+      creneaux: {
+        suggestions: { workerId: string }[];
+        exclus: { workerId: string; raison: string }[];
+      }[];
+    };
+    expect(corps.creneaux[0].suggestions.map((s) => s.workerId)).not.toContain(awa);
+    expect(corps.creneaux[0].exclus).toEqual([
+      { workerId: awa, raison: "le foyer ne souhaite pas cet intervenant" },
+    ]);
+  });
+
+  it("ne modifie rien sans qu'on le demande", async () => {
+    const { b, serieId } = await avecCreneauxVides();
+    const reponse = await b.h.app.request("/admin/v1/planning/optimisation", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({ agencyId: b.agencyId, from: "2026-10-19", to: "2026-10-25" }),
+    });
+    const corps = (await reponse.json()) as { appliquees: number; propositions: unknown[] };
+    expect(corps.appliquees).toBe(0);
+    expect(corps.propositions).toHaveLength(2);
+
+    // Les créneaux sont toujours à pourvoir : rien n'a été écrit.
+    const liste = await b.h.app.request(
+      `/admin/v1/series/${serieId}/occurrences?from=2026-10-19&to=2026-10-19`,
+      { headers: auth(b.token) },
+    );
+    const occurrences = ((await liste.json()) as { occurrences: { workerId: string | null }[] })
+      .occurrences;
+    expect(occurrences.every((o) => o.workerId === null)).toBe(true);
+  });
+
+  it("applique quand on le demande, journalise, et n'a plus rien à proposer ensuite", async () => {
+    const { b, serieId } = await avecCreneauxVides();
+    await poserRegles(b, { chevauchement: {} });
+
+    const appliquee = await b.h.app.request("/admin/v1/planning/optimisation", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({
+        agencyId: b.agencyId,
+        from: "2026-10-19",
+        to: "2026-10-25",
+        appliquer: true,
+      }),
+    });
+    const corps = (await appliquee.json()) as { appliquees: number; refusees: unknown[] };
+    expect(corps.appliquees).toBe(2);
+    expect(corps.refusees).toEqual([]);
+
+    const liste = await b.h.app.request(
+      `/admin/v1/series/${serieId}/occurrences?from=2026-10-19&to=2026-10-19`,
+      { headers: auth(b.token) },
+    );
+    const occurrences = (
+      (await liste.json()) as {
+        occurrences: { workerId: string | null; origine: string; motif: string | null }[];
+      }
+    ).occurrences;
+    expect(occurrences.every((o) => o.workerId !== null)).toBe(true);
+    // Deux créneaux au même moment : deux intervenants différents, la règle de chevauchement tient.
+    expect(new Set(occurrences.map((o) => o.workerId)).size).toBe(2);
+    expect(occurrences[0].motif).toContain("optimisation");
+
+    // La trace existe, et l'application est idempotente : plus rien à proposer.
+    expect(
+      b.h.db.tables.auditLogs.filter((ligne) => ligne.target?.startsWith("optimisation:")),
+    ).toHaveLength(2);
+
+    const seconde = await b.h.app.request("/admin/v1/planning/optimisation", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({ agencyId: b.agencyId, from: "2026-10-19", to: "2026-10-25" }),
+    });
+    expect(((await seconde.json()) as { propositions: unknown[] }).propositions).toEqual([]);
+  });
+
+  it("dit quels créneaux n'ont aucune solution", async () => {
+    const b = await bureau();
+    const fatima = await intervenant(b, "Fatima", "+33611111111");
+    await b.h.app.request("/admin/v1/absences", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({
+        workerId: fatima,
+        kind: "maladie",
+        from: "2026-10-19T00:00:00Z",
+        to: "2026-10-26T00:00:00Z",
+      }),
+    });
+    await creerSerie(b, {
+      from: "2026-10-19",
+      slots: [creneau({ weekday: 1, start: "09:00", end: "11:00" })],
+    });
+
+    const reponse = await b.h.app.request("/admin/v1/planning/optimisation", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({ agencyId: b.agencyId, from: "2026-10-19", to: "2026-10-25" }),
+    });
+    const corps = (await reponse.json()) as {
+      propositions: unknown[];
+      sansSolution: { exclus: { raison: string }[] }[];
+    };
+    expect(corps.propositions).toEqual([]);
+    expect(corps.sansSolution).toHaveLength(1);
+    expect(corps.sansSolution[0].exclus[0].raison).toContain("absence déclarée");
+  });
+
+  it("reste fermée aux familles", async () => {
+    const b = await bureau();
+    const claire = await membre(b.h, { email: "claire@exemple.fr" });
+    await b.h.db.repositories.memberships.insert(
+      membership({ memberId: claire, householdId: b.foyer._id, role: "beneficiaire" }),
+    );
+    const token = await b.h.connecter(claire);
+    const reponse = await b.h.app.request("/admin/v1/planning/optimisation", {
+      method: "POST",
+      headers: { ...auth(token), "content-type": "application/json" },
+      body: JSON.stringify({ agencyId: b.agencyId, from: "2026-10-19", to: "2026-10-25" }),
+    });
+    expect(reponse.status).toBe(404);
+  });
+});
+
+describe("la matérialisation : du planning à la visite pointable", () => {
+  async function planningPose() {
+    const b = await bureau();
+    const fatima = await intervenant(b, "Fatima", "+33611111111");
+    const { body } = await creerSerie(b, {
+      from: "2026-10-19",
+      slots: [creneau({ weekday: 1, start: "09:00", end: "11:00", workerId: fatima })],
+    });
+    return { b, serieId: body.id as string, fatima };
+  }
+
+  const materialiser = (b: Bureau, from = "2026-10-19", to = "2026-10-25") =>
+    b.h.app.request("/admin/v1/planning/materialisation", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({ agencyId: b.agencyId, from, to }),
+    });
+
+  it("crée une visite par occurrence, et ne la recrée jamais", async () => {
+    const { b } = await planningPose();
+    const premiere = await materialiser(b);
+    expect(premiere.status).toBe(200);
+    expect((await premiere.json()) as Record<string, unknown>).toMatchObject({
+      creees: 1,
+      misesAJour: 0,
+      annulees: 0,
+    });
+    expect(b.h.db.tables.visits).toHaveLength(1);
+
+    const seconde = await materialiser(b);
+    expect((await seconde.json()) as Record<string, unknown>).toMatchObject({ creees: 0 });
+    expect(b.h.db.tables.visits).toHaveLength(1);
+  });
+
+  it("ne matérialise pas un créneau sans intervenant : il n'y a personne à pointer", async () => {
+    const b = await bureau();
+    await creerSerie(b, {
+      from: "2026-10-19",
+      slots: [creneau({ weekday: 1, start: "09:00", end: "11:00" })],
+    });
+    const reponse = await materialiser(b);
+    expect((await reponse.json()) as Record<string, unknown>).toMatchObject({
+      creees: 0,
+      creneauxSansIntervenant: 1,
+    });
+    expect(b.h.db.tables.visits).toEqual([]);
+  });
+
+  it("l'intervenant voit la visite et peut la pointer", async () => {
+    const { b, fatima } = await planningPose();
+    await materialiser(b);
+    const token = await b.h.connecter(fatima);
+
+    const tournee = await b.h.app.request("/field/v1/visits/today", { headers: auth(token) });
+    const corps = (await tournee.json()) as { visites: { id: string; debut: string }[] };
+    expect(corps.visites).toHaveLength(1);
+
+    const pointage = await b.h.app.request(`/field/v1/visits/${corps.visites[0].id}/punch`, {
+      method: "POST",
+      headers: { ...auth(token), "content-type": "application/json" },
+      body: JSON.stringify({ type: "arrivee", source: "nfc" }),
+    });
+    expect(pointage.status).toBe(201);
+    expect(b.h.db.tables.visitEvents).toHaveLength(1);
+  });
+
+  it("suit le planning tant que la visite n'a pas commencé", async () => {
+    const { b, serieId } = await planningPose();
+    await materialiser(b);
+
+    await b.h.app.request(`/admin/v1/series/${serieId}/occurrences/2026-10-19/0`, {
+      method: "PATCH",
+      headers: json(b.token),
+      body: JSON.stringify({ portee: "occurrence", change: { start: "10:00", end: "12:00" } }),
+    });
+    const reponse = await materialiser(b);
+    const corps = (await reponse.json()) as { misesAJour: number; divergences: unknown[] };
+    expect(corps).toMatchObject({ misesAJour: 1, divergences: [] });
+    expect(b.h.db.tables.visits[0].plannedStart.toISOString()).toBe("2026-10-19T08:00:00.000Z");
+  });
+
+  it("ne réécrit pas une visite commencée : il signale la divergence", async () => {
+    const { b, serieId, fatima } = await planningPose();
+    await materialiser(b);
+
+    // L'intervenante est arrivée : la visite n'est plus une prévision.
+    const visite = b.h.db.tables.visits[0];
+    await b.h.db.repositories.visits.save({ ...visite, status: "en_cours" });
+    expect(fatima).toBe(visite.workerId);
+
+    await b.h.app.request(`/admin/v1/series/${serieId}/occurrences/2026-10-19/0`, {
+      method: "PATCH",
+      headers: json(b.token),
+      body: JSON.stringify({ portee: "occurrence", change: { start: "14:00", end: "16:00" } }),
+    });
+    const reponse = await materialiser(b);
+    const corps = (await reponse.json()) as {
+      misesAJour: number;
+      divergences: { visitId: string; changements: string[]; statut: string }[];
+    };
+    expect(corps.misesAJour).toBe(0);
+    expect(corps.divergences).toHaveLength(1);
+    expect(corps.divergences[0]).toMatchObject({ visitId: visite._id, statut: "en_cours" });
+    // Les heures réellement prévues au moment de l'arrivée sont intactes.
+    expect(b.h.db.tables.visits[0].plannedStart.toISOString()).toBe("2026-10-19T07:00:00.000Z");
+  });
+
+  it("annule la visite quand l'occurrence disparaît, et signale celle qui a déjà eu lieu", async () => {
+    const { b, serieId } = await planningPose();
+    await materialiser(b);
+
+    await b.h.app.request(`/admin/v1/series/${serieId}/skip`, {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({ date: "2026-10-19", motif: "hospitalisation" }),
+    });
+    const annulation = await materialiser(b);
+    expect((await annulation.json()) as Record<string, unknown>).toMatchObject({ annulees: 1 });
+    expect(b.h.db.tables.visits[0].status).toBe("annulee");
+
+    // Une visite déjà faite ne s'annule pas rétroactivement : elle est signalée.
+    await b.h.db.repositories.visits.save({ ...b.h.db.tables.visits[0], status: "faite" });
+    const apres = await materialiser(b);
+    const corps = (await apres.json()) as {
+      annulees: number;
+      divergences: { changements: string[] }[];
+    };
+    expect(corps.annulees).toBe(0);
+    expect(corps.divergences[0].changements).toEqual(["occurrence supprimée"]);
+  });
+
+  it("journalise la matérialisation", async () => {
+    const { b } = await planningPose();
+    await materialiser(b);
+    const trace = b.h.db.tables.auditLogs.find((ligne) =>
+      ligne.target?.startsWith("materialisation:"),
+    );
+    expect(trace?.target).toBe("materialisation:2026-10-19..2026-10-25:+1");
+  });
+});
+
+describe("affecter ouvre les droits de la mission, et seulement eux", () => {
+  it("rattache l'intervenant au foyer et borne ses droits dans le temps", async () => {
+    const b = await bureau();
+    const fatima = await intervenant(b, "Fatima", "+33611111111");
+    await creerSerie(b, {
+      from: "2026-10-19",
+      slots: [creneau({ weekday: 1, start: "09:00", end: "11:00", workerId: fatima })],
+    });
+
+    // Avant matérialisation : aucun rattachement, aucun droit.
+    expect(await b.h.db.repositories.memberships.find(fatima, b.foyer._id)).toBeNull();
+
+    await b.h.app.request("/admin/v1/planning/materialisation", {
+      method: "POST",
+      headers: json(b.token),
+      body: JSON.stringify({ agencyId: b.agencyId, from: "2026-10-19", to: "2026-10-25" }),
+    });
+
+    const rattachement = await b.h.db.repositories.memberships.find(fatima, b.foyer._id);
+    expect(rattachement).toMatchObject({ role: "intervenant", status: "actif" });
+
+    const droits = await b.h.db.repositories.grants.listFor(fatima, b.foyer._id);
+    const modules = droits.map((droit) => droit.module).sort();
+    // Ceux de la colonne « intervenant » de la matrice, pas un de plus.
+    expect(modules).toEqual([
+      "acces_logement",
+      "comptes_rendus",
+      "fiche_de_vie",
+      "planning",
+      "presence",
+    ]);
+    expect(modules).not.toContain("finances");
+    // Bornés : un intervenant qui cesse de venir perd l'accès de lui-même.
+    expect(droits.every((droit) => droit.endsAt !== null && droit.endsAt !== undefined)).toBe(true);
+  });
+
+  it("repousse les droits à la matérialisation suivante au lieu de les empiler", async () => {
+    const b = await bureau();
+    const fatima = await intervenant(b, "Fatima", "+33611111111");
+    await creerSerie(b, {
+      from: "2026-10-19",
+      slots: [creneau({ weekday: 1, start: "09:00", end: "11:00", workerId: fatima })],
+    });
+    const materialiser = (to: string) =>
+      b.h.app.request("/admin/v1/planning/materialisation", {
+        method: "POST",
+        headers: json(b.token),
+        body: JSON.stringify({ agencyId: b.agencyId, from: "2026-10-19", to }),
+      });
+
+    await materialiser("2026-10-25");
+    const premiers = await b.h.db.repositories.grants.listFor(fatima, b.foyer._id);
+    const premiereFin = premiers[0].endsAt?.getTime() ?? 0;
+
+    await materialiser("2026-11-15");
+    const seconds = await b.h.db.repositories.grants.listFor(fatima, b.foyer._id);
+    expect(seconds).toHaveLength(premiers.length);
+    expect(seconds[0].endsAt?.getTime() ?? 0).toBeGreaterThan(premiereFin);
+  });
+});

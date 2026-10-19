@@ -1860,3 +1860,62 @@ faut pas permettre. Le moteur avait raison les deux fois ; j'ai ajouté l'option
 
 **Vérifications** : 206 tests de l'API (dont 25 de routes de planning et de tarifs), 1 154 en tout
 avec le site, lint, typecheck, format, 13/13 contrôles, build vert.
+
+---
+
+## 2026-10-19 — L'optimisation, et le planning qui rejoint le terrain (MY-12, MY-13)
+
+« Oui je veux que tu optimises les plannings, et ensuite tu continues sur le travail suivant. »
+
+### L'optimisation : elle propose, et elle dit pourquoi
+
+J'avais refusé de la construire sans demande ; elle est demandée, elle est là. Deux usages : pourvoir
+un créneau vide, et réparer un signalement.
+
+Ce qu'elle rend n'est jamais un verdict mais une liste **motivée** : « déjà 6 visites dans ce
+foyer », « souhait du foyer », « 12 h déjà posées cette semaine », « 15 min d'écart avec une autre
+visite du jour », « introduit 1 avertissement : amplitude ». Un logiciel qui dit « j'ai optimisé »
+sans dire pourquoi se fait désactiver au bout d'un mois.
+
+**Les contraintes restent les vôtres.** Un candidat n'est écarté que par une règle que vous avez
+marquée bloquante, par un refus du foyer, ou par une absence déclarée. Les poids — continuité,
+souhait, équilibre, trajet — ne font que classer, et ils sont réglables.
+
+**Rien n'est appliqué sans qu'on le demande.** Sans `appliquer`, l'appel ne touche à rien. Avec,
+chaque proposition est **réjugée avant écriture** — une suite de propositions peut, ensemble, créer
+ce qu'aucune ne créait seule — et chacune est journalisée.
+
+**Le motif d'un refus ne sort pas du foyer.** La réponse dit « le foyer ne souhaite pas cet
+intervenant », jamais pourquoi, et un test le vérifie sur le corps entier de la réponse.
+
+**Une mesure a corrigé mon premier réglage.** Je normalisais la charge par la plus forte des
+candidates : une intervenante avec 45 minutes posées passait pour « chargée » face à une collègue à
+zéro, et ce faux écart effaçait le bonus d'enchaînement, qui vaut bien plus sur une vraie tournée.
+Échelle fixe désormais, et le test qui l'a révélé est resté.
+
+### La matérialisation : la prévision devient un fait
+
+Une occurrence est une prévision ; une visite est un fait qui se pointe, se raconte, se facture et
+se conteste. Le pointage NFC de mardi ne peut pas reposer sur un calcul qui changera mercredi.
+
+**La règle, et c'est la plus importante du lot** : une visite qui n'a pas commencé suit son
+planning ; **une visite commencée ne le suit plus**. La divergence est alors signalée au
+coordinateur, qui tranche. Réécrire une visite déjà pointée, ce serait réécrire des heures
+travaillées.
+
+La matérialisation est **idempotente** — l'identité d'une visite est le triplet (série, jour,
+créneau), unique en base — donc elle se relance chaque nuit sans jamais créer de doublon. Un créneau
+sans intervenant ne devient pas une visite : il n'y a personne à pointer.
+
+**Et elle a révélé un trou que j'ai bouché.** Affecter quelqu'un à un foyer ne lui donnait aucun
+droit sur ce foyer : l'intervenante voyait sa tournée mais pas la fiche de vie du logement où elle
+entre — exactement le contraire de ce que le produit promet. La matérialisation ouvre désormais les
+droits de la mission : ceux de la colonne « intervenant » de la matrice, **pas un de plus**, bornés
+dans le temps et repoussés à chaque matérialisation. Un intervenant qui cesse de venir perd l'accès
+de lui-même. Le test le vérifie module par module, et vérifie aussi qu'il n'a **pas** accès aux
+finances.
+
+**La boucle est fermée** : un test part d'une série, matérialise, connecte l'intervenante, lit sa
+tournée du jour et pointe son arrivée en NFC. Le planning et le terrain se parlent.
+
+**Vérifications** : 243 tests d'API, 1 191 en tout avec le site, lint, typecheck, format verts.

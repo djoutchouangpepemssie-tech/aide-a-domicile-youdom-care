@@ -1,6 +1,7 @@
 import { evaluateRules, type Assignment, type Finding } from "../domaine/regles";
 import type { Repositories } from "../store/repositories";
 import { nextDay } from "../temps/paris";
+import type { WorkerFacts } from "./optimisation";
 import { visibleOccurrences, type Serie } from "./serie";
 
 /*
@@ -93,4 +94,71 @@ export async function judgePlanning(
     intervenants: [...parIntervenant.keys()],
     fenetre,
   };
+}
+
+/*
+ * Les faits dont l'optimiseur a besoin sur chaque intervenant d'une agence : ce qu'il a déjà dans
+ * la fenêtre, ses absences, et le nombre de fois où il est déjà venu dans un foyer donné.
+ *
+ * La continuité (« déjà venu ici ») est comptée sur les **soixante jours précédents** : au-delà,
+ * ce n'est plus de la continuité, c'est de l'archive — et un intervenant parti depuis deux mois ne
+ * doit pas peser sur le classement d'aujourd'hui.
+ */
+export const CONTINUITE_JOURS = 60;
+
+export async function workerFacts(
+  repositories: Repositories,
+  input: { agencyId: string; from: string; to: string; householdId?: string },
+): Promise<WorkerFacts[]> {
+  const [workers, series] = await Promise.all([
+    repositories.workers.listByAgency(input.agencyId),
+    repositories.series.listByAgency(input.agencyId, "active"),
+  ]);
+
+  const dansLaFenetre = series.flatMap((serie) => visibleOccurrences(serie, input.from, input.to));
+  const debutHistoire = nextDay(input.from, -CONTINUITE_JOURS);
+  const veille = nextDay(input.from, -1);
+  const histoire =
+    debutHistoire <= veille
+      ? series.flatMap((serie) => visibleOccurrences(serie, debutHistoire, veille))
+      : [];
+
+  return Promise.all(
+    workers.map(async (worker) => {
+      const assignments: Assignment[] = dansLaFenetre
+        .filter((occurrence) => occurrence.workerId === worker._id)
+        .map((occurrence) => ({
+          visitId: `${occurrence.serieId}#${occurrence.date}#${occurrence.slotIndex}`,
+          householdId: occurrence.householdId,
+          workerId: worker._id,
+          startDate: occurrence.date,
+          start: occurrence.start,
+          endDate: occurrence.endDate,
+          end: occurrence.end,
+          kind: occurrence.kind,
+        }));
+
+      const absences = await repositories.absences.listByWorker(
+        worker._id,
+        new Date(`${input.from}T00:00:00Z`),
+        new Date(`${nextDay(input.to)}T00:00:00Z`),
+      );
+
+      return {
+        workerId: worker._id,
+        assignments,
+        absences: absences.map((absence) => ({
+          from: absence.from,
+          to: absence.to,
+          motif: absence.motif ?? absence.kind,
+        })),
+        visitesDansLeFoyer: input.householdId
+          ? histoire.filter(
+              (occurrence) =>
+                occurrence.workerId === worker._id && occurrence.householdId === input.householdId,
+            ).length
+          : 0,
+      };
+    }),
+  );
 }

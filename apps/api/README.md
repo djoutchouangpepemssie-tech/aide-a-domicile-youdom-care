@@ -36,7 +36,7 @@ Autour : `src/store/` (dépôts en mémoire pour les tests, sur MongoDB en servi
 `scripts/migrate.ts` (index, idempotent), `scripts/create-admin.ts` (le premier compte d'agence,
 **volontairement hors API**).
 
-206 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
+243 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
 **404 et jamais 403** (exigence de `PERMISSIONS.md` §7).
 
 ## Ce qui n'est pas couvert par un test, et il faut le savoir
@@ -60,16 +60,26 @@ domaine, qui est testé. Un test d'intégration viendra avec le premier cluster 
 | `src/domaine/absences.ts`       | congé, maladie, formation, indisponibilité                                                                                    |
 | `src/http/surfaces/planning.ts` | les routes : règles, séries, occurrences, planning d'ensemble, absences, prestations, prévisualisation de prix                |
 
+**Étape 4 — l'optimisation et la matérialisation** (MY-12, MY-13) :
+
+| Fichier                           | Ce qu'il tient                                                                                                                                                |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/planning/optimisation.ts`    | suggestions classées **avec leurs raisons**, réparation des signalements, exclusions tirées de vos règles — déterministe, et rien n'est appliqué sans demande |
+| `src/planning/materialisation.ts` | les occurrences deviennent des visites pointables ; une visite prévue suit son planning, une visite commencée ne le suit plus                                 |
+| `src/domaine/preferences.ts`      | souhaits et refus du foyer ; le motif d'un refus ne sort jamais du foyer et de l'agence                                                                       |
+
+Affecter un intervenant à un foyer lui ouvre **les droits de sa mission** sur ce foyer (ceux de la
+colonne « intervenant » de la matrice, pas un de plus), **bornés dans le temps** et repoussés à
+chaque matérialisation.
+
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. la matérialisation des occurrences en visites pointables : le planning et la surface terrain se
-   rejoignent là, et c'est l'étape suivante ;
-2. la portée par agence des comptes de l'agence : aujourd'hui, un coordinateur authentifié agit sur
+1. la portée par agence des comptes de l'agence : aujourd'hui, un coordinateur authentifié agit sur
    l'agence qu'il nomme, et chaque action est journalisée ;
-3. les validateurs `$jsonSchema` côté MongoDB, en doublure des schémas Zod ;
-4. le contenu des consignes d'accès (chiffrement au champ) : la route et son autorisation existent,
+2. les validateurs `$jsonSchema` côté MongoDB, en doublure des schémas Zod ;
+3. le contenu des consignes d'accès (chiffrement au champ) : la route et son autorisation existent,
    le contenu arrive avec le chiffrement ;
-5. le déploiement chez l'hébergeur certifié HDS — **en attente du choix** (question A).
+4. le déploiement chez l'hébergeur certifié HDS — **en attente du choix** (question A).
 
 ## Faire tourner
 

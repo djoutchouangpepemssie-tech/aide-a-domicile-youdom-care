@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import * as z from "zod";
-import { absenceSchema, absenceKinds } from "../../domaine/absences";
+import { absenceKinds, absenceSchema } from "../../domaine/absences";
+import { preferenceKinds, workerPreferenceSchema } from "../../domaine/preferences";
 import {
   RULE_CATALOG,
   RULE_KEYS,
@@ -9,7 +10,13 @@ import {
   ruleSchema,
   type Finding,
 } from "../../domaine/regles";
-import { visitKinds } from "../../domaine/schemas";
+import {
+  accessGrantSchema,
+  visitKinds,
+  visitSchema,
+  type AccessGrant,
+} from "../../domaine/schemas";
+import { defaultGrants } from "../../domaine/roles";
 import {
   interventionModes,
   majorationSchema,
@@ -33,8 +40,10 @@ import {
   visibleOccurrences,
   type Serie,
 } from "../../planning/serie";
-import { judgePlanning } from "../../planning/validation";
-import { isDate, isTime, nextDay } from "../../temps/paris";
+import { planMaterialisation } from "../../planning/materialisation";
+import { optimise, suggestWorkers } from "../../planning/optimisation";
+import { judgePlanning, workerFacts } from "../../planning/validation";
+import { isDate, isTime, nextDay, parisToInstant } from "../../temps/paris";
 import { parseBody } from "../body";
 import { fail, notFound } from "../errors";
 import { actorRole, traceAdmin } from "../trace";
@@ -424,6 +433,375 @@ export function planningSurface(deps: ApiDeps) {
       signalements: resume(jugement.findings),
       fenetreJugee: jugement.fenetre,
       aucuneRegleSaisie: (await deps.repositories.rules.current(query.data.agencyId)) === null,
+    });
+  });
+
+  /* ------------------------------------------------- préférences du foyer */
+
+  app.post("/worker-preferences", async (context) => {
+    const body = await parseBody(
+      context,
+      z.strictObject({
+        householdId: idParam,
+        workerId: idParam,
+        kind: z.enum(preferenceKinds),
+        motif: z.string().max(200).optional(),
+      }),
+    );
+    if (!body.ok) return body.response;
+
+    const [household, worker] = await Promise.all([
+      deps.repositories.households.findById(body.value.householdId),
+      deps.repositories.workers.findById(body.value.workerId),
+    ]);
+    if (!household) return notFound(context);
+    if (!worker) return fail(context, "requete_invalide", "workerId");
+
+    const acteur = await actorRole(deps, context);
+    await deps.repositories.workerPreferences.upsert(
+      workerPreferenceSchema.parse({
+        _id: deps.newId(),
+        householdId: body.value.householdId,
+        workerId: body.value.workerId,
+        kind: body.value.kind,
+        motif: body.value.motif ?? null,
+        createdBy: acteur.memberId,
+        createdAt: deps.now(),
+      }),
+    );
+    await traceAdmin(deps, context, {
+      action: "creer",
+      householdId: body.value.householdId,
+      // Le motif d'un refus ne sort pas du foyer et de l'agence : il n'entre pas dans la trace.
+      target: `preference:${body.value.kind}`,
+    });
+    return context.json({ enregistre: true }, 201);
+  });
+
+  /* ----------------------------------------------------------- optimisation */
+
+  const fenetreSchema = z.strictObject({ agencyId: idParam, from: dateSchema, to: dateSchema });
+
+  async function contexteOptimisation(
+    agencyId: string,
+    from: string,
+    to: string,
+    householdId?: string,
+  ) {
+    const [rules, facts] = await Promise.all([
+      deps.repositories.rules.current(agencyId),
+      workerFacts(deps.repositories, { agencyId, from, to, householdId }),
+    ]);
+    const foyers = new Set(
+      (await deps.repositories.series.listByAgency(agencyId)).map((serie) => serie.householdId),
+    );
+    const preferences = (
+      await Promise.all(
+        [...foyers].map((foyer) => deps.repositories.workerPreferences.listByHousehold(foyer)),
+      )
+    ).flat();
+    return {
+      rules: rules?.rules ?? emptyRules(),
+      weights: rules?.optimisation ?? null,
+      preferences,
+      workers: facts,
+      aucuneRegleSaisie: !rules,
+    };
+  }
+
+  app.get("/planning/suggestions", async (context) => {
+    const query = fenetreSchema.safeParse({
+      agencyId: context.req.query("agencyId"),
+      from: context.req.query("from"),
+      to: context.req.query("to"),
+    });
+    if (!query.success) return fail(context, "requete_invalide", "agencyId, from, to");
+    if (query.data.to < query.data.from) return fail(context, "requete_invalide", "to");
+
+    const series = await deps.repositories.series.listByAgency(query.data.agencyId);
+    const aPourvoir = series
+      .flatMap((serie) => visibleOccurrences(serie, query.data.from, query.data.to))
+      .filter((occurrence) => occurrence.workerId === null)
+      .sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
+
+    const creneaux = [];
+    for (const occurrence of aPourvoir.slice(0, 50)) {
+      const contexte = await contexteOptimisation(
+        query.data.agencyId,
+        query.data.from,
+        query.data.to,
+        occurrence.householdId,
+      );
+      const { proposes, exclus } = suggestWorkers(occurrence, contexte);
+      creneaux.push({
+        serieId: occurrence.serieId,
+        householdId: occurrence.householdId,
+        date: occurrence.date,
+        heure: `${occurrence.start}–${occurrence.end}`,
+        slotIndex: occurrence.slotIndex,
+        // Trois propositions : au-delà, personne ne lit, et le classement perd son sens.
+        suggestions: proposes.slice(0, 3).map((suggestion) => ({
+          workerId: suggestion.workerId,
+          score: suggestion.score,
+          raisons: suggestion.raisons,
+        })),
+        exclus,
+      });
+    }
+
+    return context.json({ creneaux, total: aPourvoir.length });
+  });
+
+  app.post("/planning/optimisation", async (context) => {
+    const body = await parseBody(
+      context,
+      z.strictObject({
+        agencyId: idParam,
+        from: dateSchema,
+        to: dateSchema,
+        /** Sans cela, rien n'est écrit : l'optimisation propose, le coordinateur décide. */
+        appliquer: z.boolean().optional(),
+        maxPropositions: z.number().int().min(1).max(200).optional(),
+      }),
+    );
+    if (!body.ok) return body.response;
+    if (body.value.to < body.value.from) return fail(context, "requete_invalide", "to");
+
+    const series = await deps.repositories.series.listByAgency(body.value.agencyId, "active");
+    const occurrences = series.flatMap((serie) =>
+      visibleOccurrences(serie, body.value.from, body.value.to),
+    );
+    const contexte = await contexteOptimisation(
+      body.value.agencyId,
+      body.value.from,
+      body.value.to,
+    );
+    const resultat = optimise(occurrences, contexte, {
+      maxPropositions: body.value.maxPropositions,
+    });
+
+    if (!body.value.appliquer) {
+      return context.json({
+        appliquees: 0,
+        propositions: resultat.propositions,
+        sansSolution: resultat.sansSolution,
+        aucuneRegleSaisie: contexte.aucuneRegleSaisie,
+      });
+    }
+
+    const acteur = await actorRole(deps, context);
+    const now = deps.now();
+    const appliquees: typeof resultat.propositions = [];
+    const refusees: Array<{ proposition: (typeof resultat.propositions)[number]; raison: string }> =
+      [];
+
+    for (const proposition of resultat.propositions) {
+      const serie = await deps.repositories.series.findById(proposition.serieId);
+      if (!serie) continue;
+      const modifiee = editOccurrence(serie, {
+        date: proposition.date,
+        slotIndex: proposition.slotIndex,
+        change: {
+          workerId: proposition.propose,
+          motif:
+            proposition.nature === "creneau_a_pourvoir"
+              ? "affectation proposée par l'optimisation"
+              : "réaffectation proposée par l'optimisation",
+        },
+        by: acteur.memberId,
+        at: now,
+      });
+
+      // On revérifie après écriture simulée : une suite de propositions peut, ensemble, créer ce
+      // qu'aucune ne créait seule. Rien n'est écrit tant que le jugement ne passe pas.
+      const jugement = await judgePlanning(deps.repositories, {
+        agencyId: body.value.agencyId,
+        from: proposition.date,
+        extra: [modifiee],
+      });
+      if (jugement.bloquants.length > 0) {
+        refusees.push({ proposition, raison: jugement.bloquants[0].message });
+        continue;
+      }
+
+      await deps.repositories.series.save(modifiee);
+      await traceAdmin(deps, context, {
+        action: "modifier",
+        householdId: proposition.householdId,
+        target: `optimisation:${proposition.serieId}#${proposition.date}#${proposition.slotIndex}`,
+      });
+      appliquees.push(proposition);
+    }
+
+    return context.json({
+      appliquees: appliquees.length,
+      propositions: appliquees,
+      refusees,
+      sansSolution: resultat.sansSolution,
+      aucuneRegleSaisie: contexte.aucuneRegleSaisie,
+    });
+  });
+
+  /* ------------------------------------------------------- matérialisation */
+
+  /*
+   * Transformer les occurrences en visites pointables. À appeler chaque nuit sur un horizon
+   * glissant (quinze jours suffisent : au-delà, le planning bouge encore).
+   *
+   * La règle : une visite encore `prevue` suit son planning ; une visite commencée ne le suit
+   * plus — la divergence est signalée, jamais réécrite. Réécrire une visite pointée, ce serait
+   * réécrire des heures travaillées.
+   */
+  app.post("/planning/materialisation", async (context) => {
+    const body = await parseBody(
+      context,
+      z.strictObject({ agencyId: idParam, from: dateSchema, to: dateSchema }),
+    );
+    if (!body.ok) return body.response;
+    if (body.value.to < body.value.from) return fail(context, "requete_invalide", "to");
+
+    const series = await deps.repositories.series.listByAgency(body.value.agencyId);
+    const occurrences = series.flatMap((serie) =>
+      visibleOccurrences(serie, body.value.from, body.value.to),
+    );
+    const existantes = await deps.repositories.visits.listBySeries(
+      series.map((serie) => serie._id),
+      body.value.from,
+      body.value.to,
+    );
+
+    const instants = (occurrence: (typeof occurrences)[number]) => ({
+      debut: parisToInstant(occurrence.date, occurrence.start),
+      fin: parisToInstant(occurrence.endDate, occurrence.end),
+    });
+    const plan = planMaterialisation(occurrences, existantes, instants);
+    const now = deps.now();
+    const acteurMateria = await actorRole(deps, context);
+
+    /*
+     * Affecter quelqu'un à un foyer doit lui **ouvrir les droits de sa mission** sur ce foyer, et
+     * pas plus : ceux de la colonne « intervenant » de la matrice (`PERMISSIONS.md` §5). Sans
+     * cela, l'intervenante voit sa tournée mais pas la fiche de vie du foyer où elle entre — ce
+     * qui est exactement le contraire de ce que le produit promet.
+     *
+     * Les droits sont **bornés dans le temps** et repoussés à chaque matérialisation : un
+     * intervenant qui cesse de venir perd l'accès de lui-même, sans qu'un humain ait à y penser.
+     * L'accès au logement reste, lui, limité à la plage de la visite (règle R4), quoi qu'il
+     * arrive.
+     */
+    const FENETRE_DROITS_JOURS = 30;
+    const finDesDroits = new Date(
+      parisToInstant(nextDay(body.value.to, FENETRE_DROITS_JOURS), "00:00").getTime(),
+    );
+
+    async function ouvrirLesDroits(workerId: string, householdId: string): Promise<void> {
+      const rattachement = await deps.repositories.memberships.find(workerId, householdId);
+      if (!rattachement) {
+        await deps.repositories.memberships.insert({
+          _id: deps.newId(),
+          memberId: workerId,
+          householdId,
+          role: "intervenant",
+          status: "actif",
+          invitedBy: acteurMateria.memberId,
+          activatedAt: now,
+          revokedAt: null,
+          createdAt: now,
+        });
+      }
+
+      const existants = await deps.repositories.grants.listFor(workerId, householdId);
+      const aCreer: AccessGrant[] = [];
+      for (const entree of defaultGrants("intervenant")) {
+        const courant = existants.find(
+          (grant) => grant.module === entree.module && !grant.revokedAt,
+        );
+        if (!courant) {
+          aCreer.push(
+            accessGrantSchema.parse({
+              _id: deps.newId(),
+              memberId: workerId,
+              householdId,
+              module: entree.module,
+              actions: entree.actions,
+              grantedBy: acteurMateria.memberId,
+              reason: "mission de planning",
+              startsAt: now,
+              endsAt: finDesDroits,
+              revokedAt: null,
+              createdAt: now,
+            }),
+          );
+        } else if (!courant.endsAt || courant.endsAt.getTime() < finDesDroits.getTime()) {
+          await deps.repositories.grants.extend(courant._id, finDesDroits);
+        }
+      }
+      if (aCreer.length > 0) await deps.repositories.grants.insertMany(aCreer);
+    }
+
+    for (const occurrence of plan.aCreer) {
+      // Un créneau sans intervenant ne devient pas une visite : il n'y a personne à pointer.
+      if (!occurrence.workerId) continue;
+      const { debut, fin } = instants(occurrence);
+      await deps.repositories.visits.insert(
+        visitSchema.parse({
+          _id: deps.newId(),
+          householdId: occurrence.householdId,
+          workerId: occurrence.workerId,
+          plannedStart: debut,
+          plannedEnd: fin,
+          kind: occurrence.kind,
+          status: "prevue",
+          replaces: null,
+          serieId: occurrence.serieId,
+          occurrenceDate: occurrence.date,
+          slotIndex: occurrence.slotIndex,
+          createdAt: now,
+        }),
+      );
+      await ouvrirLesDroits(occurrence.workerId, occurrence.householdId);
+    }
+
+    for (const { visit, occurrence } of plan.aMettreAJour) {
+      if (!occurrence.workerId) continue;
+      const { debut, fin } = instants(occurrence);
+      await deps.repositories.visits.save({
+        ...visit,
+        workerId: occurrence.workerId,
+        plannedStart: debut,
+        plannedEnd: fin,
+        kind: occurrence.kind,
+      });
+      // Un remplacement change l'intervenant : le remplaçant a besoin des droits de la mission.
+      await ouvrirLesDroits(occurrence.workerId, occurrence.householdId);
+    }
+
+    for (const visit of plan.aAnnuler) {
+      await deps.repositories.visits.save({ ...visit, status: "annulee" });
+    }
+
+    const creees = plan.aCreer.filter((occurrence) => occurrence.workerId).length;
+    const aPourvoir = plan.aCreer.length - creees;
+    await traceAdmin(deps, context, {
+      action: "creer",
+      householdId: null,
+      target: `materialisation:${body.value.from}..${body.value.to}:+${creees}`,
+    });
+
+    return context.json({
+      creees,
+      misesAJour: plan.aMettreAJour.length,
+      annulees: plan.aAnnuler.length,
+      // Les créneaux sans intervenant ne sont pas des visites : ils restent à pourvoir.
+      creneauxSansIntervenant: aPourvoir,
+      // Ce que le planning ne réécrira pas : au coordinateur de trancher.
+      divergences: plan.divergences.map(({ visit, occurrence, changements }) => ({
+        visitId: visit._id,
+        statut: visit.status,
+        date: visit.occurrenceDate,
+        changements,
+        occurrenceSupprimee: occurrence === null,
+      })),
     });
   });
 
