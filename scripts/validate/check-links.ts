@@ -167,6 +167,28 @@ export function spreadByHost(urls: readonly string[]): string[] {
  * disparue, elle, répond 404 deux fois : le contrôle ne perd donc rien, il cesse seulement de
  * rendre la CI rouge au hasard de l'ordre des requêtes (D-080).
  */
+/** La racine du site, ou `null` si l'adresse **est** déjà la racine (rien à comparer). */
+export function rootOf(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    const root = `${parsed.origin}/`;
+    return root === parsed.href ? null : root;
+  } catch {
+    return null;
+  }
+}
+
+async function statusOf(
+  url: string,
+  open: (url: string) => Promise<Response>,
+): Promise<number | null> {
+  try {
+    return (await open(url)).status;
+  } catch {
+    return null;
+  }
+}
+
 export async function checkExternal(
   urls: readonly string[],
   fetchImpl: typeof fetch = fetch,
@@ -248,6 +270,29 @@ export async function checkExternal(
       await new Promise((resolve) => setTimeout(resolve, thirdTryDelayMs));
       const third = await open(url);
       if (goneStatuses.has(third.status)) {
+        /*
+         * Dernière question, et c'est elle qui tranche : **l'hôte nous répond-il encore ?**
+         *
+         * Mesuré le 19/10/2026 (exécution 55) sur `pour-les-personnes-agees.gouv.fr` : trois
+         * pages déclarées disparues par la CI, trois appels chacune. Interrogées depuis un autre
+         * poste, les trois répondent 200 au premier essai — elles sont vivantes. La même journée,
+         * une quatrième page répondait 404 à quatre essais : celle-là avait vraiment changé
+         * d'adresse (corrigée dans le même commit).
+         *
+         * Le nombre d'essais ne distingue donc pas les deux cas sur un hôte qui refuse une plage
+         * d'adresses entière. La racine du site, elle, le dit : si elle répond, la page manque
+         * vraiment ; si elle refuse aussi, c'est l'hôte qui nous ferme la porte, et on n'a rien
+         * prouvé. Une CI rouge au hasard finit par ne plus être lue — et c'est ainsi qu'un vrai
+         * lien mort passe inaperçu.
+         */
+        const root = rootOf(url);
+        const rootStatus = root ? await statusOf(root, open) : null;
+        if (root && (rootStatus === null || rootStatus >= 400)) {
+          unreachable.push(
+            `${url} → HTTP ${third.status} trois fois, mais la racine ${root} répond ${rootStatus ?? "rien"} : hôte qui refuse, pas une page disparue — à vérifier à la main`,
+          );
+          continue;
+        }
         failures.push(`${url} → HTTP ${third.status}`);
       } else {
         unreachable.push(

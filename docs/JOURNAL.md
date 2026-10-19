@@ -1755,3 +1755,39 @@ verts en 6 min 42** ; 91 tests des contrôles, 13/13 contrôles, format vert.
 **Ce que je ne prétends pas** : l'échec ne se reproduit pas sur ce poste, ni par le fichier seul, ni
 par la fraction entière. La correction suit la preuve des journaux — aucune requête partie — et non
 une reproduction. Si elle revient, le message d'échec dira enfin ce qu'il y avait à l'écran.
+
+---
+
+## 2026-10-19 — Le contrôle des sources tranche enfin, et sur une mesure
+
+L'exécution 55 : **les trois fractions de parcours sont vertes** — la frappe d'envoi perdue est bien
+l'explication, et la correction tient. Restait le contrôle des liens, qui a déclaré disparues
+**trois** pages de `pour-les-personnes-agees.gouv.fr`, chacune après les trois appels.
+
+Mesuré depuis un poste avec réseau, agent de navigateur, trois séries espacées :
+
+| Adresse | Réponses | Verdict |
+| --- | --- | --- |
+| `.../fiche-pratique-sortie-d-hospitalisation-...` | **200**, puis 404, 404 | vivante |
+| `.../partir-en-vacances-malgre-la-perte-d-autonomie` | **200** trois fois | vivante |
+| `.../l-apa-a-domicile` | **200** trois fois | vivante |
+| racine du site | **200** | — |
+
+**Les trois sont vivantes.** Compter les essais ne sert donc à rien sur un hôte qui refuse une plage
+d'adresses entière : trois refus ne valent pas plus que deux. Ma correction précédente — une
+troisième tentative — était inutile en soi.
+
+**Ce qui tranche, c'est la racine du site.** Avant de conclure à la disparition, le contrôle demande
+maintenant la racine de l'hôte : si elle répond, la page manque vraiment ; si elle refuse aussi,
+c'est l'hôte qui nous ferme la porte et on n'a rien prouvé — avertissement, à vérifier à la main.
+
+**Et c'est bien un discriminant, pas un relâchement** : la page que j'ai corrigée ce matin répondait
+404 à quatre essais **alors que la racine répondait 200**. Avec cette règle, elle serait toujours une
+erreur. Deux tests figent les deux branches : page disparue sur un hôte en bonne santé (erreur),
+page et racine toutes deux muettes (avertissement).
+
+Le fond de l'affaire est là : une CI rouge au hasard finit par ne plus être lue, et c'est ainsi
+qu'un vrai lien mort passe inaperçu — celui de ce matin dormait dans un article depuis des semaines.
+
+**Vérifications** : 7 tests du contrôle des liens, dont les deux nouveaux ; 13/13 contrôles ; lint et
+format verts.
