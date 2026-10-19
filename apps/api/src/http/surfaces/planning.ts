@@ -84,6 +84,60 @@ function resume(findings: readonly Finding[]) {
 export function planningSurface(deps: ApiDeps) {
   const app = new Hono<AppEnv>();
 
+  /* ---------------------------------------------------------- qui suis-je */
+
+  /*
+   * De quoi l'écran a besoin pour démarrer : qui je suis, et **quelles agences je couvre**.
+   * Sans cette route, le back-office devrait demander à l'utilisateur de taper l'identifiant de
+   * son agence — ce que personne ne connaît, et ce qui rouvrirait la porte que MY-14 a fermée.
+   */
+  app.get("/me", async (context) => {
+    const acteur = context.get("acteur");
+    const member = context.get("member");
+    const memberships = await deps.repositories.memberships.listByMember(member._id);
+
+    const agences = [];
+    for (const agencyId of acteur.agencies) {
+      const sieges = [];
+      for (const membership of memberships) {
+        const household = await deps.repositories.households.findById(membership.householdId);
+        if (household?.agencyId === agencyId) sieges.push(household.code);
+      }
+      agences.push({ agencyId, foyers: sieges.sort() });
+    }
+
+    return context.json({
+      membre: { id: member._id, nom: member.displayName },
+      role: acteur.role,
+      agences,
+      secondFacteur: context.get("secondFactorPresented"),
+    });
+  });
+
+  /*
+   * Les intervenants d'une agence, pour que les écrans affichent un **prénom** et non un
+   * identifiant. Prénom et initiale seulement : le nom complet est la donnée personnelle de
+   * l'intervenant (`PERMISSIONS.md` §8), et la photo n'apparaît qu'avec son accord écrit.
+   */
+  app.get("/workers", async (context) => {
+    const agencyId = context.req.query("agencyId") ?? "";
+    if (!idParam.safeParse(agencyId).success) return notFound(context);
+    if (!couvre(context.get("acteur"), agencyId)) return notFound(context);
+
+    const workers = await deps.repositories.workers.listByAgency(agencyId);
+    return context.json({
+      intervenants: workers
+        .map((worker) => ({
+          id: worker._id,
+          prenom: worker.firstName,
+          initiale: worker.lastInitial,
+          photo: worker.photoConsent ? worker.photoId : null,
+          qualifications: worker.qualifications,
+        }))
+        .sort((a, b) => a.prenom.localeCompare(b.prenom, "fr")),
+    });
+  });
+
   /* ------------------------------------------------------------------ règles */
 
   app.get("/rules/:agencyId", async (context) => {

@@ -1,5 +1,29 @@
 import type { NextConfig } from "next";
 
+/*
+ * L'origine de l'API du CRM (« Mon Youdom »), à autoriser dans `connect-src`.
+ *
+ * Le back-office appelle l'API depuis le navigateur, et cette API vit sur **une autre origine** :
+ * l'hébergeur certifié HDS, jamais Vercel (docs/portal/ARCHITECTURE.md). Sans cette origine dans
+ * la politique de sécurité de contenu, le navigateur refuse l'appel — ce qui est le bon réflexe
+ * par défaut, et ce qui a bloqué les écrans du bureau jusqu'à ce que l'adresse soit déclarée ici.
+ *
+ * Seule l'origine est autorisée (ni chemin, ni joker), et seulement si l'adresse est posée au
+ * build. Une adresse illisible arrête le build : mieux vaut un échec net qu'un bureau muet.
+ */
+const apiOrigin = (() => {
+  const brute = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
+  if (!brute) return "";
+  try {
+    return new URL(brute).origin;
+  } catch {
+    throw new Error(
+      `NEXT_PUBLIC_API_BASE_URL n'est pas une adresse valide : « ${brute} ». ` +
+        "Attendu : une origine complète, par exemple https://api.youdomcare.fr",
+    );
+  }
+})();
+
 // Le site est statique : pas de nonce CSP possible (il imposerait un rendu dynamique, voir D-013).
 // Les scripts et styles en ligne générés par Next restent donc autorisés, tout le reste est fermé.
 const contentSecurityPolicy = [
@@ -8,7 +32,7 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self'",
+  `connect-src 'self'${apiOrigin ? ` ${apiOrigin}` : ""}`,
   "frame-src 'none'",
   "frame-ancestors 'none'",
   "object-src 'none'",

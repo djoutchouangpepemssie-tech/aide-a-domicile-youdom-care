@@ -80,8 +80,12 @@ si le planning rebouge).
 
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. **les écrans** : l'API de la vague 1 est complète, le back-office reste à écrire (Next.js, sur
-   Vercel, avec les jetons de style et les primitives accessibles du site) ;
+1. **les écrans** : le bureau a commencé (MY-15) — `/bureau/semaine/` existe dans le site. Restent
+   un foyer, les réglages (règles et tarifs) et l'application de l'intervenant. Les écrans appellent
+   cette API **depuis le navigateur** : il faut donc que l'origine du site figure dans
+   `ALLOWED_ORIGINS` ici, **et** que l'origine de cette API figure dans `connect-src` de la
+   politique de sécurité de contenu du site (`next.config.ts`, dérivée de
+   `NEXT_PUBLIC_API_BASE_URL`). Les deux, sinon le navigateur refuse l'appel ;
 2. le contenu des consignes d'accès (chiffrement au champ) : la route et son autorisation existent,
    le contenu arrive avec le chiffrement ;
 3. le déploiement chez l'hébergeur certifié HDS — **en attente du choix** (question A).

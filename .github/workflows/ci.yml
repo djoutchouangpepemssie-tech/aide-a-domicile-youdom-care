@@ -37,6 +37,10 @@ env:
   CI: true
   SITE_INDEXABLE: "false"
   NEXT_TELEMETRY_DISABLED: "1"
+  # L'adresse de l'API du CRM est inscrite dans le paquet au moment du build (`NEXT_PUBLIC_*`).
+  # Ici, une adresse de test : les parcours du bureau interceptent les appels dans le navigateur,
+  # aucune requête ne sort (voir tests/e2e/bureau.spec.ts).
+  NEXT_PUBLIC_API_BASE_URL: "https://api.test.local"
 
 jobs:
   verifier:

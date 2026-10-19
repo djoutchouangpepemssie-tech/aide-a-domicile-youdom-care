@@ -1338,3 +1338,55 @@ describe("ajuster une visite divergente", () => {
     expect(reponse.status).toBe(404);
   });
 });
+
+describe("qui suis-je", () => {
+  it("dit le nom, le rôle et les agences couvertes", async () => {
+    const b = await bureau();
+    const reponse = await b.h.app.request("/admin/v1/me", { headers: auth(b.token) });
+    expect(reponse.status).toBe(200);
+    const corps = (await reponse.json()) as {
+      membre: { nom: string };
+      role: string;
+      agences: { agencyId: string; foyers: string[] }[];
+    };
+    expect(corps.membre.nom).toBe("Arcel");
+    expect(corps.role).toBe("responsable_agence");
+    expect(corps.agences).toEqual([{ agencyId: b.agencyId, foyers: ["AGENCE-01"] }]);
+  });
+
+  it("n'est pas atteignable par une famille", async () => {
+    const b = await bureau();
+    const claire = await membre(b.h, { email: "claire@exemple.fr" });
+    await b.h.db.repositories.memberships.insert(
+      membership({ memberId: claire, householdId: b.foyer._id, role: "beneficiaire" }),
+    );
+    const token = await b.h.connecter(claire);
+    expect((await b.h.app.request("/admin/v1/me", { headers: auth(token) })).status).toBe(404);
+  });
+});
+
+describe("la liste des intervenants", () => {
+  it("rend prénom et initiale, triés, sans nom complet ni photo sans accord", async () => {
+    const b = await bureau();
+    await intervenant(b, "Zoé", "+33611111111");
+    await intervenant(b, "Awa", "+33622222222");
+    const reponse = await b.h.app.request(`/admin/v1/workers?agencyId=${b.agencyId}`, {
+      headers: auth(b.token),
+    });
+    expect(reponse.status).toBe(200);
+    const corps = (await reponse.json()) as {
+      intervenants: { prenom: string; initiale: string; photo: string | null }[];
+    };
+    expect(corps.intervenants.map((i) => i.prenom)).toEqual(["Awa", "Zoé"]);
+    expect(corps.intervenants.every((i) => i.photo === null)).toBe(true);
+    expect(JSON.stringify(corps)).not.toContain("lastName");
+  });
+
+  it("ne rend pas les intervenants d'une autre agence", async () => {
+    const b = await bureau();
+    const reponse = await b.h.app.request(`/admin/v1/workers?agencyId=${newId()}`, {
+      headers: auth(b.token),
+    });
+    expect(reponse.status).toBe(404);
+  });
+});

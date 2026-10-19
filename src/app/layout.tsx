@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Atkinson_Hyperlegible_Next, Fraunces } from "next/font/google";
+import { ChromePublic } from "@/components/layout/ChromePublic/ChromePublic";
 import { ComfortScript } from "@/components/layout/ComfortScript/ComfortScript";
 import { SiteFooter } from "@/components/layout/SiteFooter/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader/SiteHeader";
@@ -58,12 +59,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <ComfortScript />
         <MotionScript />
-        <SiteHeader />
+        <ChromePublic>
+          <SiteHeader />
+        </ChromePublic>
         {/* Le fil conducteur mesure `main` et se retire seul du styleguide et des formulaires. */}
         <PageThread />
         {children}
-        <SiteFooter />
-        <SiteMobileActionBar />
+        <ChromePublic>
+          <SiteFooter />
+          <SiteMobileActionBar />
+        </ChromePublic>
         {/* Mesure des clics sur les numéros de téléphone (D-029) : aucun rendu, aucun cookie. */}
         <AppelClicListener />
       </body>

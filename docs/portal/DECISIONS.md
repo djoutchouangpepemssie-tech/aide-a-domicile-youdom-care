@@ -429,3 +429,43 @@ divergence se repose : une décision ne vaut que pour ce qu'elle a vu.
 plus de l'API : ce sont les **écrans**. Le back-office (Next.js, sur Vercel, avec les jetons de
 style et les primitives accessibles du site) est le prochain chantier, et c'est lui qui transformera
 ce travail en outil quotidien.
+
+---
+
+## MY-15 — Le bureau : des écrans sur le site, des données jamais chez Vercel (19/10/2026)
+
+**Décision.** Le back-office (« le bureau ») vit dans le site Next.js, sous `/bureau/`, avec les
+jetons de style et les primitives accessibles déjà construits. Mais **les données ne passent pas par
+Vercel** : les écrans appellent l'API directement depuis le navigateur de la coordinatrice, vers
+l'hébergeur certifié HDS.
+
+**Pourquoi.** Le contraire aurait été plus simple à écrire : un Route Handler sur Vercel qui relaie
+l'API. Il aurait aussi fait transiter des noms de foyers, des horaires de visite et, tôt ou tard,
+des données de santé par un hébergement qui n'est pas certifié pour elles. Ce que la loi interdit
+n'est pas de les stocker, c'est de les héberger ailleurs que chez un hébergeur agréé — un relais est
+un hébergement de passage. La règle du projet tient donc en une phrase : **Vercel sert les fichiers,
+l'API sert les données.**
+
+**Ce que cela impose, et qui n'est pas gratuit :**
+
+1. **L'appel est inter-origine.** Il faut donc l'autoriser des deux côtés : la liste fermée
+   d'origines dans l'API, et l'origine de l'API dans `connect-src` de la politique de sécurité de
+   contenu du site (`next.config.ts`, dérivée de `NEXT_PUBLIC_API_BASE_URL`). J'ai appris la seconde
+   à mes frais : dix exécutions rouges avec, à l'écran, « vérifiez votre connexion » — exact,
+   et inutile. Un parcours vérifie maintenant l'en-tête lui-même, pour que la prochaine fois le test
+   dise la cause.
+2. **Le jeton vit dans `sessionStorage`**, pas dans un cookie : aucun envoi automatique, donc aucune
+   falsification de requête inter-site à prévoir, et la session s'efface à la fermeture de l'onglet.
+   En échange, un script injecté dans la page le lirait — c'est pour cela que la politique de
+   sécurité de contenu reste fermée et qu'aucun script tiers n'entre sur le site.
+3. **Les écrans se chargent côté navigateur.** Rien du bureau n'est pré-rendu avec des données : les
+   pages sont des coquilles statiques qui demandent, affichent, et disent quand elles n'ont pas pu.
+4. **`/bureau/` n'est jamais indexé** (`neverIndexedPaths`, `robots.txt`, `noindex`), même quand
+   Arcel ouvrira l'indexation du site.
+
+**Le premier écran est « la semaine »**, parce que c'est la question qu'une coordinatrice pose vingt
+fois par jour : qui vient, chez qui, et qu'est-ce qui cloche. Il montre les deux choses qu'un
+planning cache d'habitude — **les créneaux à pourvoir**, comptés et nommés, et **les signalements des
+règles de l'agence**, en français, avec leur sévérité en mots (« bloquant », « à regarder »). Quand
+aucune règle n'est saisie, l'écran le dit : un planning sans signalement n'est pas un planning sain,
+c'est un planning non jugé.

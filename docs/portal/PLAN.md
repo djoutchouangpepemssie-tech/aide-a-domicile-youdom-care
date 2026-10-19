@@ -72,9 +72,19 @@ désormais les droits de la mission sur le foyer, bornés dans le temps. 243 tes
 agences, et la portée vient de ses rattachements, pas de sa requête), les validateurs `$jsonSchema`
 dérivés des schémas Zod, et l'ajustement d'une visite divergente — aligner ou conserver, avec motif.
 
-**L'API de la vague 1 est complète.** La suite n'est plus de l'API : ce sont les **écrans**. Le
-back-office en Next.js, sur Vercel, avec les jetons de style et les primitives accessibles du site —
-c'est lui qui transformera ce travail en outil quotidien, et c'est le prochain chantier.
+**L'API de la vague 1 est complète.**
+
+**Étape 6 — commencée (19/10, MY-15)** : le bureau. Le back-office vit dans le site, sous
+`/bureau/`, avec les jetons de style et les primitives accessibles déjà éprouvés ; les données, en
+revanche, ne passent jamais par Vercel — les écrans appellent l'API directement depuis le navigateur,
+vers l'hébergeur certifié HDS. Premier écran livré : **la semaine** (`/bureau/semaine/`), qui dit
+qui vient, chez qui, ce qui est à pourvoir et ce qui cloche, et qui dit aussi quand aucune règle
+n'est saisie. Connexion par lien ou code, jeton en `sessionStorage`, adresse jamais indexée.
+14 parcours sur mobile et bureau.
+
+Restent à construire : **un foyer** (ses séries, ses membres, ses droits), **les réglages** (les
+règles de planification et les tarifs, saisis par l'agence), puis **l'application de l'intervenant**
+(la tournée et le pointage).
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

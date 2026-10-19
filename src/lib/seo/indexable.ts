@@ -8,5 +8,12 @@ export function isIndexable(): boolean {
   return process.env.SITE_INDEXABLE !== "false";
 }
 
-/** Chemins jamais indexés, même une fois le site ouvert (docs/04 §2). */
-export const neverIndexedPaths = ["/api/", "/merci/", "/styleguide/"] as const;
+/**
+ * Chemins jamais indexés, même une fois le site ouvert (docs/04 §2).
+ *
+ * `/bureau/` : le back-office du CRM. Ce n'est pas une page du site — c'est un outil interne,
+ * derrière une authentification, qui n'a rien à faire dans un moteur de recherche ni dans un plan
+ * de site. Cette seule ligne le retire de `robots.txt`, des plans de site, des contrôles de
+ * référencement et lui met `noindex` (MY-15).
+ */
+export const neverIndexedPaths = ["/api/", "/merci/", "/styleguide/", "/bureau/"] as const;

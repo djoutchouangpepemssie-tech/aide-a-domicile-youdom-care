@@ -1978,3 +1978,55 @@ primitives accessibles déjà éprouvées sur le site — est le prochain chanti
 transformera ce travail en outil quotidien.
 
 **Vérifications** : 261 tests d'API, lint, typecheck, format verts.
+
+---
+
+## 19/10/2026 — Le bureau, premier écran : la semaine
+
+L'API de la vague 1 était complète et personne ne pouvait s'en servir. Voici le premier écran du
+back-office, « le bureau », à l'adresse `/bureau/semaine/`.
+
+### Ce que l'écran montre, et pourquoi celui-là d'abord
+
+La question qu'une coordinatrice pose vingt fois par jour : **qui vient, chez qui, et qu'est-ce qui
+cloche**. La semaine se lit jour par jour — pas en grille horaire : les horaires varient trop pour
+qu'une grille ait du sens, et un jour sans visite le dit au lieu de laisser une case vide qu'on
+interprète mal.
+
+Deux choses qu'un planning cache d'habitude sont écrites en haut :
+
+- **les créneaux à pourvoir**, comptés (« 1 créneau à pourvoir ») et marqués sur la visite concernée ;
+- **les signalements des règles de l'agence**, en français, avec leur sévérité en mots — « bloquant »,
+  « à regarder » — et non en couleur seule.
+
+Et quand **aucune règle n'est saisie**, l'écran le dit. Un planning sans signalement n'est pas un
+planning sain : c'est un planning que personne n'a encore demandé de juger.
+
+### La décision d'architecture : Vercel sert les fichiers, l'API sert les données
+
+Les écrans appellent l'API **directement depuis le navigateur**, vers l'hébergeur certifié HDS.
+Aucun relais sur Vercel : un relais est un hébergement de passage, et ce qui transiterait par là —
+noms de foyers, horaires, tôt ou tard des données de santé — n'a rien à faire sur un hébergement qui
+n'est pas certifié pour elles. Le jeton vit dans `sessionStorage` : aucun envoi automatique, donc
+aucune falsification de requête inter-site, et la session s'efface avec l'onglet. `/bureau/` n'est
+jamais indexé, même quand l'indexation du site s'ouvrira. Le détail est en MY-15.
+
+### Ce que j'ai cassé, et ce que ça a coûté
+
+Dix exécutions de parcours rouges d'affilée. À l'écran, le message était « la demande n'a pas abouti,
+vérifiez votre connexion » — exact, et inutile. La cause : `connect-src 'self'` dans la politique de
+sécurité de contenu du site interdisait l'origine de l'API. J'ai d'abord cherché du côté des
+en-têtes CORS de la fausse API (il les fallait aussi), ce qui n'a rien changé ; c'est la console du
+navigateur, lue tardivement, qui a donné la réponse en une ligne.
+
+Deux leçons tenues dans le code : l'origine de l'API entre dans `connect-src` à partir de
+`NEXT_PUBLIC_API_BASE_URL`, et **une adresse illisible arrête le build** plutôt que de livrer un
+bureau muet ; un parcours vérifie l'en-tête lui-même, pour que la prochaine fois le test dise la
+cause au lieu de la cacher.
+
+Deux autres défauts trouvés en passant, et corrigés dans les écrans, pas dans les tests : « 0 visites
+prévues » (zéro prend le singulier en français) et `robots.txt` qui n'interdisait pas encore
+`/bureau/`.
+
+**Vérifications** : 1 243 tests unitaires (dont 265 d'API), 694 parcours Playwright sur mobile et
+bureau — dont les 14 du bureau —, 13/13 contrôles de contenu, lint, typecheck et build verts.

@@ -24,7 +24,7 @@ describe("robots.txt", () => {
     expect(result.rules).toEqual({
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/merci/", "/styleguide/"],
+      disallow: ["/api/", "/merci/", "/styleguide/", "/bureau/"],
     });
   });
 
