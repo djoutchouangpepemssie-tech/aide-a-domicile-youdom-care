@@ -63,15 +63,18 @@ export function mongoRepositories(db: Db): Repositories {
     households: {
       findById: (id) => households.findOne({ _id: id }),
       findByCode: (code) => households.findOne({ code }),
+      listByAgency: (agencyId) => households.find({ agencyId }).toArray(),
       insert: async (household) => void (await households.insertOne(household, dates)),
     },
     memberships: {
       find: (memberId, householdId) => memberships.findOne({ memberId, householdId }),
       listByMember: (memberId) => memberships.find({ memberId }).toArray(),
+      listByHousehold: (householdId) => memberships.find({ householdId }).toArray(),
       insert: async (membership) => void (await memberships.insertOne(membership, dates)),
     },
     grants: {
       listFor: (memberId, householdId) => grants.find({ memberId, householdId }).toArray(),
+      listByHousehold: (householdId) => grants.find({ householdId }).toArray(),
       insertMany: async (list) => {
         if (list.length > 0) await grants.insertMany(list, dates);
       },

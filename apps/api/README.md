@@ -21,12 +21,12 @@ HTTP qui s'appuient dessus.
 
 **Étape 2 — l'API** (quatre surfaces séparées, `ARCHITECTURE.md` §5 principe 1) :
 
-| Surface      | Pour qui                         | Routes                                                                                                                         |
-| ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `/auth/v1`   | tout le monde, sans jeton        | demander un lien ou un code, ouvrir une session, second facteur, liste des appareils, déconnexion à distance                   |
-| `/portal/v1` | familles, bénéficiaires, payeurs | `me`, planning d'un foyer, **journal des accès**                                                                               |
-| `/field/v1`  | intervenants                     | tournée du jour, pointage NFC / QR / manuel, consignes d'accès bornées à la visite                                             |
-| `/admin/v1`  | agence                           | créer un foyer, enregistrer un intervenant, rattacher un membre avec ses droits par défaut, poser une visite, retirer un droit |
+| Surface      | Pour qui                         | Routes                                                                                                                                                                                                                          |
+| ------------ | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/auth/v1`   | tout le monde, sans jeton        | demander un lien ou un code, ouvrir une session, second facteur, liste des appareils, déconnexion à distance                                                                                                                    |
+| `/portal/v1` | familles, bénéficiaires, payeurs | `me`, planning d'un foyer, **journal des accès**                                                                                                                                                                                |
+| `/field/v1`  | intervenants                     | tournée du jour, pointage NFC / QR / manuel, consignes d'accès bornées à la visite                                                                                                                                              |
+| `/admin/v1`  | agence                           | créer un foyer, enregistrer un intervenant, rattacher un membre avec ses droits par défaut, poser une visite, retirer un droit, **lire les foyers de l'agence et la fiche d'un foyer** (membres, droits effectifs, protections) |
 
 Chaque surface vérifie la famille de rôles à son entrée ; chaque route vérifie ensuite le foyer et
 le module. Les deux, pas l'un ou l'autre.
@@ -36,7 +36,7 @@ Autour : `src/store/` (dépôts en mémoire pour les tests, sur MongoDB en servi
 `scripts/migrate.ts` (index, idempotent), `scripts/create-admin.ts` (le premier compte d'agence,
 **volontairement hors API**).
 
-261 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
+269 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
 **404 et jamais 403** (exigence de `PERMISSIONS.md` §7).
 
 ## Ce qui n'est pas couvert par un test, et il faut le savoir
@@ -80,8 +80,9 @@ si le planning rebouge).
 
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. **les écrans** : le bureau a commencé (MY-15) — `/bureau/semaine/` existe dans le site. Restent
-   un foyer, les réglages (règles et tarifs) et l'application de l'intervenant. Les écrans appellent
+1. **les écrans** : le bureau a commencé (MY-15, MY-16) — `/bureau/semaine/` et `/bureau/foyers/`
+   existent dans le site. Restent les réglages (règles et tarifs) et l'application de
+   l'intervenant. Les écrans appellent
    cette API **depuis le navigateur** : il faut donc que l'origine du site figure dans
    `ALLOWED_ORIGINS` ici, **et** que l'origine de cette API figure dans `connect-src` de la
    politique de sécurité de contenu du site (`next.config.ts`, dérivée de

@@ -38,17 +38,23 @@ export interface MemberRepository {
 export interface HouseholdRepository {
   findById(id: string): Promise<Household | null>;
   findByCode(code: string): Promise<Household | null>;
+  /** Les foyers d'une agence, pour la liste du back-office. */
+  listByAgency(agencyId: string): Promise<Household[]>;
   insert(household: Household): Promise<void>;
 }
 
 export interface MembershipRepository {
   find(memberId: string, householdId: string): Promise<Membership | null>;
   listByMember(memberId: string): Promise<Membership[]>;
+  /** Les rattachements d'un foyer : qui en fait partie, et à quel titre. */
+  listByHousehold(householdId: string): Promise<Membership[]>;
   insert(membership: Membership): Promise<void>;
 }
 
 export interface GrantRepository {
   listFor(memberId: string, householdId: string): Promise<AccessGrant[]>;
+  /** Tous les droits d'un foyer, membre par membre, pour l'écran du foyer. */
+  listByHousehold(householdId: string): Promise<AccessGrant[]>;
   insertMany(grants: AccessGrant[]): Promise<void>;
   revoke(id: string, at: Date): Promise<void>;
   /** Repousse la fin d'un droit : un intervenant qui revient garde l'accès à sa mission. */

@@ -469,3 +469,38 @@ planning cache d'habitude — **les créneaux à pourvoir**, comptés et nommés
 règles de l'agence**, en français, avec leur sévérité en mots (« bloquant », « à regarder »). Quand
 aucune règle n'est saisie, l'écran le dit : un planning sans signalement n'est pas un planning sain,
 c'est un planning non jugé.
+
+---
+
+## MY-16 — L'écran d'un foyer montre les droits, pas les rôles (19/10/2026)
+
+**Décision.** L'écran d'un foyer affiche, pour chaque membre, **ses droits effectifs du moment** à
+côté de son rôle. Un membre sans droit le dit en mots : « cette personne ne voit rien de ce foyer ».
+
+**Pourquoi.** Dans ce modèle, le rôle n'ouvre rien : c'est le droit qui ouvre
+(`PERMISSIONS.md` §7). Un écran qui afficherait « représentant légal » et s'arrêterait là
+laisserait croire à un pouvoir que cette personne n'a peut-être pas — et, dans l'autre sens,
+cacherait un accès réel derrière un rôle anodin. Le jour où une famille demande « qui a vu quoi »,
+c'est cette colonne qui répond. Les droits révoqués et expirés n'y figurent pas : afficher un droit
+mort, c'est afficher un faux.
+
+**Trois choix qui vont avec :**
+
+1. **Le foyer technique de l'agence est écarté de la liste**, et l'écran le dit en une ligne. Dans
+   le modèle, c'est un foyer comme les autres — c'est le rattachement des salariés qui le
+   distingue, pas un champ. L'API le marque donc à partir des rattachements de l'auteur, et jamais
+   à partir de son code : un jour quelqu'un nommera un vrai foyer « AGENCE-02 ».
+2. **Le mode d'intervention est toujours dit**, et en mandataire la mention légale de `docs/07`
+   l'accompagne — la même mention que sur le site public, tirée du même fichier de contenu. Deux
+   formulations pour une seule obligation légale, ce serait une de trop.
+3. **Un foyer hors de votre portée répond comme un foyer inexistant** (404), et l'écran l'écrit
+   ainsi : « ce foyer n'existe pas, ou il n'appartient pas à une agence que vous suivez ». Dire
+   lequel des deux serait divulguer l'existence d'un foyer.
+
+**Aucune donnée de santé n'est sur cet écran** : ni compte rendu, ni fiche de vie. Ce qu'on en voit,
+c'est **qui a le droit de les lire**.
+
+**Un défaut d'accessibilité trouvé par la mesure, et corrigé dans le design** : les liens du bureau
+étaient en teal-700 sur fond sable, mesurés à **4,46** — sous le seuil AA de 4,5. Le bureau prend
+donc la variante teal-800, celle que les scènes du site utilisent déjà pour la même raison. Le
+seuil n'a pas bougé d'un dixième : c'est la couleur qui a changé.

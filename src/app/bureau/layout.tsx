@@ -21,7 +21,7 @@ export const metadata = pageMetadata({
 
 export default function BureauLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-sand">
+    <div className="sur-sable min-h-screen bg-sand">
       <BureauBarre />
       <main id="contenu" className="mx-auto w-full max-w-[90rem] px-4 py-6 lg:px-8">
         {children}

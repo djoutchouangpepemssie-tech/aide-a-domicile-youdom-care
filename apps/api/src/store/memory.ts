@@ -116,6 +116,7 @@ export class MemoryDatabase {
       households: {
         findById: async (id) => t.households.find((item) => item._id === id) ?? null,
         findByCode: async (code) => t.households.find((item) => item.code === code) ?? null,
+        listByAgency: async (agencyId) => t.households.filter((item) => item.agencyId === agencyId),
         insert: async (household) => void t.households.push(householdSchema.parse(household)),
       },
       memberships: {
@@ -125,6 +126,8 @@ export class MemoryDatabase {
           ) ?? null,
         listByMember: async (memberId) =>
           t.memberships.filter((item) => item.memberId === memberId),
+        listByHousehold: async (householdId) =>
+          t.memberships.filter((item) => item.householdId === householdId),
         insert: async (membership) => void t.memberships.push(membershipSchema.parse(membership)),
       },
       grants: {
@@ -132,6 +135,8 @@ export class MemoryDatabase {
           t.grants.filter(
             (grant) => grant.memberId === memberId && grant.householdId === householdId,
           ),
+        listByHousehold: async (householdId) =>
+          t.grants.filter((grant) => grant.householdId === householdId),
         insertMany: async (grants) => {
           for (const grant of grants) t.grants.push(accessGrantSchema.parse(grant));
         },

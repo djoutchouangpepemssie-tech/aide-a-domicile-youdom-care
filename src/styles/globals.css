@@ -202,6 +202,16 @@
     text-decoration-line: underline;
   }
 
+  /*
+   * Liens posés sur le sable (le bureau, et tout fond sable hors scène) : teal-700 y est mesuré à
+   * 4,46 — sous le seuil AA de 4,5 — alors qu'il passe largement sur blanc. La variante teal-800
+   * est celle que les scènes utilisent déjà pour la même raison (`scenes.css`). Un seuil ne se
+   * contourne pas : c'est la couleur qui change.
+   */
+  .sur-sable a {
+    color: var(--color-link-on-sand);
+  }
+
   /* Focus visible partout : anneau de 3 px teal-800, décalage 2 px, jamais supprimé */
   :focus-visible {
     outline: var(--focus-ring-width) solid var(--color-focus);

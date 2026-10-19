@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { newId } from "../domaine/ids";
 import { emptyRules, type Rule, type RuleKey } from "../domaine/regles";
 import { household, membership } from "../test/fixtures";
-import { auth, harnais, membre, type Harness } from "../test/harnais";
+import { auth, harnais, membre, rattacher, type Harness } from "../test/harnais";
 
 /*
  * Les routes de planning et de tarifs, de bout en bout.
@@ -1385,6 +1385,69 @@ describe("la liste des intervenants", () => {
   it("ne rend pas les intervenants d'une autre agence", async () => {
     const b = await bureau();
     const reponse = await b.h.app.request(`/admin/v1/workers?agencyId=${newId()}`, {
+      headers: auth(b.token),
+    });
+    expect(reponse.status).toBe(404);
+  });
+});
+
+describe("l'écran d'un foyer", () => {
+  it("liste les foyers de l'agence et distingue le siège d'un foyer accompagné", async () => {
+    const b = await bureau();
+    const reponse = await b.h.app.request(`/admin/v1/households?agencyId=${b.agencyId}`, {
+      headers: auth(b.token),
+    });
+    expect(reponse.status).toBe(200);
+    const corps = (await reponse.json()) as {
+      foyers: { code: string; technique: boolean; ville: string; mode: string }[];
+    };
+    expect(corps.foyers.map((f) => f.code)).toEqual(["AGENCE-01", "FOY-0001"]);
+    // Le foyer technique de l'agence n'est pas un foyer accompagné : l'écran doit pouvoir l'écarter.
+    expect(corps.foyers.find((f) => f.code === "AGENCE-01")?.technique).toBe(true);
+    expect(corps.foyers.find((f) => f.code === "FOY-0001")?.technique).toBe(false);
+  });
+
+  it("rend les membres avec leurs droits effectifs, pas leur rôle seul", async () => {
+    const b = await bureau();
+    const fille = await membre(b.h, { nom: "Nadia", email: "nadia@exemple.fr" });
+    await rattacher(b.h, { memberId: fille, householdId: b.foyer._id, role: "proche_referent" });
+
+    const reponse = await b.h.app.request(`/admin/v1/households/${b.foyer._id}`, {
+      headers: auth(b.token),
+    });
+    expect(reponse.status).toBe(200);
+    const corps = (await reponse.json()) as {
+      foyer: { code: string; mode: string; adresse: { ville: string } };
+      membres: { nom: string; role: string; droits: { module: string }[] }[];
+    };
+    expect(corps.foyer.code).toBe("FOY-0001");
+    const nadia = corps.membres.find((m) => m.nom === "Nadia");
+    expect(nadia?.role).toBe("proche_referent");
+    expect(nadia?.droits.length).toBeGreaterThan(0);
+  });
+
+  it("ne montre pas un droit révoqué : c'est le droit qui ouvre, pas le rôle", async () => {
+    const b = await bureau();
+    const fille = await membre(b.h, { nom: "Nadia", email: "nadia@exemple.fr" });
+    await rattacher(b.h, { memberId: fille, householdId: b.foyer._id, role: "proche_referent" });
+    const droits = await b.h.db.repositories.grants.listFor(fille, b.foyer._id);
+    const retire = droits[0];
+    if (!retire) throw new Error("le rôle devrait poser au moins un droit par défaut");
+    await b.h.db.repositories.grants.revoke(retire._id, b.h.now);
+
+    const corps = (await (
+      await b.h.app.request(`/admin/v1/households/${b.foyer._id}`, { headers: auth(b.token) })
+    ).json()) as { membres: { nom: string; droits: { id: string }[] }[] };
+    const nadia = corps.membres.find((m) => m.nom === "Nadia");
+    expect(nadia?.droits.map((d) => d.id)).not.toContain(retire._id);
+    expect(nadia?.droits).toHaveLength(droits.length - 1);
+  });
+
+  it("ne rend pas un foyer d'une autre agence", async () => {
+    const b = await bureau();
+    const ailleurs = household({ code: "AUT-0001", agencyId: newId() });
+    await b.h.db.repositories.households.insert(ailleurs);
+    const reponse = await b.h.app.request(`/admin/v1/households/${ailleurs._id}`, {
       headers: auth(b.token),
     });
     expect(reponse.status).toBe(404);

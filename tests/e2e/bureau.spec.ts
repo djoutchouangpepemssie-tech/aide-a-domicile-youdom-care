@@ -55,7 +55,10 @@ const occurrence = (over: Record<string, unknown> = {}) => ({
   ...over,
 });
 
-async function stubApi(page: Page, options: { me?: number; planning?: unknown } = {}) {
+async function stubApi(
+  page: Page,
+  options: { planning?: unknown; mode?: "prestataire" | "mandataire" } = {},
+) {
   await page.route("**/auth/v1/challenges", (route) =>
     repondre(route, 202, { challengeId: "defi-1", expiresIn: 600 }),
   );
@@ -63,14 +66,12 @@ async function stubApi(page: Page, options: { me?: number; planning?: unknown } 
     repondre(route, 201, { token: "jeton-de-test", expiresAt: "2026-11-19T00:00:00.000Z" }),
   );
   await page.route("**/admin/v1/me", (route) =>
-    options.me && options.me !== 200
-      ? repondre(route, options.me, { code: "non_authentifie", message: "Session expirée." })
-      : repondre(route, 200, {
-          membre: { id: "e".repeat(24), nom: "Arcel" },
-          role: "responsable_agence",
-          agences: [{ agencyId: AGENCE, foyers: ["AGENCE-01"] }],
-          secondFacteur: false,
-        }),
+    repondre(route, 200, {
+      membre: { id: "e".repeat(24), nom: "Arcel" },
+      role: "responsable_agence",
+      agences: [{ agencyId: AGENCE, foyers: ["AGENCE-01"] }],
+      secondFacteur: false,
+    }),
   );
   await page.route("**/admin/v1/planning?**", (route) =>
     repondre(
@@ -102,6 +103,88 @@ async function stubApi(page: Page, options: { me?: number; planning?: unknown } 
       },
     ),
   );
+  await page.route("**/admin/v1/households?**", (route) =>
+    repondre(route, 200, {
+      foyers: [
+        {
+          id: FOYER,
+          code: "FOY-0001",
+          mode: options.mode ?? "prestataire",
+          statut: "actif",
+          ville: "Paris",
+          codePostal: "75011",
+          gele: false,
+          technique: false,
+        },
+        // Le foyer technique de l'agence : l'écran doit l'écarter, pas le compter.
+        {
+          id: "f".repeat(24),
+          code: "AGENCE-01",
+          mode: "prestataire",
+          statut: "actif",
+          ville: "Paris",
+          codePostal: "75000",
+          gele: false,
+          technique: true,
+        },
+      ],
+    }),
+  );
+  await page.route(`**/admin/v1/households/${FOYER}`, (route) =>
+    repondre(route, 200, {
+      foyer: {
+        id: FOYER,
+        code: "FOY-0001",
+        agencyId: AGENCE,
+        mode: options.mode ?? "prestataire",
+        statut: "actif",
+        gele: false,
+        adresse: { ligne1: "12 rue des Lilas", ligne2: null, codePostal: "75011", ville: "Paris" },
+      },
+      membres: [
+        {
+          id: "1".repeat(24),
+          nom: "Nadia",
+          role: "proche_referent",
+          statut: "actif",
+          droits: [{ id: "d1", module: "planning", actions: ["voir"] }],
+        },
+        {
+          id: "2".repeat(24),
+          nom: "Claire",
+          role: "beneficiaire",
+          statut: "actif",
+          droits: [],
+        },
+      ],
+      protections: [
+        {
+          memberId: "2".repeat(24),
+          type: "curatelle",
+          portee: ["biens"],
+          representation: "assistance",
+          verifiee: true,
+        },
+      ],
+    }),
+  );
+  await page.route(`**/admin/v1/households/${FOYER}/series`, (route) =>
+    repondre(route, 200, {
+      series: [
+        {
+          id: SERIE,
+          libelle: "Matins en semaine",
+          du: "2026-10-01",
+          au: null,
+          rythme: 1,
+          creneaux: 5,
+          statut: "active",
+          version: 1,
+          remplaceePar: null,
+        },
+      ],
+    }),
+  );
   await page.route("**/admin/v1/workers?**", (route) =>
     repondre(route, 200, {
       intervenants: [
@@ -123,6 +206,13 @@ async function seConnecter(page: Page) {
   await page.getByLabel(/secret du lien/).fill("secret-du-lien-de-test");
   await page.getByRole("button", { name: "Ouvrir ma session" }).click();
   await expect(page).toHaveURL(/\/bureau\/semaine\//);
+  /*
+   * On attend que la semaine soit **affichée**, pas seulement que l'adresse ait changé : le
+   * premier chargement est encore en vol au moment où l'adresse bascule. Sans cette attente, un
+   * test qui change une interception juste après la connexion la voit s'appliquer au chargement
+   * initial — c'est ce qui rendait le test de la session expirée instable (1 échec sur 12).
+   */
+  await expect(page.getByRole("heading", { name: /lundi/i })).toBeVisible();
 }
 
 test.describe("Bureau (back-office)", () => {
@@ -173,7 +263,17 @@ test.describe("Bureau (back-office)", () => {
   test("une session expirée ramène à la connexion sans message cryptique", async ({ page }) => {
     await stubApi(page);
     await seConnecter(page);
-    await stubApi(page, { me: 401 });
+
+    /*
+     * On remplace l'interception de `me` au lieu d'en empiler une seconde : l'ordre de priorité
+     * entre deux interceptions qui visent la même adresse est un détail d'implémentation, et s'y
+     * fier rendait ce test instable (il est tombé une fois sur douze exécutions).
+     */
+    await page.unroute("**/admin/v1/me");
+    await page.route("**/admin/v1/me", (route) =>
+      repondre(route, 401, { code: "non_authentifie", message: "Session expirée." }),
+    );
+
     await page.getByRole("button", { name: "Semaine suivante" }).click();
     await expect(page).toHaveURL(/\/bureau\/connexion\//);
     await expect(page.getByRole("heading", { name: "Se connecter" })).toBeVisible();
@@ -210,6 +310,63 @@ test.describe("Bureau (back-office)", () => {
     await seConnecter(page);
     await expect(page.getByText("Aucune visite prévue.")).toHaveCount(7);
     await expect(page.getByText("0 visite prévue")).toBeVisible();
+  });
+
+  test("les foyers se listent, et l'agence elle-même n'y est pas comptée", async ({ page }) => {
+    await stubApi(page);
+    await seConnecter(page);
+    await page.getByRole("link", { name: "Les foyers" }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Les foyers");
+
+    // Un seul foyer accompagné : le foyer technique de l'agence est écarté et annoncé.
+    await expect(page.getByText("1 foyer accompagné")).toBeVisible();
+    await expect(page.getByText(/foyer technique de l’agence n’est pas compté/)).toBeVisible();
+    await expect(page.getByRole("link", { name: "FOY-0001" })).toBeVisible();
+    await expect(page.getByText("AGENCE-01")).toHaveCount(0);
+
+    await expectNoSeriousAxeViolations(page);
+  });
+
+  test("un foyer dit qui en fait partie et ce que chacun voit", async ({ page }) => {
+    await stubApi(page);
+    await seConnecter(page);
+    await page.goto(`/bureau/foyers/${FOYER}/`);
+
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("FOY-0001");
+    await expect(page.getByText("12 rue des Lilas")).toBeVisible();
+
+    // Le rôle ne suffit pas : ce sont les droits effectifs qui sont écrits.
+    await expect(page.getByText("proche référent")).toBeVisible();
+    await expect(page.getByText(/ne voit rien de ce foyer/)).toBeVisible();
+    await expect(page.getByText(/curatelle \(biens, assistance\)/)).toBeVisible();
+
+    await expect(page.getByText("Matins en semaine")).toBeVisible();
+    await expect(page.getByText(/5 créneaux par semaine/)).toBeVisible();
+
+    // En prestataire, pas de mention mandataire.
+    await expect(page.getByText(/le consommateur est l’employeur/)).toHaveCount(0);
+
+    await expectNoSeriousAxeViolations(page);
+  });
+
+  test("en mandataire, la mention légale accompagne le foyer", async ({ page }) => {
+    await stubApi(page, { mode: "mandataire" });
+    await seConnecter(page);
+    await page.goto(`/bureau/foyers/${FOYER}/`);
+    await expect(page.getByText("Mode mandataire")).toBeVisible();
+    await expect(page.getByText(/le consommateur est l'employeur/)).toBeVisible();
+  });
+
+  test("un foyer hors de votre portée ne dit pas s'il existe", async ({ page }) => {
+    await stubApi(page);
+    await seConnecter(page);
+    const ailleurs = "9".repeat(24);
+    await page.route(`**/admin/v1/households/${ailleurs}**`, (route) =>
+      repondre(route, 404, { code: "introuvable", message: "Introuvable." }),
+    );
+    await page.goto(`/bureau/foyers/${ailleurs}/`);
+    await expect(page.getByText("Foyer introuvable")).toBeVisible();
+    await expect(page.getByText(/Les deux se répondent pareil/)).toBeVisible();
   });
 
   test("la politique de sécurité de contenu laisse joindre l'API", async ({ request }) => {

@@ -2030,3 +2030,43 @@ prévues » (zéro prend le singulier en français) et `robots.txt` qui n'interd
 
 **Vérifications** : 1 243 tests unitaires (dont 265 d'API), 694 parcours Playwright sur mobile et
 bureau — dont les 14 du bureau —, 13/13 contrôles de contenu, lint, typecheck et build verts.
+
+---
+
+## 19/10/2026 — Le bureau, deuxième écran : un foyer
+
+Après la semaine, le foyer : la liste des foyers de l'agence, et la fiche de chacun.
+
+**Ce que la fiche montre, et que peu de logiciels montrent** : pour chaque membre, **ce qu'il voit
+réellement**. Le rôle est écrit, mais à côté de ses droits effectifs — et un membre sans droit le
+dit en mots plutôt que d'afficher une ligne vide. C'est la règle du modèle : le rôle n'ouvre rien,
+c'est le droit qui ouvre. Les droits révoqués ont disparu de l'écran, puisqu'ils ont disparu de la
+réalité. S'y ajoutent le mode d'intervention (avec la mention légale du mandataire, tirée du même
+fichier de contenu que le site public), les mesures de protection juridique — dont celles qu'aucun
+humain n'a encore vérifiées, marquées comme telles — et les séries de planning du foyer.
+
+Le foyer technique de l'agence est écarté de la liste et annoncé en une ligne. Il est marqué par
+l'API à partir des rattachements de l'auteur, jamais d'après son code : un jour, quelqu'un nommera
+un vrai foyer « AGENCE-02 ».
+
+Un foyer d'une autre agence répond 404, exactement comme un foyer inexistant, et l'écran l'écrit
+sans détour : les deux se répondent pareil, et c'est voulu.
+
+**Ce que la mesure a trouvé** : les liens du bureau, en teal-700 sur fond sable, sont à **4,46** —
+sous le seuil AA de 4,5. Axe l'a signalé sur 58 éléments. Le bureau prend la variante teal-800, déjà
+utilisée par les scènes du site pour cette raison exacte. Le seuil n'a pas bougé.
+
+Côté API, deux lectures qui manquaient : `GET /admin/v1/households?agencyId=` et
+`GET /admin/v1/households/:id`. Elles suivent la règle de portée de MY-14 — hors portée, 404 — et
+la seconde ne rend aucune donnée de santé.
+
+**Un test instable démasqué, et c'était un vrai défaut de test** : le parcours de la session
+expirée tombait une fois sur douze. La connexion n'attendait que le changement d'adresse, pas
+l'affichage de la semaine — si bien que la réponse « session expirée » posée juste après
+s'appliquait parfois au **premier** chargement, et le test cliquait sur un bouton déjà en train de
+disparaître. La connexion attend maintenant la semaine affichée. Vérifié en seize exécutions de
+suite, puis sur l'ensemble des parcours du bureau en double passage.
+
+**Vérifications** : 1 253 tests unitaires (dont 269 d'API), 22 parcours du bureau sur mobile et
+bureau (44 en double passage, tous verts), 74 parcours du contrat mobile, 13/13 contrôles, lint,
+typecheck et build verts.

@@ -147,6 +147,62 @@ export type Intervenant = {
   qualifications: string[];
 };
 
+export type FoyerListe = {
+  id: string;
+  code: string;
+  mode: "prestataire" | "mandataire";
+  statut: string;
+  ville: string;
+  codePostal: string;
+  gele: boolean;
+  /** Le foyer technique de l'agence : les salariés y sont rattachés, personne n'y est accompagné. */
+  technique: boolean;
+};
+
+export type DroitEffectif = { id: string; module: string; actions: string[] };
+
+export type MembreDuFoyer = {
+  id: string;
+  nom: string | null;
+  role: string;
+  statut: string;
+  droits: DroitEffectif[];
+};
+
+export type Protection = {
+  memberId: string;
+  type: string;
+  portee: string[];
+  representation: "assistance" | "representation";
+  verifiee: boolean;
+};
+
+export type Foyer = {
+  foyer: {
+    id: string;
+    code: string;
+    agencyId: string;
+    mode: "prestataire" | "mandataire";
+    statut: string;
+    gele: boolean;
+    adresse: { ligne1: string; ligne2: string | null; codePostal: string; ville: string };
+  };
+  membres: MembreDuFoyer[];
+  protections: Protection[];
+};
+
+export type SerieDuFoyer = {
+  id: string;
+  libelle: string;
+  du: string;
+  au: string | null;
+  rythme: number;
+  creneaux: number;
+  statut: string;
+  version: number;
+  remplaceePar: string | null;
+};
+
 export type Suggestion = { workerId: string; score: number; raisons: string[] };
 export type CreneauASuggerer = {
   serieId: string;
@@ -184,6 +240,14 @@ export const api = {
     apiFetch<{ creneaux: CreneauASuggerer[]; total: number }>(
       `/admin/v1/planning/suggestions?agencyId=${agencyId}&from=${from}&to=${to}`,
     ),
+
+  foyers: (agencyId: string) =>
+    apiFetch<{ foyers: FoyerListe[] }>(`/admin/v1/households?agencyId=${agencyId}`),
+
+  foyer: (householdId: string) => apiFetch<Foyer>(`/admin/v1/households/${householdId}`),
+
+  seriesDuFoyer: (householdId: string) =>
+    apiFetch<{ series: SerieDuFoyer[] }>(`/admin/v1/households/${householdId}/series`),
 
   deconnecter: () => jeton.effacer(),
 };

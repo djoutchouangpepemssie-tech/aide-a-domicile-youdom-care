@@ -19,13 +19,15 @@ import type { ApiDeps, AppEnv } from "../types";
  *
  * Deux choses que je signale plutôt que de les laisser découvrir :
  *
- * 1. **la portée par agence n'est pas encore en place.** Un coordinateur authentifié peut agir
- *    sur l'agence qu'il nomme. Le rattachement d'un salarié à son agence arrive avec le module
- *    Planning (étape 3) ; d'ici là, chaque action est journalisée avec son auteur ;
+ * 1. **la portée par agence est en place depuis MY-14** : un compte n'agit que sur les agences de
+ *    ses rattachements, jamais sur celle qu'il nomme dans sa requête (`trace.ts`). Hors portée,
+ *    la réponse est 404 — aucun refus ne dit « ça existe, mais pas pour vous » ;
  * 2. **il n'y a pas de route pour créer le premier administrateur**, volontairement : elle serait
  *    une porte ouverte. Le premier compte se crée avec `scripts/create-admin.ts`, en accès direct
  *    à la base.
  */
+
+const idParam = z.string().regex(/^[0-9a-f]{24}$/);
 
 const adresseSchema = z.strictObject({
   line1: z.string().min(1).max(120),
@@ -88,6 +90,104 @@ export function adminSurface(deps: ApiDeps) {
     });
 
     return context.json({ id: household._id, code: household.code }, 201);
+  });
+
+  /*
+   * Les foyers d'une agence. Le foyer technique de l'agence — celui par lequel les salariés
+   * tiennent leur portée — est marqué `technique` : c'est un foyer comme un autre dans le modèle,
+   * et l'écran n'a aucune raison de le présenter comme un foyer accompagné.
+   */
+  app.get("/households", async (context) => {
+    const agencyId = context.req.query("agencyId") ?? "";
+    if (!idParam.safeParse(agencyId).success) return notFound(context);
+    const acteur = context.get("acteur");
+    if (!couvre(acteur, agencyId)) return notFound(context);
+
+    const foyers = await deps.repositories.households.listByAgency(agencyId);
+    return context.json({
+      foyers: foyers
+        .map((foyer) => ({
+          id: foyer._id,
+          code: foyer.code,
+          mode: foyer.mode,
+          statut: foyer.status,
+          ville: foyer.address.city,
+          codePostal: foyer.address.postalCode,
+          gele: Boolean(foyer.frozenAt),
+          technique: acteur.staffHouseholds.includes(foyer._id),
+        }))
+        .sort((a, b) => a.code.localeCompare(b.code, "fr")),
+    });
+  });
+
+  /*
+   * Un foyer : son identité, qui en fait partie, et **ce que chacun peut réellement voir**.
+   *
+   * Les droits affichés sont les droits effectifs du moment — révoqués et expirés exclus. Un écran
+   * qui montrerait le rôle sans les droits mentirait : dans ce modèle, le rôle ne décide de rien,
+   * c'est le droit qui ouvre (`PERMISSIONS.md` §7).
+   *
+   * Les mesures de protection juridique sont là parce que la coordination en a besoin pour savoir
+   * qui peut consentir et signer. Ce sont des faits d'état civil, pas des données de santé : le
+   * contenu des consignes d'accès et tout ce qui touche à la santé reste hors de cette réponse.
+   */
+  app.get("/households/:id", async (context) => {
+    const householdId = context.req.param("id");
+    if (!idParam.safeParse(householdId).success) return notFound(context);
+    const foyer = await deps.repositories.households.findById(householdId);
+    if (!foyer || !couvre(context.get("acteur"), foyer.agencyId)) return notFound(context);
+
+    const [rattachements, droits, protections] = await Promise.all([
+      deps.repositories.memberships.listByHousehold(householdId),
+      deps.repositories.grants.listByHousehold(householdId),
+      deps.repositories.protections.listByHousehold(householdId),
+    ]);
+    const maintenant = deps.now();
+    const actif = (droit: AccessGrant) =>
+      !droit.revokedAt &&
+      droit.startsAt <= maintenant &&
+      (!droit.endsAt || droit.endsAt > maintenant);
+
+    const membres = await Promise.all(
+      rattachements.map(async (rattachement) => {
+        const membre = await deps.repositories.members.findById(rattachement.memberId);
+        return {
+          id: rattachement.memberId,
+          nom: membre?.displayName ?? null,
+          role: rattachement.role,
+          statut: rattachement.status,
+          droits: droits
+            .filter((droit) => droit.memberId === rattachement.memberId && actif(droit))
+            .map((droit) => ({ id: droit._id, module: droit.module, actions: droit.actions }))
+            .sort((a, b) => a.module.localeCompare(b.module, "fr")),
+        };
+      }),
+    );
+
+    return context.json({
+      foyer: {
+        id: foyer._id,
+        code: foyer.code,
+        agencyId: foyer.agencyId,
+        mode: foyer.mode,
+        statut: foyer.status,
+        gele: Boolean(foyer.frozenAt),
+        adresse: {
+          ligne1: foyer.address.line1,
+          ligne2: foyer.address.line2 ?? null,
+          codePostal: foyer.address.postalCode,
+          ville: foyer.address.city,
+        },
+      },
+      membres: membres.sort((a, b) => (a.nom ?? "").localeCompare(b.nom ?? "", "fr")),
+      protections: protections.map((protection) => ({
+        memberId: protection.memberId,
+        type: protection.type,
+        portee: protection.scope,
+        representation: protection.representation,
+        verifiee: Boolean(protection.verifiedAt),
+      })),
+    });
   });
 
   app.post("/workers", async (context) => {

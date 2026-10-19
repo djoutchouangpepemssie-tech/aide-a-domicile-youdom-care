@@ -82,9 +82,13 @@ qui vient, chez qui, ce qui est à pourvoir et ce qui cloche, et qui dit aussi q
 n'est saisie. Connexion par lien ou code, jeton en `sessionStorage`, adresse jamais indexée.
 14 parcours sur mobile et bureau.
 
-Restent à construire : **un foyer** (ses séries, ses membres, ses droits), **les réglages** (les
-règles de planification et les tarifs, saisis par l'agence), puis **l'application de l'intervenant**
-(la tournée et le pointage).
+Deuxième écran livré (MY-16) : **un foyer** — la liste des foyers de l'agence, puis la fiche de
+chacun : son mode d'intervention (avec la mention légale du mandataire), ses membres **avec leurs
+droits effectifs** et non leur rôle seul, les mesures de protection juridique, et ses séries de
+planning. 22 parcours.
+
+Restent à construire : **les réglages** (les règles de planification et les tarifs, saisis par
+l'agence), puis **l'application de l'intervenant** (la tournée et le pointage).
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

@@ -35,6 +35,13 @@ export async function actorRole(deps: ApiDeps, context: Context<AppEnv>) {
     memberId: member._id,
     role: staff[0]?.role ?? "administrateur",
     agencies: [...agencies],
+    /*
+     * Les foyers par lesquels l'auteur tient sa portée : les « foyers techniques » d'agence, où les
+     * salariés sont rattachés. Ce sont des foyers comme les autres dans le modèle — c'est leur
+     * rattachement qui les distingue, pas un champ. Les exposer ici évite à l'écran des foyers de
+     * présenter l'agence elle-même comme un foyer accompagné.
+     */
+    staffHouseholds: staff.map((membership) => membership.householdId),
   };
 }
 
