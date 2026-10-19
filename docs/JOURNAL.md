@@ -1655,3 +1655,44 @@ premier cluster réel sera `pnpm portal:migrer`, puis un test d'intégration.
 **Prochaine étape, et son mur** : le planning — récurrences, affectation, remplacements. Il attend
 les règles de planification d'Arcel (amplitude, trajets, repos, majorations). Sans elles, un
 planning est faux, et aucun code n'y change rien.
+
+---
+
+## 2026-10-19 — La CI du portail : un vrai défaut dans un test, trouvé en le reproduisant
+
+La première exécution de la CI sur la branche du portail (la 53, rendue possible par D-103) a
+montré un échec : deux parcours de `envoi.spec.ts` n'atteignaient pas la page merci. **Le code du
+site est pourtant identique, octet pour octet, à un commit dont l'exécution était verte** — vérifié
+avant de toucher à quoi que ce soit. L'échec ne venait donc pas du portail.
+
+Il aurait été facile de relancer et de passer à autre chose. En le reproduisant en local, les deux
+projets lancés ensemble, j'ai trouvé **un défaut réel dans le test** :
+
+**Les deux projets partagent la boîte du serveur SMTP simulé.** Un test attendait « le premier
+e-mail reçu depuis mon départ dont l'objet commence par *Nouvelle demande* ». Quand le téléphone et
+l'ordinateur avancent en même temps, la demande de l'autre projet arrive dans la même fenêtre et
+satisfait les deux conditions : le test lisait l'e-mail du voisin, puis affirmait quelque chose sur
+lui. Reproduit, et l'erreur le dit en clair : il attendait « Mon enfant » et lisait « ADULTE EN
+SITUATION DE HANDICAP ».
+
+**Corrigé en exigeant le libellé du formulaire éprouvé**, lu dans `content/emails.json` par
+l'identifiant du formulaire — donc rien n'est recopié dans le test : si un libellé change, le test
+suit ; si un formulaire disparaît, il échoue bruyamment. Au passage, le formulaire est cherché par
+son `slug`, comme le fait le site : `neuro.json` sert `/demande/maladie-neurodegenerative/`, et le
+nom du fichier n'est pas l'adresse de la page.
+
+**Et une attente remise à sa mesure.** L'envoi d'un formulaire n'est pas un clic : la route attend
+**la remise de l'e-mail** avant de rediriger. Les cinq secondes par défaut de `toHaveURL` suffisent
+en local mais pas sur un exécuteur chargé. Les six attentes qui suivent un envoi réel passent donc
+à quinze secondes, la même durée que l'attente de l'e-mail dans le même test. Rien n'est relâché :
+sans redirection, le test échoue toujours — il ne se donne plus un budget plus court que l'action
+qu'il mesure.
+
+**Ce que cela révèle du produit, et que je note sans y toucher aujourd'hui** : puisque la
+redirection attend la remise du courrier, **la personne attend aussi**. Un jour où le serveur SMTP
+est lent, c'est elle qui regarde un bouton tourner. Le jour où la file d'envoi deviendra un sujet,
+la réponse est d'accuser réception avant d'envoyer, pas d'allonger une attente.
+
+**Vérifications** : les 18 parcours de `envoi.spec.ts` (neuf par projet, les deux lancés ensemble)
+passent deux fois de suite en 1 min 20 ; le cas qui échouait reproductiblement passe. Lint et
+format verts.

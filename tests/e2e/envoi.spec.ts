@@ -1,3 +1,5 @@
+import { readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { expectNoSeriousAxeViolations } from "./axe";
 import { checkByKeyboard } from "./keyboard";
@@ -60,6 +62,53 @@ async function waitForMail(since: string, predicate: (m: StoredMail) => boolean)
   return mail;
 }
 
+/*
+ * Le libellé que l'e-mail d'équipe porte dans son objet, lu dans le contenu que l'application
+ * utilise elle-même (`content/emails.json`) via l'identifiant du formulaire. Rien n'est recopié
+ * ici : si un libellé change, le test suit ; si un formulaire disparaît, il échoue bruyamment.
+ */
+function teamSubjectLabel(slug: string): string {
+  // Le nom du fichier n'est pas l'adresse de la page : `neuro.json` sert
+  // /demande/maladie-neurodegenerative/. On cherche donc par `slug`, comme le site.
+  const dossier = path.join(process.cwd(), "content", "formulaires");
+  const form = readdirSync(dossier)
+    .filter((fichier) => fichier.endsWith(".json"))
+    .map(
+      (fichier) =>
+        JSON.parse(readFileSync(path.join(dossier, fichier), "utf8")) as {
+          id: string;
+          slug: string;
+        },
+    )
+    .find((candidat) => candidat.slug === slug);
+  if (!form) throw new Error(`aucun formulaire de slug « ${slug} »`);
+  const labels = (
+    JSON.parse(readFileSync(path.join(process.cwd(), "content", "emails.json"), "utf8")) as {
+      equipe: { formulaires: Record<string, string> };
+    }
+  ).equipe.formulaires;
+  const label = labels[form.id];
+  if (!label) throw new Error(`aucun libellé d'e-mail pour le formulaire « ${form.id} »`);
+  return label;
+}
+
+/*
+ * L'envoi d'un formulaire n'est pas un clic : la route Node valide la demande **et attend la
+ * remise de l'e-mail** avant de rediriger vers la page merci. Les cinq secondes par défaut de
+ * `toHaveURL` suffisent en local (1,4 min pour les neuf parcours) mais pas toujours sur un
+ * exécuteur d'intégration continue chargé : l'exécution 53 a vu deux de ces attentes expirer, dont
+ * une qui est passée à la reprise, sur un code de site identique à une exécution verte.
+ *
+ * On attend donc aussi longtemps que pour l'e-mail lui-même. Rien n'est relâché : si la redirection
+ * n'arrive pas, le test échoue toujours — il ne se contente plus d'un budget plus court que
+ * l'action qu'il mesure.
+ */
+const ATTENTE_ENVOI_MS = 15_000;
+
+async function expectSubmitted(page: Page, pattern: RegExp) {
+  await expect(page).toHaveURL(pattern, { timeout: ATTENTE_ENVOI_MS });
+}
+
 test("rappel au clavier jusqu'à la page merci ; l'équipe reçoit l'alerte", async ({ page }) => {
   const since = new Date().toISOString();
   await page.goto("/etre-rappele/");
@@ -68,7 +117,7 @@ test("rappel au clavier jusqu'à la page merci ; l'équipe reçoit l'alerte", as
   await pickCommuneByKeyboard(form, page, "Votre commune ou votre code postal");
   await form.getByLabel(/Quand préférez-vous être rappelé/).selectOption("Le matin");
   await pressContinue(page, form);
-  await expect(page).toHaveURL(/\/merci\/rappel\/$/);
+  await expectSubmitted(page, /\/merci\/rappel\/$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Merci. Votre demande est arrivée.",
   );
@@ -115,7 +164,7 @@ test("demande personne âgée au clavier : cinq étapes, axe, alerte et accusé 
   await checkByKeyboard(form, page, "checkbox", /J'accepte que Youdom Care utilise/);
   await expectNoSeriousAxeViolations(page);
   await pressContinue(page, form);
-  await expect(page).toHaveURL(/\/merci\/personne-agee\/$/);
+  await expectSubmitted(page, /\/merci\/personne-agee\/$/);
   const team = await waitForMail(since, (m) =>
     m.subject.startsWith("Nouvelle demande — Personne âgée"),
   );
@@ -188,8 +237,15 @@ for (const cas of [
     await pickCommuneByKeyboard(form, page, "Votre commune ou votre code postal");
     await checkByKeyboard(form, page, "checkbox", /J'accepte que Youdom Care utilise/);
     await pressContinue(page, form);
-    await expect(page).toHaveURL(/\/merci\//);
-    const mail = await waitForMail(since, (m) => m.subject.startsWith("Nouvelle demande"));
+    await expectSubmitted(page, /\/merci\//);
+    // Les deux projets (téléphone et ordinateur) partagent la boîte du serveur simulé : filtrer
+    // sur l'heure et sur « Nouvelle demande » ne suffit pas, car la demande de l'autre projet
+    // arrive dans la même fenêtre et satisfait les deux conditions. On exige donc le libellé du
+    // formulaire éprouvé — sinon le test lit l'e-mail du voisin et affirme n'importe quoi.
+    const mail = await waitForMail(
+      since,
+      (m) => m.subject.startsWith("Nouvelle demande") && m.subject.includes(teamSubjectLabel(cas)),
+    );
     // La réponse imposée part bien avec la demande, même sans étape affichée.
     if (sansPourQui) expect(mail.text).toContain("Mon enfant");
   });
@@ -211,7 +267,7 @@ test("sortie d'hospitalisation et professionnel : envoi réel", async ({ page })
   await fillIdentityByKeyboard(form, page);
   await checkByKeyboard(form, page, "checkbox", /J'accepte que Youdom Care utilise/);
   await pressContinue(page, form);
-  await expect(page).toHaveURL(/\/merci\/sortie-hospitalisation\/$/);
+  await expectSubmitted(page, /\/merci\/sortie-hospitalisation\/$/);
   await waitForMail(
     since,
     (m) => m.subject === "Nouvelle demande — Sortie d'hospitalisation — Puteaux — Dans la semaine",
@@ -232,7 +288,7 @@ test("sortie d'hospitalisation et professionnel : envoi réel", async ({ page })
   await pickCommuneByKeyboard(form, page, "Commune de la personne");
   await checkByKeyboard(form, page, "radio", "Dans le mois");
   await pressContinue(page, form);
-  await expect(page).toHaveURL(/\/merci\/professionnel\/$/);
+  await expectSubmitted(page, /\/merci\/professionnel\/$/);
   await waitForMail(
     since,
     (m) => m.subject === "Nouvelle demande — Professionnel — Puteaux — Dans le mois",
