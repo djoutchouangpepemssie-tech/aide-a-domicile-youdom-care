@@ -3,10 +3,12 @@ import { cors } from "hono/cors";
 import { secureHeaders } from "hono/secure-headers";
 import { authenticate, requireRoles, CLIENT_SURFACE } from "./authenticate";
 import { fail } from "./errors";
-import { adminSurface, ROLES_AGENCE } from "./surfaces/admin";
+import { adminSurface } from "./surfaces/admin";
+import { planningSurface } from "./surfaces/planning";
 import { authSurface } from "./surfaces/auth";
 import { fieldSurface } from "./surfaces/field";
 import { portalSurface } from "./surfaces/portal";
+import { ROLES_AGENCE } from "./trace";
 import type { ApiDeps, AppEnv } from "./types";
 
 /*
@@ -76,6 +78,8 @@ export function createApp(deps: ApiDeps) {
   const admin = new Hono<AppEnv>();
   admin.use("*", authenticate(deps), requireRoles(deps, ROLES_AGENCE));
   admin.route("/", adminSurface(deps));
+  // Planning et tarifs : même surface, même garde, un fichier par sujet.
+  admin.route("/", planningSurface(deps));
   app.route("/admin/v1", admin);
 
   app.notFound((context) => fail(context, "introuvable"));

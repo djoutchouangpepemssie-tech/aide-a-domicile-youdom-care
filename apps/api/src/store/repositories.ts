@@ -8,6 +8,10 @@ import type {
   VisitEvent,
   Worker,
 } from "../domaine/schemas";
+import type { Absence } from "../domaine/absences";
+import type { AgencyRules } from "../domaine/regles";
+import type { Prestation, TariffSettings } from "../domaine/tarifs";
+import type { Serie } from "../planning/serie";
 import type { Challenge } from "../auth/challenges";
 import type { Session } from "../auth/sessions";
 import type { AuthorizationStore, ContextQuery, LoadedContext } from "./authorization-store";
@@ -84,6 +88,37 @@ export interface ChallengeRepository {
   save(challenge: Challenge): Promise<void>;
 }
 
+export interface SerieRepository {
+  findById(id: string): Promise<Serie | null>;
+  listByHousehold(householdId: string): Promise<Serie[]>;
+  /** Les séries d'une agence, pour juger l'ensemble du planning d'un intervenant. */
+  listByAgency(agencyId: string, status?: Serie["status"]): Promise<Serie[]>;
+  insert(serie: Serie): Promise<void>;
+  save(serie: Serie): Promise<void>;
+}
+
+export interface RulesRepository {
+  current(agencyId: string): Promise<AgencyRules | null>;
+  insert(rules: AgencyRules): Promise<void>;
+}
+
+export interface PrestationRepository {
+  listByAgency(agencyId: string): Promise<Prestation[]>;
+  insert(prestation: Prestation): Promise<void>;
+  /** Clôt une version à une date : changer un prix, c'est fermer l'ancien et ouvrir le nouveau. */
+  close(id: string, to: string): Promise<void>;
+}
+
+export interface TariffSettingsRepository {
+  find(agencyId: string): Promise<TariffSettings | null>;
+  upsert(settings: TariffSettings): Promise<void>;
+}
+
+export interface AbsenceRepository {
+  listByWorker(workerId: string, from: Date, to: Date): Promise<Absence[]>;
+  insert(absence: Absence): Promise<void>;
+}
+
 export type Repositories = {
   members: MemberRepository;
   households: HouseholdRepository;
@@ -95,6 +130,11 @@ export type Repositories = {
   visitEvents: VisitEventRepository;
   sessions: SessionRepository;
   challenges: ChallengeRepository;
+  series: SerieRepository;
+  rules: RulesRepository;
+  prestations: PrestationRepository;
+  tariffSettings: TariffSettingsRepository;
+  absences: AbsenceRepository;
 };
 
 /**

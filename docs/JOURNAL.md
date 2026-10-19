@@ -1791,3 +1791,72 @@ qu'un vrai lien mort passe inaperçu — celui de ce matin dormait dans un artic
 
 **Vérifications** : 7 tests du contrôle des liens, dont les deux nouveaux ; 13/13 contrôles ; lint et
 format verts.
+
+---
+
+## 2026-10-19 — Le planning : aucune règle imposée, et c'est plus exigeant comme ça (MY-10, MY-11)
+
+« La planification n'a pas de règle, il faut l'implémenter de façon correcte, puissante et
+profonde. » Et pour les tarifs : « nous devons créer et mettre nous-même nos tarifs. »
+
+**Ce que j'ai compris, et qui change la conception** : les règles ne sont pas des constantes à
+écrire dans le code, ce sont **des données que vous saisissez**. Un moteur qui imposerait des seuils
+que personne n'a validés serait faux deux fois — faux parce qu'il invente, faux parce qu'on le
+contourne. Le moteur n'impose donc rien : **aucune valeur par défaut, aucune règle active
+d'office.** Le premier test du fichier de règles fige cette promesse en acceptant un planning de
+seize heures par jour, sept jours sur sept, sans rien signaler.
+
+**Et c'est plus de travail, pas moins.** Dix contrôles sont écrits et testés, prêts à être activés
+d'un geste : chevauchement, durée minimale et maximale, temps de trajet entre deux foyers, amplitude
+de la journée, repos quotidien, repos hebdomadaire, heures de la semaine, jours consécutifs, visite
+pendant une absence. Chacun a **sa sévérité, choisie par vous** : bloquant refuse l'écriture avec le
+détail, avertissement laisse passer et remonte au coordinateur. Les réglages sont versionnés — un
+planning posé hier a été jugé par les règles d'hier.
+
+**Le jugement porte sur l'ensemble, pas sur la visite qu'on vient d'écrire.** Le repos, l'amplitude
+et les heures hebdomadaires n'ont aucun sens visite par visite : on rassemble donc tout le temps de
+travail de l'intervenant, toutes séries confondues, sur quatre semaines autour du changement. C'est
+ce qui a permis au test de voir un chevauchement entre **deux séries de deux foyers différents** —
+le genre de conflit qu'un contrôle visite par visite ne verra jamais.
+
+**Les trois portées de modification**, celles de tous les agendas, parce que l'inverse se paie en
+ressaisies : cette occurrence (déplacement, remplacement, annulation, avec motif), celle-ci et les
+suivantes (la série est coupée en deux, et le passé reste décrit par la série qui l'a produit), ou
+toute la série. Plus : sauter un jour, suspendre, reprendre, terminer. Les occurrences sont
+**calculées**, jamais stockées d'avance : un planning de deux ans ne pèse rien, et un changement est
+vu immédiatement.
+
+**Le temps, traité pour de vrai.** C'est la partie dont une erreur ne se voit pas — elle se compte
+en heures payées en trop ou en moins. Les heures se saisissent à Paris et se convertissent en
+instants. Résultat mesuré et figé par un test : une garde de 21 h à 7 h dure dix heures, **neuf** la
+nuit du passage à l'heure d'été, **onze** celle du retour à l'heure d'hiver. Deux cas limites sont
+traités nommément : 2 h 30 n'existe pas la nuit de mars (la visite commence à 3 h), et existe deux
+fois la nuit d'octobre (on retient la première).
+
+**Les tarifs sont les vôtres.** Aucun prix, aucun taux de majoration, aucun taux de crédit d'impôt
+dans le code. Les prestations sont versionnées par date d'application et ne peuvent pas se
+chevaucher : une facture rééditée six mois plus tard retrouve le prix du jour de la visite. Changer
+un prix ferme explicitement la version précédente — et le test vérifie que l'ancien prix reste
+applicable à son époque. Les majorations se calculent **à la minute réelle** : une garde du samedi
+21 h au dimanche 7 h compte dix heures de nuit et sept heures de dimanche, chacune selon votre
+règle. Les onze jours fériés sont calculés, Pâques comprise, parce qu'une liste recopiée serait
+fausse l'an prochain.
+
+**Un garde-fou du projet tenu par la structure même des données** : le prix TTC avant avantage
+fiscal est renvoyé comme `principal`, le crédit d'impôt comme `secondaire`, marqué estimation, et
+**seulement si vous avez saisi le taux**. Sans taux : rien. Le logiciel ne devine pas votre
+fiscalité.
+
+**Ce que j'ai refusé de faire tout seul** : l'optimisation automatique des tournées. Un planning
+optimisé contre l'avis du coordinateur ne sert personne, et personne ne me l'a demandé. Les
+compétences requises par foyer attendent aussi : ce sera une onzième règle, le jour où vous voudrez
+les saisir.
+
+**Deux erreurs de mes propres tests, corrigées par le code et pas l'inverse** : j'attendais sept
+signalements d'amplitude là où le moteur en produit vingt-huit (il juge quatre semaines, pas une), et
+j'attendais qu'un nouveau prix s'insère à côté d'une version ouverte — c'est précisément ce qu'il ne
+faut pas permettre. Le moteur avait raison les deux fois ; j'ai ajouté l'option qui manquait
+(`remplaceLaPrecedente`) plutôt que de relâcher la règle.
+
+**Vérifications** : 206 tests de l'API (dont 25 de routes de planning et de tarifs), 1 154 en tout
+avec le site, lint, typecheck, format, 13/13 contrôles, build vert.

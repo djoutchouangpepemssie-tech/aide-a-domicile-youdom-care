@@ -36,7 +36,7 @@ Autour : `src/store/` (dépôts en mémoire pour les tests, sur MongoDB en servi
 `scripts/migrate.ts` (index, idempotent), `scripts/create-admin.ts` (le premier compte d'agence,
 **volontairement hors API**).
 
-121 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
+206 tests, dont un qui parcourt les douze modules pour prouver qu'un membre sans droit reçoit
 **404 et jamais 403** (exigence de `PERMISSIONS.md` §7).
 
 ## Ce qui n'est pas couvert par un test, et il faut le savoir
@@ -47,10 +47,23 @@ cela qu'ils sont volontairement minces — aucune logique métier n'y vit, elle 
 domaine, qui est testé. Un test d'intégration viendra avec le premier cluster réel, et
 `pnpm portal:migrer` est le premier geste à faire dessus.
 
+**Étape 3 — le planning et les tarifs** (MY-10, MY-11) :
+
+| Fichier                         | Ce qu'il tient                                                                                                                |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `src/temps/paris.ts`            | l'heure de Paris et les changements d'heure, en instants : une garde de nuit dure neuf heures au printemps et onze en automne |
+| `src/temps/jours-feries.ts`     | les onze jours fériés **calculés** (Pâques comprise), jamais recopiés                                                         |
+| `src/domaine/regles.ts`         | **dix contrôles, aucun imposé** : l'agence saisit seuil et sévérité (bloquant ou avertissement)                               |
+| `src/planning/serie.ts`         | les séries récurrentes, les exceptions, et les **trois portées** de modification                                              |
+| `src/planning/validation.ts`    | le jugement d'ensemble : tout le temps de travail d'un intervenant, sur quatre semaines                                       |
+| `src/domaine/tarifs.ts`         | prestations versionnées, majorations à la minute réelle, crédit d'impôt **estimé seulement si le taux est saisi**             |
+| `src/domaine/absences.ts`       | congé, maladie, formation, indisponibilité                                                                                    |
+| `src/http/surfaces/planning.ts` | les routes : règles, séries, occurrences, planning d'ensemble, absences, prestations, prévisualisation de prix                |
+
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. le planning : récurrences, affectation, remplacements, règles légales — **en attente des règles
-   de planification d'Arcel** (question B de `QUESTIONS.md`) ;
+1. la matérialisation des occurrences en visites pointables : le planning et la surface terrain se
+   rejoignent là, et c'est l'étape suivante ;
 2. la portée par agence des comptes de l'agence : aujourd'hui, un coordinateur authentifié agit sur
    l'agence qu'il nomme, et chaque action est journalisée ;
 3. les validateurs `$jsonSchema` côté MongoDB, en doublure des schémas Zod ;

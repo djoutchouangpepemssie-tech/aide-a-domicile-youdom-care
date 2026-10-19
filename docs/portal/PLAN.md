@@ -53,9 +53,18 @@ manuel avec motif et horodatage du geste, consignes d'accès bornées à la visi
 back-office minimal côté agence (foyer, intervenant, rattachement avec droits par défaut, visite,
 retrait de droit). 121 tests. Le premier compte d'agence se crée hors API, par script.
 
-**Étape 3 — suivante** : le planning (récurrences, affectation, remplacements, règles légales) —
-**bloquée par la question B**, les règles de planification ; la portée par agence des comptes de
-l'agence ; les validateurs `$jsonSchema` en doublure des schémas Zod.
+**Étape 3 — faite (19/10)** : le planning, et il n'est plus bloqué — la question B est soldée par
+MY-10 (aucune règle imposée, dix contrôles configurables avec seuil et sévérité). Séries
+récurrentes (rythme jusqu'à une semaine sur huit, créneaux, créneaux à pourvoir), **trois portées
+de modification** (occurrence, celle-ci et les suivantes, toute la série), saut, suspension,
+reprise, fin ; absences d'intervenant ; jugement d'ensemble sur quatre semaines ; heure de Paris et
+changements d'heure traités en instants ; jours fériés calculés. Et les tarifs (MY-11) : prestations
+versionnées créées par l'agence, majorations à la minute réelle, crédit d'impôt estimé seulement si
+le taux est saisi. 206 tests.
+
+**Étape 4 — suivante** : la matérialisation des occurrences en visites pointables (le lien avec la
+surface terrain), la portée par agence des comptes de l'agence, et les validateurs `$jsonSchema` en
+doublure des schémas Zod.
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

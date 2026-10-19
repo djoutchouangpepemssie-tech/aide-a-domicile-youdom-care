@@ -30,12 +30,16 @@ Restent quatre choses, dont une seule est bloquante.
 à écrire*. Scalingo, Clever Cloud, OVHcloud, Outscale : deux devis suffisent. Vercel garde
 l'interface. MongoDB Atlas, déjà certifié, peut porter la base.
 
-**B. Vos règles de planification** : amplitude maximale d'une journée, temps de trajet entre deux
-visites, repos entre deux services, majorations de nuit, de dimanche et de jours fériés. Ce sont
-elles qui font qu'un planning est juste ou faux — et elles ne s'inventent pas.
+**B. ~~Vos règles de planification~~ — soldée le 19/10 (MY-10).** « La planification n'a pas de
+règle. » Le moteur n'impose donc rien : dix contrôles sont écrits, aucun n'est actif, et c'est
+l'agence qui saisit ses seuils et choisit, pour chacun, s'il bloque ou s'il avertit. Ce qui reste à
+faire est de votre côté, dans l'écran de réglage, le jour où vous voudrez en activer un.
 
-**C. Vos grilles tarifaires** et vos conditions générales (délai de prévenance, règles
-d'annulation). Nécessaires à la vague 4, utiles dès la vague 1 pour modéliser correctement.
+**C. ~~Vos grilles tarifaires~~ — soldée le 19/10 (MY-11).** « Nous devons créer et mettre
+nous-même nos tarifs. » Le catalogue est à créer dans l'outil : prestations, modes, unités, prix
+TTC, majorations, taux du crédit d'impôt. Reste utile : **vos conditions générales** (délai de
+prévenance, règles d'annulation), que le portail doit afficher **avant** qu'une famille valide une
+demande — c'est la question 6 ci-dessous.
 
 **D. Un accès en lecture à Ximi, ou quelques exports.** Voir vos données réelles — un planning
 d'une semaine, une facture, un dossier salarié — vaut mieux que les imaginer. À demander à Xelya

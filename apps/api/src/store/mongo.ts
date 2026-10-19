@@ -14,6 +14,10 @@ import {
   type VisitEvent,
   type Worker,
 } from "../domaine/schemas";
+import type { Absence } from "../domaine/absences";
+import type { AgencyRules } from "../domaine/regles";
+import type { Prestation, TariffSettings } from "../domaine/tarifs";
+import type { Serie } from "../planning/serie";
 import type { AuditReader } from "../http/types";
 import type { Repositories } from "./repositories";
 
@@ -41,6 +45,11 @@ export function mongoRepositories(db: Db): Repositories {
   const visitEvents = db.collection<VisitEvent>("visit_events");
   const sessions = db.collection<Session>("sessions");
   const challenges = db.collection<Challenge>("auth_challenges");
+  const series = db.collection<Serie>("series");
+  const rules = db.collection<AgencyRules>("agency_rules");
+  const prestations = db.collection<Prestation>("prestations");
+  const tariffSettings = db.collection<TariffSettings>("tariff_settings");
+  const absences = db.collection<Absence>("absences");
 
   return {
     members: {
@@ -108,6 +117,37 @@ export function mongoRepositories(db: Db): Repositories {
       insert: async (session) => void (await sessions.insertOne(session, dates)),
       save: async (session) =>
         void (await sessions.updateOne({ _id: session._id }, { $set: session }, { upsert: false })),
+    },
+    series: {
+      findById: (id) => series.findOne({ _id: id }),
+      listByHousehold: (householdId) => series.find({ householdId }).sort({ from: 1 }).toArray(),
+      listByAgency: (agencyId, status) =>
+        series.find(status ? { agencyId, status } : { agencyId }).toArray(),
+      insert: async (serie) => void (await series.insertOne(serie, dates)),
+      save: async (serie) => void (await series.updateOne({ _id: serie._id }, { $set: serie })),
+    },
+    rules: {
+      current: (agencyId) => rules.find({ agencyId }).sort({ version: -1 }).limit(1).next(),
+      insert: async (config) => void (await rules.insertOne(config, dates)),
+    },
+    prestations: {
+      listByAgency: (agencyId) => prestations.find({ agencyId }).sort({ from: -1 }).toArray(),
+      insert: async (prestation) => void (await prestations.insertOne(prestation, dates)),
+      close: async (id, to) => void (await prestations.updateOne({ _id: id }, { $set: { to } })),
+    },
+    tariffSettings: {
+      find: (agencyId) => tariffSettings.findOne({ agencyId }),
+      upsert: async (settings) =>
+        void (await tariffSettings.updateOne(
+          { agencyId: settings.agencyId },
+          { $set: settings },
+          { upsert: true },
+        )),
+    },
+    absences: {
+      listByWorker: (workerId, from, to) =>
+        absences.find({ workerId, from: { $lt: to }, to: { $gt: from } }).toArray(),
+      insert: async (absence) => void (await absences.insertOne(absence, dates)),
     },
     challenges: {
       findById: (id) => challenges.findOne({ _id: id }),

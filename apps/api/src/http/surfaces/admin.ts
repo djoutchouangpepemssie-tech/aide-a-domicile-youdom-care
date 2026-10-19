@@ -1,15 +1,14 @@
-import { Hono, type Context } from "hono";
+import { Hono } from "hono";
 import * as z from "zod";
-import { ADMIN_SCOPE } from "../../domaine/modules";
 import { CLIENT_ROLES, STAFF_ROLES, defaultGrants } from "../../domaine/roles";
 import {
   accessGrantSchema,
-  auditEventSchema,
   householdModes,
   visitKinds,
   type AccessGrant,
 } from "../../domaine/schemas";
 import { parseBody } from "../body";
+import { actorRole, traceAdmin } from "../trace";
 import { fail, notFound } from "../errors";
 import type { ApiDeps, AppEnv } from "../types";
 
@@ -27,8 +26,6 @@ import type { ApiDeps, AppEnv } from "../types";
  *    une porte ouverte. Le premier compte se crée avec `scripts/create-admin.ts`, en accès direct
  *    à la base.
  */
-
-const ROLES_AGENCE = ["coordinateur", "responsable_agence", "administrateur"] as const;
 
 const adresseSchema = z.strictObject({
   line1: z.string().min(1).max(120),
@@ -53,40 +50,6 @@ const identifiantSchema = z
 
 export function adminSurface(deps: ApiDeps) {
   const app = new Hono<AppEnv>();
-
-  /** Le rôle d'agence de l'auteur de la requête, pour le journal. */
-  async function actor(context: Context<AppEnv>) {
-    const member = context.get("member");
-    const memberships = await deps.repositories.memberships.listByMember(member._id);
-    const agence = memberships.find(
-      (membership) =>
-        membership.status === "actif" &&
-        (ROLES_AGENCE as readonly string[]).includes(membership.role),
-    );
-    return { memberId: member._id, role: agence?.role ?? "administrateur" };
-  }
-
-  /** Journalise une action d'agence qui ne porte sur aucun module (`ADMIN_SCOPE`). */
-  async function trace(
-    context: Context<AppEnv>,
-    input: { action: "creer" | "modifier"; householdId: string | null; target: string },
-  ) {
-    const { memberId, role } = await actor(context);
-    await deps.journal.append(
-      auditEventSchema.parse({
-        at: deps.now(),
-        actorId: memberId,
-        actorRole: role,
-        householdId: input.householdId,
-        action: input.action,
-        module: ADMIN_SCOPE,
-        target: input.target,
-        outcome: "autorise",
-        reason: null,
-        requestId: context.get("requestId") ?? null,
-      }),
-    );
-  }
 
   app.post("/households", async (context) => {
     const body = await parseBody(
@@ -114,7 +77,11 @@ export function adminSurface(deps: ApiDeps) {
       createdAt: deps.now(),
     };
     await deps.repositories.households.insert(household);
-    await trace(context, { action: "creer", householdId: household._id, target: "foyer" });
+    await traceAdmin(deps, context, {
+      action: "creer",
+      householdId: household._id,
+      target: "foyer",
+    });
 
     return context.json({ id: household._id, code: household.code }, 201);
   });
@@ -151,7 +118,7 @@ export function adminSurface(deps: ApiDeps) {
       createdAt: deps.now(),
     };
     await deps.repositories.workers.insert(worker);
-    await trace(context, { action: "creer", householdId: null, target: "intervenant" });
+    await traceAdmin(deps, context, { action: "creer", householdId: null, target: "intervenant" });
 
     return context.json({ id: worker._id }, 201);
   });
@@ -174,7 +141,7 @@ export function adminSurface(deps: ApiDeps) {
     const existant = await deps.repositories.memberships.find(member._id, household._id);
     if (existant) return fail(context, "requete_invalide", "member (déjà rattaché)");
 
-    const acteur = await actor(context);
+    const acteur = await actorRole(deps, context);
     const now = deps.now();
     await deps.repositories.memberships.insert({
       _id: deps.newId(),
@@ -207,7 +174,7 @@ export function adminSurface(deps: ApiDeps) {
       }),
     );
     await deps.repositories.grants.insertMany(grants);
-    await trace(context, {
+    await traceAdmin(deps, context, {
       action: "creer",
       householdId: household._id,
       target: `rattachement:${body.value.role}`,
@@ -225,7 +192,7 @@ export function adminSurface(deps: ApiDeps) {
 
     await deps.repositories.grants.revoke(context.req.param("id"), deps.now());
     // Le retrait est immédiat : aucun droit ne voyage dans un jeton (`auth/sessions.ts`).
-    await trace(context, {
+    await traceAdmin(deps, context, {
       action: "modifier",
       householdId: body.value.householdId,
       target: `retrait_droit:${context.req.param("id")}`,
@@ -270,7 +237,11 @@ export function adminSurface(deps: ApiDeps) {
       createdAt: deps.now(),
     };
     await deps.repositories.visits.insert(visit);
-    await trace(context, { action: "creer", householdId: household._id, target: "visite" });
+    await traceAdmin(deps, context, {
+      action: "creer",
+      householdId: household._id,
+      target: "visite",
+    });
 
     return context.json({ id: visit._id }, 201);
   });
@@ -299,5 +270,3 @@ export function adminSurface(deps: ApiDeps) {
 
   return app;
 }
-
-export { ROLES_AGENCE };

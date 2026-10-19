@@ -1,17 +1,11 @@
 /** @vitest-environment node */
 import { beforeEach, describe, expect, it } from "vitest";
-import { createSession } from "../auth/sessions";
 import { fingerprint } from "../auth/secrets";
 import { newId } from "../domaine/ids";
 import { defaultGrants } from "../domaine/roles";
-import { accessGrantSchema } from "../domaine/schemas";
-import { RecordingNotifier } from "../services/notifier";
-import { MemoryRateLimiter, openRateLimiter, type RateLimiter } from "../services/rate-limit";
-import { MemoryDatabase } from "../store/memory";
-import { RepositoryAuthorizationStore } from "../store/repositories";
+import { MemoryRateLimiter } from "../services/rate-limit";
 import { household, membership, visit } from "../test/fixtures";
-import { createApp } from "./app";
-import type { ApiDeps } from "./types";
+import { auth, harnais, membre, rattacher, PEPPER, type Harness } from "../test/harnais";
 
 /*
  * Les tests des quatre surfaces, de bout en bout : la requête entre par `app.request`, ressort par
@@ -22,103 +16,6 @@ import type { ApiDeps } from "./types";
  * famille, un pointage manuel exige un motif, et une demande de connexion ne dit jamais si une
  * adresse est connue.
  */
-
-const PEPPER = "un-poivre-de-tests-suffisamment-long-0123456789";
-const ORIGINE = "https://mon.youdom-care.fr";
-
-type Harness = {
-  app: ReturnType<typeof createApp>;
-  db: MemoryDatabase;
-  now: Date;
-  avancer: (ms: number) => void;
-  connecter: (memberId: string, options?: { secondFacteur?: boolean }) => Promise<string>;
-};
-
-function harnais(rateLimiter: RateLimiter = openRateLimiter): Harness {
-  const db = new MemoryDatabase();
-  const repositories = db.repositories;
-  let maintenant = new Date("2026-10-19T10:00:00.000Z"); // un lundi, heures ouvrées
-  const deps: ApiDeps = {
-    repositories,
-    authorization: new RepositoryAuthorizationStore(repositories),
-    journal: db.journal,
-    auditReader: db.auditReader,
-    notifier: new RecordingNotifier(),
-    rateLimiter,
-    now: () => maintenant,
-    newId,
-    pepper: PEPPER,
-    allowedOrigins: [ORIGINE],
-  };
-
-  return {
-    app: createApp(deps),
-    db,
-    get now() {
-      return maintenant;
-    },
-    avancer: (ms) => {
-      maintenant = new Date(maintenant.getTime() + ms);
-    },
-    connecter: async (memberId, options) => {
-      const { session, token } = createSession({
-        id: newId(),
-        memberId,
-        now: maintenant,
-        pepper: PEPPER,
-        device: { label: "test" },
-        secondFactorAt: options?.secondFacteur ? maintenant : null,
-      });
-      await repositories.sessions.insert(session);
-      return token;
-    },
-  };
-}
-
-async function membre(
-  h: Harness,
-  input: { email?: string; phone?: string; nom?: string } = {},
-): Promise<string> {
-  const id = newId();
-  await h.db.repositories.members.insert({
-    _id: id,
-    // Un membre a besoin d'une adresse ou d'un numéro : le schéma l'exige, et les tests aussi.
-    email: input.email ?? (input.phone ? null : `membre-${id}@exemple.fr`),
-    phone: input.phone ?? null,
-    displayName: input.nom ?? "Claire",
-    prefs: { displayMode: "complet", notifications: ["email"] },
-    createdAt: h.now,
-  });
-  return id;
-}
-
-async function rattacher(
-  h: Harness,
-  input: { memberId: string; householdId: string; role: Parameters<typeof defaultGrants>[0] },
-): Promise<void> {
-  await h.db.repositories.memberships.insert(
-    membership({ memberId: input.memberId, householdId: input.householdId, role: input.role }),
-  );
-  await h.db.repositories.grants.insertMany(
-    defaultGrants(input.role).map((entry) =>
-      accessGrantSchema.parse({
-        _id: newId(),
-        memberId: input.memberId,
-        householdId: input.householdId,
-        module: entry.module,
-        actions: entry.actions,
-        grantedBy: newId(),
-        reason: null,
-        startsAt: new Date(h.now.getTime() - 1000),
-        endsAt: null,
-        revokedAt: null,
-        createdAt: h.now,
-      }),
-    ),
-  );
-}
-
-const auth = (token: string) => ({ authorization: `Bearer ${token}` });
 
 describe("la santé du service", () => {
   it("répond sans authentification", async () => {

@@ -75,6 +75,39 @@ export const COLLECTIONS: readonly CollectionSpec[] = [
     ],
   },
   {
+    name: "agency_rules",
+    indexes: [
+      // Les réglages sont versionnés : on lit toujours le dernier, on garde les précédents.
+      { keys: { agencyId: 1, version: -1 }, options: { unique: true, name: "agence_version" } },
+    ],
+  },
+  {
+    name: "series",
+    indexes: [
+      { keys: { householdId: 1, from: 1 }, options: { name: "foyer_debut" } },
+      { keys: { agencyId: 1, status: 1 }, options: { name: "agence_statut" } },
+      // Retrouver les séries d'un intervenant : son identifiant est dans les créneaux.
+      { keys: { "slots.workerId": 1, status: 1 }, options: { name: "intervenant_statut" } },
+    ],
+  },
+  {
+    name: "prestations",
+    indexes: [
+      { keys: { agencyId: 1, code: 1, from: -1 }, options: { name: "agence_code_application" } },
+    ],
+  },
+  {
+    name: "tariff_settings",
+    indexes: [{ keys: { agencyId: 1 }, options: { unique: true, name: "agence_unique" } }],
+  },
+  {
+    name: "absences",
+    indexes: [
+      { keys: { workerId: 1, from: 1 }, options: { name: "intervenant_debut" } },
+      { keys: { from: 1, to: 1 }, options: { name: "fenetre" } },
+    ],
+  },
+  {
     name: "visits",
     indexes: [
       { keys: { householdId: 1, plannedStart: 1 }, options: { name: "foyer_debut" } },

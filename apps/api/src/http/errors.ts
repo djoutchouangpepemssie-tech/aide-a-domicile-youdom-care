@@ -11,21 +11,28 @@ import type { Context } from "hono";
  */
 
 export type ErrorCode =
-  "introuvable" | "non_authentifie" | "requete_invalide" | "trop_de_demandes" | "erreur_interne";
+  | "introuvable"
+  | "non_authentifie"
+  | "requete_invalide"
+  | "trop_de_demandes"
+  | "regles_non_respectees"
+  | "erreur_interne";
 
 const MESSAGES: Record<ErrorCode, string> = {
   introuvable: "Cette page n'existe pas, ou elle ne vous est pas partagée.",
   non_authentifie: "Votre session a expiré. Reconnectez-vous.",
   requete_invalide: "La demande est incomplète.",
   trop_de_demandes: "Trop de tentatives. Patientez quelques minutes.",
+  regles_non_respectees: "Ce planning ne respecte pas une règle que vous avez marquée bloquante.",
   erreur_interne: "Une erreur est survenue de notre côté. Nous en sommes informés.",
 };
 
-const STATUSES: Record<ErrorCode, 400 | 401 | 404 | 429 | 500> = {
+const STATUSES: Record<ErrorCode, 400 | 401 | 404 | 409 | 429 | 500> = {
   introuvable: 404,
   non_authentifie: 401,
   requete_invalide: 400,
   trop_de_demandes: 429,
+  regles_non_respectees: 409,
   erreur_interne: 500,
 };
 

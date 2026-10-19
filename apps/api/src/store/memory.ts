@@ -23,6 +23,15 @@ import {
 import type { AuditEvent } from "../domaine/schemas";
 import type { AuditJournal } from "../audit/journal";
 import type { AuditReader } from "../http/types";
+import { absenceSchema, type Absence } from "../domaine/absences";
+import { agencyRulesSchema, type AgencyRules } from "../domaine/regles";
+import {
+  prestationSchema,
+  tariffSettingsSchema,
+  type Prestation,
+  type TariffSettings,
+} from "../domaine/tarifs";
+import { serieSchema, type Serie } from "../planning/serie";
 import type { Repositories } from "./repositories";
 
 /*
@@ -32,6 +41,11 @@ import type { Repositories } from "./repositories";
  */
 
 type Tables = {
+  series: Serie[];
+  rules: AgencyRules[];
+  prestations: Prestation[];
+  tariffSettings: TariffSettings[];
+  absences: Absence[];
   members: Member[];
   households: Household[];
   memberships: Membership[];
@@ -50,6 +64,11 @@ const overlaps = (visit: Visit, from: Date, to: Date): boolean =>
 
 export class MemoryDatabase {
   readonly tables: Tables = {
+    series: [],
+    rules: [],
+    prestations: [],
+    tariffSettings: [],
+    absences: [],
     members: [],
     households: [],
     memberships: [],
@@ -162,6 +181,59 @@ export class MemoryDatabase {
           const index = t.sessions.findIndex((item) => item._id === session._id);
           if (index >= 0) t.sessions[index] = session;
         },
+      },
+      series: {
+        findById: async (id) => t.series.find((serie) => serie._id === id) ?? null,
+        listByHousehold: async (householdId) =>
+          t.series.filter((serie) => serie.householdId === householdId),
+        listByAgency: async (agencyId, status) =>
+          t.series.filter(
+            (serie) => serie.agencyId === agencyId && (!status || serie.status === status),
+          ),
+        insert: async (serie) => void t.series.push(serieSchema.parse(serie)),
+        save: async (serie) => {
+          const index = t.series.findIndex((item) => item._id === serie._id);
+          if (index >= 0) t.series[index] = serieSchema.parse(serie);
+        },
+      },
+      rules: {
+        current: async (agencyId) =>
+          t.rules
+            .filter((rules) => rules.agencyId === agencyId)
+            .sort((a, b) => b.version - a.version)[0] ?? null,
+        insert: async (rules) => void t.rules.push(agencyRulesSchema.parse(rules)),
+      },
+      prestations: {
+        listByAgency: async (agencyId) =>
+          t.prestations
+            .filter((prestation) => prestation.agencyId === agencyId)
+            .sort((a, b) => b.from.localeCompare(a.from)),
+        insert: async (prestation) => void t.prestations.push(prestationSchema.parse(prestation)),
+        close: async (id, to) => {
+          const index = t.prestations.findIndex((prestation) => prestation._id === id);
+          if (index >= 0)
+            t.prestations[index] = prestationSchema.parse({ ...t.prestations[index], to });
+        },
+      },
+      tariffSettings: {
+        find: async (agencyId) =>
+          t.tariffSettings.find((item) => item.agencyId === agencyId) ?? null,
+        upsert: async (settings) => {
+          const index = t.tariffSettings.findIndex((item) => item.agencyId === settings.agencyId);
+          const valide = tariffSettingsSchema.parse(settings);
+          if (index >= 0) t.tariffSettings[index] = valide;
+          else t.tariffSettings.push(valide);
+        },
+      },
+      absences: {
+        listByWorker: async (workerId, from, to) =>
+          t.absences.filter(
+            (absence) =>
+              absence.workerId === workerId &&
+              absence.from.getTime() < to.getTime() &&
+              absence.to.getTime() > from.getTime(),
+          ),
+        insert: async (absence) => void t.absences.push(absenceSchema.parse(absence)),
       },
       challenges: {
         findById: async (id) => t.challenges.find((challenge) => challenge._id === id) ?? null,

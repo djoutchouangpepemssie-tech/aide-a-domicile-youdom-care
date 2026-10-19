@@ -218,3 +218,78 @@ de le dire — pas après l'étape 2.
 **Ce que cela ne change pas** : l'architecture de `ARCHITECTURE.md` §5 — trois surfaces d'API
 séparées, autorisation au plus près de la donnée, journal en ajout seul, SSE pour les statuts,
 hors ligne d'abord pour l'application intervenant. Le langage change, les principes non.
+
+---
+
+## MY-10 — La planification n'impose aucune règle : elle applique les vôtres (19/10/2026)
+
+**Décision** : « la planification n'a pas de règle, il faut l'implémenter de façon correcte,
+puissante et profonde. Nous devons pouvoir créer, modifier et gérer tous les plannings que nous
+créons. »
+
+**Ce que j'en ai fait, et pourquoi c'est mieux qu'un moteur qui « connaîtrait » le droit du
+travail.** Un logiciel qui impose des seuils que personne n'a validés est faux deux fois : faux
+parce qu'il invente, faux parce qu'on le contourne. Le moteur n'impose donc **rien** — aucune
+valeur par défaut, aucune règle active d'office. Une règle n'existe que si vous l'avez saisie, avec
+son seuil et sa sévérité.
+
+**Ce que le moteur apporte quand même** — et c'est là qu'est la profondeur :
+
+| | |
+| --- | --- |
+| **Dix contrôles écrits et testés**, prêts à activer | chevauchement, durée minimale et maximale, temps de trajet entre deux foyers, amplitude de la journée, repos quotidien, repos hebdomadaire, heures de la semaine, jours consécutifs, visite pendant une absence |
+| **Deux sévérités, que vous choisissez** | **bloquant** : l'écriture est refusée, avec le détail. **avertissement** : elle passe, et le coordinateur voit |
+| **Un catalogue qui explique** | chaque règle dit ce qu'elle vérifie, dans quelle unité, avec une valeur **suggérée et jamais appliquée** |
+| **Un jugement d'ensemble** | les règles portent sur le temps de travail entier d'un intervenant, toutes séries confondues, sur quatre semaines autour du changement — pas sur la visite qu'on vient d'écrire |
+| **Des réglages versionnés** | un planning posé hier a été jugé par les règles d'hier, et le journal garde qui les a changées |
+
+**Gérer les plannings, concrètement** : une série porte un foyer, une période, un rythme (toutes
+les semaines, une sur deux… jusqu'à une sur huit) et des créneaux (jour, heures, nature,
+intervenant — ou **aucun** intervenant : c'est un créneau à pourvoir). Elle se modifie à **trois
+portées**, celles de tous les agendas, parce que l'inverse se paie en ressaisies :
+
+1. **cette occurrence** — un horaire déplacé, un remplacement, une annulation, avec motif ;
+2. **celle-ci et les suivantes** — la série est coupée en deux : le passé reste décrit par la série
+   qui l'a produit, l'avenir suit la nouvelle. C'est le seul moyen honnête de changer l'avenir sans
+   réécrire une facture déjà envoyée ;
+3. **toute la série** — rythme, horaires, créneaux.
+
+Plus : sauter une journée, suspendre, reprendre, terminer à une date. Les occurrences sont
+**calculées**, jamais stockées d'avance : un planning de deux ans ne pèse rien, et un changement
+est visible immédiatement, y compris pour les familles.
+
+**Le temps est traité pour de vrai.** Les heures sont saisies à l'heure de Paris et converties en
+instants : une garde du samedi 21 h au dimanche 7 h dure dix heures, **neuf** la nuit du passage à
+l'heure d'été et **onze** celle du retour à l'heure d'hiver. C'est ce qui est payé, et c'est testé.
+
+**Ce qui reste ouvert** : les compétences requises par foyer (une règle de plus, le jour où vous
+voudrez les saisir) et l'optimisation automatique des tournées — que je ne construirai pas sans que
+vous l'ayez demandée, parce qu'un planning optimisé contre l'avis du coordinateur ne sert personne.
+
+---
+
+## MY-11 — Les tarifs sont créés par Youdom Care, pas par le logiciel (19/10/2026)
+
+**Décision** : « pour les grilles tarifaires pas besoin, nous devons créer et mettre nous-même nos
+tarifs. »
+
+**Ce que cela donne.** Aucun prix, aucun taux de majoration, aucun taux de crédit d'impôt n'est
+écrit dans le code. L'agence crée ses **prestations** : code, libellé, **mode prestataire ou
+mandataire** (obligatoire, c'est une information due au client), unité (heure, forfait, nuit), prix
+TTC, prix HT et TVA si elle les saisit, éligibilité au crédit d'impôt, et ses **majorations**.
+
+Quatre points de conception qui évitent une erreur qui coûte de l'argent :
+
+1. **Tout en centimes entiers.** Un prix en virgule flottante finit par afficher 19,999999 € sur
+   une facture.
+2. **Les prestations sont versionnées par date d'application**, et deux versions d'un même code ne
+   peuvent pas se chevaucher : une facture rééditée six mois plus tard retrouve le prix du jour de
+   la visite. Changer un prix ferme la version précédente la veille — explicitement.
+3. **Les majorations se calculent à la minute réelle**, sur la part de temps concernée : une garde
+   du samedi 21 h au dimanche 7 h compte dix heures de nuit **et** sept heures de dimanche, chacune
+   majorée selon votre règle. Les jours fériés sont **calculés** (les onze, Pâques comprise), pas
+   recopiés dans une liste qui serait fausse l'an prochain.
+4. **Le prix TTC avant avantage fiscal reste l'information principale** (garde-fou permanent du
+   projet). Le crédit d'impôt est renvoyé **à part**, comme une estimation, et **seulement si vous
+   avez saisi son taux**. Sans taux saisi : aucune estimation. Le logiciel ne devine pas votre
+   fiscalité.
