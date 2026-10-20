@@ -504,3 +504,45 @@ c'est **qui a le droit de les lire**.
 étaient en teal-700 sur fond sable, mesurés à **4,46** — sous le seuil AA de 4,5. Le bureau prend
 donc la variante teal-800, celle que les scènes du site utilisent déjà pour la même raison. Le
 seuil n'a pas bougé d'un dixième : c'est la couleur qui a changé.
+
+---
+
+## MY-17 — Les réglages : ce que le logiciel ne décide pas (20/10/2026)
+
+**Décision.** Deux écrans de réglages, et tous deux disent la même chose sous deux formes : **le
+logiciel ne décide pas à votre place, et il ne fait pas semblant de le faire.**
+
+### Les règles de planification
+
+Dix règles, aucune active au départ. Le seuil n'est **jamais prérempli** : la valeur courante du
+métier est affichée comme une suggestion (« souvent 13 heures — à vous de décider »), à côté d'un
+champ vide. Un seuil prérempli est un seuil imposé : personne ne relit un champ déjà rempli, et
+l'agence se retrouverait avec les règles de son logiciel au lieu des siennes.
+
+Chaque règle porte sa sévérité, en mots : **avertir** (le planning reste enregistrable) ou
+**bloquer** (l'enregistrement est refusé). Deux règles — chevauchement et absence déclarée — ne
+prennent pas de seuil : elles constatent un fait, et l'écran le dit au lieu d'afficher un champ
+inutile.
+
+Et quand aucune règle n'est saisie, l'écran l'annonce : « aucun planning n'est signalé, ni
+amplitude, ni repos, ni chevauchement. Ce n'est pas une faute, c'est un choix — mais il faut le
+savoir. » C'est la contrepartie honnête de MY-10 : un logiciel qui n'impose rien ne peut pas laisser
+croire qu'il surveille ce qu'on ne lui a pas demandé de surveiller.
+
+### Les tarifs
+
+Aucune grille livrée (MY-11). L'écran affiche **le prix TTC d'abord, en grand**, et l'estimation
+après crédit d'impôt **à part, plus petite** — un parcours mesure les deux tailles de police, parce
+qu'une règle d'affichage qu'aucun test ne vérifie finit par céder au premier remaniement.
+
+Sans taux de crédit d'impôt saisi, **aucune estimation n'est calculée** : l'écran écrit « éligible
+au crédit d'impôt — aucune estimation sans taux saisi » plutôt qu'un chiffre inventé. Le taux se
+saisit en pourcentage et part en fraction ; le vider retire les estimations partout.
+
+Le mode d'intervention est indiqué par prestation, et un prix en mandataire ne s'affiche jamais sans
+la mention légale de `docs/07` — la même qu'en façade, tirée du même fichier de contenu.
+
+**Un défaut d'accessibilité trouvé par un test, et corrigé dans le composant** : les dix lignes de
+règles portaient les mêmes libellés visibles, donc dix cases à cocher nommées « Vérifier cette
+règle ». Un lecteur d'écran qui énumère les champs n'aurait rien pu en faire. Chaque champ porte
+maintenant le nom de sa règle, en gardant le texte visible dans son nom accessible (WCAG 2.5.3).

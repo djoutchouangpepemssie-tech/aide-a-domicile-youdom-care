@@ -35,6 +35,40 @@ async function repondre(route: Route, status: number, body: unknown): Promise<vo
   await route.fulfill({ status, headers: CORS, body: JSON.stringify(body) });
 }
 
+/* Le catalogue tel que l'API le rend : deux règles suffisent pour éprouver l'écran. */
+const CATALOGUE = [
+  {
+    key: "amplitude_quotidienne",
+    libelle: "Amplitude d’une journée",
+    verifie: "de la première minute travaillée à la dernière, pauses comprises",
+    unite: "heures",
+    suggestion: 13,
+  },
+  {
+    key: "chevauchement",
+    libelle: "Deux visites en même temps",
+    verifie: "un intervenant ne peut pas être à deux endroits à la fois",
+    unite: null,
+    suggestion: null,
+  },
+];
+
+/*
+ * Ce que les écrans ont envoyé à l'API : un formulaire qui n'envoie rien est un formulaire mort.
+ * Les lectures passent par des fonctions, pour que le typage ne déduise pas de l'initialisation
+ * que la valeur est restée nulle — elle est écrite dans l'interception, bien plus tard.
+ */
+const envois: { regles: Record<string, unknown> | null; taux: number | null | undefined } = {
+  regles: null,
+  taux: undefined,
+};
+const reinitialiserEnvois = () => {
+  envois.regles = null;
+  envois.taux = undefined;
+};
+const reglesEnvoyees = () => envois.regles;
+const tauxEnvoye = () => envois.taux;
+
 const AGENCE = "a".repeat(24);
 const SERIE = "b".repeat(24);
 const FOYER = "c".repeat(24);
@@ -57,7 +91,12 @@ const occurrence = (over: Record<string, unknown> = {}) => ({
 
 async function stubApi(
   page: Page,
-  options: { planning?: unknown; mode?: "prestataire" | "mandataire" } = {},
+  options: {
+    planning?: unknown;
+    mode?: "prestataire" | "mandataire";
+    regles?: Record<string, unknown>;
+    tarifs?: unknown;
+  } = {},
 ) {
   await page.route("**/auth/v1/challenges", (route) =>
     repondre(route, 202, { challengeId: "defi-1", expiresIn: 600 }),
@@ -185,6 +224,41 @@ async function stubApi(
       ],
     }),
   );
+  /*
+   * Les règles et les tarifs. Les deux jeux par défaut sont **vides**, comme pour une agence qui
+   * vient d'ouvrir : c'est l'état que les écrans doivent savoir dire, et celui qu'on oublie de
+   * tester quand on remplit ses fausses données.
+   */
+  await page.route("**/admin/v1/rules/**", async (route) => {
+    if (route.request().method() === "PUT") {
+      const recu = route.request().postDataJSON() as { regles: Record<string, unknown> };
+      envois.regles = recu.regles;
+      await repondre(route, 200, { version: 1, regles: recu.regles });
+      return;
+    }
+    await repondre(route, 200, {
+      catalogue: CATALOGUE,
+      regles: options.regles ?? {
+        amplitude_quotidienne: { active: false, severite: "avertissement", valeur: null },
+        chevauchement: { active: false, severite: "avertissement", valeur: null },
+      },
+      version: options.regles ? 3 : 0,
+      aucuneRegleSaisie: !options.regles,
+    });
+  });
+  await page.route("**/admin/v1/prestations/**", (route) =>
+    repondre(
+      route,
+      200,
+      options.tarifs ?? { prestations: [], creditImpotTaux: null, aucunTarifSaisi: true },
+    ),
+  );
+  await page.route("**/admin/v1/tariff-settings/**", async (route) => {
+    envois.taux = (
+      route.request().postDataJSON() as { creditImpotTaux: number | null }
+    ).creditImpotTaux;
+    await repondre(route, 200, { creditImpotTaux: envois.taux });
+  });
   await page.route("**/admin/v1/workers?**", (route) =>
     repondre(route, 200, {
       intervenants: [
@@ -367,6 +441,147 @@ test.describe("Bureau (back-office)", () => {
     await page.goto(`/bureau/foyers/${ailleurs}/`);
     await expect(page.getByText("Foyer introuvable")).toBeVisible();
     await expect(page.getByText(/Les deux se répondent pareil/)).toBeVisible();
+  });
+
+  test("sans règle saisie, l'écran le dit et n'active rien", async ({ page }) => {
+    await stubApi(page);
+    await seConnecter(page);
+    await page.getByRole("link", { name: "Les règles" }).click();
+
+    await expect(page.getByText(/Aucune règle n’est saisie pour l’instant/)).toBeVisible();
+    await expect(page.getByText(/aucun planning n’est signalé/)).toBeVisible();
+    for (const case_ of await page.getByRole("checkbox").all()) {
+      await expect(case_).not.toBeChecked();
+    }
+    await expect(page.getByLabel(/Seuil/)).toHaveCount(0);
+
+    await expectNoSeriousAxeViolations(page);
+  });
+
+  test("une règle se saisit avec son seuil et sa sévérité, et part telle quelle", async ({
+    page,
+  }) => {
+    reinitialiserEnvois();
+    await stubApi(page);
+    await seConnecter(page);
+    await page.goto("/bureau/reglages/regles/");
+
+    await page.getByRole("checkbox", { name: /Amplitude d’une journée/ }).check();
+    await page.getByLabel(/Seuil \(en heures\) : Amplitude/).fill("12");
+    await page.getByLabel(/En cas de dépassement : Amplitude/).selectOption("bloquant");
+    await page.getByRole("button", { name: /Enregistrer les règles/ }).click();
+
+    await expect(page.getByText("Règles enregistrées")).toBeVisible();
+    expect(reglesEnvoyees()?.amplitude_quotidienne).toEqual({
+      active: true,
+      severite: "bloquant",
+      valeur: 12,
+    });
+  });
+
+  test("une règle active sans seuil ne part pas, et l'écran dit pourquoi", async ({ page }) => {
+    reinitialiserEnvois();
+    await stubApi(page);
+    await seConnecter(page);
+    await page.goto("/bureau/reglages/regles/");
+
+    await page.getByRole("checkbox", { name: /Amplitude d’une journée/ }).check();
+    await page.getByRole("button", { name: /Enregistrer les règles/ }).click();
+
+    await expect(page.getByText("Une règle active a besoin de son seuil.")).toBeVisible();
+    expect(reglesEnvoyees()).toBeNull();
+  });
+
+  test("sans tarif saisi, aucun devis n'est chiffrable et c'est écrit", async ({ page }) => {
+    await stubApi(page);
+    await seConnecter(page);
+    await page.getByRole("link", { name: "Les tarifs" }).click();
+    await expect(page.getByText(/Aucun tarif n’est saisi pour l’instant/)).toBeVisible();
+    await expect(page.getByText(/ne peut donc être chiffré/)).toBeVisible();
+    await expectNoSeriousAxeViolations(page);
+  });
+
+  test("le prix TTC passe devant, le crédit d'impôt derrière et plus petit", async ({ page }) => {
+    await stubApi(page, {
+      tarifs: {
+        prestations: [
+          {
+            id: "7".repeat(24),
+            code: "AIDE-JOUR",
+            libelle: "Aide à domicile, jour",
+            mode: "prestataire",
+            unite: "heure",
+            prixTtcCentimes: 2800,
+            creditImpotEligible: true,
+            majorations: [{ libelle: "Dimanche", quand: "dimanche", pourcentage: 25 }],
+            du: "2026-01-01",
+            au: null,
+          },
+        ],
+        creditImpotTaux: 0.5,
+        aucunTarifSaisi: false,
+      },
+    });
+    await seConnecter(page);
+    await page.goto("/bureau/reglages/tarifs/");
+
+    const prix = page.getByText(/28,00/);
+    const apres = page.getByText(/après crédit d’impôt/);
+    await expect(prix).toBeVisible();
+    await expect(apres).toBeVisible();
+    // Le prix TTC est écrit plus grand que l'estimation : la règle du projet, mesurée.
+    const taillePrix = await prix.evaluate((n) => Number.parseFloat(getComputedStyle(n).fontSize));
+    const tailleApres = await apres.evaluate((n) =>
+      Number.parseFloat(getComputedStyle(n).fontSize),
+    );
+    expect(taillePrix).toBeGreaterThan(tailleApres);
+    await expect(page.getByText(/14,00/)).toBeVisible();
+    await expect(page.getByText(/Dimanche : \+25 %/)).toBeVisible();
+  });
+
+  test("sans taux saisi, aucune estimation n'est inventée", async ({ page }) => {
+    await stubApi(page, {
+      tarifs: {
+        prestations: [
+          {
+            id: "7".repeat(24),
+            code: "AIDE-JOUR",
+            libelle: "Aide à domicile, jour",
+            mode: "mandataire",
+            unite: "heure",
+            prixTtcCentimes: 2800,
+            creditImpotEligible: true,
+            majorations: [],
+            du: "2026-01-01",
+            au: null,
+          },
+        ],
+        creditImpotTaux: null,
+        aucunTarifSaisi: false,
+      },
+    });
+    await seConnecter(page);
+    await page.goto("/bureau/reglages/tarifs/");
+
+    await expect(page.getByText(/aucune estimation sans taux saisi/)).toBeVisible();
+    await expect(page.getByText(/après crédit d’impôt/)).toHaveCount(0);
+    // Un prix en mandataire ne s'affiche jamais sans sa mention légale (docs/07 §1).
+    await expect(page.getByText("Mode mandataire")).toBeVisible();
+    await expect(page.getByText(/le consommateur est l'employeur/)).toBeVisible();
+  });
+
+  test("le taux de crédit d'impôt se saisit en pourcentage et part en fraction", async ({
+    page,
+  }) => {
+    reinitialiserEnvois();
+    await stubApi(page);
+    await seConnecter(page);
+    await page.goto("/bureau/reglages/tarifs/");
+
+    await page.getByLabel(/Taux du crédit d’impôt/).fill("50");
+    await page.getByRole("button", { name: /Enregistrer le taux/ }).click();
+    await expect(page.getByText("C’est enregistré")).toBeVisible();
+    expect(tauxEnvoye()).toBe(0.5);
   });
 
   test("la politique de sécurité de contenu laisse joindre l'API", async ({ request }) => {

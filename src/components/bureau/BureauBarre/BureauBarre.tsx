@@ -16,6 +16,8 @@ import { cn } from "@/lib/cn";
 const LIENS = [
   { href: "/bureau/semaine/", libelle: "La semaine" },
   { href: "/bureau/foyers/", libelle: "Les foyers" },
+  { href: "/bureau/reglages/regles/", libelle: "Les règles" },
+  { href: "/bureau/reglages/tarifs/", libelle: "Les tarifs" },
   { href: "/bureau/", libelle: "Accueil" },
 ] as const;
 

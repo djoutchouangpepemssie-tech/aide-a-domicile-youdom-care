@@ -2070,3 +2070,34 @@ suite, puis sur l'ensemble des parcours du bureau en double passage.
 **Vérifications** : 1 253 tests unitaires (dont 269 d'API), 22 parcours du bureau sur mobile et
 bureau (44 en double passage, tous verts), 74 parcours du contrat mobile, 13/13 contrôles, lint,
 typecheck et build verts.
+
+---
+
+## 20/10/2026 — Le bureau, troisième écran : les réglages
+
+Deux écrans, et un seul message sous deux formes : **le logiciel ne décide pas à votre place, et il
+ne fait pas semblant de le faire.**
+
+**Les règles de planification.** Dix règles, aucune active au départ, et un seuil **jamais
+prérempli** : la valeur habituelle du métier s'affiche comme suggestion à côté d'un champ vide.
+C'est le détail qui décide de tout : un seuil prérempli est un seuil imposé, parce que personne ne
+relit un champ déjà rempli. Chaque règle porte sa sévérité en mots — avertir, ou bloquer
+l'enregistrement. Deux règles ne prennent pas de seuil (chevauchement, absence déclarée) : elles
+constatent un fait, et l'écran le dit plutôt que d'afficher un champ pour rien. Quand aucune règle
+n'est saisie, l'écran l'annonce sans détour : rien n'est signalé, ce n'est pas une faute, mais il
+faut le savoir.
+
+**Les tarifs.** Le prix TTC d'abord, en grand ; l'estimation après crédit d'impôt à part, plus
+petite. Un parcours **mesure les deux tailles de police** : une règle d'affichage qu'aucun test ne
+vérifie finit par céder au premier remaniement. Sans taux saisi, aucune estimation n'est calculée —
+l'écran écrit « aucune estimation sans taux saisi » au lieu d'un chiffre inventé. Un prix en
+mandataire ne s'affiche jamais sans sa mention légale, celle du site public, tirée du même fichier.
+
+**Ce qu'un test a trouvé, et que je n'avais pas vu** : mes dix lignes de règles portaient les mêmes
+libellés visibles, donc dix cases à cocher nommées « Vérifier cette règle ». Le test est tombé sur
+« deux éléments indiscernables » — et il avait raison bien au-delà du test : un lecteur d'écran qui
+énumère les champs n'aurait rien pu en faire. Chaque champ porte maintenant le nom de sa règle, en
+gardant son texte visible dans son nom accessible.
+
+**Vérifications** : 1 263 tests unitaires, 716 parcours Playwright sur mobile et bureau — dont les
+36 du bureau —, 13/13 contrôles, lint, typecheck et build verts.

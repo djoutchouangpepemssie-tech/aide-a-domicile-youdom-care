@@ -80,9 +80,8 @@ si le planning rebouge).
 
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. **les écrans** : le bureau a commencé (MY-15, MY-16) — `/bureau/semaine/` et `/bureau/foyers/`
-   existent dans le site. Restent les réglages (règles et tarifs) et l'application de
-   l'intervenant. Les écrans appellent
+1. **les écrans** : le bureau a commencé (MY-15 à MY-17) — la semaine, les foyers et les réglages
+   (règles et tarifs) existent dans le site. Reste l'application de l'intervenant. Les écrans appellent
    cette API **depuis le navigateur** : il faut donc que l'origine du site figure dans
    `ALLOWED_ORIGINS` ici, **et** que l'origine de cette API figure dans `connect-src` de la
    politique de sécurité de contenu du site (`next.config.ts`, dérivée de

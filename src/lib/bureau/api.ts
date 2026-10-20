@@ -68,7 +68,11 @@ export const jeton = {
   },
 };
 
-type Options = { methode?: "GET" | "POST" | "PATCH" | "DELETE"; corps?: unknown; sansJeton?: true };
+type Options = {
+  methode?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+  corps?: unknown;
+  sansJeton?: true;
+};
 
 export async function apiFetch<T>(chemin: string, options: Options = {}): Promise<T> {
   const token = options.sansJeton ? null : jeton.lire();
@@ -203,6 +207,51 @@ export type SerieDuFoyer = {
   remplaceePar: string | null;
 };
 
+export type Regle = {
+  active: boolean;
+  severite: "bloquant" | "avertissement";
+  valeur: number | null;
+};
+
+export type RegleCatalogue = {
+  key: string;
+  libelle: string;
+  /** Ce que la règle vérifie, en une phrase. */
+  verifie: string;
+  unite: "minutes" | "heures" | "jours" | null;
+  /** Une suggestion **affichée**, jamais appliquée : c'est l'agence qui tranche. */
+  suggestion: number | null;
+};
+
+export type Regles = {
+  catalogue: RegleCatalogue[];
+  regles: Record<string, Regle>;
+  version: number;
+  aucuneRegleSaisie: boolean;
+};
+
+export type Majoration = { libelle: string; quand: string; pourcentage: number };
+
+export type Prestation = {
+  id: string;
+  code: string;
+  libelle: string;
+  mode: "prestataire" | "mandataire";
+  unite: string;
+  prixTtcCentimes: number;
+  creditImpotEligible: boolean;
+  majorations: Majoration[];
+  du: string;
+  au: string | null;
+};
+
+export type Tarifs = {
+  prestations: Prestation[];
+  /** `null` : aucun taux saisi, donc **aucune** estimation de crédit d'impôt affichée. */
+  creditImpotTaux: number | null;
+  aucunTarifSaisi: boolean;
+};
+
 export type Suggestion = { workerId: string; score: number; raisons: string[] };
 export type CreneauASuggerer = {
   serieId: string;
@@ -248,6 +297,22 @@ export const api = {
 
   seriesDuFoyer: (householdId: string) =>
     apiFetch<{ series: SerieDuFoyer[] }>(`/admin/v1/households/${householdId}/series`),
+
+  regles: (agencyId: string) => apiFetch<Regles>(`/admin/v1/rules/${agencyId}`),
+
+  enregistrerRegles: (agencyId: string, regles: Record<string, Regle>) =>
+    apiFetch<{ version: number; regles: Record<string, Regle> }>(`/admin/v1/rules/${agencyId}`, {
+      methode: "PUT",
+      corps: { regles },
+    }),
+
+  tarifs: (agencyId: string) => apiFetch<Tarifs>(`/admin/v1/prestations/${agencyId}`),
+
+  enregistrerTauxCreditImpot: (agencyId: string, creditImpotTaux: number | null) =>
+    apiFetch<{ creditImpotTaux: number | null }>(`/admin/v1/tariff-settings/${agencyId}`, {
+      methode: "PUT",
+      corps: { creditImpotTaux },
+    }),
 
   deconnecter: () => jeton.effacer(),
 };

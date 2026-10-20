@@ -87,8 +87,12 @@ chacun : son mode d'intervention (avec la mention légale du mandataire), ses me
 droits effectifs** et non leur rôle seul, les mesures de protection juridique, et ses séries de
 planning. 22 parcours.
 
-Restent à construire : **les réglages** (les règles de planification et les tarifs, saisis par
-l'agence), puis **l'application de l'intervenant** (la tournée et le pointage).
+Troisième écran livré (MY-17) : **les réglages** — les dix règles de planification, aucune active
+au départ et aucun seuil prérempli, chacune avec sa sévérité en mots ; et les tarifs, prix TTC
+devant, estimation du crédit d'impôt derrière et plus petite, aucune estimation sans taux saisi.
+36 parcours.
+
+Reste à construire : **l'application de l'intervenant** (la tournée et le pointage).
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.
