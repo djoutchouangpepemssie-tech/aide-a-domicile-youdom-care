@@ -80,8 +80,9 @@ si le planning rebouge).
 
 ## Ce qui n'existe pas encore, et dans quel ordre
 
-1. **les écrans** : le bureau a commencé (MY-15 à MY-17) — la semaine, les foyers et les réglages
-   (règles et tarifs) existent dans le site. Reste l'application de l'intervenant. Les écrans appellent
+1. **les écrans** : posés (MY-15 à MY-18) — la semaine, les foyers, les réglages (règles et tarifs)
+   et l'application de terrain (`/terrain/`, tournée et pointage) existent dans le site. Reste le
+   service worker de l'application de terrain (question 16) pour un envoi en arrière-plan. Les écrans appellent
    cette API **depuis le navigateur** : il faut donc que l'origine du site figure dans
    `ALLOWED_ORIGINS` ici, **et** que l'origine de cette API figure dans `connect-src` de la
    politique de sécurité de contenu du site (`next.config.ts`, dérivée de

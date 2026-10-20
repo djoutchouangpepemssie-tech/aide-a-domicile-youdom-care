@@ -7,13 +7,27 @@ vi.mock("next/navigation", () => ({ usePathname: () => pathname.value }));
 
 describe("l'habillage public", () => {
   it("reste sur le site", () => {
-    for (const chemin of ["/", "/personnes-agees/", "/demande/personne-agee/", "/bureauxyz"]) {
+    for (const chemin of [
+      "/",
+      "/personnes-agees/",
+      "/demande/personne-agee/",
+      "/bureauxyz",
+      "/terrains-de-jeu/",
+    ]) {
       expect(estSansHabillage(chemin)).toBe(false);
     }
   });
 
-  it("se retire dans le back-office", () => {
-    for (const chemin of ["/bureau", "/bureau/", "/bureau/semaine/", "/bureau/connexion/"]) {
+  it("se retire dans le back-office et sur le terrain", () => {
+    for (const chemin of [
+      "/bureau",
+      "/bureau/",
+      "/bureau/semaine/",
+      "/bureau/connexion/",
+      "/terrain",
+      "/terrain/",
+      "/terrain/connexion/",
+    ]) {
       expect(estSansHabillage(chemin)).toBe(true);
     }
   });

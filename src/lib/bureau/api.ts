@@ -252,6 +252,25 @@ export type Tarifs = {
   aucunTarifSaisi: boolean;
 };
 
+export type Pointage = { type: string; source: string; at: string };
+
+export type VisiteDuJour = {
+  id: string;
+  foyer: { id: string; code: string | null };
+  adresse: {
+    line1: string;
+    line2?: string;
+    postalCode: string;
+    city: string;
+    accessNote?: string;
+  } | null;
+  debut: string;
+  fin: string;
+  nature: "jour" | "nuit_calme" | "nuit_active" | "continu";
+  statut: string;
+  pointages: Pointage[];
+};
+
 export type Suggestion = { workerId: string; score: number; raisons: string[] };
 export type CreneauASuggerer = {
   serieId: string;
@@ -313,6 +332,30 @@ export const api = {
       methode: "PUT",
       corps: { creditImpotTaux },
     }),
+
+  /** La tournée du jour de l'intervenante connectée. Sa propre donnée de travail. */
+  tournee: () => apiFetch<{ visites: VisiteDuJour[] }>("/field/v1/visits/today"),
+
+  /**
+   * Un pointage. `at` est **l'heure du geste**, prise sur le téléphone : l'envoi peut arriver
+   * bien plus tard, le relevé d'heures ne doit pas en souffrir.
+   */
+  pointer: (
+    visitId: string,
+    pointage: { type: string; source: string; at: string; motif?: string },
+  ) =>
+    apiFetch<{ enregistre: boolean; at: string; statut: string }>(
+      `/field/v1/visits/${visitId}/punch`,
+      {
+        methode: "POST",
+        corps: {
+          type: pointage.type,
+          source: pointage.source,
+          at: pointage.at,
+          ...(pointage.motif ? { reason: pointage.motif } : {}),
+        },
+      },
+    ),
 
   deconnecter: () => jeton.effacer(),
 };

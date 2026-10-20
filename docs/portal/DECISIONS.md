@@ -546,3 +546,62 @@ la mention légale de `docs/07` — la même qu'en façade, tirée du même fich
 règles portaient les mêmes libellés visibles, donc dix cases à cocher nommées « Vérifier cette
 règle ». Un lecteur d'écran qui énumère les champs n'aurait rien pu en faire. Chaque champ porte
 maintenant le nom de sa règle, en gardant le texte visible dans son nom accessible (WCAG 2.5.3).
+
+---
+
+## MY-18 — L'application de terrain : un pointage ne se perd pas (20/10/2026)
+
+**Décision.** L'application de l'intervenante vit à `/terrain/`, dans le même site, sans habillage
+public et hors des moteurs de recherche. Elle tient d'une main : une colonne, de grandes cibles, un
+geste par visite.
+
+### Ce qui a été corrigé dans l'API en l'écrivant (un vrai trou)
+
+Un pointage **n'avançait pas le statut de la visite**. Or `commencee()`
+(`planning/materialisation.ts`) lit `status !== "prevue"`, et c'est elle qui tient la règle de
+MY-13 : « une visite commencée ne suit plus le planning ». Résultat : une visite pointée restait
+« prévue », et la matérialisation de la nuit réécrivait sans broncher les horaires d'une visite déjà
+faite — des heures travaillées, réécrites par un planning. C'est branché : en route → `en_route`,
+arrivée → `en_cours`, départ → `faite`.
+
+L'avancement **ne revient jamais en arrière**. Un pointage « en route » qui arrive après le départ —
+tournée hors réseau synchronisée dans le désordre — est enregistré comme événement, mais ne rouvre
+pas une visite terminée. L'événement reste la vérité, le statut n'en est que le résumé.
+
+La tournée rend aussi **les pointages déjà enregistrés**. Sans eux, une application rechargée
+(batterie, onglet fermé, téléphone changé) laisserait croire que rien n'a été pointé, et
+l'intervenante repointerait son arrivée.
+
+### Le pointage hors réseau
+
+Dans un immeuble ancien, un sous-sol, une cage d'escalier, il n'y a pas de réseau.
+
+1. **L'heure du geste est l'heure du téléphone** (`at`), jamais l'heure de l'envoi. L'API l'accepte
+   et la borne : deux minutes d'avance, quarante-huit heures de retard.
+2. **Un envoi qui échoue attend dans le téléphone** et repart à la reconnexion, au retour sur
+   l'onglet, au pointage suivant, ou sur demande.
+3. **L'écran dit ce qui n'est pas parti.** Un pointage « en attente d'envoi » est un fait
+   enregistré, pas un fait transmis ; le cacher serait mentir à l'intervenante.
+
+**Ce que cette file ne fait pas, et qu'il faut savoir avant la mise en service** : il n'y a **pas de
+service worker**. Si l'onglet est fermé avant que le réseau revienne, les pointages restent en
+attente jusqu'à la prochaine ouverture — ils ne sont pas perdus, mais ils ne partent pas tout seuls.
+Un envoi en arrière-plan et une installation sur l'écran d'accueil demandent une décision
+(**Q-PWA**, posée dans `QUESTIONS.md`).
+
+### Le badge, et la porte de sortie
+
+Le pointage par badge n'est proposé **que si le navigateur sait lire le NFC** (Web NFC : Android,
+Chrome). Ailleurs, un bouton « badge » qui ne répondrait jamais est pire que son absence. Le
+**pointage manuel est toujours là, avec son motif obligatoire** (MY-02) : un badge se décolle, et
+sans porte de sortie les intervenants trouveront la leur — elle sera pire. Le lecteur de QR code
+demande un décodeur dans le navigateur, donc une dépendance : il attend la même décision Q-PWA.
+
+### Accessibilité
+
+Un bouton `variant="link"` posé sur fond sable est mesuré à **4,46** — sous le seuil AA. La règle
+`.sur-sable` ne le rattrape pas : les utilitaires de Tailwind vivent dans une couche postérieure,
+qui passe devant quelle que soit la spécificité. Sur sable, un tel bouton prend donc
+`variant="outline"`, et le piège est écrit dans `globals.css` pour la prochaine fois. Trouvé par
+axe, sur mobile seulement : à 18,06 px le texte gras n'est pas « grand texte », et le seuil passe
+de 3 à 4,5.

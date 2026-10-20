@@ -207,6 +207,12 @@
    * 4,46 — sous le seuil AA de 4,5 — alors qu'il passe largement sur blanc. La variante teal-800
    * est celle que les scènes utilisent déjà pour la même raison (`scenes.css`). Un seuil ne se
    * contourne pas : c'est la couleur qui change.
+   *
+   * Ce que cette règle **ne** rattrape pas : un bouton qui porte la couleur de lien sans être un
+   * lien (`Button variant="link"`, utilitaire `.text-link`). Les utilitaires de Tailwind vivent
+   * dans une couche postérieure, qui passe devant quelle que soit la spécificité. Sur fond sable,
+   * un bouton de ce genre prend donc `variant="outline"` — c'est axe qui l'a signalé, sur le
+   * bouton « Se déconnecter » de l'application de terrain.
    */
   .sur-sable a {
     color: var(--color-link-on-sand);

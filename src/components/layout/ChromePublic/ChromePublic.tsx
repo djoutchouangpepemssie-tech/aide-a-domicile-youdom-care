@@ -14,8 +14,8 @@ import type { ReactNode } from "react";
  * suffisent, et `usePathname` répond déjà au premier rendu, côté serveur — donc aucun clignotement.
  */
 
-/** Préfixes où l'habillage public est retiré. */
-export const SANS_HABILLAGE = ["/bureau"] as const;
+/** Préfixes où l'habillage public est retiré : le back-office, et l'application de terrain. */
+export const SANS_HABILLAGE = ["/bureau", "/terrain"] as const;
 
 export function estSansHabillage(chemin: string | null): boolean {
   if (!chemin) return false;

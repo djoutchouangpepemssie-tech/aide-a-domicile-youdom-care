@@ -92,7 +92,14 @@ au départ et aucun seuil prérempli, chacune avec sa sévérité en mots ; et l
 devant, estimation du crédit d'impôt derrière et plus petite, aucune estimation sans taux saisi.
 36 parcours.
 
-Reste à construire : **l'application de l'intervenant** (la tournée et le pointage).
+Quatrième écran livré (MY-18) : **l'application de l'intervenante** (`/terrain/`) — la tournée du
+jour et le pointage, avec l'heure du geste et une file d'attente quand le réseau manque. Au
+passage, un trou de l'API bouché : un pointage n'avançait pas le statut de la visite, si bien que la
+matérialisation de la nuit pouvait réécrire les horaires d'une visite déjà faite.
+
+**Les écrans de la phase 1 sont posés** : la semaine, les foyers, les réglages, la tournée. Ce qui
+reste avant une mise en service : l'hébergeur certifié HDS (question A), le service worker de
+l'application de terrain (question 16), et le contenu chiffré des consignes d'accès.
 
 - Projet API (FastAPI), base, migrations, environnements, chaîne de déploiement chez l'hébergeur
   retenu.

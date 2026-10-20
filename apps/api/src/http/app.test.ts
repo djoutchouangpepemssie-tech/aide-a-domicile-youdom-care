@@ -416,6 +416,55 @@ describe("la surface terrain", () => {
     expect(h.db.tables.visitEvents).toHaveLength(1);
   });
 
+  it("fait avancer le statut de la visite, et jamais à reculons", async () => {
+    const { h, visite, token } = await terrain();
+    const pointer = (type: string, source = "nfc") =>
+      h.app.request(`/field/v1/visits/${visite._id}/punch`, {
+        method: "POST",
+        headers: { ...auth(token), "content-type": "application/json" },
+        body: JSON.stringify({ type, source }),
+      });
+
+    expect(((await (await pointer("en_route")).json()) as { statut: string }).statut).toBe(
+      "en_route",
+    );
+    expect(((await (await pointer("arrivee")).json()) as { statut: string }).statut).toBe(
+      "en_cours",
+    );
+    expect(((await (await pointer("depart")).json()) as { statut: string }).statut).toBe("faite");
+
+    /*
+     * Un pointage « en route » qui arrive après le départ — tournée hors réseau synchronisée dans
+     * le désordre — est enregistré comme événement, mais ne rouvre pas une visite terminée.
+     */
+    const retardataire = await pointer("en_route");
+    expect(retardataire.status).toBe(201);
+    expect(((await retardataire.json()) as { statut: string }).statut).toBe("faite");
+    expect(h.db.tables.visitEvents).toHaveLength(4);
+
+    const apres = await h.db.repositories.visits.findById(visite._id);
+    expect(apres?.status).toBe("faite");
+  });
+
+  it("rend les pointages déjà enregistrés avec la tournée", async () => {
+    const { h, visite, token } = await terrain();
+    await h.app.request(`/field/v1/visits/${visite._id}/punch`, {
+      method: "POST",
+      headers: { ...auth(token), "content-type": "application/json" },
+      body: JSON.stringify({ type: "arrivee", source: "nfc" }),
+    });
+
+    // Une application rechargée doit savoir ce qui a déjà été pointé, sinon on repointe.
+    const reponse = await h.app.request("/field/v1/visits/today", { headers: auth(token) });
+    const corps = (await reponse.json()) as {
+      visites: { statut: string; pointages: { type: string; source: string }[] }[];
+    };
+    expect(corps.visites[0]?.statut).toBe("en_cours");
+    expect(corps.visites[0]?.pointages).toEqual([
+      expect.objectContaining({ type: "arrivee", source: "nfc" }),
+    ]);
+  });
+
   it("refuse un pointage manuel sans motif, et l'accepte avec", async () => {
     const { h, visite, token } = await terrain();
     const sansMotif = await h.app.request(`/field/v1/visits/${visite._id}/punch`, {

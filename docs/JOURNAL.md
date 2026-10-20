@@ -2101,3 +2101,57 @@ gardant son texte visible dans son nom accessible.
 
 **Vérifications** : 1 263 tests unitaires, 716 parcours Playwright sur mobile et bureau — dont les
 36 du bureau —, 13/13 contrôles, lint, typecheck et build verts.
+
+---
+
+## 20/10/2026 — Le bureau, quatrième écran : la tournée de l'intervenante
+
+`/terrain/` : l'application de l'intervenante. Une colonne, de grandes cibles, un geste par visite,
+aucune donnée de santé — le code du foyer, l'adresse, l'horaire, la nature de la visite. De quoi
+arriver et pointer, rien de plus.
+
+### Ce que j'ai trouvé dans l'API en écrivant l'écran, et qui était grave
+
+Un pointage **n'avançait pas le statut de la visite**. Or c'est le statut que lit `commencee()`, et
+c'est elle qui tient la règle de MY-13 : « une visite commencée ne suit plus le planning ». Autrement
+dit : une visite pointée restait « prévue », et la matérialisation de la nuit réécrivait tranquillement
+les horaires d'une visite déjà faite. Des heures travaillées, réécrites par un planning. C'est
+branché — en route, en cours, faite — et l'avancement ne revient jamais en arrière : un pointage
+synchronisé dans le désordre est enregistré comme événement, mais ne rouvre pas une visite terminée.
+
+La tournée rend aussi les pointages déjà enregistrés. Sans eux, une application rechargée laisserait
+croire que rien n'a été pointé, et l'intervenante repointerait son arrivée.
+
+### Le pointage quand il n'y a pas de réseau
+
+C'est le cœur de cet écran. L'heure qui compte est **l'heure du geste**, prise sur le téléphone, pas
+celle de l'envoi. Un envoi qui échoue attend dans le téléphone et repart à la reconnexion, au retour
+sur l'onglet, au pointage suivant, ou sur demande. Et l'écran **dit** ce qui n'est pas parti : un
+pointage en attente est un fait enregistré, pas un fait transmis.
+
+**La limite, dite franchement** : il n'y a pas de service worker. Onglet fermé avant le retour du
+réseau, les pointages restent en attente jusqu'à la prochaine ouverture — pas perdus, mais pas
+partis. L'envoi en arrière-plan et l'icône sur l'écran d'accueil demandent une décision : c'est la
+question 16, avec celle du téléphone (le leur, ou celui de l'agence ?) et du lecteur de QR code.
+
+Le badge NFC n'est proposé que si le navigateur sait le lire : ailleurs, un bouton qui ne répond
+jamais est pire que son absence. Le pointage manuel reste toujours accessible, avec son motif.
+
+### Accessibilité, encore trouvée par la mesure
+
+Un bouton de style « lien » posé sur fond sable : 4,46, sous le seuil. Ma règle `.sur-sable` ne le
+rattrapait pas — les utilitaires de Tailwind vivent dans une couche qui passe devant, quelle que
+soit la spécificité. Le bouton prend la variante contour, et le piège est écrit dans `globals.css`
+pour la prochaine fois. À noter : axe ne l'a signalé que sur mobile, parce qu'à 18,06 px le gras
+n'est pas « grand texte » et que le seuil passe de 3 à 4,5.
+
+**Vérifications** : 1 277 tests unitaires (dont 271 d'API), 727 parcours Playwright sur mobile et
+bureau — dont les 12 du terrain —, 13/13 contrôles, lint, typecheck et build verts.
+
+**Un échec que je n'explique pas, et que je signale plutôt que de le taire** : dans le lot complet,
+le parcours R-4 (la panne d'envoi du formulaire de rappel) est tombé une fois, au 823ᵉ parcours sur
+828 — la soumission était bloquée par « il manque votre commune » alors que la commune était bien
+préremplie. Relancé seul : 10 fois vert. Le fichier entier : 132 parcours verts. Ce parcours a déjà
+un historique de ce genre sous charge (D-083), et il ne touche rien de ce que cette étape a changé.
+Je n'ai pas trouvé la cause et je n'ai donc rien « corrigé » : c'est noté ici pour qu'au prochain
+échec on ne reparte pas de zéro.

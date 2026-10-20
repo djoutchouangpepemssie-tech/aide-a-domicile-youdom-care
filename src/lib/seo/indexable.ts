@@ -16,4 +16,10 @@ export function isIndexable(): boolean {
  * de site. Cette seule ligne le retire de `robots.txt`, des plans de site, des contrôles de
  * référencement et lui met `noindex` (MY-15).
  */
-export const neverIndexedPaths = ["/api/", "/merci/", "/styleguide/", "/bureau/"] as const;
+export const neverIndexedPaths = [
+  "/api/",
+  "/merci/",
+  "/styleguide/",
+  "/bureau/",
+  "/terrain/",
+] as const;

@@ -93,3 +93,15 @@ figurer dans le portail, et il doit relire l'AIPD.
 **15. Prestataires.** Signature électronique, prélèvement SEPA, envoi de SMS : avez-vous déjà des
 contrats, ou faut-il les choisir ? Et **l'habilitation URSSAF à l'API Tiers de prestation est-elle
 demandée ?** Si non, c'est à lancer cette semaine : le délai est administratif, pas technique.
+
+**16. L'application de terrain : installée sur le téléphone, ou page web ?** Aujourd'hui, c'est une
+page web. Les pointages faits hors réseau sont gardés dans le téléphone et repartent au retour du
+réseau — **à condition que la page reste ouverte**. Pour qu'ils repartent tout seuls, et pour une
+icône sur l'écran d'accueil, il faut un service worker (une « PWA ») : c'est une semaine de travail
+et une habitude à installer chez les intervenants. Deux questions qui vont ensemble :
+
+- les intervenantes pointent-elles depuis **leur** téléphone, ou un téléphone de l'agence ? La
+  réponse change tout (consentement, forfait data, perte, remplacement) ;
+- voulez-vous le **lecteur de QR code** dans l'application ? Il demande une bibliothèque de
+  décodage, donc une dépendance de plus (`docs/DECISIONS.md`). Le badge NFC, lui, fonctionne déjà
+  sur Android sans rien ajouter — et le pointage manuel avec motif existe toujours.

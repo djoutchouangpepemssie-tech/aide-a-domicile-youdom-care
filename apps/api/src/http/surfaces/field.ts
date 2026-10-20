@@ -5,6 +5,7 @@ import {
   punchSources,
   visitEventSchema,
   visitEventTypes,
+  type Visit,
 } from "../../domaine/schemas";
 import { parseBody } from "../body";
 import { fail, notFound } from "../errors";
@@ -28,6 +29,35 @@ import type { ApiDeps, AppEnv } from "../types";
 const AVANCE_MAX_MS = 2 * 60 * 1000;
 /** Tolérance vers le passé : une tournée hors réseau se synchronise au retour, pas une semaine après. */
 const RETARD_MAX_MS = 48 * 60 * 60 * 1000;
+
+/*
+ * Ce qu'un pointage fait du statut de la visite.
+ *
+ * Ce n'était pas branché, et c'était un vrai trou : `commencee()` (`planning/materialisation.ts`)
+ * lit `status !== "prevue"`, et c'est elle qui décide qu'« une visite commencée ne suit plus le
+ * planning ». Sans cette mise à jour, une visite pointée restait « prévue » — et la
+ * matérialisation de la nuit réécrivait sans broncher les horaires d'une visite déjà faite.
+ *
+ * L'avancement ne revient jamais en arrière : un pointage « en route » qui arrive après le départ
+ * (tournée hors réseau synchronisée dans le désordre) est enregistré comme événement, mais ne
+ * rouvre pas une visite terminée. L'événement reste la vérité ; le statut n'en est que le résumé.
+ */
+const STATUT_APRES = {
+  en_route: "en_route",
+  arrivee: "en_cours",
+  depart: "faite",
+  annulation: "annulee",
+  remplacement: null,
+} as const satisfies Record<(typeof visitEventTypes)[number], Visit["status"] | null>;
+
+const AVANCEMENT: Record<Visit["status"], number> = {
+  prevue: 0,
+  en_route: 1,
+  en_cours: 2,
+  faite: 3,
+  annulee: 3,
+  non_faite: 3,
+};
 
 const punchSchema = z.strictObject({
   type: z.enum(visitEventTypes),
@@ -69,6 +99,12 @@ export function fieldSurface(deps: ApiDeps) {
     const vues = await Promise.all(
       visits.map(async (visit) => {
         const household = await deps.repositories.households.findById(visit.householdId);
+        /*
+         * Les pointages déjà enregistrés partent avec la tournée : sans eux, une application
+         * rechargée (batterie, onglet fermé, téléphone changé) laisserait croire que rien n'a été
+         * pointé, et l'intervenante repointerait son arrivée.
+         */
+        const evenements = await deps.repositories.visitEvents.listByVisit(visit._id);
         return {
           id: visit._id,
           foyer: { id: visit.householdId, code: household?.code ?? null },
@@ -77,6 +113,13 @@ export function fieldSurface(deps: ApiDeps) {
           fin: visit.plannedEnd.toISOString(),
           nature: visit.kind,
           statut: visit.status,
+          pointages: evenements
+            .map((evenement) => ({
+              type: evenement.type,
+              source: evenement.source,
+              at: evenement.at.toISOString(),
+            }))
+            .sort((a, b) => a.at.localeCompare(b.at)),
         };
       }),
     );
@@ -119,8 +162,18 @@ export function fieldSurface(deps: ApiDeps) {
     }
 
     await deps.repositories.visitEvents.append(event.data);
+
+    const suivant = STATUT_APRES[body.value.type];
+    const avance = suivant !== null && AVANCEMENT[suivant] > AVANCEMENT[visit.status];
+    if (avance) await deps.repositories.visits.save({ ...visit, status: suivant });
+
     return context.json(
-      { enregistre: true, at: at.toISOString(), recordedAt: now.toISOString() },
+      {
+        enregistre: true,
+        at: at.toISOString(),
+        recordedAt: now.toISOString(),
+        statut: avance ? suivant : visit.status,
+      },
       201,
     );
   });
